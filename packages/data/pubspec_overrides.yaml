@@ -1,0 +1,13 @@
+# melos_managed_dependency_overrides: core,collection,change_application_name,design_system,utils,localization
+dependency_overrides:
+  core:
+    path: ../core
+  collection: ^1.19.1
+  change_application_name:
+    path: ../../apps/app
+  design_system:
+    path: ../design_system
+  utils:
+    path: ../utils
+  localization:
+    path: ../localization

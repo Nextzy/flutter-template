@@ -1,0 +1,29 @@
+import 'package:change_application_name/application.dart';
+
+class YourBlocPage extends AppPage {
+  const YourBlocPage._({required Key key}) : super(key: key);
+
+  static Widget create() => //
+      BlocProvider(
+        create: (context) =>
+            OnboardingBloc()..addEvent(OnboardingEvent.yourEvent),
+        child: const YourBlocPage._(
+          key: Key('YourBlocScreen'),
+        ),
+      );
+
+  @override
+  State<YourBlocPage> createState() => _YourBlocScreenState();
+}
+
+class _YourBlocScreenState extends AppPageScaffoldBlocWidgetState<YourBlocPage,
+    YourEntity, YourBloc> {
+  @override
+  Widget build(BuildContext context) => //
+      buildScaffoldWithBloc(
+        buildBody: (context, state) {
+          // TODO: implement buildBody
+          throw UnimplementedError();
+        },
+      );
+}

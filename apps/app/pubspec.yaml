@@ -1,0 +1,189 @@
+name: change_application_name
+description: "A change your project name."
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  core:
+    path: ../../packages/core
+  data:
+    path: ../../packages/data
+  design_system:
+    path: ../../packages/design_system
+  localization:
+    path: ../../packages/localization
+  utils:
+    path: ../../packages/utils
+
+  flutter_native_splash: ^2.4.3
+  flutter_launcher_icons: ^0.14.2
+  country_code_picker: ^3.1.0
+
+  #======= UI ========#
+  #PLATFORM: All
+  pinput: ^5.0.0
+  feedback: ^3.1.0
+
+  #======= DATA ========#
+  #PLATFORM: All
+  drift: ^2.22.1
+  drift_flutter: ^0.2.2
+  envied: ^1.0.0
+
+  #========== Utils ===========#
+  flutter_multi_formatter: ^2.13.0
+  talker_bloc_logger: ^4.5.2
+  sms_autofill: ^2.4.1
+  auto_route: ^9.2.2
+
+
+dependency_overrides:
+  # Fixed: wechat_assets_picker
+  extended_image: ^9.0.7
+  # Fixed http_parser
+  collection: ^1.19.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  bloc_test: ^9.1.7
+  flutter_flavorizr: ^2.2.3
+  build_runner: ^2.4.13
+  build_test: ^2.2.2
+  build_web_compilers: ^4.0.11
+  flutter_gen_runner: ^5.8.0
+  json_serializable: ^6.9.0
+  freezed: ^2.5.7
+  drift_dev: ^2.22.0
+  envied_generator: ^1.0.0
+  auto_route_generator: ^9.0.0
+
+
+flutter_gen:
+  output: lib/generated/
+
+  assets:
+    enabled: true
+    outputs:
+      package_parameter_enabled: true
+      style: dot-delimiter
+
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    - assets/
+    - assets/icon/
+    - assets/mock/
+    - assets/logo/
+    - assets/illustration/
+
+
+###################################################
+# FLUTTER FLAVORIZR                               #
+# Run command: flutter pub run flutter_flavorizr  #
+###################################################
+flavorizr: #See more: https://pub.dev/packages/flutter_flavorizr
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+    ios:
+      buildSettings:
+        ASSETCATALOG_COMPILER_APPICON_NAME: "AppIcon-$(ASSET_PREFIX)" # Make AppIcon compatible with flutter_launcher_icons
+    macos:
+      buildSettings:
+        ASSETCATALOG_COMPILER_APPICON_NAME: "AppIcon-$(ASSET_PREFIX)" # Make AppIcon compatible with flutter_launcher_icons
+  flavors:
+    dev:
+      app:
+        name: "Template (Dev)"
+      android:
+        applicationId: "com.example.application.dev"
+        generateDummyAssets: false
+        firebase:
+          config: "configs/firebase/dev/google-services.json"
+      ios:
+        bundleId: "com.example.dev"
+        generateDummyAssets: false
+        buildSettings:
+          LAUNCH_SCREEN_STORYBOARD: "LaunchScreenDev"
+        firebase:
+          config: "configs/firebase/dev/GoogleService-Info.plist"
+      macos:
+        bundleId: "com.example.dev"
+        generateDummyAssets: false
+        buildSettings:
+          LAUNCH_SCREEN_STORYBOARD: "LaunchScreenDev"
+        firebase:
+          config: "configs/firebase/dev/GoogleService-Info.plist"
+    uat:
+      app:
+        name: "Template (UAT)"
+      android:
+        applicationId: "com.example.application.uat"
+        generateDummyAssets: false
+        firebase:
+          config: "configs/firebase/uat/google-services.json"
+      ios:
+        bundleId: "com.example.uat"
+        generateDummyAssets: false
+        buildSettings:
+          LAUNCH_SCREEN_STORYBOARD: "LaunchScreenUat"
+        firebase:
+          config: "configs/firebase/uat/GoogleService-Info.plist"
+      macos:
+        bundleId: "com.example.uat"
+        generateDummyAssets: false
+        buildSettings:
+          LAUNCH_SCREEN_STORYBOARD: "LaunchScreenUat"
+        firebase:
+          config: "configs/firebase/uat/GoogleService-Info.plist"
+    prod:
+      app:
+        name: "Template"
+      android:
+        applicationId: "com.example.application"
+        generateDummyAssets: false
+        firebase:
+          config: "configs/firebase/prod/google-services.json"
+      ios:
+        bundleId: "com.example"
+        generateDummyAssets: false
+        buildSettings:
+          LAUNCH_SCREEN_STORYBOARD: "LaunchScreenProd"
+        firebase:
+          config: "configs/firebase/prod/GoogleService-Info.plist"
+      macos:
+        bundleId: "com.example"
+        generateDummyAssets: false
+        buildSettings:
+          LAUNCH_SCREEN_STORYBOARD: "LaunchScreenProd"
+        firebase:
+          config: "configs/firebase/prod/GoogleService-Info.plist"
+
+  instructions:
+    - assets:download
+    - assets:extract
+    - android:buildGradle
+    - ios:xcconfig
+    - ios:buildTargets
+    - ios:schema
+    - ios:plist
+    - google:firebase
+    - huawei:agconnect
+    - assets:clean
