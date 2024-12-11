@@ -4,10 +4,7 @@ class ContentContainerLayout extends ContainerLayout {
   const ContentContainerLayout({
     super.key,
     super.ratio,
-    super.width = double.infinity,
     super.height,
-    super.minWidth,
-    super.maxWidth = 1000,
     super.minHeight,
     super.maxHeight,
     super.rotate,
@@ -31,5 +28,8 @@ class ContentContainerLayout extends ContainerLayout {
     super.transform,
     super.transformAlignment,
     super.child,
-  });
+  }) : super(
+          width: double.infinity,
+          maxWidth: 1000,
+        );
 }

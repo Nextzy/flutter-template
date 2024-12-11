@@ -18,18 +18,14 @@ class HomePageBloc extends AppBloc<HomeBlocEvent, HomeEntity> {
   ) async {
     switch (event.name) {
       case HomeBlocEvent.yourEvent:
-        // return _fetchStreamExample(emitter);
+      // return _fetchStreamExample(emitter);
     }
   }
 
-  Future<void> _fetchStreamExample(
-          Emitter<WidgetStateEvent<HomeEntity?>> emitter) =>
-      emitter.callStream(
-        call: fetchEitherStream(
-          key: HomeBlocEvent.yourEvent,
-          call: HomeUsecase()(),
-          debounceFetch: true,
-        ),
+  Future<void> _fetchStreamExample() => callEitherStreamDebounce(
+        key: HomeBlocEvent.yourEvent,
+        call: HomeUsecase()(),
+        debounceFetch: true,
         onData: (emitter, state) {
           if (state.isLoading) {
             emitLoading(data);
@@ -42,23 +38,18 @@ class HomePageBloc extends AppBloc<HomeBlocEvent, HomeEntity> {
         },
       );
 
-  Future<void> _fetchFutureExample(
-          Emitter<WidgetStateEvent<HomeEntity?>> emitter) =>
-      emitter.callStream(
-        call: fetchEitherFuture(
-          key: HomeBlocEvent.yourEvent,
-          call: _yourRepo.getYourServiceFuture(),
-          debounceFetch: true,
-        ),
+  Future<void> _fetchFutureExample() => callEitherFutureDebounce(
+        key: HomeBlocEvent.yourEvent,
+        call: _yourRepo.getYourServiceFuture(),
+        debounceFetch: true,
         onData: (emitter, state) {},
         onFailure: (emitter, failure) {},
       );
 
-  Future<void> _fetchFutureExample2(
-      Emitter<WidgetStateEvent<HomeEntity?>> emitter) async {
-    _yourRepo.getYourServiceFuture().resolve(
+  Future<void> _fetchFutureExample2() async {
+     _yourRepo.getYourServiceFuture().resolve(
       (String data) {
-        emitter.emit(state);
+        emitSuccess(state.data);
       },
       (Failure fail) {
         emitEvent(HomePageEvent.yourEvent);

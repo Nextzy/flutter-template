@@ -20,18 +20,16 @@ class ScanPage extends AppPage {
 }
 
 class _ScanPageBlocState
-    extends AppPageScaffoldBlocWidgetState<ScanPage, YourEntity, YourBloc> {
+    extends AppPageBlocWidgetState<ScanPage, YourEntity, YourBloc> {
   final GlobalKey defaultKey = GlobalKey(debugLabel: 'QR');
   bool _flash = false;
   Barcode? result;
   QRViewController? controller;
 
-  void _listenEvent(BuildContext context, ScanPageEvent event, Object? data) {
+  void listenEvent(BuildContext context, Object event, Object? data) {
     switch (event) {
       case ScanPageEvent.yourEvent:
         break;
-      default:
-        super.listenEvent(context, event, data);
     }
   }
 
@@ -40,8 +38,8 @@ class _ScanPageBlocState
   @override
   Widget build(BuildContext context) => //
       buildScaffoldWithBloc<ScanPageEvent>(
-        listenEvent: _listenEvent,
-        buildBody: (context, state) => Stack(
+        listenEvent: listenEvent,
+        body: (context, state) => Stack(
           children: [
             QRView(
               key: defaultKey,
@@ -53,7 +51,7 @@ class _ScanPageBlocState
                 overlayColor: context.theme.color.bg.withOpacity(0.96),
                 cutOutSize: scanArea,
               ),
-              onQRViewCreated: _onQRViewCreated,
+              onQRViewCreated: onQRViewCreated,
             ),
             AppTopBackNavigationBar(
               title: 'Scan',
@@ -83,7 +81,7 @@ class _ScanPageBlocState
     super.dispose();
   }
 
-  void _onQRViewCreated(QRViewController controller) {
+  void onQRViewCreated(QRViewController controller) {
     setState(() {
       this.controller = controller;
     });

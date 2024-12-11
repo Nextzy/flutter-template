@@ -17,11 +17,11 @@ class YourBlocPage extends AppPage {
 }
 
 class _YourBlocScreenState
-    extends AppPageScaffoldBlocWidgetState<YourBlocPage, YourEntity, OnboardingBloc> {
+    extends AppPageBlocWidgetState<YourBlocPage, YourEntity, OnboardingBloc> {
   @override
   Widget build(BuildContext context) => //
       buildScaffoldWithBloc(
-        buildBody: (context, state) {
+        body: (context, state) {
           // TODO: implement buildBody
           throw UnimplementedError();
         },

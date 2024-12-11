@@ -16,7 +16,7 @@ class NotFoundPage extends AppPage {
   State<NotFoundPage> createState() => _NotFoundPageState();
 }
 
-class _NotFoundPageState extends AppPageScaffoldState<NotFoundPage> {
+class _NotFoundPageState extends AppState<NotFoundPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

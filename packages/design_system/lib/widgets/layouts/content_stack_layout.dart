@@ -4,10 +4,7 @@ class ContentStackLayout extends StackLayout {
   const ContentStackLayout({
     super.key,
     super.ratio,
-    super.width = double.infinity,
     super.height,
-    super.minWidth,
-    super.maxWidth = 1000,
     super.minHeight,
     super.maxHeight,
     super.rotate,
@@ -33,5 +30,8 @@ class ContentStackLayout extends StackLayout {
     super.textDirection,
     super.scrollable,
     required super.children,
-  });
+  }) : super(
+          width: double.infinity,
+          maxWidth: 1000,
+        );
 }

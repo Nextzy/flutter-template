@@ -13,22 +13,20 @@ class YourStatefulWidget extends AppStatefulWidget {
   State<YourStatefulWidget> createState() => _YourWidgetStateEvent();
 }
 
-class _YourWidgetStateEvent extends AppBlocWidgetState<YourStatefulWidget,
-    YourEntity, YourBloc> {
-  void _listenEvent(
+class _YourWidgetStateEvent
+    extends AppBlocWidgetState<YourStatefulWidget, YourEntity, YourBloc> {
+  void listenEvent(
       BuildContext context, YourStatefulWidgetEvent event, Object? data) {
     switch (event) {
       case YourStatefulWidgetEvent.yourEvent:
         break;
-      default:
-        super.listenEvent(context, event, data);
     }
   }
 
   @override
   Widget build(BuildContext context) => //
       buildWithBloc<YourStatefulWidgetEvent>(
-        listenEvent: _listenEvent,
+        listenEvent: listenEvent,
         builder: (context, state) {
           // TODO: implement buildBody
           throw UnimplementedError();

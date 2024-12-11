@@ -87,50 +87,52 @@ class ColumnLayout extends StatelessWidget {
   final List<Widget> children;
 
   @override
-  Widget build(BuildContext context) => _buildScrollable(
-        scrollable: scrollable,
-        child: ContainerLayout(
-          key: key,
-          ratio: ratio,
-          width: width,
-          height: height,
-          minWidth: minWidth,
-          maxWidth: maxWidth,
-          minHeight: minHeight,
-          maxHeight: maxHeight,
-          rotate: rotate,
-          decoration: decoration,
-          padding: padding,
-          margin: margin,
-          border: border,
-          borderRadius: borderRadius,
-          backgroundColor: backgroundColor,
-          backgroundGradient: backgroundGradient,
-          backgroundImage: backgroundImage,
-          foregroundColor: foregroundColor,
-          foregroundGradient: foregroundGradient,
-          foregroundImage: foregroundImage,
-          opacity: opacity,
-          clipBehavior: clipBehavior,
-          innerShadow: innerShadow,
-          dropShadow: dropShadow,
-          backgroundBlur: backgroundBlur,
-          transform: transform,
-          child: _buildIntrinsic(
-            width: width,
-            intrinsic: crossAxisIntrinsic,
-            child: Column(
-              mainAxisAlignment: mainAxisAlignment,
-              mainAxisSize: height != null || maxHeight != null
-                  ? MainAxisSize.max
-                  : mainAxisSize,
-              crossAxisAlignment: crossAxisAlignment,
-              textDirection: textDirection,
-              verticalDirection: verticalDirection,
-              textBaseline: textBaseline,
-              children: _addSpaceWidgetList(
-                gap: gap,
-                children: children,
+  Widget build(BuildContext context) => ContainerLayout(
+        width: width,
+        height: height,
+        minWidth: minWidth,
+        maxWidth: maxWidth,
+        minHeight: minHeight,
+        maxHeight: maxHeight,
+        child: _buildScrollable(
+          scrollable: scrollable,
+          child: ContainerLayout(
+            key: key,
+            ratio: ratio,
+            rotate: rotate,
+            decoration: decoration,
+            padding: padding,
+            margin: margin,
+            border: border,
+            borderRadius: borderRadius,
+            backgroundColor: backgroundColor,
+            backgroundGradient: backgroundGradient,
+            backgroundImage: backgroundImage,
+            foregroundColor: foregroundColor,
+            foregroundGradient: foregroundGradient,
+            foregroundImage: foregroundImage,
+            opacity: opacity,
+            clipBehavior: clipBehavior,
+            innerShadow: innerShadow,
+            dropShadow: dropShadow,
+            backgroundBlur: backgroundBlur,
+            transform: transform,
+            child: _buildIntrinsic(
+              width: width,
+              intrinsic: crossAxisIntrinsic,
+              child: Column(
+                mainAxisAlignment: mainAxisAlignment,
+                mainAxisSize: height != null || maxHeight != null
+                    ? MainAxisSize.max
+                    : mainAxisSize,
+                crossAxisAlignment: crossAxisAlignment,
+                textDirection: textDirection,
+                verticalDirection: verticalDirection,
+                textBaseline: textBaseline,
+                children: _addSpaceWidgetList(
+                  gap: gap,
+                  children: children,
+                ),
               ),
             ),
           ),

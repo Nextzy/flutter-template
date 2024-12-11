@@ -8,17 +8,6 @@ abstract class AppBlocWidgetState<WIDGET extends StatefulWidget, DATA,
   InternetConnectionBloc get connectivity =>
       context.read<InternetConnectionBloc>();
 
-  void listenEvent(BuildContext context, Object event, Object? data) {
-    switch (event) {
-      case AppDialogEvent.showFullLoadingLocked:
-        AppLoadingDialog.showFullLoadingLocked(context);
-        break;
-      case AppDialogEvent.dismissAll:
-        AppLoadingDialog.dismissAll(context);
-        break;
-    }
-  }
-
   Widget buildResponsive({required ResponsiveBuilder child}) {
     final Breakpoint breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
 

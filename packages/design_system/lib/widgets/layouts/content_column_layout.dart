@@ -4,10 +4,7 @@ class ContentColumnLayout extends ColumnLayout {
   const ContentColumnLayout({
     super.key,
     super.ratio,
-    super.width = double.infinity,
     super.height,
-    super.minWidth,
-    super.maxWidth = 1000,
     super.minHeight,
     super.maxHeight,
     super.rotate,
@@ -38,5 +35,8 @@ class ContentColumnLayout extends ColumnLayout {
     super.gap,
     super.scrollable,
     required super.children,
-  });
+  }) : super(
+          width: double.infinity,
+          maxWidth: 1000,
+        );
 }

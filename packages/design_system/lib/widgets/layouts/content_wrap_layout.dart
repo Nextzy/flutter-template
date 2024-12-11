@@ -4,10 +4,7 @@ class ContentWrapLayout extends WrapLayout {
   const ContentWrapLayout({
     super.key,
     super.ratio,
-    super.width = double.infinity,
     super.height,
-    super.minWidth,
-    super.maxWidth = 1000,
     super.minHeight,
     super.maxHeight,
     super.rotate,
@@ -39,5 +36,7 @@ class ContentWrapLayout extends WrapLayout {
     super.gap,
     super.scrollable,
     required super.children,
-  });
-}
+  }) : super(
+    width: double.infinity,
+    maxWidth: 1000,
+  );}

@@ -4,10 +4,7 @@ class ContentRowLayout extends RowLayout {
   const ContentRowLayout({
     super.key,
     super.ratio,
-    super.width = double.infinity,
     super.height,
-    super.minWidth,
-    super.maxWidth = 1000,
     super.minHeight,
     super.maxHeight,
     super.rotate,
@@ -29,7 +26,6 @@ class ContentRowLayout extends RowLayout {
     super.backgroundBlur,
     super.transform,
     super.mainAxisAlignment,
-    super.mainAxisSize,
     super.crossAxisAlignment,
     super.textDirection,
     super.verticalDirection,
@@ -38,5 +34,8 @@ class ContentRowLayout extends RowLayout {
     super.gap,
     super.scrollable,
     required super.children,
-  });
+  }) : super(
+    maxWidth: 1000,
+    mainAxisSize: MainAxisSize.max,
+  );
 }

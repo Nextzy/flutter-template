@@ -21,28 +21,27 @@ class YourBlocPage extends AppPage {
   State<YourBlocPage> createState() => _YourBlocScreenState();
 }
 
-class _YourBlocScreenState extends AppPageScaffoldBlocWidgetState<YourBlocPage,
-    YourEntity, YourBloc> {
+class _YourBlocScreenState
+    extends AppPageBlocWidgetState<YourBlocPage, YourEntity, YourBloc> {
+
+  void listenEvent(BuildContext context, YourScreenEvent event, Object? data) {
+    switch (event) {
+      case YourScreenEvent.yourEvent:
+        break;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     bloc.addEvent(YourEvent.yourEvent);
   }
 
-  void _listenEvent(BuildContext context, YourScreenEvent event, Object? data) {
-    switch (event) {
-      case YourScreenEvent.yourEvent:
-        break;
-      default:
-        super.listenEvent(context, event, data);
-    }
-  }
-
   @override
   Widget build(BuildContext context) => //
       buildScaffoldWithBloc<YourScreenEvent>(
-        listenEvent: _listenEvent,
-        buildBody: (context, state) =>
+        listenEvent: listenEvent,
+        body: (context, state) =>
             // TODO: implement buildBody
             throw UnimplementedError(),
       );

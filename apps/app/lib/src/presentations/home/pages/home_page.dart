@@ -20,7 +20,7 @@ class HomePage extends AppPage implements AutoRouteWrapper {
 }
 
 class _HomePageState
-    extends AppPageScaffoldBlocWidgetState<HomePage, HomeEntity, HomePageBloc> {
+    extends AppPageBlocWidgetState<HomePage, HomeEntity, HomePageBloc> {
   int _counter = 0;
 
   @override
@@ -28,16 +28,16 @@ class _HomePageState
         listenEvent: (context, event, data) => switch (event) {
           HomePageEvent.yourEvent => throw UnimplementedError(),
         },
-        buildAppBar: (context, state) => AppTopNavigationBar(
+        appBar: (context, state) => AppTopNavigationBar(
           type: AppNavigationType.brand,
           title: 'Demo Application',
         ),
-        buildFloatingButton: (context, state) => FloatingActionButton(
+        floatingButton: (context, state) => FloatingActionButton(
           onPressed: _incrementCounter,
           tooltip: 'Increment',
           child: const Icon(Icons.add),
         ),
-        buildBody: (context, state) => buildResponsive(
+        body: (context, state) => buildResponsive(
           child: (platform, breakpoint) => ContainerLayout(
             alignment: Alignment.center,
             child: ColumnLayout(

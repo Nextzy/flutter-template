@@ -9,8 +9,8 @@ class AppHttpClient extends BaseHttpClient {
   @override
   void setupOptions(Dio dio, BaseOptions options) {
     super.setupOptions(dio, options);
-    options.connectTimeout = Duration(milliseconds: 2000);
-    options.receiveTimeout = Duration(milliseconds: 2000);
+    options.connectTimeout = 20.seconds;
+    options.receiveTimeout = 20.seconds;
   }
 
   @override
