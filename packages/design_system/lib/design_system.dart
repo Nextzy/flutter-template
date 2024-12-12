@@ -20,8 +20,10 @@ export 'package:badges/badges.dart';
 export 'package:wechat_assets_picker/wechat_assets_picker.dart';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
-export 'package:flutter_contacts/flutter_contacts.dart';
 export 'package:flutter_spinkit/flutter_spinkit.dart';
 export 'package:flutter_inappwebview/flutter_inappwebview.dart'
     hide X509Certificate, Cookie, FrameInfo, AttributedString;
 export 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+export 'package:buttons_tabbar/buttons_tabbar.dart';
+export 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
+export 'package:loading_more_list/loading_more_list.dart' hide ViewportBuilder;
