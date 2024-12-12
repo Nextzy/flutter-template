@@ -10,7 +10,7 @@ export 'breakpoints.dart';
 
 ///========= UI PACKAGES ==========///
 export 'package:loading_animation_widget/loading_animation_widget.dart';
-export 'package:fluttertoast/fluttertoast.dart';
+export 'package:toastification/toastification.dart';
 export 'package:responsive_framework/responsive_framework.dart';
 export 'package:qr_code_scanner/qr_code_scanner.dart';
 export 'package:qr_flutter/qr_flutter.dart';
