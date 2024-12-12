@@ -105,177 +105,177 @@ class _AppTextFieldState extends AppState<AppTextField> {
   final String requiredChar = '✱';
 
   String get textFeedbackIcon => switch (widget.feedbackState) {
-    FeedbackState.info => '',
-    FeedbackState.positive => '✓ ',
-    FeedbackState.warning => '⚠ ',
-    FeedbackState.negative => '⚠ ',
-    null => '',
-  };
+        FeedbackState.info => '',
+        FeedbackState.positive => '✓ ',
+        FeedbackState.warning => '⚠ ',
+        FeedbackState.negative => '⚠ ',
+        null => '',
+      };
 
   double get iconSize => switch (widget.size) {
-    WidgetSize.xxs => 16,
-    WidgetSize.xs => 16,
-    WidgetSize.sm => 16,
-    WidgetSize.md => 20,
-    WidgetSize.lg => 24,
-    WidgetSize.xl => 24,
-    WidgetSize.xxl => 24,
-  };
+        WidgetSize.xxs => 16,
+        WidgetSize.xs => 16,
+        WidgetSize.sm => 16,
+        WidgetSize.md => 20,
+        WidgetSize.lg => 24,
+        WidgetSize.xl => 24,
+        WidgetSize.xxl => 24,
+      };
 
   EdgeInsets get contentPadding => switch (widget.size) {
-    WidgetSize.xxs => const EdgeInsets.symmetric(vertical: 8.0),
-    WidgetSize.xs => const EdgeInsets.symmetric(vertical: 8.0),
-    WidgetSize.sm => const EdgeInsets.symmetric(vertical: 8.0),
-    WidgetSize.md => const EdgeInsets.symmetric(vertical: 8.0),
-    WidgetSize.lg => const EdgeInsets.symmetric(vertical: 12.0),
-    WidgetSize.xl => const EdgeInsets.symmetric(vertical: 12.0),
-    WidgetSize.xxl => const EdgeInsets.symmetric(vertical: 12.0),
-  };
+        WidgetSize.xxs => const EdgeInsets.symmetric(vertical: 8.0),
+        WidgetSize.xs => const EdgeInsets.symmetric(vertical: 8.0),
+        WidgetSize.sm => const EdgeInsets.symmetric(vertical: 8.0),
+        WidgetSize.md => const EdgeInsets.symmetric(vertical: 8.0),
+        WidgetSize.lg => const EdgeInsets.symmetric(vertical: 12.0),
+        WidgetSize.xl => const EdgeInsets.symmetric(vertical: 12.0),
+        WidgetSize.xxl => const EdgeInsets.symmetric(vertical: 12.0),
+      };
 
   TextStyle get labelTextStyle => switch (widget.size) {
-    WidgetSize.xxs =>
-        AppTextStyleBuilder.ui.s12.semiBold.colorPrimary.build(context),
-    WidgetSize.xs =>
-        AppTextStyleBuilder.ui.s12.semiBold.colorPrimary.build(context),
-    WidgetSize.sm =>
-        AppTextStyleBuilder.ui.s12.semiBold.colorPrimary.build(context),
-    WidgetSize.md =>
-        AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context),
-    WidgetSize.lg =>
-        AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context),
-    WidgetSize.xl =>
-        AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context),
-    WidgetSize.xxl =>
-        AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context)
-  };
+        WidgetSize.xxs =>
+          AppTextStyleBuilder.ui.s12.semiBold.colorPrimary.build(context),
+        WidgetSize.xs =>
+          AppTextStyleBuilder.ui.s12.semiBold.colorPrimary.build(context),
+        WidgetSize.sm =>
+          AppTextStyleBuilder.ui.s12.semiBold.colorPrimary.build(context),
+        WidgetSize.md =>
+          AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context),
+        WidgetSize.lg =>
+          AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context),
+        WidgetSize.xl =>
+          AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context),
+        WidgetSize.xxl =>
+          AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context)
+      };
 
   TextStyle get textStyle => switch (widget.size) {
-    WidgetSize.xxs => AppTextStyleBuilder.ui.s12
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textPrimary)
-        .build(context),
-    WidgetSize.xs => AppTextStyleBuilder.ui.s12
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textPrimary)
-        .build(context),
-    WidgetSize.sm => AppTextStyleBuilder.ui.s12
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textPrimary)
-        .build(context),
-    WidgetSize.md => AppTextStyleBuilder.ui.s14
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textPrimary)
-        .build(context),
-    WidgetSize.lg => AppTextStyleBuilder.ui.s14
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textPrimary)
-        .build(context),
-    WidgetSize.xl => AppTextStyleBuilder.ui.s14
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textPrimary)
-        .build(context),
-    WidgetSize.xxl => AppTextStyleBuilder.ui.s14
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textPrimary)
-        .build(context)
-  };
+        WidgetSize.xxs => AppTextStyleBuilder.ui.s12
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textPrimary)
+            .build(context),
+        WidgetSize.xs => AppTextStyleBuilder.ui.s12
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textPrimary)
+            .build(context),
+        WidgetSize.sm => AppTextStyleBuilder.ui.s12
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textPrimary)
+            .build(context),
+        WidgetSize.md => AppTextStyleBuilder.ui.s14
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textPrimary)
+            .build(context),
+        WidgetSize.lg => AppTextStyleBuilder.ui.s14
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textPrimary)
+            .build(context),
+        WidgetSize.xl => AppTextStyleBuilder.ui.s14
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textPrimary)
+            .build(context),
+        WidgetSize.xxl => AppTextStyleBuilder.ui.s14
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textPrimary)
+            .build(context)
+      };
 
   TextStyle get placeholderTextStyle => switch (widget.size) {
-    WidgetSize.xxs => AppTextStyleBuilder.ui.s12
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textSecondary)
-        .build(context),
-    WidgetSize.xs => AppTextStyleBuilder.ui.s12
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textSecondary)
-        .build(context),
-    WidgetSize.sm => AppTextStyleBuilder.ui.s12
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textSecondary)
-        .build(context),
-    WidgetSize.md => AppTextStyleBuilder.ui.s14
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textSecondary)
-        .build(context),
-    WidgetSize.lg => AppTextStyleBuilder.ui.s14
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textSecondary)
-        .build(context),
-    WidgetSize.xl => AppTextStyleBuilder.ui.s14
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textSecondary)
-        .build(context),
-    WidgetSize.xxl => AppTextStyleBuilder.ui.s14
-        .color(widget.disabled
-        ? theme.color.textTertiary
-        : theme.color.textSecondary)
-        .build(context)
-  };
+        WidgetSize.xxs => AppTextStyleBuilder.ui.s12
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textSecondary)
+            .build(context),
+        WidgetSize.xs => AppTextStyleBuilder.ui.s12
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textSecondary)
+            .build(context),
+        WidgetSize.sm => AppTextStyleBuilder.ui.s12
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textSecondary)
+            .build(context),
+        WidgetSize.md => AppTextStyleBuilder.ui.s14
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textSecondary)
+            .build(context),
+        WidgetSize.lg => AppTextStyleBuilder.ui.s14
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textSecondary)
+            .build(context),
+        WidgetSize.xl => AppTextStyleBuilder.ui.s14
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textSecondary)
+            .build(context),
+        WidgetSize.xxl => AppTextStyleBuilder.ui.s14
+            .color(widget.disabled
+                ? theme.color.textTertiary
+                : theme.color.textSecondary)
+            .build(context)
+      };
 
   TextStyle get helperTextStyle => switch (widget.size) {
-    WidgetSize.xxs =>
-        AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
-    WidgetSize.xs =>
-        AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
-    WidgetSize.sm =>
-        AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
-    WidgetSize.md =>
-        AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
-    WidgetSize.lg =>
-        AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
-    WidgetSize.xl =>
-        AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
-    WidgetSize.xxl =>
-        AppTextStyleBuilder.ui.s12.colorSecondary.build(context)
-  };
+        WidgetSize.xxs =>
+          AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
+        WidgetSize.xs =>
+          AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
+        WidgetSize.sm =>
+          AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
+        WidgetSize.md =>
+          AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
+        WidgetSize.lg =>
+          AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
+        WidgetSize.xl =>
+          AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
+        WidgetSize.xxl =>
+          AppTextStyleBuilder.ui.s12.colorSecondary.build(context)
+      };
 
   Color get backgroundColor => switch (widget.style) {
-    AppTextFieldStyle.outline => widget.disabled
-        ? theme.color.bgInputDisabled
-        : (widget.backgroundColor ??
-        switch (widget.feedbackState) {
-          FeedbackState.positive => theme.color.bgSubtlePositive,
-          FeedbackState.warning => theme.color.bgSubtleWarning,
-          FeedbackState.negative => theme.color.bgSubtleNegative,
-          FeedbackState.info => theme.color.bgInputOutlined,
-          null => theme.color.bgInputOutlined,
-        }),
-    AppTextFieldStyle.shaded => widget.disabled
-        ? theme.color.bgInputDisabled
-        : (widget.backgroundColor ?? theme.color.bgInputShaded),
-  };
+        AppTextFieldStyle.outline => widget.disabled
+            ? theme.color.bgInputDisabled
+            : (widget.backgroundColor ??
+                switch (widget.feedbackState) {
+                  FeedbackState.positive => theme.color.bgSubtlePositive,
+                  FeedbackState.warning => theme.color.bgSubtleWarning,
+                  FeedbackState.negative => theme.color.bgSubtleNegative,
+                  FeedbackState.info => theme.color.bgInputOutlined,
+                  null => theme.color.bgInputOutlined,
+                }),
+        AppTextFieldStyle.shaded => widget.disabled
+            ? theme.color.bgInputDisabled
+            : (widget.backgroundColor ?? theme.color.bgInputShaded),
+      };
 
   Color get dividerColor => switch (widget.style) {
-    AppTextFieldStyle.outline => theme.color.border,
-    AppTextFieldStyle.shaded => theme.color.border,
-  };
+        AppTextFieldStyle.outline => theme.color.border,
+        AppTextFieldStyle.shaded => theme.color.border,
+      };
 
   Widget get verticalDivider => VerticalDivider(
-    width: theme.border.md.maxWidth,
-    thickness: theme.border.md.maxWidth,
-    color: dividerColor,
-  );
+        width: theme.border.md.maxWidth,
+        thickness: theme.border.md.maxWidth,
+        color: dividerColor,
+      );
 
   InputBorder get removeBorder => OutlineInputBorder(
-    borderSide: const BorderSide(
-      color: Colors.transparent,
-      width: 0,
-    ),
-    borderRadius: widget.borderRadius ?? theme.borderRadius.md,
-  );
+        borderSide: const BorderSide(
+          color: Colors.transparent,
+          width: 0,
+        ),
+        borderRadius: widget.borderRadius ?? theme.borderRadius.md,
+      );
 
   @override
   void initState() {
@@ -305,7 +305,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
         if (widget.label.isNotNullOrBlank)
           AppRichText(
             style:
-            AppTextStyleBuilder.ui.s12.colorPrimary.medium.build(context),
+                AppTextStyleBuilder.ui.s12.colorPrimary.medium.build(context),
             spans: [
               TextSpan(text: widget.label),
               if (widget.required)
@@ -321,153 +321,154 @@ class _AppTextFieldState extends AppState<AppTextField> {
         FullWidgetStateBuilder(
             create: stateNotifier,
             builder: (context, widgetState, snapshot) => GestureRowLayout(
-              disabledPressAnimation: true,
-              crossAxisIntrinsic: true,
-              disabled: widget.disabled,
-              onHover: _onHover,
-              onPress: () {
-                FocusScope.of(context).requestFocus(_focus);
-              },
-              onFocusChange: (value) {
-                if (value) {
-                  FocusScope.of(context).requestFocus(_focus);
-                }
-              },
-              mouseCursor: SystemMouseCursors.text,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              backgroundColor: backgroundColor,
-              showFocus:
-              widget.style == AppTextFieldStyle.shaded ? false : true,
-              decoration: _createBorderStyle(
-                style: widget.style,
-                state: widgetState,
-                feedbackState: widget.feedbackState,
-                disabled: widget.disabled,
-                borderRadius: widget.borderRadius,
-              ),
-              children: [
-                if (widget.prefixText.isNotNullOrBlank)
-                  _buildPrefixText(
-                    context,
-                    text: widget.prefixText,
+                  disabledPressAnimation: true,
+                  crossAxisIntrinsic: true,
+                  disabled: widget.disabled,
+                  onHover: _onHover,
+                  onPress: () {
+                    FocusScope.of(context).requestFocus(_focus);
+                  },
+                  onFocusChange: (value) {
+                    if (value) {
+                      FocusScope.of(context).requestFocus(_focus);
+                    }
+                  },
+                  mouseCursor: SystemMouseCursors.text,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  backgroundColor: backgroundColor,
+                  showFocus:
+                      widget.style == AppTextFieldStyle.shaded ? false : true,
+                  decoration: _createBorderStyle(
+                    style: widget.style,
+                    state: widgetState,
+                    feedbackState: widget.feedbackState,
+                    disabled: widget.disabled,
                     borderRadius: widget.borderRadius,
                   ),
-                if (widget.startWidget != null) ...[
-                  widget.startWidget!,
-                  verticalDivider,
-                ],
-                _buildIcon(
-                  disabled: widget.disabled,
-                  size: widget.size,
-                  icon: widget.startIcon,
-                ),
-                Expanded(
-                  child: Center(
-                    child: TextFormField(
-                      style: textStyle,
-                      initialValue: widget.text?.isNotEmpty == true
-                          ? widget.text
-                          : null,
-                      textAlignVertical: TextAlignVertical.top,
-                      maxLines: widget.maxLines,
-                      maxLength: widget.maxLength,
-                      inputFormatters: widget.inputFormatters,
-                      keyboardType: widget.keyboardType,
-                      controller: _controller,
-                      textInputAction: widget.textInputAction,
-                      focusNode: _focus,
-                      textAlign: widget.textAlign,
-                      obscureText: obscure,
-                      obscuringCharacter: '•',
-                      validator: widget.validator,
-                      enabled: !widget.disabled,
-                      readOnly: widget.disabled,
-                      onEditingComplete: widget.onEditingComplete,
-                      //================ DECORATION ================//
-                      decoration: InputDecoration(
-                        contentPadding: contentPadding,
-                        hintText: widget.placeholderText,
-                        hintStyle: placeholderTextStyle,
-                        errorStyle: const TextStyle(height: 0),
-                        filled: true,
-                        fillColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        isDense: true,
-                        counter: null,
-                        border: removeBorder,
-                        enabledBorder: removeBorder,
-                        disabledBorder: removeBorder,
-                        focusedBorder: removeBorder,
-                        errorBorder: removeBorder,
-                        focusedErrorBorder: removeBorder,
+                  children: [
+                    if (widget.prefixText.isNotNullOrBlank)
+                      _buildPrefixText(
+                        context,
+                        text: widget.prefixText,
+                        borderRadius: widget.borderRadius,
+                      ),
+                    if (widget.startWidget != null) ...[
+                      widget.startWidget!,
+                      verticalDivider,
+                    ],
+                    _buildIcon(
+                      disabled: widget.disabled,
+                      size: widget.size,
+                      icon: widget.startIcon,
+                    ),
+                    Expanded(
+                      child: Center(
+                        child: TextFormField(
+                          style: textStyle,
+                          initialValue: widget.text?.isNotEmpty == true
+                              ? widget.text
+                              : null,
+                          textAlignVertical: TextAlignVertical.top,
+                          maxLines: widget.maxLines,
+                          maxLength: widget.maxLength,
+                          inputFormatters: widget.inputFormatters,
+                          keyboardType: widget.keyboardType,
+                          controller: _controller,
+                          textInputAction: widget.textInputAction,
+                          focusNode: _focus,
+                          textAlign: widget.textAlign,
+                          obscureText: obscure,
+                          obscuringCharacter: '•',
+                          validator: widget.validator,
+                          enabled: !widget.disabled,
+                          readOnly: widget.disabled,
+                          onEditingComplete: widget.onEditingComplete,
+                          //================ DECORATION ================//
+                          decoration: InputDecoration(
+                            contentPadding: contentPadding,
+                            hintText: widget.placeholderText,
+                            hintStyle: placeholderTextStyle,
+                            errorStyle: const TextStyle(height: 0),
+                            filled: true,
+                            fillColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            isDense: true,
+                            counter: null,
+                            border: removeBorder,
+                            enabledBorder: removeBorder,
+                            disabledBorder: removeBorder,
+                            focusedBorder: removeBorder,
+                            errorBorder: removeBorder,
+                            focusedErrorBorder: removeBorder,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                if (widget.loading)
-                  Center(
-                    child: AppCircularLoading(
-                        customSize: iconSize,
-                        color: theme.color.iconTertiary),
-                  ),
-                if (widget.clearButton)
-                  ValueListenableBuilder(
-                    valueListenable: _showClearButtonNotifier,
-                    builder:
-                        (BuildContext context, bool value, Widget? child) =>
-                    value
-                        ? Center(
-                      child: AppOnlyIconButton(
-                        size: widget.size,
-                        icon: Assets.icon.crossCircleFilled.keyName,
-                        color: theme.color.iconTertiary,
-                        disabled: widget.disabled,
-                        onPress: _onPressClearText,
+                    if (widget.loading)
+                      Center(
+                        child: AppCircularLoading(
+                            customSize: iconSize,
+                            color: theme.color.iconTertiary),
                       ),
-                    )
-                        : const SizedBox(),
-                  ),
-                _buildIcon(
-                  disabled: widget.disabled,
-                  size: widget.size,
-                  icon: widget.endIcon,
-                ),
-                if (widget.endTextButton != null)
-                  _buildButton(
-                    context,
-                    size: widget.size,
-                    endTextButton: widget.endTextButton,
-                    borderRadius: widget.borderRadius,
-                    disabled: widget.disabled,
-                    onPress: widget.onButtonPress,
-                    onLongPress: widget.onButtonLongPress,
-                    onHover: widget.onButtonHover,
-                    onFocusChange: widget.onButtonFocusChange,
-                  ),
-                if (widget.endWidget != null) ...[
-                  widget.endWidget!,
-                  verticalDivider,
-                ],
-                if (widget.suffixText.isNotNullOrBlank)
-                  _buildSuffixText(
-                    context,
-                    text: widget.suffixText,
-                    borderRadius: widget.borderRadius,
-                  ),
-              ],
-            )),
+                    if (widget.clearButton)
+                      ValueListenableBuilder(
+                        valueListenable: _showClearButtonNotifier,
+                        builder: (BuildContext context, bool value,
+                                Widget? child) =>
+                            value
+                                ? Center(
+                                    child: AppOnlyIconButton(
+                                      size: widget.size,
+                                      icon:
+                                          Assets.icon.crossCircleFilled.keyName,
+                                      color: theme.color.iconTertiary,
+                                      disabled: widget.disabled,
+                                      onPress: _onPressClearText,
+                                    ),
+                                  )
+                                : const SizedBox(),
+                      ),
+                    _buildIcon(
+                      disabled: widget.disabled,
+                      size: widget.size,
+                      icon: widget.endIcon,
+                    ),
+                    if (widget.endTextButton != null)
+                      _buildButton(
+                        context,
+                        size: widget.size,
+                        endTextButton: widget.endTextButton,
+                        borderRadius: widget.borderRadius,
+                        disabled: widget.disabled,
+                        onPress: widget.onButtonPress,
+                        onLongPress: widget.onButtonLongPress,
+                        onHover: widget.onButtonHover,
+                        onFocusChange: widget.onButtonFocusChange,
+                      ),
+                    if (widget.endWidget != null) ...[
+                      widget.endWidget!,
+                      verticalDivider,
+                    ],
+                    if (widget.suffixText.isNotNullOrBlank)
+                      _buildSuffixText(
+                        context,
+                        text: widget.suffixText,
+                        borderRadius: widget.borderRadius,
+                      ),
+                  ],
+                )),
         if (widget.statusText.isNotNullOrBlank && widget.feedbackState != null)
           AppText(
             '$textFeedbackIcon${widget.statusText}',
             style: AppTextStyleBuilder.ui.s12
                 .color(switch (widget.feedbackState) {
-              FeedbackState.positive => theme.color.textPositive,
-              FeedbackState.warning => theme.color.textWarning,
-              FeedbackState.negative => theme.color.textNegative,
-              FeedbackState.info => theme.color.textPrimary,
-              null => theme.color.textPositive,
-            })
+                  FeedbackState.positive => theme.color.textPositive,
+                  FeedbackState.warning => theme.color.textWarning,
+                  FeedbackState.negative => theme.color.textNegative,
+                  FeedbackState.info => theme.color.textPrimary,
+                  null => theme.color.textPositive,
+                })
                 .build(context),
           ),
         if (widget.helperText.isNotNullOrBlank)
@@ -481,10 +482,10 @@ class _AppTextFieldState extends AppState<AppTextField> {
 
   ///========================= PRIVATE METHOD =========================///
   Widget _buildPrefixText(
-      BuildContext context, {
-        required String? text,
-        required BorderRadius? borderRadius,
-      }) {
+    BuildContext context, {
+    required String? text,
+    required BorderRadius? borderRadius,
+  }) {
     return RowLayout(
       padding: switch (widget.size) {
         WidgetSize.xxs => const EdgeInsetsDirectional.only(end: 4.0),
@@ -501,26 +502,26 @@ class _AppTextFieldState extends AppState<AppTextField> {
         ContainerLayout(
           borderRadius: BorderRadiusDirectional.only(
             topStart:
-            borderRadius?.topLeft ?? context.theme.borderRadius.md.topLeft,
+                borderRadius?.topLeft ?? context.theme.borderRadius.md.topLeft,
             bottomStart: borderRadius?.bottomLeft ??
                 context.theme.borderRadius.md.bottomLeft,
           ),
           backgroundColor: context.theme.color.bgSurface1,
           padding: switch (widget.size) {
             WidgetSize.xxs =>
-            const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
+              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             WidgetSize.xs =>
-            const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
+              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             WidgetSize.sm =>
-            const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
+              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             WidgetSize.md =>
-            const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
+              const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
             WidgetSize.lg =>
-            const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             WidgetSize.xl =>
-            const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             WidgetSize.xxl =>
-            const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
           },
           child: Center(
             child: AppText(
@@ -535,10 +536,10 @@ class _AppTextFieldState extends AppState<AppTextField> {
   }
 
   Widget _buildSuffixText(
-      BuildContext context, {
-        required String? text,
-        required BorderRadius? borderRadius,
-      }) {
+    BuildContext context, {
+    required String? text,
+    required BorderRadius? borderRadius,
+  }) {
     return RowLayout(
       padding: switch (widget.size) {
         WidgetSize.xxs => const EdgeInsetsDirectional.only(start: 4.0),
@@ -556,26 +557,26 @@ class _AppTextFieldState extends AppState<AppTextField> {
         ContainerLayout(
           borderRadius: BorderRadiusDirectional.only(
             topEnd:
-            borderRadius?.topLeft ?? context.theme.borderRadius.md.topLeft,
+                borderRadius?.topLeft ?? context.theme.borderRadius.md.topLeft,
             bottomEnd: borderRadius?.bottomLeft ??
                 context.theme.borderRadius.md.bottomLeft,
           ),
           backgroundColor: context.theme.color.bgSurface1,
           padding: switch (widget.size) {
             WidgetSize.xxs =>
-            const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
+              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             WidgetSize.xs =>
-            const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
+              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             WidgetSize.sm =>
-            const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
+              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             WidgetSize.md =>
-            const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
+              const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
             WidgetSize.lg =>
-            const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             WidgetSize.xl =>
-            const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             WidgetSize.xxl =>
-            const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
           },
           child: Center(
             child: AppText(
@@ -589,20 +590,20 @@ class _AppTextFieldState extends AppState<AppTextField> {
   }
 
   Widget _buildButton(
-      BuildContext context, {
-        required WidgetSize size,
-        required String? endTextButton,
-        required BorderRadius? borderRadius,
-        required bool disabled,
-        required VoidCallback? onPress,
-        required VoidCallback? onLongPress,
-        required ValueChanged<bool>? onHover,
-        required ValueChanged<bool>? onFocusChange,
-      }) {
+    BuildContext context, {
+    required WidgetSize size,
+    required String? endTextButton,
+    required BorderRadius? borderRadius,
+    required bool disabled,
+    required VoidCallback? onPress,
+    required VoidCallback? onLongPress,
+    required ValueChanged<bool>? onHover,
+    required ValueChanged<bool>? onFocusChange,
+  }) {
     final padding = switch (widget.size) {
       (WidgetSize.xxs || WidgetSize.xs || WidgetSize.sm) => Space.insetAll2,
       (WidgetSize.md || WidgetSize.lg || WidgetSize.xl || WidgetSize.xxl) =>
-      Space.insetAll4,
+        Space.insetAll4,
     };
 
     final double radius = max(
@@ -732,12 +733,12 @@ class _AppTextFieldState extends AppState<AppTextField> {
         },
         child: icon.isNotNullOrBlank
             ? icon.toSvgIcon(
-          size: iconSize,
-          colorFilter: ColorFilter.mode(
-            context.theme.color.iconSecondary,
-            BlendMode.srcIn,
-          ),
-        )
+                size: iconSize,
+                colorFilter: ColorFilter.mode(
+                  context.theme.color.iconSecondary,
+                  BlendMode.srcIn,
+                ),
+              )
             : const SizedBox(),
       ),
     );
@@ -745,7 +746,8 @@ class _AppTextFieldState extends AppState<AppTextField> {
 
   ///========================= CALLBACK METHOD =========================///
   void _onHover(bool value) {
-    setFullWidgetState(value ? FullWidgetState.hovered : FullWidgetState.normal);
+    setFullWidgetState(
+        value ? FullWidgetState.hovered : FullWidgetState.normal);
   }
 
   void _onFocusChange() {

@@ -129,6 +129,7 @@ class _GestureContainerLayoutState extends State<GestureContainerLayout> {
         create: (context) => _focusNotifier,
         child: Consumer<ValueNotifier<bool>>(
           builder: (context, focus, child) => FocusSpread(
+            key: widget.key,
             focus: widget.disabled
                 ? false
                 : widget.showFocus

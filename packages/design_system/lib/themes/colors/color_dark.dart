@@ -213,7 +213,7 @@ class AppDarkThemeColor extends AppThemeColor {
   Color get borderInverse => transparent.black10;
 
   @override
-  Color get borderHover => transparent.white40;
+  Color get borderHover => transparent.white20;
 
   @override
   Color get borderActive => transparent.white80;

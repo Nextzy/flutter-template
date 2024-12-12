@@ -213,7 +213,7 @@ class AppLightThemeColor extends AppThemeColor {
   Color get borderInverse => transparent.white15;
 
   @override
-  Color get borderHover => transparent.black40;
+  Color get borderHover => transparent.black25;
 
   @override
   Color get borderActive => transparent.black80;
