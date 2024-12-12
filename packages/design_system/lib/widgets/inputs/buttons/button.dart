@@ -60,7 +60,7 @@ class AppButton extends AppStatefulWidget {
   AppState<AppButton> createState() => _AppButtonState();
 }
 
-class _AppButtonState extends AppState<AppButton>{
+class _AppButtonState extends AppState<AppButton> {
   EdgeInsetsGeometry get padding => switch (widget.size) {
         (WidgetSize.xxs || WidgetSize.xs || WidgetSize.sm) =>
           SpaceDirectional.insetSymmetric(horizontal: 6.0, vertical: 4.0),
@@ -212,6 +212,7 @@ class _AppButtonState extends AppState<AppButton>{
   @override
   Widget build(BuildContext context) {
     return GestureRowLayout(
+      key: key,
       minWidth: 70.0,
       width: widget.width,
       height: widget.height,

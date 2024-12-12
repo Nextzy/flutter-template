@@ -124,6 +124,7 @@ class ContainerLayout extends StatelessWidget {
   }) =>
       (rotate != null)
           ? RotationTransition(
+              key: key,
               turns: AlwaysStoppedAnimation((rotate % 360) / 360),
               child: child,
             )
@@ -137,6 +138,7 @@ class ContainerLayout extends StatelessWidget {
 
     return (ratio != null && ratio > 0)
         ? AspectRatio(
+            key: key,
             aspectRatio: ratio,
             child: child,
           )
@@ -152,6 +154,7 @@ class ContainerLayout extends StatelessWidget {
   }) =>
       (dropShadow != null)
           ? Container(
+              key: key,
               decoration: BoxDecoration(
                 color: context.theme.color.bg,
                 borderRadius: borderRadius,
@@ -169,6 +172,7 @@ class ContainerLayout extends StatelessWidget {
       (clipBehavior == Clip.none || borderRadius == null)
           ? child
           : ClipRRect(
+              key: key,
               clipBehavior: clipBehavior,
               borderRadius: borderRadius,
               child: child,
@@ -180,6 +184,7 @@ class ContainerLayout extends StatelessWidget {
   }) =>
       backgroundBlur != null
           ? BackdropFilter(
+              key: key,
               filter: backgroundBlur,
               child: child,
             )
@@ -210,6 +215,7 @@ class ContainerLayout extends StatelessWidget {
     required Widget? child,
   }) =>
       Container(
+        key: key,
         alignment: alignment,
         margin: margin,
         height: height,
@@ -248,6 +254,7 @@ class ContainerLayout extends StatelessWidget {
         transform: transform,
         transformAlignment: transformAlignment,
         child: Container(
+          key: key,
           padding: padding,
           child: child ?? const SizedBox(),
         ),
