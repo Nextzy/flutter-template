@@ -16,16 +16,18 @@ class SetupApplication {
 class SplashScreenPage extends AppPage {
   const SplashScreenPage({
     super.key = const Key('SplashScreenPage'),
+    required this.setupApplication,
     required this.builder,
     this.skipLoadingForWeb = true,
-    this.skipWhenDebugMode = true,
+    this.skipLoadingDebugMode = true,
     this.minimumFirstComingDuration = const Duration(milliseconds: 2400),
     this.minimumSecondComingDuration = const Duration(milliseconds: 400),
     this.firstAnimateDuration = const Duration(milliseconds: 300),
     this.secondAnimateDuration = const Duration(milliseconds: 150),
   });
 
-  final bool skipWhenDebugMode;
+  final Future<SetupApplication> setupApplication;
+  final bool skipLoadingDebugMode;
   final bool skipLoadingForWeb;
   final Duration minimumFirstComingDuration;
   final Duration firstAnimateDuration;
@@ -51,40 +53,21 @@ class _SplashScreenState extends AppState<SplashScreenPage>
       PlatformChecker.isWeb &&
       PlatformChecker.isDesktop;
 
-  Future<SetupApplication> _initialLoadingApplication({
-    required SettingTableData setting,
-  }) async {
-    AppHttpClient.instance.setupBaseUrl(AppEnv.instance.apiBaseUrl);
-
-    await SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-
-    final packageInfo = await PackageInfo.fromPlatform();
-    final connectivityResult = await Connectivity().checkConnectivity();
-
-    return SetupApplication(
-      packageInfo: packageInfo,
-      connectivityResult: connectivityResult,
-      setting: setting,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: AppLocalDatabase.loadSetting(),
+        future: AppLocalDatabase.instance.loadSetting(),
         builder: (context, snapshot) {
           if (snapshot.data == null) return Container(color: _theme.color.bg);
 
           final setting = snapshot.data!;
-          final isFirstComing = (!widget.skipWhenDebugMode || !kDebugMode) &&
+          final isFirstComing = (!widget.skipLoadingDebugMode || !kDebugMode) &&
               (!setting.isTapExited);
 
           return FutureBuilder(
             future: Future.wait([
               // Must be first.
-              _initialLoadingApplication(setting: setting),
+              widget.setupApplication,
               //Clear exited field
               AppLocalDatabase.instance.updateTapExitApp(false),
               skipLoadingForWeb

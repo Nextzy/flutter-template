@@ -65,16 +65,15 @@ class AppLocalDatabase extends _$AppLocalDatabase {
         );
   }
 
-  static Future<SettingTableData> loadSetting() async {
-    List<SettingTableData> settingList =
-        await AppLocalDatabase.instance.managers.settingTable.get();
+  Future<SettingTableData> loadSetting() async {
+    List<SettingTableData> settingList = await managers.settingTable.get();
     if (settingList.isEmpty) {
-      await AppLocalDatabase.instance.managers.settingTable.create(
+      await managers.settingTable.create(
         (o) => o(
           themeMode: Core.ThemeMode.system.toValueString(),
         ),
       );
-      settingList = await AppLocalDatabase.instance.managers.settingTable.get();
+      settingList = await managers.settingTable.get();
     }
     return settingList.first;
   }

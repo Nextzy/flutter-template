@@ -63,67 +63,85 @@ class _MyApplicationState extends ApplicationState<MyApplication>
     );
   }
 
+  Future<SetupApplication> setupApplication() async {
+    AppHttpClient.instance.setupBaseUrl(AppEnv.instance.apiBaseUrl);
+
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
+    final packageInfo = await PackageInfo.fromPlatform();
+    final connectivityResult = await Connectivity().checkConnectivity();
+    final setting = await AppLocalDatabase.instance.loadSetting();
+
+    return SetupApplication(
+      packageInfo: packageInfo,
+      connectivityResult: connectivityResult,
+      setting: setting,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ToastificationWrapper(
+      // For slang package
       child: TranslationProvider(
         child: SplashScreenPage(
-          skipWhenDebugMode: false,
-          builder: (context, setup) {
-            return MultiProvider(
-              providers: [
-                BlocProvider<InternetConnectionBloc>(
-                  create: (BuildContext context) => InternetConnectionBloc(
-                    initialResult: setup.connectivityResult,
-                  ),
-                  lazy: false,
+          skipLoadingDebugMode: true,
+          setupApplication: setupApplication(),
+          builder: (context, setup) => MultiProvider(
+            providers: [
+              BlocProvider<InternetConnectionBloc>(
+                create: (BuildContext context) => InternetConnectionBloc(
+                  initialResult: setup.connectivityResult,
                 ),
-                BlocProvider<AppRouterBloc>(
-                  create: (BuildContext context) => AppRouterBloc(),
-                ),
-                BlocProvider<SettingBloc>(
-                  create: (BuildContext context) =>
-                      SettingBloc(initialSetting: setup.setting),
-                  lazy: false,
-                ),
-              ],
-              child: BlocBuilder<SettingBloc, SettingTableData>(
-                builder: (context, setting) => AnimatedBuilder(
-                  animation: _controller,
-                  builder: (BuildContext context, Widget? child) => //
-                      BlocBuilder<AppRouterBloc, AppRouter>(
-                    builder: (context, AppRouter router) => //
-                        AppMaterialRoute(
-                      debugShowCheckedModeBanner: false,
-                      restorationScopeId: restorationId,
+                lazy: false,
+              ),
+              BlocProvider<AppRouterBloc>(
+                create: (BuildContext context) => AppRouterBloc(),
+              ),
+              BlocProvider<SettingBloc>(
+                create: (BuildContext context) =>
+                    SettingBloc(initialSetting: setup.setting),
+                lazy: false,
+              ),
+            ],
+            child: BlocBuilder<SettingBloc, SettingTableData>(
+              builder: (context, setting) => AnimatedBuilder(
+                animation: _controller,
+                builder: (BuildContext context, Widget? child) => //
+                    BlocBuilder<AppRouterBloc, AppRouter>(
+                  builder: (context, AppRouter router) => //
+                      AppMaterialRoute(
+                    debugShowCheckedModeBanner: false,
+                    restorationScopeId: restorationId,
 
-                      ///============= Setup Localization =============//
-                      localizationsDelegates: const [
-                        CountryLocalizations.delegate,
-                        ...GlobalMaterialLocalizations.delegates,
+                    ///============= Setup Localization =============//
+                    localizationsDelegates: const [
+                      CountryLocalizations.delegate,
+                      ...GlobalMaterialLocalizations.delegates,
+                    ],
+                    supportedLocales: AppLocaleUtils.supportedLocales,
+                    locale: widget.locale ??
+                        TranslationProvider.of(context).flutterLocale,
+                    onGenerateTitle: (BuildContext context) =>
+                        AppEnv.instance.name,
+                    theme: AppTheme(),
+                    themeMode: setting.themeMode.toEnum(ThemeMode.values),
+                    routerConfig: router.config(
+                      navigatorObservers: () => [
+                        AutoRouteObserver(),
                       ],
-                      supportedLocales: AppLocaleUtils.supportedLocales,
-                      locale: widget.locale ??
-                          TranslationProvider.of(context).flutterLocale,
-                      onGenerateTitle: (BuildContext context) =>
-                          AppEnv.instance.name,
-                      theme: AppTheme(),
-                      themeMode: setting.themeMode.toEnum(ThemeMode.values),
-                      routerConfig: router.config(
-                        navigatorObservers: () => [
-                          AutoRouteObserver(),
-                        ],
-                      ),
-                      builder: (context, child) => InApplicationUpdate(
-                        packageInfo: setup.packageInfo,
-                        child: widget.builder?.call(context, child) ?? child!,
-                      ),
+                    ),
+                    builder: (context, child) => InApplicationUpdate(
+                      packageInfo: setup.packageInfo,
+                      child: widget.builder?.call(context, child) ?? child!,
                     ),
                   ),
                 ),
               ),
-            );
-          },
+            ),
+          ),
         ),
       ),
     );
