@@ -10,12 +10,7 @@ part 'generated/databases.g.dart';
 class SettingTable extends Table {
   TextColumn get themeMode => text()();
 
-  BoolColumn get exited => boolean().withDefault(const Constant(false))();
-
-  ///========================= APPLICATION =========================///
-// TextColumn get homeViewType => text().withDefault(const Constant('slide'))();
-//
-// TextColumn get selectTikabitId => text()();
+  BoolColumn get isTapExited => boolean().withDefault(const Constant(false))();
 }
 
 class MovieTable extends Table {
@@ -79,8 +74,7 @@ class AppLocalDatabase extends _$AppLocalDatabase {
           themeMode: Core.ThemeMode.system.toValueString(),
         ),
       );
-      settingList =
-          await AppLocalDatabase.instance.managers.settingTable.get();
+      settingList = await AppLocalDatabase.instance.managers.settingTable.get();
     }
     return settingList.first;
   }
@@ -90,6 +84,10 @@ class AppLocalDatabase extends _$AppLocalDatabase {
           await customStatement('DELETE FROM ${table.actualTableName}');
         }
       });
+
+  Future<void> updateTapExitApp(bool exit) => managers.settingTable.update(
+        (o) => o(isTapExited: Value(exit)),
+      );
 
   ///=============== CRUD Method =====================///
   Future<void> upsertMovieList(
@@ -117,10 +115,8 @@ class AppLocalDatabase extends _$AppLocalDatabase {
         ),
       );
 
-  Future<List<MovieTableData>> loadMovieList() =>
-      managers.movieTable.get();
+  Future<List<MovieTableData>> loadMovieList() => managers.movieTable.get();
 
   Future<MovieTableData?> loadMovie(String id) =>
-      (select(movieTable)..where((tbl) => tbl.id.equals(id)))
-          .getSingleOrNull();
+      (select(movieTable)..where((tbl) => tbl.id.equals(id))).getSingleOrNull();
 }

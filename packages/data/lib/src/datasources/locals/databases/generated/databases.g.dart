@@ -15,17 +15,18 @@ class $SettingTableTable extends SettingTable
   late final GeneratedColumn<String> themeMode = GeneratedColumn<String>(
       'theme_mode', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _exitedMeta = const VerificationMeta('exited');
+  static const VerificationMeta _isTapExitedMeta =
+      const VerificationMeta('isTapExited');
   @override
-  late final GeneratedColumn<bool> exited = GeneratedColumn<bool>(
-      'exited', aliasedName, false,
+  late final GeneratedColumn<bool> isTapExited = GeneratedColumn<bool>(
+      'is_tap_exited', aliasedName, false,
       type: DriftSqlType.bool,
       requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('CHECK ("exited" IN (0, 1))'),
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("is_tap_exited" IN (0, 1))'),
       defaultValue: const Constant(false));
   @override
-  List<GeneratedColumn> get $columns => [themeMode, exited];
+  List<GeneratedColumn> get $columns => [themeMode, isTapExited];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -42,9 +43,11 @@ class $SettingTableTable extends SettingTable
     } else if (isInserting) {
       context.missing(_themeModeMeta);
     }
-    if (data.containsKey('exited')) {
-      context.handle(_exitedMeta,
-          exited.isAcceptableOrUnknown(data['exited']!, _exitedMeta));
+    if (data.containsKey('is_tap_exited')) {
+      context.handle(
+          _isTapExitedMeta,
+          isTapExited.isAcceptableOrUnknown(
+              data['is_tap_exited']!, _isTapExitedMeta));
     }
     return context;
   }
@@ -57,8 +60,8 @@ class $SettingTableTable extends SettingTable
     return SettingTableData(
       themeMode: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}theme_mode'])!,
-      exited: attachedDatabase.typeMapping
-          .read(DriftSqlType.bool, data['${effectivePrefix}exited'])!,
+      isTapExited: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}is_tap_exited'])!,
     );
   }
 
@@ -71,20 +74,20 @@ class $SettingTableTable extends SettingTable
 class SettingTableData extends DataClass
     implements Insertable<SettingTableData> {
   final String themeMode;
-  final bool exited;
-  const SettingTableData({required this.themeMode, required this.exited});
+  final bool isTapExited;
+  const SettingTableData({required this.themeMode, required this.isTapExited});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['theme_mode'] = Variable<String>(themeMode);
-    map['exited'] = Variable<bool>(exited);
+    map['is_tap_exited'] = Variable<bool>(isTapExited);
     return map;
   }
 
   SettingTableCompanion toCompanion(bool nullToAbsent) {
     return SettingTableCompanion(
       themeMode: Value(themeMode),
-      exited: Value(exited),
+      isTapExited: Value(isTapExited),
     );
   }
 
@@ -93,7 +96,7 @@ class SettingTableData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return SettingTableData(
       themeMode: serializer.fromJson<String>(json['themeMode']),
-      exited: serializer.fromJson<bool>(json['exited']),
+      isTapExited: serializer.fromJson<bool>(json['isTapExited']),
     );
   }
   @override
@@ -101,19 +104,20 @@ class SettingTableData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'themeMode': serializer.toJson<String>(themeMode),
-      'exited': serializer.toJson<bool>(exited),
+      'isTapExited': serializer.toJson<bool>(isTapExited),
     };
   }
 
-  SettingTableData copyWith({String? themeMode, bool? exited}) =>
+  SettingTableData copyWith({String? themeMode, bool? isTapExited}) =>
       SettingTableData(
         themeMode: themeMode ?? this.themeMode,
-        exited: exited ?? this.exited,
+        isTapExited: isTapExited ?? this.isTapExited,
       );
   SettingTableData copyWithCompanion(SettingTableCompanion data) {
     return SettingTableData(
       themeMode: data.themeMode.present ? data.themeMode.value : this.themeMode,
-      exited: data.exited.present ? data.exited.value : this.exited,
+      isTapExited:
+          data.isTapExited.present ? data.isTapExited.value : this.isTapExited,
     );
   }
 
@@ -121,52 +125,52 @@ class SettingTableData extends DataClass
   String toString() {
     return (StringBuffer('SettingTableData(')
           ..write('themeMode: $themeMode, ')
-          ..write('exited: $exited')
+          ..write('isTapExited: $isTapExited')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(themeMode, exited);
+  int get hashCode => Object.hash(themeMode, isTapExited);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is SettingTableData &&
           other.themeMode == this.themeMode &&
-          other.exited == this.exited);
+          other.isTapExited == this.isTapExited);
 }
 
 class SettingTableCompanion extends UpdateCompanion<SettingTableData> {
   final Value<String> themeMode;
-  final Value<bool> exited;
+  final Value<bool> isTapExited;
   final Value<int> rowid;
   const SettingTableCompanion({
     this.themeMode = const Value.absent(),
-    this.exited = const Value.absent(),
+    this.isTapExited = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   SettingTableCompanion.insert({
     required String themeMode,
-    this.exited = const Value.absent(),
+    this.isTapExited = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : themeMode = Value(themeMode);
   static Insertable<SettingTableData> custom({
     Expression<String>? themeMode,
-    Expression<bool>? exited,
+    Expression<bool>? isTapExited,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (themeMode != null) 'theme_mode': themeMode,
-      if (exited != null) 'exited': exited,
+      if (isTapExited != null) 'is_tap_exited': isTapExited,
       if (rowid != null) 'rowid': rowid,
     });
   }
 
   SettingTableCompanion copyWith(
-      {Value<String>? themeMode, Value<bool>? exited, Value<int>? rowid}) {
+      {Value<String>? themeMode, Value<bool>? isTapExited, Value<int>? rowid}) {
     return SettingTableCompanion(
       themeMode: themeMode ?? this.themeMode,
-      exited: exited ?? this.exited,
+      isTapExited: isTapExited ?? this.isTapExited,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -177,8 +181,8 @@ class SettingTableCompanion extends UpdateCompanion<SettingTableData> {
     if (themeMode.present) {
       map['theme_mode'] = Variable<String>(themeMode.value);
     }
-    if (exited.present) {
-      map['exited'] = Variable<bool>(exited.value);
+    if (isTapExited.present) {
+      map['is_tap_exited'] = Variable<bool>(isTapExited.value);
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
@@ -190,7 +194,7 @@ class SettingTableCompanion extends UpdateCompanion<SettingTableData> {
   String toString() {
     return (StringBuffer('SettingTableCompanion(')
           ..write('themeMode: $themeMode, ')
-          ..write('exited: $exited, ')
+          ..write('isTapExited: $isTapExited, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -402,13 +406,13 @@ abstract class _$AppLocalDatabase extends GeneratedDatabase {
 typedef $$SettingTableTableCreateCompanionBuilder = SettingTableCompanion
     Function({
   required String themeMode,
-  Value<bool> exited,
+  Value<bool> isTapExited,
   Value<int> rowid,
 });
 typedef $$SettingTableTableUpdateCompanionBuilder = SettingTableCompanion
     Function({
   Value<String> themeMode,
-  Value<bool> exited,
+  Value<bool> isTapExited,
   Value<int> rowid,
 });
 
@@ -424,8 +428,8 @@ class $$SettingTableTableFilterComposer
   ColumnFilters<String> get themeMode => $composableBuilder(
       column: $table.themeMode, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<bool> get exited => $composableBuilder(
-      column: $table.exited, builder: (column) => ColumnFilters(column));
+  ColumnFilters<bool> get isTapExited => $composableBuilder(
+      column: $table.isTapExited, builder: (column) => ColumnFilters(column));
 }
 
 class $$SettingTableTableOrderingComposer
@@ -440,8 +444,8 @@ class $$SettingTableTableOrderingComposer
   ColumnOrderings<String> get themeMode => $composableBuilder(
       column: $table.themeMode, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<bool> get exited => $composableBuilder(
-      column: $table.exited, builder: (column) => ColumnOrderings(column));
+  ColumnOrderings<bool> get isTapExited => $composableBuilder(
+      column: $table.isTapExited, builder: (column) => ColumnOrderings(column));
 }
 
 class $$SettingTableTableAnnotationComposer
@@ -456,8 +460,8 @@ class $$SettingTableTableAnnotationComposer
   GeneratedColumn<String> get themeMode =>
       $composableBuilder(column: $table.themeMode, builder: (column) => column);
 
-  GeneratedColumn<bool> get exited =>
-      $composableBuilder(column: $table.exited, builder: (column) => column);
+  GeneratedColumn<bool> get isTapExited => $composableBuilder(
+      column: $table.isTapExited, builder: (column) => column);
 }
 
 class $$SettingTableTableTableManager extends RootTableManager<
@@ -488,22 +492,22 @@ class $$SettingTableTableTableManager extends RootTableManager<
               $$SettingTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
             Value<String> themeMode = const Value.absent(),
-            Value<bool> exited = const Value.absent(),
+            Value<bool> isTapExited = const Value.absent(),
             Value<int> rowid = const Value.absent(),
           }) =>
               SettingTableCompanion(
             themeMode: themeMode,
-            exited: exited,
+            isTapExited: isTapExited,
             rowid: rowid,
           ),
           createCompanionCallback: ({
             required String themeMode,
-            Value<bool> exited = const Value.absent(),
+            Value<bool> isTapExited = const Value.absent(),
             Value<int> rowid = const Value.absent(),
           }) =>
               SettingTableCompanion.insert(
             themeMode: themeMode,
-            exited: exited,
+            isTapExited: isTapExited,
             rowid: rowid,
           ),
           withReferenceMapper: (p0) => p0

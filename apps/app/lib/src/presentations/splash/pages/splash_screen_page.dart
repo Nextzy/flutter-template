@@ -19,7 +19,6 @@ class SplashScreenPage extends AppPage {
     required this.builder,
     this.skipLoadingForWeb = true,
     this.skipWhenDebugMode = true,
-    this.restorePageWhenExit = false,
     this.minimumFirstComingDuration = const Duration(milliseconds: 2400),
     this.minimumSecondComingDuration = const Duration(milliseconds: 400),
     this.firstAnimateDuration = const Duration(milliseconds: 300),
@@ -28,7 +27,6 @@ class SplashScreenPage extends AppPage {
 
   final bool skipWhenDebugMode;
   final bool skipLoadingForWeb;
-  final bool restorePageWhenExit;
   final Duration minimumFirstComingDuration;
   final Duration firstAnimateDuration;
   final Duration minimumSecondComingDuration;
@@ -37,11 +35,6 @@ class SplashScreenPage extends AppPage {
 
   @override
   State<SplashScreenPage> createState() => _SplashScreenState();
-
-  static Future<int> updateExitFlag() =>
-      AppLocalDatabase.instance.managers.settingTable.update(
-        (o) => o(exited: Value(true)),
-      );
 }
 
 class _SplashScreenState extends AppState<SplashScreenPage>
@@ -58,6 +51,25 @@ class _SplashScreenState extends AppState<SplashScreenPage>
       PlatformChecker.isWeb &&
       PlatformChecker.isDesktop;
 
+  Future<SetupApplication> _initialLoadingApplication({
+    required SettingTableData setting,
+  }) async {
+    AppHttpClient.instance.setupBaseUrl(AppEnv.instance.apiBaseUrl);
+
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
+    final packageInfo = await PackageInfo.fromPlatform();
+    final connectivityResult = await Connectivity().checkConnectivity();
+
+    return SetupApplication(
+      packageInfo: packageInfo,
+      connectivityResult: connectivityResult,
+      setting: setting,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -67,13 +79,14 @@ class _SplashScreenState extends AppState<SplashScreenPage>
 
           final setting = snapshot.data!;
           final isFirstComing = (!widget.skipWhenDebugMode || !kDebugMode) &&
-              (!widget.restorePageWhenExit && !setting.exited);
+              (!setting.isTapExited);
 
           return FutureBuilder(
             future: Future.wait([
-              _initialLoadingApplication(setting: setting), // Must be first.
-              AppLocalDatabase.instance.managers.settingTable
-                  .update((o) => o(exited: Value(false))), //Clear exited field
+              // Must be first.
+              _initialLoadingApplication(setting: setting),
+              //Clear exited field
+              AppLocalDatabase.instance.updateTapExitApp(false),
               skipLoadingForWeb
                   ? Future.delayed(Duration.zero)
                   : isFirstComing
@@ -128,24 +141,4 @@ class _SplashScreenState extends AppState<SplashScreenPage>
           ),
         ),
       );
-
-  ///========================= PRIVATE METHOD =========================///
-  Future<SetupApplication> _initialLoadingApplication({
-    required SettingTableData setting,
-  }) async {
-    AppHttpClient.instance.setupBaseUrl(AppEnv.instance.apiBaseUrl);
-
-    await SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-
-    final packageInfo = await PackageInfo.fromPlatform();
-    final connectivityResult = await Connectivity().checkConnectivity();
-
-    return SetupApplication(
-      packageInfo: packageInfo,
-      connectivityResult: connectivityResult,
-      setting: setting,
-    );
-  }
 }

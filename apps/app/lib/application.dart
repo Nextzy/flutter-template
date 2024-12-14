@@ -10,7 +10,7 @@ export 'package:change_application_name/src/src.dart';
 export 'package:change_application_name/router.dart';
 export 'package:change_application_name/extensions/extensions.dart';
 export 'package:change_application_name/environments/environments.dart';
-export 'package:change_application_name/guards/guards.dart';
+export 'package:change_application_name/routers/routers.dart';
 export 'package:sms_autofill/sms_autofill.dart' hide Orientation, ColorBuilder;
 export 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 export 'package:country_code_picker/country_code_picker.dart';
@@ -68,7 +68,7 @@ class _MyApplicationState extends ApplicationState<MyApplication>
     return ToastificationWrapper(
       child: TranslationProvider(
         child: SplashScreenPage(
-          skipWhenDebugMode: true,
+          skipWhenDebugMode: false,
           builder: (context, setup) {
             return MultiProvider(
               providers: [
@@ -96,7 +96,7 @@ class _MyApplicationState extends ApplicationState<MyApplication>
                         AppMaterialRoute(
                       debugShowCheckedModeBanner: false,
                       restorationScopeId: restorationId,
-      
+
                       ///============= Setup Localization =============//
                       localizationsDelegates: const [
                         CountryLocalizations.delegate,
@@ -110,7 +110,9 @@ class _MyApplicationState extends ApplicationState<MyApplication>
                       theme: AppTheme(),
                       themeMode: setting.themeMode.toEnum(ThemeMode.values),
                       routerConfig: router.config(
-                        navigatorObservers: () => [AutoRouteObserver()],
+                        navigatorObservers: () => [
+                          AutoRouteObserver(),
+                        ],
                       ),
                       builder: (context, child) => InApplicationUpdate(
                         packageInfo: setup.packageInfo,

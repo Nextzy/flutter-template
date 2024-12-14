@@ -23,3 +23,4 @@ export 'widget_style.dart';
 export 'scroll_behavior.dart';
 export 'debug_helper.dart';
 export 'scaffold.dart';
+export 'exit_app.dart';
