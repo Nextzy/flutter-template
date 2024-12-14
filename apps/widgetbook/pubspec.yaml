@@ -12,10 +12,11 @@ dependencies:
     sdk: flutter
   change_application_name:
     path: ../../apps/app
-
+  tutorial:
+    path: ../../apps/tutorial
 
   widgetbook_annotation: ^3.2.0
-  widgetbook: ^3.10.0
+  widgetbook: ^3.10.1
 
 dependency_overrides:
   # Fixed: wechat_assets_picker
@@ -26,7 +27,7 @@ dependency_overrides:
 
 dev_dependencies:
   build_runner: ^2.4.13
-  widgetbook_generator: ^3.9.0
+  widgetbook_generator: ^3.9.1
   flutter_lints: ^5.0.0
 
 flutter:

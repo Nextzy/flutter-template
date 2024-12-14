@@ -1,8 +1,9 @@
 import 'package:core/lib.dart';
 
-abstract class AppPageTabScaffoldBlocWidgetState<WIDGET extends StatefulWidget,
-        DATA, BLOC extends BlocBase<WidgetStateEvent<DATA?>>>
-    extends AppPageBlocWidgetState<WIDGET, DATA, BLOC> {
+abstract class AppPageTabScaffoldBlocWidgetState<
+    WIDGET extends StatefulWidget,
+    BLOC extends BlocBase<WidgetStateEvent<DATA?>>,
+    DATA> extends AppPageBlocWidgetState<WIDGET, BLOC, DATA> {
   int get initialIndex;
 
   Widget buildScaffoldItemListWithBloc<EVENT>({

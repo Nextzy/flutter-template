@@ -1,5 +1,3 @@
-  
-
 import 'package:widgetbook_app/widgetbook.dart';
 
 class YourDataBook extends WidgetbookFolder {
@@ -12,7 +10,7 @@ class YourDataBook extends WidgetbookFolder {
               useCases: [
                 ApiUseCase(
                   name: 'Test',
-                  api: YourRetrofitApiService(AppHttpClient.instance.dio),
+                  api: ExampleMovieApiService(ExampleHttpClient.instance.dio),
                   buildButtonList: (context, api, data) => [
                     AppButton(
                       text: 'Call Api',

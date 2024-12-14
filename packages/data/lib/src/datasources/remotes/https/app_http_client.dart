@@ -18,7 +18,7 @@ class AppHttpClient extends BaseHttpClient {
     super.setupInterceptors(dio, interceptors);
     interceptors.addAll([
       ConnectivityInterceptor(),
-      OAuthTokenInterceptor(
+      RefreshTokenInterceptor(
         dio,
         httpStatusCode: 401,
         refreshTokenUrl: '/refreshToken',
@@ -29,7 +29,7 @@ class AppHttpClient extends BaseHttpClient {
     ]);
   }
 
-  void setupProxyAdapter(String? ip, String? port) {
+  void setupProxyAdapter({String? ip, String? port}) {
     if (BuildConfig.debug && ip != null && port != null) {
       dio.httpClientAdapter = IOHttpClientAdapter(createHttpClient: () {
         final client = HttpClient();

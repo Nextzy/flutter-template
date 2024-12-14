@@ -18,7 +18,16 @@ class SettingTable extends Table {
 // TextColumn get selectTikabitId => text()();
 }
 
-@DriftDatabase(tables: [SettingTable])
+class MovieTable extends Table {
+  TextColumn get id => text()();
+
+  TextColumn get name => text()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DriftDatabase(tables: [SettingTable, MovieTable])
 class AppLocalDatabase extends _$AppLocalDatabase {
   AppLocalDatabase(super.e);
 
@@ -29,17 +38,17 @@ class AppLocalDatabase extends _$AppLocalDatabase {
 
   // @override
   // MigrationStrategy get migration => MigrationStrategy(
-  //   onCreate: (Migrator m) async {
-  //     await m.createAll();
-  //   },
-  //   onUpgrade: (Migrator m, int from, int to) async {
-  //     if (from < 2) {
-  //       // Migrate Version: 2
-  //       // await m.addColumn(
-  //       //     instance.settingTable, instance.settingTable.exited);
-  //     }
-  //   },
-  // );
+  //       onCreate: (Migrator m) async {
+  //         await m.createAll();
+  //       },
+  //       onUpgrade: (Migrator m, int from, int to) async {
+  //         if (from < 2) {
+  //           // Migrate Version: 2
+  //           // await m.addColumn(
+  //           //     instance.settingTable, instance.settingTable.exited);
+  //         }
+  //       },
+  //     );
 
   static void initDatabase({AppLocalDatabase? database}) {
     instance = database ??
@@ -70,8 +79,48 @@ class AppLocalDatabase extends _$AppLocalDatabase {
           themeMode: Core.ThemeMode.system.toValueString(),
         ),
       );
-      settingList = await AppLocalDatabase.instance.managers.settingTable.get();
+      settingList =
+          await AppLocalDatabase.instance.managers.settingTable.get();
     }
     return settingList.first;
   }
+
+  Future<void> deleteAllData() => transaction(() async {
+        for (final table in allTables) {
+          await customStatement('DELETE FROM ${table.actualTableName}');
+        }
+      });
+
+  ///=============== CRUD Method =====================///
+  Future<void> upsertMovieList(
+    Iterable<MovieTableData> dataList,
+  ) =>
+      batch(
+        (batch) {
+          batch.insertAllOnConflictUpdate(
+            movieTable,
+            dataList.map(
+              (data) => MovieTableCompanion.insert(
+                id: data.id,
+                name: data.name,
+              ),
+            ),
+          );
+        },
+      );
+
+  Future<void> upsertMovie(MovieTableData data) =>
+      into(movieTable).insertOnConflictUpdate(
+        MovieTableCompanion.insert(
+          id: data.id,
+          name: data.name,
+        ),
+      );
+
+  Future<List<MovieTableData>> loadMovieList() =>
+      managers.movieTable.get();
+
+  Future<MovieTableData?> loadMovie(String id) =>
+      (select(movieTable)..where((tbl) => tbl.id.equals(id)))
+          .getSingleOrNull();
 }

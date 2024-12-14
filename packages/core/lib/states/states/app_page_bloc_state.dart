@@ -12,9 +12,9 @@ typedef PreferredWidgetStateContextCallback<DATA> = PreferredSizeWidget
 typedef WidgetStateCallback<DATA> = Widget Function(
     WidgetStateEvent<DATA?> state);
 
-abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget, DATA,
-        BLOC extends BlocBase<WidgetStateEvent<DATA?>>>
-    extends AppBlocWidgetState<WIDGET, DATA, BLOC> with AutoRouteAware {
+abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
+        BLOC extends BlocBase<WidgetStateEvent<DATA?>>, DATA>
+    extends AppBlocWidgetState<WIDGET, BLOC, DATA> with AutoRouteAware {
   AutoRouteObserver? _observer;
 
   @override

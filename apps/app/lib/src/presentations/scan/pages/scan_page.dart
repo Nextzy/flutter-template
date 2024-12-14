@@ -4,23 +4,15 @@ enum ScanPageEvent {
   yourEvent,
 }
 
+@RoutePage()
 class ScanPage extends AppPage {
-  const ScanPage._({required Key key}) : super(key: key);
-
-  static Widget create() => //
-      BlocProvider(
-        create: (context) => YourBloc()..addEvent(YourEvent.yourEvent),
-        child: const ScanPage._(
-          key: Key('ScanPage'),
-        ),
-      );
+  const ScanPage({super.key});
 
   @override
   State<ScanPage> createState() => _ScanPageBlocState();
 }
 
-class _ScanPageBlocState
-    extends AppPageBlocWidgetState<ScanPage, YourEntity, YourBloc> {
+class _ScanPageBlocState extends AppPageState<ScanPage> {
   final GlobalKey defaultKey = GlobalKey(debugLabel: 'QR');
   bool _flash = false;
   Barcode? result;
@@ -36,10 +28,8 @@ class _ScanPageBlocState
   double get scanArea => MediaQuery.of(context).size.width - (32.0 * 2);
 
   @override
-  Widget build(BuildContext context) => //
-      buildScaffoldWithBloc<ScanPageEvent>(
-        listenEvent: listenEvent,
-        body: (context, state) => Stack(
+  Widget build(BuildContext context) => AppScaffold(
+        body: Stack(
           children: [
             QRView(
               key: defaultKey,

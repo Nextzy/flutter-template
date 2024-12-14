@@ -22,3 +22,4 @@ export 'snack_bar.dart';
 export 'widget_style.dart';
 export 'scroll_behavior.dart';
 export 'debug_helper.dart';
+export 'scaffold.dart';

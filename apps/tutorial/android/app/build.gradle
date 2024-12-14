@@ -1,0 +1,79 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+//    id "com.newrelic.agent.android"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+android {
+    namespace "com.change_application_name.tutorial"
+    compileSdk flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.change_application_name.tutorial"
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode flutter.versionCode
+        versionName flutter.versionName
+    }
+
+    signingConfigs {
+        debug {
+
+            storeFile file(localProperties.getProperty('keystore.file.debug'))
+            keyAlias localProperties.getProperty('keystore.alias.debug')
+            storePassword localProperties.getProperty('keystore.password.debug')
+            keyPassword localProperties.getProperty('keystore.password.debug')
+        }
+        release {
+            storeFile file(localProperties.getProperty('keystore.file.release'))
+            keyAlias localProperties.getProperty('keystore.alias.release')
+            storePassword localProperties.getProperty('keystore.password')
+            keyPassword localProperties.getProperty('keystore.password')
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            // useProguard true
+            // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-debug-rules.pro'
+        }
+
+        release {
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+}

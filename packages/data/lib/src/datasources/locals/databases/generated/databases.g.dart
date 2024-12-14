@@ -197,15 +197,206 @@ class SettingTableCompanion extends UpdateCompanion<SettingTableData> {
   }
 }
 
+class $MovieTableTable extends MovieTable
+    with TableInfo<$MovieTableTable, MovieTableData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $MovieTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+      'name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [id, name];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'movie_table';
+  @override
+  VerificationContext validateIntegrity(Insertable<MovieTableData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  MovieTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return MovieTableData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+    );
+  }
+
+  @override
+  $MovieTableTable createAlias(String alias) {
+    return $MovieTableTable(attachedDatabase, alias);
+  }
+}
+
+class MovieTableData extends DataClass implements Insertable<MovieTableData> {
+  final String id;
+  final String name;
+  const MovieTableData({required this.id, required this.name});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    return map;
+  }
+
+  MovieTableCompanion toCompanion(bool nullToAbsent) {
+    return MovieTableCompanion(
+      id: Value(id),
+      name: Value(name),
+    );
+  }
+
+  factory MovieTableData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return MovieTableData(
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+    };
+  }
+
+  MovieTableData copyWith({String? id, String? name}) => MovieTableData(
+        id: id ?? this.id,
+        name: name ?? this.name,
+      );
+  MovieTableData copyWithCompanion(MovieTableCompanion data) {
+    return MovieTableData(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MovieTableData(')
+          ..write('id: $id, ')
+          ..write('name: $name')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, name);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is MovieTableData &&
+          other.id == this.id &&
+          other.name == this.name);
+}
+
+class MovieTableCompanion extends UpdateCompanion<MovieTableData> {
+  final Value<String> id;
+  final Value<String> name;
+  final Value<int> rowid;
+  const MovieTableCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  MovieTableCompanion.insert({
+    required String id,
+    required String name,
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        name = Value(name);
+  static Insertable<MovieTableData> custom({
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  MovieTableCompanion copyWith(
+      {Value<String>? id, Value<String>? name, Value<int>? rowid}) {
+    return MovieTableCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MovieTableCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppLocalDatabase extends GeneratedDatabase {
   _$AppLocalDatabase(QueryExecutor e) : super(e);
   $AppLocalDatabaseManager get managers => $AppLocalDatabaseManager(this);
   late final $SettingTableTable settingTable = $SettingTableTable(this);
+  late final $MovieTableTable movieTable = $MovieTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [settingTable];
+  List<DatabaseSchemaEntity> get allSchemaEntities =>
+      [settingTable, movieTable];
 }
 
 typedef $$SettingTableTableCreateCompanionBuilder = SettingTableCompanion
@@ -337,10 +528,138 @@ typedef $$SettingTableTableProcessedTableManager = ProcessedTableManager<
     ),
     SettingTableData,
     PrefetchHooks Function()>;
+typedef $$MovieTableTableCreateCompanionBuilder = MovieTableCompanion Function({
+  required String id,
+  required String name,
+  Value<int> rowid,
+});
+typedef $$MovieTableTableUpdateCompanionBuilder = MovieTableCompanion Function({
+  Value<String> id,
+  Value<String> name,
+  Value<int> rowid,
+});
+
+class $$MovieTableTableFilterComposer
+    extends Composer<_$AppLocalDatabase, $MovieTableTable> {
+  $$MovieTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+}
+
+class $$MovieTableTableOrderingComposer
+    extends Composer<_$AppLocalDatabase, $MovieTableTable> {
+  $$MovieTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+}
+
+class $$MovieTableTableAnnotationComposer
+    extends Composer<_$AppLocalDatabase, $MovieTableTable> {
+  $$MovieTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+}
+
+class $$MovieTableTableTableManager extends RootTableManager<
+    _$AppLocalDatabase,
+    $MovieTableTable,
+    MovieTableData,
+    $$MovieTableTableFilterComposer,
+    $$MovieTableTableOrderingComposer,
+    $$MovieTableTableAnnotationComposer,
+    $$MovieTableTableCreateCompanionBuilder,
+    $$MovieTableTableUpdateCompanionBuilder,
+    (
+      MovieTableData,
+      BaseReferences<_$AppLocalDatabase, $MovieTableTable, MovieTableData>
+    ),
+    MovieTableData,
+    PrefetchHooks Function()> {
+  $$MovieTableTableTableManager(_$AppLocalDatabase db, $MovieTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$MovieTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$MovieTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$MovieTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> name = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MovieTableCompanion(
+            id: id,
+            name: name,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String name,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MovieTableCompanion.insert(
+            id: id,
+            name: name,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$MovieTableTableProcessedTableManager = ProcessedTableManager<
+    _$AppLocalDatabase,
+    $MovieTableTable,
+    MovieTableData,
+    $$MovieTableTableFilterComposer,
+    $$MovieTableTableOrderingComposer,
+    $$MovieTableTableAnnotationComposer,
+    $$MovieTableTableCreateCompanionBuilder,
+    $$MovieTableTableUpdateCompanionBuilder,
+    (
+      MovieTableData,
+      BaseReferences<_$AppLocalDatabase, $MovieTableTable, MovieTableData>
+    ),
+    MovieTableData,
+    PrefetchHooks Function()>;
 
 class $AppLocalDatabaseManager {
   final _$AppLocalDatabase _db;
   $AppLocalDatabaseManager(this._db);
   $$SettingTableTableTableManager get settingTable =>
       $$SettingTableTableTableManager(_db, _db.settingTable);
+  $$MovieTableTableTableManager get movieTable =>
+      $$MovieTableTableTableManager(_db, _db.movieTable);
 }

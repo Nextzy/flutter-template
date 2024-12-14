@@ -2,6 +2,7 @@
 import 'package:widgetbook_app/widgetbook.dart';
 
 export 'package:change_application_name/application.dart';
+export 'package:tutorial/tutorial.dart';
 export 'package:widgetbook/widgetbook.dart' hide ColorSpace;
 export 'examples/feature_copy/feature_copy.dart';
 export 'core/core.dart';

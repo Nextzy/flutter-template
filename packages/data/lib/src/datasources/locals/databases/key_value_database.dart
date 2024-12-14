@@ -12,21 +12,15 @@ class AppSecureLocalDatabase {
       {SecureStorage secureStorage = SecureStorage.instance})
       : _secureStorage = secureStorage;
 
-  Future<String?> loadToken() => load(tokenKey);
+  Future<void> saveToken(String token) =>
+      _secureStorage.save(tokenKey, data: token);
 
-  Future<String?> loadRefreshToken() => load(refreshTokenKey);
+  Future<void> saveRefreshToken(String token) =>
+      _secureStorage.save(refreshTokenKey, data: token);
 
-  Future<void> save(String key, {required String data}) =>
-      _secureStorage.save(key, data: data);
+  Future<String?> loadToken() => _secureStorage.load(tokenKey);
 
-  Future<String?> load(String key) => _secureStorage.load(key);
-
-  Future<Map<String, String>> loadAll() => _secureStorage.loadAll();
-
-  Future<String> loadSafe(String key, {required String defaultData}) =>
-      _secureStorage.loadSafe(key, defaultData: defaultData);
-
-  Future<void> delete({required String key}) => _secureStorage.delete(key: key);
+  Future<String?> loadRefreshToken() => _secureStorage.load(refreshTokenKey);
 
   Future<void> deleteAll() => _secureStorage.deleteAll();
 }

@@ -22,8 +22,8 @@ dependencies:
 
   #======= DATA ========#
   #PLATFORM: All
-  drift: ^2.21.0
-  drift_flutter: ^0.2.1
+  drift: ^2.22.1
+  drift_flutter: ^0.2.2
 
 
 dependency_overrides:
@@ -40,7 +40,7 @@ dev_dependencies:
   freezed: ^2.5.7
   flutter_lints: ^5.0.0
   retrofit_generator: ^9.1.5
-  drift_dev: ^2.21.2
+  drift_dev: ^2.22.1
 
 flutter_gen:
   output: lib/generated/

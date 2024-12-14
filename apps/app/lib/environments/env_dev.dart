@@ -5,7 +5,7 @@ import 'app_env_fields.dart';
 
 part 'env_dev.g.dart';
 
-@Envied(name: 'Env', path: '.env.dev')
+@Envied(name: 'Env', path: '.env/.env.dev')
 final class DevEnvironment implements AppEnv, AppEnvField {
   DevEnvironment();
 

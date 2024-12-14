@@ -1,7 +1,5 @@
 import 'package:design_system/lib.dart';
 
-enum TodoFeature { authentication, settings }
-
 class TodoView extends AppStatelessWidget {
   const TodoView({
     super.key,
@@ -10,7 +8,7 @@ class TodoView extends AppStatelessWidget {
   });
 
   static Widget create({
-    required TodoFeature todo,
+    required String todo,
     GestureTapCallback? onPress,
   }) =>
       TodoView(
@@ -18,13 +16,12 @@ class TodoView extends AppStatelessWidget {
         onPress: onPress,
       );
 
-  final TodoFeature todo;
+  final String todo;
   final GestureTapCallback? onPress;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors.bglightMode,
       appBar: AppTopBackNavigationBar(
         title: 'รอดำเนินการจัดทำ',
       ),
@@ -32,14 +29,14 @@ class TodoView extends AppStatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'เริ่มทำในหัวข้อ',
-              // style: AppTextStyle.primary.body1.blackActive,
+              style: AppTextStyleBuilder.header5.regular.build(context),
             ),
             Space.gap8,
             Text(
-              _getTopic(),
-              // style: AppTextStyle.primary.title1.blackActive,
+              todo,
+              style: AppTextStyleBuilder.ui.regular.build(context),
             ),
             Space.gap32,
             // AppButton(
@@ -52,14 +49,5 @@ class TodoView extends AppStatelessWidget {
         ),
       ),
     );
-  }
-
-  String _getTopic() {
-    switch (todo) {
-      case TodoFeature.authentication:
-        return 'Authentication';
-      case TodoFeature.settings:
-        return 'Setting';
-    }
   }
 }

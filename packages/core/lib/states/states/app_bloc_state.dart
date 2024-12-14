@@ -1,8 +1,9 @@
 import 'package:core/lib.dart';
 
-abstract class AppBlocWidgetState<WIDGET extends StatefulWidget, DATA,
-        BLOC extends BlocBase<WidgetStateEvent<DATA?>>>
-    extends FalconWidgetEventBlocState<WIDGET, DATA, BLOC> {
+abstract class AppBlocWidgetState<
+    WIDGET extends StatefulWidget,
+    BLOC extends BlocBase<WidgetStateEvent<DATA?>>,
+    DATA> extends FalconWidgetEventBlocState<WIDGET, BLOC, DATA> {
   AppThemeData get theme => ThemeApplication.of(context);
 
   InternetConnectionBloc get connectivity =>

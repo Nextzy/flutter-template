@@ -4,14 +4,22 @@ class AppNetworkErrorHandlerInterceptor extends NetworkErrorHandlerInterceptor {
   AppNetworkErrorHandlerInterceptor();
 
   @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
-    super.onResponse(response, handler);
+  void onClientError(DioException err, ErrorInterceptorHandler handler) {
+    if (err.error case NetworkException exception) {
+      //TODO:
+      handler.reject(err);
+    } else {
+      handler.next(err);
+    }
   }
 
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    super.onError(err, handler);
+  void onServerError(DioException err, ErrorInterceptorHandler handler) {
+    if (err.error case NetworkException exception) {
+      //TODO:
+      handler.reject(err);
+    } else {
+      handler.next(err);
+    }
   }
-
-  ///========================= PRIVATE METHOD =========================///
 }
