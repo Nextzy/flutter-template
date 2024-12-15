@@ -5,6 +5,7 @@ class DefaultCatcherLogger extends CatcherLogger {
   void setup() {}
 
   ///Log info message.
+  @override
   Future<void> info(String message) async {
     debugPrint(message);
   }

@@ -25,11 +25,11 @@ class UseCase<U> extends WidgetbookUseCase {
 
 class _UseCasePage<U> extends StatefulWidget {
   const _UseCasePage({
-    Key? key,
+    super.key,
     required this.usecase,
     required this.buildButton,
     required this.onResult,
-  }) : super(key: key);
+  });
 
   final Widget Function(UseCasePageState<U> state, U usecase, dynamic data)
       buildButton;

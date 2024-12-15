@@ -26,7 +26,7 @@ class AppLinearLoadingIndicator extends AppStatelessWidget {
         borderRadius: borderRadius,
         color: color ?? getTheme(context).color.brandPrimary,
         backgroundColor:
-            (color ?? getTheme(context).color.brandPrimary).withOpacity(0.2),
+            (color ?? getTheme(context).color.brandPrimary).withValues(alpha: 0.2),
       ),
     );
   }

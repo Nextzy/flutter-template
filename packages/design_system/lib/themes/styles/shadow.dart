@@ -9,7 +9,7 @@ class AppShadow {
 
   List<BoxShadow> get xs => [
         BoxShadow(
-          color: baseColor.withOpacity(0.05),
+          color: baseColor.withValues(alpha: 0.05),
           blurRadius: 2,
           offset: const Offset(0, 1),
           spreadRadius: 0,
@@ -18,13 +18,13 @@ class AppShadow {
 
   List<BoxShadow> get sm => [
         BoxShadow(
-          color: baseColor.withOpacity(0.10),
+          color: baseColor.withValues(alpha: 0.10),
           blurRadius: 3,
           offset: const Offset(0, 1),
           spreadRadius: 0,
         ),
         BoxShadow(
-          color: baseColor.withOpacity(0.06),
+          color: baseColor.withValues(alpha: 0.06),
           blurRadius: 2,
           offset: const Offset(0, 1),
           spreadRadius: -2,
@@ -36,13 +36,13 @@ class AppShadow {
           blurRadius: 8,
           spreadRadius: -2,
           offset: const Offset(0, 4),
-          color: baseColor.withOpacity(0.10),
+          color: baseColor.withValues(alpha: 0.10),
         ),
         BoxShadow(
           blurRadius: 4,
           offset: const Offset(0, 2),
           spreadRadius: -2,
-          color: baseColor.withOpacity(0.06),
+          color: baseColor.withValues(alpha: 0.06),
         ),
       ];
 
@@ -51,13 +51,13 @@ class AppShadow {
           blurRadius: 16,
           spreadRadius: -4,
           offset: const Offset(0, 12),
-          color: baseColor.withOpacity(0.08),
+          color: baseColor.withValues(alpha: 0.08),
         ),
         BoxShadow(
           blurRadius: 6,
           spreadRadius: -2,
           offset: const Offset(0, 4),
-          color: baseColor.withOpacity(0.03),
+          color: baseColor.withValues(alpha: 0.03),
         ),
       ];
 
@@ -66,13 +66,13 @@ class AppShadow {
           blurRadius: 24,
           offset: const Offset(0, 20),
           spreadRadius: -4,
-          color: baseColor.withOpacity(0.08),
+          color: baseColor.withValues(alpha: 0.08),
         ),
         BoxShadow(
           blurRadius: 8,
           offset: const Offset(0, 8),
           spreadRadius: -4,
-          color: baseColor.withOpacity(0.03),
+          color: baseColor.withValues(alpha: 0.03),
         ),
       ];
 
@@ -81,7 +81,7 @@ class AppShadow {
           blurRadius: 48,
           offset: const Offset(0, 24),
           spreadRadius: -12,
-          color: baseColor.withOpacity(0.18),
+          color: baseColor.withValues(alpha: 0.18),
         ),
       ];
 
@@ -90,7 +90,7 @@ class AppShadow {
           blurRadius: 64,
           offset: const Offset(0, 32),
           spreadRadius: -12,
-          color: baseColor.withOpacity(0.14),
+          color: baseColor.withValues(alpha: 0.14),
         ),
       ];
 }

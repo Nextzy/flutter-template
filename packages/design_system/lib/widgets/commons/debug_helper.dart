@@ -39,7 +39,7 @@ class DebugHelper<T> extends AppStatelessWidget {
 
   Container _buildHelperLabel() => Container(
     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-    decoration: BoxDecoration(color: Colors.orange.withOpacity(0.7)),
+    decoration: BoxDecoration(color: Colors.orange.withValues(alpha: 0.7)),
     child: Text(
       label ?? 'Helper',
       style: TextStyle(

@@ -1,4 +1,3 @@
-  
 // ignore_for_file: prefer_const_constructors
 import '../widgetbook.dart';
 
@@ -8,16 +7,16 @@ class RepositoryUseCase<D> extends WidgetbookUseCase {
     required D repo,
     Function(BuildContext context)? initState,
     required List<Widget> Function(RepoCaller caller, D repo, dynamic data)
-    buildButtonList,
+        buildButtonList,
   }) : super(
-    builder: (context) {
-      initState?.call(context);
-      return _RepositoryUseCasePage<D>(
-        repo: repo,
-        buildButtonList: buildButtonList,
-      );
-    },
-  );
+          builder: (context) {
+            initState?.call(context);
+            return _RepositoryUseCasePage<D>(
+              repo: repo,
+              buildButtonList: buildButtonList,
+            );
+          },
+        );
 }
 
 mixin RepoCaller {
@@ -25,14 +24,14 @@ mixin RepoCaller {
 }
 
 class _RepositoryUseCasePage<A> extends AppStatefulWidget {
-  _RepositoryUseCasePage({
-    Key? key,
+  const _RepositoryUseCasePage({
+    super.key,
     required this.repo,
     required this.buildButtonList,
-  }) : super(key: key);
+  });
 
   final List<Widget> Function(RepoCaller caller, A repo, dynamic data)
-  buildButtonList;
+      buildButtonList;
   final A repo;
 
   @override
@@ -61,7 +60,7 @@ class _RepositoryUseCasePageState<A> extends AppState<_RepositoryUseCasePage<A>>
                 child: Wrap(
                   spacing: 12,
                   children:
-                  widget.buildButtonList(this, widget.repo, snapshot.data),
+                      widget.buildButtonList(this, widget.repo, snapshot.data),
                 ),
               ),
               _buildResult(context, snapshot.data)
@@ -95,6 +94,7 @@ class _RepositoryUseCasePageState<A> extends AppState<_RepositoryUseCasePage<A>>
     );
   }
 
+  @override
   void call(Stream stream) async {
     await _controller.close();
     setState(() {

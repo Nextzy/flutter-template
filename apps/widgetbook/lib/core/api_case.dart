@@ -28,10 +28,10 @@ mixin Caller {
 
 class _ApiUseCasePage<A> extends StatelessWidget with Caller {
   _ApiUseCasePage({
-    Key? key,
+    super.key,
     required this.api,
     required this.buildButtonList,
-  }) : super(key: key);
+  });
 
   static const _loading = 'loading';
 
@@ -85,6 +85,7 @@ class _ApiUseCasePage<A> extends StatelessWidget with Caller {
     );
   }
 
+  @override
   Future<void> call(Future future) async {
     _controller.add(_loading);
     try {

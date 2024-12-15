@@ -111,7 +111,7 @@ class _HomePageState
                   ),
                   ColumnLayout(
                     mainAxisSize: MainAxisSize.min,
-                    foregroundColor: Colors.red.withOpacity(0.1),
+                    foregroundColor: Colors.red.withValues(alpha: 0.1),
                     backgroundColor: Colors.amber,
                     padding: Space.insetAll16,
                     border: Border.all(
@@ -127,18 +127,18 @@ class _HomePageState
                         blurRadius: 8,
                         spreadRadius: -2,
                         offset: const Offset(0, 4),
-                        color: Colors.black.withOpacity(0.5),
+                        color: Colors.black.withValues(alpha: 0.5),
                       ),
                       BoxShadow(
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                         spreadRadius: -2,
-                        color: Colors.black.withOpacity(0.5),
+                        color: Colors.black.withValues(alpha: 0.5),
                       ),
                     ],
                     innerShadow: [
                       BoxShadow(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         spreadRadius: -4,
                         blurRadius: 12,
                       ),

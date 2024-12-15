@@ -46,7 +46,7 @@ class AppLoadingDialog {
                   child: Container(color: Colors.transparent),
                 ),
                 ColumnLayout(
-                  backgroundColor: Colors.black.withOpacity(0.2),
+                  backgroundColor: Colors.black.withValues(alpha: 0.2),
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   gap: 20,

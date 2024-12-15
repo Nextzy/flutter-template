@@ -45,7 +45,7 @@ class FocusSpread extends StatelessWidget {
   BoxShadow _createBoxShadow(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
     return BoxShadow(
-      color: color ?? primaryColor.withOpacity(0.20),
+      color: color ?? primaryColor.withValues(alpha: 0.20),
       spreadRadius: spread,
       blurRadius: 0,
     );

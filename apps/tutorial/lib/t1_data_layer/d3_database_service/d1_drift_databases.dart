@@ -1,4 +1,4 @@
-import 'package:change_application_name/application.dart' as Core;
+import 'package:change_application_name/application.dart' as core;
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 
@@ -57,7 +57,7 @@ class ExampleAppLocalDatabase extends _$ExampleAppLocalDatabase {
               driftWorker: Uri.parse('drift_worker.js'),
               onResult: (result) {
                 if (result.missingFeatures.isNotEmpty) {
-                  Core.Log.t(
+                  core.Log.t(
                       'Using ${result.chosenImplementation} due to unsupported '
                       'browser features: ${result.missingFeatures}');
                 }
@@ -75,7 +75,7 @@ class ExampleAppLocalDatabase extends _$ExampleAppLocalDatabase {
       await ExampleAppLocalDatabase.instance.managers.exampleSettingTable
           .create(
         (o) => o(
-          themeMode: Core.ThemeMode.system.toValueString(),
+          themeMode: core.ThemeMode.system.toValueString(),
         ),
       );
       settingList = await ExampleAppLocalDatabase

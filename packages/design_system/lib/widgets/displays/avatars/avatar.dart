@@ -104,7 +104,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
       opacity: disabled ? 0.5 : null,
       backgroundColor: style == WidgetStyle.filled
           ? (color ?? theme.color.brandPrimary)
-          : (color ?? theme.color.brandPrimary).withOpacity(0.1),
+          : (color ?? theme.color.brandPrimary).withValues(alpha: 0.1),
       child: _buildContent(
         context,
         path: path,

@@ -1,4 +1,3 @@
-import 'package:drift/drift.dart';
 import 'package:change_application_name/application.dart';
 
 

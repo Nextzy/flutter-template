@@ -38,7 +38,7 @@ class _ScanPageBlocState extends AppPageState<ScanPage> {
                 borderRadius: 0,
                 borderLength: 30,
                 borderWidth: 10,
-                overlayColor: context.theme.color.bg.withOpacity(0.96),
+                overlayColor: context.theme.color.bg.withValues(alpha: 0.96),
                 cutOutSize: scanArea,
               ),
               onQRViewCreated: onQRViewCreated,

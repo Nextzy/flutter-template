@@ -23,10 +23,10 @@ class DatasourceUseCase<D> extends WidgetbookUseCase {
 
 class _DatasourceUseCasePage<A> extends StatelessWidget with Caller {
   _DatasourceUseCasePage({
-    Key? key,
+    super.key,
     required this.datasource,
     required this.buildButtonList,
-  }) : super(key: key);
+  });
 
   static const _loading = 'loading';
 
@@ -83,6 +83,7 @@ class _DatasourceUseCasePage<A> extends StatelessWidget with Caller {
     );
   }
 
+  @override
   Future<void> call(Future future) async {
     _controller.add(_loading);
     try {

@@ -228,7 +228,9 @@ class _GestureContainerLayoutState extends State<GestureContainerLayout> {
             onLongPress == null &&
             onDoubleTap == null &&
             onHover == null &&
-            onHighlightChanged == null)) return child;
+            onHighlightChanged == null)) {
+      return child;
+    }
 
     final focusColor = disabledPressAnimation
         ? Colors.transparent

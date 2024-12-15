@@ -79,6 +79,8 @@ class ExampleMoviePageBlocSafe
   ) async {
     switch (event.name) {
       case ExampleMoviePageBlocEvent.fetchMovieList:
+
+        /// ⭐️ Important: Every method should return Future
         return _fetchMovieList();
     }
   }
