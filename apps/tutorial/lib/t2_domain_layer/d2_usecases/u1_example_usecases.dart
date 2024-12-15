@@ -4,8 +4,8 @@ import 'package:tutorial/tutorial.dart';
 /// ⭐️ Name convention:
 /// Suffix must be "...Usecase"
 /// Human readable name is very import for usecase
-class SignInWithEmailAndPassword {
-  SignInWithEmailAndPassword({
+class ExampleSignInWithEmailAndPasswordUsecase {
+  ExampleSignInWithEmailAndPasswordUsecase({
     ExampleRepository? repo,
   }) : _repo = repo ?? ExampleRepository();
 
@@ -22,8 +22,8 @@ class SignInWithEmailAndPassword {
           );
 }
 
-class GetMovieListUsecase {
-  GetMovieListUsecase({
+class ExampleGetMovieListUsecase {
+  ExampleGetMovieListUsecase({
     ExampleRepository? repo,
   }) : _repo = repo ?? ExampleRepository();
 
@@ -31,7 +31,10 @@ class GetMovieListUsecase {
 
   Stream<Either<Failure, MovieListEntity>> call() =>
       _repo.getMovieList().mapEitherWithFailure(
+            /// ⭐️ Convert data to Entity in usecase
             (data) => MovieListEntity.fromTableDataList(data),
+
+            /// ⭐️ Convert exception to Failure in usecase
             (exception) => Failure.fromException(exception),
           );
 }

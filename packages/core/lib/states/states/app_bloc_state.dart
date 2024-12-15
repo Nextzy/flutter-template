@@ -2,7 +2,7 @@ import 'package:core/lib.dart';
 
 abstract class AppBlocWidgetState<
     WIDGET extends StatefulWidget,
-    BLOC extends BlocBase<WidgetStateEvent<DATA?>>,
+    BLOC extends BlocBase<WidgetStateEvent<DATA>>,
     DATA> extends FalconWidgetEventBlocState<WIDGET, BLOC, DATA> {
   AppThemeData get theme => ThemeApplication.of(context);
 
@@ -16,9 +16,9 @@ abstract class AppBlocWidgetState<
   }
 
   Widget buildPopScope({
-    required WidgetStateEvent<DATA?> state,
-    required Function(WidgetStateEvent<DATA?> state)? canPop,
-    required PopListener<WidgetStateEvent<DATA?>>? onPop,
+    required WidgetStateEvent<DATA> state,
+    required PopStateCallback<DATA>? canPop,
+    required PopListener<WidgetStateEvent<DATA>>? onPop,
     required Widget child,
   }) =>
       onPop != null || canPop != null

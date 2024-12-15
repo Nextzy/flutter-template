@@ -113,19 +113,19 @@ flavorizr: #See more: https://pub.dev/packages/flutter_flavorizr
       app:
         name: "Template (Dev)"
       android:
-        applicationId: "com.example.application.dev"
+        applicationId: "com.change_application_name.dev"
         generateDummyAssets: false
         firebase:
           config: "configs/firebase/dev/google-services.json"
       ios:
-        bundleId: "com.example.dev"
+        bundleId: "com.change_application_name.dev"
         generateDummyAssets: false
         buildSettings:
           LAUNCH_SCREEN_STORYBOARD: "LaunchScreenDev"
         firebase:
           config: "configs/firebase/dev/GoogleService-Info.plist"
       macos:
-        bundleId: "com.example.dev"
+        bundleId: "com.change_application_name.dev"
         generateDummyAssets: false
         buildSettings:
           LAUNCH_SCREEN_STORYBOARD: "LaunchScreenDev"
@@ -135,19 +135,19 @@ flavorizr: #See more: https://pub.dev/packages/flutter_flavorizr
       app:
         name: "Template (UAT)"
       android:
-        applicationId: "com.example.application.uat"
+        applicationId: "com.change_application_name.uat"
         generateDummyAssets: false
         firebase:
           config: "configs/firebase/uat/google-services.json"
       ios:
-        bundleId: "com.example.uat"
+        bundleId: "com.change_application_name.uat"
         generateDummyAssets: false
         buildSettings:
           LAUNCH_SCREEN_STORYBOARD: "LaunchScreenUat"
         firebase:
           config: "configs/firebase/uat/GoogleService-Info.plist"
       macos:
-        bundleId: "com.example.uat"
+        bundleId: "com.change_application_name.uat"
         generateDummyAssets: false
         buildSettings:
           LAUNCH_SCREEN_STORYBOARD: "LaunchScreenUat"
@@ -157,19 +157,19 @@ flavorizr: #See more: https://pub.dev/packages/flutter_flavorizr
       app:
         name: "Template"
       android:
-        applicationId: "com.example.application"
+        applicationId: "com.change_application_name"
         generateDummyAssets: false
         firebase:
           config: "configs/firebase/prod/google-services.json"
       ios:
-        bundleId: "com.example"
+        bundleId: "com.change_application_name"
         generateDummyAssets: false
         buildSettings:
           LAUNCH_SCREEN_STORYBOARD: "LaunchScreenProd"
         firebase:
           config: "configs/firebase/prod/GoogleService-Info.plist"
       macos:
-        bundleId: "com.example"
+        bundleId: "com.change_application_name"
         generateDummyAssets: false
         buildSettings:
           LAUNCH_SCREEN_STORYBOARD: "LaunchScreenProd"

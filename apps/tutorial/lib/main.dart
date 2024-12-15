@@ -1,5 +1,5 @@
 import 'package:change_application_name/application.dart';
-import 'package:tutorial/playground_page.dart';
+import 'package:tutorial/tutorial.dart';
 
 part 'main.gr.dart';
 
@@ -40,10 +40,5 @@ class PlaygroundRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(
-          path: '/',
-          page: PlaygroundRoute.page,
-          initial: true,
-        ),
       ];
 }

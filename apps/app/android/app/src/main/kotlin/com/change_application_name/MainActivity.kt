@@ -1,4 +1,4 @@
-package com.example.application
+package com.change_application_name
 
 import android.util.Log
 import io.flutter.embedding.android.FlutterActivity
@@ -22,7 +22,7 @@ class MainActivity : FlutterActivity() {
     }
 
     companion object {
-        private const val CHANNEL = "com.example/channel"
+        private const val CHANNEL = "com.change_application_name/channel"
         private const val TAG = "MainActivity"
     }
 

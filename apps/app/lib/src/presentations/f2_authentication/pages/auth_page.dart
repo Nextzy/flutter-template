@@ -1,5 +1,4 @@
 import 'package:change_application_name/application.dart';
-import 'package:change_application_name/src/presentations/f2_authentication/authentication.dart';
 
 @RoutePage()
 class AuthenticationPage extends AppPage {

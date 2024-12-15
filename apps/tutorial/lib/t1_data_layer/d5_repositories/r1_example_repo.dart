@@ -11,6 +11,15 @@ class ExampleRepository {
   final ExampleRemoteDataSources _remoteDatasource;
   final ExampleLocalDataSources _localDatasource;
 
+  Future<Either<Exception, bool>> signInWithEmailPasswordFuture({
+    required String email,
+    required String password,
+  }) =>
+      _remoteDatasource
+          .signInWithEmailPassword(email: email, password: password)
+          .then((value) => true)
+          .toEitherException();
+
   Stream<Either<Exception, bool>> signInWithEmailPassword({
     required String email,
     required String password,

@@ -40,8 +40,7 @@ dependencies:
   #PLATFORM: Android, iOS, MacOS
   wechat_assets_picker: ^9.4.1
   #PLATFORM: Android, iOS
-  qr_code_scanner: ^1.0.1
-
+  qr_code_scanner_plus: ^2.0.6
   # Maybe you can use
   #fl_chart: ^0.69.2
   #funvas: ^0.1.8 # Flutter package that allows creating canvas animations based on time and math functions.

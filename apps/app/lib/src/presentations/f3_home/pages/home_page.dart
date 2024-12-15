@@ -19,7 +19,7 @@ class HomePage extends AppPage implements AutoRouteWrapper {
 }
 
 class _HomePageState
-    extends AppPageBlocWidgetState<HomePage, HomePageBloc, HomeEntity> {
+    extends AppPageBlocWidgetState<HomePage, HomePageBloc, HomeEntity?> {
   int _counter = 0;
 
   @override

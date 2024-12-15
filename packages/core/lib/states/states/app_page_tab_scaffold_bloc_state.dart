@@ -2,16 +2,16 @@ import 'package:core/lib.dart';
 
 abstract class AppPageTabScaffoldBlocWidgetState<
     WIDGET extends StatefulWidget,
-    BLOC extends BlocBase<WidgetStateEvent<DATA?>>,
+    BLOC extends BlocBase<WidgetStateEvent<DATA>>,
     DATA> extends AppPageBlocWidgetState<WIDGET, BLOC, DATA> {
   int get initialIndex;
 
   Widget buildScaffoldItemListWithBloc<EVENT>({
     BlocWidgetListenerEvent<EVENT>? listenEvent,
-    BlocWidgetListenerState<WidgetStateEvent<DATA?>>? listenState,
-    WidgetStateCallback<DATA>? canPop,
-    PopListener<WidgetStateEvent<DATA?>>? onPop,
-    BlocListenerCondition<WidgetStateEvent<DATA?>>? buildWhen,
+    BlocWidgetListenerState<WidgetStateEvent<DATA>>? listenState,
+    PopStateCallback<DATA>? canPop,
+    PopListener<WidgetStateEvent<DATA>>? onPop,
+    BlocListenerCondition<WidgetStateEvent<DATA>>? buildWhen,
     WidgetStateContextCallback<DATA>? drawer,
     WidgetStateContextCallback<DATA>? buildBottomNavigationBar,
     PreferredWidgetStateContextCallback<DATA>? appBar,
@@ -22,9 +22,9 @@ abstract class AppPageTabScaffoldBlocWidgetState<
     WidgetBuilder? loadingNoData,
     WidgetStateContextCallback<DATA>? floatingButton,
   }) {
-    return BlocConsumer<BLOC, WidgetStateEvent<DATA?>>(
+    return BlocConsumer<BLOC, WidgetStateEvent<DATA>>(
       bloc: bloc,
-      listener: (BuildContext context, WidgetStateEvent<DATA?> state) {
+      listener: (BuildContext context, WidgetStateEvent<DATA> state) {
         if (state.event != null) {
           listenEvent?.call(
               context, state.event!.name as EVENT, state.event!.data);

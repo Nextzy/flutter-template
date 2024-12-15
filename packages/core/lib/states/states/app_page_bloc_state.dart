@@ -1,19 +1,19 @@
 import 'package:core/lib.dart';
 
 typedef WidgetStateContextCallback<DATA> = Widget Function(
-    BuildContext context, WidgetStateEvent<DATA?> state);
+    BuildContext context, WidgetStateEvent<DATA> state);
 
 typedef ListWidgetStateContextCallback<DATA> = List<Widget> Function(
-    BuildContext context, WidgetStateEvent<DATA?> state);
+    BuildContext context, WidgetStateEvent<DATA> state);
 
 typedef PreferredWidgetStateContextCallback<DATA> = PreferredSizeWidget
-    Function(BuildContext context, WidgetStateEvent<DATA?> state);
+    Function(BuildContext context, WidgetStateEvent<DATA> state);
 
-typedef WidgetStateCallback<DATA> = Widget Function(
-    WidgetStateEvent<DATA?> state);
+typedef PopStateCallback<DATA> = bool Function(
+    WidgetStateEvent<DATA> state);
 
 abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
-        BLOC extends BlocBase<WidgetStateEvent<DATA?>>, DATA>
+        BLOC extends BlocBase<WidgetStateEvent<DATA>>, DATA>
     extends AppBlocWidgetState<WIDGET, BLOC, DATA> with AutoRouteAware {
   AutoRouteObserver? _observer;
 
@@ -37,10 +37,10 @@ abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
 
   Widget buildScaffoldWithBloc<EVENT>({
     BlocWidgetListenerEvent<EVENT>? listenEvent,
-    BlocWidgetListenerState<WidgetStateEvent<DATA?>>? listenState,
-    WidgetStateCallback<DATA>? canPop,
-    PopListener<WidgetStateEvent<DATA?>>? onPop,
-    BlocListenerCondition<WidgetStateEvent<DATA?>>? buildWhen,
+    BlocWidgetListenerState<WidgetStateEvent<DATA>>? listenState,
+    PopStateCallback<DATA>? canPop,
+    PopListener<WidgetStateEvent<DATA>>? onPop,
+    BlocListenerCondition<WidgetStateEvent<DATA>>? buildWhen,
     WidgetStateContextCallback<DATA>? drawer,
     WidgetStateContextCallback<DATA>? bottomNavigationBar,
     PreferredWidgetStateContextCallback<DATA>? appBar,
@@ -50,9 +50,9 @@ abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
     WidgetBuilder? loadingNoData,
     WidgetStateContextCallback<DATA>? floatingButton,
   }) {
-    return BlocConsumer<BLOC, WidgetStateEvent<DATA?>>(
+    return BlocConsumer<BLOC, WidgetStateEvent<DATA>>(
       bloc: bloc,
-      listener: (BuildContext context, WidgetStateEvent<DATA?> state) {
+      listener: (BuildContext context, WidgetStateEvent<DATA> state) {
         if (state.event != null) {
           switch (state.event?.name) {
             case AppDialogEvent.showFullLoadingLocked:
