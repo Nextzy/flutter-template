@@ -19,11 +19,20 @@ export '../examples/examples.dart';
 
 import 'package:change_application_name/application.dart';
 
-enum ApplicationEvent { goNamed }
-
 const platformChannel = MethodChannel('com.example/channel');
 
-/// The Widget that configures your application.
+class SetupApplication {
+  SetupApplication({
+    required this.packageInfo,
+    required this.connectivityResult,
+    required this.setting,
+  });
+
+  final PackageInfo packageInfo;
+  final List<ConnectivityResult> connectivityResult;
+  final SettingTableData setting;
+}
+
 class MyApplication extends AppStatefulWidget {
   const MyApplication({
     super.key = const Key('MyApplication'),
@@ -31,7 +40,6 @@ class MyApplication extends AppStatefulWidget {
     this.builder,
   });
 
-  static AppHttpClient get httpClient => AppHttpClient.instance;
   static const defaultThemeMode = ThemeMode.light;
 
   final Locale? locale;
@@ -65,6 +73,7 @@ class _MyApplicationState extends ApplicationState<MyApplication>
 
   Future<SetupApplication> setupApplication() async {
     AppHttpClient.instance.setupBaseUrl(AppEnv.instance.apiBaseUrl);
+    AppHttpClient.instance.setupCredential(apiKey: AppEnv.instance.apiKey);
 
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
@@ -84,7 +93,7 @@ class _MyApplicationState extends ApplicationState<MyApplication>
   @override
   Widget build(BuildContext context) {
     return ToastificationWrapper(
-      // For slang package
+      // For `slang` package
       child: TranslationProvider(
         child: SplashScreenPage(
           skipLoadingDebugMode: true,
@@ -109,10 +118,9 @@ class _MyApplicationState extends ApplicationState<MyApplication>
             child: BlocBuilder<SettingBloc, SettingTableData>(
               builder: (context, setting) => AnimatedBuilder(
                 animation: _controller,
-                builder: (BuildContext context, Widget? child) => //
+                builder: (BuildContext context, Widget? child) =>
                     BlocBuilder<AppRouterBloc, AppRouter>(
-                  builder: (context, AppRouter router) => //
-                      AppMaterialRoute(
+                  builder: (context, AppRouter router) => AppMaterialRoute(
                     debugShowCheckedModeBanner: false,
                     restorationScopeId: restorationId,
 

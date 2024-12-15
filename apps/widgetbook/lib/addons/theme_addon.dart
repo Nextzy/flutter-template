@@ -7,7 +7,7 @@ class AppThemeAddon extends ThemeAddon<AppThemeData> {
   }) : super(
           themeBuilder: (context, theme, child) {
             return ThemeApplication(
-              themeLight: AppTheme().lightTheme,
+              lightTheme: AppTheme().lightTheme,
               darkTheme: AppTheme().darkTheme,
               themeMode: theme.themeMode,
               child: Theme(

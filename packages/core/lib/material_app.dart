@@ -20,7 +20,7 @@ class AppMaterialRoute extends AppStatefulWidget {
     this.localizationsDelegates,
     this.localeListResolutionCallback,
     this.localeResolutionCallback,
-    this.supportedLocales = const <Locale>[Locale('en', 'US')],
+    this.supportedLocales = const <Locale>[Locale('en', 'GB')],
     this.debugShowMaterialGrid = false,
     this.showPerformanceOverlay = false,
     this.checkerboardRasterCacheImages = false,
@@ -69,7 +69,7 @@ class _AppMaterialRoute extends AppState<AppMaterialRoute> {
   Widget build(BuildContext context) {
     return ThemeApplication(
       themeMode: widget.themeMode,
-      themeLight: widget.theme?.lightTheme,
+      lightTheme: widget.theme?.lightTheme,
       darkTheme: widget.theme?.darkTheme,
       child: MaterialApp.router(
         scaffoldMessengerKey: widget.scaffoldMessengerKey,
@@ -113,28 +113,6 @@ class _AppMaterialRoute extends AppState<AppMaterialRoute> {
     );
   }
 
-  SystemUiOverlayStyle? _getSystemUIOverlayStyle(
-    BuildContext context, {
-    ThemeMode? themeMode,
-    AppThemeData? lightTheme,
-    AppThemeData? darkTheme,
-  }) {
-    final systemLightTheme = lightTheme?.systemOverlayStyle;
-    final systemDarkTheme = darkTheme?.systemOverlayStyle;
-    if (themeMode != null) {
-      switch (themeMode) {
-        case ThemeMode.system:
-          return isDarkTheme ? systemDarkTheme : systemLightTheme;
-        case ThemeMode.light:
-          return systemLightTheme;
-        case ThemeMode.dark:
-          return systemDarkTheme;
-      }
-    }
-
-    return null;
-  }
-
   Widget _flavorBanner({
     required Widget child,
     required String name,
@@ -161,12 +139,12 @@ class ThemeApplication extends InheritedWidget {
   const ThemeApplication({
     super.key,
     this.darkTheme,
-    this.themeLight,
+    this.lightTheme,
     required this.themeMode,
     required super.child,
   });
 
-  final AppThemeData? themeLight;
+  final AppThemeData? lightTheme;
   final AppThemeData? darkTheme;
   final ThemeMode? themeMode;
 
@@ -177,15 +155,15 @@ class ThemeApplication extends InheritedWidget {
       throw FlutterError(
           'ThemeApplication.of() called with a context that does not contain a ThemeApplication.');
     }
-    if (theme.darkTheme == null) return theme.themeLight!;
+    if (theme.darkTheme == null) return theme.lightTheme!;
 
     return (mode ?? theme.themeMode) == ThemeMode.dark
         ? theme.darkTheme!
-        : theme.themeLight!;
+        : theme.lightTheme!;
   }
 
   @override
   bool updateShouldNotify(covariant ThemeApplication oldWidget) {
-    return themeLight != oldWidget.themeLight;
+    return lightTheme != oldWidget.lightTheme;
   }
 }

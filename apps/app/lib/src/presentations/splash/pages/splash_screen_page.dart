@@ -1,17 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:change_application_name/application.dart';
 
-class SetupApplication {
-  SetupApplication({
-    required this.packageInfo,
-    required this.connectivityResult,
-    required this.setting,
-  });
 
-  final PackageInfo packageInfo;
-  final List<ConnectivityResult> connectivityResult;
-  final SettingTableData setting;
-}
 
 class SplashScreenPage extends AppPage {
   const SplashScreenPage({
