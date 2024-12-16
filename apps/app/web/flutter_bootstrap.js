@@ -1,7 +1,6 @@
 {{flutter_js}}
 {{flutter_build_config}}
 
-
 function removeProgressBar() {
   const progressBar = document.getElementById('progress-bar');
   progressBar.parentNode.removeChild(progressBar);
@@ -12,7 +11,11 @@ _flutter.loader.load({
     serviceWorkerVersion: {{flutter_service_worker_version}},
   },
   onEntrypointLoaded: async function(engineInitializer) {
-    (await engineInitializer.initializeEngine()).runApp();
+    (await engineInitializer.initializeEngine(
+    {
+        useColorEmoji: true,
+    }
+    )).runApp();
     removeProgressBar();
   }
 });

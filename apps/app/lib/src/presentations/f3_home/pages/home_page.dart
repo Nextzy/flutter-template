@@ -182,7 +182,7 @@ class _HomePageState
                         ),
                       ),
                       AppText(
-                        'You have pushed the button this many times:',
+                        '✅ ♥️ ⭐️ 🌍 You have pushed the button this many times:',
                         style: AppTextStyleBuilder.ui.s14.colorPrimary
                             .build(context),
                       ),
