@@ -71,7 +71,7 @@ class AppModal extends AppStatelessWidget {
             borderRadius: borderRadius ?? theme.borderRadius.md,
             dropShadow: theme.shadow.xl,
             children: [
-              _buildContent(
+              buildContent(
                 context,
                 content: content,
                 title: title,
@@ -81,7 +81,7 @@ class AppModal extends AppStatelessWidget {
                 feedbackState: feedbackState,
                 contentAlign: contentAlign,
               ),
-              _buildAction(context,
+              buildAction(context,
                   action: action,
                   feedbackState: feedbackState,
                   actionAlign: actionAlign,
@@ -109,7 +109,7 @@ class AppModal extends AppStatelessWidget {
     );
   }
 
-  Widget _buildContent(
+  Widget buildContent(
     BuildContext context, {
     required Widget? content,
     required String? title,
@@ -130,7 +130,7 @@ class AppModal extends AppStatelessWidget {
           RowLayout(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildFeedbackIcon(context, feedbackState: feedbackState),
+              buildFeedbackIcon(context, feedbackState: feedbackState),
             ],
           ),
         if (icon.isNotNullOrBlank) icon.toSvgIcon(size: 40.0),
@@ -167,7 +167,7 @@ class AppModal extends AppStatelessWidget {
     );
   }
 
-  Widget _buildFeedbackIcon(
+  Widget buildFeedbackIcon(
     BuildContext context, {
     required FeedbackState feedbackState,
   }) {
@@ -251,7 +251,7 @@ class AppModal extends AppStatelessWidget {
     }
   }
 
-  Widget _buildAction(
+  Widget buildAction(
     BuildContext context, {
     required Widget? action,
     required FeedbackState? feedbackState,
@@ -275,20 +275,20 @@ class AppModal extends AppStatelessWidget {
                     gap: 16.0,
                     children: [
                       if (onPrimaryPress != null)
-                        _buildPrimaryButton(
+                        buildPrimaryButton(
                           context,
                           text: buttonPrimaryText ?? '',
                           feedbackState: feedbackState,
                           onPress: onPrimaryPress,
                         ),
                       if (onSecondaryPress != null)
-                        _buildSecondaryButton(
+                        buildSecondaryButton(
                           context,
                           text: buttonSecondaryText ?? '',
                           onPress: onSecondaryPress,
                         ),
                       if (onTertiaryPress != null)
-                        _buildTertiaryButton(
+                        buildTertiaryButton(
                           context,
                           text: buttonTertiaryText ?? '',
                           expanded: true,
@@ -301,20 +301,20 @@ class AppModal extends AppStatelessWidget {
                     gap: 16.0,
                     children: [
                       if (onTertiaryPress != null)
-                        _buildTertiaryButton(
+                        buildTertiaryButton(
                           context,
                           text: buttonTertiaryText ?? '',
                           expanded: true,
                           onPress: onTertiaryPress,
                         ),
                       if (onSecondaryPress != null)
-                        _buildSecondaryButton(
+                        buildSecondaryButton(
                           context,
                           text: buttonSecondaryText ?? '',
                           onPress: onSecondaryPress,
                         ),
                       if (onPrimaryPress != null)
-                        _buildPrimaryButton(
+                        buildPrimaryButton(
                           context,
                           text: buttonPrimaryText ?? '',
                           feedbackState: feedbackState,
@@ -327,20 +327,20 @@ class AppModal extends AppStatelessWidget {
                     gap: 16.0,
                     children: [
                       if (onTertiaryPress != null)
-                        _buildTertiaryButton(
+                        buildTertiaryButton(
                           context,
                           text: buttonTertiaryText ?? '',
                           expanded: true,
                           onPress: onTertiaryPress,
                         ),
                       if (onSecondaryPress != null)
-                        _buildSecondaryButton(
+                        buildSecondaryButton(
                           context,
                           text: buttonSecondaryText ?? '',
                           onPress: onSecondaryPress,
                         ),
                       if (onPrimaryPress != null)
-                        _buildPrimaryButton(
+                        buildPrimaryButton(
                           context,
                           text: buttonPrimaryText ?? '',
                           feedbackState: feedbackState,
@@ -354,7 +354,7 @@ class AppModal extends AppStatelessWidget {
                     children: [
                       if (onTertiaryPress != null)
                         Expanded(
-                          child: _buildTertiaryButton(
+                          child: buildTertiaryButton(
                             context,
                             text: buttonTertiaryText ?? '',
                             expanded: true,
@@ -363,7 +363,7 @@ class AppModal extends AppStatelessWidget {
                         ),
                       if (onSecondaryPress != null)
                         Expanded(
-                          child: _buildSecondaryButton(
+                          child: buildSecondaryButton(
                             context,
                             text: buttonSecondaryText ?? '',
                             expanded: true,
@@ -372,7 +372,7 @@ class AppModal extends AppStatelessWidget {
                         ),
                       if (onPrimaryPress != null)
                         Expanded(
-                          child: _buildPrimaryButton(
+                          child: buildPrimaryButton(
                             context,
                             text: buttonPrimaryText ?? '',
                             expanded: true,
@@ -388,7 +388,7 @@ class AppModal extends AppStatelessWidget {
                     gap: 8.0,
                     children: [
                       if (onPrimaryPress != null)
-                        _buildPrimaryButton(
+                        buildPrimaryButton(
                           context,
                           expanded: true,
                           text: buttonPrimaryText ?? '',
@@ -396,14 +396,14 @@ class AppModal extends AppStatelessWidget {
                           onPress: onPrimaryPress,
                         ),
                       if (onSecondaryPress != null)
-                        _buildSecondaryButton(
+                        buildSecondaryButton(
                           context,
                           expanded: true,
                           text: buttonSecondaryText ?? '',
                           onPress: onSecondaryPress,
                         ),
                       if (onTertiaryPress != null)
-                        _buildTertiaryButton(
+                        buildTertiaryButton(
                           context,
                           text: buttonTertiaryText ?? '',
                           expanded: true,
@@ -417,7 +417,7 @@ class AppModal extends AppStatelessWidget {
                     children: [
                       if (onTertiaryPress != null)
                         Expanded(
-                          child: _buildTertiaryButton(
+                          child: buildTertiaryButton(
                             context,
                             text: buttonTertiaryText ?? '',
                             expanded: true,
@@ -426,7 +426,7 @@ class AppModal extends AppStatelessWidget {
                         ),
                       if (onSecondaryPress != null)
                         Expanded(
-                          child: _buildSecondaryButton(
+                          child: buildSecondaryButton(
                             context,
                             text: buttonSecondaryText ?? '',
                             expanded: true,
@@ -435,7 +435,7 @@ class AppModal extends AppStatelessWidget {
                         ),
                       if (onPrimaryPress != null)
                         Expanded(
-                          child: _buildPrimaryButton(
+                          child: buildPrimaryButton(
                             context,
                             text: buttonPrimaryText ?? '',
                             expanded: true,
@@ -449,7 +449,7 @@ class AppModal extends AppStatelessWidget {
         ],
       );
 
-  Widget _buildPrimaryButton(
+  Widget buildPrimaryButton(
     BuildContext context, {
     bool expanded = false,
     required String text,
@@ -470,7 +470,7 @@ class AppModal extends AppStatelessWidget {
               onPress: onPress,
             );
 
-  Widget _buildSecondaryButton(
+  Widget buildSecondaryButton(
     BuildContext context, {
     bool expanded = false,
     required String text,
@@ -483,7 +483,7 @@ class AppModal extends AppStatelessWidget {
         onPress: onPress,
       );
 
-  Widget _buildTertiaryButton(
+  Widget buildTertiaryButton(
     BuildContext context, {
     bool expanded = false,
     required String text,

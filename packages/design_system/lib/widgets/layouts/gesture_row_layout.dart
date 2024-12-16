@@ -134,7 +134,7 @@ class _GestureRowLayoutState extends State<GestureRowLayout> {
 
   @override
   Widget build(BuildContext context) =>
-      _buildScrollable(
+      buildScrollable(
         scrollable: widget.scrollable,
         child: GestureContainerLayout(
           key: widget.key,
@@ -181,7 +181,7 @@ class _GestureRowLayoutState extends State<GestureRowLayout> {
           onFocusChange: widget.onFocusChange,
           autofocus: widget.autofocus,
           statesController: widget.statesController,
-          child: _buildIntrinsic(
+          child: buildIntrinsic(
             height: widget.height,
             intrinsic: widget.crossAxisIntrinsic,
             child: Row(
@@ -202,7 +202,7 @@ class _GestureRowLayoutState extends State<GestureRowLayout> {
         ),
       );
 
-  Widget _buildScrollable({
+  Widget buildScrollable({
     required bool scrollable,
     required Widget child,
   }) =>
@@ -213,7 +213,7 @@ class _GestureRowLayoutState extends State<GestureRowLayout> {
             )
           : child;
 
-  Widget _buildIntrinsic({
+  Widget buildIntrinsic({
     required bool intrinsic,
     required double? height,
     required Widget child,

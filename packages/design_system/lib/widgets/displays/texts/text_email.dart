@@ -22,7 +22,7 @@ class AppEmailText extends AppStatelessWidget {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        children: _buildTextSpans(email),
+        children: buildTextSpans(email),
       ),
       textAlign: textAlign ?? TextAlign.start,
       overflow: overflow ?? TextOverflow.clip,
@@ -31,7 +31,7 @@ class AppEmailText extends AppStatelessWidget {
     );
   }
 
-  List<TextSpan> _buildTextSpans(String? email) {
+  List<TextSpan> buildTextSpans(String? email) {
     List<TextSpan> textSpans = [];
     if (email.isNullOrBlank) {
       return textSpans..add(TextSpan(text: '', style: style));

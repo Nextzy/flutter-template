@@ -56,7 +56,7 @@ class _ApiUseCasePage<A> extends StatelessWidget with Caller {
                   children: buildButtonList(this, api, snapshot.data),
                 ),
               ),
-              _buildResult(context, snapshot.data)
+              buildResult(context, snapshot.data)
             ],
           );
         },
@@ -64,7 +64,7 @@ class _ApiUseCasePage<A> extends StatelessWidget with Caller {
     );
   }
 
-  Widget _buildResult(BuildContext context, data) {
+  Widget buildResult(BuildContext context, data) {
     if (data == _loading) {
       return Container(
         color: Colors.grey.shade100,

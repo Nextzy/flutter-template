@@ -132,7 +132,7 @@ class GestureWrapLayout extends StatefulWidget {
 
 class _GestureWrapLayoutState extends State<GestureWrapLayout> {
   @override
-  Widget build(BuildContext context) => _buildScrollable(
+  Widget build(BuildContext context) => buildScrollable(
         scrollable: widget.scrollable,
         child: GestureContainerLayout(
           key: widget.key,
@@ -193,7 +193,7 @@ class _GestureWrapLayoutState extends State<GestureWrapLayout> {
         ),
       );
 
-  Widget _buildScrollable({
+  Widget buildScrollable({
     required bool scrollable,
     required Widget child,
   }) =>

@@ -63,7 +63,7 @@ class _RepositoryUseCasePageState<A> extends AppState<_RepositoryUseCasePage<A>>
                       widget.buildButtonList(this, widget.repo, snapshot.data),
                 ),
               ),
-              _buildResult(context, snapshot.data)
+              buildResult(context, snapshot.data)
             ],
           );
         },
@@ -71,7 +71,7 @@ class _RepositoryUseCasePageState<A> extends AppState<_RepositoryUseCasePage<A>>
     );
   }
 
-  Widget _buildResult(BuildContext context, data) {
+  Widget buildResult(BuildContext context, data) {
     if (data == _loading) {
       return Expanded(
         child: Container(

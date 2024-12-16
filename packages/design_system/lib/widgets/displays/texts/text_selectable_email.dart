@@ -20,7 +20,7 @@ class AppEmailSelectableText extends AppStatelessWidget {
     return SelectableText.rich(
     // return RichText(
        TextSpan(
-        children: _buildTextSpans(email),
+        children: buildTextSpans(email),
       ),
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
@@ -28,7 +28,7 @@ class AppEmailSelectableText extends AppStatelessWidget {
     );
   }
 
-  List<TextSpan> _buildTextSpans(String? email) {
+  List<TextSpan> buildTextSpans(String? email) {
     List<TextSpan> textSpans = [];
     if (email.isNullOrBlank) {
       return textSpans..add(TextSpan(text: '', style: style));

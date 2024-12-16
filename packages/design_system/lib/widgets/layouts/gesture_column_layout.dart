@@ -132,7 +132,7 @@ class _GestureColumnLayoutState extends State<GestureColumnLayout> {
 
   @override
   Widget build(BuildContext context) =>
-      _buildScrollable(
+      buildScrollable(
         scrollable: widget.scrollable,
         child: GestureContainerLayout(
           key: widget.key,
@@ -178,7 +178,7 @@ class _GestureColumnLayoutState extends State<GestureColumnLayout> {
           onFocusChange: widget.onFocusChange,
           autofocus: widget.autofocus,
           statesController: widget.statesController,
-          child: _buildIntrinsic(
+          child: buildIntrinsic(
             width: widget.width,
             intrinsic: widget.crossAxisIntrinsic,
             child: Column(
@@ -200,7 +200,7 @@ class _GestureColumnLayoutState extends State<GestureColumnLayout> {
         ),
       );
 
-  Widget _buildScrollable({
+  Widget buildScrollable({
     required bool scrollable,
     required Widget child,
   }) =>
@@ -211,7 +211,7 @@ class _GestureColumnLayoutState extends State<GestureColumnLayout> {
             )
           : child;
 
-  Widget _buildIntrinsic({
+  Widget buildIntrinsic({
     required bool intrinsic,
     required double? width,
     required Widget child,

@@ -37,10 +37,10 @@ import 'package:design_system/lib.dart';
 //             crossAxisAlignment: CrossAxisAlignment.center,
 //             gap: 64,
 //             children: [
-//               _buildNavItem(Assets.icon.creditCard02, 0),
-//               // _buildNavItem(AppAssets.iconList, 1),
-//               // _buildNavItem(AppAssets.iconUser01, 2),
-//               // _buildNavAvatarItem(1),
+//               buildNavItem(Assets.icon.creditCard02, 0),
+//               // buildNavItem(AppAssets.iconList, 1),
+//               // buildNavItem(AppAssets.iconUser01, 2),
+//               // buildNavAvatarItem(1),
 //             ],
 //           ),
 //         ),
@@ -48,7 +48,7 @@ import 'package:design_system/lib.dart';
 //     );
 //   }
 //
-//   Widget _buildNavItem(String icon, int index) {
+//   Widget buildNavItem(String icon, int index) {
 //     final backgroundColor = widget.selectIndex == index
 //         ? theme.color.brandPrimary.withOpacity(0.04)
 //         : null;
@@ -69,7 +69,7 @@ import 'package:design_system/lib.dart';
 //     );
 //   }
 //
-//   // Widget _buildNavAvatarItem(int index) {
+//   // Widget buildNavAvatarItem(int index) {
 //   //   return AppInkWell(
 //   //     child: FrameLayout(
 //   //       padding: const EdgeInsets.all(8),

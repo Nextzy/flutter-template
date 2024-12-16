@@ -49,7 +49,7 @@ class AppEmpty extends AppStatelessWidget {
         padding: padding,
         children: [
           if (icon != null && accent == AppEmptyAccent.medium)
-            _buildFeedbackIcon(
+            buildFeedbackIcon(
               context,
               feedbackState: feedbackState,
               icon: icon,
@@ -92,7 +92,7 @@ class AppEmpty extends AppStatelessWidget {
                     ),
                 ],
               ),
-              _buildAction(
+              buildAction(
                 context,
                 size: size,
                 action: action,
@@ -110,7 +110,7 @@ class AppEmpty extends AppStatelessWidget {
         ],
       );
 
-  Widget _buildAction(
+  Widget buildAction(
     BuildContext context, {
     required WidgetSize size,
     required Widget? action,
@@ -140,7 +140,7 @@ class AppEmpty extends AppStatelessWidget {
                 },
                 children: [
                   if (onPrimaryPress != null)
-                    _buildPrimaryButton(
+                    buildPrimaryButton(
                       context,
                       size: size,
                       text: buttonPrimaryText ?? '',
@@ -148,14 +148,14 @@ class AppEmpty extends AppStatelessWidget {
                       onPress: onPrimaryPress,
                     ),
                   if (onSecondaryPress != null)
-                    _buildSecondaryButton(
+                    buildSecondaryButton(
                       context,
                       size: size,
                       text: buttonSecondaryText ?? '',
                       onPress: onSecondaryPress,
                     ),
                   if (onTertiaryPress != null)
-                    _buildTertiaryButton(
+                    buildTertiaryButton(
                       context,
                       size: size,
                       text: buttonTertiaryText ?? '',
@@ -167,7 +167,7 @@ class AppEmpty extends AppStatelessWidget {
         ],
       );
 
-  Widget _buildFeedbackIcon(
+  Widget buildFeedbackIcon(
     BuildContext context, {
     required FeedbackState? feedbackState,
     required String? icon,
@@ -270,7 +270,7 @@ class AppEmpty extends AppStatelessWidget {
     }
   }
 
-  Widget _buildPrimaryButton(
+  Widget buildPrimaryButton(
     BuildContext context, {
     bool expanded = false,
     required WidgetSize size,
@@ -292,7 +292,7 @@ class AppEmpty extends AppStatelessWidget {
               onPress: onPress,
             );
 
-  Widget _buildSecondaryButton(
+  Widget buildSecondaryButton(
     BuildContext context, {
     required WidgetSize size,
     bool expanded = false,
@@ -306,7 +306,7 @@ class AppEmpty extends AppStatelessWidget {
         onPress: onPress,
       );
 
-  Widget _buildTertiaryButton(
+  Widget buildTertiaryButton(
     BuildContext context, {
     required WidgetSize size,
     required String text,

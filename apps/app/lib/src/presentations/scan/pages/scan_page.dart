@@ -49,7 +49,7 @@ class _ScanPageBlocState extends AppPageState<ScanPage> {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: _buildCameraAction(),
+              child: buildCameraAction(),
             ),
           ],
         ),
@@ -83,7 +83,7 @@ class _ScanPageBlocState extends AppPageState<ScanPage> {
     );
   }
 
-  Widget _buildCameraAction() {
+  Widget buildCameraAction() {
     return SafeArea(
       child: RowLayout(
         mainAxisSize: MainAxisSize.min,

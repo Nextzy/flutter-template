@@ -27,7 +27,7 @@ class DebugHelper<T> extends AppStatelessWidget {
               color: Colors.transparent,
               child: InkWell(
                 onTapDown: (detail) => _showDropdown(context, detail),
-                child: _buildHelperLabel(),
+                child: buildHelperLabel(),
               ),
             ),
           ),
@@ -37,7 +37,7 @@ class DebugHelper<T> extends AppStatelessWidget {
         : child;
   }
 
-  Container _buildHelperLabel() => Container(
+  Container buildHelperLabel() => Container(
     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
     decoration: BoxDecoration(color: Colors.orange.withValues(alpha: 0.7)),
     child: Text(

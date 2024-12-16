@@ -71,21 +71,21 @@ class ContainerLayout extends StatelessWidget {
   final Widget? child;
 
   @override
-  Widget build(BuildContext context) => _buildRotate(
+  Widget build(BuildContext context) => buildRotate(
         rotate: rotate,
         child: Opacity(
           opacity: opacity ?? 1.0,
-          child: _buildDropShadow(
+          child: buildDropShadow(
             context,
             decoration: decoration,
             borderRadius: borderRadius,
             dropShadow: dropShadow,
-            child: _buildClipRect(
+            child: buildClipRect(
               clipBehavior: clipBehavior,
               borderRadius: borderRadius,
-              child: _buildBlur(
+              child: buildBlur(
                 backgroundBlur: backgroundBlur,
-                child: _buildContent(
+                child: buildContent(
                   decoration: decoration,
                   alignment: alignment,
                   padding: padding,
@@ -107,7 +107,7 @@ class ContainerLayout extends StatelessWidget {
                   innerShadow: innerShadow,
                   transform: transform,
                   transformAlignment: transformAlignment,
-                  child: _buildRatio(
+                  child: buildRatio(
                     ratio: ratio,
                     child: child,
                   ),
@@ -118,7 +118,7 @@ class ContainerLayout extends StatelessWidget {
         ),
       );
 
-  Widget _buildRotate({
+  Widget buildRotate({
     required double? rotate,
     required Widget child,
   }) =>
@@ -130,7 +130,7 @@ class ContainerLayout extends StatelessWidget {
             )
           : child;
 
-  Widget? _buildRatio({
+  Widget? buildRatio({
     required double? ratio,
     required Widget? child,
   }) {
@@ -145,7 +145,7 @@ class ContainerLayout extends StatelessWidget {
         : child;
   }
 
-  Widget _buildDropShadow(
+  Widget buildDropShadow(
     BuildContext context, {
     required BoxDecoration? decoration,
     required BorderRadiusGeometry? borderRadius,
@@ -164,7 +164,7 @@ class ContainerLayout extends StatelessWidget {
             )
           : child;
 
-  Widget _buildClipRect({
+  Widget buildClipRect({
     required Clip clipBehavior,
     required BorderRadiusGeometry? borderRadius,
     required Widget child,
@@ -178,7 +178,7 @@ class ContainerLayout extends StatelessWidget {
               child: child,
             );
 
-  Widget _buildBlur({
+  Widget buildBlur({
     required ImageFilter? backgroundBlur,
     required Widget child,
   }) =>
@@ -190,7 +190,7 @@ class ContainerLayout extends StatelessWidget {
             )
           : child;
 
-  Widget _buildContent({
+  Widget buildContent({
     required BoxDecoration? decoration,
     required AlignmentGeometry? alignment,
     required EdgeInsetsGeometry? padding,
@@ -241,14 +241,28 @@ class ContainerLayout extends StatelessWidget {
           border: decoration?.border ?? border,
         ),
         decoration: BoxDecoration(
-          color: decoration?.color ?? backgroundColor,
+          color: innerShadow.isEmptyOrNull
+              ? decoration?.color ?? backgroundColor
+              : null,
           gradient: decoration?.gradient ?? backgroundGradient,
           image: decoration?.image ?? backgroundImage,
           borderRadius: decoration?.borderRadius ?? borderRadius,
           boxShadow: [
-            if (innerShadow.isNotEmptyOrNull)
-              BoxShadow(color: decoration?.color ?? backgroundColor!),
-            ...?innerShadow
+            if (innerShadow.isNotEmptyOrNull) ...[
+              ...?innerShadow?.map(
+                (shadow) => BoxShadow(color: shadow.color),
+              ),
+              ...?innerShadow?.map(
+                (shadow) => BoxShadow(
+                    color: decoration?.color ??
+                        backgroundColor ??
+                        Colors.transparent,
+                    blurRadius: shadow.blurRadius,
+                    spreadRadius: shadow.spreadRadius,
+                    offset: shadow.offset),
+              ),
+            ],
+            // ...?innerShadow,
           ],
         ),
         transform: transform,

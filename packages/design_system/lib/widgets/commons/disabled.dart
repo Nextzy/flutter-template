@@ -13,7 +13,7 @@ class Disabled extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) => _buildOpacity(
+  Widget build(BuildContext context) => buildOpacity(
         disabled: disabled,
         opacity: disabledOpacity,
         child: IgnorePointer(
@@ -26,7 +26,7 @@ class Disabled extends StatelessWidget {
         ),
       );
 
-  Widget _buildOpacity({
+  Widget buildOpacity({
     required bool disabled,
     required double opacity,
     required Widget child,

@@ -40,14 +40,14 @@ class DeviceInfoDialog extends StatelessWidget {
         return SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              _buildTile(
+              buildTile(
                 'Physical device: ',
                 device?.isPhysicalDevice.toString(),
               ),
-              _buildTile('Device: ', device?.name),
-              _buildTile('Model: ', device?.model),
-              _buildTile('System name: ', device?.systemName),
-              _buildTile('System version: ', device?.systemVersion),
+              buildTile('Device: ', device?.name),
+              buildTile('Model: ', device?.model),
+              buildTile('System name: ', device?.systemName),
+              buildTile('System version: ', device?.systemVersion),
             ],
           ),
         );
@@ -70,22 +70,22 @@ class DeviceInfoDialog extends StatelessWidget {
               return SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
-                    _buildTile('App name: ', package?.appName),
-                    _buildTile('Version: ',
+                    buildTile('App name: ', package?.appName),
+                    buildTile('Version: ',
                         '${package?.version} (${package?.buildNumber})'),
-                    _buildTile('Package name: ', package?.packageName),
+                    buildTile('Package name: ', package?.packageName),
                     Space.gap24,
-                    _buildTile('Android version: ', device?.version.release),
-                    _buildTile(
+                    buildTile('Android version: ', device?.version.release),
+                    buildTile(
                         'Android SDK: ', device?.version.sdkInt.toString()),
-                    _buildTile(
+                    buildTile(
                       'Physical device: ',
                       device?.isPhysicalDevice.toString(),
                     ),
-                    _buildTile('Manufacturer: ', device?.manufacturer),
-                    _buildTile('Model: ', device?.model),
-                    _buildTile('Device: ', device?.device),
-                    _buildTile('Hardware: ', device?.hardware),
+                    buildTile('Manufacturer: ', device?.manufacturer),
+                    buildTile('Model: ', device?.model),
+                    buildTile('Device: ', device?.device),
+                    buildTile('Hardware: ', device?.hardware),
                   ],
                 ),
               );
@@ -94,7 +94,7 @@ class DeviceInfoDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildTile(String key, String? value) {
+  Widget buildTile(String key, String? value) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Row(

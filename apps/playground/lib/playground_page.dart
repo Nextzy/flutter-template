@@ -13,12 +13,12 @@ class _PlaygroundState extends AppState<PlaygroundPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: _buildPlayground(),
+        body: buildPlayground(),
       ),
     );
   }
 
-  Widget _buildPlayground() {
+  Widget buildPlayground() {
     //TODO: Playground code
     return ContainerLayout(
       padding: Space.insetAll20,

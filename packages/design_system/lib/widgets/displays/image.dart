@@ -65,22 +65,22 @@ class AppImage extends AppStatelessWidget {
     if (path.isNullOrBlank) {
       return placeholderBuilder != null
           ? placeholderBuilder!.call(context, width, height)
-          : _buildPlaceholderDefault(context);
+          : buildPlaceholderDefault(context);
     }
 
     if (path.isUrl) {
       // Fetch from network
       if (path?.toLowerCase().endsWith('.svg') == true) {
-        image = _buildSvgNetwork(context, path: path!);
+        image = buildSvgNetwork(context, path: path!);
       } else {
-        image = _buildImageNetwork(context, path: path!);
+        image = buildImageNetwork(context, path: path!);
       }
     } else {
       // Fetch from local
       if (path?.toLowerCase().endsWith('.svg') == true) {
-        image = _buildSvgLocal(context, path: path!);
+        image = buildSvgLocal(context, path: path!);
       } else {
-        image = _buildImageLocal(context, path: path!);
+        image = buildImageLocal(context, path: path!);
       }
     }
 
@@ -104,7 +104,7 @@ class AppImage extends AppStatelessWidget {
     );
   }
 
-  Widget _buildSvgLocal(
+  Widget buildSvgLocal(
     BuildContext context, {
     required String path,
   }) {
@@ -122,7 +122,7 @@ class AppImage extends AppStatelessWidget {
         allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
         placeholderBuilder: placeholderBuilder != null
             ? (context) => placeholderBuilder!.call(context, width, height)
-            : (context) => _buildPlaceholderDefault(context),
+            : (context) => buildPlaceholderDefault(context),
         semanticsLabel: semanticLabel,
         theme: theme,
         colorFilter: colorFilter,
@@ -132,11 +132,11 @@ class AppImage extends AppStatelessWidget {
       );
     } catch (error, stacktrace) {
       return errorBuilder?.call(context, width, height, error, stacktrace) ??
-          _buildErrorDefault(context);
+          buildErrorDefault(context);
     }
   }
 
-  Widget _buildImageLocal(
+  Widget buildImageLocal(
     BuildContext context, {
     required String path,
   }) {
@@ -148,7 +148,7 @@ class AppImage extends AppStatelessWidget {
         errorBuilder: errorBuilder != null
             ? (context, error, stackTrace) =>
                 errorBuilder!.call(context, width, height, error, stackTrace)
-            : (context, error, stackTrace) => _buildErrorDefault(context),
+            : (context, error, stackTrace) => buildErrorDefault(context),
         semanticLabel: semanticLabel,
         excludeFromSemantics: excludeFromSemantics,
         width: width,
@@ -164,11 +164,11 @@ class AppImage extends AppStatelessWidget {
       );
     } catch (error, stacktrace) {
       return errorBuilder?.call(context, width, height, error, stacktrace) ??
-          _buildErrorDefault(context);
+          buildErrorDefault(context);
     }
   }
 
-  Widget _buildSvgNetwork(
+  Widget buildSvgNetwork(
     BuildContext context, {
     required String path,
   }) {
@@ -184,7 +184,7 @@ class AppImage extends AppStatelessWidget {
         allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
         placeholderBuilder: placeholderBuilder != null
             ? (context) => placeholderBuilder!.call(context, width, height)
-            : (context) => _buildPlaceholderDefault(context),
+            : (context) => buildPlaceholderDefault(context),
         semanticsLabel: semanticLabel,
         theme: theme,
         colorFilter: colorFilter,
@@ -194,11 +194,11 @@ class AppImage extends AppStatelessWidget {
       );
     } catch (error, stacktrace) {
       return errorBuilder?.call(context, width, height, error, stacktrace) ??
-          _buildErrorDefault(context);
+          buildErrorDefault(context);
     }
   }
 
-  Widget _buildImageNetwork(
+  Widget buildImageNetwork(
     BuildContext context, {
     required String path,
   }) {
@@ -216,19 +216,19 @@ class AppImage extends AppStatelessWidget {
                 ? loadingBuilder!.call(context, width, height)
                 : placeholderBuilder != null
                     ? placeholderBuilder!.call(context, width, height)
-                    : _buildLoadingDefault(context);
+                    : buildLoadingDefault(context);
           case LoadState.completed:
             return null; // Return null to display the image
           case LoadState.failed:
             return errorBuilder != null
                 ? errorBuilder!.call(context, width, height, null, null)
-                : _buildErrorDefault(context);
+                : buildErrorDefault(context);
         }
       },
     );
   }
 
-  Widget _buildLoadingDefault(BuildContext context) {
+  Widget buildLoadingDefault(BuildContext context) {
     return Container(
       color: context.theme.color.bgSurface2,
       width: width,
@@ -236,7 +236,7 @@ class AppImage extends AppStatelessWidget {
     );
   }
 
-  Widget _buildPlaceholderDefault(BuildContext context) {
+  Widget buildPlaceholderDefault(BuildContext context) {
     return Container(
       color: context.theme.color.bgSurface2,
       width: width,
@@ -253,7 +253,7 @@ class AppImage extends AppStatelessWidget {
     );
   }
 
-  Widget _buildErrorDefault(BuildContext context) {
+  Widget buildErrorDefault(BuildContext context) {
     return Container(
       color: context.theme.color.bgSurface2,
       width: width,

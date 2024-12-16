@@ -53,7 +53,7 @@ class AppSingleInlineAlert extends AppStatelessWidget {
       ),
       children: [
         if (showIcon)
-          _buildIcon(
+          buildIcon(
             context,
             size: size,
             feedbackState: feedbackState,
@@ -107,7 +107,7 @@ class AppSingleInlineAlert extends AppStatelessWidget {
           ),
         ),
         if (onPrimaryPress != null || onSecondaryPress != null)
-          _buildDefaultAction(
+          buildDefaultAction(
             context,
             size: size,
             feedbackState: feedbackState,
@@ -130,7 +130,7 @@ class AppSingleInlineAlert extends AppStatelessWidget {
     );
   }
 
-  Widget _buildIcon(
+  Widget buildIcon(
     BuildContext context, {
     required WidgetSize size,
     required FeedbackState feedbackState,
@@ -159,7 +159,7 @@ class AppSingleInlineAlert extends AppStatelessWidget {
           ),
       };
 
-  Widget _buildDefaultAction(
+  Widget buildDefaultAction(
     BuildContext context, {
     required WidgetSize size,
     required FeedbackState feedbackState,

@@ -125,21 +125,21 @@ class AppIcon extends AppStatelessWidget {
     if (path.isUrl) {
       // Fetch from network
       if (path.toLowerCase().endsWith('.svg')) {
-        return _buildSvgNetwork(context);
+        return buildSvgNetwork(context);
       } else {
-        return _buildImageNetwork(context);
+        return buildImageNetwork(context);
       }
     } else {
       // Fetch from local
       if (path.toLowerCase().endsWith('.svg')) {
-        return _buildSvgLocal(context);
+        return buildSvgLocal(context);
       } else {
-        return _buildImageLocal(context);
+        return buildImageLocal(context);
       }
     }
   }
 
-  Widget _buildImageLocal(BuildContext context) {
+  Widget buildImageLocal(BuildContext context) {
     try {
       return Image.asset(
         path,
@@ -148,7 +148,7 @@ class AppIcon extends AppStatelessWidget {
         errorBuilder: _errorBuilder != null
             ? (context, error, stackTrace) => _errorBuilder!.call(
                 context, _customSize ?? _getSize(_size), error, stackTrace)
-            : (context, error, stackTrace) => _buildErrorDefault(context),
+            : (context, error, stackTrace) => buildErrorDefault(context),
         semanticLabel: _semanticLabel,
         excludeFromSemantics: _excludeFromSemantics,
         width: _customSize ?? _getSize(_size),
@@ -165,11 +165,11 @@ class AppIcon extends AppStatelessWidget {
     } catch (error, stacktrace) {
       return _errorBuilder?.call(
               context, _customSize ?? _getSize(_size), error, stacktrace) ??
-          _buildErrorDefault(context);
+          buildErrorDefault(context);
     }
   }
 
-  Widget _buildImageNetwork(BuildContext context) {
+  Widget buildImageNetwork(BuildContext context) {
     return ExtendedImage.network(
       path,
       height: _customSize ?? _getSize(_size),
@@ -185,20 +185,20 @@ class AppIcon extends AppStatelessWidget {
                 : _placeholderBuilder != null
                     ? _placeholderBuilder!
                         .call(context, _customSize ?? _getSize(_size))
-                    : _buildLoadingDefault(context);
+                    : buildLoadingDefault(context);
           case LoadState.completed:
             return null; // Return null to display the image
           case LoadState.failed:
             return _errorBuilder != null
                 ? _errorBuilder!
                     .call(context, _customSize ?? _getSize(_size), null, null)
-                : _buildErrorDefault(context);
+                : buildErrorDefault(context);
         }
       },
     );
   }
 
-  Widget _buildSvgLocal(BuildContext context) {
+  Widget buildSvgLocal(BuildContext context) {
     try {
       return SvgPicture.asset(
         path,
@@ -214,7 +214,7 @@ class AppIcon extends AppStatelessWidget {
         placeholderBuilder: _placeholderBuilder != null
             ? (context) => _placeholderBuilder!
                 .call(context, _customSize ?? _getSize(_size))
-            : (context) => _buildPlaceholderDefault(context),
+            : (context) => buildPlaceholderDefault(context),
         semanticsLabel: _semanticLabel,
         theme: _svgTheme,
         colorFilter: _colorFilter,
@@ -225,11 +225,11 @@ class AppIcon extends AppStatelessWidget {
     } catch (error, stacktrace) {
       return _errorBuilder?.call(
               context, _customSize ?? _getSize(_size), error, stacktrace) ??
-          _buildErrorDefault(context);
+          buildErrorDefault(context);
     }
   }
 
-  Widget _buildSvgNetwork(BuildContext context) {
+  Widget buildSvgNetwork(BuildContext context) {
     try {
       return SvgPicture.network(
         path,
@@ -243,7 +243,7 @@ class AppIcon extends AppStatelessWidget {
         placeholderBuilder: _placeholderBuilder != null
             ? (context) => _placeholderBuilder!
                 .call(context, _customSize ?? _getSize(_size))
-            : (context) => _buildPlaceholderDefault(context),
+            : (context) => buildPlaceholderDefault(context),
         semanticsLabel: _semanticLabel,
         theme: _svgTheme,
         colorFilter: _colorFilter,
@@ -254,7 +254,7 @@ class AppIcon extends AppStatelessWidget {
     } catch (error, stacktrace) {
       return _errorBuilder?.call(
               context, _customSize ?? _getSize(_size), error, stacktrace) ??
-          _buildErrorDefault(context);
+          buildErrorDefault(context);
     }
   }
 
@@ -322,15 +322,15 @@ class AppIcon extends AppStatelessWidget {
         theme: theme ?? this.theme,
       );
 
-  Widget _buildLoadingDefault(BuildContext context) {
-    return _buildPlaceholderDefault(context);
+  Widget buildLoadingDefault(BuildContext context) {
+    return buildPlaceholderDefault(context);
   }
 
-  Widget _buildPlaceholderDefault(BuildContext context) {
+  Widget buildPlaceholderDefault(BuildContext context) {
     return Container();
   }
 
-  Widget _buildErrorDefault(BuildContext context) {
-    return _buildPlaceholderDefault(context);
+  Widget buildErrorDefault(BuildContext context) {
+    return buildPlaceholderDefault(context);
   }
 }

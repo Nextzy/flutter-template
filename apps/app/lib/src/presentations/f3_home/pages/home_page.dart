@@ -117,11 +117,10 @@ class _HomePageState
                     border: Border.all(
                       color: Colors.black,
                       width: 2.0,
-                      strokeAlign: BorderSide.strokeAlignInside,
+                      strokeAlign: BorderSide.strokeAlignCenter,
                     ),
                     borderRadius: BorderRadius.circular(16),
                     gap: 20,
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
                     dropShadow: [
                       BoxShadow(
                         blurRadius: 8,
@@ -138,9 +137,9 @@ class _HomePageState
                     ],
                     innerShadow: [
                       BoxShadow(
-                        color: Colors.white.withValues(alpha: 0.2),
-                        spreadRadius: -4,
+                        color: Colors.white.withValues(alpha: 0.5),
                         blurRadius: 12,
+                        spreadRadius: -8,
                       ),
                     ],
                     children: [
@@ -170,7 +169,7 @@ class _HomePageState
                     border: Border.all(
                       color: Colors.black,
                       width: 1,
-                      strokeAlign: BorderSide.strokeAlignInside,
+                      strokeAlign: BorderSide.strokeAlignCenter,
                     ),
                     borderRadius: BorderRadius.circular(16),
                     gap: 20,
@@ -202,7 +201,7 @@ class _HomePageState
                       border: Border.all(
                         color: Colors.black,
                         width: 1,
-                        strokeAlign: BorderSide.strokeAlignOutside,
+                        strokeAlign: BorderSide.strokeAlignCenter,
                       ),
                       borderRadius: BorderRadius.circular(16),
                     ),

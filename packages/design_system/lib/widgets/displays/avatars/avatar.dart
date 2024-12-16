@@ -105,7 +105,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
       backgroundColor: style == WidgetStyle.filled
           ? (color ?? theme.color.brandPrimary)
           : (color ?? theme.color.brandPrimary).withValues(alpha: 0.1),
-      child: _buildContent(
+      child: buildContent(
         context,
         path: path,
         style: style,
@@ -116,7 +116,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
     );
   }
 
-  Widget _buildContent(
+  Widget buildContent(
     BuildContext context, {
     required String? path,
     required WidgetStyle style,

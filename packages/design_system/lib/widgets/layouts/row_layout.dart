@@ -94,7 +94,7 @@ class RowLayout extends StatelessWidget {
         maxWidth: maxWidth,
         minHeight: minHeight,
         maxHeight: maxHeight,
-        child: _buildScrollable(
+        child: buildScrollable(
           scrollable: scrollable,
           child: ContainerLayout(
             key: key,
@@ -117,7 +117,7 @@ class RowLayout extends StatelessWidget {
             dropShadow: dropShadow,
             backgroundBlur: backgroundBlur,
             transform: transform,
-            child: _buildIntrinsic(
+            child: buildIntrinsic(
               height: height,
               intrinsic: crossAxisIntrinsic,
               child: Row(
@@ -139,7 +139,7 @@ class RowLayout extends StatelessWidget {
         ),
       );
 
-  Widget _buildScrollable({
+  Widget buildScrollable({
     required bool scrollable,
     required Widget child,
   }) =>
@@ -151,7 +151,7 @@ class RowLayout extends StatelessWidget {
             )
           : child;
 
-  Widget _buildIntrinsic({
+  Widget buildIntrinsic({
     required bool intrinsic,
     required double? height,
     required Widget child,

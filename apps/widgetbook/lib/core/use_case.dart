@@ -62,7 +62,7 @@ class UseCasePageState<U> extends State<_UseCasePage<U>> {
                 padding: Space.insetAll16,
                 child: widget.buildButton(this, widget.usecase, snapshot.data),
               ),
-              _buildResult(context, snapshot.data)
+              buildResult(context, snapshot.data)
             ],
           );
         },
@@ -70,7 +70,7 @@ class UseCasePageState<U> extends State<_UseCasePage<U>> {
     );
   }
 
-  Widget _buildResult(BuildContext context, data) {
+  Widget buildResult(BuildContext context, data) {
     if (data == _loading) {
       return Expanded(
         child: Container(

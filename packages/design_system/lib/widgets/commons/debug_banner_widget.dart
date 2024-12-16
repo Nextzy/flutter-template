@@ -14,12 +14,12 @@ class DebugBannerView extends StatelessWidget {
       alignment: Alignment.topRight,
       children: <Widget>[
         child,
-        _buildBanner(context),
+        buildBanner(context),
       ],
     );
   }
 
-  Widget _buildBanner(BuildContext context) {
+  Widget buildBanner(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onLongPress: () {

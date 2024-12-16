@@ -89,7 +89,7 @@ class WrapLayout extends StatelessWidget {
   final List<Widget> children;
 
   @override
-  Widget build(BuildContext context) => _buildScrollable(
+  Widget build(BuildContext context) => buildScrollable(
         scrollable: scrollable,
         child: ContainerLayout(
           key: key,
@@ -133,7 +133,7 @@ class WrapLayout extends StatelessWidget {
         ),
       );
 
-  Widget _buildScrollable({
+  Widget buildScrollable({
     required bool scrollable,
     required Widget child,
   }) =>

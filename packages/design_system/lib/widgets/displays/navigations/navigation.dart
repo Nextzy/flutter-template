@@ -50,14 +50,14 @@ class AppTopNavigationBar extends AppStatelessWidget
           backgroundColor:
               _getBackgroundColor(context, type: type, color: backgroundColor),
           leadingWidth: paddingValue + 40 + paddingValue,
-          leading: _buildLeading(
+          leading: buildLeading(
             context,
             type: type,
             leadWidgets: _leadWidgets,
             disabled: disabled,
           ),
           centerTitle: true,
-          title: _buildContent(
+          title: buildContent(
             context,
             type: type,
             logoUri: logoUri,
@@ -71,7 +71,7 @@ class AppTopNavigationBar extends AppStatelessWidget
   }
 
   ///========================= PRIVATE METHOD =========================///
-  Widget _buildContent(
+  Widget buildContent(
     BuildContext context, {
     required AppNavigationType type,
     required Uri logoUri,
@@ -103,7 +103,7 @@ class AppTopNavigationBar extends AppStatelessWidget
             : const SizedBox()
       };
 
-  Widget? _buildLeading(
+  Widget? buildLeading(
     BuildContext context, {
     required AppNavigationType type,
     required bool disabled,

@@ -85,11 +85,11 @@ class AppText extends AppStatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (strokeWidth <= 0.0 && textSpan == null) {
-      return _buildText();
+      return buildText();
     } else if (strokeWidth > 0.0 && textSpan == null) {
       return Stack(
         children: [
-          _buildText(
+          buildText(
             style: (style ?? const TextStyle()).merge(
               TextStyle(
                 foreground: Paint()
@@ -99,15 +99,15 @@ class AppText extends AppStatelessWidget {
               ),
             ),
           ),
-          _buildText(),
+          buildText(),
         ],
       );
     } else if (strokeWidth <= 0.0 && textSpan != null) {
-      return _buildTextRich();
+      return buildTextRich();
     } else if (strokeWidth > 0.0 && textSpan != null) {
       return Stack(
         children: [
-          _buildTextRich(
+          buildTextRich(
             textSpan: TextSpan(
               text: textSpan?.text,
               children: textSpan!.children
@@ -140,7 +140,7 @@ class AppText extends AppStatelessWidget {
               spellOut: textSpan?.spellOut,
             ),
           ),
-          _buildTextRich(),
+          buildTextRich(),
         ],
       );
     } else {
@@ -148,7 +148,7 @@ class AppText extends AppStatelessWidget {
     }
   }
 
-  Text _buildTextRich({TextSpan? textSpan, TextStyle? style}) {
+  Text buildTextRich({TextSpan? textSpan, TextStyle? style}) {
     return Text.rich(
       textSpan ?? this.textSpan!,
       style: style ?? this.style,
@@ -167,7 +167,7 @@ class AppText extends AppStatelessWidget {
     );
   }
 
-  Widget _buildText({TextStyle? style}) {
+  Widget buildText({TextStyle? style}) {
     return Text(
       data ?? '',
       style: style ?? this.style,

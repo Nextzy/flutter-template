@@ -74,7 +74,7 @@ class _SplashScreenState extends AppState<SplashScreenPage>
                         ? widget.firstAnimateDuration
                         : widget.secondAnimateDuration,
                 child: snapshot.data == null
-                    ? _buildSplashScreen(context)
+                    ? buildSplashScreen(context)
                     : widget.builder(context, snapshot.data![0]),
               ),
             ),
@@ -82,7 +82,7 @@ class _SplashScreenState extends AppState<SplashScreenPage>
         });
   }
 
-  Widget _buildSplashScreen(BuildContext context) => MaterialApp(
+  Widget buildSplashScreen(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: _theme.toThemeData(),
         home: AnnotatedRegion(

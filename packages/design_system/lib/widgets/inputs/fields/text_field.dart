@@ -347,7 +347,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                   ),
                   children: [
                     if (widget.prefixText.isNotNullOrBlank)
-                      _buildPrefixText(
+                      buildPrefixText(
                         context,
                         text: widget.prefixText,
                         borderRadius: widget.borderRadius,
@@ -356,7 +356,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                       widget.startWidget!,
                       verticalDivider,
                     ],
-                    _buildIcon(
+                    buildIcon(
                       disabled: widget.disabled,
                       size: widget.size,
                       icon: widget.startIcon,
@@ -429,13 +429,13 @@ class _AppTextFieldState extends AppState<AppTextField> {
                                   )
                                 : const SizedBox(),
                       ),
-                    _buildIcon(
+                    buildIcon(
                       disabled: widget.disabled,
                       size: widget.size,
                       icon: widget.endIcon,
                     ),
                     if (widget.endTextButton != null)
-                      _buildButton(
+                      buildButton(
                         context,
                         size: widget.size,
                         endTextButton: widget.endTextButton,
@@ -451,7 +451,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                       verticalDivider,
                     ],
                     if (widget.suffixText.isNotNullOrBlank)
-                      _buildSuffixText(
+                      buildSuffixText(
                         context,
                         text: widget.suffixText,
                         borderRadius: widget.borderRadius,
@@ -481,7 +481,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
   }
 
   ///========================= PRIVATE METHOD =========================///
-  Widget _buildPrefixText(
+  Widget buildPrefixText(
     BuildContext context, {
     required String? text,
     required BorderRadius? borderRadius,
@@ -535,7 +535,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     );
   }
 
-  Widget _buildSuffixText(
+  Widget buildSuffixText(
     BuildContext context, {
     required String? text,
     required BorderRadius? borderRadius,
@@ -589,7 +589,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     );
   }
 
-  Widget _buildButton(
+  Widget buildButton(
     BuildContext context, {
     required WidgetSize size,
     required String? endTextButton,
@@ -700,7 +700,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     );
   }
 
-  Widget _buildIcon({
+  Widget buildIcon({
     required bool disabled,
     required WidgetSize size,
     required String? icon,

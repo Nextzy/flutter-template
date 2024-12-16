@@ -49,7 +49,7 @@ class AppCallout extends AppStatelessWidget {
       ),
       children: [
         if (icon.isNotNullOrEmpty)
-          _buildIcon(
+          buildIcon(
             context,
             icon: icon!,
             size: size,
@@ -98,7 +98,7 @@ class AppCallout extends AppStatelessWidget {
                 ],
               ),
               if (onPrimaryPress != null || onSecondaryPress != null)
-                _buildDefaultAction(
+                buildDefaultAction(
                   context,
                   size: size,
                   accent: accent,
@@ -114,7 +114,7 @@ class AppCallout extends AppStatelessWidget {
     );
   }
 
-  Widget _buildIcon(
+  Widget buildIcon(
     BuildContext context, {
     required String icon,
     required WidgetSize size,
@@ -125,7 +125,7 @@ class AppCallout extends AppStatelessWidget {
         color: _getContentColor(context, accent: accent),
       );
 
-  Widget _buildDefaultAction(
+  Widget buildDefaultAction(
     BuildContext context, {
     required WidgetSize size,
     required AppCalloutAccent accent,

@@ -157,7 +157,7 @@ class _GestureContainerLayoutState extends State<GestureContainerLayout> {
               dropShadow: widget.dropShadow,
               backgroundBlur: widget.backgroundBlur,
               transform: widget.transform,
-              child: _buildInkWell(
+              child: buildInkWell(
                 context,
                 disabledPressAnimation: widget.disabledPressAnimation,
                 borderRadius: widget.borderRadius,
@@ -201,7 +201,7 @@ class _GestureContainerLayoutState extends State<GestureContainerLayout> {
         ),
       );
 
-  Widget? _buildInkWell(
+  Widget? buildInkWell(
     BuildContext context, {
     required bool disabled,
     required bool disabledPressAnimation,
