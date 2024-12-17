@@ -25,3 +25,4 @@ export 'debug_helper.dart';
 export 'scaffold.dart';
 export 'exit_app.dart';
 export 'web_zoom.dart';
+export 'long_hover_detector.dart';

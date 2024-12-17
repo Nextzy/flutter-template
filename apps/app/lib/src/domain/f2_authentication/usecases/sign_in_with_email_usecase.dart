@@ -13,7 +13,7 @@ class SignInWithEmailAndPasswordUsecase {
   }) =>
       _repo
           .signInWithEmailPassword(email: email, password: password)
-          .mapEitherException(
+          .mapEitherFailure(
             (exception) => Failure.fromException(exception),
           );
 }

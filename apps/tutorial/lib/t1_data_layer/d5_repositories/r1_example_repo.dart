@@ -11,16 +11,16 @@ class ExampleRepository {
   final ExampleRemoteDataSources _remoteDatasource;
   final ExampleLocalDataSources _localDatasource;
 
-  Future<Either<Exception, bool>> signInWithEmailPasswordFuture({
+  Future<Either<AppException, bool>> signInWithEmailPasswordFuture({
     required String email,
     required String password,
   }) =>
       _remoteDatasource
           .signInWithEmailPassword(email: email, password: password)
           .then((value) => true)
-          .toEitherException();
+          .toEitherAppException();
 
-  Stream<Either<Exception, bool>> signInWithEmailPassword({
+  Stream<Either<AppException, bool>> signInWithEmailPassword({
     required String email,
     required String password,
   }) =>
@@ -34,9 +34,9 @@ class ExampleRepository {
           refreshToken: response.refreshToken,
         ),
         processResponse: (response) => true,
-      );
+      ).mapEitherAppException();
 
-  Stream<Either<Exception, List<ExampleMovieTableData>>> getMovieList() =>
+  Stream<Either<AppException, List<ExampleMovieTableData>>> getMovieList() =>
       DatasourceBoundState.asStream<ExampleRemoteMovieListResponse,
           List<ExampleMovieTableData>>(
         loadFromDbFuture: () => _localDatasource.loadMovieList(),
@@ -59,5 +59,5 @@ class ExampleRepository {
                 )
                 .toList() ??
             [],
-      );
+      ).mapEitherAppException();
 }

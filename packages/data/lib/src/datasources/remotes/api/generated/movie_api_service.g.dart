@@ -23,7 +23,10 @@ class _MovieApiService implements MovieApiService {
 
   @override
   Future<HttpResponse<RemoteMovieListResponse>> getHighLightMovieList() async {
-    final _extra = <String, dynamic>{'requiredAuth': true};
+    final _extra = <String, dynamic>{
+      'requiredAuth': true,
+      'mockId': 1,
+    };
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -58,7 +61,10 @@ class _MovieApiService implements MovieApiService {
 
   @override
   Future<HttpResponse<RemoteMovieListResponse>> getTrendMovieList() async {
-    final _extra = <String, dynamic>{'requiredAuth': true};
+    final _extra = <String, dynamic>{
+      'requiredAuth': true,
+      'mockId': 1,
+    };
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

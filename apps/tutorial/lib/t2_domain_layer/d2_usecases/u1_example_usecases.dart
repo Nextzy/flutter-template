@@ -17,12 +17,20 @@ class ExampleSignInWithEmailAndPasswordUsecase {
   }) =>
       _repo
           .signInWithEmailPassword(email: email, password: password)
-          .mapEitherException(
-            (exception) => Failure.fromException(exception),
-          );
+          .mapEitherFailure(
+        (exception) {
+          /// ⭐️ Implement send failure logic to presentation layer
+          if (exception.isClientException) {
+            ClientFailure(message: Strings.common.fail.general);
+          } else if (exception.isServerException) {
+            ServerFailure(message: Strings.common.fail.general);
+          }
+          return CommonFailure(message: Strings.common.fail.general);
+        },
+      );
 }
 
-class ExampleGetMovieListUsecase {
+class ExampleGetMovieListUsecase extends BaseUsecase {
   ExampleGetMovieListUsecase({
     ExampleRepository? repo,
   }) : _repo = repo ?? ExampleRepository();
@@ -31,10 +39,12 @@ class ExampleGetMovieListUsecase {
 
   Stream<Either<Failure, MovieListEntity>> call() =>
       _repo.getMovieList().mapEitherWithFailure(
-            /// ⭐️ Convert data to Entity in usecase
-            (data) => MovieListEntity.fromTableDataList(data),
+        /// ⭐️ Convert data to Entity in usecase
+        (data) => MovieListEntity.fromTableDataList(data),
 
-            /// ⭐️ Convert exception to Failure in usecase
-            (exception) => Failure.fromException(exception),
-          );
+        /// ⭐️ Convert exception to Failure in usecase
+        (exception) {
+          return getFailure(exception);
+        },
+      );
 }

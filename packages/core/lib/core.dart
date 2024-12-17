@@ -26,6 +26,7 @@ export 'package:newrelic_mobile/newrelic_mobile.dart';
 
 export 'blocs/blocs.dart';
 export 'catcher/catcher.dart';
+export 'failures/failures.dart';
 export 'material_app.dart';
 export 'constants/constants.dart';
 export 'notifications/notifications.dart';
