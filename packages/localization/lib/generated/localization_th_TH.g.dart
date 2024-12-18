@@ -51,6 +51,7 @@ class _TranslationsCommonThTh extends TranslationsCommonEnGb {
 	@override late final _TranslationsCommonButtonThTh button = _TranslationsCommonButtonThTh._(_root);
 	@override late final _TranslationsCommonSuccessThTh success = _TranslationsCommonSuccessThTh._(_root);
 	@override late final _TranslationsCommonFailThTh fail = _TranslationsCommonFailThTh._(_root);
+	@override late final _TranslationsCommonAlertThTh alert = _TranslationsCommonAlertThTh._(_root);
 }
 
 // Path: auth
@@ -137,6 +138,16 @@ class _TranslationsCommonFailThTh extends TranslationsCommonFailEnGb {
 	@override String get network => 'ข้อผิดพลาดเครือข่าย โปรดตรวจสอบการเชื่อมต่อ';
 }
 
+// Path: common.alert
+class _TranslationsCommonAlertThTh extends TranslationsCommonAlertEnGb {
+	_TranslationsCommonAlertThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsCommonAlertInfoThTh info = _TranslationsCommonAlertInfoThTh._(_root);
+}
+
 // Path: auth.button
 class _TranslationsAuthButtonThTh extends TranslationsAuthButtonEnGb {
 	_TranslationsAuthButtonThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
@@ -147,6 +158,16 @@ class _TranslationsAuthButtonThTh extends TranslationsAuthButtonEnGb {
 	@override String get signInWithGoogle => 'Sign in with Google';
 	@override String get signInWithFacebook => 'Sign in with Facebook';
 	@override String get signInWithApple => 'Sign in with Apple';
+}
+
+// Path: common.alert.info
+class _TranslationsCommonAlertInfoThTh extends TranslationsCommonAlertInfoEnGb {
+	_TranslationsCommonAlertInfoThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get doubleTapExit => 'กดอีกครั้งเพื่อออกจากแอป';
 }
 
 /// Flat map(s) containing all translations.
@@ -183,6 +204,7 @@ extension on TranslationsThTh {
 			case 'common.fail.general': return 'เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง';
 			case 'common.fail.updated': return 'อัพเดทไม่สำเร็จ โปรดลองใหม่อีกครั้ง';
 			case 'common.fail.network': return 'ข้อผิดพลาดเครือข่าย โปรดตรวจสอบการเชื่อมต่อ';
+			case 'common.alert.info.doubleTapExit': return 'กดอีกครั้งเพื่อออกจากแอป';
 			case 'auth.button.signInWithGoogle': return 'Sign in with Google';
 			case 'auth.button.signInWithFacebook': return 'Sign in with Facebook';
 			case 'auth.button.signInWithApple': return 'Sign in with Apple';

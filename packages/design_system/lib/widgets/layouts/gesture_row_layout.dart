@@ -37,6 +37,8 @@ class GestureRowLayout extends StatefulWidget {
     this.crossAxisIntrinsic = false,
     this.gap,
     this.scrollable = false,
+    this.animate,
+    this.animateDuration,
     //=== InkWell ===//
     this.showFocus = true,
     this.disabledPressAnimation = false,
@@ -86,6 +88,8 @@ class GestureRowLayout extends StatefulWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+  final bool? animate;
+  final Duration? animateDuration;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -131,10 +135,8 @@ class GestureRowLayout extends StatefulWidget {
 }
 
 class _GestureRowLayoutState extends State<GestureRowLayout> {
-
   @override
-  Widget build(BuildContext context) =>
-      buildScrollable(
+  Widget build(BuildContext context) => buildScrollable(
         scrollable: widget.scrollable,
         child: GestureContainerLayout(
           key: widget.key,
@@ -181,6 +183,8 @@ class _GestureRowLayoutState extends State<GestureRowLayout> {
           onFocusChange: widget.onFocusChange,
           autofocus: widget.autofocus,
           statesController: widget.statesController,
+          animate: widget.animate,
+          animateDuration: widget.animateDuration,
           child: buildIntrinsic(
             height: widget.height,
             intrinsic: widget.crossAxisIntrinsic,

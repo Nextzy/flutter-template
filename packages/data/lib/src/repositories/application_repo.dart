@@ -15,7 +15,7 @@ class AppRepository {
   final MovieRemoteDatasources _movieRemoteDatasource;
   final DatabaseLocalDataSources _localDatasource;
 
-  Stream<Either<Exception, bool>> signInWithEmailPassword({
+  Stream<Either<AppException, bool>> signInWithEmailPassword({
     required String email,
     required String password,
   }) =>
@@ -29,9 +29,9 @@ class AppRepository {
           refreshToken: response.refreshToken,
         ),
         processResponse: (response) => true,
-      );
+      ).mapEitherAppException();
 
-  Stream<Either<Exception, List<MovieTableData>>> getMovieList() =>
+  Stream<Either<AppException, List<MovieTableData>>> getMovieList() =>
       DatasourceBoundState.asStream<
           ({
             RemoteMovieListResponse hightLightMovieList,
@@ -63,5 +63,5 @@ class AppRepository {
               ),
             )
             .toList(),
-      );
+      ).mapEitherAppException();
 }

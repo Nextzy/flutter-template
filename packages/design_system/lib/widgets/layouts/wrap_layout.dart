@@ -38,6 +38,8 @@ class WrapLayout extends StatelessWidget {
     this.clipBehavior = Clip.none,
     this.gap,
     this.scrollable = false,
+    this.animate,
+    this.animateDuration,
     required this.children,
   });
 
@@ -84,6 +86,8 @@ class WrapLayout extends StatelessWidget {
   final Clip clipBehavior;
   final double? gap;
   final bool scrollable;
+  final bool? animate;
+  final Duration? animateDuration;
 
   ///===== Child Widget ======///
   final List<Widget> children;
@@ -118,6 +122,8 @@ class WrapLayout extends StatelessWidget {
           dropShadow: dropShadow,
           backgroundBlur: backgroundBlur,
           transform: transform,
+          animate: animate,
+          animateDuration: animateDuration,
           child: Wrap(
             direction: direction,
             alignment: alignment,

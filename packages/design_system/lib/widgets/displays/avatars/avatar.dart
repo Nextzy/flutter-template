@@ -80,8 +80,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
       widget.theme?.onLongPress ?? widget.onLongPress;
 
   bool get hasImageUri =>
-      widget.path != null ||
-      widget.path.isNotNullOrBlank == true;
+      widget.path != null || widget.path.isNotNullOrBlank == true;
 
   double get avatarSize => switch (widget.size) {
         WidgetSize.xxs => throw UnimplementedError(),
@@ -126,7 +125,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
   }) {
     if (hasImageUri) {
       return AppImage(
-         path: path!,
+        path: path!,
         borderRadius: BorderRadius.zero,
       );
     }

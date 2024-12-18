@@ -54,7 +54,7 @@ class AppAccessTokenInterceptor extends Interceptor {
     if (isCatchError(response)) {
       onTokenResponse(response, handler);
     } else {
-      _retryCounter = 0;
+      _resetCounter();
       super.onResponse(response, handler);
     }
   }
@@ -64,7 +64,7 @@ class AppAccessTokenInterceptor extends Interceptor {
     if (isCatchError(err.response)) {
       onTokenError(err, handler);
     } else {
-      _retryCounter = 0;
+      _resetCounter();
       super.onError(err, handler);
     }
   }
@@ -81,9 +81,11 @@ class AppAccessTokenInterceptor extends Interceptor {
         final newResponse = await _reFetchOldService(response.requestOptions);
         handler.resolve(newResponse);
       } catch (error) {
-        super.onResponse(response, handler);
+        _retryCounter += 1;
+        onTokenResponse(response, handler);
       }
     } else {
+      _resetCounter();
       handler.reject(
         DioException(
           requestOptions: response.requestOptions,
@@ -95,7 +97,6 @@ class AppAccessTokenInterceptor extends Interceptor {
         ),
       );
     }
-    _retryCounter += 1;
   }
 
   Future<void> onTokenError(
@@ -111,13 +112,16 @@ class AppAccessTokenInterceptor extends Interceptor {
             await _reFetchOldService(err.response?.requestOptions);
         handler.resolve(newResponse);
       } catch (error) {
-        super.onError(err, handler);
+        _retryCounter += 1;
+        onTokenError(err, handler);
       }
     } else {
+      _resetCounter();
       handler.reject(err);
     }
-    _retryCounter += 1;
   }
+
+  void _resetCounter() => _retryCounter = 0;
 
   Future<Response> _reFetchOldService(RequestOptions? requestOptions) =>
       _dio.fetch<Map<String, dynamic>>(

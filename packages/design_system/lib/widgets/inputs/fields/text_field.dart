@@ -321,6 +321,8 @@ class _AppTextFieldState extends AppState<AppTextField> {
         FullWidgetStateBuilder(
             create: stateNotifier,
             builder: (context, widgetState, snapshot) => GestureRowLayout(
+                  animate: true,
+                  animateDuration: 50.milliseconds,
                   disabledPressAnimation: true,
                   crossAxisIntrinsic: true,
                   disabled: widget.disabled,

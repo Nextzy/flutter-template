@@ -18,27 +18,17 @@ class FocusSpread extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: AnimatedSwitcher(
-            duration: 120.milliseconds,
-            child: focus
-                ? Container(
-                    decoration: BoxDecoration(
-                      color: color,
-                      borderRadius: BorderRadius.circular(
-                          (borderRadius?.maxRadius ?? 0) + spread / 2),
-                      boxShadow: [
-                        if (focus) _createBoxShadow(context),
-                      ],
-                    ),
-                  )
-                : null,
-          ),
-        ),
-        child,
-      ],
+    return AnimatedContainer(
+      duration: 120.milliseconds,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius:
+            BorderRadius.circular((borderRadius?.maxRadius ?? 0) + spread / 2),
+        boxShadow: [
+          if (focus) _createBoxShadow(context),
+        ],
+      ),
+      child: child,
     );
   }
 

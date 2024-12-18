@@ -30,6 +30,8 @@ class ContainerLayout extends StatelessWidget {
     this.backgroundBlur,
     this.transform,
     this.transformAlignment,
+    this.animate,
+    this.animateDuration,
     this.child,
   });
 
@@ -61,6 +63,8 @@ class ContainerLayout extends StatelessWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+  final bool? animate;
+  final Duration? animateDuration;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -77,6 +81,8 @@ class ContainerLayout extends StatelessWidget {
           opacity: opacity ?? 1.0,
           child: buildDropShadow(
             context,
+            animate: animate,
+            animateDuration: animateDuration,
             decoration: decoration,
             borderRadius: borderRadius,
             dropShadow: dropShadow,
@@ -86,6 +92,8 @@ class ContainerLayout extends StatelessWidget {
               child: buildBlur(
                 backgroundBlur: backgroundBlur,
                 child: buildContent(
+                  animate: animate,
+                  animateDuration: animateDuration,
                   decoration: decoration,
                   alignment: alignment,
                   padding: padding,
@@ -147,14 +155,18 @@ class ContainerLayout extends StatelessWidget {
 
   Widget buildDropShadow(
     BuildContext context, {
+    required bool? animate,
+    required Duration? animateDuration,
     required BoxDecoration? decoration,
     required BorderRadiusGeometry? borderRadius,
     required List<BoxShadow>? dropShadow,
     required Widget child,
   }) =>
       (dropShadow != null)
-          ? Container(
+          ? buildContainer(
               key: key,
+              animate: animate,
+              animateDuration: animateDuration,
               decoration: BoxDecoration(
                 color: context.theme.color.bg,
                 borderRadius: borderRadius,
@@ -191,6 +203,8 @@ class ContainerLayout extends StatelessWidget {
           : child;
 
   Widget buildContent({
+    required bool? animate,
+    required Duration? animateDuration,
     required BoxDecoration? decoration,
     required AlignmentGeometry? alignment,
     required EdgeInsetsGeometry? padding,
@@ -214,8 +228,10 @@ class ContainerLayout extends StatelessWidget {
     required AlignmentGeometry? transformAlignment,
     required Widget? child,
   }) =>
-      Container(
+      buildContainer(
         key: key,
+        animate: animate,
+        animateDuration: animateDuration,
         alignment: alignment,
         margin: margin,
         height: height,
@@ -273,4 +289,57 @@ class ContainerLayout extends StatelessWidget {
           child: child ?? const SizedBox(),
         ),
       );
+
+  Widget buildContainer({
+    Key? key,
+    bool? animate = false,
+    Duration? animateDuration = const Duration(milliseconds: 100),
+    AlignmentGeometry? alignment,
+    EdgeInsetsGeometry? padding,
+    BoxDecoration? decoration,
+    BoxDecoration? foregroundDecoration,
+    double? width,
+    double? height,
+    BoxConstraints? constraints,
+    EdgeInsetsGeometry? margin,
+    Color? color,
+    Matrix4? transform,
+    AlignmentGeometry? transformAlignment,
+    Clip clipBehavior = Clip.none,
+    Widget? child,
+  }) =>
+      animate == true
+          ? AnimatedContainer(
+              key: key,
+              duration: animateDuration ?? const Duration(milliseconds: 100),
+              alignment: alignment,
+              padding: padding,
+              decoration: decoration,
+              foregroundDecoration: foregroundDecoration,
+              width: width,
+              height: height,
+              constraints: constraints,
+              margin: margin,
+              color: color,
+              transform: transform,
+              transformAlignment: transformAlignment,
+              clipBehavior: clipBehavior,
+              child: child,
+            )
+          : Container(
+              key: key,
+              alignment: alignment,
+              padding: padding,
+              decoration: decoration,
+              foregroundDecoration: foregroundDecoration,
+              width: width,
+              height: height,
+              constraints: constraints,
+              margin: margin,
+              color: color,
+              transform: transform,
+              transformAlignment: transformAlignment,
+              clipBehavior: clipBehavior,
+              child: child,
+            );
 }

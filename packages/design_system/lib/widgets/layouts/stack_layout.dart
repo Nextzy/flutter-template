@@ -32,6 +32,8 @@ class StackLayout extends StatelessWidget {
     this.fit = StackFit.loose,
     this.textDirection,
     this.scrollable = false,
+    this.animate,
+    this.animateDuration,
     required this.children,
   });
 
@@ -61,6 +63,8 @@ class StackLayout extends StatelessWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+  final bool? animate;
+  final Duration? animateDuration;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -106,6 +110,8 @@ class StackLayout extends StatelessWidget {
           dropShadow: dropShadow,
           backgroundBlur: backgroundBlur,
           transform: transform,
+          animate: animate,
+          animateDuration: animateDuration,
           child: Stack(
             textDirection: textDirection,
             fit: fit,

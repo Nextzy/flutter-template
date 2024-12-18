@@ -53,6 +53,7 @@ class TranslationsCommonEnGb {
 	late final TranslationsCommonButtonEnGb button = TranslationsCommonButtonEnGb.internal(_root);
 	late final TranslationsCommonSuccessEnGb success = TranslationsCommonSuccessEnGb.internal(_root);
 	late final TranslationsCommonFailEnGb fail = TranslationsCommonFailEnGb.internal(_root);
+	late final TranslationsCommonAlertEnGb alert = TranslationsCommonAlertEnGb.internal(_root);
 }
 
 // Path: auth
@@ -139,6 +140,16 @@ class TranslationsCommonFailEnGb {
 	String get network => 'Network error. Please check your connection';
 }
 
+// Path: common.alert
+class TranslationsCommonAlertEnGb {
+	TranslationsCommonAlertEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsCommonAlertInfoEnGb info = TranslationsCommonAlertInfoEnGb.internal(_root);
+}
+
 // Path: auth.button
 class TranslationsAuthButtonEnGb {
 	TranslationsAuthButtonEnGb.internal(this._root);
@@ -149,6 +160,16 @@ class TranslationsAuthButtonEnGb {
 	String get signInWithGoogle => 'Sign in with Google';
 	String get signInWithFacebook => 'Sign in with Facebook';
 	String get signInWithApple => 'Sign in with Apple';
+}
+
+// Path: common.alert.info
+class TranslationsCommonAlertInfoEnGb {
+	TranslationsCommonAlertInfoEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get doubleTapExit => 'Press back again to exit';
 }
 
 /// Flat map(s) containing all translations.
@@ -185,6 +206,7 @@ extension on Translations {
 			case 'common.fail.general': return 'An error occurred. Please try again later';
 			case 'common.fail.updated': return 'Update failed. Please try again later';
 			case 'common.fail.network': return 'Network error. Please check your connection';
+			case 'common.alert.info.doubleTapExit': return 'Press back again to exit';
 			case 'auth.button.signInWithGoogle': return 'Sign in with Google';
 			case 'auth.button.signInWithFacebook': return 'Sign in with Facebook';
 			case 'auth.button.signInWithApple': return 'Sign in with Apple';

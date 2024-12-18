@@ -37,6 +37,8 @@ class GestureColumnLayout extends StatefulWidget {
     this.textBaseline,
     this.gap,
     this.scrollable = false,
+    this.animate,
+    this.animateDuration,
     //=== InkWell ===//
     this.disabledPressAnimation = false,
     this.showFocus = true,
@@ -85,6 +87,8 @@ class GestureColumnLayout extends StatefulWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+  final bool? animate;
+  final Duration? animateDuration;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -178,6 +182,8 @@ class _GestureColumnLayoutState extends State<GestureColumnLayout> {
           onFocusChange: widget.onFocusChange,
           autofocus: widget.autofocus,
           statesController: widget.statesController,
+          animate: widget.animate,
+          animateDuration: widget.animateDuration,
           child: buildIntrinsic(
             width: widget.width,
             intrinsic: widget.crossAxisIntrinsic,

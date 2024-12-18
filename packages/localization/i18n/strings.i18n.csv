@@ -1,4 +1,4 @@
-key,th_TH,en_GB
+"""key""",th_TH,en_GB
 common.title.confirmation,ยืนยัน,Confirmation
 common.title.forceUpdate,อัพเดทเวอร์ชันใหม่,Force Update
 common.title.softUpdate,มีอัพเดทใหม่,Update Available
@@ -28,6 +28,7 @@ common.fail.saved,บันทึกไม่สำเร็จ โปรดล�
 common.fail.general,เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง,An error occurred. Please try again later
 common.fail.updated,อัพเดทไม่สำเร็จ โปรดลองใหม่อีกครั้ง,Update failed. Please try again later
 common.fail.network,ข้อผิดพลาดเครือข่าย โปรดตรวจสอบการเชื่อมต่อ,Network error. Please check your connection
+common.alert.info.doubleTapExit,กดอีกครั้งเพื่อออกจากแอป,Press back again to exit
 auth.button.signInWithGoogle,Sign in with Google,Sign in with Google
 auth.button.signInWithFacebook,Sign in with Facebook,Sign in with Facebook
 auth.button.signInWithApple,Sign in with Apple,Sign in with Apple

@@ -30,6 +30,8 @@ class GestureContainerLayout extends StatefulWidget {
     this.backgroundBlur,
     this.transform,
     this.transformAlignment,
+    this.animate,
+    this.animateDuration,
     //=== InkWell ===//
     this.disabledPressAnimation = false,
     this.showFocus = true,
@@ -81,6 +83,8 @@ class GestureContainerLayout extends StatefulWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+  final bool? animate;
+  final Duration? animateDuration;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -157,6 +161,8 @@ class _GestureContainerLayoutState extends State<GestureContainerLayout> {
               dropShadow: widget.dropShadow,
               backgroundBlur: widget.backgroundBlur,
               transform: widget.transform,
+              animate: widget.animate,
+              animateDuration: widget.animateDuration,
               child: buildInkWell(
                 context,
                 disabledPressAnimation: widget.disabledPressAnimation,

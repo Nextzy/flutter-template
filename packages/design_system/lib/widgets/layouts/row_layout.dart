@@ -37,6 +37,8 @@ class RowLayout extends StatelessWidget {
     this.crossAxisIntrinsic = false,
     this.gap,
     this.scrollable = false,
+    this.animate,
+    this.animateDuration,
     required this.children,
   });
 
@@ -66,6 +68,8 @@ class RowLayout extends StatelessWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+  final bool? animate;
+  final Duration? animateDuration;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -117,6 +121,8 @@ class RowLayout extends StatelessWidget {
             dropShadow: dropShadow,
             backgroundBlur: backgroundBlur,
             transform: transform,
+            animate: animate,
+            animateDuration: animateDuration,
             child: buildIntrinsic(
               height: height,
               intrinsic: crossAxisIntrinsic,

@@ -50,6 +50,7 @@ dependencies:
   #animations: ^2.0.11 # Material motion is a set of transition patterns that help users understand and navigate an app
   #animated_text_kit: ^4.2.2
   #expansion_tile_list: ^1.0.2
+  #home_widget: ^0.7.0 # HomeWidget is a plugin to make it easier to create HomeScreen Widgets on Android and iOS
 
 dependency_overrides:
   # Fixed http_parser

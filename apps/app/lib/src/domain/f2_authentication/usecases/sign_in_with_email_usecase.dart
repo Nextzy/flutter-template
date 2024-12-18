@@ -1,6 +1,6 @@
 import 'package:change_application_name/application.dart';
 
-class SignInWithEmailAndPasswordUsecase {
+class SignInWithEmailAndPasswordUsecase extends BaseUsecase {
   SignInWithEmailAndPasswordUsecase({
     AppRepository? repo,
   }) : _repo = repo ?? AppRepository();
@@ -14,6 +14,8 @@ class SignInWithEmailAndPasswordUsecase {
       _repo
           .signInWithEmailPassword(email: email, password: password)
           .mapEitherFailure(
-            (exception) => Failure.fromException(exception),
-          );
+        (exception) {
+          return getFailure(exception);
+        },
+      );
 }

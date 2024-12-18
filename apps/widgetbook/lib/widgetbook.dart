@@ -29,7 +29,7 @@ class ApplicationWidgetbook extends StatelessWidget {
             ],
             builder: AppBreakpoint.createBuilder,
             home: SafeArea(
-              child: child,
+              child: WebZoom(child: child),
             ),
           ),
         );
