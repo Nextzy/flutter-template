@@ -34,6 +34,8 @@ class GestureStackLayout extends StatefulWidget {
     this.scrollable = false,
     this.animate,
     this.animateDuration,
+    this.animateCurve,
+    this.onEndAnimate,
     //=== InkWell ===//
     this.showFocus = true,
     this.disabledPressAnimation = false,
@@ -82,8 +84,12 @@ class GestureStackLayout extends StatefulWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+
+  ///===== Animate ======///
   final bool? animate;
   final Duration? animateDuration;
+  final Curve? animateCurve;
+  final VoidCallback? onEndAnimate;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -172,6 +178,8 @@ class _GestureStackLayoutState extends State<GestureStackLayout> {
           statesController: widget.statesController,
           animate: widget.animate,
           animateDuration: widget.animateDuration,
+          animateCurve: widget.animateCurve,
+          onEndAnimate: widget.onEndAnimate,
           child: Stack(
             textDirection: widget.textDirection,
             fit: widget.fit,

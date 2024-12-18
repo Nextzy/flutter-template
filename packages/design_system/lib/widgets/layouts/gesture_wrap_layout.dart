@@ -40,6 +40,8 @@ class GestureWrapLayout extends StatefulWidget {
     this.scrollable = false,
     this.animate,
     this.animateDuration,
+    this.animateCurve,
+    this.onEndAnimate,
     //=== InkWell ===//
     this.showFocus = true,
     this.disabledPressAnimation = false,
@@ -87,8 +89,12 @@ class GestureWrapLayout extends StatefulWidget {
   final Gradient? foregroundGradient;
   final DecorationImage? foregroundImage;
   final double? opacity;
+
+  ///===== Animate ======///
   final bool? animate;
   final Duration? animateDuration;
+  final Curve? animateCurve;
+  final VoidCallback? onEndAnimate;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -184,6 +190,8 @@ class _GestureWrapLayoutState extends State<GestureWrapLayout> {
           statesController: widget.statesController,
           animate: widget.animate,
           animateDuration: widget.animateDuration,
+          animateCurve: widget.animateCurve,
+          onEndAnimate: widget.onEndAnimate,
           child: Wrap(
             direction: widget.direction,
             alignment: widget.alignment,

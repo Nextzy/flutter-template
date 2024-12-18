@@ -19,7 +19,7 @@ class FocusSpread extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: 120.milliseconds,
+      duration: 100.milliseconds,
       decoration: BoxDecoration(
         color: color,
         borderRadius:

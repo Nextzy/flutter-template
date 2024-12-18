@@ -39,6 +39,8 @@ class ColumnLayout extends StatelessWidget {
     this.scrollable = false,
     this.animate,
     this.animateDuration,
+    this.animateCurve,
+    this.onEndAnimate,
     required this.children,
   });
 
@@ -68,8 +70,12 @@ class ColumnLayout extends StatelessWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+
+  ///===== Animate ======///
   final bool? animate;
   final Duration? animateDuration;
+  final Curve? animateCurve;
+  final VoidCallback? onEndAnimate;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -123,6 +129,8 @@ class ColumnLayout extends StatelessWidget {
             transform: transform,
             animate: animate,
             animateDuration: animateDuration,
+            animateCurve: animateCurve,
+            onEndAnimate: onEndAnimate,
             child: buildIntrinsic(
               width: width,
               intrinsic: crossAxisIntrinsic,

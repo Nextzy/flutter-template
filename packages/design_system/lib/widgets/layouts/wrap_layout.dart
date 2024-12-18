@@ -40,6 +40,8 @@ class WrapLayout extends StatelessWidget {
     this.scrollable = false,
     this.animate,
     this.animateDuration,
+    this.animateCurve,
+    this.onEndAnimate,
     required this.children,
   });
 
@@ -69,6 +71,12 @@ class WrapLayout extends StatelessWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
 
+  ///===== Animate ======///
+  final bool? animate;
+  final Duration? animateDuration;
+  final Curve? animateCurve;
+  final VoidCallback? onEndAnimate;
+
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
   final List<BoxShadow>? dropShadow;
@@ -86,8 +94,6 @@ class WrapLayout extends StatelessWidget {
   final Clip clipBehavior;
   final double? gap;
   final bool scrollable;
-  final bool? animate;
-  final Duration? animateDuration;
 
   ///===== Child Widget ======///
   final List<Widget> children;
@@ -124,6 +130,8 @@ class WrapLayout extends StatelessWidget {
           transform: transform,
           animate: animate,
           animateDuration: animateDuration,
+          animateCurve: animateCurve,
+          onEndAnimate: onEndAnimate,
           child: Wrap(
             direction: direction,
             alignment: alignment,

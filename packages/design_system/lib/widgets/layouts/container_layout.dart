@@ -32,6 +32,8 @@ class ContainerLayout extends StatelessWidget {
     this.transformAlignment,
     this.animate,
     this.animateDuration,
+    this.animateCurve,
+    this.onEndAnimate,
     this.child,
   });
 
@@ -63,8 +65,12 @@ class ContainerLayout extends StatelessWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+
+  ///===== Animate ======///
   final bool? animate;
   final Duration? animateDuration;
+  final Curve? animateCurve;
+  final VoidCallback? onEndAnimate;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
@@ -77,12 +83,14 @@ class ContainerLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) => buildRotate(
         rotate: rotate,
-        child: Opacity(
-          opacity: opacity ?? 1.0,
-          child: buildDropShadow(
+        child: buildOpacity(
+          opacity: opacity,
+          child: buildDropDownShadow(
             context,
             animate: animate,
             animateDuration: animateDuration,
+            animateCurve: animateCurve,
+            onEndAnimate: onEndAnimate,
             decoration: decoration,
             borderRadius: borderRadius,
             dropShadow: dropShadow,
@@ -94,6 +102,8 @@ class ContainerLayout extends StatelessWidget {
                 child: buildContent(
                   animate: animate,
                   animateDuration: animateDuration,
+                  animateCurve: animateCurve,
+                  onEndAnimate: onEndAnimate,
                   decoration: decoration,
                   alignment: alignment,
                   padding: padding,
@@ -126,6 +136,17 @@ class ContainerLayout extends StatelessWidget {
         ),
       );
 
+  Widget buildOpacity({
+    required double? opacity,
+    required Widget child,
+  }) =>
+      (opacity != null && opacity < 1.0)
+          ? Opacity(
+              opacity: opacity,
+              child: child,
+            )
+          : child;
+
   Widget buildRotate({
     required double? rotate,
     required Widget child,
@@ -153,10 +174,12 @@ class ContainerLayout extends StatelessWidget {
         : child;
   }
 
-  Widget buildDropShadow(
+  Widget buildDropDownShadow(
     BuildContext context, {
     required bool? animate,
     required Duration? animateDuration,
+    required Curve? animateCurve,
+    required VoidCallback? onEndAnimate,
     required BoxDecoration? decoration,
     required BorderRadiusGeometry? borderRadius,
     required List<BoxShadow>? dropShadow,
@@ -167,6 +190,8 @@ class ContainerLayout extends StatelessWidget {
               key: key,
               animate: animate,
               animateDuration: animateDuration,
+              animateCurve: animateCurve,
+              onEndAnimate: onEndAnimate,
               decoration: BoxDecoration(
                 color: context.theme.color.bg,
                 borderRadius: borderRadius,
@@ -203,8 +228,6 @@ class ContainerLayout extends StatelessWidget {
           : child;
 
   Widget buildContent({
-    required bool? animate,
-    required Duration? animateDuration,
     required BoxDecoration? decoration,
     required AlignmentGeometry? alignment,
     required EdgeInsetsGeometry? padding,
@@ -226,12 +249,18 @@ class ContainerLayout extends StatelessWidget {
     required List<BoxShadow>? innerShadow,
     required Matrix4? transform,
     required AlignmentGeometry? transformAlignment,
+    required bool? animate,
+    required Duration? animateDuration,
+    required Curve? animateCurve,
+    required VoidCallback? onEndAnimate,
     required Widget? child,
   }) =>
       buildContainer(
         key: key,
         animate: animate,
         animateDuration: animateDuration,
+        animateCurve: animateCurve,
+        onEndAnimate: onEndAnimate,
         alignment: alignment,
         margin: margin,
         height: height,
@@ -292,8 +321,6 @@ class ContainerLayout extends StatelessWidget {
 
   Widget buildContainer({
     Key? key,
-    bool? animate = false,
-    Duration? animateDuration = const Duration(milliseconds: 100),
     AlignmentGeometry? alignment,
     EdgeInsetsGeometry? padding,
     BoxDecoration? decoration,
@@ -305,7 +332,11 @@ class ContainerLayout extends StatelessWidget {
     Color? color,
     Matrix4? transform,
     AlignmentGeometry? transformAlignment,
-    Clip clipBehavior = Clip.none,
+    Clip? clipBehavior,
+    bool? animate = false,
+    Duration? animateDuration = const Duration(milliseconds: 100),
+    Curve? animateCurve,
+    VoidCallback? onEndAnimate,
     Widget? child,
   }) =>
       animate == true
@@ -323,7 +354,9 @@ class ContainerLayout extends StatelessWidget {
               color: color,
               transform: transform,
               transformAlignment: transformAlignment,
-              clipBehavior: clipBehavior,
+              clipBehavior: clipBehavior ?? Clip.none,
+              curve: animateCurve ?? Curves.linear,
+              onEnd: onEndAnimate,
               child: child,
             )
           : Container(
@@ -339,7 +372,7 @@ class ContainerLayout extends StatelessWidget {
               color: color,
               transform: transform,
               transformAlignment: transformAlignment,
-              clipBehavior: clipBehavior,
+              clipBehavior: clipBehavior ?? Clip.none,
               child: child,
             );
 }

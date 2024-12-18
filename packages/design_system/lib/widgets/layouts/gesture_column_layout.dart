@@ -39,6 +39,8 @@ class GestureColumnLayout extends StatefulWidget {
     this.scrollable = false,
     this.animate,
     this.animateDuration,
+    this.animateCurve,
+    this.onEndAnimate,
     //=== InkWell ===//
     this.disabledPressAnimation = false,
     this.showFocus = true,
@@ -87,8 +89,12 @@ class GestureColumnLayout extends StatefulWidget {
   final DecorationImage? foregroundImage;
   final double? opacity;
   final Clip clipBehavior;
+
+  ///===== Animate ======///
   final bool? animate;
   final Duration? animateDuration;
+  final Curve? animateCurve;
+  final VoidCallback? onEndAnimate;
 
   ///===== Effect ======///
   final List<BoxShadow>? innerShadow;
