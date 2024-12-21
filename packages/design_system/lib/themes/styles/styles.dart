@@ -1,5 +1,5 @@
   
-export 'blur.dart';
+export 'filter.dart';
 export 'shadow.dart';
 export 'radius.dart';
 export 'border.dart';

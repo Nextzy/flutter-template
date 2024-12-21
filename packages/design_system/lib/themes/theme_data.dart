@@ -9,7 +9,7 @@ class AppThemeData {
     required this.border,
     required this.shadow,
     required this.size,
-    required this.blur,
+    required this.filter,
     required this.systemOverlayStyle,
     required this.systemOverlayInverseStyle,
     required this.space,
@@ -21,7 +21,7 @@ class AppThemeData {
   final AppBorder border;
   final AppRadius borderRadius;
   final AppShadow shadow;
-  final AppBlur blur;
+  final AppFilter filter;
   final AppSpace space;
   final AppSize size;
   final SystemUiOverlayStyle systemOverlayStyle;

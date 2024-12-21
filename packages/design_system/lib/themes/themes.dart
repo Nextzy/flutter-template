@@ -13,42 +13,39 @@ export 'theme_color.dart';
 import 'package:design_system/lib.dart';
 
 class AppTheme {
-  AppTheme({
-    AppThemeData? lightTheme,
-    AppThemeData? darkTheme,
+  const AppTheme({
+    this.lightTheme = const AppThemeData(
+      themeMode: ThemeMode.light,
+      color: AppLightThemeColor(),
+      borderRadius: AppRadius(),
+      border: AppBorder(),
+      shadow: AppShadow(),
+      filter: AppFilter(),
+      space: AppSpace(),
+      size: AppSize(),
+      systemOverlayStyle: AppSystemUI.light,
+      systemOverlayInverseStyle: AppSystemUI.dark,
+      splashFactory: NoSplash.splashFactory,
+    ),
+    this.darkTheme = const AppThemeData(
+      themeMode: ThemeMode.dark,
+      color: AppDarkThemeColor(),
+      borderRadius: AppRadius(),
+      border: AppBorder(),
+      shadow: AppShadow(),
+      filter: AppFilter(),
+      space: AppSpace(),
+      size: AppSize(),
+      systemOverlayStyle: AppSystemUI.light,
+      systemOverlayInverseStyle: AppSystemUI.dark,
+      splashFactory: NoSplash.splashFactory,
+    ),
     this.scrollBehavior = const AppScrollBehavior(),
     this.themeAnimationDuration = const Duration(milliseconds: 200),
     this.themeAnimationCurve = Curves.easeInOut,
     this.highContrastTheme,
     this.highContrastDarkTheme,
-  })  : lightTheme = lightTheme ??
-            AppThemeData(
-              themeMode: ThemeMode.light,
-              color: const AppLightThemeColor(),
-              borderRadius: const AppRadius(),
-              border: const AppBorder(),
-              shadow: const AppShadow(),
-              blur: const AppBlur(),
-              space: const AppSpace(),
-              size: const AppSize(),
-              systemOverlayStyle: AppSystemUI().light,
-              systemOverlayInverseStyle: AppSystemUI().dark,
-              splashFactory: NoSplash.splashFactory,
-            ),
-        darkTheme = darkTheme ??
-            AppThemeData(
-              themeMode: ThemeMode.dark,
-              color: const AppDarkThemeColor(),
-              borderRadius: const AppRadius(),
-              border: const AppBorder(),
-              shadow: const AppShadow(),
-              blur: const AppBlur(),
-              space: const AppSpace(),
-              size: const AppSize(),
-              systemOverlayStyle: AppSystemUI().dark,
-              systemOverlayInverseStyle: AppSystemUI().light,
-              splashFactory: NoSplash.splashFactory,
-            );
+  });
 
   final AppThemeData lightTheme;
   final AppThemeData darkTheme;
