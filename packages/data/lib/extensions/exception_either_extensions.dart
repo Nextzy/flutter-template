@@ -10,7 +10,14 @@ extension AppExceptionFutureExtensions<T> on Future<T> {
             Log.e(exception, stackTrace: exception.stackTrace);
             return Left(AppException.fromError(exception));
           } else if (exception is DioException) {
-            Log.e(exception.error);
+            final tmpError = exception.error;
+            if (tmpError case NetworkException networkException) {
+              Log.e(networkException, stackTrace: networkException.stackTrace);
+            } else if (tmpError != null) {
+              Log.e(tmpError, stackTrace: exception.stackTrace);
+            } else {
+              Log.e(exception, stackTrace: exception.stackTrace);
+            }
             return Left(AppException.fromDioException(exception));
           } else {
             Log.e(exception);
@@ -27,7 +34,15 @@ extension AppExceptionStreamExtensions<E extends Exception, DATA>
           (data) => Right(data),
           (exception) {
             if (exception is DioException) {
-              Log.e(exception.error);
+              final tmpError = exception.error;
+              if (tmpError case NetworkException networkException) {
+                Log.e(networkException,
+                    stackTrace: networkException.stackTrace);
+              } else if (tmpError != null) {
+                Log.e(tmpError, stackTrace: exception.stackTrace);
+              } else {
+                Log.e(exception, stackTrace: exception.stackTrace);
+              }
               return Left(AppException.fromDioException(exception));
             } else {
               Log.e(exception);

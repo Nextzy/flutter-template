@@ -20,7 +20,7 @@ ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ErrorResponse {
-  String? get code => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get developerMessage => throw _privateConstructorUsedError;
 
@@ -40,7 +40,7 @@ abstract class $ErrorResponseCopyWith<$Res> {
           ErrorResponse value, $Res Function(ErrorResponse) then) =
       _$ErrorResponseCopyWithImpl<$Res, ErrorResponse>;
   @useResult
-  $Res call({String? code, String? message, String? developerMessage});
+  $Res call({String? type, String? message, String? developerMessage});
 }
 
 /// @nodoc
@@ -58,14 +58,14 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
+    Object? type = freezed,
     Object? message = freezed,
     Object? developerMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
       message: freezed == message
           ? _value.message
@@ -88,7 +88,7 @@ abstract class _$$ErrorResponseResponseImplCopyWith<$Res>
       __$$ErrorResponseResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? code, String? message, String? developerMessage});
+  $Res call({String? type, String? message, String? developerMessage});
 }
 
 /// @nodoc
@@ -104,14 +104,14 @@ class __$$ErrorResponseResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
+    Object? type = freezed,
     Object? message = freezed,
     Object? developerMessage = freezed,
   }) {
     return _then(_$ErrorResponseResponseImpl(
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
       message: freezed == message
           ? _value.message
@@ -129,13 +129,13 @@ class __$$ErrorResponseResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ErrorResponseResponseImpl implements _ErrorResponseResponse {
   const _$ErrorResponseResponseImpl(
-      {this.code, this.message, this.developerMessage});
+      {this.type, this.message, this.developerMessage});
 
   factory _$ErrorResponseResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ErrorResponseResponseImplFromJson(json);
 
   @override
-  final String? code;
+  final String? type;
   @override
   final String? message;
   @override
@@ -143,7 +143,7 @@ class _$ErrorResponseResponseImpl implements _ErrorResponseResponse {
 
   @override
   String toString() {
-    return 'ErrorResponse(code: $code, message: $message, developerMessage: $developerMessage)';
+    return 'ErrorResponse(type: $type, message: $message, developerMessage: $developerMessage)';
   }
 
   @override
@@ -151,7 +151,7 @@ class _$ErrorResponseResponseImpl implements _ErrorResponseResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorResponseResponseImpl &&
-            (identical(other.code, code) || other.code == code) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.developerMessage, developerMessage) ||
                 other.developerMessage == developerMessage));
@@ -159,7 +159,7 @@ class _$ErrorResponseResponseImpl implements _ErrorResponseResponse {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, developerMessage);
+  int get hashCode => Object.hash(runtimeType, type, message, developerMessage);
 
   /// Create a copy of ErrorResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -180,7 +180,7 @@ class _$ErrorResponseResponseImpl implements _ErrorResponseResponse {
 
 abstract class _ErrorResponseResponse implements ErrorResponse {
   const factory _ErrorResponseResponse(
-      {final String? code,
+      {final String? type,
       final String? message,
       final String? developerMessage}) = _$ErrorResponseResponseImpl;
 
@@ -188,7 +188,7 @@ abstract class _ErrorResponseResponse implements ErrorResponse {
       _$ErrorResponseResponseImpl.fromJson;
 
   @override
-  String? get code;
+  String? get type;
   @override
   String? get message;
   @override

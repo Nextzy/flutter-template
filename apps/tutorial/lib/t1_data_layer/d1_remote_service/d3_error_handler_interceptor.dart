@@ -9,12 +9,12 @@ class ExampleNetworkErrorHandlerInterceptor
   @override
   void onClientError(DioException err, ErrorInterceptorHandler handler) {
     if (err.error case NetworkException exception) {
-      if (exception.code == 400001) {
+      if (exception.statusCode == 400001) {
         handler.reject(
           err.copyWith(
-            error: NetworkWrongUserAndPasswordException(
-              code: exception.code,
-              message: exception.message,
+            error: RemoteWrongUserAndPasswordException(
+              statusCode: exception.statusCode,
+              errorMessage: exception.errorMessage,
               response: exception.response,
               requestOptions: exception.requestOptions,
               developerMessage: exception.developerMessage,

@@ -30,7 +30,7 @@ class GestureContainerLayout extends StatefulWidget {
     this.backgroundBlur,
     this.transform,
     this.transformAlignment,
-    this.animate,
+    this.animate = true,
     this.animateDuration,
     this.animateCurve,
     this.onEndAnimate,

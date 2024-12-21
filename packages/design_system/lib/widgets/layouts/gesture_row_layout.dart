@@ -37,7 +37,7 @@ class GestureRowLayout extends StatefulWidget {
     this.crossAxisIntrinsic = false,
     this.gap,
     this.scrollable = false,
-    this.animate,
+    this.animate = true,
     this.animateDuration,
     this.animateCurve,
     this.onEndAnimate,

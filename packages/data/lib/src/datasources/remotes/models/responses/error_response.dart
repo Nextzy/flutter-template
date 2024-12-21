@@ -7,7 +7,7 @@ part 'generated/error_response.g.dart';
 @freezed
 class ErrorResponse with _$ErrorResponse {
   const factory ErrorResponse({
-    String? code,
+    String? type,
     String? message,
     String? developerMessage,
   }) = _ErrorResponseResponse;

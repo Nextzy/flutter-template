@@ -334,7 +334,7 @@ class ContainerLayout extends StatelessWidget {
     AlignmentGeometry? transformAlignment,
     Clip? clipBehavior,
     bool? animate = false,
-    Duration? animateDuration = const Duration(milliseconds: 100),
+    Duration? animateDuration = const Duration(milliseconds: 80),
     Curve? animateCurve,
     VoidCallback? onEndAnimate,
     Widget? child,
@@ -342,7 +342,7 @@ class ContainerLayout extends StatelessWidget {
       animate == true
           ? AnimatedContainer(
               key: key,
-              duration: animateDuration ?? const Duration(milliseconds: 100),
+              duration: animateDuration ?? const Duration(milliseconds: 80),
               alignment: alignment,
               padding: padding,
               decoration: decoration,

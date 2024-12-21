@@ -8,7 +8,7 @@ class RequiredAuth extends TypedExtras {
   final bool requiredAuth;
 }
 
-class AppAccessTokenInterceptor extends Interceptor {
+class AppAccessTokenInterceptor extends QueuedInterceptor {
   AppAccessTokenInterceptor(
     this._dio, {
     this.accessToken,

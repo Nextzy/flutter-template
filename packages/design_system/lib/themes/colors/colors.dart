@@ -1,9 +1,6 @@
-  
 import 'package:design_system/lib.dart';
 
-export 'color_stratum_palette.dart';
-export 'color_untitled_palette.dart';
-export 'color_brand_palette.dart';
+export 'raws/raws.dart';
 export 'color_dark.dart';
 export 'color_light.dart';
 

@@ -32,7 +32,7 @@ class AppException implements Exception {
 
       return AppException(
         code: exception?.response?.statusCode,
-        type: errorResponse.code,
+        type: errorResponse.type,
         message: errorResponse.message,
         developerMessage: errorResponse.developerMessage,
         stacktrace: exception?.stackTrace,
@@ -49,8 +49,8 @@ class AppException implements Exception {
 
   factory AppException.fromNetworkException(NetworkException? exception) {
     return AppException(
-      code: exception?.code,
-      message: exception?.message,
+      code: exception?.statusCode,
+      message: exception?.errorMessage,
       developerMessage: exception?.developerMessage,
       stacktrace: exception?.stackTrace,
     );

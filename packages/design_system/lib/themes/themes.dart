@@ -2,12 +2,13 @@
 export 'colors/transparent.dart';
 export 'styles/styles.dart';
 export 'colors/colors.dart';
-export 'colors/color_stratum_palette.dart';
-export 'colors/color_untitled_palette.dart';
+export 'colors/raws/color_stratum_palette.dart';
+export 'colors/raws/color_untitled_palette.dart';
 export 'texts.dart';
 export 'themes.dart';
 export 'theme_data.dart';
 export 'constants.dart';
+export 'theme_color.dart';
 
 import 'package:design_system/lib.dart';
 

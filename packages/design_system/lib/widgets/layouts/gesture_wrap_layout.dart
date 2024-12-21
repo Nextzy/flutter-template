@@ -38,7 +38,7 @@ class GestureWrapLayout extends StatefulWidget {
     this.clipBehavior = Clip.none,
     this.gap,
     this.scrollable = false,
-    this.animate,
+    this.animate = true,
     this.animateDuration,
     this.animateCurve,
     this.onEndAnimate,

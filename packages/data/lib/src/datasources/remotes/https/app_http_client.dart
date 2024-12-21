@@ -53,13 +53,13 @@ class AppHttpClient extends BaseHttpClient {
   void setupInterceptors(Dio dio, Interceptors interceptors) {
     super.setupInterceptors(dio, interceptors);
     interceptors.addAll([
-      AppNetworkErrorHandlerInterceptor(),
       ConnectivityInterceptor(),
+      AppHeaderInterceptor(),
       AppAccessTokenInterceptor(
         dio,
         refreshTokenPath: '/refreshToken',
       ),
-      AppHeaderInterceptor(),
+      AppNetworkErrorHandlerInterceptor(),
       MockHeaderInterceptor(),
       HttpLogInterceptor(), // Add to last
     ]);

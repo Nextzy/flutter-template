@@ -1,24 +1,28 @@
 import 'package:change_application_name/application.dart';
 
-class NetworkWrongUserAndPasswordException extends NetworkException {
-  NetworkWrongUserAndPasswordException({
-    super.code,
-    super.message,
+class RemoteWrongUserAndPasswordException extends NetworkException {
+  RemoteWrongUserAndPasswordException({
+    required super.statusCode,
+    super.type,
+    super.statusMessage,
+    super.errorMessage,
+    super.developerMessage,
     super.response,
     super.requestOptions,
-    super.developerMessage,
     super.stackTrace,
     super.errors,
   });
 }
 
-class NetworkRequiredXXXException extends BadRequestException {
-  NetworkRequiredXXXException({
-    super.code,
-    super.message,
+class RemoteRequiredXXXException extends BadRequestException {
+  RemoteRequiredXXXException({
+    required super.statusCode,
+    super.type,
+    super.statusMessage,
+    super.errorMessage,
+    super.developerMessage,
     super.response,
     super.requestOptions,
-    super.developerMessage,
     super.stackTrace,
     super.errors,
   });

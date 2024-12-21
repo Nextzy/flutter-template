@@ -9,7 +9,7 @@ part of '../error_response.dart';
 _$ErrorResponseResponseImpl _$$ErrorResponseResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$ErrorResponseResponseImpl(
-      code: json['code'] as String?,
+      type: json['type'] as String?,
       message: json['message'] as String?,
       developerMessage: json['developerMessage'] as String?,
     );
@@ -17,7 +17,7 @@ _$ErrorResponseResponseImpl _$$ErrorResponseResponseImplFromJson(
 Map<String, dynamic> _$$ErrorResponseResponseImplToJson(
         _$ErrorResponseResponseImpl instance) =>
     <String, dynamic>{
-      'code': instance.code,
+      'type': instance.type,
       'message': instance.message,
       'developerMessage': instance.developerMessage,
     };
