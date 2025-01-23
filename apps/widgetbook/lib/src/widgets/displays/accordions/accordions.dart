@@ -1,4 +1,5 @@
 export 'accordion_overview_case.dart';
+export 'accordion_group_case.dart';
 
 import 'package:widgetbook_app/widgetbook.dart';
 
@@ -9,6 +10,7 @@ class AccordionWidgetBook extends WidgetbookComponent {
   }) : super(
           useCases: [
             OverviewAccordionWidgetCase(),
+            GroupAccordionWidgetCase(),
           ],
         );
 }
