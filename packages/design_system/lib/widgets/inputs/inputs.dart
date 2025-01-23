@@ -6,7 +6,7 @@ export 'callouts/callout.dart';
 export 'checkbox.dart';
 export 'dropdowns/dropdowns.dart';
 export 'fields/text_field.dart';
-export 'file_upload.dart';
+export 'file_uploads/file_uploads.dart';
 export 'list_item/list_item.dart';
 export 'otp_input.dart';
 export 'slider.dart';

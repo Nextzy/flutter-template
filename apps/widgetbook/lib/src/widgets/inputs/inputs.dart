@@ -12,6 +12,7 @@ export 'toggle/toggle_book.dart';
 export 'text_area/text_area_book.dart';
 export 'stepper/stepper_book.dart';
 export 'rating/rating_book.dart';
+export 'file_uploads/file_uploads.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -32,5 +33,6 @@ class InputCategories extends WidgetbookCategory {
           TextAreaComponentBook(),
           StepperComponentBook(),
           RatingComponentBook(),
+          FileUploadComponentBook(),
         ]);
 }
