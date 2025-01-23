@@ -10,6 +10,7 @@ export 'modals/modals.dart';
 export 'avatar/avatar.dart';
 export 'image/image.dart';
 export 'iframes/iframes.dart';
+export 'steps/steps.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -27,6 +28,7 @@ class DisplayCategories extends WidgetbookCategory {
             BadgeWidgetBook(),
             EmptyWidgetBook(),
             LoadingBook(),
+            HorizontalStepsWidgetBook(),
           ],
         );
 }
