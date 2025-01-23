@@ -9,6 +9,7 @@ export 'list_item/list_item_book.dart';
 export 'menus/menu_item_book.dart';
 export 'text_fields/text_field_book.dart';
 export 'toggle/toggle_book.dart';
+export 'file_uploads/file_uploads.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -26,5 +27,6 @@ class InputCategories extends WidgetbookCategory {
           MenuItemComponentBook(),
           // ListItemComponentBook(),
           // BottomNavigationBook(),
+          FileUploadComponentBook(),
         ]);
 }
