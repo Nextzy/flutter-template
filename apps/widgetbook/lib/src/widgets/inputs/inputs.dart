@@ -10,6 +10,7 @@ export 'menus/menu_item_book.dart';
 export 'text_fields/text_field_book.dart';
 export 'toggle/toggle_book.dart';
 export 'text_area/text_area_book.dart';
+export 'stepper/stepper_book.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -28,5 +29,6 @@ class InputCategories extends WidgetbookCategory {
           // ListItemComponentBook(),
           // BottomNavigationBook(),
           TextAreaComponentBook(),
+          StepperComponentBook(),
         ]);
 }
