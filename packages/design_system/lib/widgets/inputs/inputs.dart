@@ -14,3 +14,4 @@ export 'text_area.dart';
 export 'toggle.dart';
 export 'stepper.dart';
 export 'rating.dart';
+export 'time_input.dart';
