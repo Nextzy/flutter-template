@@ -13,6 +13,8 @@ export 'iframes/iframes.dart';
 export 'link/link_book.dart';
 export 'accordions/accordions.dart';
 export 'breadcrumbs/breadcrumbs.dart';
+export 'steps/steps.dart';
+export 'steps/vertical_steps.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -33,6 +35,8 @@ class DisplayCategories extends WidgetbookCategory {
             LinkWidgetBook(),
             AccordionWidgetBook(),
             BreadcrumbsWidgetBook(),
+            HorizontalStepsWidgetBook(),
+            VerticalStepWidgetBook(),
           ],
         );
 }
