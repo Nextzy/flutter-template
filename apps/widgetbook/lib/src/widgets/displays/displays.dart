@@ -12,6 +12,7 @@ export 'image/image.dart';
 export 'iframes/iframes.dart';
 export 'link/link_book.dart';
 export 'accordions/accordions.dart';
+export 'breadcrumbs/breadcrumbs.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -31,6 +32,7 @@ class DisplayCategories extends WidgetbookCategory {
             LoadingBook(),
             LinkWidgetBook(),
             AccordionWidgetBook(),
+            BreadcrumbsWidgetBook(),
           ],
         );
 }

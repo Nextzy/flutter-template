@@ -24,3 +24,4 @@ export 'status_ring.dart';
 export 'webviews/webviews.dart';
 export 'link.dart';
 export 'accordions/accordions.dart';
+export 'breadcrumbs/breadcrumbs.dart';
