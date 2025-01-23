@@ -11,6 +11,7 @@ export 'avatar/avatar.dart';
 export 'image/image.dart';
 export 'iframes/iframes.dart';
 export 'link/link_book.dart';
+export 'accordions/accordions.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -29,6 +30,7 @@ class DisplayCategories extends WidgetbookCategory {
             EmptyWidgetBook(),
             LoadingBook(),
             LinkWidgetBook(),
+            AccordionWidgetBook(),
           ],
         );
 }
