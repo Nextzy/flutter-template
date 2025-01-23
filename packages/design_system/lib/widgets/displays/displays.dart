@@ -22,3 +22,4 @@ export 'qr.dart';
 export 'status_dot.dart';
 export 'status_ring.dart';
 export 'webviews/webviews.dart';
+export 'accordions/accordions.dart';
