@@ -12,3 +12,4 @@ export 'otp_input.dart';
 export 'slider.dart';
 export 'text_area.dart';
 export 'toggle.dart';
+export 'rating.dart';
