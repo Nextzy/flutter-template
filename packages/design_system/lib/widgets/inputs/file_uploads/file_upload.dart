@@ -47,7 +47,6 @@ class _AppFileUploadState extends State<AppFileUpload> {
               color: backgroundColor,
               border: Border.all(
                 color: borderColor,
-                width: 1,
               ),
               borderRadius: BorderRadius.circular(6),
             ),
@@ -100,7 +99,6 @@ class _AppFileUploadState extends State<AppFileUpload> {
                     border: Border(
                       left: BorderSide(
                         color: borderColor,
-                        width: 1,
                       ),
                     ),
                   ),

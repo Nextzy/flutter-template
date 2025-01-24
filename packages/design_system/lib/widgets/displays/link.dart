@@ -24,10 +24,10 @@ class AppLink extends AppStatelessWidget {
             decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
-                        color: disabled
-                            ? context.theme.color.textTertiary
-                            : context.theme.color.brandPrimary,
-                        width: 1))),
+              color: disabled
+                  ? context.theme.color.textTertiary
+                  : context.theme.color.brandPrimary,
+            ))),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
