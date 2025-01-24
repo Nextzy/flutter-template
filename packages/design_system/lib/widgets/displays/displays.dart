@@ -3,7 +3,7 @@ export 'divider.dart';
 export 'image.dart';
 export 'list_item.dart';
 export 'loading.dart';
-export 'tab.dart';
+export 'tabs/tabs.dart';
 export 'tag.dart';
 export 'texts/text.dart';
 export 'texts/text_phone_number.dart';
