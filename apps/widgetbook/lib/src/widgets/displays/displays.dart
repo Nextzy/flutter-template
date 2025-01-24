@@ -16,6 +16,7 @@ export 'breadcrumbs/breadcrumbs.dart';
 export 'steps/steps.dart';
 export 'steps/vertical_steps.dart';
 export 'tabs/tabs.dart';
+export 'tabs/vertical_tabs.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -39,6 +40,7 @@ class DisplayCategories extends WidgetbookCategory {
             HorizontalStepsWidgetBook(),
             VerticalStepWidgetBook(),
             HorizontalTabWidgetBook(),
+            VerticalTabWidgetBook(),
           ],
         );
 }
