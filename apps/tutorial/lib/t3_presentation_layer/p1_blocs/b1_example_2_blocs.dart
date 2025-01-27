@@ -23,9 +23,8 @@ class ExampleMovie2PageBlocSafe
       ContentState.initial();
 
   @override
-  Future<void> onListenEvent(
+  Future<void> onBlocEvent(
     BlocEvent<ExampleMovie2PageBlocEvent> event,
-    Emitter<WidgetStateEvent<dynamic>> emitter,
   ) async {
     switch (event.name) {
       case ExampleMovie2PageBlocEvent.fetchMovieList:

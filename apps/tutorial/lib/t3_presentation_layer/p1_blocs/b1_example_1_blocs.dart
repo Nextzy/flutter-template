@@ -15,11 +15,8 @@ class ExampleAuthenticationPageBloc
   final ExampleSignInWithEmailAndPasswordUsecase _signInUsecase;
 
   @override
-  Future<void> onListenEvent(
+  Future<void> onBlocEvent(
     BlocEvent<ExampleAuthenticationPageBlocEvent> event,
-
-    /// ⭐️ The data in WidgetStateEvent is nullable
-    Emitter<WidgetStateEvent<bool?>> emitter,
   ) async {
     switch (event.name) {
       case ExampleAuthenticationPageBlocEvent.tapSignIn:
@@ -71,11 +68,8 @@ class ExampleMoviePageBlocSafe
   final ExampleGetMovieListUsecase _movieListUsecase;
 
   @override
-  Future<void> onListenEvent(
+  Future<void> onBlocEvent(
     BlocEvent<ExampleMoviePageBlocEvent> event,
-
-    /// ⭐️ Safe it's mean, the data in WidgetStateEvent isn't nullable
-    Emitter<WidgetStateEvent<MovieListEntity>> emitter,
   ) async {
     switch (event.name) {
       case ExampleMoviePageBlocEvent.fetchMovieList:

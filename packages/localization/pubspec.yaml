@@ -13,18 +13,18 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  slang: ^4.3.0
-  slang_flutter: ^4.3.0
-  shared_preferences: ^2.3.3
+  slang: ^4.4.1
+  slang_flutter: ^4.4.0
+  shared_preferences: ^2.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  bloc_test: ^9.1.7
-  build_runner: ^2.4.13
+  bloc_test: ^10.0.0
+  build_runner: ^2.4.14
   flutter_gen_runner: ^5.8.0
   flutter_lints: ^5.0.0
-  slang_build_runner: ^4.3.0
+  slang_build_runner: ^4.4.2
 
 flutter_gen:
   output: lib/generated/

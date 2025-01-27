@@ -1,7 +1,7 @@
 import 'package:design_system/lib.dart';
 
-class DebugHelper<T> extends AppStatelessWidget {
-  const DebugHelper({
+class AutoInputHelper<T> extends AppStatelessWidget {
+  const AutoInputHelper({
     super.key,
     this.label,
     this.helperItems,

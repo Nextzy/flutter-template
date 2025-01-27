@@ -32,24 +32,21 @@ class AppRouterBloc extends FalconBloc<AppRouteEvent, AppRouter> {
   AppRouter get router => state;
 
   @override
-  Future<void> onListenEvent(
-    BlocEvent<AppRouteEvent> event,
-    Emitter<AppRouter> emitter,
-  ) async {
+  Future<void> onBlocEvent(BlocEvent<AppRouteEvent> event) async {
     switch (event.name) {
       case AppRouteEvent.init:
-        return _init(emitter);
+        return _init();
       case AppRouteEvent.restart:
-        return _restart(emitter);
+        return _restart();
     }
   }
 
   ///========================= PRIVATE METHOD =========================///
-  Future<void> _init(Emitter<AppRouter> emitter) async {
+  Future<void> _init() async {
     //TODO: Implement init deeplink
   }
 
-  Future<void> _restart(Emitter<AppRouter> emitter) async {
+  Future<void> _restart() async {
     emitter(_createRoute());
   }
 

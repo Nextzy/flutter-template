@@ -9,12 +9,12 @@ typedef ListWidgetStateContextCallback<DATA> = List<Widget> Function(
 typedef PreferredWidgetStateContextCallback<DATA> = PreferredSizeWidget
     Function(BuildContext context, WidgetStateEvent<DATA> state);
 
-typedef PopStateCallback<DATA> = bool Function(
-    WidgetStateEvent<DATA> state);
+typedef PopStateCallback<DATA> = bool Function(WidgetStateEvent<DATA> state);
 
-abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
-        BLOC extends BlocBase<WidgetStateEvent<DATA>>, DATA>
-    extends AppBlocWidgetState<WIDGET, BLOC, DATA> with AutoRouteAware {
+abstract class AppPageBlocWidgetState<
+    WIDGET extends StatefulWidget,
+    BLOC extends BlocBase<WidgetStateEvent<DATA>>,
+    DATA> extends AppBlocWidgetState<WIDGET, BLOC, DATA> with AutoRouteAware {
   AutoRouteObserver? _observer;
 
   @override
@@ -50,25 +50,22 @@ abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
     WidgetBuilder? loadingNoData,
     WidgetStateContextCallback<DATA>? floatingButton,
   }) {
-    return BlocConsumer<BLOC, WidgetStateEvent<DATA>>(
+    return WidgetStateBlocConsumer<EVENT, BLOC, WidgetStateEvent<DATA>>(
       bloc: bloc,
-      listener: (BuildContext context, WidgetStateEvent<DATA> state) {
-        if (state.event != null) {
-          switch (state.event?.name) {
-            case AppDialogEvent.showFullLoadingLocked:
-              AppLoadingDialog.showFullLoadingLocked(context);
-              break;
-            case AppDialogEvent.dismissAll:
-              AppLoadingDialog.dismissAll(context);
-              break;
-          }
-          listenEvent?.call(
-              context, state.event!.name as EVENT, state.event!.data);
-        } else {
-          listenState?.call(context, state);
+      listenEvent: (BuildContext context, EVENT event, Object? data) {
+        switch (event) {
+          case AppDialogEvent.showFullLoadingLocked:
+            AppLoadingDialog.showFullLoadingLocked(context);
+            break;
+          case AppDialogEvent.dismissAll:
+            AppLoadingDialog.dismissAll(context);
+            break;
+          case _:
+            listenEvent?.call(context, event, data);
+            break;
         }
       },
-      listenWhen: (previous, current) => true,
+      listenState: listenState,
       buildWhen: (previous, current) {
         if (current.event != null) {
           return false;

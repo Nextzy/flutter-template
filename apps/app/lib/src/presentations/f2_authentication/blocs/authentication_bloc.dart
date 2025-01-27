@@ -12,10 +12,7 @@ class AuthenticationBloc
   final SignInWithEmailAndPasswordUsecase _signInWithEmailUsecase;
 
   @override
-  Future<void> onListenEvent(
-    BlocEvent<AuthenticationEvent> event,
-    Emitter<WidgetStateEvent> emitter,
-  ) async {
+  Future<void> onBlocEvent(BlocEvent<AuthenticationEvent> event) async {
     switch (event.name) {
       case AuthenticationEvent.signInWithEmail:
         final data = event.data as ({String email, String password});

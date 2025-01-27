@@ -21,7 +21,7 @@ export 'disabled.dart';
 export 'snack_bar.dart';
 export 'widget_style.dart';
 export 'scroll_behavior.dart';
-export 'debug_helper.dart';
+export 'auto_input_helper.dart';
 export 'scaffold.dart';
 export 'exit_app.dart';
 export 'web_zoom.dart';

@@ -37,32 +37,28 @@ dependencies:
   #======= DATA ========#
   #PLATFORM: All
   drift: ^2.22.1
-  drift_flutter: ^0.2.2
+  drift_flutter: ^0.2.3
   envied: ^1.0.0
 
   #========== Utils ===========#
   flutter_multi_formatter: ^2.13.0
-  talker_bloc_logger: ^4.5.2
+  talker_bloc_logger: ^4.5.4
   sms_autofill: ^2.4.1
   auto_route: ^9.2.2
 
 
 dependency_overrides:
-  # Fixed: wechat_assets_picker
-  extended_image: ^9.0.7
-  # Fixed http_parser
-  collection: ^1.19.1
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  bloc_test: ^9.1.7
+  bloc_test: ^10.0.0
   flutter_flavorizr: ^2.2.3
-  build_runner: ^2.4.13
-  build_test: ^2.2.2
-  build_web_compilers: ^4.0.11
+  build_runner: ^2.4.14
+  build_test: ^2.2.3
+  build_web_compilers: ^4.1.0
   flutter_gen_runner: ^5.8.0
   json_serializable: ^6.9.0
   freezed: ^2.5.7

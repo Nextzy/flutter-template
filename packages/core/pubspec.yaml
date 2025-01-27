@@ -25,22 +25,22 @@ dependencies:
     git:
       url: https://github.com/nextzy/falconx.git
       path: falconx
-      ref: 3.4.8
+      ref: 3.6.0
 
   #======= Firebase ========#
-  firebase_core: ^3.8.1
-  firebase_remote_config: ^5.2.0
+  firebase_core: ^3.10.1
+  firebase_remote_config: ^5.3.1
 
   #======= Utils ========#
   #PLATFORM: All
   flutter_dotenv: ^5.2.1
   upgrader: ^11.3.1
   freezed_annotation: ^2.4.4
-  auto_route: ^9.2.2
+  auto_route: ^9.3.0+1
   #PLATFORM: Android, iOS, MacOS, Webs, Windows
-  wakelock_plus: ^1.2.8
+  wakelock_plus: ^1.2.10
   #PLATFORM: Android, iOS, MacOS, Windows
-  screen_brightness: ^2.0.1
+  screen_brightness: ^2.1.1
   #PLATFORM: Android, iOS, Windows
   permission_handler: ^11.3.1
   #PLATFORM: Android, iOS
@@ -56,14 +56,10 @@ dependencies:
       url: https://github.com/THE-EXISTING/catcher
       ref: master
   #PLATFORM: Android, iOS
-  newrelic_mobile: ^1.1.6
+  newrelic_mobile: ^1.1.7
 
 
 dependency_overrides:
-  # Fixed: wechat_assets_picker
-  extended_image: ^9.0.7
-  # Fixed http_parser
-  collection: ^1.19.1
 
 #  falconx:
 #    path: ../../../FalconX/falconx
@@ -72,9 +68,9 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  bloc_test: ^9.1.7
+  bloc_test: ^10.0.0
   flutter_lints: ^5.0.0
-  build_runner: ^2.4.13
+  build_runner: ^2.4.14
   auto_route_generator: ^9.0.0
   flutter_gen_runner: ^5.8.0
   json_serializable: ^6.9.0

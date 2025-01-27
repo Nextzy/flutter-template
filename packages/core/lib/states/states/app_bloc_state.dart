@@ -24,11 +24,10 @@ abstract class AppBlocWidgetState<
       onPop != null || canPop != null
           ? PopScope(
               canPop: canPop?.call(state) ?? true,
-              onPopInvoked: (didPop) {
+              onPopInvokedWithResult: (didPop, result) {
                 if (didPop) return;
                 clearFocus();
-                onPop?.call(bloc.state);
-                if (!context.router.canPop()) SystemNavigator.pop();
+                onPop?.call(state, result);
               },
               child: child,
             )

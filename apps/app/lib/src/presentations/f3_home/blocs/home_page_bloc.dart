@@ -8,10 +8,7 @@ class HomePageBloc extends AppBloc<HomeBlocEvent, HomeEntity> {
   final ContentState<String> content1 = ContentState.initial();
 
   @override
-  Future<void> onListenEvent(
-    BlocEvent<HomeBlocEvent> event,
-    Emitter<WidgetStateEvent<HomeEntity?>> emitter,
-  ) async {
+  Future<void> onBlocEvent(BlocEvent<HomeBlocEvent> event) async {
     switch (event.name) {
       case HomeBlocEvent.yourEvent:
       // return _fetchStreamExample(emitter);
