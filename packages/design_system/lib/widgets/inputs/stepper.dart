@@ -20,7 +20,7 @@ class AppStepper extends AppStatefulWidget {
   final int? maxValue;
   final bool disabled;
 
-  final void Function(int)? onChanged;
+  final ValueChanged<int>? onChanged;
 
   @override
   State<AppStepper> createState() => _AppStepperState();
