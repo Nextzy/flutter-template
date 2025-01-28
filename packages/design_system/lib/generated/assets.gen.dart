@@ -263,8 +263,24 @@ class $AssetsMockGen {
   /// File path: assets/mock/avatar-squared.jpg
   AssetGenImage get avatarSquared => const AssetGenImage('assets/mock/avatar-squared.jpg');
 
+  /// File path: assets/mock/avatar_portrait_Abby_Smith.jpg
+  AssetGenImage get avatarPortraitAbbySmith => const AssetGenImage('assets/mock/avatar_portrait_Abby_Smith.jpg');
+
+  /// File path: assets/mock/avatar_portrait_Alex_Holland.jpg
+  AssetGenImage get avatarPortraitAlexHolland => const AssetGenImage('assets/mock/avatar_portrait_Alex_Holland.jpg');
+
+  /// File path: assets/mock/avatar_portrait_Alisa_Hester.jpg
+  AssetGenImage get avatarPortraitAlisaHester => const AssetGenImage('assets/mock/avatar_portrait_Alisa_Hester.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [avatarSquared1, avatarSquared2, avatarSquared];
+  List<AssetGenImage> get values => [
+        avatarSquared1,
+        avatarSquared2,
+        avatarSquared,
+        avatarPortraitAbbySmith,
+        avatarPortraitAlexHolland,
+        avatarPortraitAlisaHester
+      ];
 }
 
 class $AssetsIconButtonGen {

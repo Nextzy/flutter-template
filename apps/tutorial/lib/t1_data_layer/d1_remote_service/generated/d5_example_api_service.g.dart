@@ -25,8 +25,9 @@ class _ExampleAuthenticationApiService
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<ExampleRemoteAuthenticationResponse>> signInWithEmail(
-      {required ExampleRemoteSignInWithEmailBody body}) async {
+  Future<HttpResponse<ExampleRemoteAuthenticationResponse>> signInWithEmail({
+    required ExampleRemoteSignInWithEmailBody body,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -34,22 +35,15 @@ class _ExampleAuthenticationApiService
     _data.addAll(body.toJson());
     final _options =
         _setStreamType<HttpResponse<ExampleRemoteAuthenticationResponse>>(
-            Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-                .compose(
-                  _dio.options,
-                  '/auth/emailPass',
-                  queryParameters: queryParameters,
-                  data: _data,
-                )
-                .copyWith(
-                    baseUrl: _combineBaseUrls(
-                  _dio.options.baseUrl,
-                  baseUrl,
-                )));
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/auth/emailPass',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ExampleRemoteAuthenticationResponse _value;
     try {
@@ -75,10 +69,7 @@ class _ExampleAuthenticationApiService
     return requestOptions;
   }
 
-  String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }
@@ -96,11 +87,7 @@ class _ExampleAuthenticationApiService
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _ExampleMovieApiService implements ExampleMovieApiService {
-  _ExampleMovieApiService(
-    this._dio, {
-    this.baseUrl,
-    this.errorLogger,
-  }) {
+  _ExampleMovieApiService(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://mock.apidog.com/m1/738246-714965-default';
   }
 
@@ -118,22 +105,18 @@ class _ExampleMovieApiService implements ExampleMovieApiService {
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options =
-        _setStreamType<HttpResponse<ExampleRemoteMovieListResponse>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/movies/high-light',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
+        _setStreamType<HttpResponse<ExampleRemoteMovieListResponse>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/movies/high-light',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ExampleRemoteMovieListResponse _value;
     try {
@@ -154,22 +137,16 @@ class _ExampleMovieApiService implements ExampleMovieApiService {
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options =
-        _setStreamType<HttpResponse<ExampleRemoteMovieListResponse>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/movies/trend',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
+        _setStreamType<HttpResponse<ExampleRemoteMovieListResponse>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/movies/trend',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ExampleRemoteMovieListResponse _value;
     try {
@@ -190,22 +167,18 @@ class _ExampleMovieApiService implements ExampleMovieApiService {
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options =
-        _setStreamType<HttpResponse<ExampleRemoteMovieListResponse>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/movies/must-watch',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
+        _setStreamType<HttpResponse<ExampleRemoteMovieListResponse>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/movies/must-watch',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ExampleRemoteMovieListResponse _value;
     try {
@@ -231,10 +204,7 @@ class _ExampleMovieApiService implements ExampleMovieApiService {
     return requestOptions;
   }
 
-  String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

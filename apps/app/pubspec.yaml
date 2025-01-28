@@ -25,30 +25,28 @@ dependencies:
   utils:
     path: ../../packages/utils
 
-  flutter_native_splash: ^2.4.3
-  flutter_launcher_icons: ^0.14.2
+  flutter_native_splash: ^2.4.4
+  flutter_launcher_icons: ^0.14.3
   country_code_picker: ^3.1.0
 
   #======= UI ========#
   #PLATFORM: All
-  pinput: ^5.0.0
+  pinput: ^5.0.1
   feedback: ^3.1.0
 
   #======= DATA ========#
   #PLATFORM: All
-  drift: ^2.22.1
-  drift_flutter: ^0.2.3
-  envied: ^1.0.0
+  drift: ^2.24.0
+  drift_flutter: ^0.2.4
+  envied: ^1.1.0
 
   #========== Utils ===========#
   flutter_multi_formatter: ^2.13.0
-  talker_bloc_logger: ^4.5.4
+  talker_bloc_logger: ^4.6.7
   sms_autofill: ^2.4.1
-  auto_route: ^9.2.2
-
+  auto_route: ^9.3.0+1
 
 dependency_overrides:
-
 
 dev_dependencies:
   flutter_test:
@@ -58,23 +56,12 @@ dev_dependencies:
   flutter_flavorizr: ^2.2.3
   build_runner: ^2.4.14
   build_test: ^2.2.3
-  build_web_compilers: ^4.1.0
-  flutter_gen_runner: ^5.8.0
+  build_web_compilers: ^4.1.1
   json_serializable: ^6.9.0
   freezed: ^2.5.7
-  drift_dev: ^2.22.1
-  envied_generator: ^1.0.0
+  drift_dev: ^2.24.0
+  envied_generator: ^1.1.0
   auto_route_generator: ^9.0.0
-
-
-flutter_gen:
-  output: lib/generated/
-
-  assets:
-    enabled: true
-    outputs:
-      package_parameter_enabled: true
-      style: dot-delimiter
 
 flutter:
   uses-material-design: true
@@ -82,12 +69,6 @@ flutter:
   # Enable generation of localized Strings from arb files.
   generate: true
 
-  assets:
-    - assets/
-    - assets/icon/
-    - assets/mock/
-    - assets/logo/
-    - assets/illustration/
 
 
 ###################################################

@@ -35,7 +35,6 @@ dependencies:
   #PLATFORM: All
   flutter_dotenv: ^5.2.1
   upgrader: ^11.3.1
-  freezed_annotation: ^2.4.4
   auto_route: ^9.3.0+1
   #PLATFORM: Android, iOS, MacOS, Webs, Windows
   wakelock_plus: ^1.2.10
@@ -71,7 +70,6 @@ dev_dependencies:
   bloc_test: ^10.0.0
   flutter_lints: ^5.0.0
   build_runner: ^2.4.14
-  auto_route_generator: ^9.0.0
   flutter_gen_runner: ^5.8.0
   json_serializable: ^6.9.0
   freezed: ^2.5.7

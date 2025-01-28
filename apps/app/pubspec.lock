@@ -336,21 +336,13 @@ packages:
     source: hosted
     version: "4.10.1"
   collection:
-    dependency: "direct overridden"
-    description:
-      name: collection
-      sha256: "2f5709ae4d3d59dd8f7cd309b4e023046b57d8a6c82130785d2b0e5868084e76"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.19.1"
-  color:
     dependency: transitive
     description:
-      name: color
-      sha256: ddcdf1b3badd7008233f5acffaf20ca9f5dc2cd0172b75f68f24526a5f5725cb
+      name: collection
+      sha256: a1ace0a119f20aabc852d165077c036cd864315bd99b7eaa10a60100341941bf
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "1.19.0"
   connectivity_plus:
     dependency: transitive
     description:
@@ -442,10 +434,10 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "7856d364b589d1f08986e140938578ed36ed948581fbc3bc9aef1805039ac5ab"
+      sha256: "7306ab8a2359a48d22310ad823521d723acfed60ee1f7e37388e8986853b6820"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.7"
+    version: "2.3.8"
   dartx:
     dependency: transitive
     description:
@@ -605,7 +597,7 @@ packages:
     source: hosted
     version: "2.0.7"
   extended_image:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: extended_image
       sha256: "85199f9233e03abc2ce2e68cbb2991648666af4a527ae4e6250935be8edfddae"
@@ -815,22 +807,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.3"
-  flutter_gen_core:
-    dependency: transitive
-    description:
-      name: flutter_gen_core
-      sha256: "46ecf0e317413dd065547887c43f93f55e9653e83eb98dc13dd07d40dd225325"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.8.0"
-  flutter_gen_runner:
-    dependency: "direct dev"
-    description:
-      name: flutter_gen_runner
-      sha256: "77f0a02fc30d9fcf2549fe874eb3fde091435724904bcbb1af60aa40cbfab1f4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.8.0"
   flutter_inappwebview:
     dependency: transitive
     description:
@@ -1174,14 +1150,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  hashcodes:
-    dependency: transitive
-    description:
-      name: hashcodes
-      sha256: "80f9410a5b3c8e110c4b7604546034749259f5d6dcca63e0d3c17c9258f1a651"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   html:
     dependency: transitive
     description:
@@ -1238,14 +1206,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.3.0"
-  image_size_getter:
-    dependency: transitive
-    description:
-      name: image_size_getter
-      sha256: "9a299e3af2ebbcfd1baf21456c3c884037ff524316c97d8e56035ea8fdf35653"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.0"
   intl:
     dependency: transitive
     description:
@@ -1961,10 +1921,10 @@ packages:
     dependency: transitive
     description:
       name: shared_preferences_android
-      sha256: "986dc7b7d14f38064bfa85ace28df1f1a66d4fba32e4b1079d4ea537d9541b01"
+      sha256: "650584dcc0a39856f369782874e562efd002a9c94aec032412c9eb81419cce1f"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.3"
+    version: "2.4.4"
   shared_preferences_foundation:
     dependency: transitive
     description:
@@ -2469,10 +2429,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_platform_interface
-      sha256: "229d7642ccd9f3dc4aba169609dd6b5f3f443bb4cc15b82f7785fcada5af9bbb"
+      sha256: df534476c341ab2c6a835078066fc681b8265048addd853a1e3c78740316a844
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.3"
+    version: "6.3.0"
   video_player_web:
     dependency: transitive
     description:

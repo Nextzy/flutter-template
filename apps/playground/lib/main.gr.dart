@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -13,10 +14,7 @@ part of 'main.dart';
 /// [PlaygroundPage]
 class PlaygroundRoute extends PageRouteInfo<void> {
   const PlaygroundRoute({List<PageRouteInfo>? children})
-      : super(
-          PlaygroundRoute.name,
-          initialChildren: children,
-        );
+    : super(PlaygroundRoute.name, initialChildren: children);
 
   static const String name = 'PlaygroundRoute';
 
