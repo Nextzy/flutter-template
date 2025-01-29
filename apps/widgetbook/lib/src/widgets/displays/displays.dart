@@ -16,6 +16,7 @@ export 'breadcrumbs/breadcrumbs.dart';
 export 'steps/steps.dart';
 export 'steps/vertical_steps.dart';
 export 'paginations/paginations.dart';
+export 'paginations/complex_paginations.dart';
 export 'tabs/tabs.dart';
 export 'tabs/vertical_tabs.dart';
 
@@ -40,7 +41,8 @@ class DisplayCategories extends WidgetbookCategory {
             BreadcrumbsWidgetBook(),
             HorizontalStepsWidgetBook(),
             VerticalStepWidgetBook(),
-            PaginationWidgetBook(),
+            SimplePaginationWidgetBook(),
+            ComplexPaginationWidgetBook(),
             HorizontalTabWidgetBook(),
             VerticalTabWidgetBook(),
           ],
