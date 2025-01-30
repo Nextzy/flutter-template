@@ -18,6 +18,7 @@ export 'steps/vertical_steps.dart';
 export 'paginations/paginations.dart';
 export 'paginations/complex_paginations.dart';
 export 'paginations/dot_paginations.dart';
+export 'paginations/line_paginations.dart';
 export 'tabs/tabs.dart';
 export 'tabs/vertical_tabs.dart';
 
@@ -45,6 +46,7 @@ class DisplayCategories extends WidgetbookCategory {
             SimplePaginationWidgetBook(),
             ComplexPaginationWidgetBook(),
             DotPaginationWidgetBook(),
+            LinePaginationWidgetBook(),
             HorizontalTabWidgetBook(),
             VerticalTabWidgetBook(),
           ],
