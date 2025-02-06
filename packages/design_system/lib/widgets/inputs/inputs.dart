@@ -9,7 +9,7 @@ export 'fields/text_field.dart';
 export 'file_uploads/file_uploads.dart';
 export 'list_item/list_item.dart';
 export 'otp_input.dart';
-export 'slider.dart';
+export 'sliders/sliders.dart';
 export 'text_area.dart';
 export 'toggle.dart';
 export 'stepper.dart';
