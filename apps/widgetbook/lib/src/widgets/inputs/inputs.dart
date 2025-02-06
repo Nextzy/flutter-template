@@ -16,6 +16,7 @@ export 'file_uploads/file_uploads.dart';
 export 'time_input/time_input_book.dart';
 export 'number_input/number_input_book.dart';
 export 'sliders/sliders.dart';
+export 'sliders/vertical_sliders.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -40,5 +41,6 @@ class InputCategories extends WidgetbookCategory {
           TimeInputComponentBook(),
           NumberInputComponentBook(),
           HorizontalSliderComponentBook(),
+          VerticalSliderComponentBook(),
         ]);
 }
