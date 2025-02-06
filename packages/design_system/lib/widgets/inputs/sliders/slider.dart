@@ -13,6 +13,8 @@ class AppHorizontalSlider extends AppStatefulWidget {
       required this.divisions,
       this.helperText,
       this.minMaxPosition = HorizontalSliderMinMaxPosition.none,
+      this.minValueText,
+      this.maxValueText,
       this.disabled = false,
       this.onChanged});
 
@@ -23,6 +25,8 @@ class AppHorizontalSlider extends AppStatefulWidget {
   final int divisions;
   final String? helperText;
   final HorizontalSliderMinMaxPosition minMaxPosition;
+  final String? minValueText;
+  final String? maxValueText;
   final bool disabled;
 
   final ValueChanged<double>? onChanged;
@@ -70,14 +74,14 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildLabel('Min value'),
-              _buildLabel('Max value'),
+              _buildLabel(widget.minValueText ?? 'Min value'),
+              _buildLabel(widget.maxValueText ?? 'Max value'),
             ],
           ),
         RowLayout(
           children: [
             if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.side)
-              _buildLabel('Min value'),
+              _buildLabel(widget.minValueText ?? 'Min value'),
             Expanded(
               child: SliderTheme(
                 data: SliderTheme.of(context).copyWith(
@@ -91,6 +95,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
                         tickMarkRadius: tickMarkRadius),
                     activeTickMarkColor: Colors.transparent,
                     inactiveTickMarkColor: context.theme.color.iconTertiary,
+                    disabledActiveTrackColor: context.theme.color.bgSurface3,
                     disabledActiveTickMarkColor: Colors.transparent),
                 child: Slider(
                   value: _value,
@@ -102,15 +107,15 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
               ),
             ),
             if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.side)
-              _buildLabel('Max value'),
+              _buildLabel(widget.maxValueText ?? 'Max value'),
           ],
         ),
         if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.bottom)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildLabel('Min value'),
-              _buildLabel('Max value'),
+              _buildLabel(widget.minValueText ?? 'Min value'),
+              _buildLabel(widget.maxValueText ?? 'Max value'),
             ],
           ),
         if (widget.helperText != null)
