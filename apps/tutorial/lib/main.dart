@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: AppLocaleUtils.supportedLocales,
       locale: TranslationProvider.of(context).flutterLocale,
-      onGenerateTitle: (BuildContext context) => 'Playground Demo',
+      onGenerateTitle: (BuildContext context) => 'Tutorial',
       theme: AppTheme(),
       themeMode: ThemeMode.system,
       routerConfig: PlaygroundRouter().config(),
