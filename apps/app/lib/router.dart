@@ -26,7 +26,7 @@ class AppRouter extends RootStackRouter {
       ];
 }
 
-class AppRouterBloc extends FalconBloc<AppRouteEvent, AppRouter> {
+class AppRouterBloc extends FalconEventBloc<AppRouteEvent, AppRouter> {
   AppRouterBloc() : super(_createRoute());
 
   AppRouter get router => state;

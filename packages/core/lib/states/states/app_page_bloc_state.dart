@@ -1,16 +1,5 @@
 import 'package:core/lib.dart';
 
-typedef WidgetStateContextCallback<DATA> = Widget Function(
-    BuildContext context, WidgetStateEvent<DATA> state);
-
-typedef ListWidgetStateContextCallback<DATA> = List<Widget> Function(
-    BuildContext context, WidgetStateEvent<DATA> state);
-
-typedef PreferredWidgetStateContextCallback<DATA> = PreferredSizeWidget
-    Function(BuildContext context, WidgetStateEvent<DATA> state);
-
-typedef PopStateCallback<DATA> = bool Function(WidgetStateEvent<DATA> state);
-
 abstract class AppPageBlocWidgetState<
     WIDGET extends StatefulWidget,
     BLOC extends BlocBase<WidgetStateEvent<DATA>>,

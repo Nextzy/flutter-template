@@ -32,10 +32,10 @@ class ExampleAuthenticationPageBloc
     required String email,
     required String password,
   }) =>
-      callEitherStreamDebounce(
+      callEitherStream(
         key: ExampleAuthenticationPageBlocEvent.tapSignIn,
         call: _signInUsecase(email: email, password: password),
-        onData: (emitter, state) {
+        onData: (state) {
           if (state.isLoading) {
             emitEvent(AppDialogEvent.showFullLoadingLocked);
             emitLoading();
@@ -43,7 +43,7 @@ class ExampleAuthenticationPageBloc
             emitSuccess(true);
           }
         },
-        onFailure: (emitter, failure) {
+        onFailure: (failure) {
           emitEvent(AppDialogEvent.dismissAll);
           emitFail(false);
         },
@@ -79,10 +79,10 @@ class ExampleMoviePageBlocSafe
     }
   }
 
-  Future<void> _fetchMovieList() => callEitherStreamDebounce(
+  Future<void> _fetchMovieList() => callEitherStream(
         key: ExampleMoviePageBlocEvent.fetchMovieList,
         call: _movieListUsecase(),
-        onData: (emitter, state) {
+        onData: (state) {
           if (state.isLoading) {
             emitEvent(AppDialogEvent.showFullLoadingLocked);
             emitLoading(state.data);
@@ -90,7 +90,7 @@ class ExampleMoviePageBlocSafe
             emitSuccess(state.data);
           }
         },
-        onFailure: (emitter, failure) {
+        onFailure: (failure) {
           emitEvent(AppDialogEvent.dismissAll);
           emitFail();
         },

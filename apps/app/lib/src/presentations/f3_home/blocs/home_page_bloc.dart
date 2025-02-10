@@ -1,17 +1,21 @@
 import 'package:change_application_name/application.dart';
 
-enum HomeBlocEvent { yourEvent }
+enum HomeBlocEvent { tapAddNumber }
 
 class HomePageBloc extends AppBloc<HomeBlocEvent, HomeEntity> {
   HomePageBloc();
 
-  final ContentState<String> content1 = ContentState.initial();
+  final ContentSafeState<int> number = ContentSafeState.initial(0);
 
   @override
   Future<void> onBlocEvent(BlocEvent<HomeBlocEvent> event) async {
     switch (event.name) {
-      case HomeBlocEvent.yourEvent:
-      // return _fetchStreamExample(emitter);
+      case HomeBlocEvent.tapAddNumber:
+        return _addNumber();
     }
+  }
+
+  Future<void> _addNumber() async {
+    number.data = number.data + 1;
   }
 }

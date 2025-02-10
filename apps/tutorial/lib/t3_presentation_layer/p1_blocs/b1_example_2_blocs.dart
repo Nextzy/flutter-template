@@ -32,10 +32,10 @@ class ExampleMovie2PageBlocSafe
     }
   }
 
-  Future<void> _fetchMovieList() => callEitherStreamDebounce(
+  Future<void> _fetchMovieList() => callEitherStream(
         key: ExampleMovie2PageBlocEvent.fetchMovieList,
         call: _movieListUsecase(),
-        onData: (emitter, state) {
+        onData: (state) {
           if (state.isLoading) {
             highLightMovieList.loading();
             trendMovieList.loading();
@@ -52,7 +52,7 @@ class ExampleMovie2PageBlocSafe
             ));
           }
         },
-        onFailure: (emitter, failure) {
+        onFailure: (failure) {
           emitEvent(AppDialogEvent.dismissAll);
           emitFail();
         },
