@@ -9,6 +9,12 @@ export 'list_item/list_item_book.dart';
 export 'menus/menu_item_book.dart';
 export 'text_fields/text_field_book.dart';
 export 'toggle/toggle_book.dart';
+export 'text_area/text_area_book.dart';
+export 'stepper/stepper_book.dart';
+export 'rating/rating_book.dart';
+export 'file_uploads/file_uploads.dart';
+export 'time_input/time_input_book.dart';
+export 'number_input/number_input_book.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -26,5 +32,11 @@ class InputCategories extends WidgetbookCategory {
           MenuItemComponentBook(),
           // ListItemComponentBook(),
           // BottomNavigationBook(),
+          TextAreaComponentBook(),
+          StepperComponentBook(),
+          RatingComponentBook(),
+          FileUploadComponentBook(),
+          TimeInputComponentBook(),
+          NumberInputComponentBook(),
         ]);
 }
