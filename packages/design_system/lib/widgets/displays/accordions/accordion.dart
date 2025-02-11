@@ -79,7 +79,7 @@ class _AppAccordionState extends AppState<AppAccordion> {
                 Column(
                   children: [
                     widget.iconLabel.toSvgIcon(
-                      size: widget.size == WidgetSize.sm ? 14 : 16,
+                      size: widgetSize == WidgetSize.sm ? 14 : 16,
                       colorFilter:
                           ColorFilter.mode(textPrimaryColor, BlendMode.srcIn),
                     ),
@@ -94,7 +94,7 @@ class _AppAccordionState extends AppState<AppAccordion> {
                     widget.label,
                     style: TextStyle(
                       color: textPrimaryColor,
-                      fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                      fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -114,7 +114,7 @@ class _AppAccordionState extends AppState<AppAccordion> {
                       widget.text,
                       style: TextStyle(
                         color: textPrimaryColor,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -156,7 +156,7 @@ class _AppAccordionState extends AppState<AppAccordion> {
                       widget.text,
                       style: TextStyle(
                         color: textPrimaryColor,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -169,7 +169,7 @@ class _AppAccordionState extends AppState<AppAccordion> {
     );
   }
 
-  EdgeInsets get paddingBodySize => switch (widget.size) {
+  EdgeInsets get paddingBodySize => switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsets.all(4),
         WidgetSize.xs => const EdgeInsets.all(4),
         WidgetSize.sm => const EdgeInsets.all(4),
@@ -224,7 +224,7 @@ class _AppAccordionState extends AppState<AppAccordion> {
             : context.theme.color.bg
       };
 
-  EdgeInsets get paddingTextSize => switch (widget.size) {
+  EdgeInsets get paddingTextSize => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -243,11 +243,11 @@ class _AppAccordionState extends AppState<AppAccordion> {
     return Column(children: [
       if (_isExpanded)
         Assets.icon.caretDownRegular.svgIcon(
-            size: widget.size == WidgetSize.sm ? 12 : 16,
+            size: widgetSize == WidgetSize.sm ? 12 : 16,
             colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn))
       else
         Assets.icon.caretRightRegular.svgIcon(
-            size: widget.size == WidgetSize.sm ? 12 : 16,
+            size: widgetSize == WidgetSize.sm ? 12 : 16,
             colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn)),
     ]);
   }

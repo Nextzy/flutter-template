@@ -87,7 +87,7 @@ class _AppStepperState extends AppState<AppStepper> {
           ),
           child: AppButton(
             text: '-',
-            size: widget.size,
+            size: widgetSize,
             style: widget.style == AppTextFieldStyle.shaded
                 ? AppButtonStyle.shaded
                 : AppButtonStyle.outline,
@@ -99,12 +99,12 @@ class _AppStepperState extends AppState<AppStepper> {
           ),
         ),
         SizedBox(
-          width: widget.size == WidgetSize.sm ? 40 : 60,
+          width: widgetSize == WidgetSize.sm ? 40 : 60,
           child: AppTextField(
             controller: TextEditingController(text: _currentValue.toString()),
             onTextChange: _onTextChange,
             feedbackState: widget.feedbackState,
-            size: widget.size,
+            size: widgetSize,
             style: widget.style,
             keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
@@ -125,7 +125,7 @@ class _AppStepperState extends AppState<AppStepper> {
           ),
           child: AppButton(
             text: '+',
-            size: widget.size,
+            size: widgetSize,
             style: widget.style == AppTextFieldStyle.shaded
                 ? AppButtonStyle.shaded
                 : AppButtonStyle.outline,
@@ -140,7 +140,7 @@ class _AppStepperState extends AppState<AppStepper> {
     );
   }
 
-  double get width => switch (widget.size) {
+  double get width => switch (widgetSize) {
         WidgetSize.xxs => 28,
         WidgetSize.xs => 28,
         WidgetSize.sm => 28,
@@ -150,7 +150,7 @@ class _AppStepperState extends AppState<AppStepper> {
         WidgetSize.xxl => 45,
       };
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 27,
         WidgetSize.xs => 27,
         WidgetSize.sm => 27,

@@ -30,7 +30,7 @@ class AppTimeInput extends AppStatefulWidget {
   State<AppTimeInput> createState() => _AppTimeInputState();
 }
 
-class _AppTimeInputState extends State<AppTimeInput> {
+class _AppTimeInputState extends AppState<AppTimeInput> {
   String _hours = '';
   String _minutes = '';
   String _unit = 'AM';
@@ -146,7 +146,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
             widget.label,
             style: TextStyle(
               color: context.theme.color.textPrimary,
-              fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+              fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -176,7 +176,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
                       hintText: '__',
                       hintStyle: TextStyle(
                           color: textSecondaryColor,
-                          fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                          fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                           fontWeight: FontWeight.w400),
                       border: InputBorder.none,
                       contentPadding: padding,
@@ -190,7 +190,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
                     ],
                     style: TextStyle(
                         color: textPrimaryColor,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w400),
                   )),
                   Center(
@@ -208,7 +208,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
                       hintText: '__',
                       hintStyle: TextStyle(
                           color: textSecondaryColor,
-                          fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                          fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                           fontWeight: FontWeight.w400),
                       border: InputBorder.none,
                       contentPadding: padding,
@@ -222,7 +222,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
                     ],
                     style: TextStyle(
                         color: textPrimaryColor,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w400),
                   )),
                 ],
@@ -253,27 +253,27 @@ class _AppTimeInputState extends State<AppTimeInput> {
                     splashColor: Colors.transparent,
                     children: [
                       Padding(
-                        padding: widget.size == WidgetSize.sm
+                        padding: widgetSize == WidgetSize.sm
                             ? const EdgeInsets.all(2)
                             : const EdgeInsets.all(4),
                         child: AppText('AM',
                             style: TextStyle(
                                 color: textPrimaryColor,
                                 fontSize:
-                                    widget.size == WidgetSize.sm ? 12 : 14,
+                                    widgetSize == WidgetSize.sm ? 12 : 14,
                                 fontWeight: _unit == 'AM'
                                     ? FontWeight.w500
                                     : FontWeight.w400)),
                       ),
                       Padding(
-                        padding: widget.size == WidgetSize.sm
+                        padding: widgetSize == WidgetSize.sm
                             ? const EdgeInsets.all(2)
                             : const EdgeInsets.all(4),
                         child: AppText('PM',
                             style: TextStyle(
                                 color: textPrimaryColor,
                                 fontSize:
-                                    widget.size == WidgetSize.sm ? 12 : 14,
+                                    widgetSize == WidgetSize.sm ? 12 : 14,
                                 fontWeight: _unit == 'PM'
                                     ? FontWeight.w500
                                     : FontWeight.w400)),
@@ -305,7 +305,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
                       child: AppText(value,
                           style: TextStyle(
                               color: textPrimaryColor,
-                              fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                              fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                               fontWeight: FontWeight.w400)),
                     );
                   }).toList(),
@@ -337,7 +337,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
     );
   }
 
-  double get width => switch (widget.size) {
+  double get width => switch (widgetSize) {
         WidgetSize.xxs => 66,
         WidgetSize.xs => 66,
         WidgetSize.sm => 66,
@@ -347,7 +347,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
         WidgetSize.xxl => 98,
       };
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 24,
         WidgetSize.xs => 24,
         WidgetSize.sm => 24,
@@ -357,7 +357,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
         WidgetSize.xxl => 40,
       };
 
-  EdgeInsets get padding => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
@@ -372,7 +372,7 @@ class _AppTimeInputState extends State<AppTimeInput> {
           const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       };
 
-  EdgeInsets get timeZonePadding => switch (widget.size) {
+  EdgeInsets get timeZonePadding => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 6, vertical: 0),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 6, vertical: 0),

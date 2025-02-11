@@ -99,7 +99,7 @@ class _AppRatingState extends AppState<AppRating> {
         AppRatingStyle.emoji => '😀',
       };
 
-  double get iconSize => switch (widget.size) {
+  double get iconSize => switch (widgetSize) {
         WidgetSize.xxs => 16,
         WidgetSize.xs => 16,
         WidgetSize.sm => 16,
@@ -116,7 +116,7 @@ class _AppRatingState extends AppState<AppRating> {
         AppRatingStyle.emoji => context.theme.color.iconWarning,
       };
 
-  double get fontSize => switch (widget.size) {
+  double get fontSize => switch (widgetSize) {
         WidgetSize.xxs => 12,
         WidgetSize.xs => 12,
         WidgetSize.sm => 12,
