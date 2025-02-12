@@ -49,6 +49,7 @@ class GestureContainerLayout extends StatefulWidget {
     this.enableFeedback = true,
     this.excludeFromSemantics = false,
     this.focusNode,
+    this.tapFocus = true,
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,
@@ -114,6 +115,7 @@ class GestureContainerLayout extends StatefulWidget {
   final ValueChanged<bool>? onFocusChange;
   final bool autofocus;
   final FocusNode? focusNode;
+  final bool tapFocus;
   final bool canRequestFocus;
   final WidgetStatesController? statesController;
 
@@ -124,91 +126,94 @@ class GestureContainerLayout extends StatefulWidget {
   State<GestureContainerLayout> createState() => _GestureContainerLayoutState();
 }
 
-class _GestureContainerLayoutState extends State<GestureContainerLayout> {
-  late final ValueNotifier<bool> _focusNotifier;
+class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
+  final FocusNode defaultFocusNode = FocusNode();
+
+  FocusNode get focusNode => widget.focusNode ?? defaultFocusNode;
 
   @override
-  void initState() {
-    super.initState();
-    _focusNotifier = ValueNotifier(false);
-  }
-
-  @override
-  Widget build(BuildContext context) =>
-      ChangeNotifierProvider<ValueNotifier<bool>>(
-        create: (context) => _focusNotifier,
-        child: Consumer<ValueNotifier<bool>>(
-          builder: (context, focus, child) => FocusSpread(
-            key: widget.key,
-            focus: widget.disabled
-                ? false
-                : widget.showFocus
-                    ? focus.value
-                    : false,
-            borderRadius:
-                widget.decoration?.borderRadius ?? widget.borderRadius,
-            child: ContainerLayout(
-              key: widget.key,
-              ratio: widget.ratio,
-              rotate: widget.rotate,
-              decoration: widget.decoration,
-              margin: widget.margin,
-              border: widget.border,
-              borderRadius: widget.borderRadius,
-              backgroundColor: widget.backgroundColor,
-              backgroundGradient: widget.backgroundGradient,
-              backgroundImage: widget.backgroundImage,
-              foregroundColor: widget.foregroundColor,
-              foregroundGradient: widget.foregroundGradient,
-              foregroundImage: widget.foregroundImage,
-              opacity: widget.opacity,
-              clipBehavior: widget.clipBehavior,
-              innerShadow: widget.innerShadow,
-              dropShadow: widget.dropShadow,
-              backgroundBlur: widget.backgroundBlur,
-              transform: widget.transform,
-              animate: widget.animate,
-              animateDuration: widget.animateDuration,
-              animateCurve: widget.animateCurve,
-              onEndAnimate: widget.onEndAnimate,
-              child: buildInkWell(
-                context,
-                disabledPressAnimation: widget.disabledPressAnimation,
-                borderRadius: widget.borderRadius,
-                disabled: widget.disabled,
-                onPress: widget.onPress,
-                onSecondaryPress: widget.onSecondaryPress,
-                onDoubleTap: widget.onDoubleTap,
-                onLongPress: widget.onLongPress,
-                onHighlightChanged: widget.onHighlightChanged,
-                onHover: widget.onHover,
-                mouseCursor: widget.mouseCursor,
-                enableFeedback: widget.enableFeedback,
-                excludeFromSemantics: widget.excludeFromSemantics,
-                focusNode: !widget.disableFocused ? widget.focusNode : null,
-                canRequestFocus: !widget.disableFocused,
-                onFocusChange: !widget.disableFocused
-                    ? (value) {
-                        _focusNotifier.value = value;
-                        widget.onFocusChange?.call(value);
-                      }
-                    : null,
-                autofocus: !widget.disableFocused ? widget.autofocus : false,
-                statesController: widget.statesController,
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minWidth: widget.width ?? widget.minWidth ?? 0.0,
-                    maxWidth:
-                        widget.width ?? widget.maxWidth ?? double.infinity,
-                    minHeight: widget.height ?? widget.minHeight ?? 0.0,
-                    maxHeight:
-                        widget.height ?? widget.maxHeight ?? double.infinity,
-                  ),
-                  child: Padding(
-                    padding: widget.padding ?? const EdgeInsets.all(0.0),
-                    child: widget.child,
-                  ),
-                ),
+  Widget buildState(BuildContext context, FullWidgetState state) => FocusSpread(
+        key: widget.key,
+        focus: widget.disabled
+            ? false
+            : widget.showFocus
+                ? state.isFocused
+                : false,
+        borderRadius: widget.decoration?.borderRadius ?? widget.borderRadius,
+        child: ContainerLayout(
+          key: widget.key,
+          ratio: widget.ratio,
+          rotate: widget.rotate,
+          decoration: widget.decoration,
+          margin: widget.margin,
+          border: widget.border,
+          borderRadius: widget.borderRadius,
+          backgroundColor: widget.backgroundColor,
+          backgroundGradient: widget.backgroundGradient,
+          backgroundImage: widget.backgroundImage,
+          foregroundColor: widget.foregroundColor,
+          foregroundGradient: widget.foregroundGradient,
+          foregroundImage: widget.foregroundImage,
+          opacity: widget.opacity,
+          clipBehavior: widget.clipBehavior,
+          innerShadow: widget.innerShadow,
+          dropShadow: widget.dropShadow,
+          backgroundBlur: widget.backgroundBlur,
+          transform: widget.transform,
+          animate: widget.animate,
+          animateDuration: widget.animateDuration,
+          animateCurve: widget.animateCurve,
+          onEndAnimate: widget.onEndAnimate,
+          child: buildInkWell(
+            context,
+            disabledPressAnimation: widget.disabledPressAnimation,
+            borderRadius: widget.borderRadius,
+            disabled: widget.disabled,
+            onPress: widget.onPress,
+            onSecondaryPress: widget.onSecondaryPress,
+            onDoubleTap: widget.onDoubleTap,
+            onLongPress: widget.onLongPress,
+            onHighlightChanged: widget.onHighlightChanged,
+            onHover: (value) {
+              if (widget.tapFocus == false) {
+                if (value) {
+                  setFullWidgetState(FullWidgetState.hovered);
+                  focusNode.requestFocus();
+                } else {
+                  setFullWidgetState(FullWidgetState.normal);
+                }
+              }
+              widget.onHover?.call(value);
+            },
+            mouseCursor: widget.mouseCursor,
+            enableFeedback: widget.enableFeedback,
+            excludeFromSemantics: widget.excludeFromSemantics,
+            focusNode: !widget.disableFocused ? focusNode : null,
+            canRequestFocus: !widget.disableFocused,
+            onFocusChange: !widget.disableFocused
+                ? (value) {
+                    if (value == false) {
+                      setFullWidgetState(FullWidgetState.normal);
+                    } else if (this.state.isNotHovered) {
+                      setFullWidgetState(value
+                          ? FullWidgetState.focused
+                          : FullWidgetState.normal);
+                    }
+                    widget.onFocusChange?.call(value);
+                  }
+                : null,
+            autofocus: !widget.disableFocused ? widget.autofocus : false,
+            statesController: widget.statesController,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minWidth: widget.width ?? widget.minWidth ?? 0.0,
+                maxWidth: widget.width ?? widget.maxWidth ?? double.infinity,
+                minHeight: widget.height ?? widget.minHeight ?? 0.0,
+                maxHeight: widget.height ?? widget.maxHeight ?? double.infinity,
+              ),
+              child: Padding(
+                padding: widget.padding ?? const EdgeInsets.all(0.0),
+                child: widget.child,
               ),
             ),
           ),
@@ -221,6 +226,8 @@ class _GestureContainerLayoutState extends State<GestureContainerLayout> {
     required bool disabledPressAnimation,
     required BorderRadius? borderRadius,
     required GestureTapCallback? onPress,
+    GestureTapDownCallback? onTapDown,
+    GestureTapUpCallback? onTapUp,
     required GestureTapCallback? onSecondaryPress,
     required GestureTapCallback? onDoubleTap,
     required GestureLongPressCallback? onLongPress,
@@ -267,6 +274,8 @@ class _GestureContainerLayoutState extends State<GestureContainerLayout> {
         splashColor: splashColor,
         highlightColor: highlightColor,
         onTap: onPress,
+        onTapDown: onTapDown,
+        onTapUp: onTapUp,
         onSecondaryTap: onSecondaryPress,
         onDoubleTap: onDoubleTap,
         onLongPress: onLongPress,

@@ -58,6 +58,7 @@ class GestureColumnLayout extends StatefulWidget {
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,
+    this.tapFocus = true,
     this.statesController,
     //===============//
     required this.children,
@@ -116,6 +117,7 @@ class GestureColumnLayout extends StatefulWidget {
   final bool excludeFromSemantics;
   final ValueChanged<bool>? onFocusChange;
   final bool autofocus;
+  final bool tapFocus;
   final FocusNode? focusNode;
   final bool canRequestFocus;
   final WidgetStatesController? statesController;
@@ -187,6 +189,7 @@ class _GestureColumnLayoutState extends State<GestureColumnLayout> {
           canRequestFocus: widget.canRequestFocus,
           onFocusChange: widget.onFocusChange,
           autofocus: widget.autofocus,
+          tapFocus: widget.tapFocus,
           statesController: widget.statesController,
           animate: widget.animate,
           animateDuration: widget.animateDuration,
