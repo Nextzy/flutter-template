@@ -22,6 +22,7 @@ export 'paginations/line_paginations.dart';
 export 'tabs/tabs.dart';
 export 'tabs/vertical_tabs.dart';
 export 'tag/tag_book.dart';
+export 'popover/popover_book.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -51,6 +52,7 @@ class DisplayCategories extends WidgetbookCategory {
             HorizontalTabWidgetBook(),
             VerticalTabWidgetBook(),
             TagWidgetBook(),
+            PopoverWidgetBook(),
           ],
         );
 }
