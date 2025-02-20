@@ -1,4 +1,5 @@
 export 'checkbox_overview_case.dart';
+export 'checkbox_card_case.dart';
 
 import 'package:widgetbook_app/widgetbook.dart';
 
@@ -9,6 +10,7 @@ class CheckboxComponentBook extends WidgetbookComponent {
   }) : super(
           useCases: [
             OverviewCheckboxWidgetCase(),
+            CardCheckboxWidgetCase(),
           ],
         );
 }
