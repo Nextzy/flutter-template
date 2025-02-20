@@ -19,6 +19,10 @@ class AppRouter extends RootStackRouter {
           path: '/setting',
           page: SettingRoute.page,
         ),
+        AppRoute(
+          path: '/signup',
+          page: SignupRoute.page,
+        ),
         RedirectRoute(
           path: '*',
           redirectTo: '/',

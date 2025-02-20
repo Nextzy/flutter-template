@@ -5,9 +5,13 @@ class AppLinePagination extends AppStatefulWidget {
       {super.key,
       super.size = WidgetSize.md,
       required this.totalPage,
+      this.activeColor,
+      this.inactiveColor,
       this.onChanged});
 
   final int totalPage;
+  final Color? activeColor;
+  final Color? inactiveColor;
 
   final ValueChanged<int>? onChanged;
 
@@ -48,9 +52,7 @@ class _AppLinePaginationState extends AppState<AppLinePagination> {
               height: height,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: _currentPage == index + 1
-                    ? context.theme.color.iconPrimary
-                    : context.theme.color.iconTertiary,
+                color: _currentPage == index + 1 ? activeColor : inactiveColor,
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -79,4 +81,10 @@ class _AppLinePaginationState extends AppState<AppLinePagination> {
         WidgetSize.xl => 8,
         WidgetSize.xxl => 8,
       };
+
+  Color get activeColor =>
+      widget.activeColor ?? context.theme.color.iconPrimary;
+
+  Color get inactiveColor =>
+      widget.inactiveColor ?? context.theme.color.iconTertiary;
 }
