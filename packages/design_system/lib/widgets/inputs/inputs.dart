@@ -11,7 +11,7 @@ export 'list_item/list_item.dart';
 export 'otp_input.dart';
 export 'sliders/sliders.dart';
 export 'text_area.dart';
-export 'toggle.dart';
+export 'toggles/toggles.dart';
 export 'stepper.dart';
 export 'rating.dart';
 export 'time_input.dart';

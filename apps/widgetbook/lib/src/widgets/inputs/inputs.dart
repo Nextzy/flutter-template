@@ -8,7 +8,7 @@ export 'checkbox/checkbox_book.dart';
 export 'list_item/list_item_book.dart';
 export 'menus/menu_item_book.dart';
 export 'text_fields/text_field_book.dart';
-export 'toggle/toggle_book.dart';
+export 'toggles/toggles.dart';
 export 'text_area/text_area_book.dart';
 export 'stepper/stepper_book.dart';
 export 'rating/rating_book.dart';
@@ -27,7 +27,7 @@ class InputCategories extends WidgetbookCategory {
   }) : super(children: [
           ButtonComponents(),
           IconButtonComponents(),
-          // ToggleComponentBook(),
+          ToggleComponentBook(),
           // CheckboxComponentBook(),
           // MenuButtonBook(),
           // ButtonGroupComponentBook(),
