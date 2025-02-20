@@ -18,6 +18,7 @@ export 'number_input/number_input_book.dart';
 export 'combobox/combobox_book.dart';
 export 'sliders/sliders.dart';
 export 'sliders/vertical_sliders.dart';
+export 'radios/radios.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -44,5 +45,6 @@ class InputCategories extends WidgetbookCategory {
           ComboBoxComponentBook(),
           HorizontalSliderComponentBook(),
           VerticalSliderComponentBook(),
+          RadioComponentBook(),
         ]);
 }
