@@ -1,5 +1,6 @@
 export 'radio_overview_case.dart';
 export 'radio_group_case.dart';
+export 'radio_card_case.dart';
 
 import 'package:widgetbook_app/widgetbook.dart';
 
@@ -11,6 +12,7 @@ class RadioComponentBook extends WidgetbookComponent {
           useCases: [
             OverviewRadioWidgetCase(),
             GroupRadioWidgetCase(),
+            CardRadioWidgetCase(),
           ],
         );
 }
