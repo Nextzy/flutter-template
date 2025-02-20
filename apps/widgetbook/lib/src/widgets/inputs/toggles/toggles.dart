@@ -1,4 +1,5 @@
 export 'toggle_overview_case.dart';
+export 'toggle_card_case.dart';
 
 import 'package:widgetbook_app/widgetbook.dart';
 
@@ -9,6 +10,7 @@ class ToggleComponentBook extends WidgetbookComponent {
   }) : super(
           useCases: [
             OverviewToggleWidgetCase(),
+            CardToggleWidgetCase(),
           ],
         );
 }
