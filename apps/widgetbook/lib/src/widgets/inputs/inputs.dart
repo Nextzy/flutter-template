@@ -4,7 +4,7 @@ export 'bottom_navigation_book.dart';
 export 'buttons/buttons.dart';
 export 'buttons/icons/icon_buttons.dart';
 export 'buttons/dropdowns/dropdown_book.dart';
-export 'checkbox/checkbox_book.dart';
+export 'checkbox/checkboxs.dart';
 export 'list_item/list_item_book.dart';
 export 'menus/menu_item_book.dart';
 export 'text_fields/text_field_book.dart';
@@ -27,7 +27,7 @@ class InputCategories extends WidgetbookCategory {
           ButtonComponents(),
           IconButtonComponents(),
           // ToggleComponentBook(),
-          // CheckboxComponentBook(),
+          CheckboxComponentBook(),
           // MenuButtonBook(),
           // ButtonGroupComponentBook(),
           // DropdownButtonComponentBook(),
