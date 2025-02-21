@@ -3,12 +3,13 @@ import 'package:widgetbook_app/widgetbook.dart';
 export 'bottom_navigation_book.dart';
 export 'buttons/buttons.dart';
 export 'buttons/icons/icon_buttons.dart';
+export 'buttons/socials/social_buttons.dart';
 export 'buttons/dropdowns/dropdown_book.dart';
-export 'checkbox/checkbox_book.dart';
+export 'checkbox/checkboxs.dart';
 export 'list_item/list_item_book.dart';
 export 'menus/menu_item_book.dart';
 export 'text_fields/text_field_book.dart';
-export 'toggle/toggle_book.dart';
+export 'toggles/toggles.dart';
 export 'text_area/text_area_book.dart';
 export 'stepper/stepper_book.dart';
 export 'rating/rating_book.dart';
@@ -18,6 +19,7 @@ export 'number_input/number_input_book.dart';
 export 'combobox/combobox_book.dart';
 export 'sliders/sliders.dart';
 export 'sliders/vertical_sliders.dart';
+export 'radios/radios.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -26,8 +28,9 @@ class InputCategories extends WidgetbookCategory {
   }) : super(children: [
           ButtonComponents(),
           IconButtonComponents(),
-          // ToggleComponentBook(),
-          // CheckboxComponentBook(),
+          SocialButtonComponents(),
+          ToggleComponentBook(),
+          CheckboxComponentBook(),
           // MenuButtonBook(),
           // ButtonGroupComponentBook(),
           // DropdownButtonComponentBook(),
@@ -44,5 +47,6 @@ class InputCategories extends WidgetbookCategory {
           ComboBoxComponentBook(),
           HorizontalSliderComponentBook(),
           VerticalSliderComponentBook(),
+          RadioComponentBook(),
         ]);
 }

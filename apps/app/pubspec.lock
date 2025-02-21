@@ -1757,6 +1757,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  popover:
+    dependency: transitive
+    description:
+      name: popover
+      sha256: "0606f3e10f92fc0459f5c52fd917738c29e7552323b28694d50c2d3312d0e1a2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.1"
   protobuf:
     dependency: transitive
     description:
@@ -2254,10 +2262,10 @@ packages:
     dependency: transitive
     description:
       name: toastification
-      sha256: "4d97fbfa463dfe83691044cba9f37cb185a79bb9205cfecb655fa1f6be126a13"
+      sha256: "658b0e80319335e270078a78bbfc2ddd0deeb8e7e3b4d1bfc04d5183717a9f72"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "3.0.0"
   typed_data:
     dependency: transitive
     description:

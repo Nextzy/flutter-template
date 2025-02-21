@@ -6,7 +6,7 @@ class CheckboxComponentBook extends WidgetbookComponent {
   CheckboxComponentBook({
     super.name = 'Checkbox',
   }) : super(useCases: [
-          ...CheckboxCases.createCases(),
+          // ...CheckboxCases.createCases(),
         ]);
 
 

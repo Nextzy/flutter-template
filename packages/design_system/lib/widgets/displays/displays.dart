@@ -1,5 +1,5 @@
 export 'badges/badges.dart';
-export 'divider.dart';
+export 'dividers/divider.dart';
 export 'image.dart';
 export 'list_item.dart';
 export 'loading.dart';
@@ -27,3 +27,4 @@ export 'accordions/accordions.dart';
 export 'breadcrumbs/breadcrumbs.dart';
 export 'steps/steps.dart';
 export 'paginations/paginations.dart';
+export 'popover.dart';

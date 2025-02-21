@@ -27,3 +27,4 @@ export 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 export 'package:buttons_tabbar/buttons_tabbar.dart';
 export 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 export 'package:loading_more_list/loading_more_list.dart' hide ViewportBuilder;
+export 'package:popover/popover.dart';
