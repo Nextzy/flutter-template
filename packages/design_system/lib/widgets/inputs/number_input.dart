@@ -6,21 +6,29 @@ class AppNumberInput extends AppStatefulWidget {
       {super.key,
       super.size,
       this.style = AppTextFieldStyle.outline,
+      this.width,
+      this.height,
       this.label,
+      this.defaultValue = 0,
       this.placeholderText,
       this.feedbackState,
       this.statusText,
       this.helperText,
       this.disabled = false,
+      this.readOnly = false,
       this.onChanged});
 
   final AppTextFieldStyle style;
+  final double? width;
+  final double? height;
   final String? label;
+  final int defaultValue;
   final String? placeholderText;
   final FeedbackState? feedbackState;
   final String? statusText;
   final String? helperText;
   final bool disabled;
+  final bool readOnly;
 
   final ValueChanged<int>? onChanged;
 
@@ -31,6 +39,22 @@ class AppNumberInput extends AppStatefulWidget {
 class _AppNumberInputState extends AppState<AppNumberInput> {
   final TextEditingController _controller = TextEditingController();
   int _value = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _value = widget.defaultValue;
+    _controller.text = _value.toString();
+  }
+
+  @override
+  void didUpdateWidget(AppNumberInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.defaultValue != oldWidget.defaultValue) {
+      _value = widget.defaultValue;
+      _controller.text = _value.toString();
+    }
+  }
 
   void _onChange() {
     if (widget.onChanged != null) {
@@ -77,6 +101,8 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
   @override
   Widget build(BuildContext context) {
     return ColumnLayout(
+        width: widget.width,
+        height: widget.height,
         crossAxisAlignment: CrossAxisAlignment.start,
         gap: 4,
         children: [
@@ -91,7 +117,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
             ),
           Container(
             height: height,
-            padding: const EdgeInsets.only(left: 12),
+            padding: const EdgeInsets.only(left: 8),
             decoration: BoxDecoration(
               color: widget.style == AppTextFieldStyle.shaded
                   ? context.theme.color.bgInputShaded
@@ -125,9 +151,10 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                         color: textPrimaryColor,
                         fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w400),
+                    readOnly: widget.readOnly,
                   ),
                 ),
-                SizedBox(width: 12),
+                SizedBox(width: 8),
                 ColumnLayout(
                   padding: widget.style == AppTextFieldStyle.shaded
                       ? const EdgeInsets.symmetric(horizontal: 1, vertical: 1)

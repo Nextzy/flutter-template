@@ -15,8 +15,13 @@ export 'accordions/accordions.dart';
 export 'breadcrumbs/breadcrumbs.dart';
 export 'steps/steps.dart';
 export 'steps/vertical_steps.dart';
+export 'paginations/paginations.dart';
+export 'paginations/complex_paginations.dart';
+export 'paginations/dot_paginations.dart';
+export 'paginations/line_paginations.dart';
 export 'tabs/tabs.dart';
 export 'tabs/vertical_tabs.dart';
+export 'tag/tag_book.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -39,8 +44,13 @@ class DisplayCategories extends WidgetbookCategory {
             BreadcrumbsWidgetBook(),
             HorizontalStepsWidgetBook(),
             VerticalStepWidgetBook(),
+            SimplePaginationWidgetBook(),
+            ComplexPaginationWidgetBook(),
+            DotPaginationWidgetBook(),
+            LinePaginationWidgetBook(),
             HorizontalTabWidgetBook(),
             VerticalTabWidgetBook(),
+            TagWidgetBook(),
           ],
         );
 }
