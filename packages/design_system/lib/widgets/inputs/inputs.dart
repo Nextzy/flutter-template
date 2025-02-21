@@ -1,6 +1,7 @@
 export 'bottom_navigation.dart';
 export 'buttons/button.dart';
 export 'icon/icon_button.dart';
+export 'buttons/social_button.dart';
 export 'menus/menus.dart';
 export 'callouts/callout.dart';
 export 'checkboxs/checkboxs.dart';
