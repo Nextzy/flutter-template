@@ -3,6 +3,7 @@ import 'package:widgetbook_app/widgetbook.dart';
 export 'bottom_navigation_book.dart';
 export 'buttons/buttons.dart';
 export 'buttons/icons/icon_buttons.dart';
+export 'buttons/socials/social_buttons.dart';
 export 'buttons/dropdowns/dropdown_book.dart';
 export 'checkbox/checkboxs.dart';
 export 'list_item/list_item_book.dart';
@@ -27,6 +28,7 @@ class InputCategories extends WidgetbookCategory {
   }) : super(children: [
           ButtonComponents(),
           IconButtonComponents(),
+          SocialButtonComponents(),
           ToggleComponentBook(),
           CheckboxComponentBook(),
           // MenuButtonBook(),

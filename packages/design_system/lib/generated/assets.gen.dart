@@ -238,17 +238,35 @@ class $AssetsIllustrationGen {
 class $AssetsLogoGen {
   const $AssetsLogoGen();
 
+  /// File path: assets/logo/apple.svg
+  SvgGenImage get apple => const SvgGenImage('assets/logo/apple.svg');
+
+  /// File path: assets/logo/facebook.svg
+  SvgGenImage get facebook => const SvgGenImage('assets/logo/facebook.svg');
+
+  /// File path: assets/logo/github.svg
+  SvgGenImage get github => const SvgGenImage('assets/logo/github.svg');
+
+  /// File path: assets/logo/google.svg
+  SvgGenImage get google => const SvgGenImage('assets/logo/google.svg');
+
   /// File path: assets/logo/icon-text.svg
   SvgGenImage get iconText => const SvgGenImage('assets/logo/icon-text.svg');
 
   /// File path: assets/logo/icon.svg
   SvgGenImage get icon => const SvgGenImage('assets/logo/icon.svg');
 
+  /// File path: assets/logo/microsoft.svg
+  SvgGenImage get microsoft => const SvgGenImage('assets/logo/microsoft.svg');
+
   /// File path: assets/logo/splash.svg
   SvgGenImage get splash => const SvgGenImage('assets/logo/splash.svg');
 
+  /// File path: assets/logo/twitter.svg
+  SvgGenImage get twitter => const SvgGenImage('assets/logo/twitter.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [iconText, icon, splash];
+  List<SvgGenImage> get values => [apple, facebook, github, google, iconText, icon, microsoft, splash, twitter];
 }
 
 class $AssetsMockGen {
