@@ -28,7 +28,7 @@ class AppComboBox extends AppStatefulWidget {
   State<AppComboBox> createState() => _AppComboBoxState();
 }
 
-class _AppComboBoxState extends State<AppComboBox> {
+class _AppComboBoxState extends AppState<AppComboBox> {
   final TextEditingController _controller = TextEditingController();
   String _value = '';
   bool _showDropdown = false;
@@ -100,7 +100,7 @@ class _AppComboBoxState extends State<AppComboBox> {
                         hintText: widget.placeholderText,
                         hintStyle: TextStyle(
                           color: textSecondaryColor,
-                          fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                          fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                           fontWeight: FontWeight.w400,
                         ),
                         border: InputBorder.none,
@@ -108,7 +108,7 @@ class _AppComboBoxState extends State<AppComboBox> {
                       ),
                       style: TextStyle(
                         color: textPrimaryColor,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w400,
                       ),
                     )),
@@ -146,14 +146,14 @@ class _AppComboBoxState extends State<AppComboBox> {
                   ),
                   child: _showDropdown
                       ? Assets.icon.caretUpRegular.svgIcon(
-                          size: widget.size == WidgetSize.sm ? 12 : 16,
+                          size: widgetSize == WidgetSize.sm ? 12 : 16,
                           colorFilter: ColorFilter.mode(
                             context.theme.color.iconSecondary,
                             BlendMode.srcIn,
                           ),
                         )
                       : Assets.icon.caretDownRegular.svgIcon(
-                          size: widget.size == WidgetSize.sm ? 12 : 16,
+                          size: widgetSize == WidgetSize.sm ? 12 : 16,
                           colorFilter: ColorFilter.mode(
                             context.theme.color.iconSecondary,
                             BlendMode.srcIn,
@@ -210,7 +210,7 @@ class _AppComboBoxState extends State<AppComboBox> {
     );
   }
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 24,
         WidgetSize.xs => 24,
         WidgetSize.sm => 24,
@@ -220,7 +220,7 @@ class _AppComboBoxState extends State<AppComboBox> {
         WidgetSize.xxl => 40,
       };
 
-  EdgeInsets get padding => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 6, vertical: 2),

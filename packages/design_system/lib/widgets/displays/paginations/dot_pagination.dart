@@ -59,7 +59,7 @@ class _AppDotPaginationState extends AppState<AppDotPagination> {
     );
   }
 
-  double get width => switch (widget.size) {
+  double get width => switch (widgetSize) {
         WidgetSize.xxs => 4,
         WidgetSize.xs => 4,
         WidgetSize.sm => 4,
@@ -69,7 +69,7 @@ class _AppDotPaginationState extends AppState<AppDotPagination> {
         WidgetSize.xxl => 8,
       };
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 4,
         WidgetSize.xs => 4,
         WidgetSize.sm => 4,

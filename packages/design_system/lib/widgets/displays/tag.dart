@@ -42,13 +42,13 @@ class _AppTagState extends AppState<AppTag> {
           AppText(widget.text,
               style: TextStyle(
                   color: context.theme.color.textPrimary,
-                  fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                  fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                   fontWeight: FontWeight.w500)),
           if (widget.onRemove != null)
             InkWell(
                 onTap: widget.onRemove,
                 child: Assets.icon.xClose.svgIcon(
-                    size: widget.size == WidgetSize.sm ? 16 : 18,
+                    size: widgetSize == WidgetSize.sm ? 16 : 18,
                     colorFilter: ColorFilter.mode(
                         context.theme.color.iconTertiary, BlendMode.srcIn))),
         ],
@@ -56,7 +56,7 @@ class _AppTagState extends AppState<AppTag> {
     );
   }
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 18,
         WidgetSize.xs => 18,
         WidgetSize.sm => 18,
@@ -66,7 +66,7 @@ class _AppTagState extends AppState<AppTag> {
         WidgetSize.xxl => 32,
       };
 
-  EdgeInsets get padding => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs => widget.avatar != null
             ? const EdgeInsets.only(right: 4)
             : const EdgeInsets.symmetric(horizontal: 4),
