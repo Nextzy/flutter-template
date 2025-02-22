@@ -4,6 +4,7 @@ class AppTopBackNavigationBar extends AppTopNavigationBar {
   AppTopBackNavigationBar({
     super.key,
     super.title,
+    super.border,
     super.textAlign = TextAlign.center,
     super.backgroundColor,
     super.showBackButtonWhenCanPop = false,

@@ -6,7 +6,7 @@ enum ExampleMovie2PageBlocEvent {
 }
 
 class ExampleMovie2PageBlocSafe
-    extends AppBlocSafe<ExampleMovie2PageBlocEvent, dynamic> {
+    extends AppSafeBloc<ExampleMovie2PageBlocEvent, dynamic> {
   ExampleMovie2PageBlocSafe(
     super.initialState, {
     ExampleGetMovieListUsecase? movieListUsecase,

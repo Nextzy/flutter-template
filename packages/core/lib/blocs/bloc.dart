@@ -10,9 +10,9 @@ abstract class AppBloc<EVENT, DATA>
         );
 }
 
-abstract class AppBlocSafe<EVENT, DATA>
+abstract class AppSafeBloc<EVENT, DATA>
     extends FalconWidgetStateEventSafeBloc<EVENT, DATA> {
-  AppBlocSafe(
+  AppSafeBloc(
     super.initialData, {
     EventTransformer<BlocEvent<EVENT>>? transformer,
   }) : super(

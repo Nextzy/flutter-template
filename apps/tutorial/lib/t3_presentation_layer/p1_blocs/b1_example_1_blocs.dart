@@ -55,7 +55,7 @@ enum ExampleMoviePageBlocEvent {
 }
 
 class ExampleMoviePageBlocSafe
-    extends AppBlocSafe<ExampleMoviePageBlocEvent, MovieListEntity> {
+    extends AppSafeBloc<ExampleMoviePageBlocEvent, MovieListEntity> {
   ExampleMoviePageBlocSafe(
     /// ⭐️ Safe it's mean, you have to initial the data first
     /// Case 1: Pass the non-null object to this bloc from previous page.

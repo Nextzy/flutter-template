@@ -1,11 +1,10 @@
 import 'package:localization/lib.dart';
 
 class AppLocalization {
-  static const _localeKey = "local_key";
+  static const _localeKey = "locale_key";
 
   static Future<AppLocale> init() async {
-    AppLocale locale =
-        (await loadLocal()) ?? (await LocaleSettings.useDeviceLocale());
+    AppLocale locale = await loadLocale();
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(_localeKey, locale.languageCode);
@@ -13,14 +12,19 @@ class AppLocalization {
     return locale;
   }
 
-  static Future<AppLocale?> loadLocal() async {
+  static Future<AppLocale> loadLocale() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final langCode = prefs.getString(_localeKey);
 
     if (langCode != null && langCode.isNotEmpty) {
-      return AppLocaleUtils.parseLocaleParts(languageCode: langCode);
+      try {
+        return AppLocaleUtils.parseLocaleParts(languageCode: langCode);
+      } catch (_) {
+        debugPrint('Error parsing locale: $langCode');
+        return await LocaleSettings.useDeviceLocale();
+      }
     } else {
-      return Future.value(null);
+      return await LocaleSettings.useDeviceLocale();
     }
   }
 

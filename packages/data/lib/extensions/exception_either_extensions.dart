@@ -1,12 +1,14 @@
 import 'package:data/lib.dart';
 
 extension AppExceptionFutureExtensions<T> on Future<T> {
-  Future<Either<AppException, T>> toEitherAppException() =>
+  Future<Either<AppException, T>> mapAppException() =>
       then<Either<AppException, T>>(
         (T value) => Right(value),
       ).onError(
         (exception, stackTrace) {
-          if (exception is Error) {
+          if (exception is AppException) {
+            return Left(exception);
+          } else if (exception is Error) {
             Log.e(exception, stackTrace: exception.stackTrace);
             return Left(AppException.fromError(exception));
           } else if (exception is DioException) {
@@ -29,11 +31,13 @@ extension AppExceptionFutureExtensions<T> on Future<T> {
 
 extension AppExceptionStreamExtensions<E extends Exception, DATA>
     on Stream<Either<E, DATA>> {
-  Stream<Either<AppException, DATA>> mapEitherAppException() => map(
+  Stream<Either<AppException, DATA>> mapAppException() => map(
         (event) => event.resolve(
           (data) => Right(data),
           (exception) {
-            if (exception is DioException) {
+            if (exception is AppException) {
+              return Left(exception);
+            } else if (exception is DioException) {
               final tmpError = exception.error;
               if (tmpError case NetworkException networkException) {
                 Log.e(networkException,
