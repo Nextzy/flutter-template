@@ -25,11 +25,11 @@ dependencies:
     git:
       url: https://github.com/nextzy/falconx.git
       path: falconx
-      ref: 3.7.2
+      ref: 3.7.5
 
   #======= Firebase ========#
-  firebase_core: ^3.11.0
-  firebase_remote_config: ^5.4.0
+  firebase_core: ^3.12.0
+  firebase_remote_config: ^5.4.1
 
   #======= Utils ========#
   #PLATFORM: All
@@ -41,10 +41,10 @@ dependencies:
   #PLATFORM: Android, iOS, MacOS, Windows
   screen_brightness: ^2.1.1
   #PLATFORM: Android, iOS, Windows
-  permission_handler: ^11.3.1
+  permission_handler: ^11.4.0
   #PLATFORM: Android, iOS
   open_file: ^3.5.10
-  flutter_upgrade_version: ^1.1.7
+  flutter_upgrade_version: ^1.1.8
 
 
   #======= Analytic ========#
@@ -55,7 +55,7 @@ dependencies:
       url: https://github.com/THE-EXISTING/catcher
       ref: master
   #PLATFORM: Android, iOS
-  newrelic_mobile: ^1.1.7
+  newrelic_mobile: ^1.1.8
 
 
 dependency_overrides:

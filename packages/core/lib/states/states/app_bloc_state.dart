@@ -7,7 +7,7 @@ typedef ListWidgetStateContextCallback<DATA> = List<Widget> Function(
     BuildContext context, WidgetStateEvent<DATA> state);
 
 typedef PreferredWidgetStateContextCallback<DATA> = PreferredSizeWidget
-Function(BuildContext context, WidgetStateEvent<DATA> state);
+    Function(BuildContext context, WidgetStateEvent<DATA> state);
 
 typedef PopStateCallback<DATA> = bool Function(WidgetStateEvent<DATA> state);
 
@@ -27,9 +27,9 @@ abstract class AppBlocWidgetState<
   }
 
   Widget buildPopScope({
-    required WidgetStateEvent<DATA> state,
-    required PopStateCallback<DATA>? canPop,
-    required PopListener<WidgetStateEvent<DATA>>? onPop,
+    required WidgetStateEvent<DATA?> state,
+    required PopStateCallback<DATA?>? canPop,
+    required PopListener<WidgetStateEvent<DATA?>>? onPop,
     required Widget child,
   }) =>
       onPop != null || canPop != null

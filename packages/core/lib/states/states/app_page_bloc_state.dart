@@ -24,24 +24,24 @@ abstract class AppPageBlocWidgetState<
     _observer?.unsubscribe(this);
   }
 
-  Widget buildScaffoldWithBloc<EVENT>({
-    BlocWidgetListenerEvent<EVENT>? listenEvent,
-    BlocWidgetListenerState<WidgetStateEvent<DATA>>? listenState,
-    PopStateCallback<DATA>? canPop,
-    PopListener<WidgetStateEvent<DATA>>? onPop,
-    BlocListenerCondition<WidgetStateEvent<DATA>>? buildWhen,
-    WidgetStateContextCallback<DATA>? drawer,
-    WidgetStateContextCallback<DATA>? bottomNavigationBar,
-    PreferredWidgetStateContextCallback<DATA>? appBar,
-    required WidgetStateContextCallback<DATA> body,
+  Widget buildScaffoldWithBloc({
+    BlocWidgetListenerEvent<Object>? listenEvent,
+    BlocWidgetListenerState<WidgetStateEvent<DATA?>>? listenState,
+    PopStateCallback<DATA?>? canPop,
+    PopListener<WidgetStateEvent<DATA?>>? onPop,
+    BlocListenerCondition<WidgetStateEvent<DATA?>>? buildWhen,
+    WidgetStateContextCallback<DATA?>? drawer,
+    WidgetStateContextCallback<DATA?>? bottomNavigationBar,
+    PreferredWidgetStateContextCallback<DATA?>? appBar,
+    required WidgetStateContextCallback<DATA?> body,
     WidgetBuilder? failNoData,
     WidgetBuilder? warningNoData,
     WidgetBuilder? loadingNoData,
-    WidgetStateContextCallback<DATA>? floatingButton,
+    WidgetStateContextCallback<DATA?>? floatingButton,
   }) {
-    return WidgetStateBlocConsumer<EVENT, BLOC, WidgetStateEvent<DATA>>(
+    return WidgetStateBlocConsumer<BLOC, DATA>(
       bloc: bloc,
-      listenEvent: (BuildContext context, EVENT event, Object? data) {
+      listenEvent: (BuildContext context, Object event, Object? data) {
         switch (event) {
           case AppDialogEvent.showFullLoadingLocked:
             AppLoadingDialog.showFullLoadingLocked(context);
@@ -55,16 +55,7 @@ abstract class AppPageBlocWidgetState<
         }
       },
       listenState: listenState,
-      buildWhen: (previous, current) {
-        if (current.event != null) {
-          return false;
-        } else if (current.event == null) {
-          // No event in current state
-          return current.build;
-        } else {
-          return buildWhen?.call(previous, current) ?? true;
-        }
-      },
+      buildWhen: buildWhen,
       builder: (context, state) => GestureDetector(
         onTap: clearFocus,
         child: buildPopScope(

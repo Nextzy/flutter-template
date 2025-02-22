@@ -2,6 +2,7 @@ library;
 
 export 'generated/assets.gen.dart';
 export 'generated/fonts.gen.dart';
+export 'animates/animates.dart';
 export 'themes/themes.dart';
 export 'widgets/widgets.dart';
 export 'extensions/extensions.dart';

@@ -24,7 +24,7 @@ class _ExampleAuthenticationPageState extends AppPageBlocWidgetState<
     ExampleAuthenticationPage, ExampleAuthenticationPageBloc, bool?> {
   void onListenerEvent(
     BuildContext context,
-    ExampleAuthenticationPageEvent event,
+    Object event,
     Object? data,
   ) {
     switch (event) {
@@ -37,7 +37,7 @@ class _ExampleAuthenticationPageState extends AppPageBlocWidgetState<
   @override
   Widget build(BuildContext context) {
     /// ⭐️ Please add type of page event
-    return buildScaffoldWithBloc<ExampleAuthenticationPageEvent>(
+    return buildScaffoldWithBloc(
       listenEvent: onListenerEvent,
       body: (context, state) {
         if (state.isLoading) return AppCircularLoading();

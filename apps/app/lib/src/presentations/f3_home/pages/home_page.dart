@@ -20,15 +20,25 @@ class HomePage extends AppPage implements AutoRouteWrapper {
 
 class _HomePageState
     extends AppPageBlocWidgetState<HomePage, HomePageBloc, HomeEntity?> {
+  void onListenerEvent(
+    BuildContext context,
+    Object event,
+    Object? data,
+  ) {
+    switch (event) {
+      case HomePageEvent.yourEvent:
+        // TODO: Handle this case.
+        throw UnimplementedError();
+    }
+  }
+
   @override
   Widget build(BuildContext context) => ExitApp(
         onExit: () async {
           await AppLocalDatabase.instance.updateTapExitApp(true);
         },
-        child: buildScaffoldWithBloc<HomePageEvent>(
-          listenEvent: (context, event, data) => switch (event) {
-            HomePageEvent.yourEvent => throw UnimplementedError(),
-          },
+        child: buildScaffoldWithBloc(
+          listenEvent: onListenerEvent,
           appBar: (context, state) => AppTopNavigationBar(
             type: AppNavigationType.brand,
             title: 'Demo Application',
