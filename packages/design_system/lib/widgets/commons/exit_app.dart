@@ -3,15 +3,15 @@ import 'package:design_system/lib.dart';
 class ExitApp extends AppStatefulWidget {
   const ExitApp({
     super.key,
-    this.canPop = false,
+    this.doubleTapExit = true,
     this.duration = const Duration(seconds: 1),
     required this.onExit,
     required this.child,
   });
 
+  final bool doubleTapExit;
   final Duration duration;
   final Widget child;
-  final bool canPop;
   final Function() onExit;
 
   @override
@@ -24,26 +24,29 @@ class _ExitAppState extends AppState<ExitApp> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: widget.canPop,
+      canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
-        final canPop = context.canPop();
         if (kIsWeb) {
           await widget.onExit();
+          SystemNavigator.pop();
           return;
         }
-        if (didPop) return;
-
-        final now = DateTime.now();
-        if (_lastPressedAt == null ||
-            now.difference(_lastPressedAt!) > widget.duration) {
-          _lastPressedAt = now;
-          //TODO:
-          Log.i(Strings.common.alert.info.doubleTapExit);
-          // AppToast.show(Strings.common.double_tap_exit);
+        if (didPop) {
+          await widget.onExit();
+          SystemNavigator.pop();
           return;
-        }
-
-        if (!canPop) {
+        } else {
+          final now = DateTime.now();
+          if (widget.doubleTapExit) {
+            if (_lastPressedAt == null ||
+                now.difference(_lastPressedAt!) > widget.duration) {
+              _lastPressedAt = now;
+              //TODO:
+              Log.i(Strings.common.alert.info.doubleTapExit);
+              // AppToast.show(Strings.common.alert.info.doubleTapExit);
+              return;
+            }
+          }
           await widget.onExit();
           SystemNavigator.pop();
         }
