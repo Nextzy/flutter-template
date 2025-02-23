@@ -44,6 +44,7 @@ class AppTopNavigationBar extends AppStatelessWidget
       child: ContainerLayout(
         border: _getBorder(context, type: type, border: border),
         child: AppBar(
+          surfaceTintColor: Colors.transparent,
           systemOverlayStyle:
               systemOverlayStyle ?? context.theme.systemOverlayStyle,
           titleSpacing: 0,
@@ -191,7 +192,7 @@ class AppTopNavigationBar extends AppStatelessWidget
     if (context.canPop() &&
         ModalRoute.of(context)?.popDisposition !=
             RoutePopDisposition.doNotPop) {
-      context.back();
+      context.pop();
     }
   }
 }

@@ -69,10 +69,10 @@ packages:
     dependency: transitive
     description:
       name: archive
-      sha256: "6199c74e3db4fbfbd04f66d739e72fe11c8a8957d5f219f1f4482dbde6420b5a"
+      sha256: "528579c7e4579719f04b21eeeeddfd73a18b31dabc22766893b7d1be7f49b967"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.2"
+    version: "4.0.3"
   args:
     dependency: transitive
     description:
@@ -594,8 +594,8 @@ packages:
     dependency: transitive
     description:
       path: falconnect
-      ref: "3.7.2"
-      resolved-ref: "38018bcf5cf797dc24491b868932cb4b2036565d"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.3.4"
@@ -603,17 +603,17 @@ packages:
     dependency: transitive
     description:
       path: falconx
-      ref: "3.7.2"
-      resolved-ref: "38018bcf5cf797dc24491b868932cb4b2036565d"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
-    version: "3.7.2"
+    version: "3.8.1"
   falkit:
     dependency: transitive
     description:
       path: falkit
-      ref: "3.7.2"
-      resolved-ref: "38018bcf5cf797dc24491b868932cb4b2036565d"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.1.7"
@@ -621,8 +621,8 @@ packages:
     dependency: transitive
     description:
       path: falmodel
-      ref: "3.7.2"
-      resolved-ref: "38018bcf5cf797dc24491b868932cb4b2036565d"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.3.2"
@@ -630,8 +630,8 @@ packages:
     dependency: transitive
     description:
       path: falstore
-      ref: "3.7.2"
-      resolved-ref: "38018bcf5cf797dc24491b868932cb4b2036565d"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.1.10"
@@ -639,8 +639,8 @@ packages:
     dependency: transitive
     description:
       path: faltool
-      ref: "3.7.2"
-      resolved-ref: "38018bcf5cf797dc24491b868932cb4b2036565d"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.0.13"
@@ -1148,10 +1148,10 @@ packages:
     dependency: transitive
     description:
       name: image
-      sha256: "8346ad4b5173924b5ddddab782fc7d8a6300178c8b1dc427775405a01701c4a6"
+      sha256: "13d3349ace88f12f4a0d175eb5c12dcdd39d35c4c109a8a13dfeb6d0bd9e31c3"
       url: "https://pub.dev"
     source: hosted
-    version: "4.5.2"
+    version: "4.5.3"
   intl:
     dependency: transitive
     description:
@@ -1347,10 +1347,10 @@ packages:
     dependency: transitive
     description:
       name: newrelic_mobile
-      sha256: f96cd84740bd070faa915b86d9929bc7a20e9d7e782bb5d4f6f33894fa6a6e83
+      sha256: "296731eb3ef010cdaf1459395ffcb8745ae6ee02fe27ee3c0eadec094edfedcf"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.7"
+    version: "1.1.8"
   nm:
     dependency: transitive
     description:
@@ -2295,10 +2295,10 @@ packages:
     dependency: transitive
     description:
       name: video_player
-      sha256: "4a8c3492d734f7c39c2588a3206707a05ee80cef52e8c7f3b2078d430c84bc17"
+      sha256: "48941c8b05732f9582116b1c01850b74dbee1d8520cd7e34ad4609d6df666845"
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.2"
+    version: "2.9.3"
   video_player_android:
     dependency: transitive
     description:

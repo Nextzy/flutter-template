@@ -35,7 +35,6 @@ class SetupApplication {
 
 class MyApplication extends AppStatefulWidget {
   const MyApplication({
-    super.key = const Key('MyApplication'),
     this.locale,
     this.builder,
   });
@@ -122,7 +121,6 @@ class _MyApplicationState extends ApplicationState<MyApplication>
                     BlocBuilder<AppRouterBloc, AppRouter>(
                   builder: (context, AppRouter router) => AppMaterialRoute(
                     debugShowCheckedModeBanner: false,
-                    restorationScopeId: restorationId,
 
                     ///============= Setup Localization =============//
                     localizationsDelegates: const [

@@ -1,58 +1,99 @@
+// Created by Nonthawit on 23/2/2025 AD Lead Flutter at NEXTZY and EXISTING
 import 'package:data/lib.dart';
 
-extension AppExceptionFutureExtensions<T> on Future<T> {
-  Future<Either<AppException, T>> mapAppException() =>
-      then<Either<AppException, T>>(
-        (T value) => Right(value),
-      ).onError(
-        (exception, stackTrace) {
-          if (exception is AppException) {
-            return Left(exception);
-          } else if (exception is Error) {
-            Log.e(exception, stackTrace: exception.stackTrace);
-            return Left(AppException.fromError(exception));
-          } else if (exception is DioException) {
-            final tmpError = exception.error;
-            if (tmpError case NetworkException networkException) {
-              Log.e(networkException, stackTrace: networkException.stackTrace);
-            } else if (tmpError != null) {
-              Log.e(tmpError, stackTrace: exception.stackTrace);
-            } else {
-              Log.e(exception, stackTrace: exception.stackTrace);
-            }
-            return Left(AppException.fromDioException(exception));
-          } else {
-            Log.e(exception);
-            return Left(AppException(developerMessage: exception.toString()));
-          }
-        },
-      );
+extension AppExceptionEitherStreamExtensions<T>
+    on Stream<Either<AppException, T>> {
+  Stream<Either<Failure, B>> mapData<B>({
+    required B Function(T data) data,
+    Failure Function(AppException exception)? exception,
+  }) {
+    return transform<Either<Failure, B>>(StreamTransformer<
+        Either<AppException, T>, Either<Failure, B>>.fromHandlers(
+      handleData:
+          (Either<AppException, T> value, EventSink<Either<Failure, B>> sink) {
+        if (value.hasException) {
+          sink.add(Left(
+              exception?.call(value.exception) ?? value.exception.toFailure()));
+          sink.close();
+        }
+        sink.add(Right(data.call(value.data)));
+      },
+    ));
+  }
+
+  Stream<Either<Failure, T>> mapFailure([
+    Failure Function(AppException exception)? exception,
+  ]) {
+    return transform<Either<Failure, T>>(StreamTransformer<
+        Either<AppException, T>, Either<Failure, T>>.fromHandlers(
+      handleData:
+          (Either<AppException, T> value, EventSink<Either<Failure, T>> sink) {
+        if (value.hasException) {
+          sink.add(Left(
+              exception?.call(value.exception) ?? value.exception.toFailure()));
+          sink.close();
+        }
+        sink.add(Right(value.data));
+      },
+    ));
+  }
 }
 
-extension AppExceptionStreamExtensions<E extends Exception, DATA>
-    on Stream<Either<E, DATA>> {
-  Stream<Either<AppException, DATA>> mapAppException() => map(
-        (event) => event.resolve(
-          (data) => Right(data),
-          (exception) {
-            if (exception is AppException) {
-              return Left(exception);
-            } else if (exception is DioException) {
-              final tmpError = exception.error;
-              if (tmpError case NetworkException networkException) {
-                Log.e(networkException,
-                    stackTrace: networkException.stackTrace);
-              } else if (tmpError != null) {
-                Log.e(tmpError, stackTrace: exception.stackTrace);
-              } else {
-                Log.e(exception, stackTrace: exception.stackTrace);
-              }
-              return Left(AppException.fromDioException(exception));
-            } else {
-              Log.e(exception);
-              return Left(AppException(developerMessage: exception.toString()));
-            }
-          },
-        ),
-      );
+extension AppExceptionEitherFutureExtensions<T>
+    on Future<Either<AppException, T>> {
+  Stream<Either<Failure, B>> mapStream<B>({
+    required B Function(T data) data,
+    Failure Function(AppException exception)? exception,
+  }) async* {
+    final value = await this;
+    if (value.hasException) {
+      yield Left(
+          exception?.call(value.exception) ?? value.exception.toFailure());
+      return;
+    }
+    yield Right(data.call(value.data));
+    return;
+  }
+
+  Stream<Either<Failure, T>> mapFailureStream([
+    Failure Function(AppException exception)? exception,
+  ]) async* {
+    final value = await this;
+    if (value.hasException) {
+      yield Left(
+          exception?.call(value.exception) ?? value.exception.toFailure());
+      return;
+    }
+    yield Right(value.data);
+    return;
+  }
+
+  Future<Either<Failure, B>> mapData<B>({
+    required B Function(T data) data,
+    Failure Function(AppException exception)? exception,
+  }) async {
+    return then(
+      (value) {
+        if (value.hasException) {
+          return Left(
+              exception?.call(value.exception) ?? value.exception.toFailure());
+        }
+        return Right(data.call(value.data));
+      },
+    );
+  }
+
+  Future<Either<Failure, T>> mapFailure([
+    Failure Function(AppException exception)? exception,
+  ]) async {
+    return then(
+      (value) {
+        if (value.hasException) {
+          return Left(
+              exception?.call(value.exception) ?? value.exception.toFailure());
+        }
+        return Right(value.data);
+      },
+    );
+  }
 }

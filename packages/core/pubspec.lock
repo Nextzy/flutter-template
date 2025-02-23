@@ -600,8 +600,8 @@ packages:
     dependency: transitive
     description:
       path: falconnect
-      ref: "3.7.5"
-      resolved-ref: "6119db21d893e0316f3e7e3727fc69cef142c6a2"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.3.4"
@@ -609,17 +609,17 @@ packages:
     dependency: "direct main"
     description:
       path: falconx
-      ref: "3.7.5"
-      resolved-ref: "6119db21d893e0316f3e7e3727fc69cef142c6a2"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
-    version: "3.7.5"
+    version: "3.8.1"
   falkit:
     dependency: transitive
     description:
       path: falkit
-      ref: "3.7.5"
-      resolved-ref: "6119db21d893e0316f3e7e3727fc69cef142c6a2"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.1.7"
@@ -627,8 +627,8 @@ packages:
     dependency: transitive
     description:
       path: falmodel
-      ref: "3.7.5"
-      resolved-ref: "6119db21d893e0316f3e7e3727fc69cef142c6a2"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.3.2"
@@ -636,8 +636,8 @@ packages:
     dependency: transitive
     description:
       path: falstore
-      ref: "3.7.5"
-      resolved-ref: "6119db21d893e0316f3e7e3727fc69cef142c6a2"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.1.10"
@@ -645,8 +645,8 @@ packages:
     dependency: transitive
     description:
       path: faltool
-      ref: "3.7.5"
-      resolved-ref: "6119db21d893e0316f3e7e3727fc69cef142c6a2"
+      ref: "3.8.1"
+      resolved-ref: "75ca1a5a963e490b5f2f4f9ee3ec2a2c52ae545a"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.0.13"
