@@ -12,10 +12,7 @@ class AuthenticationBloc
   final SignInWithEmailAndPasswordUsecase _signInWithEmailUsecase;
 
   @override
-  Future<void> onListenEvent(
-    BlocEvent<AuthenticationEvent> event,
-    Emitter<WidgetStateEvent> emitter,
-  ) async {
+  Future<void> onBlocEvent(BlocEvent<AuthenticationEvent> event) async {
     switch (event.name) {
       case AuthenticationEvent.signInWithEmail:
         final data = event.data as ({String email, String password});
@@ -30,13 +27,13 @@ class AuthenticationBloc
     required String email,
     required String password,
   }) =>
-      callEitherStreamDebounce(
+      callEitherStream(
         key: AuthenticationEvent.signInWithEmail,
         call: _signInWithEmailUsecase(
           email: email,
           password: password,
         ),
-        onData: (emitter, state) async {
+        onData: (state) async {
           if (state.isLoading) {
             // Prevent null data when loading state.
             // emitter.emitLoading(data);
@@ -46,7 +43,7 @@ class AuthenticationBloc
             // emitter.emit(this.state.toSuccess(data: state.data));
           }
         },
-        onFailure: (emitter, failure) {
+        onFailure: (failure) {
           emitFail();
         },
       );

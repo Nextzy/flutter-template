@@ -134,7 +134,7 @@ class _MyApplicationState extends ApplicationState<MyApplication>
                         TranslationProvider.of(context).flutterLocale,
                     onGenerateTitle: (BuildContext context) =>
                         AppEnv.instance.name,
-                    theme: AppTheme(),
+                    theme: const AppTheme(),
                     themeMode: setting.themeMode.toEnum(ThemeMode.values),
                     routerConfig: router.config(
                       navigatorObservers: () => [

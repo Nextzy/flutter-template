@@ -1,4 +1,3 @@
-import 'package:universal_html/html.dart' as Html;
 import 'package:utils/lib.dart';
 
 class FileUtil {
@@ -9,23 +8,23 @@ class FileUtil {
   }) {
     if (PlatformChecker.isWeb) {
       // Create a Blob with the content
-      final Html.Blob blob = Html.Blob([content], mimeType);
-      final url = Html.Url.createObjectUrlFromBlob(blob);
-
-      // Create an anchor element to trigger the download
-      final anchor = Html.AnchorElement(href: url)
-        ..download = fileName
-        ..style.display = 'none';
-
-      // Add the anchor to the DOM
-      Html.document.body!.children.add(anchor);
-
-      // Trigger the download
-      anchor.click();
-
-      // Remove the anchor from the DOM
-      Html.document.body!.children.remove(anchor);
-      Html.Url.revokeObjectUrl(anchor.href!);
+      // final web.Blob blob = web.Blob([content], mimeType);
+      // final url = Html.Url.createObjectUrlFromBlob(blob);
+      //
+      // // Create an anchor element to trigger the download
+      // final anchor = Html.AnchorElement(href: url)
+      //   ..download = fileName
+      //   ..style.display = 'none';
+      //
+      // // Add the anchor to the DOM
+      // web.document.body!.children.add(anchor);
+      //
+      // // Trigger the download
+      // anchor.click();
+      //
+      // // Remove the anchor from the DOM
+      // web.document.body!.children.remove(anchor);
+      // Html.Url.revokeObjectUrl(anchor.href!);
     }
   }
 

@@ -78,7 +78,7 @@ class _AppSocialButtonState extends AppState<AppSocialButton> {
               color: widget.style == AppSocialButtonStyle.filled
                   ? context.theme.color.textPrimaryOnColor
                   : context.theme.color.textPrimary,
-              fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+              fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -87,7 +87,7 @@ class _AppSocialButtonState extends AppState<AppSocialButton> {
     );
   }
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 24,
         WidgetSize.xs => 24,
         WidgetSize.sm => 24,
@@ -97,7 +97,7 @@ class _AppSocialButtonState extends AppState<AppSocialButton> {
         WidgetSize.xxl => 40,
       };
 
-  EdgeInsets get padding => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 2, vertical: 2),

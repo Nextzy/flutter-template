@@ -65,7 +65,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
               AppText(widget.label,
                   style: TextStyle(
                     color: context.theme.color.textPrimary,
-                    fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                    fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                     fontWeight: FontWeight.w600,
                   )),
             ],
@@ -124,7 +124,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
               AppText(widget.helperText,
                   style: TextStyle(
                     color: context.theme.color.textSecondary,
-                    fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                    fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                     fontWeight: FontWeight.w400,
                   )),
             ],
@@ -133,7 +133,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
     );
   }
 
-  double get trackHeight => switch (widget.size) {
+  double get trackHeight => switch (widgetSize) {
         WidgetSize.xxs => 2,
         WidgetSize.xs => 2,
         WidgetSize.sm => 2,
@@ -143,7 +143,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
         WidgetSize.xxl => 8,
       };
 
-  double get tickMarkRadius => switch (widget.size) {
+  double get tickMarkRadius => switch (widgetSize) {
         WidgetSize.xxs => 1,
         WidgetSize.xs => 1,
         WidgetSize.sm => 1,
@@ -158,7 +158,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
       text,
       style: TextStyle(
         color: context.theme.color.textPrimary,
-        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
         fontWeight: FontWeight.w400,
       ),
     );

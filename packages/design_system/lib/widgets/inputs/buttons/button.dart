@@ -61,7 +61,7 @@ class AppButton extends AppStatefulWidget {
 }
 
 class _AppButtonState extends AppState<AppButton> {
-  EdgeInsetsGeometry get padding => switch (widget.size) {
+  EdgeInsetsGeometry get padding => switch (widgetSize) {
         (WidgetSize.xxs || WidgetSize.xs || WidgetSize.sm) =>
           SpaceDirectional.insetSymmetric(horizontal: 6.0, vertical: 4.0),
         WidgetSize.md =>
@@ -70,7 +70,7 @@ class _AppButtonState extends AppState<AppButton> {
           SpaceDirectional.insetSymmetric(horizontal: 10.0, vertical: 8.0),
       };
 
-  EdgeInsetsGeometry get paddingText => switch (widget.size) {
+  EdgeInsetsGeometry get paddingText => switch (widgetSize) {
         (WidgetSize.xxs || WidgetSize.xs || WidgetSize.sm) =>
           SpaceDirectional.insetHorizontal4,
         WidgetSize.md => SpaceDirectional.insetHorizontal6,
@@ -78,7 +78,7 @@ class _AppButtonState extends AppState<AppButton> {
           SpaceDirectional.insetHorizontal8,
       };
 
-  double get gap => switch (widget.size) {
+  double get gap => switch (widgetSize) {
         WidgetSize.xxs => 4,
         WidgetSize.xs => 4,
         WidgetSize.sm => 4,
@@ -88,7 +88,7 @@ class _AppButtonState extends AppState<AppButton> {
         WidgetSize.xxl => 8,
       };
 
-  double get iconSize => switch (widget.size) {
+  double get iconSize => switch (widgetSize) {
         WidgetSize.xxs => 16,
         WidgetSize.xs => 16,
         WidgetSize.sm => 16,
@@ -98,7 +98,7 @@ class _AppButtonState extends AppState<AppButton> {
         WidgetSize.xxl => 24,
       };
 
-  BorderRadius get borderRadius => switch (widget.size) {
+  BorderRadius get borderRadius => switch (widgetSize) {
         WidgetSize.xxs => theme.borderRadius.sm,
         WidgetSize.xs => theme.borderRadius.sm,
         WidgetSize.sm => theme.borderRadius.sm,
@@ -161,7 +161,7 @@ class _AppButtonState extends AppState<AppButton> {
       };
 
   double get dividerIntent => switch (widget.style) {
-        AppButtonStyle.filledBand => switch (widget.size) {
+        AppButtonStyle.filledBand => switch (widgetSize) {
             WidgetSize.xxs => 5.0,
             WidgetSize.xs => 5.0,
             WidgetSize.sm => 5.0,
@@ -170,7 +170,7 @@ class _AppButtonState extends AppState<AppButton> {
             WidgetSize.xl => 8.0,
             WidgetSize.xxl => 8.0,
           },
-        AppButtonStyle.filled => switch (widget.size) {
+        AppButtonStyle.filled => switch (widgetSize) {
             WidgetSize.xxs => 5.0,
             WidgetSize.xs => 5.0,
             WidgetSize.sm => 5.0,
@@ -180,7 +180,7 @@ class _AppButtonState extends AppState<AppButton> {
             WidgetSize.xxl => 8.0,
           },
         AppButtonStyle.outline => 0.0,
-        AppButtonStyle.text => switch (widget.size) {
+        AppButtonStyle.text => switch (widgetSize) {
             WidgetSize.xxs => 5.0,
             WidgetSize.xs => 5.0,
             WidgetSize.sm => 5.0,
@@ -189,7 +189,7 @@ class _AppButtonState extends AppState<AppButton> {
             WidgetSize.xl => 8.0,
             WidgetSize.xxl => 8.0,
           },
-        AppButtonStyle.shaded => switch (widget.size) {
+        AppButtonStyle.shaded => switch (widgetSize) {
             WidgetSize.xxs => 5.0,
             WidgetSize.xs => 5.0,
             WidgetSize.sm => 5.0,
@@ -198,7 +198,7 @@ class _AppButtonState extends AppState<AppButton> {
             WidgetSize.xl => 8.0,
             WidgetSize.xxl => 8.0,
           },
-        AppButtonStyle.destructive => switch (widget.size) {
+        AppButtonStyle.destructive => switch (widgetSize) {
             WidgetSize.xxs => 5.0,
             WidgetSize.xs => 5.0,
             WidgetSize.sm => 5.0,
@@ -231,6 +231,7 @@ class _AppButtonState extends AppState<AppButton> {
       onLongPress: widget.onLongPress,
       onHover: widget.onHover,
       onFocusChange: widget.onFocusChange,
+      tapFocus: false,
       children: [
         if (widget.startChild != null) widget.startChild!,
         if (widget.startChild != null)
@@ -264,7 +265,7 @@ class _AppButtonState extends AppState<AppButton> {
                       style: _getTextStyle(
                         context,
                         style: widget.style,
-                        size: widget.size,
+                        size: widgetSize,
                         color: widget.color,
                       ),
                     ),
@@ -308,7 +309,7 @@ class _AppButtonState extends AppState<AppButton> {
     required WidgetSize size,
     required Color? color,
   }) =>
-      switch (widget.size) {
+      switch (size) {
         WidgetSize.xxs =>
           AppTextStyleBuilder.ui.s12.semiBold.color(textColor).build(context),
         WidgetSize.xs =>

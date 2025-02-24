@@ -1,5 +1,16 @@
 import 'package:core/lib.dart';
 
+typedef WidgetStateContextCallback<DATA> = Widget Function(
+    BuildContext context, WidgetStateEvent<DATA> state);
+
+typedef ListWidgetStateContextCallback<DATA> = List<Widget> Function(
+    BuildContext context, WidgetStateEvent<DATA> state);
+
+typedef PreferredWidgetStateContextCallback<DATA> = PreferredSizeWidget
+Function(BuildContext context, WidgetStateEvent<DATA> state);
+
+typedef PopStateCallback<DATA> = bool Function(WidgetStateEvent<DATA> state);
+
 abstract class AppBlocWidgetState<
     WIDGET extends StatefulWidget,
     BLOC extends BlocBase<WidgetStateEvent<DATA>>,
@@ -24,11 +35,10 @@ abstract class AppBlocWidgetState<
       onPop != null || canPop != null
           ? PopScope(
               canPop: canPop?.call(state) ?? true,
-              onPopInvoked: (didPop) {
+              onPopInvokedWithResult: (didPop, result) {
                 if (didPop) return;
                 clearFocus();
-                onPop?.call(bloc.state);
-                if (!context.router.canPop()) SystemNavigator.pop();
+                onPop?.call(state, result);
               },
               child: child,
             )

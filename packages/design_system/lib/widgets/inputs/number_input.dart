@@ -111,7 +111,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
               widget.label,
               style: TextStyle(
                 color: context.theme.color.textPrimary,
-                fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -149,7 +149,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                     ],
                     style: TextStyle(
                         color: textPrimaryColor,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w400),
                     readOnly: widget.readOnly,
                   ),
@@ -172,7 +172,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                     GestureDetector(
                       onTap: _increment,
                       child: Container(
-                        width: widget.size == WidgetSize.sm ? 20 : 32,
+                        width: widgetSize == WidgetSize.sm ? 20 : 32,
                         padding: widget.style == AppTextFieldStyle.shaded
                             ? shadePadding
                             : outlinePadding,
@@ -197,13 +197,13 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                               : null,
                         ),
                         child: Assets.icon.caretUpRegular.svgIcon(
-                            size: widget.size == WidgetSize.sm ? 9 : 12),
+                            size: widgetSize == WidgetSize.sm ? 9 : 12),
                       ),
                     ),
                     GestureDetector(
                       onTap: _decrement,
                       child: Container(
-                        width: widget.size == WidgetSize.sm ? 20 : 32,
+                        width: widgetSize == WidgetSize.sm ? 20 : 32,
                         padding: widget.style == AppTextFieldStyle.shaded
                             ? shadePadding
                             : outlinePadding,
@@ -218,7 +218,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                               : null,
                         ),
                         child: Assets.icon.caretDownRegular.svgIcon(
-                            size: widget.size == WidgetSize.sm ? 9 : 12),
+                            size: widgetSize == WidgetSize.sm ? 9 : 12),
                       ),
                     ),
                   ],
@@ -248,7 +248,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
         ]);
   }
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 24,
         WidgetSize.xs => 24,
         WidgetSize.sm => 24,
@@ -258,7 +258,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
         WidgetSize.xxl => 40,
       };
 
-  EdgeInsets get outlinePadding => switch (widget.size) {
+  EdgeInsets get outlinePadding => switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsets.symmetric(vertical: 0.7),
         WidgetSize.xs => const EdgeInsets.symmetric(vertical: 0.7),
         WidgetSize.sm => const EdgeInsets.symmetric(vertical: 0.7),
@@ -268,7 +268,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
         WidgetSize.xxl => const EdgeInsets.symmetric(vertical: 3.2),
       };
 
-  EdgeInsets get shadePadding => switch (widget.size) {
+  EdgeInsets get shadePadding => switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsets.symmetric(vertical: 0.6),
         WidgetSize.xs => const EdgeInsets.symmetric(vertical: 0.6),
         WidgetSize.sm => const EdgeInsets.symmetric(vertical: 0.3),
@@ -278,7 +278,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
         WidgetSize.xxl => const EdgeInsets.symmetric(vertical: 2.5)
       };
 
-  EdgeInsets get margin => switch (widget.size) {
+  EdgeInsets get margin => switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsets.only(bottom: 0.5),
         WidgetSize.xs => const EdgeInsets.only(bottom: 0.5),
         WidgetSize.sm => const EdgeInsets.only(bottom: 0.5),

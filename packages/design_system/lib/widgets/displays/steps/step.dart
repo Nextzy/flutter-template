@@ -56,7 +56,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
               ]),
               SizedBox(height: 12),
               AppStepItem(
-                  size: widget.size,
+                  size: widgetSize,
                   title: child.title,
                   description: child.description)
             ],
@@ -69,8 +69,8 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
     switch (widget.style) {
       case AppStepStyle.number:
         return Container(
-          width: widget.size == WidgetSize.sm ? 18 : 24,
-          height: widget.size == WidgetSize.sm ? 18 : 24,
+          width: widgetSize == WidgetSize.sm ? 18 : 24,
+          height: widgetSize == WidgetSize.sm ? 18 : 24,
           decoration: BoxDecoration(
             color: context.theme.color.bg,
             borderRadius: BorderRadius.circular(24),
@@ -88,7 +88,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
                 color: _currentStep >= step
                     ? context.theme.color.brandPrimary
                     : context.theme.color.textSecondary,
-                fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -115,7 +115,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
         );
       case AppStepStyle.icon:
         return icon.toSvgIcon(
-          size: widget.size == WidgetSize.sm ? 16 : 24,
+          size: widgetSize == WidgetSize.sm ? 16 : 24,
           colorFilter: ColorFilter.mode(
             _currentStep >= step
                 ? context.theme.color.brandPrimary

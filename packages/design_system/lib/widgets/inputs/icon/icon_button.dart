@@ -50,7 +50,7 @@ class AppIconButton extends AppStatefulWidget {
 }
 
 class _AppIconButtonState extends AppState<AppIconButton> {
-  EdgeInsetsGeometry get padding => switch (widget.size) {
+  EdgeInsetsGeometry get padding => switch (widgetSize) {
         WidgetSize.xxs => Space.insetAll4,
         WidgetSize.xs => Space.insetAll4,
         WidgetSize.sm => Space.insetAll4,
@@ -60,7 +60,7 @@ class _AppIconButtonState extends AppState<AppIconButton> {
         WidgetSize.xxl => Space.insetAll8,
       };
 
-  double get size => switch (widget.size) {
+  double get size => switch (widgetSize) {
         WidgetSize.xxs => 16,
         WidgetSize.xs => 16,
         WidgetSize.sm => 16,
@@ -70,7 +70,7 @@ class _AppIconButtonState extends AppState<AppIconButton> {
         WidgetSize.xxl => 24,
       };
 
-  BorderRadius get borderRadius => switch (widget.size) {
+  BorderRadius get borderRadius => switch (widgetSize) {
         WidgetSize.xxs => theme.borderRadius.sm,
         WidgetSize.xs => theme.borderRadius.sm,
         WidgetSize.sm => theme.borderRadius.sm,

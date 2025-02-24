@@ -15,11 +15,8 @@ class ExampleAuthenticationPageBloc
   final ExampleSignInWithEmailAndPasswordUsecase _signInUsecase;
 
   @override
-  Future<void> onListenEvent(
+  Future<void> onBlocEvent(
     BlocEvent<ExampleAuthenticationPageBlocEvent> event,
-
-    /// ⭐️ The data in WidgetStateEvent is nullable
-    Emitter<WidgetStateEvent<bool?>> emitter,
   ) async {
     switch (event.name) {
       case ExampleAuthenticationPageBlocEvent.tapSignIn:
@@ -35,10 +32,10 @@ class ExampleAuthenticationPageBloc
     required String email,
     required String password,
   }) =>
-      callEitherStreamDebounce(
+      callEitherStream(
         key: ExampleAuthenticationPageBlocEvent.tapSignIn,
         call: _signInUsecase(email: email, password: password),
-        onData: (emitter, state) {
+        onData: (state) {
           if (state.isLoading) {
             emitEvent(AppDialogEvent.showFullLoadingLocked);
             emitLoading();
@@ -46,7 +43,7 @@ class ExampleAuthenticationPageBloc
             emitSuccess(true);
           }
         },
-        onFailure: (emitter, failure) {
+        onFailure: (failure) {
           emitEvent(AppDialogEvent.dismissAll);
           emitFail(false);
         },
@@ -71,11 +68,8 @@ class ExampleMoviePageBlocSafe
   final ExampleGetMovieListUsecase _movieListUsecase;
 
   @override
-  Future<void> onListenEvent(
+  Future<void> onBlocEvent(
     BlocEvent<ExampleMoviePageBlocEvent> event,
-
-    /// ⭐️ Safe it's mean, the data in WidgetStateEvent isn't nullable
-    Emitter<WidgetStateEvent<MovieListEntity>> emitter,
   ) async {
     switch (event.name) {
       case ExampleMoviePageBlocEvent.fetchMovieList:
@@ -85,10 +79,10 @@ class ExampleMoviePageBlocSafe
     }
   }
 
-  Future<void> _fetchMovieList() => callEitherStreamDebounce(
+  Future<void> _fetchMovieList() => callEitherStream(
         key: ExampleMoviePageBlocEvent.fetchMovieList,
         call: _movieListUsecase(),
-        onData: (emitter, state) {
+        onData: (state) {
           if (state.isLoading) {
             emitEvent(AppDialogEvent.showFullLoadingLocked);
             emitLoading(state.data);
@@ -96,7 +90,7 @@ class ExampleMoviePageBlocSafe
             emitSuccess(state.data);
           }
         },
-        onFailure: (emitter, failure) {
+        onFailure: (failure) {
           emitEvent(AppDialogEvent.dismissAll);
           emitFail();
         },

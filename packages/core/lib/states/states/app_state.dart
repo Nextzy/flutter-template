@@ -9,6 +9,8 @@ abstract class AppState<WIDGET extends AppStatefulWidget>
   AppThemeData get theme =>
       ThemeApplication.of(context, mode: widget.themeMode);
 
+  WidgetSize get widgetSize => widget.size ?? theme.defaultWidgetSize;
+
   InternetConnectionBloc get connectivity =>
       context.read<InternetConnectionBloc>();
 

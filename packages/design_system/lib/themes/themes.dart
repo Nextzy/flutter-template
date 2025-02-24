@@ -15,6 +15,7 @@ import 'package:design_system/lib.dart';
 class AppTheme {
   const AppTheme({
     this.lightTheme = const AppThemeData(
+      defaultWidgetSize: WidgetSize.md,
       themeMode: ThemeMode.light,
       color: AppLightThemeColor(),
       borderRadius: AppRadius(),
@@ -28,6 +29,7 @@ class AppTheme {
       splashFactory: NoSplash.splashFactory,
     ),
     this.darkTheme = const AppThemeData(
+      defaultWidgetSize: WidgetSize.md,
       themeMode: ThemeMode.dark,
       color: AppDarkThemeColor(),
       borderRadius: AppRadius(),

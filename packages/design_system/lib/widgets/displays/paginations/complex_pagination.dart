@@ -95,7 +95,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                     child: AppText(value.toString(),
                         style: TextStyle(
                             color: context.theme.color.textPrimary,
-                            fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                            fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                             fontWeight: FontWeight.w400)),
                   );
                 }).toList(),
@@ -106,14 +106,14 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
             AppText('items per page',
                 style: TextStyle(
                     color: context.theme.color.textPrimary,
-                    fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                    fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                     fontWeight: FontWeight.w400)),
           ],
         ),
         AppText('$startItem-$endItem of ${widget.totalItems} items',
             style: TextStyle(
                 color: context.theme.color.textPrimary,
-                fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w600)),
         RowLayout(
           gap: 24,
@@ -145,7 +145,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                             style: TextStyle(
                                 color: context.theme.color.textPrimary,
                                 fontSize:
-                                    widget.size == WidgetSize.sm ? 12 : 14,
+                                    widgetSize == WidgetSize.sm ? 12 : 14,
                                 fontWeight: FontWeight.w400)),
                       );
                     }).toList(),
@@ -156,7 +156,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                 AppText('of $totalPage pages',
                     style: TextStyle(
                         color: context.theme.color.textPrimary,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w400)),
               ],
             ),
@@ -177,7 +177,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                     child: AppText('←',
                         style: TextStyle(
                             color: _getTextColor(context, _currentPage <= 1),
-                            fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                            fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                             fontWeight: FontWeight.w600))),
               ),
               Container(
@@ -197,7 +197,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                         style: TextStyle(
                             color: _getTextColor(
                                 context, _currentPage >= totalPage),
-                            fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                            fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                             fontWeight: FontWeight.w600))),
               )
             ])
@@ -207,7 +207,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
     );
   }
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 24,
         WidgetSize.xs => 24,
         WidgetSize.sm => 24,
@@ -217,7 +217,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
         WidgetSize.xxl => 40,
       };
 
-  EdgeInsets get padding => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsets.symmetric(horizontal: 4),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 4),
         WidgetSize.sm => const EdgeInsets.symmetric(horizontal: 4),

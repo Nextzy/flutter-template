@@ -38,20 +38,20 @@ class AppMenuItem extends AppStatefulWidget {
 }
 
 class _AppMenuItemState extends AppState<AppMenuItem> {
-  EdgeInsetsGeometry get padding => switch (widget.size) {
+  EdgeInsetsGeometry get padding => switch (widgetSize) {
         (WidgetSize.xxs || WidgetSize.xs || WidgetSize.sm || WidgetSize.md) =>
           SpaceDirectional.insetAll(4),
         (WidgetSize.lg || WidgetSize.xl || WidgetSize.xxl) =>
           SpaceDirectional.insetAll(8),
       };
 
-  double get iconSize => switch (widget.size) {
+  double get iconSize => switch (widgetSize) {
         (WidgetSize.xxs || WidgetSize.xs || WidgetSize.sm) => 16.0,
         (WidgetSize.md || WidgetSize.lg || WidgetSize.xl || WidgetSize.xxl) =>
           24.0,
       };
 
-  TextStyle get titleTextStyle => switch (widget.size) {
+  TextStyle get titleTextStyle => switch (widgetSize) {
         (WidgetSize.xxs || WidgetSize.xs || WidgetSize.sm) =>
           AppTextStyleBuilder.ui.s12.regular.colorPrimary.build(context),
         (WidgetSize.md || WidgetSize.lg || WidgetSize.xl || WidgetSize.xxl) =>

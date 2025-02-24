@@ -8,27 +8,28 @@ part of '../env_prod.dart';
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
+// generated_from: .env/.env
 final class _Env {
   static const List<int> _enviedkeyname = <int>[
-    207058142,
-    2443561498,
-    1351541892,
-    1307383428,
-    2669663063,
-    113526756,
-    1766218870,
-    971779173,
+    2074758078,
+    1366772777,
+    1461211727,
+    3423854626,
+    2966792889,
+    1031848574,
+    3433716108,
+    2716588505,
   ];
 
   static const List<int> _envieddataname = <int>[
-    207058058,
-    2443561599,
-    1351541993,
-    1307383540,
-    2669663035,
-    113526661,
-    1766218754,
-    971779072,
+    2074758122,
+    1366772812,
+    1461211682,
+    3423854674,
+    2966792917,
+    1031848479,
+    3433716216,
+    2716588476,
   ];
 
   static final String name = String.fromCharCodes(List<int>.generate(
@@ -38,23 +39,23 @@ final class _Env {
   ).map((int i) => _envieddataname[i] ^ _enviedkeyname[i]));
 
   static const List<int> _enviedkeyapiKey = <int>[
-    3847216947,
-    325807109,
-    3830055217,
-    2614593955,
-    1886564270,
-    700994970,
-    3941730241,
+    2907232572,
+    3477017481,
+    2984538890,
+    930495455,
+    3220944172,
+    2239698082,
+    217821890,
   ];
 
   static const List<int> _envieddataapiKey = <int>[
-    3847217010,
-    325807189,
-    3830055288,
-    2614594044,
-    1886564325,
-    700995039,
-    3941730200,
+    2907232637,
+    3477017561,
+    2984538947,
+    930495360,
+    3220944231,
+    2239698151,
+    217821851,
   ];
 
   static final String apiKey = String.fromCharCodes(List<int>.generate(
@@ -64,45 +65,45 @@ final class _Env {
   ).map((int i) => _envieddataapiKey[i] ^ _enviedkeyapiKey[i]));
 
   static const List<int> _enviedkeyapiBaseUrl = <int>[
-    2772051272,
-    819070209,
-    3814463635,
-    990930743,
-    407368850,
-    1457077147,
-    1967431511,
-    2209032778,
-    602529784,
-    3216526091,
-    669521129,
-    713051585,
-    1932502101,
-    2264036107,
-    79500224,
-    874832092,
-    1512212057,
-    1458230146,
+    977094604,
+    3335035112,
+    2641854091,
+    3740379798,
+    3234497429,
+    2561059038,
+    3828200550,
+    1320419348,
+    1806436435,
+    1287159875,
+    3134771604,
+    3549231896,
+    2325874865,
+    4053772528,
+    813995798,
+    2807580305,
+    1799699898,
+    3488683081,
   ];
 
   static const List<int> _envieddataapiBaseUrl = <int>[
-    2772051232,
-    819070325,
-    3814463719,
-    990930759,
-    407368929,
-    1457077153,
-    1967431544,
-    2209032805,
-    602529695,
-    3216526180,
-    669521030,
-    713051558,
-    1932502073,
-    2264036206,
-    79500270,
-    874832063,
-    1512212022,
-    1458230255,
+    977094564,
+    3335035036,
+    2641854207,
+    3740379878,
+    3234497510,
+    2561059044,
+    3828200521,
+    1320419387,
+    1806436404,
+    1287159852,
+    3134771707,
+    3549231999,
+    2325874909,
+    4053772437,
+    813995832,
+    2807580402,
+    1799699925,
+    3488683044,
   ];
 
   static final String apiBaseUrl = String.fromCharCodes(List<int>.generate(
@@ -112,13 +113,13 @@ final class _Env {
   ).map((int i) => _envieddataapiBaseUrl[i] ^ _enviedkeyapiBaseUrl[i]));
 
   static const List<int> _enviedkeynewrelicAndroidToken = <int>[
-    3606811573,
-    2609438197,
+    2986732584,
+    307463550,
   ];
 
   static const List<int> _envieddatanewrelicAndroidToken = <int>[
-    3606811538,
-    2609438162,
+    2986732559,
+    307463513,
   ];
 
   static final String newrelicAndroidToken = String.fromCharCodes(
@@ -131,13 +132,13 @@ final class _Env {
           _enviedkeynewrelicAndroidToken[i]));
 
   static const List<int> _enviedkeynewrelicIosToken = <int>[
-    2002105763,
-    3232672396,
+    2992275909,
+    164051012,
   ];
 
   static const List<int> _envieddatanewrelicIosToken = <int>[
-    2002105732,
-    3232672427,
+    2992275938,
+    164051043,
   ];
 
   static final String newrelicIosToken = String.fromCharCodes(

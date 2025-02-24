@@ -65,7 +65,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
               child: AppText('← Previous',
                   style: TextStyle(
                       color: _getTextColor(context, _currentPage <= 1),
-                      fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                      fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                       fontWeight: FontWeight.w600))),
         ),
         paginateContent,
@@ -86,7 +86,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
                   style: TextStyle(
                       color: _getTextColor(
                           context, _currentPage >= widget.totalPage),
-                      fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                      fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                       fontWeight: FontWeight.w600))),
         ),
       ],
@@ -99,7 +99,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
         AppPaginationStyle.text => AppTextFieldStyle.outline,
       };
 
-  double get width => switch (widget.size) {
+  double get width => switch (widgetSize) {
         WidgetSize.xxs => 22,
         WidgetSize.xs => 22,
         WidgetSize.sm => 22,
@@ -109,7 +109,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
         WidgetSize.xxl => 34,
       };
 
-  double get inputWidth => switch (widget.size) {
+  double get inputWidth => switch (widgetSize) {
         WidgetSize.xxs => 56,
         WidgetSize.xs => 56,
         WidgetSize.sm => 56,
@@ -119,7 +119,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
         WidgetSize.xxl => 88,
       };
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 24,
         WidgetSize.xs => 24,
         WidgetSize.sm => 24,
@@ -129,7 +129,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
         WidgetSize.xxl => 40,
       };
 
-  EdgeInsets get padding => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -176,7 +176,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
             gap: 8,
             children: [
               AppNumberInput(
-                  size: widget.size,
+                  size: widgetSize,
                   style: inputStyle,
                   width: inputWidth,
                   defaultValue: _currentPage,
@@ -235,7 +235,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
                 child: AppText(page.toString(),
                     style: TextStyle(
                         color: context.theme.color.textPrimary,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                         fontWeight: FontWeight.w600)))));
   }
 
@@ -245,7 +245,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
         child: AppText('...',
             style: TextStyle(
                 color: context.theme.color.textPrimary,
-                fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w600)));
   }
 }

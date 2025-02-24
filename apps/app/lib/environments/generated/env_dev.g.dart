@@ -8,39 +8,40 @@ part of '../env_dev.dart';
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
+// generated_from: .env/.env.dev
 final class _Env {
   static const List<int> _enviedkeyname = <int>[
-    2664071217,
-    2314068408,
-    2101781816,
-    1989452001,
-    105806218,
-    3363006570,
-    2695500620,
-    1846578556,
-    2123196672,
-    1353527421,
-    1880721422,
-    1381225976,
-    1334975529,
-    3671554451,
+    1928810945,
+    1966973786,
+    2720786184,
+    3972449422,
+    1053403322,
+    3469940886,
+    1522892910,
+    449479823,
+    1193747657,
+    3384907624,
+    2356993979,
+    4129050720,
+    862457838,
+    802846677,
   ];
 
   static const List<int> _envieddataname = <int>[
-    2664071269,
-    2314068445,
-    2101781845,
-    1989451921,
-    105806310,
-    3363006475,
-    2695500600,
-    1846578457,
-    2123196704,
-    1353527381,
-    1880721482,
-    1381225917,
-    1334975615,
-    3671554490,
+    1928810901,
+    1966973759,
+    2720786277,
+    3972449534,
+    1053403350,
+    3469940983,
+    1522892826,
+    449479914,
+    1193747689,
+    3384907584,
+    2356994047,
+    4129050661,
+    862457784,
+    802846716,
   ];
 
   static final String name = String.fromCharCodes(List<int>.generate(
@@ -50,23 +51,23 @@ final class _Env {
   ).map((int i) => _envieddataname[i] ^ _enviedkeyname[i]));
 
   static const List<int> _enviedkeyapiKey = <int>[
-    3510239393,
-    2099887466,
-    1130001990,
-    3881576828,
-    279761424,
-    2137310900,
-    4018650775,
+    1783481453,
+    2098737348,
+    1998748164,
+    967324872,
+    2251768673,
+    1984874850,
+    572729815,
   ];
 
   static const List<int> _envieddataapiKey = <int>[
-    3510239456,
-    2099887418,
-    1130001935,
-    3881576739,
-    279761499,
-    2137310961,
-    4018650830,
+    1783481388,
+    2098737300,
+    1998748237,
+    967324823,
+    2251768618,
+    1984874791,
+    572729742,
   ];
 
   static final String apiKey = String.fromCharCodes(List<int>.generate(
@@ -76,45 +77,45 @@ final class _Env {
   ).map((int i) => _envieddataapiKey[i] ^ _enviedkeyapiKey[i]));
 
   static const List<int> _enviedkeyapiBaseUrl = <int>[
-    3544907674,
-    121222889,
-    210047278,
-    260412742,
-    2411272694,
-    633932343,
-    2981440607,
-    492503365,
-    2927836294,
-    814024454,
-    3437488824,
-    2931828360,
-    2458471025,
-    436872018,
-    3673142009,
-    3598532507,
-    2301250270,
-    3334057817,
+    1388356175,
+    1686081116,
+    479405202,
+    3207064843,
+    2222212076,
+    2610950274,
+    401572822,
+    1713282846,
+    3696876818,
+    1995618796,
+    3539569657,
+    747325912,
+    1809512115,
+    1661491396,
+    3972440405,
+    1764719635,
+    4097873387,
+    4242064794,
   ];
 
   static const List<int> _envieddataapiBaseUrl = <int>[
-    3544907762,
-    121222813,
-    210047322,
-    260412726,
-    2411272581,
-    633932301,
-    2981440624,
-    492503402,
-    2927836385,
-    814024553,
-    3437488855,
-    2931828463,
-    2458470941,
-    436871991,
-    3673141975,
-    3598532600,
-    2301250225,
-    3334057780,
+    1388356135,
+    1686081064,
+    479405286,
+    3207064955,
+    2222211999,
+    2610950328,
+    401572857,
+    1713282865,
+    3696876917,
+    1995618691,
+    3539569558,
+    747325887,
+    1809512159,
+    1661491361,
+    3972440443,
+    1764719728,
+    4097873284,
+    4242064887,
   ];
 
   static final String apiBaseUrl = String.fromCharCodes(List<int>.generate(
@@ -124,13 +125,13 @@ final class _Env {
   ).map((int i) => _envieddataapiBaseUrl[i] ^ _enviedkeyapiBaseUrl[i]));
 
   static const List<int> _enviedkeynewrelicAndroidToken = <int>[
-    2475802003,
-    903326360,
+    2483234767,
+    3736594634,
   ];
 
   static const List<int> _envieddatanewrelicAndroidToken = <int>[
-    2475802036,
-    903326399,
+    2483234792,
+    3736594669,
   ];
 
   static final String newrelicAndroidToken = String.fromCharCodes(
@@ -143,13 +144,13 @@ final class _Env {
           _enviedkeynewrelicAndroidToken[i]));
 
   static const List<int> _enviedkeynewrelicIosToken = <int>[
-    4115048946,
-    351694037,
+    542905782,
+    1466721788,
   ];
 
   static const List<int> _envieddatanewrelicIosToken = <int>[
-    4115048917,
-    351694066,
+    542905745,
+    1466721755,
   ];
 
   static final String newrelicIosToken = String.fromCharCodes(

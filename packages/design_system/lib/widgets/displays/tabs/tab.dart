@@ -49,7 +49,7 @@ class _AppTabState extends AppState<AppTab> {
                       ? context.theme.color.iconTertiary
                       : context.theme.color.iconPrimary,
                   BlendMode.srcIn),
-              size: widget.size == WidgetSize.sm ? 12 : 14,
+              size: widgetSize == WidgetSize.sm ? 12 : 14,
             ),
           AppText(
             widget.text,
@@ -57,7 +57,7 @@ class _AppTabState extends AppState<AppTab> {
               color: widget.disabled
                   ? context.theme.color.textTertiary
                   : context.theme.color.textPrimary,
-              fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+              fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
               fontWeight: widget.active ? FontWeight.w500 : FontWeight.w400,
             ),
           )
@@ -66,7 +66,7 @@ class _AppTabState extends AppState<AppTab> {
     );
   }
 
-  EdgeInsets get padding => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 8, vertical: 4),

@@ -60,7 +60,7 @@ class _AppLinePaginationState extends AppState<AppLinePagination> {
     );
   }
 
-  double get width => switch (widget.size) {
+  double get width => switch (widgetSize) {
         WidgetSize.xxs => 32,
         WidgetSize.xs => 32,
         WidgetSize.sm => 32,
@@ -70,7 +70,7 @@ class _AppLinePaginationState extends AppState<AppLinePagination> {
         WidgetSize.xxl => 40,
       };
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 4,
         WidgetSize.xs => 4,
         WidgetSize.sm => 4,
