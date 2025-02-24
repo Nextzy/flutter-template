@@ -56,7 +56,7 @@ class OverviewAccordionWidgetCase extends WidgetbookScrollableUseCase {
                         helperText: 'Helper text',
                         text: 'Text content inside accordion',
                         style: WidgetStyle.shade,
-                        isExpanded: true,
+                        expanded: true,
                       )
                     ],
                   ),

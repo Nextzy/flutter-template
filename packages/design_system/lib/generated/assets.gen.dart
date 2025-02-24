@@ -18,6 +18,24 @@ class $AssetsIconGen {
   /// File path: assets/icon/arrow-narrow-left.svg
   SvgGenImage get arrowNarrowLeft => const SvgGenImage('assets/icon/arrow-narrow-left.svg');
 
+  /// File path: assets/icon/arrow-right-filled.svg
+  SvgGenImage get arrowRightFilled => const SvgGenImage('assets/icon/arrow-right-filled.svg');
+
+  /// File path: assets/icon/arrow-right-light.svg
+  SvgGenImage get arrowRightLight => const SvgGenImage('assets/icon/arrow-right-light.svg');
+
+  /// File path: assets/icon/arrow-right-regular.svg
+  SvgGenImage get arrowRightRegular => const SvgGenImage('assets/icon/arrow-right-regular.svg');
+
+  /// File path: assets/icon/arrow-square-out-filled.svg
+  SvgGenImage get arrowSquareOutFilled => const SvgGenImage('assets/icon/arrow-square-out-filled.svg');
+
+  /// File path: assets/icon/arrow-square-out-light.svg
+  SvgGenImage get arrowSquareOutLight => const SvgGenImage('assets/icon/arrow-square-out-light.svg');
+
+  /// File path: assets/icon/arrow-square-out-regular.svg
+  SvgGenImage get arrowSquareOutRegular => const SvgGenImage('assets/icon/arrow-square-out-regular.svg');
+
   /// File path: assets/icon/arrows-clockwise-filled.svg
   SvgGenImage get arrowsClockwiseFilled => const SvgGenImage('assets/icon/arrows-clockwise-filled.svg');
 
@@ -171,6 +189,12 @@ class $AssetsIconGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         arrowNarrowLeft,
+        arrowRightFilled,
+        arrowRightLight,
+        arrowRightRegular,
+        arrowSquareOutFilled,
+        arrowSquareOutLight,
+        arrowSquareOutRegular,
         arrowsClockwiseFilled,
         arrowsClockwiseLight,
         arrowsClockwiseRegular,

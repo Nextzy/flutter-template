@@ -6,12 +6,10 @@ class AppAccordionGroup extends AppStatelessWidget {
     super.size = WidgetSize.md,
     this.style,
     required this.children,
-    this.disabled = false,
   });
 
   final WidgetStyle? style;
   final List<AppAccordion> children;
-  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class AppAccordionGroup extends AppStatelessWidget {
               arrowPosition: child.arrowPosition,
               helperPosition: child.helperPosition,
               disabled: child.disabled,
-              isExpanded: child.isExpanded)
+              expanded: child.expanded)
       ],
     );
   }
