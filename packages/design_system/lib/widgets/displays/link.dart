@@ -16,38 +16,38 @@ class AppLink extends AppStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () =>
+    return GestureContainerLayout(
+        disabled: disabled,
+        onPress: () =>
             disabled ? null : AppUrlScheme.launchExternalApp(Uri.parse(url)),
-        child: Container(
-            padding: const EdgeInsets.only(bottom: 4),
-            decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-              color: disabled
-                  ? context.theme.color.textTertiary
-                  : context.theme.color.brandPrimary,
-            ))),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(text,
-                    style: TextStyle(
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.w400,
-                      color: disabled
-                          ? context.theme.color.textTertiary
-                          : context.theme.color.brandPrimary,
-                    )),
-                SizedBox(width: 4),
-                Assets.icon.arrowSquareOutRegular.svgIcon(
-                    colorFilter: ColorFilter.mode(
-                        disabled
-                            ? context.theme.color.textTertiary
-                            : context.theme.color.brandPrimary,
-                        BlendMode.srcIn),
-                    size: fontSize)
-              ],
-            )));
+        padding: const EdgeInsets.only(bottom: 4),
+        decoration: BoxDecoration(
+            border: Border(
+                bottom: BorderSide(
+          color: disabled
+              ? context.theme.color.textTertiary
+              : context.theme.color.brandPrimary,
+        ))),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AppText(text,
+                style: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w400,
+                  color: disabled
+                      ? context.theme.color.textTertiary
+                      : context.theme.color.brandPrimary,
+                )),
+            Gap(4),
+            Assets.icon.arrowSquareOutRegular.svgIcon(
+                colorFilter: ColorFilter.mode(
+                    disabled
+                        ? context.theme.color.textTertiary
+                        : context.theme.color.brandPrimary,
+                    BlendMode.srcIn),
+                size: fontSize)
+          ],
+        ));
   }
 }
