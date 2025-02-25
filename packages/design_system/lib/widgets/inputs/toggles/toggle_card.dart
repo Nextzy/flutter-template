@@ -26,10 +26,10 @@ class AppToggleCard extends AppStatefulWidget {
   final ValueChanged<bool?>? onChanged;
 
   @override
-  State<AppToggleCard> createState() => _AppToggleCardState();
+  AppState<AppToggleCard> createState() => _AppToggleCardState();
 }
 
-class _AppToggleCardState extends State<AppToggleCard> {
+class _AppToggleCardState extends AppState<AppToggleCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +50,7 @@ class _AppToggleCardState extends State<AppToggleCard> {
           gap: 12,
           children: [
             if (widget.icon.isNotNullOrBlank)
-              Container(
+              ContainerLayout(
                   padding: const EdgeInsets.only(top: 4),
                   child: widget.icon.toSvgIcon(
                       size: 24,

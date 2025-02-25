@@ -24,7 +24,7 @@ class AppVerticalSlider extends AppStatefulWidget {
   final ValueChanged<double>? onChanged;
 
   @override
-  State<AppVerticalSlider> createState() => _AppVerticalSliderState();
+  AppState<AppVerticalSlider> createState() => _AppVerticalSliderState();
 }
 
 class _AppVerticalSliderState extends AppState<AppVerticalSlider> {

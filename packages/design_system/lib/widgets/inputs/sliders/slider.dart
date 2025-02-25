@@ -32,7 +32,7 @@ class AppHorizontalSlider extends AppStatefulWidget {
   final ValueChanged<double>? onChanged;
 
   @override
-  State<AppHorizontalSlider> createState() => _AppHorizontalSliderState();
+  AppState<AppHorizontalSlider> createState() => _AppHorizontalSliderState();
 }
 
 class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
@@ -59,7 +59,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
       mainAxisAlignment: MainAxisAlignment.start,
       gap: 8,
       children: [
-        if (widget.label != null)
+        if (widget.label.isNotNullOrBlank)
           Row(
             children: [
               AppText(widget.label,
@@ -118,7 +118,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
               _buildLabel(widget.maxValueText ?? 'Max value'),
             ],
           ),
-        if (widget.helperText != null)
+        if (widget.helperText.isNotNullOrBlank)
           Row(
             children: [
               AppText(widget.helperText,

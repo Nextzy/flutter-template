@@ -9,14 +9,17 @@ class AppHorizontalSteps extends AppStatefulWidget {
     this.style = AppStepStyle.number,
     required this.children,
     this.defaultValue = 1,
+    this.onChanged,
   });
 
   final AppStepStyle style;
   final List<AppStepItem> children;
   final int defaultValue;
 
+  final ValueChanged<int>? onChanged;
+
   @override
-  State<AppHorizontalSteps> createState() => _AppStepsState();
+  AppState<AppHorizontalSteps> createState() => _AppStepsState();
 }
 
 class _AppStepsState extends AppState<AppHorizontalSteps> {
@@ -30,6 +33,16 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
     });
   }
 
+  void _onTap(int step) {
+    setState(() {
+      _currentStep = step;
+    });
+
+    if (widget.onChanged != null) {
+      widget.onChanged!(step);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return RowLayout(
@@ -40,11 +53,14 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RowLayout(gap: 2, children: [
-                _buildIndicator(
-                    context, widget.children.indexOf(child) + 1, child.icon),
+                InkWell(
+                  onTap: () => _onTap(widget.children.indexOf(child) + 1),
+                  child: _buildIndicator(
+                      context, widget.children.indexOf(child) + 1, child.icon),
+                ),
                 if (widget.children.indexOf(child) + 1 !=
                     widget.children.length)
-                  Container(
+                  ContainerLayout(
                     width: 150,
                     height: 2,
                     decoration: BoxDecoration(
@@ -54,7 +70,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
                     ),
                   ),
               ]),
-              SizedBox(height: 12),
+              Gap(12),
               AppStepItem(
                   size: widgetSize,
                   title: child.title,
@@ -68,7 +84,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
   Widget _buildIndicator(BuildContext context, int step, String? icon) {
     switch (widget.style) {
       case AppStepStyle.number:
-        return Container(
+        return ContainerLayout(
           width: widgetSize == WidgetSize.sm ? 18 : 24,
           height: widgetSize == WidgetSize.sm ? 18 : 24,
           decoration: BoxDecoration(
@@ -82,7 +98,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
             ),
           ),
           child: Center(
-            child: Text(
+            child: AppText(
               step.toString(),
               style: TextStyle(
                 color: _currentStep >= step
@@ -95,7 +111,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
           ),
         );
       case AppStepStyle.dot:
-        return Container(
+        return ContainerLayout(
           width: 8,
           height: 8,
           decoration: BoxDecoration(

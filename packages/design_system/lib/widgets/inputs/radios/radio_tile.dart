@@ -24,7 +24,7 @@ class AppRadioTile<T> extends AppStatefulWidget {
   final ValueChanged<T?>? onChanged;
 
   @override
-  State<AppRadioTile<T>> createState() => _AppRadioTileState<T>();
+  AppState<AppRadioTile<T>> createState() => _AppRadioTileState<T>();
 }
 
 class _AppRadioTileState<T> extends AppState<AppRadioTile<T>> {
@@ -52,7 +52,7 @@ class _AppRadioTileState<T> extends AppState<AppRadioTile<T>> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.disabled ? null : () => _onChanged(widget.value),
-      child: Container(
+      child: ContainerLayout(
         width: 96,
         height: 96,
         padding: const EdgeInsets.symmetric(
@@ -63,8 +63,6 @@ class _AppRadioTileState<T> extends AppState<AppRadioTile<T>> {
           color: backgroundColor,
           border: Border.all(
             color: borderColor,
-            width:
-                _value == widget.value || widget.feedbackState != null ? 2 : 1,
           ),
           borderRadius: context.theme.borderRadius.md,
         ),
@@ -83,14 +81,13 @@ class _AppRadioTileState<T> extends AppState<AppRadioTile<T>> {
               ],
             )
           else
-            const SizedBox(height: 32),
+            Gap(32),
           ColumnLayout(
               mainAxisAlignment: MainAxisAlignment.center,
               gap: 4,
               children: [
                 if (widget.icon.isNotNullOrBlank)
-                  Container(
-                      // padding: const EdgeInsets.only(top: 4),
+                  ContainerLayout(
                       child: widget.icon.toSvgIcon(
                           size: 24,
                           colorFilter: ColorFilter.mode(

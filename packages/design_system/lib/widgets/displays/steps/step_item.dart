@@ -24,7 +24,7 @@ class AppStepItem extends AppStatelessWidget {
               fontSize: fontSize,
               fontWeight: FontWeight.w600),
         ),
-        if (description != null) SizedBox(height: 6),
+        if (description.isNotNullOrBlank) Gap(6),
         AppText(
           description,
           style: TextStyle(
