@@ -46,49 +46,16 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          height: height,
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            border: _getBorder(context, _currentPage <= 1),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: TextButton(
-              onPressed: _currentPage <= 1 ? null : _previous,
-              style: TextButton.styleFrom(
-                overlayColor: Colors.transparent,
-                padding: padding,
-              ),
-              child: AppText('← Previous',
-                  style: TextStyle(
-                      color: _getTextColor(context, _currentPage <= 1),
-                      fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
-                      fontWeight: FontWeight.w600))),
-        ),
+        _buildNavigationButton(context, '← ${t.common.button.previous}',
+            _previous, _currentPage <= 1),
         paginateContent,
-        Container(
-          height: height,
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            border: _getBorder(context, _currentPage >= widget.totalPage),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: TextButton(
-              onPressed: _currentPage >= widget.totalPage ? null : _next,
-              style: TextButton.styleFrom(
-                overlayColor: Colors.transparent,
-                padding: padding,
-              ),
-              child: AppText('Next →',
-                  style: TextStyle(
-                      color: _getTextColor(
-                          context, _currentPage >= widget.totalPage),
-                      fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
-                      fontWeight: FontWeight.w600))),
-        ),
+        _buildNavigationButton(context, '${t.common.button.next} →', _next,
+            _currentPage >= widget.totalPage),
       ],
     );
   }
@@ -170,8 +137,10 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
         AppPaginationType.number => Row(
             children: _buildPageNumber(),
           ),
-        AppPaginationType.text =>
-          AppText('Page $_currentPage of ${widget.totalPage}'),
+        AppPaginationType.text => AppText(Translations.of(context)
+            .common
+            .paginate
+            .pageText(currentPage: _currentPage, totalPage: widget.totalPage)),
         AppPaginationType.input => RowLayout(
             gap: 8,
             children: [
@@ -180,9 +149,13 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
                   style: inputStyle,
                   width: inputWidth,
                   defaultValue: _currentPage,
-                  onChanged: _onPageChanged,
-                  readOnly: true),
-              AppText('of ${widget.totalPage}'),
+                  minValue: 1,
+                  maxValue: widget.totalPage,
+                  onChanged: _onPageChanged),
+              AppText(Translations.of(context)
+                  .common
+                  .paginate
+                  .pageInput(totalPage: widget.totalPage)),
             ],
           ),
       };
@@ -219,24 +192,23 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
     return list;
   }
 
-  Widget _pageButton(int page) {
-    return GestureDetector(
-        onTap: () => _onPageChanged(page),
-        child: Container(
-            width: width,
-            height: height,
-            decoration: BoxDecoration(
-              color: _currentPage == page
-                  ? context.theme.color.buttonSecondaryHover
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Center(
-                child: AppText(page.toString(),
-                    style: TextStyle(
-                        color: context.theme.color.textPrimary,
-                        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
-                        fontWeight: FontWeight.w600)))));
+  GestureContainerLayout _pageButton(int page) {
+    return GestureContainerLayout(
+      width: width,
+      height: height,
+      mouseCursor: SystemMouseCursors.click,
+      backgroundColor: _currentPage == page
+          ? context.theme.color.buttonSecondaryHover
+          : Colors.transparent,
+      borderRadius: context.theme.borderRadius.md,
+      onPress: () => _onPageChanged(page),
+      child: Center(
+          child: AppText(page.toString(),
+              style: TextStyle(
+                  color: context.theme.color.textPrimary,
+                  fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
+                  fontWeight: FontWeight.w600))),
+    );
   }
 
   Widget _ellipsis() {
@@ -247,5 +219,28 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
                 color: context.theme.color.textPrimary,
                 fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w600)));
+  }
+
+  Widget _buildNavigationButton(
+      BuildContext context, String text, onPress, bool disabled) {
+    return ContainerLayout(
+      height: height,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        border: _getBorder(context, disabled),
+        borderRadius: context.theme.borderRadius.md,
+      ),
+      child: TextButton(
+          onPressed: disabled ? null : onPress,
+          style: TextButton.styleFrom(
+            overlayColor: Colors.transparent,
+            padding: padding,
+          ),
+          child: AppText(text,
+              style: TextStyle(
+                  color: _getTextColor(context, disabled),
+                  fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
+                  fontWeight: FontWeight.w600))),
+    );
   }
 }

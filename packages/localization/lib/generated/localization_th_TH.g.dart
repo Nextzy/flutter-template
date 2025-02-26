@@ -49,6 +49,7 @@ class _TranslationsCommonThTh extends TranslationsCommonEnGb {
 	@override late final _TranslationsCommonTitleThTh title = _TranslationsCommonTitleThTh._(_root);
 	@override late final _TranslationsCommonMessageThTh message = _TranslationsCommonMessageThTh._(_root);
 	@override late final _TranslationsCommonButtonThTh button = _TranslationsCommonButtonThTh._(_root);
+	@override late final _TranslationsCommonPaginateThTh paginate = _TranslationsCommonPaginateThTh._(_root);
 	@override late final _TranslationsCommonSuccessThTh success = _TranslationsCommonSuccessThTh._(_root);
 	@override late final _TranslationsCommonFailThTh fail = _TranslationsCommonFailThTh._(_root);
 	@override late final _TranslationsCommonAlertThTh alert = _TranslationsCommonAlertThTh._(_root);
@@ -110,6 +111,19 @@ class _TranslationsCommonButtonThTh extends TranslationsCommonButtonEnGb {
 	@override String get confirm => 'ยืนยัน';
 	@override String get submit => 'ยืนยัน';
 	@override String get search => 'ค้นหา';
+	@override String get previous => 'ก่อนหน้า';
+	@override String get next => 'ถัดไป';
+}
+
+// Path: common.paginate
+class _TranslationsCommonPaginateThTh extends TranslationsCommonPaginateEnGb {
+	_TranslationsCommonPaginateThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String pageText({required Object currentPage, required Object totalPage}) => 'หน้าที่ ${currentPage} จาก ${totalPage}';
+	@override String pageInput({required Object totalPage}) => 'จาก ${totalPage}';
 }
 
 // Path: common.success
@@ -196,6 +210,10 @@ extension on TranslationsThTh {
 			case 'common.button.confirm': return 'ยืนยัน';
 			case 'common.button.submit': return 'ยืนยัน';
 			case 'common.button.search': return 'ค้นหา';
+			case 'common.button.previous': return 'ก่อนหน้า';
+			case 'common.button.next': return 'ถัดไป';
+			case 'common.paginate.pageText': return ({required Object currentPage, required Object totalPage}) => 'หน้าที่ ${currentPage} จาก ${totalPage}';
+			case 'common.paginate.pageInput': return ({required Object totalPage}) => 'จาก ${totalPage}';
 			case 'common.success.general': return 'สำเร็จ';
 			case 'common.success.saved': return 'บันทึกสำเร็จ';
 			case 'common.success.updated': return 'อัพเดทสำเร็จ';

@@ -51,6 +51,7 @@ class TranslationsCommonEnGb {
 	late final TranslationsCommonTitleEnGb title = TranslationsCommonTitleEnGb.internal(_root);
 	late final TranslationsCommonMessageEnGb message = TranslationsCommonMessageEnGb.internal(_root);
 	late final TranslationsCommonButtonEnGb button = TranslationsCommonButtonEnGb.internal(_root);
+	late final TranslationsCommonPaginateEnGb paginate = TranslationsCommonPaginateEnGb.internal(_root);
 	late final TranslationsCommonSuccessEnGb success = TranslationsCommonSuccessEnGb.internal(_root);
 	late final TranslationsCommonFailEnGb fail = TranslationsCommonFailEnGb.internal(_root);
 	late final TranslationsCommonAlertEnGb alert = TranslationsCommonAlertEnGb.internal(_root);
@@ -112,6 +113,19 @@ class TranslationsCommonButtonEnGb {
 	String get confirm => 'Confirm';
 	String get submit => 'Submit';
 	String get search => 'Search';
+	String get previous => 'Previous';
+	String get next => 'Next';
+}
+
+// Path: common.paginate
+class TranslationsCommonPaginateEnGb {
+	TranslationsCommonPaginateEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String pageText({required Object currentPage, required Object totalPage}) => 'Page ${currentPage} of ${totalPage}';
+	String pageInput({required Object totalPage}) => 'of ${totalPage}';
 }
 
 // Path: common.success
@@ -198,6 +212,10 @@ extension on Translations {
 			case 'common.button.confirm': return 'Confirm';
 			case 'common.button.submit': return 'Submit';
 			case 'common.button.search': return 'Search';
+			case 'common.button.previous': return 'Previous';
+			case 'common.button.next': return 'Next';
+			case 'common.paginate.pageText': return ({required Object currentPage, required Object totalPage}) => 'Page ${currentPage} of ${totalPage}';
+			case 'common.paginate.pageInput': return ({required Object totalPage}) => 'of ${totalPage}';
 			case 'common.success.general': return 'Successfully';
 			case 'common.success.saved': return 'Saved successfully';
 			case 'common.success.updated': return 'Updated successfully';

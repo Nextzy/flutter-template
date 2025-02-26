@@ -5,12 +5,12 @@ enum AppBreadcrumbSeparatorType { caret, slash, dot, arrow }
 class AppBreadcrumbs extends AppStatelessWidget {
   const AppBreadcrumbs(
       {super.key,
-      super.size,
-      required this.children,
-      this.separator = AppBreadcrumbSeparatorType.caret});
+      super.size = WidgetSize.md,
+      this.separator = AppBreadcrumbSeparatorType.caret,
+      required this.children});
 
-  final List<AppBreadcrumbSection> children;
   final AppBreadcrumbSeparatorType separator;
+  final List<AppBreadcrumbSection> children;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,13 @@ class AppBreadcrumbs extends AppStatelessWidget {
             gap: gap,
             children: [
               AppBreadcrumbSection(
+                  size: size,
                   label: child.label,
                   icon: child.icon,
-                  size: size,
                   disabled: child.disabled,
                   onPress: child.onPress),
               if (children.last != child)
-                Container(
+                ContainerLayout(
                     padding: size == WidgetSize.sm
                         ? null
                         : const EdgeInsets.only(left: 8),
@@ -62,7 +62,7 @@ class AppBreadcrumbs extends AppStatelessWidget {
             style: TextStyle(
                 color: context.theme.color.iconTertiary, fontSize: 16));
       case AppBreadcrumbSeparatorType.dot:
-        return Container(
+        return ContainerLayout(
           padding: const EdgeInsets.only(bottom: 12),
           child: AppText('.',
               style: TextStyle(

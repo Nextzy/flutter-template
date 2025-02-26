@@ -20,6 +20,10 @@ common.button.delete,ลบ,Delete
 common.button.confirm,ยืนยัน,Confirm
 common.button.submit,ยืนยัน,Submit
 common.button.search,ค้นหา,Search
+common.button.previous,ก่อนหน้า,Previous
+common.button.next,ถัดไป,Next
+common.paginate.pageText,หน้าที่ $currentPage จาก $totalPage,Page $currentPage of $totalPage
+common.paginate.pageInput,จาก $totalPage,of $totalPage
 common.success.general,สำเร็จ,Successfully
 common.success.saved,บันทึกสำเร็จ,Saved successfully
 common.success.updated,อัพเดทสำเร็จ,Updated successfully

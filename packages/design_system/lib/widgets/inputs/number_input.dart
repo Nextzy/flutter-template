@@ -4,12 +4,14 @@ import 'package:design_system/design_system.dart';
 class AppNumberInput extends AppStatefulWidget {
   const AppNumberInput(
       {super.key,
-      super.size,
+      super.size = WidgetSize.md,
       this.style = AppTextFieldStyle.outline,
       this.width,
       this.height,
       this.label,
       this.defaultValue = 0,
+      this.minValue = 0,
+      this.maxValue = 100,
       this.placeholderText,
       this.feedbackState,
       this.statusText,
@@ -23,6 +25,8 @@ class AppNumberInput extends AppStatefulWidget {
   final double? height;
   final String? label;
   final int defaultValue;
+  final int minValue;
+  final int maxValue;
   final String? placeholderText;
   final FeedbackState? feedbackState;
   final String? statusText;
@@ -33,7 +37,7 @@ class AppNumberInput extends AppStatefulWidget {
   final ValueChanged<int>? onChanged;
 
   @override
-  State<AppNumberInput> createState() => _AppNumberInputState();
+  AppState<AppNumberInput> createState() => _AppNumberInputState();
 }
 
 class _AppNumberInputState extends AppState<AppNumberInput> {
@@ -57,6 +61,8 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
   }
 
   void _onChange() {
+    _controller.text = _value.toString();
+
     if (widget.onChanged != null) {
       widget.onChanged!(_value);
     }
@@ -66,9 +72,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
     if (!widget.disabled) {
       setState(() {
         _value++;
-        _controller.text = _value.toString();
       });
-
       _onChange();
     }
   }
@@ -77,16 +81,22 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
     if (!widget.disabled) {
       setState(() {
         _value--;
-        _controller.text = _value.toString();
       });
-
       _onChange();
     }
   }
 
   void _onTextChanged(String value) {
+    final int newValue = int.tryParse(value) ?? widget.minValue;
+
     setState(() {
-      _value = int.tryParse(value) ?? 0;
+      if (newValue < widget.minValue) {
+        _value = widget.minValue;
+      } else if (newValue > widget.maxValue) {
+        _value = widget.maxValue;
+      } else {
+        _value = newValue;
+      }
     });
 
     _onChange();
@@ -115,7 +125,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-          Container(
+          ContainerLayout(
             height: height,
             padding: const EdgeInsets.only(left: 8),
             decoration: BoxDecoration(
@@ -125,7 +135,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
               border: Border.all(
                 color: borderColor,
               ),
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: context.theme.borderRadius.md,
             ),
             child: Row(
               children: [
@@ -154,7 +164,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                     readOnly: widget.readOnly,
                   ),
                 ),
-                SizedBox(width: 8),
+                Gap(8),
                 ColumnLayout(
                   padding: widget.style == AppTextFieldStyle.shaded
                       ? const EdgeInsets.symmetric(horizontal: 1, vertical: 1)
@@ -169,57 +179,55 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                           ),
                   ),
                   children: [
-                    GestureDetector(
-                      onTap: _increment,
-                      child: Container(
-                        width: widgetSize == WidgetSize.sm ? 20 : 32,
-                        padding: widget.style == AppTextFieldStyle.shaded
-                            ? shadePadding
-                            : outlinePadding,
-                        margin: widget.style == AppTextFieldStyle.shaded
-                            ? margin
-                            : null,
-                        decoration: BoxDecoration(
-                          color: widget.style == AppTextFieldStyle.shaded
-                              ? context.theme.color.buttonShade
-                              : null,
-                          border: widget.style == AppTextFieldStyle.shaded
-                              ? null
-                              : Border(
-                                  bottom: BorderSide(
-                                    color: borderColor,
-                                  ),
-                                ),
-                          borderRadius: widget.style == AppTextFieldStyle.shaded
-                              ? BorderRadius.all(
-                                  Radius.circular(6),
-                                )
-                              : null,
-                        ),
-                        child: Assets.icon.caretUpRegular.svgIcon(
-                            size: widgetSize == WidgetSize.sm ? 9 : 12),
-                      ),
+                    GestureContainerLayout(
+                      width: widgetSize == WidgetSize.sm ? 20 : 32,
+                      mouseCursor: SystemMouseCursors.click,
+                      backgroundColor: widget.style == AppTextFieldStyle.shaded
+                          ? context.theme.color.buttonShade
+                          : null,
+                      padding: widget.style == AppTextFieldStyle.shaded
+                          ? shadePadding
+                          : outlinePadding,
+                      margin: widget.style == AppTextFieldStyle.shaded
+                          ? margin
+                          : null,
+                      border: widget.style == AppTextFieldStyle.shaded
+                          ? null
+                          : Border(
+                              bottom: BorderSide(
+                                color: borderColor,
+                              ),
+                            ),
+                      borderRadius: widget.style == AppTextFieldStyle.shaded
+                          ? context.theme.borderRadius.md
+                          : null,
+                      disabled: widget.disabled || _value == widget.maxValue,
+                      opacity: widget.disabled || _value == widget.maxValue
+                          ? 0.5
+                          : null,
+                      onPress: _increment,
+                      child: Assets.icon.caretUpRegular
+                          .svgIcon(size: widgetSize == WidgetSize.sm ? 9 : 12),
                     ),
-                    GestureDetector(
-                      onTap: _decrement,
-                      child: Container(
-                        width: widgetSize == WidgetSize.sm ? 20 : 32,
-                        padding: widget.style == AppTextFieldStyle.shaded
-                            ? shadePadding
-                            : outlinePadding,
-                        decoration: BoxDecoration(
-                          color: widget.style == AppTextFieldStyle.shaded
-                              ? context.theme.color.buttonShade
-                              : null,
-                          borderRadius: widget.style == AppTextFieldStyle.shaded
-                              ? BorderRadius.all(
-                                  Radius.circular(6),
-                                )
-                              : null,
-                        ),
-                        child: Assets.icon.caretDownRegular.svgIcon(
-                            size: widgetSize == WidgetSize.sm ? 9 : 12),
-                      ),
+                    GestureContainerLayout(
+                      width: widgetSize == WidgetSize.sm ? 20 : 32,
+                      mouseCursor: SystemMouseCursors.click,
+                      backgroundColor: widget.style == AppTextFieldStyle.shaded
+                          ? context.theme.color.buttonShade
+                          : null,
+                      padding: widget.style == AppTextFieldStyle.shaded
+                          ? shadePadding
+                          : outlinePadding,
+                      borderRadius: widget.style == AppTextFieldStyle.shaded
+                          ? context.theme.borderRadius.md
+                          : null,
+                      disabled: widget.disabled || _value == widget.minValue,
+                      opacity: widget.disabled || _value == widget.minValue
+                          ? 0.5
+                          : null,
+                      onPress: _decrement,
+                      child: Assets.icon.caretDownRegular
+                          .svgIcon(size: widgetSize == WidgetSize.sm ? 9 : 12),
                     ),
                   ],
                 )
