@@ -3,7 +3,7 @@ import 'package:design_system/lib.dart';
 class AppComplexPagination extends AppStatefulWidget {
   const AppComplexPagination({
     super.key,
-    super.size,
+    super.size = WidgetSize.md,
     this.style = AppPaginationStyle.outline,
     required this.totalItems,
     this.itemsPerPage = 10,
@@ -19,7 +19,7 @@ class AppComplexPagination extends AppStatefulWidget {
   final ValueChanged<int>? onChanged;
 
   @override
-  State<AppComplexPagination> createState() => _AppComplexPaginationState();
+  AppState<AppComplexPagination> createState() => _AppComplexPaginationState();
 }
 
 class _AppComplexPaginationState extends AppState<AppComplexPagination> {
@@ -56,24 +56,27 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
       });
 
       if (widget.onChanged != null) {
-        widget.onChanged!(_currentPage);
+        widget.onChanged!(page);
       }
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     int totalPage = (widget.totalItems / _itemsPerPage).ceil();
     int startItem = ((_currentPage - 1) * _itemsPerPage) + 1;
     int endItem = (startItem + _itemsPerPage - 1).clamp(1, widget.totalItems);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return WrapLayout(
+      alignment: WrapAlignment.spaceBetween,
+      gap: 16,
       children: [
         RowLayout(
           gap: 8,
           children: [
-            Container(
+            ContainerLayout(
               height: height,
               decoration: BoxDecoration(
                 color: widget.style == AppPaginationStyle.shaded
@@ -83,7 +86,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                     color: widget.style == AppPaginationStyle.shaded
                         ? Colors.transparent
                         : context.theme.color.border),
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: context.theme.borderRadius.md,
               ),
               padding: padding,
               child: DropdownButton(
@@ -99,18 +102,20 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                             fontWeight: FontWeight.w400)),
                   );
                 }).toList(),
-                underline: Container(),
+                underline: ContainerLayout(),
                 isDense: true,
               ),
             ),
-            AppText('items per page',
+            AppText(t.common.pagination.itemsPerPage,
                 style: TextStyle(
                     color: context.theme.color.textPrimary,
                     fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                     fontWeight: FontWeight.w400)),
           ],
         ),
-        AppText('$startItem-$endItem of ${widget.totalItems} items',
+        AppText(
+            t.common.pagination
+                .ofTotalItems(start: startItem, end: endItem, total: totalPage),
             style: TextStyle(
                 color: context.theme.color.textPrimary,
                 fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
@@ -121,7 +126,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
             RowLayout(
               gap: 8,
               children: [
-                Container(
+                ContainerLayout(
                   height: height,
                   decoration: BoxDecoration(
                     color: widget.style == AppPaginationStyle.shaded
@@ -131,7 +136,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                         color: widget.style == AppPaginationStyle.shaded
                             ? Colors.transparent
                             : context.theme.color.border),
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: context.theme.borderRadius.md,
                   ),
                   padding: padding,
                   child: DropdownButton(
@@ -144,16 +149,15 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                         child: AppText(value.toString(),
                             style: TextStyle(
                                 color: context.theme.color.textPrimary,
-                                fontSize:
-                                    widgetSize == WidgetSize.sm ? 12 : 14,
+                                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                                 fontWeight: FontWeight.w400)),
                       );
                     }).toList(),
-                    underline: Container(),
+                    underline: ContainerLayout(),
                     isDense: true,
                   ),
                 ),
-                AppText('of $totalPage pages',
+                AppText(t.common.pagination.ofTotalPages(total: totalPage),
                     style: TextStyle(
                         color: context.theme.color.textPrimary,
                         fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
@@ -161,45 +165,10 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
               ],
             ),
             RowLayout(gap: 8, children: [
-              Container(
-                height: height,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  border: _getBorder(context, _currentPage <= 1),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: TextButton(
-                    onPressed: _currentPage <= 1 ? null : _previous,
-                    style: TextButton.styleFrom(
-                      overlayColor: Colors.transparent,
-                      padding: padding,
-                    ),
-                    child: AppText('←',
-                        style: TextStyle(
-                            color: _getTextColor(context, _currentPage <= 1),
-                            fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
-                            fontWeight: FontWeight.w600))),
-              ),
-              Container(
-                height: height,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  border: _getBorder(context, _currentPage >= totalPage),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: TextButton(
-                    onPressed: _currentPage >= totalPage ? null : _next,
-                    style: TextButton.styleFrom(
-                      overlayColor: Colors.transparent,
-                      padding: padding,
-                    ),
-                    child: AppText('→',
-                        style: TextStyle(
-                            color: _getTextColor(
-                                context, _currentPage >= totalPage),
-                            fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
-                            fontWeight: FontWeight.w600))),
-              )
+              _buildNavigationButton(
+                  context, '←', _previous, _currentPage <= 1),
+              _buildNavigationButton(
+                  context, '→', _next, _currentPage >= totalPage)
             ])
           ],
         )
@@ -251,4 +220,27 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
       ? context.theme.color.textPrimary
           .withValues(alpha: 0.08, red: 0, green: 0, blue: 0)
       : context.theme.color.textPrimary;
+
+  Widget _buildNavigationButton(
+      BuildContext context, String text, onPress, bool disabled) {
+    return ContainerLayout(
+      height: height,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        border: _getBorder(context, disabled),
+        borderRadius: context.theme.borderRadius.md,
+      ),
+      child: TextButton(
+          onPressed: disabled ? null : onPress,
+          style: TextButton.styleFrom(
+            overlayColor: Colors.transparent,
+            padding: padding,
+          ),
+          child: AppText(text,
+              style: TextStyle(
+                  color: _getTextColor(context, disabled),
+                  fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
+                  fontWeight: FontWeight.w600))),
+    );
+  }
 }

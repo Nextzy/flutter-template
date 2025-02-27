@@ -69,21 +69,19 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
   }
 
   void _increment() {
-    if (!widget.disabled) {
-      setState(() {
-        _value++;
-      });
-      _onChange();
-    }
+    setState(() {
+      _value++;
+    });
+
+    _onChange();
   }
 
   void _decrement() {
-    if (!widget.disabled) {
-      setState(() {
-        _value--;
-      });
-      _onChange();
-    }
+    setState(() {
+      _value--;
+    });
+
+    _onChange();
   }
 
   void _onTextChanged(String value) {

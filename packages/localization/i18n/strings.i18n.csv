@@ -22,8 +22,15 @@ common.button.submit,ยืนยัน,Submit
 common.button.search,ค้นหา,Search
 common.button.previous,ก่อนหน้า,Previous
 common.button.next,ถัดไป,Next
-common.paginate.pageText,หน้าที่ $currentPage จาก $totalPage,Page $currentPage of $totalPage
-common.paginate.pageInput,จาก $totalPage,of $totalPage
+common.pagination.ofTotal,จาก $total,of $total
+common.pagination.ofTotalPages,จาก $total หน้า,of $total pages
+common.pagination.ofTotalItems,$start-$end จาก $total รายการ,$start-$end of $total items
+common.pagination.pageOfTotal,หน้าที่ $page จาก $total,Page $page of $total
+common.pagination.itemsPerPage,รายการต่อหน้า,items per page
+common.slider.minValue,ค่าต่ำสุด,Min value
+common.slider.maxValue,ค่าสูงสุด,Max value
+common.time.am,AM,AM
+common.time.pm,PM,PM
 common.success.general,สำเร็จ,Successfully
 common.success.saved,บันทึกสำเร็จ,Saved successfully
 common.success.updated,อัพเดทสำเร็จ,Updated successfully
@@ -36,3 +43,6 @@ common.alert.info.doubleTapExit,กดอีกครั้งเพื่ออ
 auth.button.signInWithGoogle,Sign in with Google,Sign in with Google
 auth.button.signInWithFacebook,Sign in with Facebook,Sign in with Facebook
 auth.button.signInWithApple,Sign in with Apple,Sign in with Apple
+auth.button.signInWithTwitter,Sign in with Twitter,Sign in with Twitter
+auth.button.signInWithGitHub,Sign in with GitHub,Sign in with GitHub
+auth.button.signInWithMicrosoft,Sign in with Microsoft,Sign in with Microsoft

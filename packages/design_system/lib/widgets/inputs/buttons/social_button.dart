@@ -123,20 +123,61 @@ class _AppSocialButtonState extends AppState<AppSocialButton> {
       };
 
   String get text => switch (widget.type) {
-        AppSocialButtonType.google => 'Continue with Google',
-        AppSocialButtonType.twitter => 'Continue with Twitter',
-        AppSocialButtonType.facebook => 'Continue with Facebook',
-        AppSocialButtonType.apple => 'Continue with Apple',
-        AppSocialButtonType.github => 'Continue with GitHub',
-        AppSocialButtonType.microsoft => 'Continue with Microsoft',
+        AppSocialButtonType.google =>
+          Translations.of(context).auth.button.signInWithGoogle,
+        AppSocialButtonType.twitter =>
+          Translations.of(context).auth.button.signInWithTwitter,
+        AppSocialButtonType.facebook =>
+          Translations.of(context).auth.button.signInWithFacebook,
+        AppSocialButtonType.apple =>
+          Translations.of(context).auth.button.signInWithApple,
+        AppSocialButtonType.github =>
+          Translations.of(context).auth.button.signInWithGitHub,
+        AppSocialButtonType.microsoft =>
+          Translations.of(context).auth.button.signInWithMicrosoft,
       };
 
   Widget get icon => switch (widget.type) {
-        AppSocialButtonType.google => Assets.logo.google.svgIcon(),
-        AppSocialButtonType.twitter => Assets.logo.twitter.svgIcon(),
+        AppSocialButtonType.google => Assets.logo.google.svgIcon(
+            colorFilter: widget.style == AppSocialButtonStyle.filled
+                ? ColorFilter.mode(
+                    context.theme.color.textPrimaryOnColor,
+                    BlendMode.srcIn,
+                  )
+                : null,
+          ),
+        AppSocialButtonType.twitter => Assets.logo.twitter.svgIcon(
+            colorFilter: widget.style == AppSocialButtonStyle.filled
+                ? ColorFilter.mode(
+                    context.theme.color.textPrimaryOnColor,
+                    BlendMode.srcIn,
+                  )
+                : null,
+          ),
         AppSocialButtonType.facebook => Assets.logo.facebook.svgIcon(),
-        AppSocialButtonType.apple => Assets.logo.apple.svgIcon(),
-        AppSocialButtonType.github => Assets.logo.github.svgIcon(),
-        AppSocialButtonType.microsoft => Assets.logo.microsoft.svgIcon(),
+        AppSocialButtonType.apple => Assets.logo.apple.svgIcon(
+            colorFilter: widget.style == AppSocialButtonStyle.filled
+                ? ColorFilter.mode(
+                    context.theme.color.iconPrimaryInverse,
+                    BlendMode.srcIn,
+                  )
+                : null,
+          ),
+        AppSocialButtonType.github => Assets.logo.github.svgIcon(
+            colorFilter: widget.style == AppSocialButtonStyle.filled
+                ? ColorFilter.mode(
+                    context.theme.color.iconPrimaryInverse,
+                    BlendMode.srcIn,
+                  )
+                : null,
+          ),
+        AppSocialButtonType.microsoft => Assets.logo.microsoft.svgIcon(
+            colorFilter: widget.style == AppSocialButtonStyle.filled
+                ? ColorFilter.mode(
+                    Color(0xFFFFFFFF),
+                    BlendMode.srcIn,
+                  )
+                : null,
+          ),
       };
 }

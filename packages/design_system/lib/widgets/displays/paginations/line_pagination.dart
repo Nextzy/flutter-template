@@ -12,7 +12,7 @@ class AppLinePagination extends AppStatefulWidget {
   final ValueChanged<int>? onChanged;
 
   @override
-  State<AppLinePagination> createState() => _AppLinePaginationState();
+  AppState<AppLinePagination> createState() => _AppLinePaginationState();
 }
 
 class _AppLinePaginationState extends AppState<AppLinePagination> {
@@ -41,19 +41,14 @@ class _AppLinePaginationState extends AppState<AppLinePagination> {
       children: List.generate(widget.totalPage, (index) {
         return Padding(
           padding: const EdgeInsets.all(4),
-          child: GestureDetector(
-            onTap: () => _onPageChanged(index + 1),
-            child: Container(
-              width: width,
-              height: height,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                color: _currentPage == index + 1
-                    ? context.theme.color.iconPrimary
-                    : context.theme.color.iconTertiary,
-                borderRadius: BorderRadius.circular(4),
-              ),
-            ),
+          child: GestureContainerLayout(
+            width: width,
+            height: height,
+            borderRadius: context.theme.borderRadius.md,
+            backgroundColor: _currentPage == index + 1
+                ? context.theme.color.iconPrimary
+                : context.theme.color.iconTertiary,
+            onPress: () => _onPageChanged(index + 1),
           ),
         );
       }),

@@ -3,7 +3,7 @@ import 'package:design_system/lib.dart';
 class AppComboBox extends AppStatefulWidget {
   const AppComboBox({
     super.key,
-    super.size,
+    super.size = WidgetSize.md,
     this.style = AppTextFieldStyle.outline,
     required this.items,
     this.placeholderText,
@@ -25,12 +25,11 @@ class AppComboBox extends AppStatefulWidget {
   final ValueChanged<String>? onChanged;
 
   @override
-  State<AppComboBox> createState() => _AppComboBoxState();
+  AppState<AppComboBox> createState() => _AppComboBoxState();
 }
 
 class _AppComboBoxState extends AppState<AppComboBox> {
   final TextEditingController _controller = TextEditingController();
-  String _value = '';
   bool _showDropdown = false;
 
   List<String> _filteredItems = [];
@@ -43,7 +42,6 @@ class _AppComboBoxState extends AppState<AppComboBox> {
 
   void _onTextChanged(String value) {
     setState(() {
-      _value = value;
       _filteredItems = widget.items
           .where(
               (element) => element.toLowerCase().contains(value.toLowerCase()))
@@ -54,7 +52,9 @@ class _AppComboBoxState extends AppState<AppComboBox> {
 
   void _onSelectItem(String value) {
     _controller.text = value;
-    _toggleDropdown();
+    setState(() {
+      _showDropdown = false;
+    });
 
     if (widget.onChanged != null) {
       widget.onChanged!(value);
@@ -68,6 +68,12 @@ class _AppComboBoxState extends AppState<AppComboBox> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ColumnLayout(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -77,7 +83,7 @@ class _AppComboBoxState extends AppState<AppComboBox> {
           Row(
             children: [
               Expanded(
-                child: Container(
+                child: ContainerLayout(
                     height: height,
                     padding: padding,
                     decoration: BoxDecoration(
@@ -113,53 +119,49 @@ class _AppComboBoxState extends AppState<AppComboBox> {
                       ),
                     )),
               ),
-              InkWell(
-                onTap: _toggleDropdown,
-                child: Container(
-                  height: height,
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
+              GestureContainerLayout(
+                height: height,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                backgroundColor: widget.style == AppTextFieldStyle.shaded
+                    ? context.theme.color.bgInputShaded
+                    : null,
+                border: Border(
+                  top: BorderSide(
                     color: widget.style == AppTextFieldStyle.shaded
-                        ? context.theme.color.bgInputShaded
-                        : null,
-                    border: Border(
-                      top: BorderSide(
-                        color: widget.style == AppTextFieldStyle.shaded
-                            ? Colors.transparent
-                            : context.theme.color.border,
-                      ),
-                      right: BorderSide(
-                        color: widget.style == AppTextFieldStyle.shaded
-                            ? Colors.transparent
-                            : context.theme.color.border,
-                      ),
-                      bottom: BorderSide(
-                        color: widget.style == AppTextFieldStyle.shaded
-                            ? Colors.transparent
-                            : context.theme.color.border,
-                      ),
-                    ),
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(6),
-                      bottomRight: Radius.circular(6),
-                    ),
+                        ? Colors.transparent
+                        : context.theme.color.border,
                   ),
-                  child: _showDropdown
-                      ? Assets.icon.caretUpRegular.svgIcon(
-                          size: widgetSize == WidgetSize.sm ? 12 : 16,
-                          colorFilter: ColorFilter.mode(
-                            context.theme.color.iconSecondary,
-                            BlendMode.srcIn,
-                          ),
-                        )
-                      : Assets.icon.caretDownRegular.svgIcon(
-                          size: widgetSize == WidgetSize.sm ? 12 : 16,
-                          colorFilter: ColorFilter.mode(
-                            context.theme.color.iconSecondary,
-                            BlendMode.srcIn,
-                          ),
-                        ),
+                  right: BorderSide(
+                    color: widget.style == AppTextFieldStyle.shaded
+                        ? Colors.transparent
+                        : context.theme.color.border,
+                  ),
+                  bottom: BorderSide(
+                    color: widget.style == AppTextFieldStyle.shaded
+                        ? Colors.transparent
+                        : context.theme.color.border,
+                  ),
                 ),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(6),
+                  bottomRight: Radius.circular(6),
+                ),
+                onPress: _toggleDropdown,
+                child: _showDropdown
+                    ? Assets.icon.caretUpRegular.svgIcon(
+                        size: widgetSize == WidgetSize.sm ? 12 : 16,
+                        colorFilter: ColorFilter.mode(
+                          context.theme.color.iconSecondary,
+                          BlendMode.srcIn,
+                        ),
+                      )
+                    : Assets.icon.caretDownRegular.svgIcon(
+                        size: widgetSize == WidgetSize.sm ? 12 : 16,
+                        colorFilter: ColorFilter.mode(
+                          context.theme.color.iconSecondary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
               ),
             ],
           ),

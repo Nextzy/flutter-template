@@ -27,7 +27,7 @@ class AppTimeInput extends AppStatefulWidget {
   final ValueChanged<Map<String, dynamic>>? onChanged;
 
   @override
-  State<AppTimeInput> createState() => _AppTimeInputState();
+  AppState<AppTimeInput> createState() => _AppTimeInputState();
 }
 
 class _AppTimeInputState extends AppState<AppTimeInput> {
@@ -137,6 +137,8 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return ColumnLayout(
       crossAxisAlignment: CrossAxisAlignment.start,
       gap: 4,
@@ -153,7 +155,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
         RowLayout(
           gap: 8,
           children: [
-            Container(
+            ContainerLayout(
               width: width,
               height: height,
               decoration: BoxDecoration(
@@ -229,7 +231,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
               ),
             ),
             if (widget.showUnit)
-              Container(
+              ContainerLayout(
                 height: height,
                 decoration: BoxDecoration(
                   color: widget.style == AppTextFieldStyle.shaded
@@ -256,11 +258,10 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
                         padding: widgetSize == WidgetSize.sm
                             ? const EdgeInsets.all(2)
                             : const EdgeInsets.all(4),
-                        child: AppText('AM',
+                        child: AppText(t.common.time.am,
                             style: TextStyle(
                                 color: textPrimaryColor,
-                                fontSize:
-                                    widgetSize == WidgetSize.sm ? 12 : 14,
+                                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                                 fontWeight: _unit == 'AM'
                                     ? FontWeight.w500
                                     : FontWeight.w400)),
@@ -269,11 +270,10 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
                         padding: widgetSize == WidgetSize.sm
                             ? const EdgeInsets.all(2)
                             : const EdgeInsets.all(4),
-                        child: AppText('PM',
+                        child: AppText(t.common.time.pm,
                             style: TextStyle(
                                 color: textPrimaryColor,
-                                fontSize:
-                                    widgetSize == WidgetSize.sm ? 12 : 14,
+                                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                                 fontWeight: _unit == 'PM'
                                     ? FontWeight.w500
                                     : FontWeight.w400)),
@@ -281,7 +281,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
                     ]),
               ),
             if (widget.showTimeZone)
-              Container(
+              ContainerLayout(
                 height: height,
                 decoration: BoxDecoration(
                   color: widget.disabled
@@ -309,7 +309,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
                               fontWeight: FontWeight.w400)),
                     );
                   }).toList(),
-                  underline: Container(),
+                  underline: ContainerLayout(),
                   isDense: true,
                 ),
               )
