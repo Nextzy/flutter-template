@@ -46,6 +46,15 @@ class $AssetsIconGen {
 
   $AssetsIconButtonGen get button => const $AssetsIconButtonGen();
 
+  /// File path: assets/icon/calendar-blank-filled.svg
+  SvgGenImage get calendarBlankFilled => const SvgGenImage('assets/icon/calendar-blank-filled.svg');
+
+  /// File path: assets/icon/calendar-blank-light.svg
+  SvgGenImage get calendarBlankLight => const SvgGenImage('assets/icon/calendar-blank-light.svg');
+
+  /// File path: assets/icon/calendar-blank-regular.svg
+  SvgGenImage get calendarBlankRegular => const SvgGenImage('assets/icon/calendar-blank-regular.svg');
+
   /// File path: assets/icon/caret-down-filled.svg
   SvgGenImage get caretDownFilled => const SvgGenImage('assets/icon/caret-down-filled.svg');
 
@@ -54,6 +63,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/caret-down-regular.svg
   SvgGenImage get caretDownRegular => const SvgGenImage('assets/icon/caret-down-regular.svg');
+
+  /// File path: assets/icon/caret-left-filled.svg
+  SvgGenImage get caretLeftFilled => const SvgGenImage('assets/icon/caret-left-filled.svg');
+
+  /// File path: assets/icon/caret-left-light.svg
+  SvgGenImage get caretLeftLight => const SvgGenImage('assets/icon/caret-left-light.svg');
+
+  /// File path: assets/icon/caret-left-regular.svg
+  SvgGenImage get caretLeftRegular => const SvgGenImage('assets/icon/caret-left-regular.svg');
 
   /// File path: assets/icon/caret-right-filled.svg
   SvgGenImage get caretRightFilled => const SvgGenImage('assets/icon/caret-right-filled.svg');
@@ -195,9 +213,15 @@ class $AssetsIconGen {
         arrowsClockwiseFilled,
         arrowsClockwiseLight,
         arrowsClockwiseRegular,
+        calendarBlankFilled,
+        calendarBlankLight,
+        calendarBlankRegular,
         caretDownFilled,
         caretDownLight,
         caretDownRegular,
+        caretLeftFilled,
+        caretLeftLight,
+        caretLeftRegular,
         caretRightFilled,
         caretRightLight,
         caretRightRegular,
