@@ -46,6 +46,9 @@ jobs:
     name: 🤖 Build Android application
     needs: [ pull_code ]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/app
     steps:
       #====== Setup Flutter ======#
       - uses: actions/download-artifact@v4
@@ -55,7 +58,7 @@ jobs:
       - name: ⟦Flutter⟧ 🐦 Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.2'
+          flutter-version: '3.27.3'
           channel: 'stable'
       - name: ⟦Flutter⟧ 🐦 Flutter Version
         run: flutter --version
@@ -75,10 +78,10 @@ jobs:
         with:
           fileName: "keystore/release_dev.keystore"
           encodedString: ${{ secrets.KEYSTORE_RELEASE_DEV_ENCODE }}
-#      - name: ⟦Android⟧ 📄 Create Google Services JSON File
-#        env:
-#          GOOGLE_SERVICE_JSON: ${{ secrets.GOOGLE_SERVICE_JSON }}
-#        run: echo $GOOGLE_SERVICE_JSON | base64 -d > /home/runner/work/tikabit-application/tikabit-application/android/app/google-services.json
+      - name: ⟦Android⟧ 📄 Create Google Services JSON File
+        env:
+          GOOGLE_SERVICE_JSON: ${{ secrets.GOOGLE_SERVICE_JSON }}
+        run: echo $GOOGLE_SERVICE_JSON | base64 -d > ${{ github.workspace }}/apps/app/android/app/google-services.json
       - name: ⟦Android⟧ 🏗️ Build .apk Android App for UAT Version
         env:
           SIGNING_KEY_ALIAS: ${{ secrets.KEYSTORE_ALIAS_RELEASE_DEV }}
@@ -87,7 +90,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: android
-          path: ${{ github.workspace }}
+          path: apps/app
 
   distribute_android:
     name: 🔥 Upload .apk (Android)
@@ -97,7 +100,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: android
-          path: ${{ github.workspace }}
+          path: ${{ github.workspace }}/apps/app
       # Distribute Android to Firebase
       - name: ⟦Android⟧ 🔥 Upload .apk (Android) for UAT version to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
@@ -105,8 +108,15 @@ jobs:
           appId: ${{ secrets.FIREBASE_ANDROID_APP_UAT_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: 🧪-tester
-          file: build/app/outputs/flutter-apk/app-uat-release.apk
+          file: ${{ github.workspace }}/apps/app/build/app/outputs/flutter-apk/app-uat-release.apk
           releaseNotes: ${{ inputs.release_notes }}
+      # Clean up artifacts after distribution
+      - name: 🧹 Clean up artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: |
+            github_repo
+            android
 
 #  build_ios:
 #    name: 🍎 Build iOS application...
