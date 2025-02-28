@@ -28,7 +28,7 @@ class AppCheckbox extends AppStatefulWidget {
   final ValueChanged<bool>? onChanged;
 
   @override
-  State<AppCheckbox> createState() => _AppCheckboxState();
+  AppState<AppCheckbox> createState() => _AppCheckboxState();
 }
 
 class _AppCheckboxState extends AppState<AppCheckbox> {
@@ -63,42 +63,18 @@ class _AppCheckboxState extends AppState<AppCheckbox> {
               ? MainAxisAlignment.start
               : MainAxisAlignment.spaceBetween,
           children: [
-            if (widget.position == AppCheckboxPosition.left)
-              Checkbox(
-                  value: _value,
-                  onChanged: widget.disabled ? null : _onChanged,
-                  activeColor: activeColor,
-                  overlayColor: WidgetStatePropertyAll(Colors.transparent),
-                  fillColor: backgroundColor,
-                  side: BorderSide(
-                    color: borderColor,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: context.theme.borderRadius.sm,
-                  )),
+            if (widget.position == AppCheckboxPosition.left) _buildCheckbox(),
             AppText(
               widget.label,
               style: TextStyle(
                 color: widget.disabled
                     ? context.theme.color.textTertiary
                     : context.theme.color.textPrimary,
-                fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w400,
               ),
             ),
-            if (widget.position == AppCheckboxPosition.right)
-              Checkbox(
-                  value: _value,
-                  onChanged: widget.disabled ? null : _onChanged,
-                  activeColor: activeColor,
-                  overlayColor: WidgetStatePropertyAll(Colors.transparent),
-                  fillColor: backgroundColor,
-                  side: BorderSide(
-                    color: borderColor,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: context.theme.borderRadius.sm,
-                  )),
+            if (widget.position == AppCheckboxPosition.right) _buildCheckbox(),
           ],
         ),
         if (widget.helperText.isNotNullOrBlank)
@@ -137,6 +113,21 @@ class _AppCheckboxState extends AppState<AppCheckbox> {
           )
       ],
     );
+  }
+
+  Widget _buildCheckbox() {
+    return Checkbox(
+        value: _value,
+        onChanged: widget.disabled ? null : _onChanged,
+        activeColor: activeColor,
+        overlayColor: WidgetStatePropertyAll(Colors.transparent),
+        fillColor: backgroundColor,
+        side: BorderSide(
+          color: borderColor,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: context.theme.borderRadius.sm,
+        ));
   }
 
   Color get activeColor => switch (widget.feedbackState) {

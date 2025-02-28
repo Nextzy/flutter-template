@@ -5,7 +5,7 @@ import 'package:widgetbook_app/widgetbook.dart';
 class RatingComponentBook extends WidgetbookComponent {
   RatingComponentBook({
     super.name = 'Rating',
-    super.isInitiallyExpanded = true,
+    super.isInitiallyExpanded = false,
   }) : super(
           useCases: [
             OverviewRatingWidgetCase(),

@@ -375,7 +375,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                           maxLength: widget.maxLength,
                           inputFormatters: widget.inputFormatters,
                           keyboardType: widget.keyboardType,
-                          controller: _controller,
+                          controller: widget.controller ?? _controller,
                           textInputAction: widget.textInputAction,
                           focusNode: _focus,
                           textAlign: widget.textAlign,

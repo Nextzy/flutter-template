@@ -28,13 +28,13 @@ class AppRadioCard<T> extends AppStatefulWidget {
   final ValueChanged<T?>? onChanged;
 
   @override
-  State<AppRadioCard> createState() => _AppRadioCardState();
+  AppState<AppRadioCard> createState() => _AppRadioCardState();
 }
 
-class _AppRadioCardState<T> extends State<AppRadioCard<T>> {
+class _AppRadioCardState<T> extends AppState<AppRadioCard<T>> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ContainerLayout(
       height: 112,
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
@@ -52,7 +52,7 @@ class _AppRadioCardState<T> extends State<AppRadioCard<T>> {
           gap: 12,
           children: [
             if (widget.icon.isNotNullOrBlank)
-              Container(
+              ContainerLayout(
                   padding: const EdgeInsets.only(top: 4),
                   child: widget.icon.toSvgIcon(
                       size: 24,

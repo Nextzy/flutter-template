@@ -29,3 +29,5 @@ export 'package:buttons_tabbar/buttons_tabbar.dart';
 export 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 export 'package:loading_more_list/loading_more_list.dart' hide ViewportBuilder;
 export 'package:popover/popover.dart';
+export 'package:calendar_date_picker2/calendar_date_picker2.dart'
+    hide YearPicker, SelectableDayPredicate;

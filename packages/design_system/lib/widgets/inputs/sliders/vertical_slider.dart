@@ -24,7 +24,7 @@ class AppVerticalSlider extends AppStatefulWidget {
   final ValueChanged<double>? onChanged;
 
   @override
-  State<AppVerticalSlider> createState() => _AppVerticalSliderState();
+  AppState<AppVerticalSlider> createState() => _AppVerticalSliderState();
 }
 
 class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
@@ -40,6 +40,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
     setState(() {
       _value = value;
     });
+
     if (widget.onChanged != null) {
       widget.onChanged!(value);
     }
@@ -47,11 +48,13 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         ColumnLayout(mainAxisAlignment: MainAxisAlignment.start, children: [
-          _buildLabel(widget.minValueText ?? 'Max value'),
+          _buildLabel(widget.minValueText ?? t.common.slider.maxValue),
           RotatedBox(
             quarterTurns: -1,
             child: SliderTheme(
@@ -78,7 +81,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
               ),
             ),
           ),
-          _buildLabel(widget.maxValueText ?? 'Min value'),
+          _buildLabel(widget.maxValueText ?? t.common.slider.minValue),
         ])
       ],
     );

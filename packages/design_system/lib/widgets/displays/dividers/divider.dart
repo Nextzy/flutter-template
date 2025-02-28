@@ -25,69 +25,25 @@ class AppDivider extends AppStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double thickness =
-        borderWidth ?? getTheme(context).border.md.maxWidth;
-    final double indent = paddingStart ?? 0;
-    final double endIndent = paddingEnd ?? 0;
-    final Color color = getTheme(context).color.border;
-
-    final EdgeInsets padding = switch (textPosition) {
-      DividerTextPosition.left => const EdgeInsets.only(right: 8),
-      DividerTextPosition.center => const EdgeInsets.symmetric(horizontal: 8),
-      DividerTextPosition.right => const EdgeInsets.only(left: 8),
-    };
-
-    final EdgeInsets verticalPadding = switch (textPosition) {
-      DividerTextPosition.left => const EdgeInsets.only(bottom: 8),
-      DividerTextPosition.center => const EdgeInsets.symmetric(vertical: 8),
-      DividerTextPosition.right => const EdgeInsets.only(top: 8),
-    };
-
     switch (direction) {
       case DividerDirection.horizontal:
         if (text.isNotNullOrBlank) {
           return Row(
             children: [
               if (textPosition != DividerTextPosition.left)
-                Expanded(
-                  child: Divider(
-                    thickness: thickness,
-                    indent: 0,
-                    endIndent: indent,
-                    color: color,
-                  ),
-                ),
+                Expanded(child: _buildDivider(context, 0, indent)),
               Padding(
                 padding: padding,
-                child: AppText(
-                  text,
-                  style: TextStyle(
-                    color: getTheme(context).color.textSecondary,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+                child: _buildText(context),
               ),
               if (textPosition != DividerTextPosition.right)
-                Expanded(
-                  child: Divider(
-                    thickness: thickness,
-                    indent: indent,
-                    endIndent: 0,
-                    color: color,
-                  ),
-                ),
+                Expanded(child: _buildDivider(context, indent, 0)),
             ],
           );
         } else {
           return SizedBox(
             width: width,
-            child: Divider(
-              thickness: thickness,
-              color: color,
-              indent: indent,
-              endIndent: endIndent,
-            ),
+            child: _buildDivider(context, indent, endIndent),
           );
         }
       case DividerDirection.vertical:
@@ -101,23 +57,11 @@ class AppDivider extends AppStatelessWidget {
                       : width != null
                           ? (width! / 2)
                           : 120,
-                  child: VerticalDivider(
-                    thickness: thickness,
-                    color: color,
-                    indent: indent,
-                    endIndent: endIndent,
-                  ),
+                  child: _buildVerticalDivider(context),
                 ),
               Padding(
                 padding: verticalPadding,
-                child: AppText(
-                  text,
-                  style: TextStyle(
-                    color: getTheme(context).color.textSecondary,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+                child: _buildText(context),
               ),
               if (textPosition != DividerTextPosition.right)
                 SizedBox(
@@ -126,26 +70,65 @@ class AppDivider extends AppStatelessWidget {
                       : width != null
                           ? (width! / 2)
                           : 120,
-                  child: VerticalDivider(
-                    thickness: thickness,
-                    color: color,
-                    indent: indent,
-                    endIndent: endIndent,
-                  ),
+                  child: _buildVerticalDivider(context),
                 ),
             ],
           );
         } else {
           return SizedBox(
             height: width ?? 280,
-            child: VerticalDivider(
-              thickness: thickness,
-              color: color,
-              indent: indent,
-              endIndent: endIndent,
-            ),
+            child: _buildVerticalDivider(context),
           );
         }
     }
+  }
+
+  EdgeInsets get padding => switch (textPosition) {
+        DividerTextPosition.left => const EdgeInsets.only(right: 8),
+        DividerTextPosition.center => const EdgeInsets.symmetric(horizontal: 8),
+        DividerTextPosition.right => const EdgeInsets.only(left: 8),
+      };
+
+  EdgeInsets get verticalPadding => switch (textPosition) {
+        DividerTextPosition.left => const EdgeInsets.only(bottom: 8),
+        DividerTextPosition.center => const EdgeInsets.symmetric(vertical: 8),
+        DividerTextPosition.right => const EdgeInsets.only(top: 8),
+      };
+
+  double get indent => paddingStart ?? 0;
+
+  double get endIndent => paddingEnd ?? 0;
+
+  double _getThickness(BuildContext context) {
+    return borderWidth ?? getTheme(context).border.md.maxWidth;
+  }
+
+  Divider _buildDivider(BuildContext context, double start, double end) {
+    return Divider(
+      thickness: _getThickness(context),
+      indent: start,
+      endIndent: end,
+      color: context.theme.color.border,
+    );
+  }
+
+  VerticalDivider _buildVerticalDivider(BuildContext context) {
+    return VerticalDivider(
+      thickness: _getThickness(context),
+      indent: indent,
+      endIndent: endIndent,
+      color: context.theme.color.border,
+    );
+  }
+
+  AppText _buildText(BuildContext context) {
+    return AppText(
+      text,
+      style: TextStyle(
+        color: getTheme(context).color.textSecondary,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
+    );
   }
 }

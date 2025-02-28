@@ -3,17 +3,20 @@ import 'package:design_system/lib.dart';
 class AppVerticalTab extends AppStatefulWidget {
   const AppVerticalTab(
       {super.key,
-      super.size,
+      super.size = WidgetSize.md,
       this.style = AppTabStyle.filled,
       required this.children,
-      this.defaultValue = 0});
+      this.defaultValue = 0,
+      this.onChanged});
 
   final AppTabStyle style;
   final List<AppTab> children;
   final int defaultValue;
 
+  final ValueChanged<int>? onChanged;
+
   @override
-  State<AppVerticalTab> createState() => _AppVerticalTabState();
+  AppState<AppVerticalTab> createState() => _AppVerticalTabState();
 }
 
 class _AppVerticalTabState extends AppState<AppVerticalTab> {
@@ -30,28 +33,32 @@ class _AppVerticalTabState extends AppState<AppVerticalTab> {
       setState(() {
         _currentIndex = index;
       });
+
+      if (widget.onChanged != null) {
+        widget.onChanged!(index);
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ContainerLayout(
         padding: padding,
         decoration: BoxDecoration(
           color: backgroundColor,
           border: widget.style == AppTabStyle.outlined
               ? Border.all(color: context.theme.color.border)
               : null,
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: context.theme.borderRadius.md,
         ),
         child: ColumnLayout(gap: gap, children: [
           for (final child in widget.children)
-            GestureDetector(
+            InkWell(
               onTap: child.disabled
                   ? null
                   : () => _selectTab(widget.children.indexOf(child)),
               child: AppTab(
-                size: widget.size,
+                size: widgetSize,
                 style: widget.style,
                 icon: child.icon,
                 text: child.text,

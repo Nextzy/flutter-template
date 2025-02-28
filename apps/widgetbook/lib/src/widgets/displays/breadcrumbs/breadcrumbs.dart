@@ -5,7 +5,7 @@ import 'package:widgetbook_app/widgetbook.dart';
 class BreadcrumbsWidgetBook extends WidgetbookComponent {
   BreadcrumbsWidgetBook({
     super.name = 'Breadcrumbs',
-    super.isInitiallyExpanded = true,
+    super.isInitiallyExpanded = false,
   }) : super(
           useCases: [
             OverviewBreadcrumbsWidgetCase(),

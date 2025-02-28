@@ -19,27 +19,27 @@ class AppRating extends AppStatefulWidget {
   final ValueChanged<double>? onChanged;
 
   @override
-  State<AppRating> createState() => _AppRatingState();
+  AppState<AppRating> createState() => _AppRatingState();
 }
 
 class _AppRatingState extends AppState<AppRating> {
-  late double _defaultValue = 0;
+  late double _value = 0;
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      _defaultValue = widget.defaultValue;
+      _value = widget.defaultValue;
     });
   }
 
   void _onTap(int index) {
     setState(() {
-      _defaultValue = index + 1 == _defaultValue ? 0 : index + 1;
+      _value = index + 1 == _value ? 0 : index + 1;
     });
 
     if (widget.onChanged != null) {
-      widget.onChanged!(_defaultValue);
+      widget.onChanged!(_value);
     }
   }
 
@@ -50,9 +50,8 @@ class _AppRatingState extends AppState<AppRating> {
     for (var i = 0; i < 5; i++) {
       double ratingValue = i + 1;
 
-      Color color = ratingValue <= _defaultValue
-          ? iconColor
-          : context.theme.color.bgSurface2;
+      Color color =
+          ratingValue <= _value ? iconColor : context.theme.color.bgSurface2;
 
       String emoji = switch (i) {
         0 => '😠',
@@ -64,7 +63,7 @@ class _AppRatingState extends AppState<AppRating> {
       };
 
       rating.add(
-        GestureDetector(
+        InkWell(
           onTap: () => _onTap(i),
           child: AppText(widget.style == AppRatingStyle.emoji ? emoji : icon,
               style: TextStyle(
@@ -78,10 +77,10 @@ class _AppRatingState extends AppState<AppRating> {
     return Row(
       children: [
         ...rating,
-        if (widget.showText) SizedBox(width: 16),
+        if (widget.showText) Gap(16),
         if (widget.showText)
           AppText(
-            _defaultValue.toString(),
+            _value.toString(),
             style: TextStyle(
               color: context.theme.color.textPrimary,
               fontSize: fontSize,

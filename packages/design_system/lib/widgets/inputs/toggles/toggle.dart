@@ -5,7 +5,7 @@ enum AppTogglePosition { left, right }
 class AppToggle extends AppStatefulWidget {
   const AppToggle({
     super.key,
-    super.size,
+    super.size = WidgetSize.md,
     this.style = AppTextFieldStyle.outline,
     this.position = AppTogglePosition.left,
     required this.label,
@@ -29,10 +29,10 @@ class AppToggle extends AppStatefulWidget {
   final ValueChanged<bool>? onChanged;
 
   @override
-  State<StatefulWidget> createState() => AppToggleState();
+  AppState<AppToggle> createState() => _AppToggleState();
 }
 
-class AppToggleState extends AppState<AppToggle> {
+class _AppToggleState extends AppState<AppToggle> {
   bool _value = false;
 
   @override
@@ -59,48 +59,18 @@ class AppToggleState extends AppState<AppToggle> {
             ? MainAxisAlignment.start
             : MainAxisAlignment.spaceBetween,
         children: [
-          if (widget.position == AppTogglePosition.left)
-            Transform.scale(
-              scale: 0.6,
-              // alignment: Alignment.topCenter,
-              child: Switch(
-                  value: _value,
-                  onChanged: widget.disabled ? null : _onChanged,
-                  padding: EdgeInsets.zero,
-                  activeColor: widget.disabled
-                      ? null
-                      : context.theme.color.iconPrimaryOnColor,
-                  activeTrackColor: widget.disabled ? null : activeColor,
-                  inactiveThumbColor:
-                      widget.disabled ? null : context.theme.color.iconPrimary,
-                  overlayColor: WidgetStatePropertyAll(Colors.transparent)),
-            ),
+          if (widget.position == AppTogglePosition.left) _buildToggle(),
           AppText(
             widget.label,
             style: TextStyle(
               color: widget.disabled
                   ? context.theme.color.textTertiary
                   : context.theme.color.textPrimary,
-              fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+              fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
               fontWeight: FontWeight.w400,
             ),
           ),
-          if (widget.position == AppTogglePosition.right)
-            Transform.scale(
-              scale: 0.6,
-              // alignment: Alignment.topCenter,
-              child: Switch(
-                  value: _value,
-                  onChanged: widget.disabled ? null : _onChanged,
-                  padding: EdgeInsets.zero,
-                  activeColor: widget.disabled
-                      ? null
-                      : context.theme.color.iconPrimaryOnColor,
-                  activeTrackColor: widget.disabled ? null : activeColor,
-                  inactiveThumbColor:
-                      widget.disabled ? null : context.theme.color.iconPrimary,
-                  overlayColor: WidgetStatePropertyAll(Colors.transparent)),
-            ),
+          if (widget.position == AppTogglePosition.right) _buildToggle(),
         ],
       ),
       if (widget.helperText.isNotNullOrBlank)
@@ -138,6 +108,23 @@ class AppToggleState extends AppState<AppToggle> {
           ],
         )
     ]);
+  }
+
+  Widget _buildToggle() {
+    return Transform.scale(
+      scale: 0.6,
+      // alignment: Alignment.topCenter,
+      child: Switch(
+          value: _value,
+          onChanged: widget.disabled ? null : _onChanged,
+          padding: EdgeInsets.zero,
+          activeColor:
+              widget.disabled ? null : context.theme.color.iconPrimaryOnColor,
+          activeTrackColor: widget.disabled ? null : activeColor,
+          inactiveThumbColor:
+              widget.disabled ? null : context.theme.color.iconPrimary,
+          overlayColor: WidgetStatePropertyAll(Colors.transparent)),
+    );
   }
 
   Color get activeColor => switch (widget.feedbackState) {

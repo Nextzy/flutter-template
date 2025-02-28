@@ -3,7 +3,7 @@ import 'package:design_system/lib.dart';
 class AppHorizontalTab extends AppStatefulWidget {
   const AppHorizontalTab(
       {super.key,
-      super.size,
+      super.size = WidgetSize.md,
       this.style = AppTabStyle.filled,
       required this.children,
       this.defaultValue = 0,
@@ -16,7 +16,7 @@ class AppHorizontalTab extends AppStatefulWidget {
   final ValueChanged<int>? onChanged;
 
   @override
-  State<AppHorizontalTab> createState() => _AppHorizontalTabState();
+  AppState<AppHorizontalTab> createState() => _AppHorizontalTabState();
 }
 
 class _AppHorizontalTabState extends AppState<AppHorizontalTab> {
@@ -42,7 +42,7 @@ class _AppHorizontalTabState extends AppState<AppHorizontalTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ContainerLayout(
       padding: padding,
       decoration: BoxDecoration(
         color: backgroundColor,
@@ -51,12 +51,12 @@ class _AppHorizontalTabState extends AppState<AppHorizontalTab> {
       ),
       child: RowLayout(mainAxisSize: MainAxisSize.min, gap: gap, children: [
         for (final child in widget.children)
-          GestureDetector(
+          InkWell(
             onTap: child.disabled
                 ? null
                 : () => _selectTab(widget.children.indexOf(child)),
             child: AppTab(
-              size: widget.size,
+              size: widgetSize,
               style: widget.style,
               icon: child.icon,
               text: child.text,
@@ -100,9 +100,9 @@ class _AppHorizontalTabState extends AppState<AppHorizontalTab> {
       };
 
   BorderRadius get borderRadius => switch (widget.style) {
-        AppTabStyle.filled => BorderRadius.circular(6),
-        AppTabStyle.shade => BorderRadius.circular(6),
-        AppTabStyle.outlined => BorderRadius.circular(6),
-        AppTabStyle.underline => BorderRadius.zero,
+        AppTabStyle.filled => context.theme.borderRadius.md,
+        AppTabStyle.shade => context.theme.borderRadius.md,
+        AppTabStyle.outlined => context.theme.borderRadius.md,
+        AppTabStyle.underline => context.theme.borderRadius.zero,
       };
 }

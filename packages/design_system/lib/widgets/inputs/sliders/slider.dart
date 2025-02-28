@@ -32,7 +32,7 @@ class AppHorizontalSlider extends AppStatefulWidget {
   final ValueChanged<double>? onChanged;
 
   @override
-  State<AppHorizontalSlider> createState() => _AppHorizontalSliderState();
+  AppState<AppHorizontalSlider> createState() => _AppHorizontalSliderState();
 }
 
 class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
@@ -48,6 +48,7 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
     setState(() {
       _value = value;
     });
+
     if (widget.onChanged != null) {
       widget.onChanged!(value);
     }
@@ -55,11 +56,13 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return ColumnLayout(
       mainAxisAlignment: MainAxisAlignment.start,
       gap: 8,
       children: [
-        if (widget.label != null)
+        if (widget.label.isNotNullOrBlank)
           Row(
             children: [
               AppText(widget.label,
@@ -74,14 +77,14 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildLabel(widget.minValueText ?? 'Min value'),
-              _buildLabel(widget.maxValueText ?? 'Max value'),
+              _buildLabel(widget.minValueText ?? t.common.slider.minValue),
+              _buildLabel(widget.maxValueText ?? t.common.slider.maxValue),
             ],
           ),
         RowLayout(
           children: [
             if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.side)
-              _buildLabel(widget.minValueText ?? 'Min value'),
+              _buildLabel(widget.minValueText ?? t.common.slider.minValue),
             Expanded(
               child: SliderTheme(
                 data: SliderTheme.of(context).copyWith(
@@ -107,18 +110,18 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
               ),
             ),
             if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.side)
-              _buildLabel(widget.maxValueText ?? 'Max value'),
+              _buildLabel(widget.maxValueText ?? t.common.slider.maxValue),
           ],
         ),
         if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.bottom)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildLabel(widget.minValueText ?? 'Min value'),
-              _buildLabel(widget.maxValueText ?? 'Max value'),
+              _buildLabel(widget.minValueText ?? t.common.slider.minValue),
+              _buildLabel(widget.maxValueText ?? t.common.slider.maxValue),
             ],
           ),
-        if (widget.helperText != null)
+        if (widget.helperText.isNotNullOrBlank)
           Row(
             children: [
               AppText(widget.helperText,

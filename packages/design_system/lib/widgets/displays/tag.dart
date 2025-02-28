@@ -3,7 +3,7 @@ import 'package:design_system/lib.dart';
 class AppTag extends AppStatefulWidget {
   const AppTag(
       {super.key,
-      super.size,
+      super.size = WidgetSize.md,
       this.style = WidgetStyle.shade,
       this.avatar,
       required this.text,
@@ -16,13 +16,13 @@ class AppTag extends AppStatefulWidget {
   final VoidCallback? onRemove;
 
   @override
-  State<AppTag> createState() => _AppTagState();
+  AppState<AppTag> createState() => _AppTagState();
 }
 
 class _AppTagState extends AppState<AppTag> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ContainerLayout(
       height: height,
       padding: padding,
       decoration: BoxDecoration(

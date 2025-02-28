@@ -51,6 +51,9 @@ class TranslationsCommonEnGb {
 	late final TranslationsCommonTitleEnGb title = TranslationsCommonTitleEnGb.internal(_root);
 	late final TranslationsCommonMessageEnGb message = TranslationsCommonMessageEnGb.internal(_root);
 	late final TranslationsCommonButtonEnGb button = TranslationsCommonButtonEnGb.internal(_root);
+	late final TranslationsCommonPaginationEnGb pagination = TranslationsCommonPaginationEnGb.internal(_root);
+	late final TranslationsCommonSliderEnGb slider = TranslationsCommonSliderEnGb.internal(_root);
+	late final TranslationsCommonTimeEnGb time = TranslationsCommonTimeEnGb.internal(_root);
 	late final TranslationsCommonSuccessEnGb success = TranslationsCommonSuccessEnGb.internal(_root);
 	late final TranslationsCommonFailEnGb fail = TranslationsCommonFailEnGb.internal(_root);
 	late final TranslationsCommonAlertEnGb alert = TranslationsCommonAlertEnGb.internal(_root);
@@ -112,6 +115,44 @@ class TranslationsCommonButtonEnGb {
 	String get confirm => 'Confirm';
 	String get submit => 'Submit';
 	String get search => 'Search';
+	String get previous => 'Previous';
+	String get next => 'Next';
+}
+
+// Path: common.pagination
+class TranslationsCommonPaginationEnGb {
+	TranslationsCommonPaginationEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String ofTotal({required Object total}) => 'of ${total}';
+	String ofTotalPages({required Object total}) => 'of ${total} pages';
+	String ofTotalItems({required Object start, required Object end, required Object total}) => '${start}-${end} of ${total} items';
+	String pageOfTotal({required Object page, required Object total}) => 'Page ${page} of ${total}';
+	String get itemsPerPage => 'items per page';
+}
+
+// Path: common.slider
+class TranslationsCommonSliderEnGb {
+	TranslationsCommonSliderEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get minValue => 'Min value';
+	String get maxValue => 'Max value';
+}
+
+// Path: common.time
+class TranslationsCommonTimeEnGb {
+	TranslationsCommonTimeEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get am => 'AM';
+	String get pm => 'PM';
 }
 
 // Path: common.success
@@ -160,6 +201,9 @@ class TranslationsAuthButtonEnGb {
 	String get signInWithGoogle => 'Sign in with Google';
 	String get signInWithFacebook => 'Sign in with Facebook';
 	String get signInWithApple => 'Sign in with Apple';
+	String get signInWithTwitter => 'Sign in with Twitter';
+	String get signInWithGitHub => 'Sign in with GitHub';
+	String get signInWithMicrosoft => 'Sign in with Microsoft';
 }
 
 // Path: common.alert.info
@@ -198,6 +242,17 @@ extension on Translations {
 			case 'common.button.confirm': return 'Confirm';
 			case 'common.button.submit': return 'Submit';
 			case 'common.button.search': return 'Search';
+			case 'common.button.previous': return 'Previous';
+			case 'common.button.next': return 'Next';
+			case 'common.pagination.ofTotal': return ({required Object total}) => 'of ${total}';
+			case 'common.pagination.ofTotalPages': return ({required Object total}) => 'of ${total} pages';
+			case 'common.pagination.ofTotalItems': return ({required Object start, required Object end, required Object total}) => '${start}-${end} of ${total} items';
+			case 'common.pagination.pageOfTotal': return ({required Object page, required Object total}) => 'Page ${page} of ${total}';
+			case 'common.pagination.itemsPerPage': return 'items per page';
+			case 'common.slider.minValue': return 'Min value';
+			case 'common.slider.maxValue': return 'Max value';
+			case 'common.time.am': return 'AM';
+			case 'common.time.pm': return 'PM';
 			case 'common.success.general': return 'Successfully';
 			case 'common.success.saved': return 'Saved successfully';
 			case 'common.success.updated': return 'Updated successfully';
@@ -210,6 +265,9 @@ extension on Translations {
 			case 'auth.button.signInWithGoogle': return 'Sign in with Google';
 			case 'auth.button.signInWithFacebook': return 'Sign in with Facebook';
 			case 'auth.button.signInWithApple': return 'Sign in with Apple';
+			case 'auth.button.signInWithTwitter': return 'Sign in with Twitter';
+			case 'auth.button.signInWithGitHub': return 'Sign in with GitHub';
+			case 'auth.button.signInWithMicrosoft': return 'Sign in with Microsoft';
 			default: return null;
 		}
 	}
