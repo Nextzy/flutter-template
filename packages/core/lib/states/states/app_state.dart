@@ -9,17 +9,15 @@ abstract class AppState<WIDGET extends AppStatefulWidget>
   AppThemeData get theme =>
       ThemeApplication.of(context, mode: widget.themeMode);
 
+  ThemeMode get themeMode => widget.themeMode ?? theme.themeMode;
+
   WidgetSize get widgetSize => widget.size ?? theme.defaultWidgetSize;
 
   InternetConnectionBloc get connectivity =>
       context.read<InternetConnectionBloc>();
 
-  @override
-  String? get restorationId => widget.key?.toString();
-
   Widget buildResponsive({required ResponsiveBuilder child}) {
     final Breakpoint breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
-
     return child(PlatformChecker.platform, breakpoint);
   }
 
