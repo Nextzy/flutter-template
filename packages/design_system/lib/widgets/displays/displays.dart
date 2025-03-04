@@ -28,3 +28,4 @@ export 'breadcrumbs/breadcrumbs.dart';
 export 'steps/steps.dart';
 export 'paginations/paginations.dart';
 export 'popover.dart';
+export 'sidebars/sidebars.dart';
