@@ -21,6 +21,7 @@ export 'sliders/sliders.dart';
 export 'sliders/vertical_sliders.dart';
 export 'radios/radios.dart';
 export 'date_input/date_input_book.dart';
+export 'chat/chat_book.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -50,5 +51,6 @@ class InputCategories extends WidgetbookCategory {
           VerticalSliderComponentBook(),
           RadioComponentBook(),
           DateInputComponentBook(),
+          ChatWidgetBook(),
         ]);
 }

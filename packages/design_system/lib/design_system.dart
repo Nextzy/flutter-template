@@ -31,3 +31,4 @@ export 'package:loading_more_list/loading_more_list.dart' hide ViewportBuilder;
 export 'package:popover/popover.dart';
 export 'package:calendar_date_picker2/calendar_date_picker2.dart'
     hide YearPicker, SelectableDayPredicate;
+export 'package:mobile_chat_ui/mobile_chat_ui.dart';
