@@ -32,3 +32,5 @@ export 'package:popover/popover.dart';
 export 'package:calendar_date_picker2/calendar_date_picker2.dart'
     hide YearPicker, SelectableDayPredicate;
 export 'package:mobile_chat_ui/mobile_chat_ui.dart';
+export 'package:flutter_colorpicker/flutter_colorpicker.dart'
+    hide IndicatorPainter;

@@ -21,3 +21,4 @@ export 'combobox.dart';
 export 'radios/radios.dart';
 export 'date_input.dart';
 export 'chats/chats.dart';
+export 'color_picker.dart';
