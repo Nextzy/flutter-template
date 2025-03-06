@@ -34,3 +34,6 @@ export 'package:calendar_date_picker2/calendar_date_picker2.dart'
 export 'package:mobile_chat_ui/mobile_chat_ui.dart';
 export 'package:flutter_colorpicker/flutter_colorpicker.dart'
     hide IndicatorPainter;
+export 'package:audioplayers/audioplayers.dart';
+export 'package:flick_video_player/flick_video_player.dart';
+export 'package:video_player/video_player.dart';
