@@ -40,6 +40,9 @@ class _AppColorPickerState extends AppState<AppColorPicker> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
+    final t = Translations.of(context);
+
     return AppButton(
       text: widget.text,
       onPress: () => {
@@ -57,13 +60,23 @@ class _AppColorPickerState extends AppState<AppColorPicker> {
               ),
               actions: [
                 TextButton(
-                  child: const Text('Cancel'),
+                  child: Text(t.common.button.cancel,
+                      style: TextStyle(
+                        color: theme.color.textPrimary,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      )),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                 ),
                 TextButton(
-                  child: const Text('OK'),
+                  child: Text(t.common.button.ok,
+                      style: TextStyle(
+                        color: theme.color.textPrimary,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      )),
                   onPressed: () {
                     _onSelect();
                     Navigator.of(context).pop();
