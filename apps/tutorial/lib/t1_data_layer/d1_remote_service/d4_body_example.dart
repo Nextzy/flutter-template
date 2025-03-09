@@ -10,7 +10,7 @@ part 'generated/d4_body_example.g.dart';
 /// Run command: flutter pub run build_runner build
 /// To generate freezed
 @freezed
-class ExampleRemoteSignInWithEmailBody with _$ExampleRemoteSignInWithEmailBody {
+abstract class ExampleRemoteSignInWithEmailBody with _$ExampleRemoteSignInWithEmailBody {
   const factory ExampleRemoteSignInWithEmailBody({
     required String? email,
     required String? password,
@@ -19,8 +19,5 @@ class ExampleRemoteSignInWithEmailBody with _$ExampleRemoteSignInWithEmailBody {
   factory ExampleRemoteSignInWithEmailBody.fromJson(Map<String, dynamic> json) =>
       _$ExampleRemoteSignInWithEmailBodyFromJson(json);
 
-  /// ⭐️ Body class need `toJson()` method
-  @override
-  Map<String, dynamic> toJson() => super.toJson().removeNullOrEmptyString();
 }
 

@@ -23,16 +23,16 @@ abstract class AppState<WIDGET extends AppStatefulWidget>
 
   Widget buildPopScope<T>({
     required bool canPop,
-    required Function(BuildContext context)? onPop,
+    required Function(BuildContext context, T? result)? onPop,
     required Widget child,
   }) =>
       onPop != null
-          ? PopScope(
+          ? PopScope<T>(
               canPop: canPop,
-              onPopInvoked: (didPop) {
+              onPopInvokedWithResult: (didPop, result) {
                 if (didPop) return;
                 clearFocus();
-                onPop.call(context);
+                onPop.call(context, result);
                 if (!context.router.canPop()) SystemNavigator.pop();
               },
               child: child,

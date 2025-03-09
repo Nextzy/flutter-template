@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:widgetbook_app/widgetbook.dart';
 
-export 'package:change_application_name/application.dart';
+export 'package:change_application_name/application.dart' hide Field;
 export 'package:tutorial/tutorial.dart';
 export 'package:widgetbook/widgetbook.dart' hide ColorSpace;
 export 'examples/feature_copy/feature_copy.dart';

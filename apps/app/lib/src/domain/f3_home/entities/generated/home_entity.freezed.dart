@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,75 +10,53 @@ part of '../home_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeEntity {
-  String get yourData => throw _privateConstructorUsedError;
+  String get yourData;
 
   /// Create a copy of HomeEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $HomeEntityCopyWith<HomeEntity> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HomeEntityCopyWith<$Res> {
-  factory $HomeEntityCopyWith(
-          HomeEntity value, $Res Function(HomeEntity) then) =
-      _$HomeEntityCopyWithImpl<$Res, HomeEntity>;
-  @useResult
-  $Res call({String yourData});
-}
-
-/// @nodoc
-class _$HomeEntityCopyWithImpl<$Res, $Val extends HomeEntity>
-    implements $HomeEntityCopyWith<$Res> {
-  _$HomeEntityCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of HomeEntity
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $HomeEntityCopyWith<HomeEntity> get copyWith =>
+      _$HomeEntityCopyWithImpl<HomeEntity>(this as HomeEntity, _$identity);
+
   @override
-  $Res call({
-    Object? yourData = null,
-  }) {
-    return _then(_value.copyWith(
-      yourData: null == yourData
-          ? _value.yourData
-          : yourData // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is HomeEntity &&
+            (identical(other.yourData, yourData) ||
+                other.yourData == yourData));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, yourData);
+
+  @override
+  String toString() {
+    return 'HomeEntity(yourData: $yourData)';
   }
 }
 
 /// @nodoc
-abstract class _$$HomeEntityImplCopyWith<$Res>
-    implements $HomeEntityCopyWith<$Res> {
-  factory _$$HomeEntityImplCopyWith(
-          _$HomeEntityImpl value, $Res Function(_$HomeEntityImpl) then) =
-      __$$HomeEntityImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $HomeEntityCopyWith<$Res> {
+  factory $HomeEntityCopyWith(
+          HomeEntity value, $Res Function(HomeEntity) _then) =
+      _$HomeEntityCopyWithImpl;
   @useResult
   $Res call({String yourData});
 }
 
 /// @nodoc
-class __$$HomeEntityImplCopyWithImpl<$Res>
-    extends _$HomeEntityCopyWithImpl<$Res, _$HomeEntityImpl>
-    implements _$$HomeEntityImplCopyWith<$Res> {
-  __$$HomeEntityImplCopyWithImpl(
-      _$HomeEntityImpl _value, $Res Function(_$HomeEntityImpl) _then)
-      : super(_value, _then);
+class _$HomeEntityCopyWithImpl<$Res> implements $HomeEntityCopyWith<$Res> {
+  _$HomeEntityCopyWithImpl(this._self, this._then);
+
+  final HomeEntity _self;
+  final $Res Function(HomeEntity) _then;
 
   /// Create a copy of HomeEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -86,9 +65,9 @@ class __$$HomeEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? yourData = null,
   }) {
-    return _then(_$HomeEntityImpl(
+    return _then(_self.copyWith(
       yourData: null == yourData
-          ? _value.yourData
+          ? _self.yourData
           : yourData // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -97,22 +76,25 @@ class __$$HomeEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HomeEntityImpl implements _HomeEntity {
-  const _$HomeEntityImpl({required this.yourData});
+class _HomeEntity implements HomeEntity {
+  const _HomeEntity({required this.yourData});
 
   @override
   final String yourData;
 
+  /// Create a copy of HomeEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'HomeEntity(yourData: $yourData)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$HomeEntityCopyWith<_HomeEntity> get copyWith =>
+      __$HomeEntityCopyWithImpl<_HomeEntity>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HomeEntityImpl &&
+            other is _HomeEntity &&
             (identical(other.yourData, yourData) ||
                 other.yourData == yourData));
   }
@@ -120,26 +102,44 @@ class _$HomeEntityImpl implements _HomeEntity {
   @override
   int get hashCode => Object.hash(runtimeType, yourData);
 
+  @override
+  String toString() {
+    return 'HomeEntity(yourData: $yourData)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$HomeEntityCopyWith<$Res>
+    implements $HomeEntityCopyWith<$Res> {
+  factory _$HomeEntityCopyWith(
+          _HomeEntity value, $Res Function(_HomeEntity) _then) =
+      __$HomeEntityCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String yourData});
+}
+
+/// @nodoc
+class __$HomeEntityCopyWithImpl<$Res> implements _$HomeEntityCopyWith<$Res> {
+  __$HomeEntityCopyWithImpl(this._self, this._then);
+
+  final _HomeEntity _self;
+  final $Res Function(_HomeEntity) _then;
+
   /// Create a copy of HomeEntity
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$HomeEntityImplCopyWith<_$HomeEntityImpl> get copyWith =>
-      __$$HomeEntityImplCopyWithImpl<_$HomeEntityImpl>(this, _$identity);
+  $Res call({
+    Object? yourData = null,
+  }) {
+    return _then(_HomeEntity(
+      yourData: null == yourData
+          ? _self.yourData
+          : yourData // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
-abstract class _HomeEntity implements HomeEntity {
-  const factory _HomeEntity({required final String yourData}) =
-      _$HomeEntityImpl;
-
-  @override
-  String get yourData;
-
-  /// Create a copy of HomeEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HomeEntityImplCopyWith<_$HomeEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

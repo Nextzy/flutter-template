@@ -6,7 +6,7 @@ part 'generated/e1_example_entities.freezed.dart';
 /// ⭐️ Name convention:
 /// Suffix must be "...Entity"
 @freezed
-class MovieListEntity with _$MovieListEntity {
+abstract class MovieListEntity with _$MovieListEntity {
   /// ⭐️ Added constructor. Must not have any parameter if you want
   /// to add another method in this class
   const MovieListEntity._();
@@ -24,7 +24,7 @@ class MovieListEntity with _$MovieListEntity {
 }
 
 @freezed
-class MovieEntity with _$MovieEntity {
+abstract class MovieEntity with _$MovieEntity {
   const MovieEntity._();
 
   const factory MovieEntity({

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,111 +10,26 @@ part of '../e1_example_entities.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MovieListEntity {
-  Iterable<MovieEntity> get movieList => throw _privateConstructorUsedError;
+  Iterable<MovieEntity> get movieList;
 
   /// Create a copy of MovieListEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $MovieListEntityCopyWith<MovieListEntity> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MovieListEntityCopyWith<$Res> {
-  factory $MovieListEntityCopyWith(
-          MovieListEntity value, $Res Function(MovieListEntity) then) =
-      _$MovieListEntityCopyWithImpl<$Res, MovieListEntity>;
-  @useResult
-  $Res call({Iterable<MovieEntity> movieList});
-}
-
-/// @nodoc
-class _$MovieListEntityCopyWithImpl<$Res, $Val extends MovieListEntity>
-    implements $MovieListEntityCopyWith<$Res> {
-  _$MovieListEntityCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MovieListEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? movieList = null,
-  }) {
-    return _then(_value.copyWith(
-      movieList: null == movieList
-          ? _value.movieList
-          : movieList // ignore: cast_nullable_to_non_nullable
-              as Iterable<MovieEntity>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MovieListEntityImplCopyWith<$Res>
-    implements $MovieListEntityCopyWith<$Res> {
-  factory _$$MovieListEntityImplCopyWith(_$MovieListEntityImpl value,
-          $Res Function(_$MovieListEntityImpl) then) =
-      __$$MovieListEntityImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Iterable<MovieEntity> movieList});
-}
-
-/// @nodoc
-class __$$MovieListEntityImplCopyWithImpl<$Res>
-    extends _$MovieListEntityCopyWithImpl<$Res, _$MovieListEntityImpl>
-    implements _$$MovieListEntityImplCopyWith<$Res> {
-  __$$MovieListEntityImplCopyWithImpl(
-      _$MovieListEntityImpl _value, $Res Function(_$MovieListEntityImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MovieListEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? movieList = null,
-  }) {
-    return _then(_$MovieListEntityImpl(
-      movieList: null == movieList
-          ? _value.movieList
-          : movieList // ignore: cast_nullable_to_non_nullable
-              as Iterable<MovieEntity>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$MovieListEntityImpl extends _MovieListEntity {
-  const _$MovieListEntityImpl({this.movieList = const []}) : super._();
-
-  @override
-  @JsonKey()
-  final Iterable<MovieEntity> movieList;
-
-  @override
-  String toString() {
-    return 'MovieListEntity(movieList: $movieList)';
-  }
+      _$MovieListEntityCopyWithImpl<MovieListEntity>(
+          this as MovieListEntity, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MovieListEntityImpl &&
+            other is MovieListEntity &&
             const DeepCollectionEquality().equals(other.movieList, movieList));
   }
 
@@ -121,102 +37,160 @@ class _$MovieListEntityImpl extends _MovieListEntity {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(movieList));
 
-  /// Create a copy of MovieListEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MovieListEntityImplCopyWith<_$MovieListEntityImpl> get copyWith =>
-      __$$MovieListEntityImplCopyWithImpl<_$MovieListEntityImpl>(
-          this, _$identity);
-}
-
-abstract class _MovieListEntity extends MovieListEntity {
-  const factory _MovieListEntity({final Iterable<MovieEntity> movieList}) =
-      _$MovieListEntityImpl;
-  const _MovieListEntity._() : super._();
-
-  @override
-  Iterable<MovieEntity> get movieList;
-
-  /// Create a copy of MovieListEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MovieListEntityImplCopyWith<_$MovieListEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$MovieEntity {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-
-  /// Create a copy of MovieEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MovieEntityCopyWith<MovieEntity> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MovieEntityCopyWith<$Res> {
-  factory $MovieEntityCopyWith(
-          MovieEntity value, $Res Function(MovieEntity) then) =
-      _$MovieEntityCopyWithImpl<$Res, MovieEntity>;
-  @useResult
-  $Res call({String id, String name});
-}
-
-/// @nodoc
-class _$MovieEntityCopyWithImpl<$Res, $Val extends MovieEntity>
-    implements $MovieEntityCopyWith<$Res> {
-  _$MovieEntityCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MovieEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  String toString() {
+    return 'MovieListEntity(movieList: $movieList)';
   }
 }
 
 /// @nodoc
-abstract class _$$MovieEntityImplCopyWith<$Res>
-    implements $MovieEntityCopyWith<$Res> {
-  factory _$$MovieEntityImplCopyWith(
-          _$MovieEntityImpl value, $Res Function(_$MovieEntityImpl) then) =
-      __$$MovieEntityImplCopyWithImpl<$Res>;
+abstract mixin class $MovieListEntityCopyWith<$Res> {
+  factory $MovieListEntityCopyWith(
+          MovieListEntity value, $Res Function(MovieListEntity) _then) =
+      _$MovieListEntityCopyWithImpl;
+  @useResult
+  $Res call({Iterable<MovieEntity> movieList});
+}
+
+/// @nodoc
+class _$MovieListEntityCopyWithImpl<$Res>
+    implements $MovieListEntityCopyWith<$Res> {
+  _$MovieListEntityCopyWithImpl(this._self, this._then);
+
+  final MovieListEntity _self;
+  final $Res Function(MovieListEntity) _then;
+
+  /// Create a copy of MovieListEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
+  $Res call({
+    Object? movieList = null,
+  }) {
+    return _then(_self.copyWith(
+      movieList: null == movieList
+          ? _self.movieList
+          : movieList // ignore: cast_nullable_to_non_nullable
+              as Iterable<MovieEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _MovieListEntity extends MovieListEntity {
+  const _MovieListEntity({this.movieList = const []}) : super._();
+
+  @override
+  @JsonKey()
+  final Iterable<MovieEntity> movieList;
+
+  /// Create a copy of MovieListEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MovieListEntityCopyWith<_MovieListEntity> get copyWith =>
+      __$MovieListEntityCopyWithImpl<_MovieListEntity>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MovieListEntity &&
+            const DeepCollectionEquality().equals(other.movieList, movieList));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(movieList));
+
+  @override
+  String toString() {
+    return 'MovieListEntity(movieList: $movieList)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$MovieListEntityCopyWith<$Res>
+    implements $MovieListEntityCopyWith<$Res> {
+  factory _$MovieListEntityCopyWith(
+          _MovieListEntity value, $Res Function(_MovieListEntity) _then) =
+      __$MovieListEntityCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Iterable<MovieEntity> movieList});
+}
+
+/// @nodoc
+class __$MovieListEntityCopyWithImpl<$Res>
+    implements _$MovieListEntityCopyWith<$Res> {
+  __$MovieListEntityCopyWithImpl(this._self, this._then);
+
+  final _MovieListEntity _self;
+  final $Res Function(_MovieListEntity) _then;
+
+  /// Create a copy of MovieListEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? movieList = null,
+  }) {
+    return _then(_MovieListEntity(
+      movieList: null == movieList
+          ? _self.movieList
+          : movieList // ignore: cast_nullable_to_non_nullable
+              as Iterable<MovieEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$MovieEntity {
+  String get id;
+  String get name;
+
+  /// Create a copy of MovieEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MovieEntityCopyWith<MovieEntity> get copyWith =>
+      _$MovieEntityCopyWithImpl<MovieEntity>(this as MovieEntity, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MovieEntity &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
+
+  @override
+  String toString() {
+    return 'MovieEntity(id: $id, name: $name)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $MovieEntityCopyWith<$Res> {
+  factory $MovieEntityCopyWith(
+          MovieEntity value, $Res Function(MovieEntity) _then) =
+      _$MovieEntityCopyWithImpl;
   @useResult
   $Res call({String id, String name});
 }
 
 /// @nodoc
-class __$$MovieEntityImplCopyWithImpl<$Res>
-    extends _$MovieEntityCopyWithImpl<$Res, _$MovieEntityImpl>
-    implements _$$MovieEntityImplCopyWith<$Res> {
-  __$$MovieEntityImplCopyWithImpl(
-      _$MovieEntityImpl _value, $Res Function(_$MovieEntityImpl) _then)
-      : super(_value, _then);
+class _$MovieEntityCopyWithImpl<$Res> implements $MovieEntityCopyWith<$Res> {
+  _$MovieEntityCopyWithImpl(this._self, this._then);
+
+  final MovieEntity _self;
+  final $Res Function(MovieEntity) _then;
 
   /// Create a copy of MovieEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -226,13 +200,13 @@ class __$$MovieEntityImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$MovieEntityImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -241,24 +215,27 @@ class __$$MovieEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MovieEntityImpl extends _MovieEntity {
-  const _$MovieEntityImpl({required this.id, required this.name}) : super._();
+class _MovieEntity extends MovieEntity {
+  const _MovieEntity({required this.id, required this.name}) : super._();
 
   @override
   final String id;
   @override
   final String name;
 
+  /// Create a copy of MovieEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'MovieEntity(id: $id, name: $name)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MovieEntityCopyWith<_MovieEntity> get copyWith =>
+      __$MovieEntityCopyWithImpl<_MovieEntity>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MovieEntityImpl &&
+            other is _MovieEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -266,30 +243,49 @@ class _$MovieEntityImpl extends _MovieEntity {
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
+  @override
+  String toString() {
+    return 'MovieEntity(id: $id, name: $name)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$MovieEntityCopyWith<$Res>
+    implements $MovieEntityCopyWith<$Res> {
+  factory _$MovieEntityCopyWith(
+          _MovieEntity value, $Res Function(_MovieEntity) _then) =
+      __$MovieEntityCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String id, String name});
+}
+
+/// @nodoc
+class __$MovieEntityCopyWithImpl<$Res> implements _$MovieEntityCopyWith<$Res> {
+  __$MovieEntityCopyWithImpl(this._self, this._then);
+
+  final _MovieEntity _self;
+  final $Res Function(_MovieEntity) _then;
+
   /// Create a copy of MovieEntity
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MovieEntityImplCopyWith<_$MovieEntityImpl> get copyWith =>
-      __$$MovieEntityImplCopyWithImpl<_$MovieEntityImpl>(this, _$identity);
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_MovieEntity(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
-abstract class _MovieEntity extends MovieEntity {
-  const factory _MovieEntity(
-      {required final String id,
-      required final String name}) = _$MovieEntityImpl;
-  const _MovieEntity._() : super._();
-
-  @override
-  String get id;
-  @override
-  String get name;
-
-  /// Create a copy of MovieEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MovieEntityImplCopyWith<_$MovieEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

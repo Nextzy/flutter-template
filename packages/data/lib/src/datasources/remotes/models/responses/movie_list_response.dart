@@ -5,7 +5,7 @@ part 'generated/movie_list_response.freezed.dart';
 part 'generated/movie_list_response.g.dart';
 
 @freezed
-class RemoteMovieListResponse with _$RemoteMovieListResponse {
+abstract class RemoteMovieListResponse with _$RemoteMovieListResponse {
   const factory RemoteMovieListResponse({
     List<RemoteMovie>? data,
   }) = _RemoteMovieListResponse;
@@ -15,7 +15,7 @@ class RemoteMovieListResponse with _$RemoteMovieListResponse {
 }
 
 @freezed
-class RemoteMovie with _$RemoteMovie {
+abstract class RemoteMovie with _$RemoteMovie {
   const factory RemoteMovie({
     String? id,
     String? name,

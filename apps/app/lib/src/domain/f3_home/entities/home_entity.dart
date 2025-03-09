@@ -3,7 +3,7 @@ import 'package:change_application_name/application.dart';
 part 'generated/home_entity.freezed.dart';
 
 @freezed
-class HomeEntity with _$HomeEntity {
+abstract class HomeEntity with _$HomeEntity {
   const factory HomeEntity({
     required String yourData,
   }) = _HomeEntity;

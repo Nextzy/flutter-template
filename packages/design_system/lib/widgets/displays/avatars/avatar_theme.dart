@@ -3,7 +3,7 @@ import 'package:design_system/lib.dart';
 part 'generated/avatar_theme.freezed.dart';
 
 @freezed
-class AppAvatarTheme with _$AppAvatarTheme {
+abstract class AppAvatarTheme with _$AppAvatarTheme {
   const factory AppAvatarTheme({
     @Default(WidgetStyle.subtle) WidgetStyle style,
     double? customSize,

@@ -10,7 +10,7 @@ part 'generated/d4_response_example.g.dart';
 /// Run command: flutter pub run build_runner build
 /// To generate freezed
 @freezed
-class ExampleRemoteAuthenticationResponse with _$ExampleRemoteAuthenticationResponse {
+abstract class ExampleRemoteAuthenticationResponse with _$ExampleRemoteAuthenticationResponse {
   /// Every constructor field must be nullable
   /// To avoid exception when call `fromJson`.
   const factory ExampleRemoteAuthenticationResponse({
@@ -23,7 +23,7 @@ class ExampleRemoteAuthenticationResponse with _$ExampleRemoteAuthenticationResp
 }
 
 @freezed
-class ExampleRemoteMovieListResponse with _$ExampleRemoteMovieListResponse {
+abstract class ExampleRemoteMovieListResponse with _$ExampleRemoteMovieListResponse {
   const factory ExampleRemoteMovieListResponse({
     List<ExampleRemoteMovie>? data,
   }) = _ExampleRemoteMovieListResponse;
@@ -33,7 +33,7 @@ class ExampleRemoteMovieListResponse with _$ExampleRemoteMovieListResponse {
 }
 
 @freezed
-class ExampleRemoteMovie with _$ExampleRemoteMovie {
+abstract class ExampleRemoteMovie with _$ExampleRemoteMovie {
   const factory ExampleRemoteMovie({
     String? id,
     String? name,

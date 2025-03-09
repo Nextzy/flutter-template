@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,87 +10,59 @@ part of '../filter.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppImageFilter {
-  double get sigmaX => throw _privateConstructorUsedError;
-  double get sigmaY => throw _privateConstructorUsedError;
-  TileMode get tileMode => throw _privateConstructorUsedError;
+  double get sigmaX;
+  double get sigmaY;
+  TileMode get tileMode;
 
   /// Create a copy of AppImageFilter
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AppImageFilterCopyWith<AppImageFilter> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AppImageFilterCopyWith<$Res> {
-  factory $AppImageFilterCopyWith(
-          AppImageFilter value, $Res Function(AppImageFilter) then) =
-      _$AppImageFilterCopyWithImpl<$Res, AppImageFilter>;
-  @useResult
-  $Res call({double sigmaX, double sigmaY, TileMode tileMode});
-}
-
-/// @nodoc
-class _$AppImageFilterCopyWithImpl<$Res, $Val extends AppImageFilter>
-    implements $AppImageFilterCopyWith<$Res> {
-  _$AppImageFilterCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AppImageFilter
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $AppImageFilterCopyWith<AppImageFilter> get copyWith =>
+      _$AppImageFilterCopyWithImpl<AppImageFilter>(
+          this as AppImageFilter, _$identity);
+
   @override
-  $Res call({
-    Object? sigmaX = null,
-    Object? sigmaY = null,
-    Object? tileMode = null,
-  }) {
-    return _then(_value.copyWith(
-      sigmaX: null == sigmaX
-          ? _value.sigmaX
-          : sigmaX // ignore: cast_nullable_to_non_nullable
-              as double,
-      sigmaY: null == sigmaY
-          ? _value.sigmaY
-          : sigmaY // ignore: cast_nullable_to_non_nullable
-              as double,
-      tileMode: null == tileMode
-          ? _value.tileMode
-          : tileMode // ignore: cast_nullable_to_non_nullable
-              as TileMode,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AppImageFilter &&
+            (identical(other.sigmaX, sigmaX) || other.sigmaX == sigmaX) &&
+            (identical(other.sigmaY, sigmaY) || other.sigmaY == sigmaY) &&
+            (identical(other.tileMode, tileMode) ||
+                other.tileMode == tileMode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, sigmaX, sigmaY, tileMode);
+
+  @override
+  String toString() {
+    return 'AppImageFilter(sigmaX: $sigmaX, sigmaY: $sigmaY, tileMode: $tileMode)';
   }
 }
 
 /// @nodoc
-abstract class _$$AppImageFilterImplCopyWith<$Res>
-    implements $AppImageFilterCopyWith<$Res> {
-  factory _$$AppImageFilterImplCopyWith(_$AppImageFilterImpl value,
-          $Res Function(_$AppImageFilterImpl) then) =
-      __$$AppImageFilterImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AppImageFilterCopyWith<$Res> {
+  factory $AppImageFilterCopyWith(
+          AppImageFilter value, $Res Function(AppImageFilter) _then) =
+      _$AppImageFilterCopyWithImpl;
   @useResult
   $Res call({double sigmaX, double sigmaY, TileMode tileMode});
 }
 
 /// @nodoc
-class __$$AppImageFilterImplCopyWithImpl<$Res>
-    extends _$AppImageFilterCopyWithImpl<$Res, _$AppImageFilterImpl>
-    implements _$$AppImageFilterImplCopyWith<$Res> {
-  __$$AppImageFilterImplCopyWithImpl(
-      _$AppImageFilterImpl _value, $Res Function(_$AppImageFilterImpl) _then)
-      : super(_value, _then);
+class _$AppImageFilterCopyWithImpl<$Res>
+    implements $AppImageFilterCopyWith<$Res> {
+  _$AppImageFilterCopyWithImpl(this._self, this._then);
+
+  final AppImageFilter _self;
+  final $Res Function(AppImageFilter) _then;
 
   /// Create a copy of AppImageFilter
   /// with the given fields replaced by the non-null parameter values.
@@ -100,17 +73,17 @@ class __$$AppImageFilterImplCopyWithImpl<$Res>
     Object? sigmaY = null,
     Object? tileMode = null,
   }) {
-    return _then(_$AppImageFilterImpl(
+    return _then(_self.copyWith(
       sigmaX: null == sigmaX
-          ? _value.sigmaX
+          ? _self.sigmaX
           : sigmaX // ignore: cast_nullable_to_non_nullable
               as double,
       sigmaY: null == sigmaY
-          ? _value.sigmaY
+          ? _self.sigmaY
           : sigmaY // ignore: cast_nullable_to_non_nullable
               as double,
       tileMode: null == tileMode
-          ? _value.tileMode
+          ? _self.tileMode
           : tileMode // ignore: cast_nullable_to_non_nullable
               as TileMode,
     ));
@@ -119,8 +92,8 @@ class __$$AppImageFilterImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppImageFilterImpl extends _AppImageFilter {
-  const _$AppImageFilterImpl(
+class _AppImageFilter extends AppImageFilter {
+  const _AppImageFilter(
       {this.sigmaX = 0.0, this.sigmaY = 0.0, this.tileMode = TileMode.clamp})
       : super._();
 
@@ -134,16 +107,19 @@ class _$AppImageFilterImpl extends _AppImageFilter {
   @JsonKey()
   final TileMode tileMode;
 
+  /// Create a copy of AppImageFilter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AppImageFilter(sigmaX: $sigmaX, sigmaY: $sigmaY, tileMode: $tileMode)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AppImageFilterCopyWith<_AppImageFilter> get copyWith =>
+      __$AppImageFilterCopyWithImpl<_AppImageFilter>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppImageFilterImpl &&
+            other is _AppImageFilter &&
             (identical(other.sigmaX, sigmaX) || other.sigmaX == sigmaX) &&
             (identical(other.sigmaY, sigmaY) || other.sigmaY == sigmaY) &&
             (identical(other.tileMode, tileMode) ||
@@ -153,34 +129,55 @@ class _$AppImageFilterImpl extends _AppImageFilter {
   @override
   int get hashCode => Object.hash(runtimeType, sigmaX, sigmaY, tileMode);
 
+  @override
+  String toString() {
+    return 'AppImageFilter(sigmaX: $sigmaX, sigmaY: $sigmaY, tileMode: $tileMode)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$AppImageFilterCopyWith<$Res>
+    implements $AppImageFilterCopyWith<$Res> {
+  factory _$AppImageFilterCopyWith(
+          _AppImageFilter value, $Res Function(_AppImageFilter) _then) =
+      __$AppImageFilterCopyWithImpl;
+  @override
+  @useResult
+  $Res call({double sigmaX, double sigmaY, TileMode tileMode});
+}
+
+/// @nodoc
+class __$AppImageFilterCopyWithImpl<$Res>
+    implements _$AppImageFilterCopyWith<$Res> {
+  __$AppImageFilterCopyWithImpl(this._self, this._then);
+
+  final _AppImageFilter _self;
+  final $Res Function(_AppImageFilter) _then;
+
   /// Create a copy of AppImageFilter
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppImageFilterImplCopyWith<_$AppImageFilterImpl> get copyWith =>
-      __$$AppImageFilterImplCopyWithImpl<_$AppImageFilterImpl>(
-          this, _$identity);
+  $Res call({
+    Object? sigmaX = null,
+    Object? sigmaY = null,
+    Object? tileMode = null,
+  }) {
+    return _then(_AppImageFilter(
+      sigmaX: null == sigmaX
+          ? _self.sigmaX
+          : sigmaX // ignore: cast_nullable_to_non_nullable
+              as double,
+      sigmaY: null == sigmaY
+          ? _self.sigmaY
+          : sigmaY // ignore: cast_nullable_to_non_nullable
+              as double,
+      tileMode: null == tileMode
+          ? _self.tileMode
+          : tileMode // ignore: cast_nullable_to_non_nullable
+              as TileMode,
+    ));
+  }
 }
 
-abstract class _AppImageFilter extends AppImageFilter {
-  const factory _AppImageFilter(
-      {final double sigmaX,
-      final double sigmaY,
-      final TileMode tileMode}) = _$AppImageFilterImpl;
-  const _AppImageFilter._() : super._();
-
-  @override
-  double get sigmaX;
-  @override
-  double get sigmaY;
-  @override
-  TileMode get tileMode;
-
-  /// Create a copy of AppImageFilter
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppImageFilterImplCopyWith<_$AppImageFilterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

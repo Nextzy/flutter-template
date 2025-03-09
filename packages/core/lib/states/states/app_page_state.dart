@@ -22,9 +22,9 @@ abstract class AppPageState<WIDGET extends AppStatefulWidget>
     _observer?.unsubscribe(this);
   }
 
-  Widget buildScaffold<EVENT>({
+  Widget buildScaffold<T>({
     bool canPop = true,
-    Function(BuildContext context)? onPop,
+    Function(BuildContext context, T? result)? onPop,
     Widget Function(BuildContext context)? buildDrawer,
     Widget Function(BuildContext context)? buildBottomNavigationBar,
     PreferredSizeWidget? Function(BuildContext context)? buildAppBar,

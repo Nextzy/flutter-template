@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,143 +10,31 @@ part of '../d4_body_example.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ExampleRemoteSignInWithEmailBody _$ExampleRemoteSignInWithEmailBodyFromJson(
-    Map<String, dynamic> json) {
-  return _ExampleRemoteSignInWithEmailBody.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ExampleRemoteSignInWithEmailBody {
-  String? get email => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
-
-  /// Serializes this ExampleRemoteSignInWithEmailBody to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get email;
+  String? get password;
 
   /// Create a copy of ExampleRemoteSignInWithEmailBody
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ExampleRemoteSignInWithEmailBodyCopyWith<ExampleRemoteSignInWithEmailBody>
-      get copyWith => throw _privateConstructorUsedError;
-}
+      get copyWith => _$ExampleRemoteSignInWithEmailBodyCopyWithImpl<
+              ExampleRemoteSignInWithEmailBody>(
+          this as ExampleRemoteSignInWithEmailBody, _$identity);
 
-/// @nodoc
-abstract class $ExampleRemoteSignInWithEmailBodyCopyWith<$Res> {
-  factory $ExampleRemoteSignInWithEmailBodyCopyWith(
-          ExampleRemoteSignInWithEmailBody value,
-          $Res Function(ExampleRemoteSignInWithEmailBody) then) =
-      _$ExampleRemoteSignInWithEmailBodyCopyWithImpl<$Res,
-          ExampleRemoteSignInWithEmailBody>;
-  @useResult
-  $Res call({String? email, String? password});
-}
-
-/// @nodoc
-class _$ExampleRemoteSignInWithEmailBodyCopyWithImpl<$Res,
-        $Val extends ExampleRemoteSignInWithEmailBody>
-    implements $ExampleRemoteSignInWithEmailBodyCopyWith<$Res> {
-  _$ExampleRemoteSignInWithEmailBodyCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ExampleRemoteSignInWithEmailBody
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = freezed,
-    Object? password = freezed,
-  }) {
-    return _then(_value.copyWith(
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ExampleRemoteSignInWithEmailBodyImplCopyWith<$Res>
-    implements $ExampleRemoteSignInWithEmailBodyCopyWith<$Res> {
-  factory _$$ExampleRemoteSignInWithEmailBodyImplCopyWith(
-          _$ExampleRemoteSignInWithEmailBodyImpl value,
-          $Res Function(_$ExampleRemoteSignInWithEmailBodyImpl) then) =
-      __$$ExampleRemoteSignInWithEmailBodyImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? email, String? password});
-}
-
-/// @nodoc
-class __$$ExampleRemoteSignInWithEmailBodyImplCopyWithImpl<$Res>
-    extends _$ExampleRemoteSignInWithEmailBodyCopyWithImpl<$Res,
-        _$ExampleRemoteSignInWithEmailBodyImpl>
-    implements _$$ExampleRemoteSignInWithEmailBodyImplCopyWith<$Res> {
-  __$$ExampleRemoteSignInWithEmailBodyImplCopyWithImpl(
-      _$ExampleRemoteSignInWithEmailBodyImpl _value,
-      $Res Function(_$ExampleRemoteSignInWithEmailBodyImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ExampleRemoteSignInWithEmailBody
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = freezed,
-    Object? password = freezed,
-  }) {
-    return _then(_$ExampleRemoteSignInWithEmailBodyImpl(
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ExampleRemoteSignInWithEmailBodyImpl
-    implements _ExampleRemoteSignInWithEmailBody {
-  const _$ExampleRemoteSignInWithEmailBodyImpl(
-      {required this.email, required this.password});
-
-  factory _$ExampleRemoteSignInWithEmailBodyImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ExampleRemoteSignInWithEmailBodyImplFromJson(json);
-
-  @override
-  final String? email;
-  @override
-  final String? password;
-
-  @override
-  String toString() {
-    return 'ExampleRemoteSignInWithEmailBody(email: $email, password: $password)';
-  }
+  /// Serializes this ExampleRemoteSignInWithEmailBody to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExampleRemoteSignInWithEmailBodyImpl &&
+            other is ExampleRemoteSignInWithEmailBody &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -155,44 +44,141 @@ class _$ExampleRemoteSignInWithEmailBodyImpl
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
-  /// Create a copy of ExampleRemoteSignInWithEmailBody
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ExampleRemoteSignInWithEmailBodyImplCopyWith<
-          _$ExampleRemoteSignInWithEmailBodyImpl>
-      get copyWith => __$$ExampleRemoteSignInWithEmailBodyImplCopyWithImpl<
-          _$ExampleRemoteSignInWithEmailBodyImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ExampleRemoteSignInWithEmailBodyImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ExampleRemoteSignInWithEmailBody(email: $email, password: $password)';
   }
 }
 
-abstract class _ExampleRemoteSignInWithEmailBody
+/// @nodoc
+abstract mixin class $ExampleRemoteSignInWithEmailBodyCopyWith<$Res> {
+  factory $ExampleRemoteSignInWithEmailBodyCopyWith(
+          ExampleRemoteSignInWithEmailBody value,
+          $Res Function(ExampleRemoteSignInWithEmailBody) _then) =
+      _$ExampleRemoteSignInWithEmailBodyCopyWithImpl;
+  @useResult
+  $Res call({String? email, String? password});
+}
+
+/// @nodoc
+class _$ExampleRemoteSignInWithEmailBodyCopyWithImpl<$Res>
+    implements $ExampleRemoteSignInWithEmailBodyCopyWith<$Res> {
+  _$ExampleRemoteSignInWithEmailBodyCopyWithImpl(this._self, this._then);
+
+  final ExampleRemoteSignInWithEmailBody _self;
+  final $Res Function(ExampleRemoteSignInWithEmailBody) _then;
+
+  /// Create a copy of ExampleRemoteSignInWithEmailBody
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? password = freezed,
+  }) {
+    return _then(_self.copyWith(
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _ExampleRemoteSignInWithEmailBody
     implements ExampleRemoteSignInWithEmailBody {
-  const factory _ExampleRemoteSignInWithEmailBody(
-          {required final String? email, required final String? password}) =
-      _$ExampleRemoteSignInWithEmailBodyImpl;
-
+  const _ExampleRemoteSignInWithEmailBody(
+      {required this.email, required this.password});
   factory _ExampleRemoteSignInWithEmailBody.fromJson(
-          Map<String, dynamic> json) =
-      _$ExampleRemoteSignInWithEmailBodyImpl.fromJson;
+          Map<String, dynamic> json) =>
+      _$ExampleRemoteSignInWithEmailBodyFromJson(json);
 
   @override
-  String? get email;
+  final String? email;
   @override
-  String? get password;
+  final String? password;
 
   /// Create a copy of ExampleRemoteSignInWithEmailBody
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExampleRemoteSignInWithEmailBodyImplCopyWith<
-          _$ExampleRemoteSignInWithEmailBodyImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$ExampleRemoteSignInWithEmailBodyCopyWith<_ExampleRemoteSignInWithEmailBody>
+      get copyWith => __$ExampleRemoteSignInWithEmailBodyCopyWithImpl<
+          _ExampleRemoteSignInWithEmailBody>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ExampleRemoteSignInWithEmailBodyToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ExampleRemoteSignInWithEmailBody &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, email, password);
+
+  @override
+  String toString() {
+    return 'ExampleRemoteSignInWithEmailBody(email: $email, password: $password)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$ExampleRemoteSignInWithEmailBodyCopyWith<$Res>
+    implements $ExampleRemoteSignInWithEmailBodyCopyWith<$Res> {
+  factory _$ExampleRemoteSignInWithEmailBodyCopyWith(
+          _ExampleRemoteSignInWithEmailBody value,
+          $Res Function(_ExampleRemoteSignInWithEmailBody) _then) =
+      __$ExampleRemoteSignInWithEmailBodyCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? email, String? password});
+}
+
+/// @nodoc
+class __$ExampleRemoteSignInWithEmailBodyCopyWithImpl<$Res>
+    implements _$ExampleRemoteSignInWithEmailBodyCopyWith<$Res> {
+  __$ExampleRemoteSignInWithEmailBodyCopyWithImpl(this._self, this._then);
+
+  final _ExampleRemoteSignInWithEmailBody _self;
+  final $Res Function(_ExampleRemoteSignInWithEmailBody) _then;
+
+  /// Create a copy of ExampleRemoteSignInWithEmailBody
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? email = freezed,
+    Object? password = freezed,
+  }) {
+    return _then(_ExampleRemoteSignInWithEmailBody(
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on

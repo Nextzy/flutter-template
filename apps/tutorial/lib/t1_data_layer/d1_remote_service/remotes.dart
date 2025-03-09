@@ -4,3 +4,4 @@ export 'd3_error_handler_interceptor.dart';
 export 'd4_body_example.dart';
 export 'd4_response_example.dart';
 export 'd5_example_api_service.dart';
+export 'd6_example_rpc_service.dart';
