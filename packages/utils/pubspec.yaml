@@ -31,6 +31,8 @@ dependencies:
 
 
 dependency_overrides:
+  # Resolve for wechat_assets_picker
+  extended_image: ^9.1.0
 
 dev_dependencies:
   flutter_test:

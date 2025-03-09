@@ -25,6 +25,10 @@ export 'tag/tag_book.dart';
 export 'popover/popover_book.dart';
 export 'divider/divider_book.dart';
 export 'tooltip/tooltip_book.dart';
+export 'sidebar/sidebar_book.dart';
+export 'statuses/statuses.dart';
+export 'placeholder/placeholder_book.dart';
+export 'embeds/embeds.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -57,6 +61,10 @@ class DisplayCategories extends WidgetbookCategory {
             PopoverWidgetBook(),
             DividerWidgetBook(),
             TooltipWidgetBook(),
+            SidebarWidgetBook(),
+            StatusWidgetBook(),
+            PlaceholderWidgetBook(),
+            EmbedWidgetBook(),
           ],
         );
 }
