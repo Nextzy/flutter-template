@@ -35,11 +35,11 @@ dependencies:
   #PLATFORM: All
   flutter_dotenv: ^5.2.1
   upgrader: ^11.3.1
-  auto_route: ^9.3.0+1
+  auto_route: ^10.0.1
   #PLATFORM: Android, iOS, MacOS, Webs, Windows
   wakelock_plus: ^1.2.10
   #PLATFORM: Android, iOS, MacOS, Windows
-  screen_brightness: ^2.1.1
+  screen_brightness: ^2.1.2
   #PLATFORM: Android, iOS, Windows
   permission_handler: ^11.4.0
   #PLATFORM: Android, iOS
@@ -49,11 +49,7 @@ dependencies:
 
   #======= Analytic ========#
   #PLATFORM: All
-  #catcher: ^1.0.0-dev1
-  catcher:
-    git:
-      url: https://github.com/THE-EXISTING/catcher
-      ref: master
+  catcher_2: ^2.1.1
   #PLATFORM: Android, iOS
   newrelic_mobile: ^1.1.8
 

@@ -52,6 +52,6 @@ class AppRouterBloc extends FalconEventBloc<AppRouteEvent, AppRouter> {
 
   ///========================= STATIC METHOD =========================///
   static AppRouter _createRoute() => AppRouter(
-        navigatorKey: Catcher.navigatorKey,
+        navigatorKey: Catcher2.navigatorKey,
       );
 }

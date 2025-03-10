@@ -243,9 +243,4 @@ abstract class AppState<WIDGET extends AppStatefulWidget>
 extension AppRouterHelper on BuildContext {
   bool canPop() => router.canPop();
 
-  void pop<R extends Object?>([R? result]) {
-    if (mounted) {
-      return router.popForced<R>(result);
-    }
-  }
 }
