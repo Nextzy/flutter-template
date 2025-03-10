@@ -9,30 +9,30 @@ class MovieRpcService extends RpcService {
 
   final String path;
 
-  Future<RpcResponse<RemoteMovieListResponse>> getHighLightMovieList({
+  Future<JsonRpcResponse<RemoteMovieListResponse>> getHighLightMovieList({
     String? requestId,
   }) =>
-      call(
+      request(
         path,
         method: 'getHighLightMovieList',
         id: requestId,
         fromJson: RemoteMovieListResponse.fromJson,
       );
 
-  Future<RpcResponse<RemoteMovieListResponse>> getTrendMovieList({
+  Future<JsonRpcResponse<RemoteMovieListResponse>> getTrendMovieList({
     String? requestId,
   }) =>
-      call(
+      request(
         path,
         method: 'getTrendMovieList',
         id: requestId,
         fromJson: RemoteMovieListResponse.fromJson,
       );
 
-  Future<RpcResponse<RemoteMovieListResponse>> getMustWatchMovieList({
+  Future<JsonRpcResponse<RemoteMovieListResponse>> getMustWatchMovieList({
     String? requestId,
   }) =>
-      call(
+      request(
         path,
         method: 'getMustWatchMovieList',
         id: requestId,
