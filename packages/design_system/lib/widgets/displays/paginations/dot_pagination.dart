@@ -12,7 +12,7 @@ class AppDotPagination extends AppStatefulWidget {
   final ValueChanged<int>? onChanged;
 
   @override
-  State<AppDotPagination> createState() => _AppDotPaginationState();
+  AppState<AppDotPagination> createState() => _AppDotPaginationState();
 }
 
 class _AppDotPaginationState extends AppState<AppDotPagination> {
@@ -41,25 +41,21 @@ class _AppDotPaginationState extends AppState<AppDotPagination> {
       children: List.generate(widget.totalPage, (index) {
         return Padding(
           padding: const EdgeInsets.all(4),
-          child: GestureDetector(
-            onTap: () => _onPageChanged(index + 1),
-            child: Container(
-              width: width,
-              height: height,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _currentPage == index + 1
-                    ? context.theme.color.iconPrimary
-                    : context.theme.color.iconTertiary,
-              ),
-            ),
+          child: GestureContainerLayout(
+            width: width,
+            height: height,
+            borderRadius: context.theme.borderRadius.md,
+            backgroundColor: _currentPage == index + 1
+                ? context.theme.color.iconPrimary
+                : context.theme.color.iconTertiary,
+            onPress: () => _onPageChanged(index + 1),
           ),
         );
       }),
     );
   }
 
-  double get width => switch (widget.size) {
+  double get width => switch (widgetSize) {
         WidgetSize.xxs => 4,
         WidgetSize.xs => 4,
         WidgetSize.sm => 4,
@@ -69,7 +65,7 @@ class _AppDotPaginationState extends AppState<AppDotPagination> {
         WidgetSize.xxl => 8,
       };
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 4,
         WidgetSize.xs => 4,
         WidgetSize.sm => 4,

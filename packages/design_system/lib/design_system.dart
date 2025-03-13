@@ -2,6 +2,7 @@ library;
 
 export 'generated/assets.gen.dart';
 export 'generated/fonts.gen.dart';
+export 'animates/animates.dart';
 export 'themes/themes.dart';
 export 'widgets/widgets.dart';
 export 'extensions/extensions.dart';
@@ -28,3 +29,11 @@ export 'package:buttons_tabbar/buttons_tabbar.dart';
 export 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 export 'package:loading_more_list/loading_more_list.dart' hide ViewportBuilder;
 export 'package:popover/popover.dart';
+export 'package:calendar_date_picker2/calendar_date_picker2.dart'
+    hide YearPicker, SelectableDayPredicate;
+export 'package:mobile_chat_ui/mobile_chat_ui.dart';
+export 'package:flutter_colorpicker/flutter_colorpicker.dart'
+    hide IndicatorPainter;
+export 'package:audioplayers/audioplayers.dart';
+export 'package:flick_video_player/flick_video_player.dart';
+export 'package:video_player/video_player.dart';

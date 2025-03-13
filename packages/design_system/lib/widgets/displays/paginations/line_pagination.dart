@@ -5,18 +5,14 @@ class AppLinePagination extends AppStatefulWidget {
       {super.key,
       super.size = WidgetSize.md,
       required this.totalPage,
-      this.activeColor,
-      this.inactiveColor,
       this.onChanged});
 
   final int totalPage;
-  final Color? activeColor;
-  final Color? inactiveColor;
 
   final ValueChanged<int>? onChanged;
 
   @override
-  State<AppLinePagination> createState() => _AppLinePaginationState();
+  AppState<AppLinePagination> createState() => _AppLinePaginationState();
 }
 
 class _AppLinePaginationState extends AppState<AppLinePagination> {
@@ -45,24 +41,21 @@ class _AppLinePaginationState extends AppState<AppLinePagination> {
       children: List.generate(widget.totalPage, (index) {
         return Padding(
           padding: const EdgeInsets.all(4),
-          child: GestureDetector(
-            onTap: () => _onPageChanged(index + 1),
-            child: Container(
-              width: width,
-              height: height,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                color: _currentPage == index + 1 ? activeColor : inactiveColor,
-                borderRadius: BorderRadius.circular(4),
-              ),
-            ),
+          child: GestureContainerLayout(
+            width: width,
+            height: height,
+            borderRadius: context.theme.borderRadius.md,
+            backgroundColor: _currentPage == index + 1
+                ? context.theme.color.iconPrimary
+                : context.theme.color.iconTertiary,
+            onPress: () => _onPageChanged(index + 1),
           ),
         );
       }),
     );
   }
 
-  double get width => switch (widget.size) {
+  double get width => switch (widgetSize) {
         WidgetSize.xxs => 32,
         WidgetSize.xs => 32,
         WidgetSize.sm => 32,
@@ -72,7 +65,7 @@ class _AppLinePaginationState extends AppState<AppLinePagination> {
         WidgetSize.xxl => 40,
       };
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 4,
         WidgetSize.xs => 4,
         WidgetSize.sm => 4,
@@ -81,10 +74,4 @@ class _AppLinePaginationState extends AppState<AppLinePagination> {
         WidgetSize.xl => 8,
         WidgetSize.xxl => 8,
       };
-
-  Color get activeColor =>
-      widget.activeColor ?? context.theme.color.iconPrimary;
-
-  Color get inactiveColor =>
-      widget.inactiveColor ?? context.theme.color.iconTertiary;
 }

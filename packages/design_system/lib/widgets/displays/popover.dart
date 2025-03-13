@@ -1,6 +1,6 @@
 import 'package:design_system/lib.dart';
 
-class AppPopover extends AppStatefulWidget {
+class AppPopover extends AppStatelessWidget {
   const AppPopover({
     super.key,
     required this.text,
@@ -17,23 +17,18 @@ class AppPopover extends AppStatefulWidget {
   final double height;
 
   @override
-  State<AppPopover> createState() => _AppPopoverState();
-}
-
-class _AppPopoverState extends AppState<AppPopover> {
-  @override
   Widget build(BuildContext context) {
     return AppButton(
-        text: widget.text,
+        text: text,
         onPress: () => {
               showPopover(
                 context: context,
-                bodyBuilder: (context) => widget.child,
-                direction: widget.direction,
-                width: widget.width,
-                height: widget.height,
-                arrowHeight: 15,
-                arrowWidth: 30,
+                bodyBuilder: (context) => child,
+                direction: direction,
+                width: width,
+                height: height,
+                arrowWidth: 22,
+                arrowHeight: 12,
               )
             });
   }

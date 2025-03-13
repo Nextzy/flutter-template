@@ -82,7 +82,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
   bool get hasImageUri =>
       widget.path != null || widget.path.isNotNullOrBlank == true;
 
-  double get avatarSize => switch (widget.size) {
+  double get avatarSize => switch (widgetSize) {
         WidgetSize.xxs => throw UnimplementedError(),
         WidgetSize.xs => 16.0,
         WidgetSize.sm => 24.0,
@@ -108,7 +108,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
         context,
         path: path,
         style: style,
-        size: widget.size,
+        size: widgetSize,
         title: title,
         color: color,
       ),
@@ -149,7 +149,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
     required WidgetSize size,
     required Color? color,
   }) =>
-      switch (widget.size) {
+      switch (widgetSize) {
         WidgetSize.xxs => throw UnimplementedError(),
         WidgetSize.xs => AppTextStyleBuilder.ui.semiBold
             .size(10)

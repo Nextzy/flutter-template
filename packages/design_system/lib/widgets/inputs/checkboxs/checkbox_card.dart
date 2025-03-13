@@ -26,13 +26,13 @@ class AppCheckboxCard extends AppStatefulWidget {
   final ValueChanged<bool?>? onChanged;
 
   @override
-  State<AppCheckboxCard> createState() => _AppCheckboxCardState();
+  AppState<AppCheckboxCard> createState() => _AppCheckboxCardState();
 }
 
-class _AppCheckboxCardState extends State<AppCheckboxCard> {
+class _AppCheckboxCardState extends AppState<AppCheckboxCard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ContainerLayout(
       height: 112,
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
@@ -50,7 +50,7 @@ class _AppCheckboxCardState extends State<AppCheckboxCard> {
           gap: 12,
           children: [
             if (widget.icon.isNotNullOrBlank)
-              Container(
+              ContainerLayout(
                   padding: const EdgeInsets.only(top: 4),
                   child: widget.icon.toSvgIcon(
                       size: 24,

@@ -24,7 +24,7 @@ class AppVerticalSlider extends AppStatefulWidget {
   final ValueChanged<double>? onChanged;
 
   @override
-  State<AppVerticalSlider> createState() => _AppVerticalSliderState();
+  AppState<AppVerticalSlider> createState() => _AppVerticalSliderState();
 }
 
 class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
@@ -40,6 +40,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
     setState(() {
       _value = value;
     });
+
     if (widget.onChanged != null) {
       widget.onChanged!(value);
     }
@@ -47,11 +48,13 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         ColumnLayout(mainAxisAlignment: MainAxisAlignment.start, children: [
-          _buildLabel(widget.minValueText ?? 'Max value'),
+          _buildLabel(widget.minValueText ?? t.common.slider.maxValue),
           RotatedBox(
             quarterTurns: -1,
             child: SliderTheme(
@@ -78,13 +81,13 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
               ),
             ),
           ),
-          _buildLabel(widget.maxValueText ?? 'Min value'),
+          _buildLabel(widget.maxValueText ?? t.common.slider.minValue),
         ])
       ],
     );
   }
 
-  double get trackHeight => switch (widget.size) {
+  double get trackHeight => switch (widgetSize) {
         WidgetSize.xxs => 2,
         WidgetSize.xs => 2,
         WidgetSize.sm => 2,
@@ -94,7 +97,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
         WidgetSize.xxl => 8,
       };
 
-  double get tickMarkRadius => switch (widget.size) {
+  double get tickMarkRadius => switch (widgetSize) {
         WidgetSize.xxs => 1,
         WidgetSize.xs => 1,
         WidgetSize.sm => 1,
@@ -109,7 +112,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
       text,
       style: TextStyle(
         color: context.theme.color.textPrimary,
-        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+        fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
         fontWeight: FontWeight.w400,
       ),
     );

@@ -1,4 +1,4 @@
-import 'package:change_application_name/application.dart';
+import 'package:data/lib.dart';
 
 export 'authentication_api_service.dart';
 export 'movie_api_service.dart';

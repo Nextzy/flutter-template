@@ -112,7 +112,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
         null => '',
       };
 
-  double get iconSize => switch (widget.size) {
+  double get iconSize => switch (widgetSize) {
         WidgetSize.xxs => 16,
         WidgetSize.xs => 16,
         WidgetSize.sm => 16,
@@ -122,7 +122,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
         WidgetSize.xxl => 24,
       };
 
-  EdgeInsets get contentPadding => switch (widget.size) {
+  EdgeInsets get contentPadding => switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsets.symmetric(vertical: 8.0),
         WidgetSize.xs => const EdgeInsets.symmetric(vertical: 8.0),
         WidgetSize.sm => const EdgeInsets.symmetric(vertical: 8.0),
@@ -132,7 +132,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
         WidgetSize.xxl => const EdgeInsets.symmetric(vertical: 12.0),
       };
 
-  TextStyle get labelTextStyle => switch (widget.size) {
+  TextStyle get labelTextStyle => switch (widgetSize) {
         WidgetSize.xxs =>
           AppTextStyleBuilder.ui.s12.semiBold.colorPrimary.build(context),
         WidgetSize.xs =>
@@ -149,7 +149,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
           AppTextStyleBuilder.ui.s14.semiBold.colorPrimary.build(context)
       };
 
-  TextStyle get textStyle => switch (widget.size) {
+  TextStyle get textStyle => switch (widgetSize) {
         WidgetSize.xxs => AppTextStyleBuilder.ui.s12
             .color(widget.disabled
                 ? theme.color.textTertiary
@@ -187,7 +187,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
             .build(context)
       };
 
-  TextStyle get placeholderTextStyle => switch (widget.size) {
+  TextStyle get placeholderTextStyle => switch (widgetSize) {
         WidgetSize.xxs => AppTextStyleBuilder.ui.s12
             .color(widget.disabled
                 ? theme.color.textTertiary
@@ -225,7 +225,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
             .build(context)
       };
 
-  TextStyle get helperTextStyle => switch (widget.size) {
+  TextStyle get helperTextStyle => switch (widgetSize) {
         WidgetSize.xxs =>
           AppTextStyleBuilder.ui.s12.colorSecondary.build(context),
         WidgetSize.xs =>
@@ -360,7 +360,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                     ],
                     buildIcon(
                       disabled: widget.disabled,
-                      size: widget.size,
+                      size: widgetSize,
                       icon: widget.startIcon,
                     ),
                     Expanded(
@@ -375,7 +375,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                           maxLength: widget.maxLength,
                           inputFormatters: widget.inputFormatters,
                           keyboardType: widget.keyboardType,
-                          controller: _controller,
+                          controller: widget.controller ?? _controller,
                           textInputAction: widget.textInputAction,
                           focusNode: _focus,
                           textAlign: widget.textAlign,
@@ -421,7 +421,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                             value
                                 ? Center(
                                     child: AppOnlyIconButton(
-                                      size: widget.size,
+                                      size: widgetSize,
                                       icon:
                                           Assets.icon.crossCircleFilled.keyName,
                                       color: theme.color.iconTertiary,
@@ -433,13 +433,13 @@ class _AppTextFieldState extends AppState<AppTextField> {
                       ),
                     buildIcon(
                       disabled: widget.disabled,
-                      size: widget.size,
+                      size: widgetSize,
                       icon: widget.endIcon,
                     ),
                     if (widget.endTextButton != null)
                       buildButton(
                         context,
-                        size: widget.size,
+                        size: widgetSize,
                         endTextButton: widget.endTextButton,
                         borderRadius: widget.borderRadius,
                         disabled: widget.disabled,
@@ -489,7 +489,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     required BorderRadius? borderRadius,
   }) {
     return RowLayout(
-      padding: switch (widget.size) {
+      padding: switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsetsDirectional.only(end: 4.0),
         WidgetSize.xs => const EdgeInsetsDirectional.only(end: 4.0),
         WidgetSize.sm => const EdgeInsetsDirectional.only(end: 4.0),
@@ -509,7 +509,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                 context.theme.borderRadius.md.bottomLeft,
           ),
           backgroundColor: context.theme.color.bgSurface1,
-          padding: switch (widget.size) {
+          padding: switch (widgetSize) {
             WidgetSize.xxs =>
               const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             WidgetSize.xs =>
@@ -543,7 +543,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     required BorderRadius? borderRadius,
   }) {
     return RowLayout(
-      padding: switch (widget.size) {
+      padding: switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsetsDirectional.only(start: 4.0),
         WidgetSize.xs => const EdgeInsetsDirectional.only(start: 4.0),
         WidgetSize.sm => const EdgeInsetsDirectional.only(start: 4.0),
@@ -564,7 +564,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                 context.theme.borderRadius.md.bottomLeft,
           ),
           backgroundColor: context.theme.color.bgSurface1,
-          padding: switch (widget.size) {
+          padding: switch (widgetSize) {
             WidgetSize.xxs =>
               const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             WidgetSize.xs =>
@@ -602,7 +602,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     required ValueChanged<bool>? onHover,
     required ValueChanged<bool>? onFocusChange,
   }) {
-    final padding = switch (widget.size) {
+    final padding = switch (widgetSize) {
       (WidgetSize.xxs || WidgetSize.xs || WidgetSize.sm) => Space.insetAll2,
       (WidgetSize.md || WidgetSize.lg || WidgetSize.xl || WidgetSize.xxl) =>
         Space.insetAll4,
@@ -710,7 +710,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     return Opacity(
       opacity: disabled ? 0.5 : 1.0,
       child: Padding(
-        padding: switch (widget.size) {
+        padding: switch (widgetSize) {
           WidgetSize.xxs => icon.isNotNullOrBlank
               ? SpaceDirectional.insetAll4
               : SpaceDirectional.insetStart8,

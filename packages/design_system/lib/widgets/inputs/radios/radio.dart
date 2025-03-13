@@ -30,7 +30,7 @@ class AppRadio<T> extends AppStatefulWidget {
   final ValueChanged<T?>? onChanged;
 
   @override
-  State<AppRadio<T>> createState() => _AppRadioState<T>();
+  AppState<AppRadio<T>> createState() => _AppRadioState<T>();
 }
 
 class _AppRadioState<T> extends AppState<AppRadio<T>> {
@@ -65,32 +65,18 @@ class _AppRadioState<T> extends AppState<AppRadio<T>> {
               ? MainAxisAlignment.start
               : MainAxisAlignment.spaceBetween,
           children: [
-            if (widget.position == AppRadioPosition.left)
-              Radio(
-                value: widget.value,
-                groupValue: _value,
-                onChanged: widget.disabled ? null : _onChanged,
-                activeColor: activeColor,
-                overlayColor: WidgetStatePropertyAll(Colors.transparent),
-              ),
+            if (widget.position == AppRadioPosition.left) _buildRadio(),
             AppText(
               widget.label,
               style: TextStyle(
                 color: widget.disabled
                     ? context.theme.color.textTertiary
                     : context.theme.color.textPrimary,
-                fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w400,
               ),
             ),
-            if (widget.position == AppRadioPosition.right)
-              Radio(
-                value: widget.value,
-                groupValue: _value,
-                onChanged: widget.disabled ? null : _onChanged,
-                activeColor: activeColor,
-                overlayColor: WidgetStatePropertyAll(Colors.transparent),
-              ),
+            if (widget.position == AppRadioPosition.right) _buildRadio(),
           ],
         ),
         if (widget.helperText.isNotNullOrBlank)
@@ -128,6 +114,16 @@ class _AppRadioState<T> extends AppState<AppRadio<T>> {
             ],
           )
       ],
+    );
+  }
+
+  Widget _buildRadio() {
+    return Radio(
+      value: widget.value,
+      groupValue: _value,
+      onChanged: widget.disabled ? null : _onChanged,
+      activeColor: activeColor,
+      overlayColor: WidgetStatePropertyAll(Colors.transparent),
     );
   }
 

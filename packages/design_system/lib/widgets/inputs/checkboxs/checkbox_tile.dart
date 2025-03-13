@@ -22,7 +22,7 @@ class AppCheckboxTile extends AppStatefulWidget {
   final ValueChanged<bool?>? onChanged;
 
   @override
-  State<AppCheckboxTile> createState() => _AppCheckboxTileState();
+  AppState<AppCheckboxTile> createState() => _AppCheckboxTileState();
 }
 
 class _AppCheckboxTileState extends AppState<AppCheckboxTile> {
@@ -50,7 +50,7 @@ class _AppCheckboxTileState extends AppState<AppCheckboxTile> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.disabled ? null : () => _onChanged(!_value),
-      child: Container(
+      child: ContainerLayout(
         width: 96,
         height: 96,
         padding: const EdgeInsets.symmetric(
@@ -61,7 +61,6 @@ class _AppCheckboxTileState extends AppState<AppCheckboxTile> {
           color: cardBackgroundColor,
           border: Border.all(
             color: cardBorderColor,
-            width: _value || widget.feedbackState != null ? 2 : 1,
           ),
           borderRadius: context.theme.borderRadius.md,
         ),
@@ -85,14 +84,13 @@ class _AppCheckboxTileState extends AppState<AppCheckboxTile> {
               ],
             )
           else
-            const SizedBox(height: 32),
+            Gap(32),
           ColumnLayout(
               mainAxisAlignment: MainAxisAlignment.center,
               gap: 4,
               children: [
                 if (widget.icon.isNotNullOrBlank)
-                  Container(
-                      // padding: const EdgeInsets.only(top: 4),
+                  ContainerLayout(
                       child: widget.icon.toSvgIcon(
                           size: 24,
                           colorFilter: ColorFilter.mode(

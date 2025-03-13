@@ -1,4 +1,4 @@
-import 'package:change_application_name/application.dart';
+import 'package:data/lib.dart';
 
 part 'generated/authentication_api_service.g.dart';
 

@@ -18,7 +18,7 @@ class ExampleRepository {
       _remoteDatasource
           .signInWithEmailPassword(email: email, password: password)
           .then((value) => true)
-          .toEitherAppException();
+          .mapAppException();
 
   Stream<Either<AppException, bool>> signInWithEmailPassword({
     required String email,
@@ -34,7 +34,7 @@ class ExampleRepository {
           refreshToken: response.refreshToken,
         ),
         processResponse: (response) => true,
-      ).mapEitherAppException();
+      ).mapAppException();
 
   Stream<Either<AppException, List<ExampleMovieTableData>>> getMovieList() =>
       DatasourceBoundState.asStream<ExampleRemoteMovieListResponse,
@@ -59,5 +59,5 @@ class ExampleRepository {
                 )
                 .toList() ??
             [],
-      ).mapEitherAppException();
+      ).mapAppException();
 }

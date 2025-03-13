@@ -1,4 +1,4 @@
-import 'package:change_application_name/application.dart';
+import 'package:data/lib.dart';
 
 class AppRepository {
   AppRepository({
@@ -29,7 +29,7 @@ class AppRepository {
           refreshToken: response.refreshToken,
         ),
         processResponse: (response) => true,
-      ).mapEitherAppException();
+      ).mapAppException();
 
   Stream<Either<AppException, List<MovieTableData>>> getMovieList() =>
       DatasourceBoundState.asStream<
@@ -63,5 +63,5 @@ class AppRepository {
               ),
             )
             .toList(),
-      ).mapEitherAppException();
+      ).mapAppException();
 }

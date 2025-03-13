@@ -20,6 +20,12 @@ export 'combobox/combobox_book.dart';
 export 'sliders/sliders.dart';
 export 'sliders/vertical_sliders.dart';
 export 'radios/radios.dart';
+export 'date_input/date_input_book.dart';
+export 'chat/chat_book.dart';
+export 'color_picker/color_picker_book.dart';
+export 'audio_player/audio_player_book.dart';
+export 'video_player/video_player_book.dart';
+export 'editable_text/editable_text_book.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -48,5 +54,11 @@ class InputCategories extends WidgetbookCategory {
           HorizontalSliderComponentBook(),
           VerticalSliderComponentBook(),
           RadioComponentBook(),
+          DateInputComponentBook(),
+          ChatWidgetBook(),
+          ColorPickerComponentBook(),
+          AudioPlayerWidgetBook(),
+          VideoPlayerWidgetBook(),
+          InlineEditableTextWidgetBook(),
         ]);
 }

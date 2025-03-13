@@ -16,29 +16,39 @@ class AppStepper extends AppStatefulWidget {
   final AppTextFieldStyle style;
   final FeedbackState? feedbackState;
   final int defaultValue;
-  final int? minValue;
-  final int? maxValue;
+  final int minValue;
+  final int maxValue;
   final bool disabled;
 
   final ValueChanged<int>? onChanged;
 
   @override
-  State<AppStepper> createState() => _AppStepperState();
+  AppState<AppStepper> createState() => _AppStepperState();
 }
 
 class _AppStepperState extends AppState<AppStepper> {
-  late int _currentValue;
+  final TextEditingController _controller = TextEditingController();
+  late int _value;
 
   @override
   void initState() {
     super.initState();
-    _currentValue = widget.defaultValue;
+    _value = widget.defaultValue;
+    _controller.text = _value.toString();
+  }
+
+  void _onChanged() {
+    _controller.text = _value.toString();
+
+    if (widget.onChanged != null) {
+      widget.onChanged!(_value);
+    }
   }
 
   void _increment() {
-    if (_currentValue < widget.maxValue!) {
+    if (_value < widget.maxValue) {
       setState(() {
-        _currentValue++;
+        _value++;
       });
 
       _onChanged();
@@ -46,9 +56,9 @@ class _AppStepperState extends AppState<AppStepper> {
   }
 
   void _decrement() {
-    if (_currentValue > widget.minValue!) {
+    if (_value > widget.minValue) {
       setState(() {
-        _currentValue--;
+        _value--;
       });
 
       _onChanged();
@@ -56,22 +66,23 @@ class _AppStepperState extends AppState<AppStepper> {
   }
 
   void _onTextChange(String value) {
-    final int newValue = int.tryParse(value) ?? widget.minValue!;
-    if (newValue >= widget.minValue! && newValue <= widget.maxValue!) {
+    final int newValue = int.tryParse(value) ?? widget.minValue;
+
+    if (newValue >= widget.minValue && newValue <= widget.maxValue) {
       setState(() {
-        _currentValue = newValue;
+        _value = newValue;
       });
 
-      if (_currentValue != newValue) {
+      if (_value != newValue) {
         _onChanged();
       }
     }
   }
 
-  void _onChanged() {
-    if (widget.onChanged != null) {
-      widget.onChanged!(_currentValue);
-    }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -80,31 +91,31 @@ class _AppStepperState extends AppState<AppStepper> {
       mainAxisSize: MainAxisSize.min,
       gap: widget.style == AppTextFieldStyle.shaded ? 4 : 0,
       children: [
-        Container(
+        ContainerLayout(
           decoration: BoxDecoration(
             color: widget.disabled ? context.theme.color.bgInputDisabled : null,
             borderRadius: borderRadiusLeft,
           ),
           child: AppButton(
             text: '-',
-            size: widget.size,
+            size: widgetSize,
             style: widget.style == AppTextFieldStyle.shaded
                 ? AppButtonStyle.shaded
                 : AppButtonStyle.outline,
             width: width,
             height: height,
             borderRadius: borderRadiusLeft,
-            disabled: widget.disabled || _currentValue == widget.minValue,
+            disabled: widget.disabled || _value == widget.minValue,
             onPress: _decrement,
           ),
         ),
         SizedBox(
-          width: widget.size == WidgetSize.sm ? 40 : 60,
+          width: widgetSize == WidgetSize.sm ? 40 : 60,
           child: AppTextField(
-            controller: TextEditingController(text: _currentValue.toString()),
+            controller: _controller,
             onTextChange: _onTextChange,
             feedbackState: widget.feedbackState,
-            size: widget.size,
+            size: widgetSize,
             style: widget.style,
             keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
@@ -112,27 +123,27 @@ class _AppStepperState extends AppState<AppStepper> {
             clearButton: false,
             borderRadius: widget.style == AppTextFieldStyle.shaded
                 ? BorderRadius.circular(6)
-                : BorderRadius.circular(0),
+                : context.theme.borderRadius.zero,
             inputFormatters: [
               FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
             ],
           ),
         ),
-        Container(
+        ContainerLayout(
           decoration: BoxDecoration(
             color: widget.disabled ? context.theme.color.bgInputDisabled : null,
             borderRadius: borderRadiusRight,
           ),
           child: AppButton(
             text: '+',
-            size: widget.size,
+            size: widgetSize,
             style: widget.style == AppTextFieldStyle.shaded
                 ? AppButtonStyle.shaded
                 : AppButtonStyle.outline,
             width: width,
             height: height,
             borderRadius: borderRadiusRight,
-            disabled: widget.disabled || _currentValue == widget.maxValue,
+            disabled: widget.disabled || _value == widget.maxValue,
             onPress: _increment,
           ),
         )
@@ -140,7 +151,7 @@ class _AppStepperState extends AppState<AppStepper> {
     );
   }
 
-  double get width => switch (widget.size) {
+  double get width => switch (widgetSize) {
         WidgetSize.xxs => 28,
         WidgetSize.xs => 28,
         WidgetSize.sm => 28,
@@ -150,7 +161,7 @@ class _AppStepperState extends AppState<AppStepper> {
         WidgetSize.xxl => 45,
       };
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 27,
         WidgetSize.xs => 27,
         WidgetSize.sm => 27,

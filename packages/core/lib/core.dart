@@ -1,6 +1,5 @@
 export 'package:flutter/gestures.dart';
 export 'package:flutter/foundation.dart' hide IterableFilter;
-
 export 'package:falconx/falconx.dart';
 
 
@@ -11,7 +10,6 @@ export 'package:firebase_remote_config/firebase_remote_config.dart';
 
 ///========= UTILS PACKAGES ==========///
 export 'package:upgrader/upgrader.dart';
-export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:catcher/catcher.dart';
 export 'package:permission_handler/permission_handler.dart';
 export 'package:open_file/open_file.dart';

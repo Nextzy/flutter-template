@@ -9,7 +9,7 @@ class HomePage extends AppPage implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomePageBloc()..addEvent(HomeBlocEvent.yourEvent),
+      create: (context) => HomePageBloc(),
       child: this,
     );
   }
@@ -20,17 +20,25 @@ class HomePage extends AppPage implements AutoRouteWrapper {
 
 class _HomePageState
     extends AppPageBlocWidgetState<HomePage, HomePageBloc, HomeEntity?> {
-  int _counter = 0;
+  void onListenerEvent(
+    BuildContext context,
+    Object event,
+    Object? data,
+  ) {
+    switch (event) {
+      case HomePageEvent.yourEvent:
+        // TODO: Handle this case.
+        throw UnimplementedError();
+    }
+  }
 
   @override
   Widget build(BuildContext context) => ExitApp(
         onExit: () async {
           await AppLocalDatabase.instance.updateTapExitApp(true);
         },
-        child: buildScaffoldWithBloc<HomePageEvent>(
-          listenEvent: (context, event, data) => switch (event) {
-            HomePageEvent.yourEvent => throw UnimplementedError(),
-          },
+        child: buildScaffoldWithBloc(
+          listenEvent: onListenerEvent,
           appBar: (context, state) => AppTopNavigationBar(
             type: AppNavigationType.brand,
             title: 'Demo Application',
@@ -108,9 +116,6 @@ class _HomePageState
                       );
                     },
                   ),
-                  AppButton(
-                      text: 'Go to Signup',
-                      onPress: () => navigate(SignupRoute())),
                   ColumnLayout(
                     mainAxisSize: MainAxisSize.min,
                     foregroundColor: Colors.red.withValues(alpha: 0.1),
@@ -157,11 +162,15 @@ class _HomePageState
                         style: AppTextStyleBuilder.ui.s14.colorPrimary
                             .build(context),
                       ),
-                      AppText(
-                        '$_counter',
-                        style: AppTextStyleBuilder.header.s24.colorPrimary
-                            .build(context),
-                      ),
+                      ContentSafeBuilder(
+                          content: bloc.number,
+                          builder: (context, state) {
+                            return AppText(
+                              '${state.data}',
+                              style: AppTextStyleBuilder.header.s24.colorPrimary
+                                  .build(context),
+                            );
+                          }),
                     ],
                   ),
                   ColumnLayout(
@@ -188,11 +197,15 @@ class _HomePageState
                         style: AppTextStyleBuilder.ui.s14.colorPrimary
                             .build(context),
                       ),
-                      AppText(
-                        '$_counter',
-                        style: AppTextStyleBuilder.header.s24.colorPrimary
-                            .build(context),
-                      ),
+                      ContentSafeBuilder(
+                          content: bloc.number,
+                          builder: (context, state) {
+                            return AppText(
+                              '${state.data}',
+                              style: AppTextStyleBuilder.header.s24.colorPrimary
+                                  .build(context),
+                            );
+                          }),
                     ],
                   ),
                   Container(
@@ -216,9 +229,6 @@ class _HomePageState
       );
 
   void _incrementCounter() {
-    navigate(SettingRoute());
-    setState(() {
-      _counter++;
-    });
+    bloc.addEvent(HomeBlocEvent.tapAddNumber);
   }
 }

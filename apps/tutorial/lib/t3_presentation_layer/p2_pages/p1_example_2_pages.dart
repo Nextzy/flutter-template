@@ -36,7 +36,7 @@ class _ExampleMoviePageState extends AppPageBlocWidgetState<
     MovieListEntity> {
   void onListenerEvent(
     BuildContext context,
-    ExampleMoviePageEvent event,
+    Object event,
     Object? data,
   ) {
     switch (event) {
@@ -49,7 +49,7 @@ class _ExampleMoviePageState extends AppPageBlocWidgetState<
   @override
   Widget build(BuildContext context) {
     /// ⭐️ Please add type of page event
-    return buildScaffoldWithBloc<ExampleMoviePageEvent>(
+    return buildScaffoldWithBloc(
       listenEvent: onListenerEvent,
       body: (context, state) {
         if (state.isLoading) return AppCircularLoading();

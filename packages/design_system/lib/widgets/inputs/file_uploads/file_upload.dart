@@ -21,7 +21,7 @@ class AppFileUpload extends AppStatefulWidget {
   State<AppFileUpload> createState() => _AppFileUploadState();
 }
 
-class _AppFileUploadState extends State<AppFileUpload> {
+class _AppFileUploadState extends AppState<AppFileUpload> {
   void _chooseFile() {
     // TODO: Implement file picker
   }
@@ -37,7 +37,7 @@ class _AppFileUploadState extends State<AppFileUpload> {
               widget.label,
               style: TextStyle(
                 color: context.theme.color.textPrimary,
-                fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -62,7 +62,7 @@ class _AppFileUploadState extends State<AppFileUpload> {
                       color: widget.disabled
                           ? context.theme.color.textTertiary
                           : context.theme.color.textSecondary,
-                      fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                      fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                       fontWeight: FontWeight.w400,
                     ),
                     filled: true,
@@ -90,7 +90,7 @@ class _AppFileUploadState extends State<AppFileUpload> {
                     color: widget.disabled
                         ? context.theme.color.textTertiary
                         : context.theme.color.textPrimary,
-                    fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                    fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                     fontWeight: FontWeight.w600,
                   ),
                 )),
@@ -124,7 +124,7 @@ class _AppFileUploadState extends State<AppFileUpload> {
                           color: widget.disabled
                               ? context.theme.color.textTertiary
                               : context.theme.color.textPrimary,
-                          fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                          fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                           fontWeight: FontWeight.w600,
                         ),
                       )),
@@ -145,7 +145,7 @@ class _AppFileUploadState extends State<AppFileUpload> {
         ]);
   }
 
-  double get height => switch (widget.size) {
+  double get height => switch (widgetSize) {
         WidgetSize.xxs => 24,
         WidgetSize.xs => 24,
         WidgetSize.sm => 24,
@@ -155,7 +155,7 @@ class _AppFileUploadState extends State<AppFileUpload> {
         WidgetSize.xxl => 40,
       };
 
-  EdgeInsets get padding => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         WidgetSize.xs =>

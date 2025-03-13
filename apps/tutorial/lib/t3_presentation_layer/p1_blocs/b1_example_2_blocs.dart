@@ -6,7 +6,7 @@ enum ExampleMovie2PageBlocEvent {
 }
 
 class ExampleMovie2PageBlocSafe
-    extends AppBlocSafe<ExampleMovie2PageBlocEvent, dynamic> {
+    extends AppSafeBloc<ExampleMovie2PageBlocEvent, dynamic> {
   ExampleMovie2PageBlocSafe(
     super.initialState, {
     ExampleGetMovieListUsecase? movieListUsecase,
@@ -23,9 +23,8 @@ class ExampleMovie2PageBlocSafe
       ContentState.initial();
 
   @override
-  Future<void> onListenEvent(
+  Future<void> onBlocEvent(
     BlocEvent<ExampleMovie2PageBlocEvent> event,
-    Emitter<WidgetStateEvent<dynamic>> emitter,
   ) async {
     switch (event.name) {
       case ExampleMovie2PageBlocEvent.fetchMovieList:
@@ -33,10 +32,10 @@ class ExampleMovie2PageBlocSafe
     }
   }
 
-  Future<void> _fetchMovieList() => callEitherStreamDebounce(
+  Future<void> _fetchMovieList() => callEitherStream(
         key: ExampleMovie2PageBlocEvent.fetchMovieList,
         call: _movieListUsecase(),
-        onData: (emitter, state) {
+        onData: (state) {
           if (state.isLoading) {
             highLightMovieList.loading();
             trendMovieList.loading();
@@ -53,7 +52,7 @@ class ExampleMovie2PageBlocSafe
             ));
           }
         },
-        onFailure: (emitter, failure) {
+        onFailure: (failure) {
           emitEvent(AppDialogEvent.dismissAll);
           emitFail();
         },

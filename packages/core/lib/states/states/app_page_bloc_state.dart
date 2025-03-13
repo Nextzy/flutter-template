@@ -1,20 +1,9 @@
 import 'package:core/lib.dart';
 
-typedef WidgetStateContextCallback<DATA> = Widget Function(
-    BuildContext context, WidgetStateEvent<DATA> state);
-
-typedef ListWidgetStateContextCallback<DATA> = List<Widget> Function(
-    BuildContext context, WidgetStateEvent<DATA> state);
-
-typedef PreferredWidgetStateContextCallback<DATA> = PreferredSizeWidget
-    Function(BuildContext context, WidgetStateEvent<DATA> state);
-
-typedef PopStateCallback<DATA> = bool Function(
-    WidgetStateEvent<DATA> state);
-
-abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
-        BLOC extends BlocBase<WidgetStateEvent<DATA>>, DATA>
-    extends AppBlocWidgetState<WIDGET, BLOC, DATA> with AutoRouteAware {
+abstract class AppPageBlocWidgetState<
+    WIDGET extends StatefulWidget,
+    BLOC extends BlocBase<WidgetStateEvent<DATA>>,
+    DATA> extends AppBlocWidgetState<WIDGET, BLOC, DATA> with AutoRouteAware {
   AutoRouteObserver? _observer;
 
   @override
@@ -35,50 +24,38 @@ abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
     _observer?.unsubscribe(this);
   }
 
-  Widget buildScaffoldWithBloc<EVENT>({
-    BlocWidgetListenerEvent<EVENT>? listenEvent,
-    BlocWidgetListenerState<WidgetStateEvent<DATA>>? listenState,
-    PopStateCallback<DATA>? canPop,
-    PopListener<WidgetStateEvent<DATA>>? onPop,
-    BlocListenerCondition<WidgetStateEvent<DATA>>? buildWhen,
-    WidgetStateContextCallback<DATA>? drawer,
-    WidgetStateContextCallback<DATA>? bottomNavigationBar,
-    PreferredWidgetStateContextCallback<DATA>? appBar,
-    required WidgetStateContextCallback<DATA> body,
+  Widget buildScaffoldWithBloc({
+    BlocWidgetListenerEvent<Object>? listenEvent,
+    BlocWidgetListenerState<WidgetStateEvent<DATA?>>? listenState,
+    PopStateCallback<DATA?>? canPop,
+    PopListener<WidgetStateEvent<DATA?>>? onPop,
+    BlocListenerCondition<WidgetStateEvent<DATA?>>? buildWhen,
+    WidgetStateContextCallback<DATA?>? drawer,
+    WidgetStateContextCallback<DATA?>? bottomNavigationBar,
+    PreferredWidgetStateContextCallback<DATA?>? appBar,
+    required WidgetStateContextCallback<DATA?> body,
     WidgetBuilder? failNoData,
     WidgetBuilder? warningNoData,
     WidgetBuilder? loadingNoData,
-    WidgetStateContextCallback<DATA>? floatingButton,
+    WidgetStateContextCallback<DATA?>? floatingButton,
   }) {
-    return BlocConsumer<BLOC, WidgetStateEvent<DATA>>(
+    return WidgetStateBlocConsumer<BLOC, DATA>(
       bloc: bloc,
-      listener: (BuildContext context, WidgetStateEvent<DATA> state) {
-        if (state.event != null) {
-          switch (state.event?.name) {
-            case AppDialogEvent.showFullLoadingLocked:
-              AppLoadingDialog.showFullLoadingLocked(context);
-              break;
-            case AppDialogEvent.dismissAll:
-              AppLoadingDialog.dismissAll(context);
-              break;
-          }
-          listenEvent?.call(
-              context, state.event!.name as EVENT, state.event!.data);
-        } else {
-          listenState?.call(context, state);
+      listenEvent: (BuildContext context, Object event, Object? data) {
+        switch (event) {
+          case AppDialogEvent.showFullLoadingLocked:
+            AppLoadingDialog.showFullLoadingLocked(context);
+            break;
+          case AppDialogEvent.dismissAll:
+            AppLoadingDialog.dismissAll(context);
+            break;
+          case _:
+            listenEvent?.call(context, event, data);
+            break;
         }
       },
-      listenWhen: (previous, current) => true,
-      buildWhen: (previous, current) {
-        if (current.event != null) {
-          return false;
-        } else if (current.event == null) {
-          // No event in current state
-          return current.build;
-        } else {
-          return buildWhen?.call(previous, current) ?? true;
-        }
-      },
+      listenState: listenState,
+      buildWhen: buildWhen,
       builder: (context, state) => GestureDetector(
         onTap: clearFocus,
         child: buildPopScope(

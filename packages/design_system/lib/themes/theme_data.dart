@@ -3,6 +3,7 @@ import 'package:design_system/lib.dart';
 
 class AppThemeData {
   const AppThemeData({
+    required this.defaultWidgetSize,
     required this.themeMode,
     required this.color,
     required this.borderRadius,
@@ -16,6 +17,7 @@ class AppThemeData {
     required this.splashFactory,
   });
 
+  final WidgetSize defaultWidgetSize;
   final ThemeMode themeMode;
   final AppThemeColor color;
   final AppBorder border;

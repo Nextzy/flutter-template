@@ -49,6 +49,9 @@ class _TranslationsCommonThTh extends TranslationsCommonEnGb {
 	@override late final _TranslationsCommonTitleThTh title = _TranslationsCommonTitleThTh._(_root);
 	@override late final _TranslationsCommonMessageThTh message = _TranslationsCommonMessageThTh._(_root);
 	@override late final _TranslationsCommonButtonThTh button = _TranslationsCommonButtonThTh._(_root);
+	@override late final _TranslationsCommonPaginationThTh pagination = _TranslationsCommonPaginationThTh._(_root);
+	@override late final _TranslationsCommonSliderThTh slider = _TranslationsCommonSliderThTh._(_root);
+	@override late final _TranslationsCommonTimeThTh time = _TranslationsCommonTimeThTh._(_root);
 	@override late final _TranslationsCommonSuccessThTh success = _TranslationsCommonSuccessThTh._(_root);
 	@override late final _TranslationsCommonFailThTh fail = _TranslationsCommonFailThTh._(_root);
 	@override late final _TranslationsCommonAlertThTh alert = _TranslationsCommonAlertThTh._(_root);
@@ -110,6 +113,44 @@ class _TranslationsCommonButtonThTh extends TranslationsCommonButtonEnGb {
 	@override String get confirm => 'ยืนยัน';
 	@override String get submit => 'ยืนยัน';
 	@override String get search => 'ค้นหา';
+	@override String get previous => 'ก่อนหน้า';
+	@override String get next => 'ถัดไป';
+}
+
+// Path: common.pagination
+class _TranslationsCommonPaginationThTh extends TranslationsCommonPaginationEnGb {
+	_TranslationsCommonPaginationThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String ofTotal({required Object total}) => 'จาก ${total}';
+	@override String ofTotalPages({required Object total}) => 'จาก ${total} หน้า';
+	@override String ofTotalItems({required Object start, required Object end, required Object total}) => '${start}-${end} จาก ${total} รายการ';
+	@override String pageOfTotal({required Object page, required Object total}) => 'หน้าที่ ${page} จาก ${total}';
+	@override String get itemsPerPage => 'รายการต่อหน้า';
+}
+
+// Path: common.slider
+class _TranslationsCommonSliderThTh extends TranslationsCommonSliderEnGb {
+	_TranslationsCommonSliderThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get minValue => 'ค่าต่ำสุด';
+	@override String get maxValue => 'ค่าสูงสุด';
+}
+
+// Path: common.time
+class _TranslationsCommonTimeThTh extends TranslationsCommonTimeEnGb {
+	_TranslationsCommonTimeThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get am => 'AM';
+	@override String get pm => 'PM';
 }
 
 // Path: common.success
@@ -158,6 +199,9 @@ class _TranslationsAuthButtonThTh extends TranslationsAuthButtonEnGb {
 	@override String get signInWithGoogle => 'Sign in with Google';
 	@override String get signInWithFacebook => 'Sign in with Facebook';
 	@override String get signInWithApple => 'Sign in with Apple';
+	@override String get signInWithTwitter => 'Sign in with Twitter';
+	@override String get signInWithGitHub => 'Sign in with GitHub';
+	@override String get signInWithMicrosoft => 'Sign in with Microsoft';
 }
 
 // Path: common.alert.info
@@ -196,6 +240,17 @@ extension on TranslationsThTh {
 			case 'common.button.confirm': return 'ยืนยัน';
 			case 'common.button.submit': return 'ยืนยัน';
 			case 'common.button.search': return 'ค้นหา';
+			case 'common.button.previous': return 'ก่อนหน้า';
+			case 'common.button.next': return 'ถัดไป';
+			case 'common.pagination.ofTotal': return ({required Object total}) => 'จาก ${total}';
+			case 'common.pagination.ofTotalPages': return ({required Object total}) => 'จาก ${total} หน้า';
+			case 'common.pagination.ofTotalItems': return ({required Object start, required Object end, required Object total}) => '${start}-${end} จาก ${total} รายการ';
+			case 'common.pagination.pageOfTotal': return ({required Object page, required Object total}) => 'หน้าที่ ${page} จาก ${total}';
+			case 'common.pagination.itemsPerPage': return 'รายการต่อหน้า';
+			case 'common.slider.minValue': return 'ค่าต่ำสุด';
+			case 'common.slider.maxValue': return 'ค่าสูงสุด';
+			case 'common.time.am': return 'AM';
+			case 'common.time.pm': return 'PM';
 			case 'common.success.general': return 'สำเร็จ';
 			case 'common.success.saved': return 'บันทึกสำเร็จ';
 			case 'common.success.updated': return 'อัพเดทสำเร็จ';
@@ -208,6 +263,9 @@ extension on TranslationsThTh {
 			case 'auth.button.signInWithGoogle': return 'Sign in with Google';
 			case 'auth.button.signInWithFacebook': return 'Sign in with Facebook';
 			case 'auth.button.signInWithApple': return 'Sign in with Apple';
+			case 'auth.button.signInWithTwitter': return 'Sign in with Twitter';
+			case 'auth.button.signInWithGitHub': return 'Sign in with GitHub';
+			case 'auth.button.signInWithMicrosoft': return 'Sign in with Microsoft';
 			default: return null;
 		}
 	}

@@ -1,4 +1,4 @@
-import 'package:change_application_name/application.dart';
+import 'package:data/lib.dart';
 
 part 'generated/sign_in_with_email_body.freezed.dart';
 

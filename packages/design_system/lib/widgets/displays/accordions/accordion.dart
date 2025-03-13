@@ -16,7 +16,7 @@ class AppAccordion extends AppStatefulWidget {
     this.arrowPosition = AppAccordionArrowPosition.left,
     this.helperPosition = AppAccordionHelpPosition.bottom,
     this.disabled = false,
-    this.isExpanded = false,
+    this.expanded = false,
   });
 
   final WidgetStyle? style;
@@ -27,149 +27,118 @@ class AppAccordion extends AppStatefulWidget {
   final AppAccordionArrowPosition? arrowPosition;
   final AppAccordionHelpPosition? helperPosition;
   final bool disabled;
-  final bool isExpanded;
+  final bool expanded;
 
   @override
-  State<AppAccordion> createState() => _AppAccordionState();
+  AppState<AppAccordion> createState() => _AppAccordionState();
 }
 
 class _AppAccordionState extends AppState<AppAccordion> {
-  bool _isExpanded = false;
+  bool _expanded = false;
 
   @override
   void initState() {
     super.initState();
-    _isExpanded = widget.isExpanded;
+    _expanded = widget.expanded;
   }
 
   void _toggleExpand() {
-    if (!widget.disabled) {
-      setState(() {
-        _isExpanded = !_isExpanded;
-      });
-    }
+    setState(() {
+      _expanded = !_expanded;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _toggleExpand,
-      child: Container(
-        padding: paddingBodySize,
-        decoration: BoxDecoration(
-          color: bodyBackgroundColor,
-          borderRadius: context.theme.borderRadius.md,
-          border: widget.style == WidgetStyle.outlined
-              ? Border.all(
-                  color: widget.disabled
-                      ? context.theme.color.border
-                          .withValues(alpha: 0.4, red: 0, green: 0, blue: 0)
-                      : context.theme.color.border,
-                )
-              : null,
-        ),
-        child: ColumnLayout(gap: 8, children: [
-          RowLayout(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            gap: 8,
-            children: [
-              if (widget.arrowPosition == AppAccordionArrowPosition.left)
-                _getArrowIcon(context),
-              if (widget.iconLabel != null)
-                Column(
-                  children: [
-                    widget.iconLabel.toSvgIcon(
-                      size: widget.size == WidgetSize.sm ? 14 : 16,
-                      colorFilter:
-                          ColorFilter.mode(textPrimaryColor, BlendMode.srcIn),
-                    ),
-                  ],
-                ),
-              Expanded(
-                  child: ColumnLayout(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                gap: 8,
-                children: [
-                  AppText(
-                    widget.label,
-                    style: TextStyle(
-                      color: textPrimaryColor,
-                      fontSize: widget.size == WidgetSize.sm ? 12 : 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  if (widget.helperPosition ==
-                          AppAccordionHelpPosition.bottom &&
-                      widget.helperText != null)
-                    AppText(
-                      widget.helperText,
-                      style: TextStyle(
-                        color: textSecondaryColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  if (widget.style != WidgetStyle.shade && _isExpanded)
-                    AppText(
-                      widget.text,
-                      style: TextStyle(
-                        color: textPrimaryColor,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                ],
-              )),
+    return GestureContainerLayout(
+      disabled: widget.disabled,
+      onPress: widget.disabled ? null : _toggleExpand,
+      padding: padding,
+      borderRadius: context.theme.borderRadius.md,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: context.theme.borderRadius.md,
+        border: widget.style == WidgetStyle.outlined
+            ? Border.all(
+                color: widget.disabled
+                    ? context.theme.color.border
+                        .withValues(alpha: 0.4, red: 0, green: 0, blue: 0)
+                    : context.theme.color.border,
+              )
+            : null,
+      ),
+      child: ColumnLayout(gap: 8, children: [
+        RowLayout(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          gap: 8,
+          children: [
+            if (widget.arrowPosition == AppAccordionArrowPosition.left)
+              _buildArrowIcon(context),
+            if (widget.iconLabel.isNotNullOrBlank)
               Column(
                 children: [
-                  if (widget.helperPosition == AppAccordionHelpPosition.right &&
-                      widget.helperText != null)
-                    AppText(
-                      widget.helperText,
-                      style: TextStyle(
-                        color: textSecondaryColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                  widget.iconLabel.toSvgIcon(
+                    size: widgetSize == WidgetSize.sm ? 14 : 16,
+                    colorFilter:
+                        ColorFilter.mode(textPrimaryColor, BlendMode.srcIn),
+                  ),
                 ],
               ),
-              if (widget.arrowPosition == AppAccordionArrowPosition.right)
-                _getArrowIcon(context),
-            ],
-          ),
-          if (widget.style == WidgetStyle.shade && _isExpanded)
-            Row(
+            Expanded(
+                child: ColumnLayout(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              gap: 8,
               children: [
-                Expanded(
-                  child: Container(
-                    padding: paddingTextSize,
-                    decoration: BoxDecoration(
-                      color: widget.style == WidgetStyle.shade
-                          ? context.theme.color.bg
-                          : null,
-                      borderRadius: widget.style == WidgetStyle.shade
-                          ? context.theme.borderRadius.sm
-                          : null,
-                    ),
-                    child: AppText(
-                      widget.text,
-                      style: TextStyle(
-                        color: textPrimaryColor,
-                        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                AppText(
+                  widget.label,
+                  style: TextStyle(
+                    color: textPrimaryColor,
+                    fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
+                if (widget.helperPosition == AppAccordionHelpPosition.bottom &&
+                    widget.helperText.isNotNullOrBlank)
+                  _buildHelperText(context),
+                if (widget.style != WidgetStyle.shade && _expanded)
+                  _buildText(context),
               ],
-            )
-        ]),
-      ),
+            )),
+            Column(
+              children: [
+                if (widget.helperPosition == AppAccordionHelpPosition.right &&
+                    widget.helperText.isNotNullOrBlank)
+                  _buildHelperText(context),
+              ],
+            ),
+            if (widget.arrowPosition == AppAccordionArrowPosition.right)
+              _buildArrowIcon(context),
+          ],
+        ),
+        if (widget.style == WidgetStyle.shade && _expanded)
+          Row(
+            children: [
+              Expanded(
+                child: ContainerLayout(
+                  padding: paddingText,
+                  decoration: BoxDecoration(
+                    color: widget.style == WidgetStyle.shade
+                        ? context.theme.color.bg
+                        : null,
+                    borderRadius: widget.style == WidgetStyle.shade
+                        ? context.theme.borderRadius.sm
+                        : null,
+                  ),
+                  child: _buildText(context),
+                ),
+              ),
+            ],
+          )
+      ]),
     );
   }
 
-  EdgeInsets get paddingBodySize => switch (widget.size) {
+  EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs => const EdgeInsets.all(4),
         WidgetSize.xs => const EdgeInsets.all(4),
         WidgetSize.sm => const EdgeInsets.all(4),
@@ -197,7 +166,7 @@ class _AppAccordionState extends AppState<AppAccordion> {
           .withValues(alpha: 0.4, red: 0, green: 0, blue: 0)
       : context.theme.color.iconPrimary;
 
-  Color get bodyBackgroundColor => switch (widget.style) {
+  Color get backgroundColor => switch (widget.style) {
         WidgetStyle.outlined => widget.disabled
             ? context.theme.color.bg
                 .withValues(alpha: 0.005, red: 0, green: 0, blue: 0)
@@ -224,7 +193,7 @@ class _AppAccordionState extends AppState<AppAccordion> {
             : context.theme.color.bg
       };
 
-  EdgeInsets get paddingTextSize => switch (widget.size) {
+  EdgeInsets get paddingText => switch (widgetSize) {
         WidgetSize.xxs =>
           const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -239,16 +208,38 @@ class _AppAccordionState extends AppState<AppAccordion> {
           const EdgeInsets.symmetric(horizontal: 16, vertical: 8)
       };
 
-  Widget _getArrowIcon(BuildContext context) {
+  Widget _buildArrowIcon(BuildContext context) {
     return Column(children: [
-      if (_isExpanded)
+      if (_expanded)
         Assets.icon.caretDownRegular.svgIcon(
-            size: widget.size == WidgetSize.sm ? 12 : 16,
+            size: widgetSize == WidgetSize.sm ? 12 : 16,
             colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn))
       else
         Assets.icon.caretRightRegular.svgIcon(
-            size: widget.size == WidgetSize.sm ? 12 : 16,
+            size: widgetSize == WidgetSize.sm ? 12 : 16,
             colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn)),
     ]);
+  }
+
+  AppText _buildText(BuildContext context) {
+    return AppText(
+      widget.text,
+      style: TextStyle(
+        color: textPrimaryColor,
+        fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+        fontWeight: FontWeight.w400,
+      ),
+    );
+  }
+
+  AppText _buildHelperText(BuildContext context) {
+    return AppText(
+      widget.helperText,
+      style: TextStyle(
+        color: textSecondaryColor,
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+      ),
+    );
   }
 }

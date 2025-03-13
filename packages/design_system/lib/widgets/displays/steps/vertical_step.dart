@@ -7,14 +7,17 @@ class AppVerticalSteps extends AppStatefulWidget {
     this.style = AppStepStyle.number,
     required this.children,
     this.defaultValue = 1,
+    this.onChanged,
   });
 
   final AppStepStyle style;
   final List<AppStepItem> children;
   final int defaultValue;
 
+  final ValueChanged<int>? onChanged;
+
   @override
-  State<AppVerticalSteps> createState() => _AppVerticalStepsState();
+  AppState<AppVerticalSteps> createState() => _AppVerticalStepsState();
 }
 
 class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
@@ -26,6 +29,16 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
     setState(() {
       _currentStep = widget.defaultValue;
     });
+  }
+
+  void _onTap(int step) {
+    setState(() {
+      _currentStep = step;
+    });
+
+    if (widget.onChanged != null) {
+      widget.onChanged!(step);
+    }
   }
 
   @override
@@ -42,12 +55,15 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
                 children: [
                   if (widget.style == AppStepStyle.dot &&
                       widget.children.indexOf(child) == 0)
-                    SizedBox(height: 4),
-                  _buildIndicator(
-                      context, widget.children.indexOf(child) + 1, child.icon),
+                    Gap(4),
+                  InkWell(
+                    onTap: () => _onTap(widget.children.indexOf(child) + 1),
+                    child: _buildIndicator(context,
+                        widget.children.indexOf(child) + 1, child.icon),
+                  ),
                   if (widget.children.indexOf(child) + 1 !=
                       widget.children.length)
-                    Container(
+                    ContainerLayout(
                       width: 2,
                       height: 40,
                       decoration: BoxDecoration(
@@ -58,9 +74,9 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
                     ),
                 ],
               ),
-              SizedBox(width: 12),
+              Gap(12),
               AppStepItem(
-                  size: widget.size,
+                  size: widgetSize,
                   title: child.title,
                   description: child.description)
             ],
@@ -72,9 +88,9 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
   Widget _buildIndicator(BuildContext context, int step, String? icon) {
     switch (widget.style) {
       case AppStepStyle.number:
-        return Container(
-          width: widget.size == WidgetSize.sm ? 18 : 24,
-          height: widget.size == WidgetSize.sm ? 18 : 24,
+        return ContainerLayout(
+          width: widgetSize == WidgetSize.sm ? 18 : 24,
+          height: widgetSize == WidgetSize.sm ? 18 : 24,
           decoration: BoxDecoration(
             color: context.theme.color.bg,
             borderRadius: BorderRadius.circular(24),
@@ -86,20 +102,20 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
             ),
           ),
           child: Center(
-            child: Text(
+            child: AppText(
               step.toString(),
               style: TextStyle(
                 color: _currentStep >= step
                     ? context.theme.color.brandPrimary
                     : context.theme.color.textSecondary,
-                fontSize: widget.size == WidgetSize.sm ? 12 : 14,
+                fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
           ),
         );
       case AppStepStyle.dot:
-        return Container(
+        return ContainerLayout(
           width: 8,
           height: 8,
           decoration: BoxDecoration(
@@ -119,7 +135,7 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
         );
       case AppStepStyle.icon:
         return icon.toSvgIcon(
-          size: widget.size == WidgetSize.sm ? 16 : 24,
+          size: widgetSize == WidgetSize.sm ? 16 : 24,
           colorFilter: ColorFilter.mode(
             _currentStep >= step
                 ? context.theme.color.brandPrimary

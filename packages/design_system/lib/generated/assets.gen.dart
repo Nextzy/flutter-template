@@ -7,16 +7,33 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart' as _svg;
-import 'package:vector_graphics/vector_graphics.dart' as _vg;
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsIconGen {
   const $AssetsIconGen();
 
   /// File path: assets/icon/arrow-narrow-left.svg
   SvgGenImage get arrowNarrowLeft => const SvgGenImage('assets/icon/arrow-narrow-left.svg');
+
+  /// File path: assets/icon/arrow-right-filled.svg
+  SvgGenImage get arrowRightFilled => const SvgGenImage('assets/icon/arrow-right-filled.svg');
+
+  /// File path: assets/icon/arrow-right-light.svg
+  SvgGenImage get arrowRightLight => const SvgGenImage('assets/icon/arrow-right-light.svg');
+
+  /// File path: assets/icon/arrow-right-regular.svg
+  SvgGenImage get arrowRightRegular => const SvgGenImage('assets/icon/arrow-right-regular.svg');
+
+  /// File path: assets/icon/arrow-square-out-filled.svg
+  SvgGenImage get arrowSquareOutFilled => const SvgGenImage('assets/icon/arrow-square-out-filled.svg');
+
+  /// File path: assets/icon/arrow-square-out-light.svg
+  SvgGenImage get arrowSquareOutLight => const SvgGenImage('assets/icon/arrow-square-out-light.svg');
+
+  /// File path: assets/icon/arrow-square-out-regular.svg
+  SvgGenImage get arrowSquareOutRegular => const SvgGenImage('assets/icon/arrow-square-out-regular.svg');
 
   /// File path: assets/icon/arrows-clockwise-filled.svg
   SvgGenImage get arrowsClockwiseFilled => const SvgGenImage('assets/icon/arrows-clockwise-filled.svg');
@@ -27,8 +44,16 @@ class $AssetsIconGen {
   /// File path: assets/icon/arrows-clockwise-regular.svg
   SvgGenImage get arrowsClockwiseRegular => const SvgGenImage('assets/icon/arrows-clockwise-regular.svg');
 
-  /// Directory path: assets/icon/button
   $AssetsIconButtonGen get button => const $AssetsIconButtonGen();
+
+  /// File path: assets/icon/calendar-blank-filled.svg
+  SvgGenImage get calendarBlankFilled => const SvgGenImage('assets/icon/calendar-blank-filled.svg');
+
+  /// File path: assets/icon/calendar-blank-light.svg
+  SvgGenImage get calendarBlankLight => const SvgGenImage('assets/icon/calendar-blank-light.svg');
+
+  /// File path: assets/icon/calendar-blank-regular.svg
+  SvgGenImage get calendarBlankRegular => const SvgGenImage('assets/icon/calendar-blank-regular.svg');
 
   /// File path: assets/icon/caret-down-filled.svg
   SvgGenImage get caretDownFilled => const SvgGenImage('assets/icon/caret-down-filled.svg');
@@ -38,6 +63,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/caret-down-regular.svg
   SvgGenImage get caretDownRegular => const SvgGenImage('assets/icon/caret-down-regular.svg');
+
+  /// File path: assets/icon/caret-left-filled.svg
+  SvgGenImage get caretLeftFilled => const SvgGenImage('assets/icon/caret-left-filled.svg');
+
+  /// File path: assets/icon/caret-left-light.svg
+  SvgGenImage get caretLeftLight => const SvgGenImage('assets/icon/caret-left-light.svg');
+
+  /// File path: assets/icon/caret-left-regular.svg
+  SvgGenImage get caretLeftRegular => const SvgGenImage('assets/icon/caret-left-regular.svg');
 
   /// File path: assets/icon/caret-right-filled.svg
   SvgGenImage get caretRightFilled => const SvgGenImage('assets/icon/caret-right-filled.svg');
@@ -132,7 +166,6 @@ class $AssetsIconGen {
   /// File path: assets/icon/lightning-slash-regular.svg
   SvgGenImage get lightningSlashRegular => const SvgGenImage('assets/icon/lightning-slash-regular.svg');
 
-  /// Directory path: assets/icon/social
   $AssetsIconSocialGen get social => const $AssetsIconSocialGen();
 
   /// File path: assets/icon/trash-simple-filled.svg
@@ -171,12 +204,24 @@ class $AssetsIconGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         arrowNarrowLeft,
+        arrowRightFilled,
+        arrowRightLight,
+        arrowRightRegular,
+        arrowSquareOutFilled,
+        arrowSquareOutLight,
+        arrowSquareOutRegular,
         arrowsClockwiseFilled,
         arrowsClockwiseLight,
         arrowsClockwiseRegular,
+        calendarBlankFilled,
+        calendarBlankLight,
+        calendarBlankRegular,
         caretDownFilled,
         caretDownLight,
         caretDownRegular,
+        caretLeftFilled,
+        caretLeftLight,
+        caretLeftRegular,
         caretRightFilled,
         caretRightLight,
         caretRightRegular,
@@ -281,8 +326,24 @@ class $AssetsMockGen {
   /// File path: assets/mock/avatar-squared.jpg
   AssetGenImage get avatarSquared => const AssetGenImage('assets/mock/avatar-squared.jpg');
 
+  /// File path: assets/mock/avatar_portrait_Abby_Smith.jpg
+  AssetGenImage get avatarPortraitAbbySmith => const AssetGenImage('assets/mock/avatar_portrait_Abby_Smith.jpg');
+
+  /// File path: assets/mock/avatar_portrait_Alex_Holland.jpg
+  AssetGenImage get avatarPortraitAlexHolland => const AssetGenImage('assets/mock/avatar_portrait_Alex_Holland.jpg');
+
+  /// File path: assets/mock/avatar_portrait_Alisa_Hester.jpg
+  AssetGenImage get avatarPortraitAlisaHester => const AssetGenImage('assets/mock/avatar_portrait_Alisa_Hester.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [avatarSquared1, avatarSquared2, avatarSquared];
+  List<AssetGenImage> get values => [
+        avatarSquared1,
+        avatarSquared2,
+        avatarSquared,
+        avatarPortraitAbbySmith,
+        avatarPortraitAlexHolland,
+        avatarPortraitAlisaHester
+      ];
 }
 
 class $AssetsIconButtonGen {
@@ -339,8 +400,6 @@ class $AssetsIconSocialGen {
 class Assets {
   Assets._();
 
-  static const String package = 'design_system';
-
   static const $AssetsIconGen icon = $AssetsIconGen();
   static const $AssetsIllustrationGen illustration = $AssetsIllustrationGen();
   static const $AssetsLogoGen logo = $AssetsLogoGen();
@@ -348,18 +407,9 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName);
 
   final String _assetName;
-
-  static const String package = 'design_system';
-
-  final Size? size;
-  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -379,9 +429,9 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = true,
+    bool gaplessPlayback = false,
     bool isAntiAlias = false,
-    @Deprecated('Do not specify package for a generated library asset') String? package = package,
+    String? package = 'design_system',
     FilterQuality filterQuality = FilterQuality.low,
     int? cacheWidth,
     int? cacheHeight,
@@ -416,7 +466,7 @@ class AssetGenImage {
 
   ImageProvider provider({
     AssetBundle? bundle,
-    @Deprecated('Do not specify package for a generated library asset') String? package = package,
+    String? package = 'design_system',
   }) {
     return AssetImage(
       _assetName,
@@ -431,30 +481,15 @@ class AssetGenImage {
 }
 
 class SvgGenImage {
-  const SvgGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = false;
-
-  const SvgGenImage.vec(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = true;
+  const SvgGenImage(this._assetName);
 
   final String _assetName;
-  final Size? size;
-  final Set<String> flavors;
-  final bool _isVecFormat;
 
-  static const String package = 'design_system';
-
-  _svg.SvgPicture svg({
+  SvgPicture svg({
     Key? key,
     bool matchTextDirection = false,
     AssetBundle? bundle,
-    @Deprecated('Do not specify package for a generated library asset') String? package = package,
+    String? package = 'design_system',
     double? width,
     double? height,
     BoxFit fit = BoxFit.contain,
@@ -463,32 +498,19 @@ class SvgGenImage {
     WidgetBuilder? placeholderBuilder,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    _svg.SvgTheme? theme,
+    SvgTheme theme = const SvgTheme(),
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
-    final _svg.BytesLoader loader;
-    if (_isVecFormat) {
-      loader = _vg.AssetBytesLoader(
-        _assetName,
-        assetBundle: bundle,
-        packageName: package,
-      );
-    } else {
-      loader = _svg.SvgAssetLoader(
-        _assetName,
-        assetBundle: bundle,
-        packageName: package,
-        theme: theme,
-      );
-    }
-    return _svg.SvgPicture(
-      loader,
+    return SvgPicture.asset(
+      _assetName,
       key: key,
       matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
       width: width,
       height: height,
       fit: fit,
@@ -497,7 +519,10 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ?? (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
+      theme: theme,
+      colorFilter: colorFilter,
+      color: color,
+      colorBlendMode: colorBlendMode,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );

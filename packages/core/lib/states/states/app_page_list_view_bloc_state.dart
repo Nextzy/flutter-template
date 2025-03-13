@@ -6,22 +6,22 @@ abstract class AppPageListViewBlocState<
     DATA> extends AppPageBlocWidgetState<WIDGET, BLOC, DATA> {
   int get itemCount;
 
-  Widget buildScaffoldItemListWithBloc<EVENT>({
-    BlocWidgetListenerEvent<EVENT>? listenEvent,
-    BlocWidgetListenerState<WidgetStateEvent<DATA>>? listenState,
-    PopStateCallback<DATA>? canPop,
-    PopListener<WidgetStateEvent<DATA>>? onPop,
-    BlocListenerCondition<WidgetStateEvent<DATA>>? buildWhen,
-    WidgetStateContextCallback<DATA>? drawer,
-    WidgetStateContextCallback<DATA>? buildBottomNavigationBar,
-    PreferredWidgetStateContextCallback<DATA>? appBar,
+  Widget buildScaffoldItemListWithBloc({
+    BlocWidgetListenerEvent<Object>? listenEvent,
+    BlocWidgetListenerState<WidgetStateEvent<DATA?>>? listenState,
+    PopStateCallback<DATA?>? canPop,
+    PopListener<WidgetStateEvent<DATA?>>? onPop,
+    BlocListenerCondition<WidgetStateEvent<DATA?>>? buildWhen,
+    WidgetStateContextCallback<DATA?>? drawer,
+    WidgetStateContextCallback<DATA?>? buildBottomNavigationBar,
+    PreferredWidgetStateContextCallback<DATA?>? appBar,
     required Widget? Function(
-            BuildContext context, int index, WidgetStateEvent<DATA> state)
+            BuildContext context, int index, WidgetStateEvent<DATA?> state)
         itemBuilder,
     WidgetBuilder? failNoData,
     WidgetBuilder? warningNoData,
     WidgetBuilder? loadingNoData,
-    WidgetStateContextCallback<DATA>? floatingButton,
+    WidgetStateContextCallback<DATA?>? floatingButton,
   }) {
     return buildScaffoldWithBloc(
       listenEvent: listenEvent,
