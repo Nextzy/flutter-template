@@ -12,7 +12,6 @@ class _SignupPageState extends AppPageState<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppTopNavigationBar(),
         body: ContainerLayout(
       child: ResponsiveRowColumn(
           rowCrossAxisAlignment: CrossAxisAlignment.start,
@@ -126,9 +125,8 @@ class _SignupPageState extends AppPageState<SignupPage> {
                           ),
                           Gap(16),
                           AppLinePagination(
-                              totalPage: 4,
-                              activeColor: theme.color.bg,
-                              inactiveColor: theme.color.iconSecondaryInverse),
+                            totalPage: 4,
+                          ),
                         ])
                   ],
                 ),

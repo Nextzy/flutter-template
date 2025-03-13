@@ -48,6 +48,25 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MessengerPage]
+class MessengerRoute extends PageRouteInfo<void> {
+  const MessengerRoute({List<PageRouteInfo>? children})
+      : super(
+          MessengerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MessengerRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MessengerPage();
+    },
+  );
+}
+
+/// generated route for
 /// [OnboardingPage]
 class OnboardingRoute extends PageRouteInfo<void> {
   const OnboardingRoute({List<PageRouteInfo>? children})
