@@ -10,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   core:
     path: ../../packages/core
   utils:
@@ -71,7 +69,7 @@ dev_dependencies:
   flutter_gen_runner: ^5.10.0
   flutter_lints: ^5.0.0
   json_serializable: ^6.9.4
-  freezed: ^3.0.3
+  freezed: ^3.0.4
 
 flutter_gen:
   output: lib/generated/

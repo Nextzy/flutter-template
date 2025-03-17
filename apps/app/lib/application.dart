@@ -5,7 +5,6 @@ export 'package:design_system/design_system.dart';
 export 'package:utils/utils.dart';
 
 //
-export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:change_application_name/src/src.dart';
 export 'package:change_application_name/router.dart';
 export 'package:change_application_name/extensions/extensions.dart';
