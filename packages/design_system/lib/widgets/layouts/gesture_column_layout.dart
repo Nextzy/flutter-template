@@ -58,7 +58,7 @@ class GestureColumnLayout extends StatefulWidget {
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,
-    this.tapFocus = true,
+    this.tapFocus = false,
     this.statesController,
     //===============//
     required this.children,
