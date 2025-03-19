@@ -29,6 +29,25 @@ class AuthenticationRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [EcommercePage]
+class EcommerceRoute extends PageRouteInfo<void> {
+  const EcommerceRoute({List<PageRouteInfo>? children})
+      : super(
+          EcommerceRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EcommerceRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const EcommercePage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
