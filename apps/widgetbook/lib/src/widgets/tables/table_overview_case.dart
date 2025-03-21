@@ -15,7 +15,8 @@ class OverviewTableWidgetCase extends WidgetbookScrollableUseCase {
 
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
+                  // height: MediaQuery.of(context).size.height,
+                  height: 400,
                   child: AppTable(
                     headerNames: [
                       'Name',
@@ -24,8 +25,9 @@ class OverviewTableWidgetCase extends WidgetbookScrollableUseCase {
                       'More info'
                     ],
                     dataTableSource: MyDataTableSource(
-                      items: MyPerson.getPersons().take(5).toList(),
+                      items: MyPerson.getPersons().toList(),
                     ),
+                    rowsPerPage: 4,
                   ),
                 ),
               ],
@@ -39,19 +41,34 @@ class AppTable extends StatefulWidget {
     super.key,
     required this.headerNames,
     required this.dataTableSource,
+    this.rowsPerPage = 0,
   });
 
   final List<String> headerNames;
   final AppDataTableSource dataTableSource;
+  final int rowsPerPage;
 
   @override
   State<AppTable> createState() => _AppTableState();
 }
 
 class _AppTableState extends State<AppTable> {
+  int _currentPage = 1;
+  List<List<Widget>> _rowWidgetsList = [];
+  List<List<Widget>> _activeRowWidgetsList = [];
+
   @override
   void initState() {
     super.initState();
+
+    _rowWidgetsList = widget.dataTableSource.getRowWidgetsList();
+
+    _activeRowWidgetsList = widget.rowsPerPage > 0
+        ? _rowWidgetsList
+            .skip(widget.rowsPerPage * (_currentPage - 1))
+            .take(widget.rowsPerPage)
+            .toList()
+        : _rowWidgetsList.toList();
   }
 
   @override
@@ -77,12 +94,13 @@ class _AppTableState extends State<AppTable> {
           )
         ],
         Divider(),
-        SizedBox(
-          height: 310,
+        Expanded(
           child: ListView.separated(
-            itemCount: widget.dataTableSource.rowCount,
+            // itemCount: widget.rowsPerPage,
+            // itemCount: widget.dataTableSource.rowCount,
+            itemCount: _activeRowWidgetsList.length,
             itemBuilder: (context, index) {
-              final rowWidgets = widget.dataTableSource.getRowWidgets(index);
+              final rowWidgets = _activeRowWidgetsList[index];
 
               return Row(
                 children: List.generate(rowWidgets.length, (index) {
@@ -95,12 +113,22 @@ class _AppTableState extends State<AppTable> {
             },
           ),
         ),
-        Divider(),
-        Space.gap10,
-        AppSimplePagination(
-          totalPage: 5,
-          size: WidgetSize.sm,
-        ),
+        if (widget.rowsPerPage > 0)
+          AppSimplePagination(
+            totalPage:
+                (widget.dataTableSource.rowCount / widget.rowsPerPage).ceil(),
+            size: WidgetSize.sm,
+            onChanged: (page) {
+              setState(() {
+                _currentPage = page;
+
+                _activeRowWidgetsList = _rowWidgetsList
+                    .skip(widget.rowsPerPage * (_currentPage - 1))
+                    .take(widget.rowsPerPage)
+                    .toList();
+              });
+            },
+          ),
       ],
     );
   }
@@ -108,6 +136,17 @@ class _AppTableState extends State<AppTable> {
 
 abstract interface class AppDataTableSource {
   List<Widget> getRowWidgets(int index);
+
+  List<List<Widget>> getRowWidgetsList() {
+    final List<List<Widget>> allRowWidgetsList = [];
+
+    for (int i = 0; i < rowCount; i++) {
+      final rowWidgets = getRowWidgets(i);
+      allRowWidgetsList.add(rowWidgets);
+    }
+
+    return allRowWidgetsList;
+  }
 
   int get rowCount;
 }
