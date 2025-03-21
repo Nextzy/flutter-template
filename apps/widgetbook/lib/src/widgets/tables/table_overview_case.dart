@@ -89,6 +89,7 @@ class _AppTableState extends State<AppTable> {
                     filteredText: filteredText,
                   );
 
+                  // _currentPage = 1;
                   _updatePaging();
                 });
               },
@@ -156,7 +157,9 @@ class _AppTableState extends State<AppTable> {
             .toList()
         : _rowWidgetsList.toList();
 
-    _totalPages = (_rowWidgetsList.length / widget.rowsPerPage).ceil();
+    _totalPages = widget.rowsPerPage > 0
+        ? (_rowWidgetsList.length / widget.rowsPerPage).ceil()
+        : 1;
   }
 }
 
