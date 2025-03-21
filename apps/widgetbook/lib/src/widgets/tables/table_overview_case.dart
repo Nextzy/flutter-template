@@ -28,6 +28,7 @@ class OverviewTableWidgetCase extends WidgetbookScrollableUseCase {
                       items: MyPerson.getPersons().toList(),
                     ),
                     rowsPerPage: 4,
+                    filteredColumn: 0,
                   ),
                 ),
               ],
@@ -42,39 +43,59 @@ class AppTable extends StatefulWidget {
     required this.headerNames,
     required this.dataTableSource,
     this.rowsPerPage = 0,
+    this.filteredColumn = 0,
   });
 
   final List<String> headerNames;
   final AppDataTableSource dataTableSource;
   final int rowsPerPage;
+  final int filteredColumn;
 
   @override
   State<AppTable> createState() => _AppTableState();
 }
 
 class _AppTableState extends State<AppTable> {
+  int _totalPages = 1;
   int _currentPage = 1;
-  List<List<Widget>> _rowWidgetsList = [];
-  List<List<Widget>> _activeRowWidgetsList = [];
+  List<MyCellContainer> _rowWidgetsList = [];
+  List<MyCellContainer> _activeRowWidgetsList = [];
 
   @override
   void initState() {
     super.initState();
 
-    _rowWidgetsList = widget.dataTableSource.getRowWidgetsList();
+    _rowWidgetsList = widget.dataTableSource.getCellContainers();
 
-    _activeRowWidgetsList = widget.rowsPerPage > 0
-        ? _rowWidgetsList
-            .skip(widget.rowsPerPage * (_currentPage - 1))
-            .take(widget.rowsPerPage)
-            .toList()
-        : _rowWidgetsList.toList();
+    _updatePaging();
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: SizedBox(
+            width: 150,
+            child: AppTextField(
+              placeholderText: 'Search..',
+              onTextChange: (filteredText) {
+                setState(() {
+                  _rowWidgetsList =
+                      widget.dataTableSource.getFilteredCellContainers(
+                    filteredColumn: widget.filteredColumn,
+                    filteredText: filteredText,
+                  );
+
+                  _updatePaging();
+                });
+              },
+            ),
+          ),
+        ),
+        // Space.gap20,
         ...[
           Row(
             children: [
@@ -96,15 +117,13 @@ class _AppTableState extends State<AppTable> {
         Divider(),
         Expanded(
           child: ListView.separated(
-            // itemCount: widget.rowsPerPage,
-            // itemCount: widget.dataTableSource.rowCount,
             itemCount: _activeRowWidgetsList.length,
             itemBuilder: (context, index) {
               final rowWidgets = _activeRowWidgetsList[index];
 
               return Row(
-                children: List.generate(rowWidgets.length, (index) {
-                  return Expanded(child: rowWidgets[index]);
+                children: List.generate(rowWidgets.cells.length, (index) {
+                  return Expanded(child: rowWidgets.cells[index].widget);
                 }),
               );
             },
@@ -115,38 +134,50 @@ class _AppTableState extends State<AppTable> {
         ),
         if (widget.rowsPerPage > 0)
           AppSimplePagination(
-            totalPage:
-                (widget.dataTableSource.rowCount / widget.rowsPerPage).ceil(),
+            totalPage: _totalPages,
             size: WidgetSize.sm,
             onChanged: (page) {
               setState(() {
                 _currentPage = page;
 
-                _activeRowWidgetsList = _rowWidgetsList
-                    .skip(widget.rowsPerPage * (_currentPage - 1))
-                    .take(widget.rowsPerPage)
-                    .toList();
+                _updatePaging();
               });
             },
           ),
       ],
     );
   }
+
+  void _updatePaging() {
+    _activeRowWidgetsList = widget.rowsPerPage > 0
+        ? _rowWidgetsList
+            .skip(widget.rowsPerPage * (_currentPage - 1))
+            .take(widget.rowsPerPage)
+            .toList()
+        : _rowWidgetsList.toList();
+
+    _totalPages = (_rowWidgetsList.length / widget.rowsPerPage).ceil();
+  }
 }
 
 abstract interface class AppDataTableSource {
-  List<Widget> getRowWidgets(int index);
-
-  List<List<Widget>> getRowWidgetsList() {
-    final List<List<Widget>> allRowWidgetsList = [];
+  List<MyCellContainer> getCellContainers() {
+    final List<MyCellContainer> rowWidgetsList = [];
 
     for (int i = 0; i < rowCount; i++) {
-      final rowWidgets = getRowWidgets(i);
-      allRowWidgetsList.add(rowWidgets);
+      final rowWidgets = getCellContainer(i);
+      rowWidgetsList.add(rowWidgets);
     }
 
-    return allRowWidgetsList;
+    return rowWidgetsList;
   }
+
+  List<MyCellContainer> getFilteredCellContainers({
+    required int filteredColumn,
+    required String filteredText,
+  });
+
+  MyCellContainer getCellContainer(int index);
 
   int get rowCount;
 }
@@ -159,45 +190,91 @@ class MyDataTableSource extends AppDataTableSource {
   final List<MyPerson> items;
 
   @override
-  List<Widget> getRowWidgets(int index) {
+  List<MyCellContainer> getFilteredCellContainers({
+    required int filteredColumn,
+    required String filteredText,
+  }) {
+    return getCellContainers()
+        .where((cellContainer) => cellContainer.cells[filteredColumn].value
+            .toLowerCase()
+            .contains(filteredText.toLowerCase()))
+        .toList();
+  }
+
+  @override
+  MyCellContainer getCellContainer(int index) {
     final item = items[index];
 
-    return [
-      Wrap(
-        alignment: WrapAlignment.center,
-        runAlignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: 10,
-        children: [
-          AppCircleAvatar(
-            style: WidgetStyle.subtle,
-            size: WidgetSize.md,
-            path: Assets.mock.avatarSquared1.keyName,
+    return MyCellContainer(
+      cells: [
+        MyCell(
+          value: item.name,
+          widget: Wrap(
+            alignment: WrapAlignment.center,
+            runAlignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 10,
+            children: [
+              AppCircleAvatar(
+                style: WidgetStyle.subtle,
+                size: WidgetSize.md,
+                path: Assets.mock.avatarSquared1.keyName,
+              ),
+              AppText(
+                item.name,
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
-          AppText(
-            item.name,
+        ),
+        MyCell(
+          value: item.rating.toString(),
+          widget: AppText(
+            item.rating.toString(),
             textAlign: TextAlign.center,
           ),
-        ],
-      ),
-      AppText(
-        item.rating.toString(),
-        textAlign: TextAlign.center,
-      ),
-      AppText(
-        DateFormat('yyyy-MM-dd').format(item.lastContact),
-        textAlign: TextAlign.center,
-      ),
-      AppOutlineButton(
-        text: 'See more',
-        size: WidgetSize.sm,
-      ),
-    ];
+        ),
+        MyCell(
+          value: DateFormat('yyyy-MM-dd').format(item.lastContact),
+          widget: AppText(
+            DateFormat('yyyy-MM-dd').format(item.lastContact),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        MyCell(
+          value: '',
+          widget: AppOutlineButton(
+            text: 'See more',
+            size: WidgetSize.sm,
+          ),
+        ),
+      ],
+    );
   }
 
   @override
   int get rowCount => items.length;
 }
+
+class MyCell {
+  const MyCell({
+    required this.value,
+    required this.widget,
+  });
+
+  final String value;
+  final Widget widget;
+}
+
+class MyCellContainer {
+  MyCellContainer({
+    required this.cells,
+  });
+
+  final List<MyCell> cells;
+}
+
+//----------------------------------------------------------
 
 class MyPaginatedDataTable extends StatefulWidget {
   const MyPaginatedDataTable({super.key});
