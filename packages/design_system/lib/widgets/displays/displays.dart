@@ -31,3 +31,5 @@ export 'popover.dart';
 export 'sidebars/sidebars.dart';
 export 'placeholder.dart';
 export 'embeds/embeds.dart';
+export 'tree_views/tree_views.dart';
+export 'tutorial.dart';

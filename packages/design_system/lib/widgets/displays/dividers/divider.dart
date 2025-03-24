@@ -11,7 +11,8 @@ class AppDivider extends AppStatelessWidget {
       this.text,
       this.textPosition = DividerTextPosition.center,
       this.width,
-      this.borderWidth,
+      this.thickness = 1,
+      this.borderWidth = 1,
       this.paddingStart,
       this.paddingEnd});
 
@@ -19,6 +20,7 @@ class AppDivider extends AppStatelessWidget {
   final String? text;
   final DividerTextPosition textPosition;
   final double? width;
+  final double thickness;
   final double? borderWidth;
   final double? paddingStart;
   final double? paddingEnd;
@@ -99,13 +101,10 @@ class AppDivider extends AppStatelessWidget {
 
   double get endIndent => paddingEnd ?? 0;
 
-  double _getThickness(BuildContext context) {
-    return borderWidth ?? getTheme(context).border.md.maxWidth;
-  }
-
   Divider _buildDivider(BuildContext context, double start, double end) {
     return Divider(
-      thickness: _getThickness(context),
+      height: borderWidth,
+      thickness: thickness,
       indent: start,
       endIndent: end,
       color: context.theme.color.border,
@@ -114,7 +113,8 @@ class AppDivider extends AppStatelessWidget {
 
   VerticalDivider _buildVerticalDivider(BuildContext context) {
     return VerticalDivider(
-      thickness: _getThickness(context),
+      width: borderWidth,
+      thickness: thickness,
       indent: indent,
       endIndent: endIndent,
       color: context.theme.color.border,

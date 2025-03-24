@@ -26,6 +26,8 @@ export 'color_picker/color_picker_book.dart';
 export 'audio_player/audio_player_book.dart';
 export 'video_player/video_player_book.dart';
 export 'editable_text/editable_text_book.dart';
+export 'comments/comments_book.dart';
+export 'rich_text_editor/rich_text_editor_book.dart';
 
 class InputCategories extends WidgetbookCategory {
   InputCategories({
@@ -60,5 +62,7 @@ class InputCategories extends WidgetbookCategory {
           AudioPlayerWidgetBook(),
           VideoPlayerWidgetBook(),
           InlineEditableTextWidgetBook(),
+          CommentsWidgetBook(),
+          RichTextEditorWidgetBook(),
         ]);
 }

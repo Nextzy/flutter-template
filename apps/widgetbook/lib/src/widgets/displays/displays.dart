@@ -29,6 +29,8 @@ export 'sidebar/sidebar_book.dart';
 export 'statuses/statuses.dart';
 export 'placeholder/placeholder_book.dart';
 export 'embeds/embeds.dart';
+export 'tree_view/tree_view_book.dart';
+export 'tutorial/tutorial_book.dart';
 
 class DisplayCategories extends WidgetbookCategory {
   DisplayCategories({
@@ -65,6 +67,8 @@ class DisplayCategories extends WidgetbookCategory {
             StatusWidgetBook(),
             PlaceholderWidgetBook(),
             EmbedWidgetBook(),
+            TreeViewWidgetBook(),
+            TutorialWidgetBook(),
           ],
         );
 }

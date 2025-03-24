@@ -37,3 +37,4 @@ export 'package:flutter_colorpicker/flutter_colorpicker.dart'
 export 'package:audioplayers/audioplayers.dart';
 export 'package:flick_video_player/flick_video_player.dart';
 export 'package:video_player/video_player.dart';
+export 'package:fleather/fleather.dart' hide kToolbarHeight;

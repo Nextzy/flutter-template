@@ -24,3 +24,5 @@ export 'chats/chats.dart';
 export 'color_picker.dart';
 export 'players/players.dart';
 export 'editable_text.dart';
+export 'comments/comments.dart';
+export 'rich_text_editor.dart';
