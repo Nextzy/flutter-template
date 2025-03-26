@@ -64,6 +64,7 @@ class _AppTableState extends State<AppTable> {
   int _totalPages = 1;
   int _currentPage = 1;
   List<MyCellContainer> _cellContainers = [];
+  List<MyCellContainer> _filteredContainers = [];
   List<MyCellContainer> _visibleCellContainers = [];
   String _currentFilteredText = '';
   bool _isSortAscending = true;
@@ -74,8 +75,8 @@ class _AppTableState extends State<AppTable> {
   void initState() {
     super.initState();
 
-    _cellContainers =
-        widget.dataTableSource.getFilteredAndSortedCellContainers();
+    _cellContainers = widget.dataTableSource.getCellContainers();
+    _filteredContainers = _cellContainers.toList();
 
     _updatePaging();
   }
@@ -95,8 +96,7 @@ class _AppTableState extends State<AppTable> {
                 setState(() {
                   _currentFilteredText = filteredText;
 
-                  _updateCellContainers();
-
+                  _filteredAndSortedCellContainers();
                   // _currentPage = 1;
                   _updatePaging();
                 });
@@ -114,7 +114,7 @@ class _AppTableState extends State<AppTable> {
                   onChanged: (value) {
                     setState(() {
                       _isSelectAllActive = value!;
-                      for (final cellContainer in _cellContainers) {
+                      for (final cellContainer in _filteredContainers) {
                         cellContainer.isSelected = _isSelectAllActive;
                       }
                     });
@@ -149,7 +149,7 @@ class _AppTableState extends State<AppTable> {
                             _currentSortColumn != i ? true : !_isSortAscending;
                         _currentSortColumn = i;
 
-                        _updateCellContainers();
+                        _filteredAndSortedCellContainers();
                         _updatePaging();
                       });
                     },
@@ -174,7 +174,7 @@ class _AppTableState extends State<AppTable> {
                         setState(() {
                           cellContainer.isSelected = value!;
 
-                          _isSelectAllActive = _cellContainers
+                          _isSelectAllActive = _filteredContainers
                               .all((cellContainer) => cellContainer.isSelected);
                         });
                       },
@@ -205,31 +205,43 @@ class _AppTableState extends State<AppTable> {
     );
   }
 
-  void _updateCellContainers() {
-    _cellContainers = widget.dataTableSource.getFilteredAndSortedCellContainers(
-      filteredColumn: widget.filteredColumn,
-      filteredText: _currentFilteredText,
-      sortedColumn: _currentSortColumn,
-      isSortAscending: _isSortAscending,
-    );
+  void _filteredAndSortedCellContainers() {
+    // Filter
+    _filteredContainers = _cellContainers
+        .where((cellContainer) => cellContainer
+            .cells[widget.filteredColumn].value
+            .toLowerCase()
+            .contains(_currentFilteredText.toLowerCase()))
+        .toList();
+
+    // Sort
+    if (_currentSortColumn != null) {
+      if (_isSortAscending) {
+        _filteredContainers.sort((a, b) => a.cells[_currentSortColumn!].value
+            .compareTo(b.cells[_currentSortColumn!].value));
+      } else {
+        _filteredContainers.sort((a, b) => b.cells[_currentSortColumn!].value
+            .compareTo(a.cells[_currentSortColumn!].value));
+      }
+    }
   }
 
   void _updatePaging() {
     _visibleCellContainers = widget.rowsPerPage > 0
-        ? _cellContainers
+        ? _filteredContainers
             .skip(widget.rowsPerPage * (_currentPage - 1))
             .take(widget.rowsPerPage)
             .toList()
-        : _cellContainers.toList();
+        : _filteredContainers.toList();
 
     _totalPages = widget.rowsPerPage > 0
-        ? (_cellContainers.length / widget.rowsPerPage).ceil()
+        ? (_filteredContainers.length / widget.rowsPerPage).ceil()
         : 1;
   }
 }
 
 abstract interface class AppDataTableSource {
-  List<MyCellContainer> _getCellContainers() {
+  List<MyCellContainer> getCellContainers() {
     final List<MyCellContainer> cellContainers = [];
 
     for (int i = 0; i < rowCount; i++) {
@@ -239,13 +251,6 @@ abstract interface class AppDataTableSource {
 
     return cellContainers;
   }
-
-  List<MyCellContainer> getFilteredAndSortedCellContainers({
-    int? filteredColumn,
-    String? filteredText,
-    int? sortedColumn,
-    bool? isSortAscending,
-  });
 
   MyCellContainer _getCellContainer(int index);
 
@@ -258,38 +263,6 @@ class MyDataTableSource extends AppDataTableSource {
   });
 
   final List<MyPerson> items;
-
-  @override
-  List<MyCellContainer> getFilteredAndSortedCellContainers({
-    int? filteredColumn,
-    String? filteredText,
-    int? sortedColumn,
-    bool? isSortAscending,
-  }) {
-    var newCellContainers = _getCellContainers();
-
-    // Filter
-    if (filteredColumn != null && filteredText != null) {
-      newCellContainers = newCellContainers
-          .where((cellContainer) => cellContainer.cells[filteredColumn].value
-              .toLowerCase()
-              .contains(filteredText.toLowerCase()))
-          .toList();
-    }
-
-    // Sort
-    if (sortedColumn != null && isSortAscending != null) {
-      if (isSortAscending) {
-        newCellContainers.sort((a, b) =>
-            a.cells[sortedColumn].value.compareTo(b.cells[sortedColumn].value));
-      } else {
-        newCellContainers.sort((a, b) =>
-            b.cells[sortedColumn].value.compareTo(a.cells[sortedColumn].value));
-      }
-    }
-
-    return newCellContainers;
-  }
 
   @override
   MyCellContainer _getCellContainer(int index) {
