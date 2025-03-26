@@ -105,13 +105,23 @@ class _AppTableState extends State<AppTable> {
               for (var i = 0; i < widget.headerNames.length; i++)
                 Expanded(
                   child: InkWell(
-                    child: AppText(
-                      widget.headerNames[i],
-                      textAlign: TextAlign.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AppText(
+                          widget.headerNames[i],
+                          textAlign: TextAlign.center,
+                        ),
+                        if (i == _currentSortColumn)
+                          Icon(
+                            _isSortedAscending
+                                ? Icons.arrow_downward
+                                : Icons.arrow_upward,
+                            size: 12.0,
+                          ),
+                      ],
                     ),
                     onTap: () {
-                      print('tap $i');
-
                       setState(() {
                         _rowWidgetsList =
                             widget.dataTableSource.getSortedCellContainers(
@@ -119,9 +129,10 @@ class _AppTableState extends State<AppTable> {
                           isSortedAscending: _isSortedAscending,
                         );
 
-                        _updatePaging();
-
                         _isSortedAscending = !_isSortedAscending;
+                        _currentSortColumn = i;
+
+                        _updatePaging();
                       });
                     },
                   ),
