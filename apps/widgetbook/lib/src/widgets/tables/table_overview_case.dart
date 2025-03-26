@@ -60,6 +60,8 @@ class _AppTableState extends State<AppTable> {
   int _currentPage = 1;
   List<MyCellContainer> _rowWidgetsList = [];
   List<MyCellContainer> _activeRowWidgetsList = [];
+  bool _isSortedAscending = true;
+  int? _currentSortColumn;
 
   @override
   void initState() {
@@ -109,6 +111,18 @@ class _AppTableState extends State<AppTable> {
                     ),
                     onTap: () {
                       print('tap $i');
+
+                      setState(() {
+                        _rowWidgetsList =
+                            widget.dataTableSource.getSortedCellContainers(
+                          sortedColumn: i,
+                          isSortedAscending: _isSortedAscending,
+                        );
+
+                        _updatePaging();
+
+                        _isSortedAscending = !_isSortedAscending;
+                      });
                     },
                   ),
                 ),
@@ -180,6 +194,11 @@ abstract interface class AppDataTableSource {
     required String filteredText,
   });
 
+  List<MyCellContainer> getSortedCellContainers({
+    required int sortedColumn,
+    required bool isSortedAscending,
+  });
+
   MyCellContainer getCellContainer(int index);
 
   int get rowCount;
@@ -202,6 +221,24 @@ class MyDataTableSource extends AppDataTableSource {
             .toLowerCase()
             .contains(filteredText.toLowerCase()))
         .toList();
+  }
+
+  @override
+  List<MyCellContainer> getSortedCellContainers({
+    required int sortedColumn,
+    required bool isSortedAscending,
+  }) {
+    final sortedCellContainers = getCellContainers();
+
+    if (isSortedAscending) {
+      sortedCellContainers.sort((a, b) =>
+          a.cells[sortedColumn].value.compareTo(b.cells[sortedColumn].value));
+    } else {
+      sortedCellContainers.sort((a, b) =>
+          b.cells[sortedColumn].value.compareTo(a.cells[sortedColumn].value));
+    }
+
+    return sortedCellContainers;
   }
 
   @override
@@ -231,14 +268,14 @@ class MyDataTableSource extends AppDataTableSource {
           ),
         ),
         MyCell(
-          value: item.rating.toString(),
+          value: item.rating,
           widget: AppText(
             item.rating.toString(),
             textAlign: TextAlign.center,
           ),
         ),
         MyCell(
-          value: DateFormat('yyyy-MM-dd').format(item.lastContact),
+          value: item.lastContact,
           widget: AppText(
             DateFormat('yyyy-MM-dd').format(item.lastContact),
             textAlign: TextAlign.center,
@@ -265,7 +302,7 @@ class MyCell {
     required this.widget,
   });
 
-  final String value;
+  final dynamic value;
   final Widget widget;
 }
 
