@@ -180,6 +180,7 @@ class _AppTableState extends State<AppTable> {
     _filteredContainers = _cellContainers
         .where((cellContainer) => cellContainer
             .cells[widget.filteredColumn].value
+            .toString()
             .toLowerCase()
             .contains(_filteredText.toLowerCase()))
         .toList();

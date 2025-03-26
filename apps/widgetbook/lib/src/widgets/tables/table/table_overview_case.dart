@@ -23,9 +23,13 @@ class OverviewTableWidgetCase extends WidgetbookScrollableUseCase {
                     source: PersonTableSource(
                       items: persons,
                     ),
-                    rowsPerPage: 4,
-                    filteredColumn: 0,
-                    hasCheckbox: true,
+                    hasCheckbox:
+                        TableComponentBook.createHasCheckboxOption(context),
+                    rowsPerPage:
+                        TableComponentBook.createRowsPerPageOption(context)
+                            .toInt(),
+                    filteredColumn:
+                        TableComponentBook.createFilteredColumnOption(context),
                   ),
                 ),
               ],

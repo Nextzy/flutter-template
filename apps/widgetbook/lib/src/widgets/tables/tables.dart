@@ -1,14 +1,14 @@
-export 'table_overview_case.dart';
+export 'table/table_book.dart';
 
 import 'package:widgetbook_app/widgetbook.dart';
 
-class TableCategories extends WidgetbookComponent {
+class TableCategories extends WidgetbookCategory {
   TableCategories({
     super.name = 'Tables',
     super.isInitiallyExpanded = true,
   }) : super(
-          useCases: [
-            OverviewTableWidgetCase(),
+          children: [
+            TableComponentBook(),
           ],
         );
 }
