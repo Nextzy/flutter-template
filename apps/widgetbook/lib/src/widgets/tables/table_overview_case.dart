@@ -31,7 +31,7 @@ class OverviewTableWidgetCase extends WidgetbookScrollableUseCase {
                     ),
                     rowsPerPage: 4,
                     filteredColumn: 0,
-                    hasCheckbox: false,
+                    hasCheckbox: true,
                   ),
                 ),
               ],
@@ -106,13 +106,13 @@ class _AppTableState extends State<AppTable> {
         ...[
           Row(
             children: [
+              if (widget.hasCheckbox) AppCheckbox(label: ''),
               for (var i = 0; i < widget.headerNames.length; i++)
                 Expanded(
                   child: InkWell(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (widget.hasCheckbox) AppCheckbox(label: ''),
                         Flexible(
                           child: Text(
                             widget.headerNames[i],
@@ -153,9 +153,11 @@ class _AppTableState extends State<AppTable> {
               final cellContainers = _visibleCellContainers[index];
 
               return Row(
-                children: List.generate(cellContainers.cells.length, (index) {
-                  return Expanded(child: cellContainers.cells[index].widget);
-                }),
+                children: [
+                  if (widget.hasCheckbox) AppCheckbox(label: ''),
+                  for (var i = 0; i < cellContainers.cells.length; i++)
+                    Expanded(child: cellContainers.cells[i].widget)
+                ],
               );
             },
             separatorBuilder: (context, index) {
