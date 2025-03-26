@@ -18,7 +18,7 @@ class OverviewTableWidgetCase extends WidgetbookScrollableUseCase {
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   // height: MediaQuery.of(context).size.height,
-                  height: 400,
+                  height: 420,
                   child: AppTable(
                     headerNames: [
                       'Name',
@@ -68,6 +68,7 @@ class _AppTableState extends State<AppTable> {
   String _currentFilteredText = '';
   bool _isSortAscending = true;
   int? _currentSortColumn;
+  bool _isSelectAllActive = false;
 
   @override
   void initState() {
@@ -106,7 +107,19 @@ class _AppTableState extends State<AppTable> {
         ...[
           Row(
             children: [
-              if (widget.hasCheckbox) AppCheckbox(label: ''),
+              if (widget.hasCheckbox)
+                Checkbox(
+                  value: _isSelectAllActive,
+                  // tristate: true,
+                  onChanged: (value) {
+                    setState(() {
+                      _isSelectAllActive = value!;
+                      for (final cellContainer in _cellContainers) {
+                        cellContainer.isSelected = _isSelectAllActive;
+                      }
+                    });
+                  },
+                ),
               for (var i = 0; i < widget.headerNames.length; i++)
                 Expanded(
                   child: InkWell(
@@ -150,13 +163,24 @@ class _AppTableState extends State<AppTable> {
           child: ListView.separated(
             itemCount: _visibleCellContainers.length,
             itemBuilder: (context, index) {
-              final cellContainers = _visibleCellContainers[index];
+              final cellContainer = _visibleCellContainers[index];
 
               return Row(
                 children: [
-                  if (widget.hasCheckbox) AppCheckbox(label: ''),
-                  for (var i = 0; i < cellContainers.cells.length; i++)
-                    Expanded(child: cellContainers.cells[i].widget)
+                  if (widget.hasCheckbox)
+                    Checkbox(
+                      value: cellContainer.isSelected,
+                      onChanged: (value) {
+                        setState(() {
+                          cellContainer.isSelected = value!;
+
+                          _isSelectAllActive = _cellContainers
+                              .all((cellContainer) => cellContainer.isSelected);
+                        });
+                      },
+                    ),
+                  for (var i = 0; i < cellContainer.cells.length; i++)
+                    Expanded(child: cellContainer.cells[i].widget)
                 ],
               );
             },
@@ -209,8 +233,8 @@ abstract interface class AppDataTableSource {
     final List<MyCellContainer> cellContainers = [];
 
     for (int i = 0; i < rowCount; i++) {
-      final rowWidgets = _getCellContainer(i);
-      cellContainers.add(rowWidgets);
+      final cellContainer = _getCellContainer(i);
+      cellContainers.add(cellContainer);
     }
 
     return cellContainers;
@@ -323,7 +347,7 @@ class MyDataTableSource extends AppDataTableSource {
 }
 
 class MyCell {
-  const MyCell({
+  MyCell({
     required this.value,
     required this.widget,
   });
@@ -335,9 +359,11 @@ class MyCell {
 class MyCellContainer {
   MyCellContainer({
     required this.cells,
+    this.isSelected = false,
   });
 
   final List<MyCell> cells;
+  bool isSelected;
 }
 
 //----------------------------------------------------------
