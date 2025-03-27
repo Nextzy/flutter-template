@@ -3,6 +3,8 @@ import 'package:design_system/lib.dart';
 class AppTable extends StatefulWidget {
   const AppTable({
     super.key,
+    required this.width,
+    required this.height,
     required this.headerNames,
     required this.source,
     this.rowsPerPage = 0,
@@ -10,6 +12,8 @@ class AppTable extends StatefulWidget {
     this.hasCheckbox = false,
   });
 
+  final double width;
+  final double height;
   final List<String> headerNames;
   final AppTableSource source;
   final int rowsPerPage;
@@ -43,26 +47,33 @@ class _AppTableState extends State<AppTable> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        _buildSearchTextField(),
-        _buildHeaderRow(),
-        Divider(),
-        _buildBodyRows(),
-        if (widget.rowsPerPage > 0)
-          AppSimplePagination(
-            totalPage: _totalPages,
-            size: WidgetSize.sm,
-            onChanged: (page) {
-              setState(() {
-                _currentPage = page;
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: SizedBox(
+        width: widget.width,
+        height: widget.height,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            _buildSearchTextField(),
+            _buildHeaderRow(),
+            Divider(),
+            _buildBodyRows(),
+            if (widget.rowsPerPage > 0)
+              AppSimplePagination(
+                totalPage: _totalPages,
+                size: WidgetSize.sm,
+                onChanged: (page) {
+                  setState(() {
+                    _currentPage = page;
 
-                _updatePaging();
-              });
-            },
-          ),
-      ],
+                    _updatePaging();
+                  });
+                },
+              ),
+          ],
+        ),
+      ),
     );
   }
 

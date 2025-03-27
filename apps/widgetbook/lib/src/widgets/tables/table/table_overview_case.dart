@@ -9,33 +9,27 @@ class OverviewTableWidgetCase extends WidgetbookScrollableUseCase {
             return SectionH1Widgetbook(
               title: 'Table',
               children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    // width: 1000,
-                    // height: MediaQuery.of(context).size.height,
-                    height: 420,
-                    child: AppTable(
-                      headerNames: [
-                        'Name',
-                        'Rating',
-                        'Last contact',
-                        'More info'
-                      ],
-                      source: PersonTableSource(
-                        items: persons,
-                      ),
-                      hasCheckbox:
-                          TableComponentBook.createHasCheckboxOption(context),
-                      rowsPerPage:
-                          TableComponentBook.createRowsPerPageOption(context)
-                              .toInt(),
-                      filteredColumn:
-                          TableComponentBook.createFilteredColumnOption(
-                              context),
-                    ),
+                AppTable(
+                  width: MediaQuery.of(context).size.width,
+                  // width: 1000,
+                  // height: MediaQuery.of(context).size.height - 200,
+                  height: 420,
+                  headerNames: [
+                    'Name',
+                    'Rating',
+                    'Last contact',
+                    'More info',
+                  ],
+                  source: PersonTableSource(
+                    items: persons,
                   ),
+                  hasCheckbox:
+                      TableComponentBook.createHasCheckboxOption(context),
+                  rowsPerPage:
+                      TableComponentBook.createRowsPerPageOption(context)
+                          .toInt(),
+                  filteredColumn:
+                      TableComponentBook.createFilteredColumnOption(context),
                 ),
               ],
             );
