@@ -22,6 +22,9 @@ class ApplicationWidgetbook extends StatelessWidget {
       appBuilder: (context, child) {
         return TranslationProvider(
           child: MaterialApp(
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {PointerDeviceKind.mouse},
+            ),
             debugShowCheckedModeBanner: false,
             localizationsDelegates: const [
               CountryLocalizations.delegate,
