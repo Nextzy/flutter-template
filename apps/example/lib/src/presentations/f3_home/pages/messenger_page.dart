@@ -1,4 +1,4 @@
-import 'package:change_application_name/application.dart';
+import 'package:example_app/application.dart';
 
 @RoutePage()
 class MessengerPage extends AppPage {

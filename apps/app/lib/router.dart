@@ -15,8 +15,6 @@ class AppRouter extends RootStackRouter {
           page: HomeRoute.page,
           initial: true,
         ),
-        AppRoute(path: '/messenger', page: MessengerRoute.page),
-        AppRoute(path: '/ecommerce', page: EcommerceRoute.page),
         AppRoute(
           path: '/setting',
           page: SettingRoute.page,

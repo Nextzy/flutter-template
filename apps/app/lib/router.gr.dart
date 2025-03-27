@@ -29,25 +29,6 @@ class AuthenticationRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [EcommercePage]
-class EcommerceRoute extends PageRouteInfo<void> {
-  const EcommerceRoute({List<PageRouteInfo>? children})
-      : super(
-          EcommerceRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'EcommerceRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const EcommercePage();
-    },
-  );
-}
-
-/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -62,25 +43,6 @@ class HomeRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return WrappedRoute(child: const HomePage());
-    },
-  );
-}
-
-/// generated route for
-/// [MessengerPage]
-class MessengerRoute extends PageRouteInfo<void> {
-  const MessengerRoute({List<PageRouteInfo>? children})
-      : super(
-          MessengerRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'MessengerRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const MessengerPage();
     },
   );
 }
