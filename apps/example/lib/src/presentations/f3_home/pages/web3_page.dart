@@ -101,17 +101,17 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                               fontWeight: FontWeight.w600,
                                             )),
                                         RowLayout(children: [
-                                          AppSquareAvatar(
+                                          AppCircleAvatar(
                                               size: WidgetSize.sm,
                                               style: WidgetStyle.subtle,
                                               path: Assets
                                                   .mock.avatarSquared1.keyName),
-                                          AppSquareAvatar(
+                                          AppCircleAvatar(
                                               size: WidgetSize.sm,
                                               style: WidgetStyle.subtle,
                                               path: Assets
                                                   .mock.avatarSquared2.keyName),
-                                          AppSquareAvatar(
+                                          AppCircleAvatar(
                                               size: WidgetSize.sm,
                                               style: WidgetStyle.subtle,
                                               path: Assets
@@ -146,17 +146,17 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                               fontWeight: FontWeight.w600,
                                             )),
                                         RowLayout(children: [
-                                          AppSquareAvatar(
+                                          AppCircleAvatar(
                                               size: WidgetSize.sm,
                                               style: WidgetStyle.subtle,
                                               path: Assets
                                                   .mock.avatarSquared1.keyName),
-                                          AppSquareAvatar(
+                                          AppCircleAvatar(
                                               size: WidgetSize.sm,
                                               style: WidgetStyle.subtle,
                                               path: Assets
                                                   .mock.avatarSquared2.keyName),
-                                          AppSquareAvatar(
+                                          AppCircleAvatar(
                                               size: WidgetSize.sm,
                                               style: WidgetStyle.subtle,
                                               path: Assets

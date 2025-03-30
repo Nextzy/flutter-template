@@ -43,6 +43,22 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [KanbanPage]
+class KanbanRoute extends PageRouteInfo<void> {
+  const KanbanRoute({List<PageRouteInfo>? children})
+    : super(KanbanRoute.name, initialChildren: children);
+
+  static const String name = 'KanbanRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const KanbanPage();
+    },
+  );
+}
+
+/// generated route for
 /// [MessengerPage]
 class MessengerRoute extends PageRouteInfo<void> {
   const MessengerRoute({List<PageRouteInfo>? children})

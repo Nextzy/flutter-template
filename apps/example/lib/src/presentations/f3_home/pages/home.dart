@@ -21,7 +21,12 @@ class _HomePageState extends AppPageState<HomePage> {
         gap: 40,
         children: [
           AppButton(
-              text: 'Go to Messenger app',
+              text: 'Go to Signup',
+              onPress: () {
+                navigate(SignupRoute());
+              }),
+          AppButton(
+              text: 'Go to Messenger',
               onPress: () {
                 navigate(MessengerRoute());
               }),
@@ -34,6 +39,11 @@ class _HomePageState extends AppPageState<HomePage> {
               text: 'Go to Web3',
               onPress: () {
                 navigate(Web3Route());
+              }),
+          AppButton(
+              text: 'Go to Kanban',
+              onPress: () {
+                navigate(KanbanRoute());
               }),
         ],
       ),

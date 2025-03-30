@@ -14,6 +14,7 @@ class ExampleRouter extends RootStackRouter {
         AppRoute(path: '/messenger', page: MessengerRoute.page),
         AppRoute(path: '/ecommerce', page: EcommerceRoute.page),
         AppRoute(path: '/web3', page: Web3Route.page),
+        AppRoute(path: '/kanban', page: KanbanRoute.page),
         AppRoute(path: '/signup', page: SignupRoute.page),
         RedirectRoute(path: '*', redirectTo: '/'),
       ];
