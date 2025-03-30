@@ -61,7 +61,7 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       body: RowLayout(
         backgroundColor: context.theme.color.bg,
         children: [
@@ -104,7 +104,7 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                   AppText(
-                                    'The Fastlane team The Fastlane team The Fastlane team',
+                                    'The Fastlane team',
                                     style: TextStyle(
                                       color: context.theme.color.textPrimary,
                                       fontSize: 14,

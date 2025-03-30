@@ -73,3 +73,19 @@ class SignupRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [Web3Page]
+class Web3Route extends PageRouteInfo<void> {
+  const Web3Route({List<PageRouteInfo>? children})
+    : super(Web3Route.name, initialChildren: children);
+
+  static const String name = 'Web3Route';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const Web3Page();
+    },
+  );
+}

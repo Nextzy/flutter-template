@@ -30,6 +30,11 @@ class _HomePageState extends AppPageState<HomePage> {
               onPress: () {
                 navigate(EcommerceRoute());
               }),
+          AppButton(
+              text: 'Go to Web3',
+              onPress: () {
+                navigate(Web3Route());
+              }),
         ],
       ),
     );
