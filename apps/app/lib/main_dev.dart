@@ -60,10 +60,10 @@ Future<void> runApplication() async {
   // },
   // );
 
-  Catcher(
+  Catcher2(
     ensureInitialized: true,
     enableLogger: true,
-    debugConfig: CatcherOptions(
+    debugConfig: Catcher2Options(
       PageReportMode(),
       [
         // CrashlyticsHandler(),

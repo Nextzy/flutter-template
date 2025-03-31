@@ -3,7 +3,7 @@ import 'package:design_system/lib.dart';
 part 'generated/filter.freezed.dart';
 
 @freezed
-class AppImageFilter with _$AppImageFilter {
+abstract class AppImageFilter with _$AppImageFilter {
   const AppImageFilter._();
 
   const factory AppImageFilter({

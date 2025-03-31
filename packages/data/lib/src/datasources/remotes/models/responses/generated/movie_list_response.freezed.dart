@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,87 +10,59 @@ part of '../movie_list_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-RemoteMovieListResponse _$RemoteMovieListResponseFromJson(
-    Map<String, dynamic> json) {
-  return _RemoteMovieListResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$RemoteMovieListResponse {
-  List<RemoteMovie>? get data => throw _privateConstructorUsedError;
-
-  /// Serializes this RemoteMovieListResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<RemoteMovie>? get data;
 
   /// Create a copy of RemoteMovieListResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $RemoteMovieListResponseCopyWith<RemoteMovieListResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RemoteMovieListResponseCopyWith<$Res> {
-  factory $RemoteMovieListResponseCopyWith(RemoteMovieListResponse value,
-          $Res Function(RemoteMovieListResponse) then) =
-      _$RemoteMovieListResponseCopyWithImpl<$Res, RemoteMovieListResponse>;
-  @useResult
-  $Res call({List<RemoteMovie>? data});
-}
-
-/// @nodoc
-class _$RemoteMovieListResponseCopyWithImpl<$Res,
-        $Val extends RemoteMovieListResponse>
-    implements $RemoteMovieListResponseCopyWith<$Res> {
-  _$RemoteMovieListResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of RemoteMovieListResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $RemoteMovieListResponseCopyWith<RemoteMovieListResponse> get copyWith =>
+      _$RemoteMovieListResponseCopyWithImpl<RemoteMovieListResponse>(
+          this as RemoteMovieListResponse, _$identity);
+
+  /// Serializes this RemoteMovieListResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(_value.copyWith(
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<RemoteMovie>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RemoteMovieListResponse &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @override
+  String toString() {
+    return 'RemoteMovieListResponse(data: $data)';
   }
 }
 
 /// @nodoc
-abstract class _$$RemoteMovieListResponseImplCopyWith<$Res>
-    implements $RemoteMovieListResponseCopyWith<$Res> {
-  factory _$$RemoteMovieListResponseImplCopyWith(
-          _$RemoteMovieListResponseImpl value,
-          $Res Function(_$RemoteMovieListResponseImpl) then) =
-      __$$RemoteMovieListResponseImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $RemoteMovieListResponseCopyWith<$Res> {
+  factory $RemoteMovieListResponseCopyWith(RemoteMovieListResponse value,
+          $Res Function(RemoteMovieListResponse) _then) =
+      _$RemoteMovieListResponseCopyWithImpl;
   @useResult
   $Res call({List<RemoteMovie>? data});
 }
 
 /// @nodoc
-class __$$RemoteMovieListResponseImplCopyWithImpl<$Res>
-    extends _$RemoteMovieListResponseCopyWithImpl<$Res,
-        _$RemoteMovieListResponseImpl>
-    implements _$$RemoteMovieListResponseImplCopyWith<$Res> {
-  __$$RemoteMovieListResponseImplCopyWithImpl(
-      _$RemoteMovieListResponseImpl _value,
-      $Res Function(_$RemoteMovieListResponseImpl) _then)
-      : super(_value, _then);
+class _$RemoteMovieListResponseCopyWithImpl<$Res>
+    implements $RemoteMovieListResponseCopyWith<$Res> {
+  _$RemoteMovieListResponseCopyWithImpl(this._self, this._then);
+
+  final RemoteMovieListResponse _self;
+  final $Res Function(RemoteMovieListResponse) _then;
 
   /// Create a copy of RemoteMovieListResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -98,9 +71,9 @@ class __$$RemoteMovieListResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_$RemoteMovieListResponseImpl(
+    return _then(_self.copyWith(
       data: freezed == data
-          ? _value._data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<RemoteMovie>?,
     ));
@@ -109,12 +82,11 @@ class __$$RemoteMovieListResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RemoteMovieListResponseImpl implements _RemoteMovieListResponse {
-  const _$RemoteMovieListResponseImpl({final List<RemoteMovie>? data})
+class _RemoteMovieListResponse implements RemoteMovieListResponse {
+  const _RemoteMovieListResponse({final List<RemoteMovie>? data})
       : _data = data;
-
-  factory _$RemoteMovieListResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RemoteMovieListResponseImplFromJson(json);
+  factory _RemoteMovieListResponse.fromJson(Map<String, dynamic> json) =>
+      _$RemoteMovieListResponseFromJson(json);
 
   final List<RemoteMovie>? _data;
   @override
@@ -126,16 +98,27 @@ class _$RemoteMovieListResponseImpl implements _RemoteMovieListResponse {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of RemoteMovieListResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'RemoteMovieListResponse(data: $data)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$RemoteMovieListResponseCopyWith<_RemoteMovieListResponse> get copyWith =>
+      __$RemoteMovieListResponseCopyWithImpl<_RemoteMovieListResponse>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$RemoteMovieListResponseToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RemoteMovieListResponseImpl &&
+            other is _RemoteMovieListResponse &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -144,163 +127,67 @@ class _$RemoteMovieListResponseImpl implements _RemoteMovieListResponse {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
-  /// Create a copy of RemoteMovieListResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$RemoteMovieListResponseImplCopyWith<_$RemoteMovieListResponseImpl>
-      get copyWith => __$$RemoteMovieListResponseImplCopyWithImpl<
-          _$RemoteMovieListResponseImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RemoteMovieListResponseImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _RemoteMovieListResponse implements RemoteMovieListResponse {
-  const factory _RemoteMovieListResponse({final List<RemoteMovie>? data}) =
-      _$RemoteMovieListResponseImpl;
-
-  factory _RemoteMovieListResponse.fromJson(Map<String, dynamic> json) =
-      _$RemoteMovieListResponseImpl.fromJson;
-
-  @override
-  List<RemoteMovie>? get data;
-
-  /// Create a copy of RemoteMovieListResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RemoteMovieListResponseImplCopyWith<_$RemoteMovieListResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-RemoteMovie _$RemoteMovieFromJson(Map<String, dynamic> json) {
-  return _RemoteMovie.fromJson(json);
-}
-
-/// @nodoc
-mixin _$RemoteMovie {
-  String? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-
-  /// Serializes this RemoteMovie to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of RemoteMovie
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $RemoteMovieCopyWith<RemoteMovie> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RemoteMovieCopyWith<$Res> {
-  factory $RemoteMovieCopyWith(
-          RemoteMovie value, $Res Function(RemoteMovie) then) =
-      _$RemoteMovieCopyWithImpl<$Res, RemoteMovie>;
-  @useResult
-  $Res call({String? id, String? name});
-}
-
-/// @nodoc
-class _$RemoteMovieCopyWithImpl<$Res, $Val extends RemoteMovie>
-    implements $RemoteMovieCopyWith<$Res> {
-  _$RemoteMovieCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of RemoteMovie
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  String toString() {
+    return 'RemoteMovieListResponse(data: $data)';
   }
 }
 
 /// @nodoc
-abstract class _$$RemoteMovieImplCopyWith<$Res>
-    implements $RemoteMovieCopyWith<$Res> {
-  factory _$$RemoteMovieImplCopyWith(
-          _$RemoteMovieImpl value, $Res Function(_$RemoteMovieImpl) then) =
-      __$$RemoteMovieImplCopyWithImpl<$Res>;
+abstract mixin class _$RemoteMovieListResponseCopyWith<$Res>
+    implements $RemoteMovieListResponseCopyWith<$Res> {
+  factory _$RemoteMovieListResponseCopyWith(_RemoteMovieListResponse value,
+          $Res Function(_RemoteMovieListResponse) _then) =
+      __$RemoteMovieListResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({String? id, String? name});
+  $Res call({List<RemoteMovie>? data});
 }
 
 /// @nodoc
-class __$$RemoteMovieImplCopyWithImpl<$Res>
-    extends _$RemoteMovieCopyWithImpl<$Res, _$RemoteMovieImpl>
-    implements _$$RemoteMovieImplCopyWith<$Res> {
-  __$$RemoteMovieImplCopyWithImpl(
-      _$RemoteMovieImpl _value, $Res Function(_$RemoteMovieImpl) _then)
-      : super(_value, _then);
+class __$RemoteMovieListResponseCopyWithImpl<$Res>
+    implements _$RemoteMovieListResponseCopyWith<$Res> {
+  __$RemoteMovieListResponseCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of RemoteMovie
+  final _RemoteMovieListResponse _self;
+  final $Res Function(_RemoteMovieListResponse) _then;
+
+  /// Create a copy of RemoteMovieListResponse
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? data = freezed,
   }) {
-    return _then(_$RemoteMovieImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_RemoteMovieListResponse(
+      data: freezed == data
+          ? _self._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<RemoteMovie>?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$RemoteMovieImpl implements _RemoteMovie {
-  const _$RemoteMovieImpl({this.id, this.name});
+mixin _$RemoteMovie {
+  String? get id;
+  String? get name;
 
-  factory _$RemoteMovieImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RemoteMovieImplFromJson(json);
+  /// Create a copy of RemoteMovie
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $RemoteMovieCopyWith<RemoteMovie> get copyWith =>
+      _$RemoteMovieCopyWithImpl<RemoteMovie>(this as RemoteMovie, _$identity);
 
-  @override
-  final String? id;
-  @override
-  final String? name;
-
-  @override
-  String toString() {
-    return 'RemoteMovie(id: $id, name: $name)';
-  }
+  /// Serializes this RemoteMovie to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RemoteMovieImpl &&
+            other is RemoteMovie &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -309,38 +196,132 @@ class _$RemoteMovieImpl implements _RemoteMovie {
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
-  /// Create a copy of RemoteMovie
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$RemoteMovieImplCopyWith<_$RemoteMovieImpl> get copyWith =>
-      __$$RemoteMovieImplCopyWithImpl<_$RemoteMovieImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RemoteMovieImplToJson(
-      this,
-    );
+  String toString() {
+    return 'RemoteMovie(id: $id, name: $name)';
   }
 }
 
-abstract class _RemoteMovie implements RemoteMovie {
-  const factory _RemoteMovie({final String? id, final String? name}) =
-      _$RemoteMovieImpl;
+/// @nodoc
+abstract mixin class $RemoteMovieCopyWith<$Res> {
+  factory $RemoteMovieCopyWith(
+          RemoteMovie value, $Res Function(RemoteMovie) _then) =
+      _$RemoteMovieCopyWithImpl;
+  @useResult
+  $Res call({String? id, String? name});
+}
 
-  factory _RemoteMovie.fromJson(Map<String, dynamic> json) =
-      _$RemoteMovieImpl.fromJson;
+/// @nodoc
+class _$RemoteMovieCopyWithImpl<$Res> implements $RemoteMovieCopyWith<$Res> {
+  _$RemoteMovieCopyWithImpl(this._self, this._then);
+
+  final RemoteMovie _self;
+  final $Res Function(RemoteMovie) _then;
+
+  /// Create a copy of RemoteMovie
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_self.copyWith(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _RemoteMovie implements RemoteMovie {
+  const _RemoteMovie({this.id, this.name});
+  factory _RemoteMovie.fromJson(Map<String, dynamic> json) =>
+      _$RemoteMovieFromJson(json);
 
   @override
-  String? get id;
+  final String? id;
   @override
-  String? get name;
+  final String? name;
 
   /// Create a copy of RemoteMovie
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RemoteMovieImplCopyWith<_$RemoteMovieImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$RemoteMovieCopyWith<_RemoteMovie> get copyWith =>
+      __$RemoteMovieCopyWithImpl<_RemoteMovie>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$RemoteMovieToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _RemoteMovie &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
+
+  @override
+  String toString() {
+    return 'RemoteMovie(id: $id, name: $name)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$RemoteMovieCopyWith<$Res>
+    implements $RemoteMovieCopyWith<$Res> {
+  factory _$RemoteMovieCopyWith(
+          _RemoteMovie value, $Res Function(_RemoteMovie) _then) =
+      __$RemoteMovieCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? id, String? name});
+}
+
+/// @nodoc
+class __$RemoteMovieCopyWithImpl<$Res> implements _$RemoteMovieCopyWith<$Res> {
+  __$RemoteMovieCopyWithImpl(this._self, this._then);
+
+  final _RemoteMovie _self;
+  final $Res Function(_RemoteMovie) _then;
+
+  /// Create a copy of RemoteMovie
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_RemoteMovie(
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on

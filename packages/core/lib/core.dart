@@ -10,7 +10,7 @@ export 'package:firebase_remote_config/firebase_remote_config.dart';
 
 ///========= UTILS PACKAGES ==========///
 export 'package:upgrader/upgrader.dart';
-export 'package:catcher/catcher.dart';
+export 'package:catcher_2/catcher_2.dart';
 export 'package:permission_handler/permission_handler.dart';
 export 'package:open_file/open_file.dart';
 export 'package:wakelock_plus/wakelock_plus.dart';

@@ -12,8 +12,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   core:
     path: ../../packages/core
   data:
@@ -25,7 +23,7 @@ dependencies:
   utils:
     path: ../../packages/utils
 
-  flutter_native_splash: ^2.4.4
+  flutter_native_splash: ^2.4.5
   flutter_launcher_icons: ^0.14.3
   country_code_picker: ^3.2.0
 
@@ -36,40 +34,46 @@ dependencies:
 
   #======= DATA ========#
   #PLATFORM: All
-  drift: ^2.25.1
+  drift: ^2.26.0
   drift_flutter: ^0.2.4
   envied: ^1.1.1
 
   #========== Utils ===========#
   flutter_multi_formatter: ^2.13.0
-  talker_bloc_logger: ^4.6.12
+  talker_bloc_logger: ^4.7.1
   sms_autofill: ^2.4.1
-  auto_route: ^9.3.0+1
+  auto_route: ^10.0.1
 
 dependency_overrides:
+  # Resolve for wechat_assets_picker
+  extended_image: ^9.1.0
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  flutter_flavorizr:
+    git:
+      url: https://github.com/Nextzy/flutter_flavorizr
+      ref: master
+
   flutter_lints: ^5.0.0
   bloc_test: ^10.0.0
-  flutter_flavorizr: ^2.2.3
   build_runner: ^2.4.15
   build_test: ^2.2.3
-  build_web_compilers: ^4.1.1
-  json_serializable: ^6.9.0
-  freezed: ^2.5.7
-  drift_dev: ^2.25.2
+  build_web_compilers: ^4.1.2
+  json_serializable: ^6.9.4
+  freezed: ^3.0.4
+  drift_dev: ^2.26.0
   envied_generator: ^1.1.1
-  auto_route_generator: ^9.0.0
+  auto_route_generator: ^10.0.1
 
 flutter:
   uses-material-design: true
 
   # Enable generation of localized Strings from arb files.
   generate: true
-
-
 
 ###################################################
 # FLUTTER FLAVORIZR                               #
@@ -156,11 +160,19 @@ flavorizr: #See more: https://pub.dev/packages/flutter_flavorizr
   instructions:
     - assets:download
     - assets:extract
+    - android:flavorizrGradle
     - android:buildGradle
+    - ios:podfile
     - ios:xcconfig
     - ios:buildTargets
     - ios:schema
     - ios:plist
+    - macos:podfile
+    - macos:xcconfig
+    - macos:configs
+    - macos:buildTargets
+    - macos:schema
+    - macos:plist
     - google:firebase
     - huawei:agconnect
     - assets:clean

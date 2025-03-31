@@ -5,10 +5,11 @@ part 'generated/error_response.freezed.dart';
 part 'generated/error_response.g.dart';
 
 @freezed
-class ErrorResponse with _$ErrorResponse {
+abstract class ErrorResponse with _$ErrorResponse {
   const factory ErrorResponse({
-    String? type,
+    int? code,
     String? message,
+    String? userMessage,
     String? developerMessage,
   }) = _ErrorResponseResponse;
 

@@ -9,7 +9,7 @@ typedef AppIconWidgetErrorBuilder = Widget Function(
     BuildContext context, double size, Object? error, StackTrace? stackTrace);
 
 @freezed
-class AppIconTheme with _$AppIconTheme {
+abstract class AppIconTheme with _$AppIconTheme {
   const factory AppIconTheme({
     WidgetSize? size,
     bool? matchTextDirection,

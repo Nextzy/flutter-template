@@ -9,32 +9,30 @@ abstract class AppState<WIDGET extends AppStatefulWidget>
   AppThemeData get theme =>
       ThemeApplication.of(context, mode: widget.themeMode);
 
+  ThemeMode get themeMode => widget.themeMode ?? theme.themeMode;
+
   WidgetSize get widgetSize => widget.size ?? theme.defaultWidgetSize;
 
   InternetConnectionBloc get connectivity =>
       context.read<InternetConnectionBloc>();
 
-  @override
-  String? get restorationId => widget.key?.toString();
-
   Widget buildResponsive({required ResponsiveBuilder child}) {
     final Breakpoint breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
-
     return child(PlatformChecker.platform, breakpoint);
   }
 
   Widget buildPopScope<T>({
     required bool canPop,
-    required Function(BuildContext context)? onPop,
+    required Function(BuildContext context, T? result)? onPop,
     required Widget child,
   }) =>
       onPop != null
-          ? PopScope(
+          ? PopScope<T>(
               canPop: canPop,
-              onPopInvoked: (didPop) {
+              onPopInvokedWithResult: (didPop, result) {
                 if (didPop) return;
                 clearFocus();
-                onPop.call(context);
+                onPop.call(context, result);
                 if (!context.router.canPop()) SystemNavigator.pop();
               },
               child: child,
@@ -245,9 +243,4 @@ abstract class AppState<WIDGET extends AppStatefulWidget>
 extension AppRouterHelper on BuildContext {
   bool canPop() => router.canPop();
 
-  void pop<R extends Object?>([R? result]) {
-    if (mounted) {
-      return router.popForced<R>(result);
-    }
-  }
 }

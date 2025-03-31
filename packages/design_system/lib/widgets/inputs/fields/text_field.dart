@@ -325,6 +325,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                   animateDuration: 50.milliseconds,
                   disabledPressAnimation: true,
                   crossAxisIntrinsic: true,
+                  tapFocus: true,
                   disabled: widget.disabled,
                   onHover: _onHover,
                   onPress: () {

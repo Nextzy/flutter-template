@@ -43,10 +43,10 @@ Future<void> setupFirebaseUat() async {
 }
 
 Future<void> runApplication() async {
-  Catcher(
+  Catcher2(
     ensureInitialized: true,
     enableLogger: false,
-    releaseConfig: CatcherOptions(
+    releaseConfig: Catcher2Options(
       SilentReportMode(),
       [],
       filterFunction: _filterErrorFunction,

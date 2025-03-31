@@ -3,16 +3,16 @@ import 'package:data/lib.dart';
 class AppException implements Exception {
   const AppException({
     this.code,
-    this.type,
     this.message,
+    this.userMessage,
     this.developerMessage,
     this.stacktrace,
     this.errors,
   });
 
   final int? code;
-  final String? type;
   final String? message;
+  final String? userMessage;
   final String? developerMessage;
   final List<AppException>? errors;
   final StackTrace? stacktrace;
@@ -31,16 +31,15 @@ class AppException implements Exception {
       final errorResponse = ErrorResponse.fromJson(exception?.response?.data);
 
       return AppException(
-        code: exception?.response?.statusCode,
-        type: errorResponse.type,
+        code: errorResponse.code,
         message: errorResponse.message,
+        userMessage: errorResponse.userMessage,
         developerMessage: errorResponse.developerMessage,
         stacktrace: exception?.stackTrace,
       );
     } else {
       return AppException(
         code: exception?.response?.statusCode,
-        type: exception?.type.toString(),
         developerMessage: exception?.message,
         stacktrace: exception?.stackTrace,
       );
@@ -78,7 +77,6 @@ class AppException implements Exception {
   String toString() {
     String msg = '';
     if (code != null) msg += '>>Code: $code\n';
-    if (type.isNotNullOrBlank) msg += '>>Type: $type\n';
     if (message != null && message!.isNotEmpty) {
       msg += '>>Message: $message\n';
     }

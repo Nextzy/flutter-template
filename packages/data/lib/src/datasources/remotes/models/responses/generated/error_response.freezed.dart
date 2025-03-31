@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,116 +10,100 @@ part of '../error_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
   return _ErrorResponseResponse.fromJson(json);
 }
 
 /// @nodoc
 mixin _$ErrorResponse {
-  String? get type => throw _privateConstructorUsedError;
-  String? get message => throw _privateConstructorUsedError;
-  String? get developerMessage => throw _privateConstructorUsedError;
-
-  /// Serializes this ErrorResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int? get code;
+  String? get message;
+  String? get userMessage;
+  String? get developerMessage;
 
   /// Create a copy of ErrorResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ErrorResponseCopyWith<ErrorResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ErrorResponseCopyWith<$Res> {
-  factory $ErrorResponseCopyWith(
-          ErrorResponse value, $Res Function(ErrorResponse) then) =
-      _$ErrorResponseCopyWithImpl<$Res, ErrorResponse>;
-  @useResult
-  $Res call({String? type, String? message, String? developerMessage});
-}
-
-/// @nodoc
-class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
-    implements $ErrorResponseCopyWith<$Res> {
-  _$ErrorResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ErrorResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $ErrorResponseCopyWith<ErrorResponse> get copyWith =>
+      _$ErrorResponseCopyWithImpl<ErrorResponse>(
+          this as ErrorResponse, _$identity);
+
+  /// Serializes this ErrorResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? type = freezed,
-    Object? message = freezed,
-    Object? developerMessage = freezed,
-  }) {
-    return _then(_value.copyWith(
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      developerMessage: freezed == developerMessage
-          ? _value.developerMessage
-          : developerMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ErrorResponse &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.userMessage, userMessage) ||
+                other.userMessage == userMessage) &&
+            (identical(other.developerMessage, developerMessage) ||
+                other.developerMessage == developerMessage));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, code, message, userMessage, developerMessage);
+
+  @override
+  String toString() {
+    return 'ErrorResponse(code: $code, message: $message, userMessage: $userMessage, developerMessage: $developerMessage)';
   }
 }
 
 /// @nodoc
-abstract class _$$ErrorResponseResponseImplCopyWith<$Res>
-    implements $ErrorResponseCopyWith<$Res> {
-  factory _$$ErrorResponseResponseImplCopyWith(
-          _$ErrorResponseResponseImpl value,
-          $Res Function(_$ErrorResponseResponseImpl) then) =
-      __$$ErrorResponseResponseImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ErrorResponseCopyWith<$Res> {
+  factory $ErrorResponseCopyWith(
+          ErrorResponse value, $Res Function(ErrorResponse) _then) =
+      _$ErrorResponseCopyWithImpl;
   @useResult
-  $Res call({String? type, String? message, String? developerMessage});
+  $Res call(
+      {int? code,
+      String? message,
+      String? userMessage,
+      String? developerMessage});
 }
 
 /// @nodoc
-class __$$ErrorResponseResponseImplCopyWithImpl<$Res>
-    extends _$ErrorResponseCopyWithImpl<$Res, _$ErrorResponseResponseImpl>
-    implements _$$ErrorResponseResponseImplCopyWith<$Res> {
-  __$$ErrorResponseResponseImplCopyWithImpl(_$ErrorResponseResponseImpl _value,
-      $Res Function(_$ErrorResponseResponseImpl) _then)
-      : super(_value, _then);
+class _$ErrorResponseCopyWithImpl<$Res>
+    implements $ErrorResponseCopyWith<$Res> {
+  _$ErrorResponseCopyWithImpl(this._self, this._then);
+
+  final ErrorResponse _self;
+  final $Res Function(ErrorResponse) _then;
 
   /// Create a copy of ErrorResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
+    Object? code = freezed,
     Object? message = freezed,
+    Object? userMessage = freezed,
     Object? developerMessage = freezed,
   }) {
-    return _then(_$ErrorResponseResponseImpl(
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_self.copyWith(
+      code: freezed == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int?,
       message: freezed == message
-          ? _value.message
+          ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      userMessage: freezed == userMessage
+          ? _self.userMessage
+          : userMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
       developerMessage: freezed == developerMessage
-          ? _value.developerMessage
+          ? _self.developerMessage
           : developerMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -127,77 +112,113 @@ class __$$ErrorResponseResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ErrorResponseResponseImpl implements _ErrorResponseResponse {
-  const _$ErrorResponseResponseImpl(
-      {this.type, this.message, this.developerMessage});
-
-  factory _$ErrorResponseResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ErrorResponseResponseImplFromJson(json);
+class _ErrorResponseResponse implements ErrorResponse {
+  const _ErrorResponseResponse(
+      {this.code, this.message, this.userMessage, this.developerMessage});
+  factory _ErrorResponseResponse.fromJson(Map<String, dynamic> json) =>
+      _$ErrorResponseResponseFromJson(json);
 
   @override
-  final String? type;
+  final int? code;
   @override
   final String? message;
   @override
+  final String? userMessage;
+  @override
   final String? developerMessage;
 
+  /// Create a copy of ErrorResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ErrorResponse(type: $type, message: $message, developerMessage: $developerMessage)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ErrorResponseResponseCopyWith<_ErrorResponseResponse> get copyWith =>
+      __$ErrorResponseResponseCopyWithImpl<_ErrorResponseResponse>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ErrorResponseResponseToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorResponseResponseImpl &&
-            (identical(other.type, type) || other.type == type) &&
+            other is _ErrorResponseResponse &&
+            (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.userMessage, userMessage) ||
+                other.userMessage == userMessage) &&
             (identical(other.developerMessage, developerMessage) ||
                 other.developerMessage == developerMessage));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, type, message, developerMessage);
-
-  /// Create a copy of ErrorResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ErrorResponseResponseImplCopyWith<_$ErrorResponseResponseImpl>
-      get copyWith => __$$ErrorResponseResponseImplCopyWithImpl<
-          _$ErrorResponseResponseImpl>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, code, message, userMessage, developerMessage);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$ErrorResponseResponseImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ErrorResponse(code: $code, message: $message, userMessage: $userMessage, developerMessage: $developerMessage)';
   }
 }
 
-abstract class _ErrorResponseResponse implements ErrorResponse {
-  const factory _ErrorResponseResponse(
-      {final String? type,
-      final String? message,
-      final String? developerMessage}) = _$ErrorResponseResponseImpl;
+/// @nodoc
+abstract mixin class _$ErrorResponseResponseCopyWith<$Res>
+    implements $ErrorResponseCopyWith<$Res> {
+  factory _$ErrorResponseResponseCopyWith(_ErrorResponseResponse value,
+          $Res Function(_ErrorResponseResponse) _then) =
+      __$ErrorResponseResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int? code,
+      String? message,
+      String? userMessage,
+      String? developerMessage});
+}
 
-  factory _ErrorResponseResponse.fromJson(Map<String, dynamic> json) =
-      _$ErrorResponseResponseImpl.fromJson;
+/// @nodoc
+class __$ErrorResponseResponseCopyWithImpl<$Res>
+    implements _$ErrorResponseResponseCopyWith<$Res> {
+  __$ErrorResponseResponseCopyWithImpl(this._self, this._then);
 
-  @override
-  String? get type;
-  @override
-  String? get message;
-  @override
-  String? get developerMessage;
+  final _ErrorResponseResponse _self;
+  final $Res Function(_ErrorResponseResponse) _then;
 
   /// Create a copy of ErrorResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorResponseResponseImplCopyWith<_$ErrorResponseResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? code = freezed,
+    Object? message = freezed,
+    Object? userMessage = freezed,
+    Object? developerMessage = freezed,
+  }) {
+    return _then(_ErrorResponseResponse(
+      code: freezed == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int?,
+      message: freezed == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userMessage: freezed == userMessage
+          ? _self.userMessage
+          : userMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      developerMessage: freezed == developerMessage
+          ? _self.developerMessage
+          : developerMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
+
+// dart format on

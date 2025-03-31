@@ -1,5 +1,5 @@
   
-import 'package:catcher/model/platform_type.dart';
+import 'package:catcher_2/model/platform_type.dart';
 import 'package:core/lib.dart';
 import 'package:newrelic_mobile/config.dart' as NewRelic;
 

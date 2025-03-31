@@ -7,9 +7,10 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart' as _svg;
+import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
 class $AssetsIconGen {
   const $AssetsIconGen();
@@ -44,6 +45,7 @@ class $AssetsIconGen {
   /// File path: assets/icon/arrows-clockwise-regular.svg
   SvgGenImage get arrowsClockwiseRegular => const SvgGenImage('assets/icon/arrows-clockwise-regular.svg');
 
+  /// Directory path: assets/icon/button
   $AssetsIconButtonGen get button => const $AssetsIconButtonGen();
 
   /// File path: assets/icon/calendar-blank-filled.svg
@@ -166,6 +168,7 @@ class $AssetsIconGen {
   /// File path: assets/icon/lightning-slash-regular.svg
   SvgGenImage get lightningSlashRegular => const SvgGenImage('assets/icon/lightning-slash-regular.svg');
 
+  /// Directory path: assets/icon/social
   $AssetsIconSocialGen get social => const $AssetsIconSocialGen();
 
   /// File path: assets/icon/trash-simple-filled.svg
@@ -203,68 +206,68 @@ class $AssetsIconGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-        arrowNarrowLeft,
-        arrowRightFilled,
-        arrowRightLight,
-        arrowRightRegular,
-        arrowSquareOutFilled,
-        arrowSquareOutLight,
-        arrowSquareOutRegular,
-        arrowsClockwiseFilled,
-        arrowsClockwiseLight,
-        arrowsClockwiseRegular,
-        calendarBlankFilled,
-        calendarBlankLight,
-        calendarBlankRegular,
-        caretDownFilled,
-        caretDownLight,
-        caretDownRegular,
-        caretLeftFilled,
-        caretLeftLight,
-        caretLeftRegular,
-        caretRightFilled,
-        caretRightLight,
-        caretRightRegular,
-        caretUpFilled,
-        caretUpLight,
-        caretUpRegular,
-        checkCircleFilled,
-        checkCircleLight,
-        checkCircleRegular,
-        circle,
-        closeFilled,
-        closeLight,
-        closeRegular,
-        copySimpleFilled,
-        copySimpleLight,
-        copySimpleRegular,
-        crossCircleFilled,
-        crossCircleLight,
-        crossCircleRegular,
-        imageFilled,
-        imageLight,
-        imageRegular,
-        infoFilled,
-        infoLight,
-        infoRegular,
-        lightningFilled,
-        lightningLight,
-        lightningRegular,
-        lightningSlashFilled,
-        lightningSlashLight,
-        lightningSlashRegular,
-        trashSimpleFilled,
-        trashSimpleLight,
-        trashSimpleRegular,
-        verifiedTick,
-        warningFilled,
-        warningLight,
-        warningRegular,
-        watchFilled,
-        watchLight,
-        watchRegular,
-        xClose
-      ];
+    arrowNarrowLeft,
+    arrowRightFilled,
+    arrowRightLight,
+    arrowRightRegular,
+    arrowSquareOutFilled,
+    arrowSquareOutLight,
+    arrowSquareOutRegular,
+    arrowsClockwiseFilled,
+    arrowsClockwiseLight,
+    arrowsClockwiseRegular,
+    calendarBlankFilled,
+    calendarBlankLight,
+    calendarBlankRegular,
+    caretDownFilled,
+    caretDownLight,
+    caretDownRegular,
+    caretLeftFilled,
+    caretLeftLight,
+    caretLeftRegular,
+    caretRightFilled,
+    caretRightLight,
+    caretRightRegular,
+    caretUpFilled,
+    caretUpLight,
+    caretUpRegular,
+    checkCircleFilled,
+    checkCircleLight,
+    checkCircleRegular,
+    circle,
+    closeFilled,
+    closeLight,
+    closeRegular,
+    copySimpleFilled,
+    copySimpleLight,
+    copySimpleRegular,
+    crossCircleFilled,
+    crossCircleLight,
+    crossCircleRegular,
+    imageFilled,
+    imageLight,
+    imageRegular,
+    infoFilled,
+    infoLight,
+    infoRegular,
+    lightningFilled,
+    lightningLight,
+    lightningRegular,
+    lightningSlashFilled,
+    lightningSlashLight,
+    lightningSlashRegular,
+    trashSimpleFilled,
+    trashSimpleLight,
+    trashSimpleRegular,
+    verifiedTick,
+    warningFilled,
+    warningLight,
+    warningRegular,
+    watchFilled,
+    watchLight,
+    watchRegular,
+    xClose,
+  ];
 }
 
 class $AssetsIllustrationGen {
@@ -337,13 +340,13 @@ class $AssetsMockGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
-        avatarSquared1,
-        avatarSquared2,
-        avatarSquared,
-        avatarPortraitAbbySmith,
-        avatarPortraitAlexHolland,
-        avatarPortraitAlisaHester
-      ];
+    avatarSquared1,
+    avatarSquared2,
+    avatarSquared,
+    avatarPortraitAbbySmith,
+    avatarPortraitAlexHolland,
+    avatarPortraitAlisaHester,
+  ];
 }
 
 class $AssetsIconButtonGen {
@@ -368,8 +371,14 @@ class $AssetsIconButtonGen {
   SvgGenImage get whatsappSolid => const SvgGenImage('assets/icon/button/whatsapp-solid.svg');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [facebookSolid, instagramSolidPng, instagramSolidSvg, lineSolid, linkedinSolid, whatsappSolid];
+  List<dynamic> get values => [
+    facebookSolid,
+    instagramSolidPng,
+    instagramSolidSvg,
+    lineSolid,
+    linkedinSolid,
+    whatsappSolid,
+  ];
 }
 
 class $AssetsIconSocialGen {
@@ -398,7 +407,9 @@ class $AssetsIconSocialGen {
 }
 
 class Assets {
-  Assets._();
+  const Assets._();
+
+  static const String package = 'design_system';
 
   static const $AssetsIconGen icon = $AssetsIconGen();
   static const $AssetsIllustrationGen illustration = $AssetsIllustrationGen();
@@ -407,9 +418,14 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
+
+  static const String package = 'design_system';
+
+  final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -429,10 +445,10 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = false,
+    bool gaplessPlayback = true,
     bool isAntiAlias = false,
-    String? package = 'design_system',
-    FilterQuality filterQuality = FilterQuality.low,
+    @Deprecated('Do not specify package for a generated library asset') String? package = package,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -466,13 +482,9 @@ class AssetGenImage {
 
   ImageProvider provider({
     AssetBundle? bundle,
-    String? package = 'design_system',
+    @Deprecated('Do not specify package for a generated library asset') String? package = package,
   }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
@@ -481,15 +493,22 @@ class AssetGenImage {
 }
 
 class SvgGenImage {
-  const SvgGenImage(this._assetName);
+  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}}) : _isVecFormat = false;
+
+  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}}) : _isVecFormat = true;
 
   final String _assetName;
+  final Size? size;
+  final Set<String> flavors;
+  final bool _isVecFormat;
 
-  SvgPicture svg({
+  static const String package = 'design_system';
+
+  _svg.SvgPicture svg({
     Key? key,
     bool matchTextDirection = false,
     AssetBundle? bundle,
-    String? package = 'design_system',
+    @Deprecated('Do not specify package for a generated library asset') String? package = package,
     double? width,
     double? height,
     BoxFit fit = BoxFit.contain,
@@ -498,19 +517,23 @@ class SvgGenImage {
     WidgetBuilder? placeholderBuilder,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    SvgTheme theme = const SvgTheme(),
+    _svg.SvgTheme? theme,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
-    return SvgPicture.asset(
-      _assetName,
+    final _svg.BytesLoader loader;
+    if (_isVecFormat) {
+      loader = _vg.AssetBytesLoader(_assetName, assetBundle: bundle, packageName: package);
+    } else {
+      loader = _svg.SvgAssetLoader(_assetName, assetBundle: bundle, packageName: package, theme: theme);
+    }
+    return _svg.SvgPicture(
+      loader,
       key: key,
       matchTextDirection: matchTextDirection,
-      bundle: bundle,
-      package: package,
       width: width,
       height: height,
       fit: fit,
@@ -519,10 +542,7 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      theme: theme,
-      colorFilter: colorFilter,
-      color: color,
-      colorBlendMode: colorBlendMode,
+      colorFilter: colorFilter ?? (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );

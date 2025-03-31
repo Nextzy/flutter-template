@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: change_application_name,core,data,design_system,utils,localization,tutorial
+# melos_managed_dependency_overrides: change_application_name,core,data,design_system,utils,localization,tutorial,extended_image,freezed_annotation,freezed
 dependency_overrides:
   change_application_name:
     path: ../app
@@ -8,6 +8,9 @@ dependency_overrides:
     path: ../../packages/data
   design_system:
     path: ../../packages/design_system
+  extended_image: ^9.1.0
+  freezed: ^2.5.7
+  freezed_annotation: ^2.4.4
   localization:
     path: ../../packages/localization
   tutorial:

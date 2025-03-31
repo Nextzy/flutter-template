@@ -49,7 +49,7 @@ class GestureContainerLayout extends StatefulWidget {
     this.enableFeedback = true,
     this.excludeFromSemantics = false,
     this.focusNode,
-    this.tapFocus = true,
+    this.tapFocus = false,
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,

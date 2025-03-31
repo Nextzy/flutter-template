@@ -6,15 +6,15 @@ part of '../sign_in_with_email_body.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RemoteSignInWithEmailBodyImpl _$$RemoteSignInWithEmailBodyImplFromJson(
+_RemoteSignInWithEmailBody _$RemoteSignInWithEmailBodyFromJson(
         Map<String, dynamic> json) =>
-    _$RemoteSignInWithEmailBodyImpl(
+    _RemoteSignInWithEmailBody(
       email: json['email'] as String?,
       password: json['password'] as String?,
     );
 
-Map<String, dynamic> _$$RemoteSignInWithEmailBodyImplToJson(
-        _$RemoteSignInWithEmailBodyImpl instance) =>
+Map<String, dynamic> _$RemoteSignInWithEmailBodyToJson(
+        _RemoteSignInWithEmailBody instance) =>
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
