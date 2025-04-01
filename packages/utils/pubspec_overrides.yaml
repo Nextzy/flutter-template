@@ -8,6 +8,6 @@ dependency_overrides:
     path: ../data
   design_system:
     path: ../design_system
-  extended_image: ^9.1.0
   localization:
     path: ../localization
+  extended_image: ^9.1.0

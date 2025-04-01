@@ -12,44 +12,25 @@ part of 'main.dart';
 
 /// generated route for
 /// [ExampleAuthenticationPage]
-class ExampleAuthenticationRoute
-    extends PageRouteInfo<ExampleAuthenticationRouteArgs> {
-  ExampleAuthenticationRoute({dynamic key, List<PageRouteInfo>? children})
-    : super(
-        ExampleAuthenticationRoute.name,
-        args: ExampleAuthenticationRouteArgs(key: key),
-        initialChildren: children,
-      );
+class ExampleAuthenticationRoute extends PageRouteInfo<void> {
+  const ExampleAuthenticationRoute({List<PageRouteInfo>? children})
+    : super(ExampleAuthenticationRoute.name, initialChildren: children);
 
   static const String name = 'ExampleAuthenticationRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<ExampleAuthenticationRouteArgs>(
-        orElse: () => const ExampleAuthenticationRouteArgs(),
-      );
-      return WrappedRoute(child: ExampleAuthenticationPage(key: args.key));
+      return WrappedRoute(child: const ExampleAuthenticationPage());
     },
   );
-}
-
-class ExampleAuthenticationRouteArgs {
-  const ExampleAuthenticationRouteArgs({this.key});
-
-  final dynamic key;
-
-  @override
-  String toString() {
-    return 'ExampleAuthenticationRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for
 /// [ExampleMoviePage]
 class ExampleMovieRoute extends PageRouteInfo<ExampleMovieRouteArgs> {
   ExampleMovieRoute({
-    dynamic key,
+    Key? key,
     required MovieListEntity movieList,
     List<PageRouteInfo>? children,
   }) : super(
@@ -74,7 +55,7 @@ class ExampleMovieRoute extends PageRouteInfo<ExampleMovieRouteArgs> {
 class ExampleMovieRouteArgs {
   const ExampleMovieRouteArgs({this.key, required this.movieList});
 
-  final dynamic key;
+  final Key? key;
 
   final MovieListEntity movieList;
 

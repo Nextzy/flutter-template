@@ -92,6 +92,12 @@ class _HomePageState
                     ],
                   ),
                   AppButton(
+                    text: 'authen',
+                    onPress: () {
+                      navigate(SignupRoute());
+                    },
+                  ),
+                  AppButton(
                     text: 'Show Modal',
                     onPress: () {
                       showDialog(

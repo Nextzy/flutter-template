@@ -1,5 +1,6 @@
-# melos_managed_dependency_overrides: core,data,design_system,utils,localization
+# melos_managed_dependency_overrides: core,data,design_system,localization,utils
 dependency_overrides:
+  extended_image: ^9.1.0
   core:
     path: ../../packages/core
   data:
@@ -10,4 +11,3 @@ dependency_overrides:
     path: ../../packages/localization
   utils:
     path: ../../packages/utils
-  extended_image: ^9.1.0

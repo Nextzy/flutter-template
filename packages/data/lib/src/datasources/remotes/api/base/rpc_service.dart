@@ -43,11 +43,25 @@ abstract class RpcService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final result = await _dio.fetch<Map<String, dynamic>>(options);
+    print('data: ${result.data}');
+
     late JsonRpcResponse<DATA> value;
     try {
       value = JsonRpcResponse<DATA>.fromJson(
         result.data!,
-        (json) => fromJson(json as Map<String, dynamic>),
+        (data) {
+          print('data: ${data} | ${data.runtimeType}');
+
+          if (data is Map) {
+            print('1');
+            return fromJson(data as Map<String, dynamic>);
+          } else {
+            print('2');
+            return fromJson({
+              'result': data,
+            });
+          }
+        },
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, options);

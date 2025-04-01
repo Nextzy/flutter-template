@@ -30,10 +30,7 @@ class AuthenticationRoute extends PageRouteInfo<void> {
 /// [EcommercePage]
 class EcommerceRoute extends PageRouteInfo<void> {
   const EcommerceRoute({List<PageRouteInfo>? children})
-      : super(
-          EcommerceRoute.name,
-          initialChildren: children,
-        );
+    : super(EcommerceRoute.name, initialChildren: children);
 
   static const String name = 'EcommerceRoute';
 
@@ -65,10 +62,7 @@ class HomeRoute extends PageRouteInfo<void> {
 /// [MessengerPage]
 class MessengerRoute extends PageRouteInfo<void> {
   const MessengerRoute({List<PageRouteInfo>? children})
-      : super(
-          MessengerRoute.name,
-          initialChildren: children,
-        );
+    : super(MessengerRoute.name, initialChildren: children);
 
   static const String name = 'MessengerRoute';
 
@@ -148,10 +142,7 @@ class SettingRoute extends PageRouteInfo<void> {
 /// [SignupPage]
 class SignupRoute extends PageRouteInfo<void> {
   const SignupRoute({List<PageRouteInfo>? children})
-      : super(
-          SignupRoute.name,
-          initialChildren: children,
-        );
+    : super(SignupRoute.name, initialChildren: children);
 
   static const String name = 'SignupRoute';
 

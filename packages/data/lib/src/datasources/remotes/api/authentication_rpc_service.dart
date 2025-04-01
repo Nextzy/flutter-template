@@ -9,19 +9,66 @@ class AuthenticationRpcService extends RpcService {
 
   final String path;
 
-  Future<JsonRpcResponse<RemoteAuthenticationResponse>> signInWithEmailPassword({
+  Future<JsonRpcResponse<RemoteAuthenticationResponse>>
+      signInWithEmailPassword({
     required String email,
     required String password,
     String? requestId,
   }) =>
+          request(
+            path,
+            method: 'signInWithEmailPassword',
+            id: requestId,
+            params: RemoteSignInWithEmailBody(
+              email: email,
+              password: password,
+            ).toJson(),
+            fromJson: RemoteAuthenticationResponse.fromJson,
+          );
+
+  Future<JsonRpcResponse<RemoteRequestOtpResponse>> requestOtp({
+    required String phoneNumber,
+    String? requestId,
+  }) async =>
       request(
         path,
-        method: 'signInWithEmailPassword',
+        method: 'requestOtp',
         id: requestId,
-        params: RemoteSignInWithEmailBody(
-          email: email,
-          password: password,
+        params: RemoteRequestOtpBody(
+          phoneNumber: phoneNumber,
         ).toJson(),
-        fromJson: RemoteAuthenticationResponse.fromJson,
+        fromJson: RemoteRequestOtpResponse.fromJson,
+      );
+
+  Future<JsonRpcResponse<RemoteVerifyOtpResponse>> verifyOtp({
+    required String token,
+    required String pin,
+    String? requestId,
+  }) async =>
+      request(
+        path,
+        method: 'verifyOtp',
+        id: requestId,
+        params: RemoteVerifyOtpBody(
+          token: token,
+          pin: pin,
+        ).toJson(),
+        fromJson: RemoteVerifyOtpResponse.fromJson,
+      );
+
+  Future<JsonRpcResponse<RemoteSubtractResponse>> subtract({
+    required int subtrahend,
+    required int minuend,
+    String? requestId,
+  }) async =>
+      request(
+        path,
+        method: 'subtract',
+        id: requestId,
+        params: RemoteSubtractBody(
+          subtrahend: subtrahend,
+          minuend: minuend,
+        ).toJson(),
+        fromJson: RemoteSubtractResponse.fromJson,
       );
 }
