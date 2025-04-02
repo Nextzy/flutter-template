@@ -43,6 +43,6 @@ class ExampleRouterBloc
   }
 
   static ExampleRouter _createRoute() => ExampleRouter(
-        navigatorKey: Catcher.navigatorKey,
+        navigatorKey: Catcher2.navigatorKey,
       );
 }

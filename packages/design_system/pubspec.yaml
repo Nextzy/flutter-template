@@ -59,7 +59,7 @@ dependencies:
 
 dependency_overrides:
   # Resolve for wechat_assets_picker
-  extended_image: ^9.1.0
+  extended_image: ^10.0.0
 
 
 dev_dependencies:
