@@ -1,4 +1,4 @@
-import 'package:example_app/application.dart';
+import 'package:change_application_name/application.dart';
 
 @RoutePage()
 class SignupPage extends AppPage {
@@ -9,6 +9,18 @@ class SignupPage extends AppPage {
 }
 
 class _SignupPageState extends AppPageState<SignupPage> {
+  final _phoneNumberController = TextEditingController();
+  final _otpController = TextEditingController();
+  String _otpToken = '';
+  String _otpRefNo = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    _phoneNumberController.text = '0878082159';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,23 +85,73 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 onPress: () {}),
                             Gap(32),
                             AppDivider(text: 'Or'),
-                            Gap(32),
-                            AppTextField(
-                              label: 'Email',
-                            ),
-                            Gap(16),
-                            AppTextField(
-                              obscure: true,
-                              label: 'Password',
-                              helperText: 'At least 8 characters.',
-                            ),
+                            // Gap(32),
+                            // AppTextField(
+                            //   label: 'Email',
+                            // ),
+                            // Gap(16),
+                            // AppTextField(
+                            //   obscure: true,
+                            //   label: 'Password',
+                            //   helperText: 'At least 8 characters.',
+                            // ),
+                            // Gap(32),
+                            // AppButton(
+                            //   style: AppButtonStyle.filled,
+                            //   width: 380,
+                            //   height: 40,
+                            //   text: 'Get Started',
+                            //   onPress: () async {
+                            //
+                            //   },
+                            // ),
                             Gap(32),
                             AppButton(
-                                style: AppButtonStyle.filled,
-                                width: 380,
-                                height: 40,
-                                text: 'Get Started',
-                                onPress: () {}),
+                              text: 'Test JSON-RPC',
+                              onPress: () {
+                                _testJsonRpc();
+                              },
+                            ),
+                            Gap(32),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Expanded(
+                                  child: AppTextField(
+                                    label: 'Phone Number',
+                                    controller: _phoneNumberController,
+                                  ),
+                                ),
+                                Space.gap32,
+                                AppButton(
+                                  text: 'Send',
+                                  onPress: () {
+                                    setState(() {
+                                      _requestOtp();
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                            Gap(16),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Expanded(
+                                  child: AppTextField(
+                                    label: 'OTP $_otpRefNo',
+                                    controller: _otpController,
+                                  ),
+                                ),
+                                Space.gap32,
+                                AppButton(
+                                  text: 'Verify',
+                                  onPress: () {
+                                    _verifyOtp();
+                                  },
+                                ),
+                              ],
+                            ),
                           ]),
                         ),
                         AppText(
@@ -133,5 +195,72 @@ class _SignupPageState extends AppPageState<SignupPage> {
               ),
           ]),
     ));
+  }
+
+  void _requestOtp() async {
+    print('request otp: ${_phoneNumberController.text}');
+
+    var response = await AuthenticationRpcService(
+      AppHttpClient.instance.dio,
+      baseUrl: 'https://api-brick.nextzy.com/v1',
+    ).requestOtp(
+      phoneNumber: _phoneNumberController.text,
+    );
+
+    print('response: ${response.result}');
+
+    _otpToken = response.result?.token ?? '';
+    _otpRefNo = response.result?.refno ?? '';
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(response.toString()),
+        duration: Duration(seconds: 5),
+      ),
+    );
+  }
+
+  void _verifyOtp() async {
+    print('verify otp: ${_otpController.text}');
+
+    var response = await AuthenticationRpcService(
+      AppHttpClient.instance.dio,
+      baseUrl: 'https://api-brick.nextzy.com/v1',
+    ).verifyOtp(
+      token: _otpToken,
+      pin: _otpController.text,
+    );
+
+    print('response: ${response.result}');
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(response.isError
+            ? response.error.toString()
+            : response.result?.message ?? ''),
+        duration: Duration(seconds: 5),
+      ),
+    );
+  }
+
+  void _testJsonRpc() async {
+    print('testJsonRpc1');
+
+    var response = await AuthenticationRpcService(
+      AppHttpClient.instance.dio,
+      baseUrl: 'https://api-brick.nextzy.com/v1',
+    ).subtract(
+      subtrahend: 55,
+      minuend: 40,
+    );
+
+    print('response: ${response.result}');
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(response.result.toString()),
+        duration: Duration(seconds: 5),
+      ),
+    );
   }
 }

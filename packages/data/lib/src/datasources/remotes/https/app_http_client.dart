@@ -61,7 +61,7 @@ class AppHttpClient extends BaseHttpClient {
       ),
       AppNetworkErrorHandlerInterceptor(),
       MockHeaderInterceptor(),
-      HttpLogInterceptor(), // Add to last
+      // HttpLogInterceptor(), // Add to last //todo: has bug
     ]);
   }
 
