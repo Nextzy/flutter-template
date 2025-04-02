@@ -202,7 +202,6 @@ class _SignupPageState extends AppPageState<SignupPage> {
 
     var response = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
-      baseUrl: 'https://api-brick.nextzy.com/v1',
     ).requestOtp(
       phoneNumber: _phoneNumberController.text,
     );
@@ -225,7 +224,6 @@ class _SignupPageState extends AppPageState<SignupPage> {
 
     var response = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
-      baseUrl: 'https://api-brick.nextzy.com/v1',
     ).verifyOtp(
       token: _otpToken,
       pin: _otpController.text,
@@ -244,11 +242,10 @@ class _SignupPageState extends AppPageState<SignupPage> {
   }
 
   void _testJsonRpc() async {
-    print('testJsonRpc1');
+    print('testJsonRpc');
 
     var response = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
-      baseUrl: 'https://api-brick.nextzy.com/v1',
     ).subtract(
       subtrahend: 55,
       minuend: 40,

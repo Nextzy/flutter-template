@@ -20,10 +20,12 @@ abstract class RpcService {
     Map<String, dynamic>? params,
     String? id,
     required DATA Function(Map<String, dynamic> json) fromJson,
+    Map<String, dynamic>? queryParameters,
   }) async {
     final extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    queryParameters = queryParameters ?? <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
+
     final headers = <String, dynamic>{};
     final Map<String, Object?> data = {
       'jsonrpc': jsonrpc ?? this.jsonrpc,
