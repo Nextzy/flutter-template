@@ -107,9 +107,16 @@ class _SignupPageState extends AppPageState<SignupPage> {
                             // ),
                             Gap(32),
                             AppButton(
-                              text: 'Test JSON-RPC',
+                              text: 'Test Subtract',
                               onPress: () {
-                                _testJsonRpc();
+                                _testSubtract();
+                              },
+                            ),
+                            Gap(10),
+                            AppButton(
+                              text: 'Test Echo',
+                              onPress: () {
+                                _testEcho();
                               },
                             ),
                             Gap(32),
@@ -241,7 +248,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
     );
   }
 
-  void _testJsonRpc() async {
+  void _testSubtract() async {
     print('testJsonRpc');
 
     var response = await AuthenticationRpcService(
@@ -249,6 +256,25 @@ class _SignupPageState extends AppPageState<SignupPage> {
     ).subtract(
       subtrahend: 55,
       minuend: 40,
+    );
+
+    print('response: ${response.result}');
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(response.result.toString()),
+        duration: Duration(seconds: 5),
+      ),
+    );
+  }
+
+  void _testEcho() async {
+    print('testEcho');
+
+    var response = await AuthenticationRpcService(
+      AppHttpClient.instance.dio,
+    ).echo(
+      name: 'John Doe',
     );
 
     print('response: ${response.result}');

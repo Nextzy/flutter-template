@@ -92,4 +92,18 @@ class AuthenticationRpcService extends RpcService {
         ).toJson(),
         fromJson: RemoteSubtractResponse.fromJson,
       );
+
+  Future<JsonRpcResponse<RemoteEchoResponse>> echo({
+    required String name,
+    String? requestId,
+  }) async =>
+      request(
+        path,
+        method: 'echo',
+        id: requestId,
+        params: RemoteEchoBody(
+          name: name,
+        ).toJson(),
+        fromJson: RemoteEchoResponse.fromJson,
+      );
 }

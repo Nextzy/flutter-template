@@ -26,6 +26,8 @@ abstract class RpcService {
     queryParameters = queryParameters ?? <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
 
+    // final queryParameters = <String, dynamic>{};
+
     final headers = <String, dynamic>{};
 
     final Map<String, Object?> data = {
