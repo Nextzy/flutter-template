@@ -213,14 +213,18 @@ class _SignupPageState extends AppPageState<SignupPage> {
       phoneNumber: _phoneNumberController.text,
     );
 
-    print('response: ${response.result}');
+    print('response: ${response}');
 
     _otpToken = response.result?.token ?? '';
     _otpRefNo = response.result?.refno ?? '';
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(response.toString()),
+        content: Text(
+          response.hasResult
+              ? response.result.toString()
+              : (response.error as Map)['developerMessage'],
+        ),
         duration: Duration(seconds: 5),
       ),
     );
@@ -236,20 +240,22 @@ class _SignupPageState extends AppPageState<SignupPage> {
       pin: _otpController.text,
     );
 
-    print('response: ${response.result}');
+    print('response: ${response}');
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(response.isError
-            ? response.error.toString()
-            : response.result?.message ?? ''),
+        content: Text(
+          response.hasResult
+              ? response.result.toString()
+              : (response.error as Map)['message'],
+        ),
         duration: Duration(seconds: 5),
       ),
     );
   }
 
   void _testSubtract() async {
-    print('testJsonRpc');
+    print('testSubtract');
 
     var response = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
@@ -258,11 +264,15 @@ class _SignupPageState extends AppPageState<SignupPage> {
       minuend: 40,
     );
 
-    print('response: ${response.result}');
+    print('response: ${response}');
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(response.result.toString()),
+        content: Text(
+          response.hasResult
+              ? response.result.toString()
+              : (response.error as Map)['userMessage'],
+        ),
         duration: Duration(seconds: 5),
       ),
     );
@@ -277,11 +287,24 @@ class _SignupPageState extends AppPageState<SignupPage> {
       name: 'John Doe',
     );
 
-    print('response: ${response.result}');
+    print('response: ${response}');
+
+    if (response.isError) {
+      final errorResponse = response.error as Map;
+      final code = errorResponse['code'];
+      final message = errorResponse['message'];
+      final userMessage = errorResponse['userMessage'];
+      final developerMessage = errorResponse['developerMessage'];
+      print('$code | $message | $userMessage | $developerMessage');
+    }
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(response.result.toString()),
+        content: Text(
+          response.hasResult
+              ? response.result.toString()
+              : (response.error as Map)['userMessage'],
+        ),
         duration: Duration(seconds: 5),
       ),
     );

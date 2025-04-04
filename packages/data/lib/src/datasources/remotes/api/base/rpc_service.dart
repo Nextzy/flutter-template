@@ -23,10 +23,10 @@ abstract class RpcService {
     Map<String, dynamic>? queryParameters,
   }) async {
     final extra = <String, dynamic>{};
-    queryParameters = queryParameters ?? <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
 
     // final queryParameters = <String, dynamic>{};
+    queryParameters = queryParameters ?? <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
 
     final headers = <String, dynamic>{};
 
