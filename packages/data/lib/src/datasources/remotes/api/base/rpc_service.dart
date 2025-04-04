@@ -27,6 +27,7 @@ abstract class RpcService {
     queryParameters.removeWhere((k, v) => v == null);
 
     final headers = <String, dynamic>{};
+
     final Map<String, Object?> data = {
       'jsonrpc': jsonrpc ?? this.jsonrpc,
       'method': method,
@@ -34,6 +35,7 @@ abstract class RpcService {
       'id': id ?? _randomRequestId(),
     };
     data.removeWhere((k, v) => v == null);
+
     final options = _setStreamType<JsonRpcResponse<DATA>>(
       Options(method: 'POST', headers: headers, extra: extra)
           .compose(
@@ -44,6 +46,7 @@ abstract class RpcService {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
+
     final result = await _dio.fetch<Map<String, dynamic>>(options);
 
     late JsonRpcResponse<DATA> value;
