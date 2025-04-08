@@ -4,7 +4,8 @@ class AuthenticationRpcService extends RpcService {
   const AuthenticationRpcService(
     super.dio, {
     this.path = '/auth',
-    super.baseUrl,
+    super.baseUrl = 'https://api-brick.nextzy.com/v1',
+    // super.baseUrl = 'http://127.0.0.1:3658/m1/830561-810297-default/v1',
   });
 
   final String path;
@@ -29,32 +30,52 @@ class AuthenticationRpcService extends RpcService {
   Future<JsonRpcResponse<RemoteRequestOtpResponse>> requestOtp({
     required String phoneNumber,
     String? requestId,
-  }) async =>
-      request(
-        path,
-        method: 'requestOtp',
-        id: requestId,
-        params: RemoteRequestOtpBody(
-          phoneNumber: phoneNumber,
-        ).toJson(),
-        fromJson: RemoteRequestOtpResponse.fromJson,
-      );
+  }) async {
+    final successMockQueryParams = {
+      'apidogApiId': '15405460',
+    };
+    final failMockQueryParams = {
+      'apidogApiId': '15405460',
+      'apidogResponseId': '21196837',
+    };
+
+    return request(
+      path,
+      method: 'requestOtp',
+      id: requestId,
+      params: RemoteRequestOtpBody(
+        phoneNumber: phoneNumber,
+      ).toJson(),
+      fromJson: RemoteRequestOtpResponse.fromJson,
+      queryParameters: failMockQueryParams,
+    );
+  }
 
   Future<JsonRpcResponse<RemoteVerifyOtpResponse>> verifyOtp({
     required String token,
     required String pin,
     String? requestId,
-  }) async =>
-      request(
-        path,
-        method: 'verifyOtp',
-        id: requestId,
-        params: RemoteVerifyOtpBody(
-          token: token,
-          pin: pin,
-        ).toJson(),
-        fromJson: RemoteVerifyOtpResponse.fromJson,
-      );
+  }) async {
+    final successMockQueryParams = {
+      'apidogApiId': '15413309',
+    };
+    final failMockQueryParams = {
+      'apidogApiId': '15413309',
+      'apidogResponseId': '21044853',
+    };
+
+    return request(
+      path,
+      method: 'verifyOtp',
+      id: requestId,
+      params: RemoteVerifyOtpBody(
+        token: token,
+        pin: pin,
+      ).toJson(),
+      fromJson: RemoteVerifyOtpResponse.fromJson,
+      queryParameters: successMockQueryParams,
+    );
+  }
 
   Future<JsonRpcResponse<RemoteSubtractResponse>> subtract({
     required int subtrahend,
@@ -70,5 +91,19 @@ class AuthenticationRpcService extends RpcService {
           minuend: minuend,
         ).toJson(),
         fromJson: RemoteSubtractResponse.fromJson,
+      );
+
+  Future<JsonRpcResponse<RemoteEchoResponse>> echo({
+    required String name,
+    String? requestId,
+  }) async =>
+      request(
+        path,
+        method: 'echo',
+        id: requestId,
+        params: RemoteEchoBody(
+          name: name,
+        ).toJson(),
+        fromJson: RemoteEchoResponse.fromJson,
       );
 }

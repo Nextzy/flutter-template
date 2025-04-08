@@ -10,4 +10,4 @@ dependency_overrides:
     path: ../design_system
   localization:
     path: ../localization
-  extended_image: ^9.1.0
+  extended_image: ^10.0.0
