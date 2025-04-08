@@ -93,15 +93,15 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
             children: [
               RowLayout(gap: 12, children: [
                 ContainerLayout(
-                  child: Assets.icon.infoRegular.svgIcon(
-                    size: 20,
+                  child: Assets.icon.squaresFourRegular.svgIcon(
+                    size: 24,
                     colorFilter: ColorFilter.mode(
                         context.theme.color.iconPrimary, BlendMode.srcIn),
                   ),
                 ),
                 ContainerLayout(
-                  child: Assets.icon.infoRegular.svgIcon(
-                    size: 20,
+                  child: Assets.icon.fireRegular.svgIcon(
+                    size: 24,
                     colorFilter: ColorFilter.mode(
                         context.theme.color.iconNegative, BlendMode.srcIn),
                   ),
@@ -137,27 +137,27 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                     width: 276,
                     child: AppTextField(
                       style: AppTextFieldStyle.outline,
-                      startIcon: Assets.icon.infoRegular.keyName,
+                      startIcon: Assets.icon.magnifyingGlassRegular.keyName,
                       placeholderText: 'Search projects',
                     ),
                   ),
                 ContainerLayout(
-                  child: Assets.icon.infoRegular.svgIcon(
-                    size: 20,
+                  child: Assets.icon.bellRegular.svgIcon(
+                    size: 24,
                     colorFilter: ColorFilter.mode(
                         context.theme.color.iconPrimary, BlendMode.srcIn),
                   ),
                 ),
                 ContainerLayout(
-                  child: Assets.icon.infoRegular.svgIcon(
-                    size: 20,
+                  child: Assets.icon.questionRegular.svgIcon(
+                    size: 24,
                     colorFilter: ColorFilter.mode(
                         context.theme.color.iconPrimary, BlendMode.srcIn),
                   ),
                 ),
                 ContainerLayout(
-                  child: Assets.icon.infoRegular.svgIcon(
-                    size: 20,
+                  child: Assets.icon.gearSixRegular.svgIcon(
+                    size: 24,
                     colorFilter: ColorFilter.mode(
                         context.theme.color.iconPrimary, BlendMode.srcIn),
                   ),
@@ -196,7 +196,7 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                               horizontal: 12, vertical: 12),
                           child: RowLayout(gap: 8, children: [
                             ContainerLayout(
-                              child: Assets.icon.infoRegular.svgIcon(
+                              child: Assets.icon.atFilled.svgIcon(
                                 size: 26,
                                 colorFilter: ColorFilter.mode(
                                     context.theme.color.iconWarning,
@@ -216,35 +216,35 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                           child: SingleChildScrollView(
                             child: ColumnLayout(children: [
                               AppSidebarSection(
-                                icon: Assets.icon.infoRegular.keyName,
+                                icon: Assets.icon.newspaperRegular.keyName,
                                 title: 'Backlog',
                               ),
                               AppSidebarSection(
-                                  icon: Assets.icon.infoRegular.keyName,
+                                  icon: Assets.icon.columnsRegular.keyName,
                                   title: 'Active sprints',
                                   active: true),
                               AppSidebarSection(
-                                icon: Assets.icon.infoRegular.keyName,
+                                icon: Assets.icon.trendUpRegular.keyName,
                                 title: 'Reports',
                               ),
                               AppDivider(),
                               AppSidebarSection(
-                                icon: Assets.icon.infoRegular.keyName,
+                                icon: Assets.icon.stackRegular.keyName,
                                 title: 'Issues',
                               ),
                               AppSidebarSection(
-                                  icon: Assets.icon.infoRegular.keyName,
+                                  icon: Assets.icon.puzzlePieceRegular.keyName,
                                   title: 'Components'),
                               AppSidebarSection(
-                                icon: Assets.icon.infoRegular.keyName,
+                                icon: Assets.icon.codeRegular.keyName,
                                 title: 'Code',
                               ),
                               AppSidebarSection(
-                                icon: Assets.icon.infoRegular.keyName,
+                                icon: Assets.icon.calendarCheckRegular.keyName,
                                 title: 'Releases',
                               ),
                               AppSidebarSection(
-                                icon: Assets.icon.infoRegular.keyName,
+                                icon: Assets.icon.filesRegular.keyName,
                                 title: 'Project pages',
                               ),
                             ]),
@@ -280,7 +280,7 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                             ),
                             RowLayout(gap: 12, children: [
                               ContainerLayout(
-                                child: Assets.icon.infoRegular.svgIcon(
+                                child: Assets.icon.starRegular.svgIcon(
                                   size: 20,
                                   colorFilter: ColorFilter.mode(
                                       context.theme.color.iconPrimary,
@@ -289,7 +289,7 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                               ),
                               AppButton(text: 'Complete sprint'),
                               ContainerLayout(
-                                child: Assets.icon.infoRegular.svgIcon(
+                                child: Assets.icon.shareNetworkRegular.svgIcon(
                                   size: 20,
                                   colorFilter: ColorFilter.mode(
                                       context.theme.color.iconPrimary,
@@ -297,7 +297,7 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                                 ),
                               ),
                               AppIconButton(
-                                  icon: Assets.icon.infoRegular.keyName,
+                                  icon: Assets.icon.dotsThreeRegular.keyName,
                                   style: AppButtonStyle.outline)
                             ])
                           ],
@@ -308,7 +308,8 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                             width: 280,
                             child: AppTextField(
                               style: AppTextFieldStyle.outline,
-                              startIcon: Assets.icon.infoRegular.keyName,
+                              startIcon:
+                                  Assets.icon.magnifyingGlassRegular.keyName,
                               placeholderText: 'Search issues',
                             ),
                           ),
@@ -477,15 +478,15 @@ class TaskCard extends AppStatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               RowLayout(gap: 8, children: [
                 ContainerLayout(
-                  child: Assets.icon.infoRegular.svgIcon(
-                    size: 20,
+                  child: Assets.icon.bookmarkSimpleFilled.svgIcon(
+                    size: 24,
                     colorFilter: ColorFilter.mode(
                         context.theme.color.iconPositive, BlendMode.srcIn),
                   ),
                 ),
                 ContainerLayout(
-                  child: Assets.icon.infoRegular.svgIcon(
-                    size: 20,
+                  child: Assets.icon.caretDoubleUpRegular.svgIcon(
+                    size: 24,
                     colorFilter: ColorFilter.mode(
                         context.theme.color.iconNegative, BlendMode.srcIn),
                   ),

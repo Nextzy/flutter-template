@@ -30,7 +30,7 @@ class AppSidebarSection extends AppStatelessWidget {
       borderRadius: context.theme.borderRadius.md,
       disabled: disabled,
       opacity: disabled ? 0.5 : 1,
-      child: RowLayout(gap: 6, children: [
+      child: RowLayout(gap: 8, children: [
         icon.toSvgIcon(
             colorFilter: ColorFilter.mode(
               context.theme.color.iconPrimary,
