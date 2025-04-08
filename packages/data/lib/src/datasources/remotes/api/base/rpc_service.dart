@@ -69,6 +69,21 @@ abstract class RpcService {
     return value;
   }
 
+  void notifySync(
+    String path, {
+    String? jsonrpc,
+    required String method,
+    String? mockId,
+    Map<String, dynamic>? params,
+  }) =>
+      notify(
+        path,
+        jsonrpc: jsonrpc,
+        method: method,
+        mockId: mockId,
+        params: params,
+      );
+
   Future<void> notify(
     String path, {
     String? jsonrpc,
