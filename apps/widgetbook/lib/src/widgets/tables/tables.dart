@@ -1,3 +1,5 @@
+export 'table/table_book.dart';
+
 import 'package:widgetbook_app/widgetbook.dart';
 
 class TableCategories extends WidgetbookCategory {
@@ -5,6 +7,8 @@ class TableCategories extends WidgetbookCategory {
     super.name = 'Tables',
     super.isInitiallyExpanded = true,
   }) : super(
-          children: [],
+          children: [
+            TableComponentBook(),
+          ],
         );
 }

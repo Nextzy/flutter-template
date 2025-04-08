@@ -45,6 +45,7 @@ dependencies:
   audioplayers: ^6.4.0
   flick_video_player: ^0.9.0
   video_player: ^2.9.5
+  fleather: ^1.20.1
 
 
   # Maybe you can use
