@@ -29,7 +29,7 @@ class _Web3PageState extends AppPageState<Web3Page> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(
-                            'https://s3-alpha-sig.figma.com/img/f44d/3ed8/067db520859041cdc916f928a34a1cab?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=AxMSixC6~rHxVsGJdPDVI6jAyqJCMJYvg6txcuEMP3qoiqNhgm2cAybXdXytCShRR6Y7g6rIXdZhxr~6YgeaWQh9J6fz~-i9MTb5sBFyaq9t5gPVAN4gocx6sa3wA0XvEGcVunC~G5nTmmMgPiZZ0J5KHOul3AEd92UI-jajGtyN5Abkhd2c7OpQVe2qKCgdmH4BL4hXt4rAaeq2mQBAbMCT1nIpQh6xrEK~NCIX5oz8SuJ5J94-bPh5Gq-WZzYJqssCfj3VKm5yB1K~sxRe~m446ZUyEQhvO0L~LyyE~67O0ZWUXWnQ61cWoihgv-XRHW4oh9Ewbu5pqmIQyeyNzg__',
+                            'https://i.imgur.com/T6OeHox.png',
                           ),
                           fit: BoxFit.fill),
                     ),
@@ -354,7 +354,7 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                   child: ClipRRect(
                                     borderRadius: context.theme.borderRadius.md,
                                     child: Image.network(
-                                      'https://s3-alpha-sig.figma.com/img/7d8f/d1e2/d0a23dd58ebdc9f6bb81237783bcd9c0?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TQ1i89s16ndRbcvaSrIHf1i-lf9dvqd~wIgI-a5zJ9oqH54t4EmQfIgOpgegOKS5xAHy43CIaUGui~iw2IvjNEv0BVf772vHhcgSHifZ3DiVYs3f1JaXqXyh~UNQEJxPkwBXV9DlnkYfIziMDUJHhMN5Or3PEjAMVn6LwLdI3P8O9H4kXCdVtDfpJIuIeSd53aWG3p-EFJc8JEwFe4bKiU-P7Z4E8y8ZX~oh3~APWtLFkW2MYKp6pHgiQQlmr6lwgF92af1NdQM~2WHJPw2Wekh~GpVsAMQij1-El0a8d9EjLE8UcEGIjIxqhtjFRi~PmWjQLX8xebRdu6AtyjBRjQ__',
+                                      'https://i.imgur.com/JtA8HZf.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -412,7 +412,7 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                   child: ClipRRect(
                                     borderRadius: context.theme.borderRadius.md,
                                     child: Image.network(
-                                      'https://s3-alpha-sig.figma.com/img/b686/59e4/9101727d8742f13d808f09dcda599c30?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=MAIk-v-ZieNDx5VtzBXDNrbPYonQks~Ga6ExjNYzYvCXk3q~Smb-ZFsErlMrf-ngvmLsjyICaqsuivgMivFkYoS8f8VvDasvv6Bc1so12xf6rag77ROutZDsA4Ac8xXiUmiiMfMdCVMQ0pguMrp5fIPcVYlZ7VAgt8IvzIwyxDjGP1ZPjM~3FTILdJxlFDCT84SVe7Zr7bax1Z1iP1K49fxRfVCGxZRktBf28Ogq-5Y9-mYoPJqYwvM9QMJIw9ighnAmzT9v5Tb-JMhS~4NEgIa8sLts~Can~zqyDbPcIddhvt4~luiAPClGHnUz4sJb0hUarrh35tzwDEuHvpKxZQ__',
+                                      'https://i.imgur.com/OywBYzv.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -470,7 +470,7 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                   child: ClipRRect(
                                     borderRadius: context.theme.borderRadius.md,
                                     child: Image.network(
-                                      'https://s3-alpha-sig.figma.com/img/49af/2f58/d8e26fe3bb94a7e0a305ea49c92994ed?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=oVI8VSIUkblCqBli-O-pBvbsFQzNgd7199z05Wxl2L8CJ-ym4hBhlT8yMKHUnLXhmYSshuNKNPCIt0najFpmhz0uCp4AJM5fBpmaF6Ax4TnGGd2zTKLDhFL3n0jmQaDwegiDUuD4xPT0Vc0iSpnzur0OU2QywLW6R~qmJLOrBgeqc1DMhwQ1NqffdqC16y3-Uf9PTi0IbskrZPFxB97zfn69GR2e7tsD35jSr860bnPXqXmHWnuakG8Y8WucdzSfQDYyGpMdhmAl~VlEB92~HKbxfbfPYKnEnPN-nPrnUfr0hfmFlcQFvQtnq62DVARI2u71oImpdYysWh5Xi8Q~8A__',
+                                      'https://i.imgur.com/BEsAe51.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -528,7 +528,7 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                   child: ClipRRect(
                                     borderRadius: context.theme.borderRadius.md,
                                     child: Image.network(
-                                      'https://s3-alpha-sig.figma.com/img/e294/8586/74f7fd859be76c2ecb931adda314cbc2?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ZGsie9l0ZTCXdV6DTOEIwwfMQXsdIaq-aIP-2q8XUmI~pGdvHrBfaG5uq3MO9o8iSlasw7Z1oBoddYnEdDwit7AicjHNrJlD98PjH2zJfqojOjD1ODp36Celsgq7zsX1W3cSyv-bkHVZp~o~KOBj8SdwDwyx5mPDiasKcKPpNPaoCzIhsYUr5NMlJQR3cy16CB-2xh19UnQSI9u4-wakpP76i4SOQkc4SZK4aPNcAYRytCuOAwcEaJ~Jk7Fj5owTMrO3E2Eo71vmX~~HLiRTn2ZCEY3Vqwx7YE9jMgwSWWGrTUMWe~hCWLMUJGKJe~lwV1WuyrR0c1d06UhbJADm2w__',
+                                      'https://i.imgur.com/mpwKP4r.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),

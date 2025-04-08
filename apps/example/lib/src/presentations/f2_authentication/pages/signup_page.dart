@@ -169,7 +169,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                         ),
                       ]),
                 )),
-            if (ResponsiveBreakpoints.of(context).isDesktop)
+            if (ResponsiveBreakpoints.of(context).largerThan(DESKTOP))
               ResponsiveRowColumnItem(
                 rowFlex: 1,
                 rowFit: FlexFit.tight,
