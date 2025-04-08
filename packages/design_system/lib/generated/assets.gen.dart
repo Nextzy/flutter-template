@@ -45,6 +45,33 @@ class $AssetsIconGen {
   /// File path: assets/icon/arrows-clockwise-regular.svg
   SvgGenImage get arrowsClockwiseRegular => const SvgGenImage('assets/icon/arrows-clockwise-regular.svg');
 
+  /// File path: assets/icon/at-filled.svg
+  SvgGenImage get atFilled => const SvgGenImage('assets/icon/at-filled.svg');
+
+  /// File path: assets/icon/at-light.svg
+  SvgGenImage get atLight => const SvgGenImage('assets/icon/at-light.svg');
+
+  /// File path: assets/icon/at-regular.svg
+  SvgGenImage get atRegular => const SvgGenImage('assets/icon/at-regular.svg');
+
+  /// File path: assets/icon/bell-filled.svg
+  SvgGenImage get bellFilled => const SvgGenImage('assets/icon/bell-filled.svg');
+
+  /// File path: assets/icon/bell-light.svg
+  SvgGenImage get bellLight => const SvgGenImage('assets/icon/bell-light.svg');
+
+  /// File path: assets/icon/bell-regular.svg
+  SvgGenImage get bellRegular => const SvgGenImage('assets/icon/bell-regular.svg');
+
+  /// File path: assets/icon/bookmark-simple-filled.svg
+  SvgGenImage get bookmarkSimpleFilled => const SvgGenImage('assets/icon/bookmark-simple-filled.svg');
+
+  /// File path: assets/icon/bookmark-simple-light.svg
+  SvgGenImage get bookmarkSimpleLight => const SvgGenImage('assets/icon/bookmark-simple-light.svg');
+
+  /// File path: assets/icon/bookmark-simple-regular.svg
+  SvgGenImage get bookmarkSimpleRegular => const SvgGenImage('assets/icon/bookmark-simple-regular.svg');
+
   /// Directory path: assets/icon/button
   $AssetsIconButtonGen get button => const $AssetsIconButtonGen();
 
@@ -56,6 +83,24 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/calendar-blank-regular.svg
   SvgGenImage get calendarBlankRegular => const SvgGenImage('assets/icon/calendar-blank-regular.svg');
+
+  /// File path: assets/icon/calendar-check-filled.svg
+  SvgGenImage get calendarCheckFilled => const SvgGenImage('assets/icon/calendar-check-filled.svg');
+
+  /// File path: assets/icon/calendar-check-light.svg
+  SvgGenImage get calendarCheckLight => const SvgGenImage('assets/icon/calendar-check-light.svg');
+
+  /// File path: assets/icon/calendar-check-regular.svg
+  SvgGenImage get calendarCheckRegular => const SvgGenImage('assets/icon/calendar-check-regular.svg');
+
+  /// File path: assets/icon/caret-double-up-filled.svg
+  SvgGenImage get caretDoubleUpFilled => const SvgGenImage('assets/icon/caret-double-up-filled.svg');
+
+  /// File path: assets/icon/caret-double-up-light.svg
+  SvgGenImage get caretDoubleUpLight => const SvgGenImage('assets/icon/caret-double-up-light.svg');
+
+  /// File path: assets/icon/caret-double-up-regular.svg
+  SvgGenImage get caretDoubleUpRegular => const SvgGenImage('assets/icon/caret-double-up-regular.svg');
 
   /// File path: assets/icon/caret-down-filled.svg
   SvgGenImage get caretDownFilled => const SvgGenImage('assets/icon/caret-down-filled.svg');
@@ -114,6 +159,24 @@ class $AssetsIconGen {
   /// File path: assets/icon/close-regular.svg
   SvgGenImage get closeRegular => const SvgGenImage('assets/icon/close-regular.svg');
 
+  /// File path: assets/icon/code-filled.svg
+  SvgGenImage get codeFilled => const SvgGenImage('assets/icon/code-filled.svg');
+
+  /// File path: assets/icon/code-light.svg
+  SvgGenImage get codeLight => const SvgGenImage('assets/icon/code-light.svg');
+
+  /// File path: assets/icon/code-regular.svg
+  SvgGenImage get codeRegular => const SvgGenImage('assets/icon/code-regular.svg');
+
+  /// File path: assets/icon/columns-filled.svg
+  SvgGenImage get columnsFilled => const SvgGenImage('assets/icon/columns-filled.svg');
+
+  /// File path: assets/icon/columns-light.svg
+  SvgGenImage get columnsLight => const SvgGenImage('assets/icon/columns-light.svg');
+
+  /// File path: assets/icon/columns-regular.svg
+  SvgGenImage get columnsRegular => const SvgGenImage('assets/icon/columns-regular.svg');
+
   /// File path: assets/icon/copy-simple-filled.svg
   SvgGenImage get copySimpleFilled => const SvgGenImage('assets/icon/copy-simple-filled.svg');
 
@@ -131,6 +194,42 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/cross-circle-regular.svg
   SvgGenImage get crossCircleRegular => const SvgGenImage('assets/icon/cross-circle-regular.svg');
+
+  /// File path: assets/icon/dots-three-filled.svg
+  SvgGenImage get dotsThreeFilled => const SvgGenImage('assets/icon/dots-three-filled.svg');
+
+  /// File path: assets/icon/dots-three-light.svg
+  SvgGenImage get dotsThreeLight => const SvgGenImage('assets/icon/dots-three-light.svg');
+
+  /// File path: assets/icon/dots-three-regular.svg
+  SvgGenImage get dotsThreeRegular => const SvgGenImage('assets/icon/dots-three-regular.svg');
+
+  /// File path: assets/icon/files-filled.svg
+  SvgGenImage get filesFilled => const SvgGenImage('assets/icon/files-filled.svg');
+
+  /// File path: assets/icon/files-light.svg
+  SvgGenImage get filesLight => const SvgGenImage('assets/icon/files-light.svg');
+
+  /// File path: assets/icon/files-regular.svg
+  SvgGenImage get filesRegular => const SvgGenImage('assets/icon/files-regular.svg');
+
+  /// File path: assets/icon/fire-filled.svg
+  SvgGenImage get fireFilled => const SvgGenImage('assets/icon/fire-filled.svg');
+
+  /// File path: assets/icon/fire-light.svg
+  SvgGenImage get fireLight => const SvgGenImage('assets/icon/fire-light.svg');
+
+  /// File path: assets/icon/fire-regular.svg
+  SvgGenImage get fireRegular => const SvgGenImage('assets/icon/fire-regular.svg');
+
+  /// File path: assets/icon/gear-six-filled.svg
+  SvgGenImage get gearSixFilled => const SvgGenImage('assets/icon/gear-six-filled.svg');
+
+  /// File path: assets/icon/gear-six-light.svg
+  SvgGenImage get gearSixLight => const SvgGenImage('assets/icon/gear-six-light.svg');
+
+  /// File path: assets/icon/gear-six-regular.svg
+  SvgGenImage get gearSixRegular => const SvgGenImage('assets/icon/gear-six-regular.svg');
 
   /// File path: assets/icon/image-filled.svg
   SvgGenImage get imageFilled => const SvgGenImage('assets/icon/image-filled.svg');
@@ -168,8 +267,80 @@ class $AssetsIconGen {
   /// File path: assets/icon/lightning-slash-regular.svg
   SvgGenImage get lightningSlashRegular => const SvgGenImage('assets/icon/lightning-slash-regular.svg');
 
+  /// File path: assets/icon/magnifying-glass-filled.svg
+  SvgGenImage get magnifyingGlassFilled => const SvgGenImage('assets/icon/magnifying-glass-filled.svg');
+
+  /// File path: assets/icon/magnifying-glass-light.svg
+  SvgGenImage get magnifyingGlassLight => const SvgGenImage('assets/icon/magnifying-glass-light.svg');
+
+  /// File path: assets/icon/magnifying-glass-regular.svg
+  SvgGenImage get magnifyingGlassRegular => const SvgGenImage('assets/icon/magnifying-glass-regular.svg');
+
+  /// File path: assets/icon/newspaper-filled.svg
+  SvgGenImage get newspaperFilled => const SvgGenImage('assets/icon/newspaper-filled.svg');
+
+  /// File path: assets/icon/newspaper-light.svg
+  SvgGenImage get newspaperLight => const SvgGenImage('assets/icon/newspaper-light.svg');
+
+  /// File path: assets/icon/newspaper-regular.svg
+  SvgGenImage get newspaperRegular => const SvgGenImage('assets/icon/newspaper-regular.svg');
+
+  /// File path: assets/icon/puzzle-piece-filled.svg
+  SvgGenImage get puzzlePieceFilled => const SvgGenImage('assets/icon/puzzle-piece-filled.svg');
+
+  /// File path: assets/icon/puzzle-piece-light.svg
+  SvgGenImage get puzzlePieceLight => const SvgGenImage('assets/icon/puzzle-piece-light.svg');
+
+  /// File path: assets/icon/puzzle-piece-regular.svg
+  SvgGenImage get puzzlePieceRegular => const SvgGenImage('assets/icon/puzzle-piece-regular.svg');
+
+  /// File path: assets/icon/question-filled.svg
+  SvgGenImage get questionFilled => const SvgGenImage('assets/icon/question-filled.svg');
+
+  /// File path: assets/icon/question-light.svg
+  SvgGenImage get questionLight => const SvgGenImage('assets/icon/question-light.svg');
+
+  /// File path: assets/icon/question-regular.svg
+  SvgGenImage get questionRegular => const SvgGenImage('assets/icon/question-regular.svg');
+
+  /// File path: assets/icon/share-network-filled.svg
+  SvgGenImage get shareNetworkFilled => const SvgGenImage('assets/icon/share-network-filled.svg');
+
+  /// File path: assets/icon/share-network-light.svg
+  SvgGenImage get shareNetworkLight => const SvgGenImage('assets/icon/share-network-light.svg');
+
+  /// File path: assets/icon/share-network-regular.svg
+  SvgGenImage get shareNetworkRegular => const SvgGenImage('assets/icon/share-network-regular.svg');
+
   /// Directory path: assets/icon/social
   $AssetsIconSocialGen get social => const $AssetsIconSocialGen();
+
+  /// File path: assets/icon/squares-four-filled.svg
+  SvgGenImage get squaresFourFilled => const SvgGenImage('assets/icon/squares-four-filled.svg');
+
+  /// File path: assets/icon/squares-four-light.svg
+  SvgGenImage get squaresFourLight => const SvgGenImage('assets/icon/squares-four-light.svg');
+
+  /// File path: assets/icon/squares-four-regular.svg
+  SvgGenImage get squaresFourRegular => const SvgGenImage('assets/icon/squares-four-regular.svg');
+
+  /// File path: assets/icon/stack-filled.svg
+  SvgGenImage get stackFilled => const SvgGenImage('assets/icon/stack-filled.svg');
+
+  /// File path: assets/icon/stack-light.svg
+  SvgGenImage get stackLight => const SvgGenImage('assets/icon/stack-light.svg');
+
+  /// File path: assets/icon/stack-regular.svg
+  SvgGenImage get stackRegular => const SvgGenImage('assets/icon/stack-regular.svg');
+
+  /// File path: assets/icon/star-filled.svg
+  SvgGenImage get starFilled => const SvgGenImage('assets/icon/star-filled.svg');
+
+  /// File path: assets/icon/star-light.svg
+  SvgGenImage get starLight => const SvgGenImage('assets/icon/star-light.svg');
+
+  /// File path: assets/icon/star-regular.svg
+  SvgGenImage get starRegular => const SvgGenImage('assets/icon/star-regular.svg');
 
   /// File path: assets/icon/trash-simple-filled.svg
   SvgGenImage get trashSimpleFilled => const SvgGenImage('assets/icon/trash-simple-filled.svg');
@@ -179,6 +350,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/trash-simple-regular.svg
   SvgGenImage get trashSimpleRegular => const SvgGenImage('assets/icon/trash-simple-regular.svg');
+
+  /// File path: assets/icon/trend-up-filled.svg
+  SvgGenImage get trendUpFilled => const SvgGenImage('assets/icon/trend-up-filled.svg');
+
+  /// File path: assets/icon/trend-up-light.svg
+  SvgGenImage get trendUpLight => const SvgGenImage('assets/icon/trend-up-light.svg');
+
+  /// File path: assets/icon/trend-up-regular.svg
+  SvgGenImage get trendUpRegular => const SvgGenImage('assets/icon/trend-up-regular.svg');
 
   /// File path: assets/icon/verified-tick.svg
   SvgGenImage get verifiedTick => const SvgGenImage('assets/icon/verified-tick.svg');
@@ -216,9 +396,24 @@ class $AssetsIconGen {
     arrowsClockwiseFilled,
     arrowsClockwiseLight,
     arrowsClockwiseRegular,
+    atFilled,
+    atLight,
+    atRegular,
+    bellFilled,
+    bellLight,
+    bellRegular,
+    bookmarkSimpleFilled,
+    bookmarkSimpleLight,
+    bookmarkSimpleRegular,
     calendarBlankFilled,
     calendarBlankLight,
     calendarBlankRegular,
+    calendarCheckFilled,
+    calendarCheckLight,
+    calendarCheckRegular,
+    caretDoubleUpFilled,
+    caretDoubleUpLight,
+    caretDoubleUpRegular,
     caretDownFilled,
     caretDownLight,
     caretDownRegular,
@@ -238,12 +433,30 @@ class $AssetsIconGen {
     closeFilled,
     closeLight,
     closeRegular,
+    codeFilled,
+    codeLight,
+    codeRegular,
+    columnsFilled,
+    columnsLight,
+    columnsRegular,
     copySimpleFilled,
     copySimpleLight,
     copySimpleRegular,
     crossCircleFilled,
     crossCircleLight,
     crossCircleRegular,
+    dotsThreeFilled,
+    dotsThreeLight,
+    dotsThreeRegular,
+    filesFilled,
+    filesLight,
+    filesRegular,
+    fireFilled,
+    fireLight,
+    fireRegular,
+    gearSixFilled,
+    gearSixLight,
+    gearSixRegular,
     imageFilled,
     imageLight,
     imageRegular,
@@ -256,9 +469,36 @@ class $AssetsIconGen {
     lightningSlashFilled,
     lightningSlashLight,
     lightningSlashRegular,
+    magnifyingGlassFilled,
+    magnifyingGlassLight,
+    magnifyingGlassRegular,
+    newspaperFilled,
+    newspaperLight,
+    newspaperRegular,
+    puzzlePieceFilled,
+    puzzlePieceLight,
+    puzzlePieceRegular,
+    questionFilled,
+    questionLight,
+    questionRegular,
+    shareNetworkFilled,
+    shareNetworkLight,
+    shareNetworkRegular,
+    squaresFourFilled,
+    squaresFourLight,
+    squaresFourRegular,
+    stackFilled,
+    stackLight,
+    stackRegular,
+    starFilled,
+    starLight,
+    starRegular,
     trashSimpleFilled,
     trashSimpleLight,
     trashSimpleRegular,
+    trendUpFilled,
+    trendUpLight,
+    trendUpRegular,
     verifiedTick,
     warningFilled,
     warningLight,
