@@ -6,6 +6,7 @@ class AppTextField<T> extends AppStatefulWidget {
   const AppTextField({
     super.key,
     super.size,
+    super.themeMode,
     this.style = AppTextFieldStyle.outline,
     this.feedbackState,
     this.label,

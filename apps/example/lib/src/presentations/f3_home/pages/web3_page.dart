@@ -246,14 +246,14 @@ class _Web3PageState extends AppPageState<Web3Page> {
                               text: 'Feed',
                               size: WidgetSize.lg,
                               style: AppButtonStyle.text,
-                              color: context.theme.color.textPrimaryInverse),
+                              themeMode: ThemeMode.dark),
                         if (ResponsiveBreakpoints.of(context)
                             .largerThan(TABLET))
                           AppButton(
                               text: 'Trending',
                               size: WidgetSize.lg,
                               style: AppButtonStyle.text,
-                              color: context.theme.color.textPrimaryInverse),
+                              themeMode: ThemeMode.dark),
                       ]),
                       if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
                         ContainerLayout(
@@ -262,6 +262,7 @@ class _Web3PageState extends AppPageState<Web3Page> {
                             style: AppTextFieldStyle.shaded,
                             startIcon: Assets.icon.infoRegular.keyName,
                             placeholderText: 'Search web3',
+                            themeMode: ThemeMode.dark,
                           ),
                         ),
                       RowLayout(gap: 12, children: [
@@ -279,7 +280,7 @@ class _Web3PageState extends AppPageState<Web3Page> {
                               text: 'Create',
                               size: WidgetSize.lg,
                               style: AppButtonStyle.text,
-                              color: context.theme.color.textPrimaryInverse),
+                              themeMode: ThemeMode.dark),
                         ContainerLayout(
                           child: Assets.icon.infoRegular.svgIcon(
                             size: 20,
@@ -360,34 +361,44 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                 )
                               ],
                             ),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ColumnLayout(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        AppText('The Sims',
-                                            style: TextStyle(
-                                              color: context
-                                                  .theme.color.textPrimary,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            )),
-                                        AppText('3.69 ETH',
-                                            style: TextStyle(
-                                              color: context
-                                                  .theme.color.textPrimary,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                            )),
-                                      ]),
-                                  AppButton(
-                                      text: 'Bid',
-                                      size: WidgetSize.lg,
-                                      style: AppButtonStyle.outline)
-                                ])
+                            RowLayout(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              gap: 8,
+                              children: [
+                                Expanded(
+                                  child: ColumnLayout(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      AppText(
+                                        'The Sims',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      AppText(
+                                        '3.69 ETH',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                AppButton(
+                                    text: 'Bid',
+                                    size: WidgetSize.lg,
+                                    style: AppButtonStyle.outline),
+                              ],
+                            )
                           ]),
                         ),
                         ResponsiveRowColumnItem(
@@ -408,34 +419,44 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                 )
                               ],
                             ),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ColumnLayout(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        AppText('Formatting',
-                                            style: TextStyle(
-                                              color: context
-                                                  .theme.color.textPrimary,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            )),
-                                        AppText('1.00 ETH',
-                                            style: TextStyle(
-                                              color: context
-                                                  .theme.color.textPrimary,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                            )),
-                                      ]),
-                                  AppButton(
-                                      text: 'Bid',
-                                      size: WidgetSize.lg,
-                                      style: AppButtonStyle.outline)
-                                ])
+                            RowLayout(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              gap: 8,
+                              children: [
+                                Expanded(
+                                  child: ColumnLayout(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      AppText(
+                                        'Formatting',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      AppText(
+                                        '1.00 ETH',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                AppButton(
+                                    text: 'Bid',
+                                    size: WidgetSize.lg,
+                                    style: AppButtonStyle.outline),
+                              ],
+                            )
                           ]),
                         ),
                         ResponsiveRowColumnItem(
@@ -456,34 +477,44 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                 )
                               ],
                             ),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ColumnLayout(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        AppText('No Profit Under The Sun',
-                                            style: TextStyle(
-                                              color: context
-                                                  .theme.color.textPrimary,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            )),
-                                        AppText('4.00 ETH',
-                                            style: TextStyle(
-                                              color: context
-                                                  .theme.color.textPrimary,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                            )),
-                                      ]),
-                                  AppButton(
-                                      text: 'Bid',
-                                      size: WidgetSize.lg,
-                                      style: AppButtonStyle.outline)
-                                ])
+                            RowLayout(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              gap: 8,
+                              children: [
+                                Expanded(
+                                  child: ColumnLayout(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      AppText(
+                                        'No Profit Under The Sun',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      AppText(
+                                        '4.00 ETH',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                AppButton(
+                                    text: 'Bid',
+                                    size: WidgetSize.lg,
+                                    style: AppButtonStyle.outline),
+                              ],
+                            )
                           ]),
                         ),
                         ResponsiveRowColumnItem(
@@ -504,34 +535,44 @@ class _Web3PageState extends AppPageState<Web3Page> {
                                 )
                               ],
                             ),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ColumnLayout(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        AppText("You're just making shit up",
-                                            style: TextStyle(
-                                              color: context
-                                                  .theme.color.textPrimary,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            )),
-                                        AppText('4.99 ETH',
-                                            style: TextStyle(
-                                              color: context
-                                                  .theme.color.textPrimary,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                            )),
-                                      ]),
-                                  AppButton(
-                                      text: 'Bid',
-                                      size: WidgetSize.lg,
-                                      style: AppButtonStyle.outline)
-                                ])
+                            RowLayout(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              gap: 8,
+                              children: [
+                                Expanded(
+                                  child: ColumnLayout(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      AppText(
+                                        "You're just making shit up",
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      AppText(
+                                        '4.99 ETH',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                AppButton(
+                                    text: 'Bid',
+                                    size: WidgetSize.lg,
+                                    style: AppButtonStyle.outline),
+                              ],
+                            )
                           ]),
                         ),
                       ],
