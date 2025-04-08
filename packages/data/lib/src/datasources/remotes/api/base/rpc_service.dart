@@ -13,41 +13,51 @@ abstract class RpcService {
   final String jsonrpc;
   final ParseErrorLogger? errorLogger;
 
-  Future<JsonRpcResponse<DATA>> request<DATA>(
+  Future<JsonRpcResponse<DATA, ErrorResponse>> request<DATA>(
     String path, {
     String? jsonrpc,
     required String method,
     Map<String, dynamic>? params,
     String? id,
-    required DATA Function(Map<String, dynamic> json) fromJson,
+    String? mockId,
+    DATA Function(Map<String, dynamic> json)? fromJson,
   }) async {
     final extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final headers = <String, dynamic>{};
-    final Map<String, Object?> data = {
+    final Map<String, Object?> body = {
       'jsonrpc': jsonrpc ?? this.jsonrpc,
+      'mock': mockId,
       'method': method,
       'params': params,
       'id': id ?? _randomRequestId(),
     };
-    data.removeWhere((k, v) => v == null);
-    final options = _setStreamType<JsonRpcResponse<DATA>>(
+    body.removeWhere((k, v) => v == null);
+    final options = _setStreamType<JsonRpcResponse<DATA, ErrorResponse>>(
       Options(method: 'POST', headers: headers, extra: extra)
           .compose(
             _dio.options,
             path,
             queryParameters: queryParameters,
-            data: data,
+            data: body,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final result = await _dio.fetch<Map<String, dynamic>>(options);
-    late JsonRpcResponse<DATA> value;
+    final fetchResult = await _dio.fetch<Map<String, dynamic>>(options);
+    late JsonRpcResponse<DATA, ErrorResponse> value;
+    final Map<String, dynamic>? data = fetchResult.data;
+    final result = data?['result'];
+    final error = data?['error'];
     try {
-      value = JsonRpcResponse<DATA>.fromJson(
-        result.data!,
-        (json) => fromJson(json as Map<String, dynamic>),
+      value = JsonRpcResponse(
+        jsonrpc: data?['jsonrpc'] as String?,
+        id: data?['id'] as String?,
+        result:
+            result != null ? fromJson!(result as Map<String, dynamic>) : null,
+        error: error != null
+            ? ErrorResponse.fromJson(error as Map<String, dynamic>)
+            : null,
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, options);
@@ -60,6 +70,7 @@ abstract class RpcService {
     String path, {
     String? jsonrpc,
     required String method,
+    String? mockId,
     Map<String, dynamic>? params,
   }) async {
     final extra = <String, dynamic>{};
@@ -68,6 +79,7 @@ abstract class RpcService {
     final headers = <String, dynamic>{};
     final Map<String, Object?> data = {
       'jsonrpc': jsonrpc ?? this.jsonrpc,
+      'mock': mockId,
       'method': method,
       'params': params,
     };
@@ -94,7 +106,8 @@ abstract class RpcService {
     final queryParameters = <String, dynamic>{};
     final headers = <String, dynamic>{};
     final data = bodyList.map((e) => e.toJson()).toList();
-    final options = _setStreamType<List<JsonRpcResponse<dynamic>>>(
+    final options =
+        _setStreamType<List<JsonRpcResponse<dynamic, ErrorResponse>>>(
       Options(method: 'POST', headers: headers, extra: extra)
           .compose(
             _dio.options,
@@ -105,24 +118,27 @@ abstract class RpcService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final result = await _dio.fetch<List<dynamic>>(options);
-    late List<JsonRpcResponse<dynamic>> value;
+    late List<JsonRpcResponse<dynamic, ErrorResponse>> value;
     try {
       result.data!.removeWhere((m) => m['id'] == null);
       value = result.data!.map(
         (dynamic i) {
           final iMap = i as Map<String, dynamic>;
           final id = iMap['id'];
+          final result = iMap['result'];
+          final error = iMap['error'];
           final Function(Map<String, dynamic>? json)? fromJson =
-              bodyList.firstWhereOrNull((b) => b.id == id)?.toJsonResponse;
-          return JsonRpcResponse<dynamic>.fromJson(
-            iMap,
-            (p) {
-              if (p is Map<String, dynamic>?) {
-                return fromJson!(p);
-              } else {
-                return p;
-              }
-            },
+              bodyList.firstWhereOrNull((b) => b.id == id)?.fromJsonResponse;
+
+          return JsonRpcResponse(
+            jsonrpc: iMap['jsonrpc'] as String?,
+            id: id as String?,
+            result: result != null
+                ? fromJson!(result as Map<String, dynamic>)
+                : null,
+            error: error != null
+                ? ErrorResponse.fromJson(error as Map<String, dynamic>)
+                : null,
           );
         },
       ).toList();

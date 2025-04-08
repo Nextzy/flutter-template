@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default values
-PROJECT_NAME="mflow"
+PROJECT_NAME="change_application_name"
 FLAVOR=""
 BUILD_TYPE=""
 OUTPUT_DIR=".bundle"
@@ -55,10 +55,10 @@ VERSION=$(grep "version:" ./pubspec.yaml | awk '{print $2}')
 mkdir -p "$OUTPUT_DIR"
 
 # Define the custom APK name
-CUSTOM_APK_NAME="[${DATE}|${TIME}]-${PROJECT_NAME}-${FLAVOR}-${BUILD_TYPE}-${VERSION}.apk"
+CUSTOM_APK_NAME="[${DATE}|${TIME}]-${PROJECT_NAME}-${FLAVOR}-${BUILD_TYPE}-${VERSION}.aab"
 
 # Build APK
-flutter build apk \
+flutter build appbundle \
     --${BUILD_TYPE} \
     --flavor ${FLAVOR} \
     --target lib/main_${FLAVOR}.dart

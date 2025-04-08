@@ -15,8 +15,8 @@ dependencies:
   tutorial:
     path: ../../apps/tutorial
 
-  widgetbook_annotation: ^3.3.0
-  widgetbook: ^3.11.0
+  widgetbook_annotation: ^3.3.1
+  widgetbook: ^3.12.0
 
 dependency_overrides:
   # Resolve for wechat_assets_picker

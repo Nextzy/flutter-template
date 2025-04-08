@@ -36,7 +36,7 @@ flutter_ios_podfile_setup
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-  pod 'NewRelicAgent', '~> 7.5.2'
+  pod 'NewRelicAgent', '~> 7.5.4'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end

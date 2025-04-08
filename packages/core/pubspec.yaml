@@ -23,11 +23,11 @@ dependencies:
     git:
       url: https://github.com/nextzy/falconx.git
       path: falconx
-      ref: 3.8.4
+      ref: 3.8.8
 
   #======= Firebase ========#
-  firebase_core: ^3.12.1
-  firebase_remote_config: ^5.4.2
+  firebase_core: ^3.13.0
+  firebase_remote_config: ^5.4.3
 
   #======= Utils ========#
   #PLATFORM: All
@@ -35,7 +35,7 @@ dependencies:
   upgrader: ^11.3.1
   auto_route: ^10.0.1
   #PLATFORM: Android, iOS, MacOS, Webs, Windows
-  wakelock_plus: ^1.2.10
+  wakelock_plus: ^1.2.11
   #PLATFORM: Android, iOS, MacOS, Windows
   screen_brightness: ^2.1.2
   #PLATFORM: Android, iOS, Windows
@@ -47,9 +47,9 @@ dependencies:
 
   #======= Analytic ========#
   #PLATFORM: All
-  catcher_2: ^2.1.1
+  catcher_2: ^2.1.2
   #PLATFORM: Android, iOS
-  newrelic_mobile: ^1.1.8
+  newrelic_mobile: ^1.1.10
 
 
 
@@ -70,7 +70,7 @@ dev_dependencies:
   build_runner: ^2.4.15
   flutter_gen_runner: ^5.10.0
   json_serializable: ^6.9.4
-  freezed: ^3.0.4
+  freezed: ^3.0.6
 
 
 flutter:

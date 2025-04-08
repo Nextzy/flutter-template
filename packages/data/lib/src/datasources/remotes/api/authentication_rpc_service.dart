@@ -9,19 +9,20 @@ class AuthenticationRpcService extends RpcService {
 
   final String path;
 
-  Future<JsonRpcResponse<RemoteAuthenticationResponse>> signInWithEmailPassword({
+  Future<JsonRpcResponse<RemoteAuthenticationResponse, ErrorResponse>>
+      signInWithEmailPassword({
     required String email,
     required String password,
     String? requestId,
   }) =>
-      request(
-        path,
-        method: 'signInWithEmailPassword',
-        id: requestId,
-        params: RemoteSignInWithEmailBody(
-          email: email,
-          password: password,
-        ).toJson(),
-        fromJson: RemoteAuthenticationResponse.fromJson,
-      );
+          request(
+            path,
+            method: 'signInWithEmailPassword',
+            id: requestId,
+            params: RemoteSignInWithEmailBody(
+              email: email,
+              password: password,
+            ).toJson(),
+            fromJson: RemoteAuthenticationResponse.fromJson,
+          );
 }
