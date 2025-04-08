@@ -169,7 +169,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                         ),
                       ]),
                 )),
-            if (ResponsiveBreakpoints.of(context).largerThan(DESKTOP))
+            if (ResponsiveBreakpoints.of(context).isDesktop)
               ResponsiveRowColumnItem(
                 rowFlex: 1,
                 rowFit: FlexFit.tight,
@@ -177,8 +177,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                   fit: StackFit.expand,
                   children: [
                     ContainerLayout(
-                        child: Image.network(
-                            'https://s3-alpha-sig.figma.com/img/328c/6f69/0c3c8129170a7a37c963e4a16d635487?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PRWh97bkJQ0XvTNn36QHzxeK-I8gCiVEPCrOsautZ~2HgCR45vfUXYUwuwuSUNbrTkaR5VIDf~S5Vlj1xNIxM20X4gojwLmmp34VHGKNpY~N2EqqjohphfiqYWL9Sod4i082HLS2fd6qXvZ4y~Db3~jPEcSVuecoaF6HW-WNHrCUVGok0hqryELSv68DIES2pPqAucuvyDJ72xAwY~SUTG3i7YqIc3lZYzwUlmU~8fj6t8hvR-mCY3h0nFX9drd0KKNvYbKF4Wx9OaFCcDi-GsfPKRwqOQEIm0c9ii4tkziNTMu8MZ7K6RGuF99onWOl1o74-RosOtQTkE47sZG76Q__',
+                        child: Image.network('https://i.imgur.com/aNKrnAb.png',
                             fit: BoxFit.cover)),
                     ColumnLayout(
                         mainAxisAlignment: MainAxisAlignment.end,
