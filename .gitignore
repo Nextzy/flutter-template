@@ -50,6 +50,7 @@ hosting.*
 .packages
 .pub-cache/
 .pub/
+.cxx/
 
 ### Android ###
 # Built application files

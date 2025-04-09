@@ -1,4 +1,4 @@
-package com.change_application_name.widgetbook_workspace
+package com.change_application_name.example
 
 import io.flutter.embedding.android.FlutterActivity
 

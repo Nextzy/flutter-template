@@ -1,4 +1,4 @@
-package com.change_application_name.playground
+package com.change_application_name.tutorial
 
 import android.util.Log
 import io.flutter.embedding.android.FlutterActivity

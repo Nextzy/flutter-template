@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.change_application_name.preview"
+    namespace = "com.change_application_name.device_preview"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
