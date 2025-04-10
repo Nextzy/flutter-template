@@ -177,6 +177,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                   ),
                                 ],
                               ),
+                              Gap(32),
                             ]),
                           ),
                           AppText(
@@ -221,11 +222,6 @@ class _SignupPageState extends AppPageState<SignupPage> {
             ]),
       ),
     ));
-  }
-
-  void authenEmailPassword() {
-    print('authen email password');
-    print('${_emailController.text} | ${_passwordController.text}');
   }
 
   void authenGoogle() async {
@@ -299,97 +295,82 @@ class _SignupPageState extends AppPageState<SignupPage> {
     // }
   }
 
+  void authenEmailPassword() async {
+    print('authen email password');
+    print('${_emailController.text} | ${_passwordController.text}');
+
+    var jsonRpcResponse = await AuthenticationRpcService(
+      AppHttpClient.instance.dio,
+    ).signInWithEmailPassword(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+
+    _showResult(jsonRpcResponse);
+  }
+
   void _requestOtp() async {
     print('request otp: ${_phoneNumberController.text}');
 
-    var response = await AuthenticationRpcService(
+    var jsonRpcResponse = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
     ).requestOtp(
       phoneNumber: _phoneNumberController.text,
     );
 
-    print('response: ${response}');
+    _showResult(jsonRpcResponse);
 
-    _otpToken = response.result?.token ?? '';
-    _otpRefNo = response.result?.refno ?? '';
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          response.hasResult
-              ? response.result.toString()
-              : response.error?.userMessage ?? 'error',
-        ),
-        duration: Duration(seconds: 5),
-      ),
-    );
+    _otpToken = jsonRpcResponse.result?.token ?? '';
+    _otpRefNo = jsonRpcResponse.result?.refno ?? '';
   }
 
   void _verifyOtp() async {
     print('verify otp: ${_otpController.text}');
 
-    var response = await AuthenticationRpcService(
+    var jsonRpcResponse = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
     ).verifyOtp(
       token: _otpToken,
       pin: _otpController.text,
     );
 
-    print('response: ${response}');
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          response.hasResult
-              ? response.result.toString()
-              : response.error?.userMessage ?? 'error',
-        ),
-        duration: Duration(seconds: 5),
-      ),
-    );
+    _showResult(jsonRpcResponse);
   }
 
   void _testSubtract() async {
     print('testSubtract');
 
-    var response = await AuthenticationRpcService(
+    var jsonRpcResponse = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
     ).subtract(
       subtrahend: 55,
       minuend: 40,
     );
 
-    print('response: ${response}');
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          response.hasResult
-              ? response.result.toString()
-              : response.error?.userMessage ?? 'error',
-        ),
-        duration: Duration(seconds: 5),
-      ),
-    );
+    _showResult(jsonRpcResponse);
   }
 
   void _testEcho() async {
     print('testEcho');
 
-    var response = await AuthenticationRpcService(
+    var jsonRpcResponse = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
     ).echo(
       name: 'John Doe',
     );
 
-    print('response: ${response}');
+    _showResult(jsonRpcResponse);
+  }
+
+  void _showResult(JsonRpcResponse jsonRpcResponse) {
+    print('jsonRpcResponse: ${jsonRpcResponse}');
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          response.hasResult
-              ? response.result.toString()
-              : response.error?.userMessage ?? 'error',
+          jsonRpcResponse.hasResult
+              ? jsonRpcResponse.result.toString()
+              : jsonRpcResponse.error?.userMessage ?? 'error',
         ),
         duration: Duration(seconds: 5),
       ),
