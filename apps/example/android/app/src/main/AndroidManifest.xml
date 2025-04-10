@@ -31,6 +31,13 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="611521568708577" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="bd76834f70326b0f5e4e3de54095f994"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

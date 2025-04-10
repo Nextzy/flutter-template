@@ -1,4 +1,7 @@
 import 'package:change_application_name/application.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+// import 'package:flutter_line_sdk/flutter_line_sdk.dart';
 
 @RoutePage()
 class SignupPage extends AppPage {
@@ -65,7 +68,9 @@ class _SignupPageState extends AppPageState<SignupPage> {
                               height: 40,
                               startIcon: Assets.icon.infoRegular.keyName,
                               text: 'Continue with Google',
-                              onPress: () {},
+                              onPress: () {
+                                authenGoogle();
+                              },
                             ),
                             Gap(16),
                             AppButton(
@@ -74,15 +79,19 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 height: 40,
                                 startIcon: Assets.icon.infoRegular.keyName,
                                 text: 'Continue with Facebook',
-                                onPress: () {}),
+                                onPress: () {
+                                  authenFacebook();
+                                }),
                             Gap(16),
                             AppButton(
                                 style: AppButtonStyle.outline,
                                 width: 380,
                                 height: 40,
                                 startIcon: Assets.icon.infoRegular.keyName,
-                                text: 'Continue with Apple',
-                                onPress: () {}),
+                                text: 'Continue with Line',
+                                onPress: () {
+                                  authenLine();
+                                }),
                             Gap(32),
                             AppDivider(text: 'Or'),
                             // Gap(32),
@@ -201,6 +210,77 @@ class _SignupPageState extends AppPageState<SignupPage> {
               ),
           ]),
     ));
+  }
+
+  void authenGoogle() async {
+    print('authen Google');
+
+    const List<String> scopes = <String>[
+      'email',
+    ];
+
+    final nutClientId =
+        '497686726544-9udl9jfqkr4d6c6vl46k4n35j029a1gs.apps.googleusercontent.com';
+    final yukesClientId =
+        '445384131052-026dgdgl69kheka36vtgnmmparp95drq.apps.googleusercontent.com';
+
+    try {
+      GoogleSignIn googleSignIn = GoogleSignIn(
+        scopes: scopes,
+        clientId: kIsWeb ? nutClientId : null,
+        // clientId: kIsWeb ? yukesClientId : null,
+      );
+
+      final res = await googleSignIn.signIn();
+      final authen = await res?.authentication;
+      // final res = await _googleSignIn.signInSilently();
+      print('res: ${res?.email}');
+      print('authen: ${authen?.accessToken} | ${authen?.idToken}');
+    } catch (error) {
+      print('error: $error');
+    }
+  }
+
+  void authenFacebook() async {
+    print('authen Facebook');
+
+    if (kIsWeb) {
+      await FacebookAuth.i.webAndDesktopInitialize(
+        appId: '611521568708577',
+        cookie: true,
+        xfbml: true,
+        version: 'v15.0',
+      );
+    }
+
+    print('login');
+    final loginResult = await FacebookAuth.i.login();
+    print('loginResult: $loginResult');
+
+    if (loginResult.status == LoginStatus.success) {
+      print('accessToken: ${loginResult.accessToken}');
+    }
+  }
+
+  void authenLine() async {
+    print('authen Line');
+
+    // LineSDK.instance.setup('2007180054').then((_) {
+    //   print("LineSDK Prepared");
+    // });
+
+    // try {
+    //   final result = await LineSDK.instance.login();
+    //   print('result: $result');
+    //   //_userProfile = result.userProfile;
+    //   // user id -> result.userProfile?.userId
+    //   // user name -> result.userProfile?.displayName
+    //   // user avatar -> result.userProfile?.pictureUrl
+    //   // etc...
+    // } on PlatformException catch (e) {
+    //   // Error handling.
+    //   print(e);
+    // }
   }
 
   void _requestOtp() async {
