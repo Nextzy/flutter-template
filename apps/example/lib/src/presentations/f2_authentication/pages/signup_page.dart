@@ -76,7 +76,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 startIcon: Assets.icon.infoRegular.keyName,
                                 text: 'Continue with Google',
                                 onPress: () {
-                                  authenGoogle();
+                                  _authenGoogle();
                                 },
                               ),
                               Gap(16),
@@ -87,7 +87,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                   startIcon: Assets.icon.infoRegular.keyName,
                                   text: 'Continue with Facebook',
                                   onPress: () {
-                                    authenFacebook();
+                                    _authenFacebook();
                                   }),
                               Gap(16),
                               AppButton(
@@ -97,7 +97,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                   startIcon: Assets.icon.infoRegular.keyName,
                                   text: 'Continue with Line',
                                   onPress: () {
-                                    authenLine();
+                                    _authenLine();
                                   }),
                               Gap(32),
                               AppDivider(text: 'Or'),
@@ -120,7 +120,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 height: 40,
                                 text: 'Get Started',
                                 onPress: () {
-                                  authenEmailPassword();
+                                  _authenEmailPassword();
                                 },
                               ),
                               Gap(32),
@@ -224,7 +224,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
     ));
   }
 
-  void authenGoogle() async {
+  void _authenGoogle() async {
     print('authen Google');
 
     const List<String> scopes = <String>[
@@ -253,7 +253,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
     }
   }
 
-  void authenFacebook() async {
+  void _authenFacebook() async {
     print('authen Facebook');
 
     if (kIsWeb) {
@@ -274,7 +274,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
     }
   }
 
-  void authenLine() async {
+  void _authenLine() async {
     print('authen Line');
 
     // LineSDK.instance.setup('2007180054').then((_) {
@@ -295,7 +295,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
     // }
   }
 
-  void authenEmailPassword() async {
+  void _authenEmailPassword() async {
     print('authen email password');
     print('${_emailController.text} | ${_passwordController.text}');
 
