@@ -76,313 +76,322 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: ColumnLayout(
-        backgroundColor: context.theme.color.bg,
-        children: [
-          RowLayout(
-            height: 64,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: context.theme.color.border,
+      body: SafeArea(
+        child: ColumnLayout(
+          backgroundColor: context.theme.color.bg,
+          children: [
+            RowLayout(
+              height: 64,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: context.theme.color.border,
+                  ),
                 ),
               ),
-            ),
-            children: [
-              RowLayout(gap: 12, children: [
-                ContainerLayout(
-                  child: Assets.icon.squaresFourRegular.svgIcon(
-                    size: 24,
-                    colorFilter: ColorFilter.mode(
-                        context.theme.color.iconPrimary, BlendMode.srcIn),
-                  ),
-                ),
-                ContainerLayout(
-                  child: Assets.icon.fireRegular.svgIcon(
-                    size: 24,
-                    colorFilter: ColorFilter.mode(
-                        context.theme.color.iconNegative, BlendMode.srcIn),
-                  ),
-                ),
-                if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-                  RowLayout(gap: 12, children: [
-                    AppButton(
-                        text: 'Projects',
-                        endIcon: Assets.icon.caretDownRegular.keyName,
-                        style: AppButtonStyle.text),
-                    AppButton(
-                        text: 'Filters',
-                        endIcon: Assets.icon.caretDownRegular.keyName,
-                        style: AppButtonStyle.text),
-                    AppButton(
-                        text: 'Dashboards',
-                        endIcon: Assets.icon.caretDownRegular.keyName,
-                        style: AppButtonStyle.text),
-                    AppButton(
-                        text: 'People',
-                        endIcon: Assets.icon.caretDownRegular.keyName,
-                        style: AppButtonStyle.text),
-                    AppButton(
-                        text: 'Apps',
-                        endIcon: Assets.icon.caretDownRegular.keyName,
-                        style: AppButtonStyle.text),
-                    AppButton(text: 'Create', style: AppButtonStyle.outline),
-                  ])
-              ]),
-              RowLayout(gap: 12, children: [
-                if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+              children: [
+                RowLayout(gap: 12, children: [
                   ContainerLayout(
-                    width: 276,
-                    child: AppTextField(
-                      style: AppTextFieldStyle.outline,
-                      startIcon: Assets.icon.magnifyingGlassRegular.keyName,
-                      placeholderText: 'Search projects',
+                    child: Assets.icon.squaresFourRegular.svgIcon(
+                      size: 24,
+                      colorFilter: ColorFilter.mode(
+                          context.theme.color.iconPrimary, BlendMode.srcIn),
                     ),
                   ),
-                ContainerLayout(
-                  child: Assets.icon.bellRegular.svgIcon(
-                    size: 24,
-                    colorFilter: ColorFilter.mode(
-                        context.theme.color.iconPrimary, BlendMode.srcIn),
-                  ),
-                ),
-                ContainerLayout(
-                  child: Assets.icon.questionRegular.svgIcon(
-                    size: 24,
-                    colorFilter: ColorFilter.mode(
-                        context.theme.color.iconPrimary, BlendMode.srcIn),
-                  ),
-                ),
-                ContainerLayout(
-                  child: Assets.icon.gearSixRegular.svgIcon(
-                    size: 24,
-                    colorFilter: ColorFilter.mode(
-                        context.theme.color.iconPrimary, BlendMode.srcIn),
-                  ),
-                ),
-                AppCircleAvatar(
-                  style: WidgetStyle.subtle,
-                  size: WidgetSize.sm,
-                  path: Assets.mock.avatarSquared1.keyName,
-                )
-              ])
-            ],
-          ),
-          Expanded(
-            child: RowLayout(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
                   ContainerLayout(
-                    width: 240,
-                    height: MediaQuery.sizeOf(context).height - 64,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: context.theme.color.bgSurface1,
-                      border: Border(
-                        right: BorderSide(
-                          color: context.theme.color.border,
-                        ),
+                    child: Assets.icon.fireRegular.svgIcon(
+                      size: 24,
+                      colorFilter: ColorFilter.mode(
+                          context.theme.color.iconNegative, BlendMode.srcIn),
+                    ),
+                  ),
+                  if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+                    RowLayout(gap: 12, children: [
+                      AppButton(
+                          text: 'Projects',
+                          endIcon: Assets.icon.caretDownRegular.keyName,
+                          style: AppButtonStyle.text),
+                      AppButton(
+                          text: 'Filters',
+                          endIcon: Assets.icon.caretDownRegular.keyName,
+                          style: AppButtonStyle.text),
+                      AppButton(
+                          text: 'Dashboards',
+                          endIcon: Assets.icon.caretDownRegular.keyName,
+                          style: AppButtonStyle.text),
+                      AppButton(
+                          text: 'People',
+                          endIcon: Assets.icon.caretDownRegular.keyName,
+                          style: AppButtonStyle.text),
+                      AppButton(
+                          text: 'Apps',
+                          endIcon: Assets.icon.caretDownRegular.keyName,
+                          style: AppButtonStyle.text),
+                      AppButton(text: 'Create', style: AppButtonStyle.outline),
+                    ])
+                ]),
+                RowLayout(gap: 12, children: [
+                  if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+                    ContainerLayout(
+                      width: 276,
+                      child: AppTextField(
+                        style: AppTextFieldStyle.outline,
+                        startIcon: Assets.icon.magnifyingGlassRegular.keyName,
+                        placeholderText: 'Search projects',
                       ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 12),
-                          child: RowLayout(gap: 8, children: [
-                            ContainerLayout(
-                              child: Assets.icon.atFilled.svgIcon(
-                                size: 26,
-                                colorFilter: ColorFilter.mode(
-                                    context.theme.color.iconWarning,
-                                    BlendMode.srcIn),
-                              ),
-                            ),
-                            AppText(
-                              'Product web',
-                              style: TextStyle(
-                                  color: context.theme.color.textPrimary,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ]),
+                  ContainerLayout(
+                    child: Assets.icon.bellRegular.svgIcon(
+                      size: 24,
+                      colorFilter: ColorFilter.mode(
+                          context.theme.color.iconPrimary, BlendMode.srcIn),
+                    ),
+                  ),
+                  ContainerLayout(
+                    child: Assets.icon.questionRegular.svgIcon(
+                      size: 24,
+                      colorFilter: ColorFilter.mode(
+                          context.theme.color.iconPrimary, BlendMode.srcIn),
+                    ),
+                  ),
+                  ContainerLayout(
+                    child: Assets.icon.gearSixRegular.svgIcon(
+                      size: 24,
+                      colorFilter: ColorFilter.mode(
+                          context.theme.color.iconPrimary, BlendMode.srcIn),
+                    ),
+                  ),
+                  AppCircleAvatar(
+                    style: WidgetStyle.subtle,
+                    size: WidgetSize.sm,
+                    path: Assets.mock.avatarSquared1.keyName,
+                  )
+                ])
+              ],
+            ),
+            Expanded(
+              child: RowLayout(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+                    ContainerLayout(
+                      width: 240,
+                      height: MediaQuery.sizeOf(context).height - 64,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: context.theme.color.bgSurface1,
+                        border: Border(
+                          right: BorderSide(
+                            color: context.theme.color.border,
+                          ),
                         ),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: ColumnLayout(children: [
-                              AppSidebarSection(
-                                icon: Assets.icon.newspaperRegular.keyName,
-                                title: 'Backlog',
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 12),
+                            child: RowLayout(gap: 8, children: [
+                              ContainerLayout(
+                                child: Assets.icon.atFilled.svgIcon(
+                                  size: 26,
+                                  colorFilter: ColorFilter.mode(
+                                      context.theme.color.iconWarning,
+                                      BlendMode.srcIn),
+                                ),
                               ),
-                              AppSidebarSection(
-                                  icon: Assets.icon.columnsRegular.keyName,
-                                  title: 'Active sprints',
-                                  active: true),
-                              AppSidebarSection(
-                                icon: Assets.icon.trendUpRegular.keyName,
-                                title: 'Reports',
-                              ),
-                              AppDivider(),
-                              AppSidebarSection(
-                                icon: Assets.icon.stackRegular.keyName,
-                                title: 'Issues',
-                              ),
-                              AppSidebarSection(
-                                  icon: Assets.icon.puzzlePieceRegular.keyName,
-                                  title: 'Components'),
-                              AppSidebarSection(
-                                icon: Assets.icon.codeRegular.keyName,
-                                title: 'Code',
-                              ),
-                              AppSidebarSection(
-                                icon: Assets.icon.calendarCheckRegular.keyName,
-                                title: 'Releases',
-                              ),
-                              AppSidebarSection(
-                                icon: Assets.icon.filesRegular.keyName,
-                                title: 'Project pages',
+                              AppText(
+                                'Product web',
+                                style: TextStyle(
+                                    color: context.theme.color.textPrimary,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600),
                               ),
                             ]),
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                Expanded(
-                    child: SingleChildScrollView(
-                  padding: ResponsiveBreakpoints.of(context).largerThan(TABLET)
-                      ? const EdgeInsets.symmetric(horizontal: 32, vertical: 24)
-                      : const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 16),
-                  child: ColumnLayout(
-                    gap: 16,
-                    children: [
-                      AppBreadcrumbs(children: [
-                        AppBreadcrumbSection(label: 'Projects'),
-                        AppBreadcrumbSection(label: 'International'),
-                        AppBreadcrumbSection(label: 'Product Web')
-                      ]),
-                      if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            AppText(
-                              'All Sprints',
-                              style: TextStyle(
-                                  color: context.theme.color.textPrimary,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            RowLayout(gap: 12, children: [
-                              ContainerLayout(
-                                child: Assets.icon.starRegular.svgIcon(
-                                  size: 20,
-                                  colorFilter: ColorFilter.mode(
-                                      context.theme.color.iconPrimary,
-                                      BlendMode.srcIn),
-                                ),
-                              ),
-                              AppButton(text: 'Complete sprint'),
-                              ContainerLayout(
-                                child: Assets.icon.shareNetworkRegular.svgIcon(
-                                  size: 20,
-                                  colorFilter: ColorFilter.mode(
-                                      context.theme.color.iconPrimary,
-                                      BlendMode.srcIn),
-                                ),
-                              ),
-                              AppIconButton(
-                                  icon: Assets.icon.dotsThreeRegular.keyName,
-                                  style: AppButtonStyle.outline)
-                            ])
-                          ],
-                        ),
-                      if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-                        RowLayout(gap: 16, children: [
-                          ContainerLayout(
-                            width: 280,
-                            child: AppTextField(
-                              style: AppTextFieldStyle.outline,
-                              startIcon:
-                                  Assets.icon.magnifyingGlassRegular.keyName,
-                              placeholderText: 'Search issues',
-                            ),
-                          ),
-                          RowLayout(children: [
-                            AppCircleAvatar(
-                                size: WidgetSize.sm,
-                                style: WidgetStyle.subtle,
-                                path: Assets.mock.avatarSquared1.keyName),
-                            AppCircleAvatar(
-                                size: WidgetSize.sm,
-                                style: WidgetStyle.subtle,
-                                path: Assets.mock.avatarSquared2.keyName),
-                            AppCircleAvatar(
-                                size: WidgetSize.sm,
-                                style: WidgetStyle.subtle,
-                                path: Assets.mock.avatarSquared1.keyName),
-                            AppCircleAvatar(
-                                size: WidgetSize.sm,
-                                style: WidgetStyle.subtle,
-                                path: Assets.mock.avatarSquared2.keyName),
-                            AppCircleAvatar(
-                                size: WidgetSize.sm,
-                                style: WidgetStyle.filled,
-                                title: '+ 9',
-                                color: context.theme.color.bgSurface2),
-                            AppButton(
-                                text: 'Only my issues',
-                                style: AppButtonStyle.text),
-                            AppButton(
-                                text: 'Recently updated',
-                                style: AppButtonStyle.text),
-                          ])
-                        ]),
-                      Row(
-                        children: [
                           Expanded(
-                              child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: RowLayout(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                gap: 8,
-                                children: [
-                                  for (final column in columns.entries)
-                                    KanbanColumn(
-                                      title: column.key,
-                                      tasks: column.value,
-                                      onDrag: (Task task) {
-                                        return DragData(
-                                            task: task, column: column.key);
-                                      },
-                                      onAccept:
-                                          (Task task, String sourceColumn) {
-                                        if (sourceColumn == column.key) {
-                                          return;
-                                        }
-                                        setState(() {
-                                          columns[sourceColumn]!.removeWhere(
-                                              (item) => item.id == task.id);
-                                          columns[column.key]!.add(task);
-                                        });
-                                      },
-                                    ),
-                                ]),
-                          ))
+                            child: SingleChildScrollView(
+                              child: ColumnLayout(children: [
+                                AppSidebarSection(
+                                  icon: Assets.icon.newspaperRegular.keyName,
+                                  title: 'Backlog',
+                                ),
+                                AppSidebarSection(
+                                    icon: Assets.icon.columnsRegular.keyName,
+                                    title: 'Active sprints',
+                                    active: true),
+                                AppSidebarSection(
+                                  icon: Assets.icon.trendUpRegular.keyName,
+                                  title: 'Reports',
+                                ),
+                                AppDivider(),
+                                AppSidebarSection(
+                                  icon: Assets.icon.stackRegular.keyName,
+                                  title: 'Issues',
+                                ),
+                                AppSidebarSection(
+                                    icon:
+                                        Assets.icon.puzzlePieceRegular.keyName,
+                                    title: 'Components'),
+                                AppSidebarSection(
+                                  icon: Assets.icon.codeRegular.keyName,
+                                  title: 'Code',
+                                ),
+                                AppSidebarSection(
+                                  icon:
+                                      Assets.icon.calendarCheckRegular.keyName,
+                                  title: 'Releases',
+                                ),
+                                AppSidebarSection(
+                                  icon: Assets.icon.filesRegular.keyName,
+                                  title: 'Project pages',
+                                ),
+                              ]),
+                            ),
+                          )
                         ],
                       ),
-                    ],
-                  ),
-                ))
-              ],
-            ),
-          )
-        ],
+                    ),
+                  Expanded(
+                      child: SingleChildScrollView(
+                    padding:
+                        ResponsiveBreakpoints.of(context).largerThan(TABLET)
+                            ? const EdgeInsets.symmetric(
+                                horizontal: 32, vertical: 24)
+                            : const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 16),
+                    child: ColumnLayout(
+                      gap: 16,
+                      children: [
+                        AppBreadcrumbs(children: [
+                          AppBreadcrumbSection(label: 'Projects'),
+                          AppBreadcrumbSection(label: 'International'),
+                          AppBreadcrumbSection(label: 'Product Web')
+                        ]),
+                        if (ResponsiveBreakpoints.of(context)
+                            .largerThan(TABLET))
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AppText(
+                                'All Sprints',
+                                style: TextStyle(
+                                    color: context.theme.color.textPrimary,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              RowLayout(gap: 12, children: [
+                                ContainerLayout(
+                                  child: Assets.icon.starRegular.svgIcon(
+                                    size: 20,
+                                    colorFilter: ColorFilter.mode(
+                                        context.theme.color.iconPrimary,
+                                        BlendMode.srcIn),
+                                  ),
+                                ),
+                                AppButton(text: 'Complete sprint'),
+                                ContainerLayout(
+                                  child:
+                                      Assets.icon.shareNetworkRegular.svgIcon(
+                                    size: 20,
+                                    colorFilter: ColorFilter.mode(
+                                        context.theme.color.iconPrimary,
+                                        BlendMode.srcIn),
+                                  ),
+                                ),
+                                AppIconButton(
+                                    icon: Assets.icon.dotsThreeRegular.keyName,
+                                    style: AppButtonStyle.outline)
+                              ])
+                            ],
+                          ),
+                        if (ResponsiveBreakpoints.of(context)
+                            .largerThan(TABLET))
+                          RowLayout(gap: 16, children: [
+                            ContainerLayout(
+                              width: 280,
+                              child: AppTextField(
+                                style: AppTextFieldStyle.outline,
+                                startIcon:
+                                    Assets.icon.magnifyingGlassRegular.keyName,
+                                placeholderText: 'Search issues',
+                              ),
+                            ),
+                            RowLayout(children: [
+                              AppCircleAvatar(
+                                  size: WidgetSize.sm,
+                                  style: WidgetStyle.subtle,
+                                  path: Assets.mock.avatarSquared1.keyName),
+                              AppCircleAvatar(
+                                  size: WidgetSize.sm,
+                                  style: WidgetStyle.subtle,
+                                  path: Assets.mock.avatarSquared2.keyName),
+                              AppCircleAvatar(
+                                  size: WidgetSize.sm,
+                                  style: WidgetStyle.subtle,
+                                  path: Assets.mock.avatarSquared1.keyName),
+                              AppCircleAvatar(
+                                  size: WidgetSize.sm,
+                                  style: WidgetStyle.subtle,
+                                  path: Assets.mock.avatarSquared2.keyName),
+                              AppCircleAvatar(
+                                  size: WidgetSize.sm,
+                                  style: WidgetStyle.filled,
+                                  title: '+ 9',
+                                  color: context.theme.color.bgSurface2),
+                              AppButton(
+                                  text: 'Only my issues',
+                                  style: AppButtonStyle.text),
+                              AppButton(
+                                  text: 'Recently updated',
+                                  style: AppButtonStyle.text),
+                            ])
+                          ]),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: RowLayout(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  gap: 8,
+                                  children: [
+                                    for (final column in columns.entries)
+                                      KanbanColumn(
+                                        title: column.key,
+                                        tasks: column.value,
+                                        onDrag: (Task task) {
+                                          return DragData(
+                                              task: task, column: column.key);
+                                        },
+                                        onAccept:
+                                            (Task task, String sourceColumn) {
+                                          if (sourceColumn == column.key) {
+                                            return;
+                                          }
+                                          setState(() {
+                                            columns[sourceColumn]!.removeWhere(
+                                                (item) => item.id == task.id);
+                                            columns[column.key]!.add(task);
+                                          });
+                                        },
+                                      ),
+                                  ]),
+                            ))
+                          ],
+                        ),
+                      ],
+                    ),
+                  ))
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

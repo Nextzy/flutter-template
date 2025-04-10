@@ -13,247 +13,257 @@ class _EcommercePageState extends AppPageState<EcommercePage> {
   Widget build(BuildContext context) {
     return AppScaffold(
         backgroundColor: context.theme.color.bg,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              RowLayout(
-                height: 64,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                children: [
-                  if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-                    ContainerLayout(
-                      child: Assets.icon.infoRegular.svgIcon(
-                        size: 20,
-                        colorFilter: ColorFilter.mode(
-                            context.theme.color.iconPrimary, BlendMode.srcIn),
-                      ),
-                    ),
-                  AppText('Foculty',
-                      style: TextStyle(
-                        color: context.theme.color.textPrimary,
-                        fontSize:
-                            ResponsiveBreakpoints.of(context).largerThan(TABLET)
-                                ? 24
-                                : 18,
-                        fontWeight: FontWeight.w600,
-                      )),
-                  RowLayout(gap: 12, children: [
-                    ContainerLayout(
-                      child: Assets.icon.infoRegular.svgIcon(
-                        size: 20,
-                        colorFilter: ColorFilter.mode(
-                            context.theme.color.iconPrimary, BlendMode.srcIn),
-                      ),
-                    ),
-                    ContainerLayout(
-                      child: Assets.icon.infoRegular.svgIcon(
-                        size: 20,
-                        colorFilter: ColorFilter.mode(
-                            context.theme.color.iconPrimary, BlendMode.srcIn),
-                      ),
-                    ),
-                    ContainerLayout(
-                      child: Assets.icon.infoRegular.svgIcon(
-                        size: 20,
-                        colorFilter: ColorFilter.mode(
-                            context.theme.color.iconPrimary, BlendMode.srcIn),
-                      ),
-                    ),
-                    ContainerLayout(
-                      child: Assets.icon.infoRegular.svgIcon(
-                        size: 20,
-                        colorFilter: ColorFilter.mode(
-                            context.theme.color.iconPrimary, BlendMode.srcIn),
-                      ),
-                    ),
-                  ])
-                ],
-              ),
-              if (ResponsiveBreakpoints.of(context).largerThan(TABLET)) Gap(72),
-              MaxWidthBox(
-                  maxWidth: 960,
-                  child: ColumnLayout(gap: 16, children: [
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                RowLayout(
+                  height: 64,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  children: [
                     if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-                      AppBreadcrumbs(
-                          separator: AppBreadcrumbSeparatorType.slash,
+                      ContainerLayout(
+                        child: Assets.icon.infoRegular.svgIcon(
+                          size: 20,
+                          colorFilter: ColorFilter.mode(
+                              context.theme.color.iconPrimary, BlendMode.srcIn),
+                        ),
+                      ),
+                    AppText('Foculty',
+                        style: TextStyle(
+                          color: context.theme.color.textPrimary,
+                          fontSize: ResponsiveBreakpoints.of(context)
+                                  .largerThan(TABLET)
+                              ? 24
+                              : 18,
+                          fontWeight: FontWeight.w600,
+                        )),
+                    RowLayout(gap: 12, children: [
+                      ContainerLayout(
+                        child: Assets.icon.infoRegular.svgIcon(
+                          size: 20,
+                          colorFilter: ColorFilter.mode(
+                              context.theme.color.iconPrimary, BlendMode.srcIn),
+                        ),
+                      ),
+                      ContainerLayout(
+                        child: Assets.icon.infoRegular.svgIcon(
+                          size: 20,
+                          colorFilter: ColorFilter.mode(
+                              context.theme.color.iconPrimary, BlendMode.srcIn),
+                        ),
+                      ),
+                      ContainerLayout(
+                        child: Assets.icon.infoRegular.svgIcon(
+                          size: 20,
+                          colorFilter: ColorFilter.mode(
+                              context.theme.color.iconPrimary, BlendMode.srcIn),
+                        ),
+                      ),
+                      ContainerLayout(
+                        child: Assets.icon.infoRegular.svgIcon(
+                          size: 20,
+                          colorFilter: ColorFilter.mode(
+                              context.theme.color.iconPrimary, BlendMode.srcIn),
+                        ),
+                      ),
+                    ])
+                  ],
+                ),
+                if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+                  Gap(72),
+                MaxWidthBox(
+                    maxWidth: 960,
+                    child: ColumnLayout(gap: 16, children: [
+                      if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+                        AppBreadcrumbs(
+                            separator: AppBreadcrumbSeparatorType.slash,
+                            children: [
+                              AppBreadcrumbSection(
+                                label: 'Home',
+                              ),
+                              AppBreadcrumbSection(
+                                label: 'Catalog',
+                              ),
+                              AppBreadcrumbSection(
+                                label: 'Cotton sweatshirt',
+                              ),
+                            ]),
+                      ResponsiveRowColumn(
+                          layout: ResponsiveBreakpoints.of(context)
+                                  .smallerThan(DESKTOP)
+                              ? ResponsiveRowColumnType.COLUMN
+                              : ResponsiveRowColumnType.ROW,
+                          rowCrossAxisAlignment: CrossAxisAlignment.start,
+                          rowSpacing: 48,
                           children: [
-                            AppBreadcrumbSection(
-                              label: 'Home',
-                            ),
-                            AppBreadcrumbSection(
-                              label: 'Catalog',
-                            ),
-                            AppBreadcrumbSection(
-                              label: 'Cotton sweatshirt',
-                            ),
-                          ]),
-                    ResponsiveRowColumn(
-                        layout: ResponsiveBreakpoints.of(context)
-                                .smallerThan(DESKTOP)
-                            ? ResponsiveRowColumnType.COLUMN
-                            : ResponsiveRowColumnType.ROW,
-                        rowCrossAxisAlignment: CrossAxisAlignment.start,
-                        rowSpacing: 48,
-                        children: [
-                          ResponsiveRowColumnItem(
-                            rowFlex: 1,
-                            rowFit: FlexFit.tight,
-                            child: RowLayout(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                gap: 16,
-                                children: [
-                                  if (ResponsiveBreakpoints.of(context)
-                                      .largerThan(TABLET))
-                                    ColumnLayout(width: 64, gap: 16, children: [
-                                      ClipRRect(
-                                          borderRadius:
-                                              context.theme.borderRadius.md,
-                                          child: Image.network(
-                                              'https://i.imgur.com/iqn8Tyy.png',
-                                              fit: BoxFit.cover)),
-                                      ClipRRect(
-                                          borderRadius:
-                                              context.theme.borderRadius.md,
-                                          child: Image.network(
-                                              'https://i.imgur.com/soj5K7p.png',
-                                              fit: BoxFit.cover)),
-                                      ClipRRect(
-                                          borderRadius:
-                                              context.theme.borderRadius.md,
-                                          child: Image.network(
-                                              'https://i.imgur.com/5yptiay.png',
-                                              fit: BoxFit.cover)),
-                                      ClipRRect(
-                                          borderRadius:
-                                              context.theme.borderRadius.md,
-                                          child: Image.network(
-                                              'https://i.imgur.com/9zFESb4.png',
-                                              fit: BoxFit.cover)),
-                                      ClipRRect(
-                                          borderRadius:
-                                              context.theme.borderRadius.md,
-                                          child: Image.network(
-                                              'https://i.imgur.com/SRkF22Y.png',
-                                              fit: BoxFit.cover)),
-                                    ]),
-                                  Expanded(
-                                      child: ClipRRect(
-                                          borderRadius:
-                                              context.theme.borderRadius.md,
-                                          child: Image.network(
-                                              'https://i.imgur.com/lwQyV9B.png',
-                                              fit: BoxFit.cover)))
-                                ]),
-                          ),
-                          ResponsiveRowColumnItem(
-                            rowFlex: 1,
-                            rowFit: FlexFit.tight,
-                            child: ColumnLayout(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                padding: ResponsiveBreakpoints.of(context)
-                                        .largerThan(TABLET)
-                                    ? null
-                                    : const EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 24),
-                                children: [
-                                  AppBadge(
-                                    style: WidgetStyle.subtle,
-                                    label: 'New!',
-                                    color: context.theme.color.borderBlack,
-                                    borderRadius: context.theme.borderRadius.md,
-                                  ),
-                                  Gap(8),
-                                  AppText('Cotton sweatshirt',
-                                      style: TextStyle(
-                                        color: context.theme.color.textPrimary,
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.w700,
-                                      )),
-                                  AppText('\$1,299',
-                                      style: TextStyle(
-                                        color: context.theme.color.textPrimary,
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.w700,
-                                      )),
-                                  Gap(8),
-                                  AppText('107293',
-                                      style: TextStyle(
-                                        color:
-                                            context.theme.color.textSecondary,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                      )),
-                                  Gap(24),
-                                  AppText(
-                                      'Relaxed fit, Crew neck, Drop shoulder sleeves, Elasticated neckline, Made in Spain',
-                                      style: TextStyle(
-                                        color:
-                                            context.theme.color.textSecondary,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                      )),
-                                  Gap(24),
-                                  AppText('Size',
-                                      style: TextStyle(
-                                        color:
-                                            context.theme.color.textSecondary,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                      )),
-                                  Gap(4),
-                                  AppHorizontalTab(children: [
-                                    AppTab(
-                                      text: 'XS',
-                                      active: true,
-                                    ),
-                                    AppTab(
-                                      text: 'S',
-                                    ),
-                                    AppTab(
-                                      text: 'M',
-                                    ),
-                                    AppTab(
-                                      text: 'L',
-                                    ),
+                            ResponsiveRowColumnItem(
+                              rowFlex: 1,
+                              rowFit: FlexFit.tight,
+                              child: RowLayout(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  gap: 16,
+                                  children: [
+                                    if (ResponsiveBreakpoints.of(context)
+                                        .largerThan(TABLET))
+                                      ColumnLayout(
+                                          width: 64,
+                                          gap: 16,
+                                          children: [
+                                            ClipRRect(
+                                                borderRadius: context
+                                                    .theme.borderRadius.md,
+                                                child: Image.network(
+                                                    'https://i.imgur.com/iqn8Tyy.png',
+                                                    fit: BoxFit.cover)),
+                                            ClipRRect(
+                                                borderRadius: context
+                                                    .theme.borderRadius.md,
+                                                child: Image.network(
+                                                    'https://i.imgur.com/soj5K7p.png',
+                                                    fit: BoxFit.cover)),
+                                            ClipRRect(
+                                                borderRadius: context
+                                                    .theme.borderRadius.md,
+                                                child: Image.network(
+                                                    'https://i.imgur.com/5yptiay.png',
+                                                    fit: BoxFit.cover)),
+                                            ClipRRect(
+                                                borderRadius: context
+                                                    .theme.borderRadius.md,
+                                                child: Image.network(
+                                                    'https://i.imgur.com/9zFESb4.png',
+                                                    fit: BoxFit.cover)),
+                                            ClipRRect(
+                                                borderRadius: context
+                                                    .theme.borderRadius.md,
+                                                child: Image.network(
+                                                    'https://i.imgur.com/SRkF22Y.png',
+                                                    fit: BoxFit.cover)),
+                                          ]),
+                                    Expanded(
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                context.theme.borderRadius.md,
+                                            child: Image.network(
+                                                'https://i.imgur.com/lwQyV9B.png',
+                                                fit: BoxFit.cover)))
                                   ]),
-                                  Gap(16),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: AppButton(
-                                          style: AppButtonStyle.filled,
-                                          size: WidgetSize.lg,
-                                          text: 'Add to Cart',
-                                        ),
+                            ),
+                            ResponsiveRowColumnItem(
+                              rowFlex: 1,
+                              rowFit: FlexFit.tight,
+                              child: ColumnLayout(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  padding: ResponsiveBreakpoints.of(context)
+                                          .largerThan(TABLET)
+                                      ? null
+                                      : const EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 24),
+                                  children: [
+                                    AppBadge(
+                                      style: WidgetStyle.subtle,
+                                      label: 'New!',
+                                      color: context.theme.color.borderBlack,
+                                      borderRadius:
+                                          context.theme.borderRadius.md,
+                                    ),
+                                    Gap(8),
+                                    AppText('Cotton sweatshirt',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 36,
+                                          fontWeight: FontWeight.w700,
+                                        )),
+                                    AppText('\$1,299',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textPrimary,
+                                          fontSize: 36,
+                                          fontWeight: FontWeight.w700,
+                                        )),
+                                    Gap(8),
+                                    AppText('107293',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textSecondary,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                        )),
+                                    Gap(24),
+                                    AppText(
+                                        'Relaxed fit, Crew neck, Drop shoulder sleeves, Elasticated neckline, Made in Spain',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textSecondary,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                        )),
+                                    Gap(24),
+                                    AppText('Size',
+                                        style: TextStyle(
+                                          color:
+                                              context.theme.color.textSecondary,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                        )),
+                                    Gap(4),
+                                    AppHorizontalTab(children: [
+                                      AppTab(
+                                        text: 'XS',
+                                        active: true,
                                       ),
-                                    ],
-                                  ),
-                                  Gap(8),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: AppButton(
-                                          style: AppButtonStyle.text,
-                                          size: WidgetSize.lg,
-                                          text: 'Add to Wishlist',
-                                        ),
+                                      AppTab(
+                                        text: 'S',
                                       ),
-                                    ],
-                                  ),
-                                  Gap(24),
-                                  AppAccordionGroup(children: [
-                                    AppAccordion(label: 'Size & fit', text: ''),
-                                    AppAccordion(label: 'Care', text: ''),
-                                    AppAccordion(
-                                        label: 'Composition', text: ''),
-                                  ])
-                                ]),
-                          )
-                        ])
-                  ])),
-            ],
+                                      AppTab(
+                                        text: 'M',
+                                      ),
+                                      AppTab(
+                                        text: 'L',
+                                      ),
+                                    ]),
+                                    Gap(16),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: AppButton(
+                                            style: AppButtonStyle.filled,
+                                            size: WidgetSize.lg,
+                                            text: 'Add to Cart',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Gap(8),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: AppButton(
+                                            style: AppButtonStyle.text,
+                                            size: WidgetSize.lg,
+                                            text: 'Add to Wishlist',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Gap(24),
+                                    AppAccordionGroup(children: [
+                                      AppAccordion(
+                                          label: 'Size & fit', text: ''),
+                                      AppAccordion(label: 'Care', text: ''),
+                                      AppAccordion(
+                                          label: 'Composition', text: ''),
+                                    ])
+                                  ]),
+                            )
+                          ])
+                    ])),
+              ],
+            ),
           ),
         ));
   }

@@ -1,4 +1,4 @@
-import 'package:change_application_name/application.dart';
+import 'package:example_app/application.dart';
 
 @RoutePage()
 class SignupPage extends AppPage {
@@ -24,182 +24,185 @@ class _SignupPageState extends AppPageState<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ContainerLayout(
-      child: ResponsiveRowColumn(
-          rowCrossAxisAlignment: CrossAxisAlignment.start,
-          layout: ResponsiveRowColumnType.ROW,
-          children: [
-            ResponsiveRowColumnItem(
-                rowFlex: 1,
-                rowFit: FlexFit.tight,
-                child: ContainerLayout(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                  decoration: BoxDecoration(
-                    color: context.theme.color.bg,
-                  ),
-                  child: ColumnLayout(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ContainerLayout(
-                          width: 380,
-                          margin: ResponsiveBreakpoints.of(context)
-                                  .smallerThan(DESKTOP)
-                              ? const EdgeInsets.only(top: 60)
-                              : const EdgeInsets.only(top: 130),
-                          child: ColumnLayout(children: [
-                            AppText('Create an Account',
-                                style: AppTextStyleBuilder
-                                    .ui.s36.bold.colorPrimary
-                                    .build(context)),
-                            Gap(8),
-                            AppText(
-                                'Join our community of friendly folks discovering and sharing the latest UI-components.',
-                                textAlign: TextAlign.center,
-                                style: AppTextStyleBuilder.ui.s16.colorPrimary
-                                    .build(context)),
-                            Gap(32),
-                            AppButton(
-                              style: AppButtonStyle.outline,
-                              width: 380,
-                              height: 40,
-                              startIcon: Assets.icon.infoRegular.keyName,
-                              text: 'Continue with Google',
-                              onPress: () {},
-                            ),
-                            Gap(16),
-                            AppButton(
-                                style: AppButtonStyle.outline,
-                                width: 380,
-                                height: 40,
-                                startIcon: Assets.icon.infoRegular.keyName,
-                                text: 'Continue with Facebook',
-                                onPress: () {}),
-                            Gap(16),
-                            AppButton(
-                                style: AppButtonStyle.outline,
-                                width: 380,
-                                height: 40,
-                                startIcon: Assets.icon.infoRegular.keyName,
-                                text: 'Continue with Apple',
-                                onPress: () {}),
-                            Gap(32),
-                            AppDivider(text: 'Or'),
-                            // Gap(32),
-                            // AppTextField(
-                            //   label: 'Email',
-                            // ),
-                            // Gap(16),
-                            // AppTextField(
-                            //   obscure: true,
-                            //   label: 'Password',
-                            //   helperText: 'At least 8 characters.',
-                            // ),
-                            // Gap(32),
-                            // AppButton(
-                            //   style: AppButtonStyle.filled,
-                            //   width: 380,
-                            //   height: 40,
-                            //   text: 'Get Started',
-                            //   onPress: () async {
-                            //
-                            //   },
-                            // ),
-                            Gap(32),
-                            AppButton(
-                              text: 'Test Subtract',
-                              onPress: () {
-                                _testSubtract();
-                              },
-                            ),
-                            Gap(10),
-                            AppButton(
-                              text: 'Test Echo',
-                              onPress: () {
-                                _testEcho();
-                              },
-                            ),
-                            Gap(32),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Expanded(
-                                  child: AppTextField(
-                                    label: 'Phone Number',
-                                    controller: _phoneNumberController,
-                                  ),
-                                ),
-                                Space.gap32,
-                                AppButton(
-                                  text: 'Send',
-                                  onPress: () {
-                                    setState(() {
-                                      _requestOtp();
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                            Gap(16),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Expanded(
-                                  child: AppTextField(
-                                    label: 'OTP $_otpRefNo',
-                                    controller: _otpController,
-                                  ),
-                                ),
-                                Space.gap32,
-                                AppButton(
-                                  text: 'Verify',
-                                  onPress: () {
-                                    _verifyOtp();
-                                  },
-                                ),
-                              ],
-                            ),
-                          ]),
-                        ),
-                        AppText(
-                          "By continuing, you agree to Stratum's Terms of Service and acknowledge you have read the Privacy Policy.",
-                          textAlign: TextAlign.center,
-                          style: AppTextStyleBuilder.ui.s12.colorPrimary
-                              .build(context),
-                        ),
-                      ]),
-                )),
-            if (ResponsiveBreakpoints.of(context).isDesktop)
+        body: SafeArea(
+      child: ContainerLayout(
+        child: ResponsiveRowColumn(
+            rowCrossAxisAlignment: CrossAxisAlignment.start,
+            layout: ResponsiveRowColumnType.ROW,
+            children: [
               ResponsiveRowColumnItem(
-                rowFlex: 1,
-                rowFit: FlexFit.tight,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ContainerLayout(
-                        child: Image.network('https://i.imgur.com/aNKrnAb.png',
-                            fit: BoxFit.cover)),
-                    ColumnLayout(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 16),
+                  rowFlex: 1,
+                  rowFit: FlexFit.tight,
+                  child: ContainerLayout(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 16),
+                    decoration: BoxDecoration(
+                      color: context.theme.color.bg,
+                    ),
+                    child: ColumnLayout(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          ContainerLayout(
+                            width: 380,
+                            margin: ResponsiveBreakpoints.of(context)
+                                    .smallerThan(DESKTOP)
+                                ? const EdgeInsets.only(top: 60)
+                                : const EdgeInsets.only(top: 130),
+                            child: ColumnLayout(children: [
+                              AppText('Create an Account',
+                                  style: AppTextStyleBuilder
+                                      .ui.s36.bold.colorPrimary
+                                      .build(context)),
+                              Gap(8),
+                              AppText(
+                                  'Join our community of friendly folks discovering and sharing the latest UI-components.',
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyleBuilder.ui.s16.colorPrimary
+                                      .build(context)),
+                              Gap(32),
+                              AppButton(
+                                style: AppButtonStyle.outline,
+                                width: 380,
+                                height: 40,
+                                startIcon: Assets.icon.infoRegular.keyName,
+                                text: 'Continue with Google',
+                                onPress: () {},
+                              ),
+                              Gap(16),
+                              AppButton(
+                                  style: AppButtonStyle.outline,
+                                  width: 380,
+                                  height: 40,
+                                  startIcon: Assets.icon.infoRegular.keyName,
+                                  text: 'Continue with Facebook',
+                                  onPress: () {}),
+                              Gap(16),
+                              AppButton(
+                                  style: AppButtonStyle.outline,
+                                  width: 380,
+                                  height: 40,
+                                  startIcon: Assets.icon.infoRegular.keyName,
+                                  text: 'Continue with Apple',
+                                  onPress: () {}),
+                              Gap(32),
+                              AppDivider(text: 'Or'),
+                              // Gap(32),
+                              // AppTextField(
+                              //   label: 'Email',
+                              // ),
+                              // Gap(16),
+                              // AppTextField(
+                              //   obscure: true,
+                              //   label: 'Password',
+                              //   helperText: 'At least 8 characters.',
+                              // ),
+                              // Gap(32),
+                              // AppButton(
+                              //   style: AppButtonStyle.filled,
+                              //   width: 380,
+                              //   height: 40,
+                              //   text: 'Get Started',
+                              //   onPress: () async {
+                              //
+                              //   },
+                              // ),
+                              Gap(32),
+                              AppButton(
+                                text: 'Test Subtract',
+                                onPress: () {
+                                  _testSubtract();
+                                },
+                              ),
+                              Gap(10),
+                              AppButton(
+                                text: 'Test Echo',
+                                onPress: () {
+                                  _testEcho();
+                                },
+                              ),
+                              Gap(32),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Expanded(
+                                    child: AppTextField(
+                                      label: 'Phone Number',
+                                      controller: _phoneNumberController,
+                                    ),
+                                  ),
+                                  Space.gap32,
+                                  AppButton(
+                                    text: 'Send',
+                                    onPress: () {
+                                      setState(() {
+                                        _requestOtp();
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                              Gap(16),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Expanded(
+                                    child: AppTextField(
+                                      label: 'OTP $_otpRefNo',
+                                      controller: _otpController,
+                                    ),
+                                  ),
+                                  Space.gap32,
+                                  AppButton(
+                                    text: 'Verify',
+                                    onPress: () {
+                                      _verifyOtp();
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
                           AppText(
-                            '38,000 companies & people like you made more than 1 million apps with Stratum',
+                            "By continuing, you agree to Stratum's Terms of Service and acknowledge you have read the Privacy Policy.",
                             textAlign: TextAlign.center,
-                            style: AppTextStyleBuilder
-                                .ui.s24.bold.colorPrimaryInverse
+                            style: AppTextStyleBuilder.ui.s12.colorPrimary
                                 .build(context),
                           ),
-                          Gap(16),
-                          AppLinePagination(
-                            totalPage: 4,
-                          ),
-                        ])
-                  ],
+                        ]),
+                  )),
+              if (ResponsiveBreakpoints.of(context).isDesktop)
+                ResponsiveRowColumnItem(
+                  rowFlex: 1,
+                  rowFit: FlexFit.tight,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      ContainerLayout(
+                          child: Image.network(
+                              'https://i.imgur.com/aNKrnAb.png',
+                              fit: BoxFit.cover)),
+                      ColumnLayout(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          children: [
+                            AppText(
+                              '38,000 companies & people like you made more than 1 million apps with Stratum',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyleBuilder
+                                  .ui.s24.bold.colorPrimaryInverse
+                                  .build(context),
+                            ),
+                            Gap(16),
+                            AppLinePagination(
+                              totalPage: 4,
+                            ),
+                          ])
+                    ],
+                  ),
                 ),
-              ),
-          ]),
+            ]),
+      ),
     ));
   }
 

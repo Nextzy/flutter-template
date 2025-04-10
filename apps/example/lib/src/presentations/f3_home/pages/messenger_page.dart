@@ -62,546 +62,556 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: RowLayout(
-        backgroundColor: context.theme.color.bg,
-        children: [
-          if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-            ContainerLayout(
-              width: 280,
-              height: MediaQuery.sizeOf(context).height,
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              decoration: BoxDecoration(
-                color: context.theme.color.bgSurface1,
-                border: Border(
-                  right: BorderSide(
-                    color: context.theme.color.border,
+      body: SafeArea(
+        child: RowLayout(
+          backgroundColor: context.theme.color.bg,
+          children: [
+            if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+              ContainerLayout(
+                width: 280,
+                height: MediaQuery.sizeOf(context).height,
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                decoration: BoxDecoration(
+                  color: context.theme.color.bgSurface1,
+                  border: Border(
+                    right: BorderSide(
+                      color: context.theme.color.border,
+                    ),
                   ),
                 ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 8,
-                    ),
-                    child: ColumnLayout(
-                      gap: 8,
-                      children: [
-                        RowLayout(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          gap: 8,
-                          children: [
-                            AppCircleAvatar(
-                              style: WidgetStyle.filled,
-                              title: 'Fastlane Team',
-                              color: context.theme.color.bgInverse,
-                            ),
-                            Expanded(
-                                child: ColumnLayout(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                  AppText(
-                                    'The Fastlane team',
-                                    style: TextStyle(
-                                      color: context.theme.color.textPrimary,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  AppText(
-                                    'Premium plan',
-                                    style: TextStyle(
-                                      color: context.theme.color.textSecondary,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
-                                  )
-                                ]))
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: AppButton(
-                                  style: AppButtonStyle.filled,
-                                  startIcon: Assets.icon.infoRegular.keyName,
-                                  text: 'New message'),
-                            )
-                          ],
-                        ),
-                        AppDivider()
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                      child: SingleChildScrollView(
-                    child: ColumnLayout(children: [
-                      AppSidebarSection(
-                          icon: Assets.icon.infoRegular.keyName,
-                          title: 'General',
-                          active: true),
-                      AppSidebarSection(
-                          icon: Assets.icon.infoRegular.keyName,
-                          title: 'Threads'),
-                      AppSidebarSection(
-                          icon: Assets.icon.infoRegular.keyName,
-                          title: 'Mentions'),
-                      RowLayout(
-                        gap: 4,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 12,
-                        ),
-                        children: [
-                          Assets.icon.caretRightRegular.svgIcon(
-                              colorFilter: ColorFilter.mode(
-                                context.theme.color.iconSecondary,
-                                BlendMode.srcIn,
-                              ),
-                              size: 16),
-                          AppText('CHANNELS',
-                              style: TextStyle(
-                                color: context.theme.color.textSecondary,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 4,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 12,
-                        ),
-                        children: [
-                          Assets.icon.caretRightRegular.svgIcon(
-                              colorFilter: ColorFilter.mode(
-                                context.theme.color.iconSecondary,
-                                BlendMode.srcIn,
-                              ),
-                              size: 16),
-                          AppText('GROUPS',
-                              style: TextStyle(
-                                color: context.theme.color.textSecondary,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 4,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 12,
-                        ),
-                        children: [
-                          Assets.icon.caretDownRegular.svgIcon(
-                              colorFilter: ColorFilter.mode(
-                                context.theme.color.iconPrimary,
-                                BlendMode.srcIn,
-                              ),
-                              size: 16),
-                          AppText('MESSAGES',
-                              style: TextStyle(
-                                color: context.theme.color.textSecondary,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 6,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        children: [
-                          AppSquareAvatar(
-                              style: WidgetStyle.subtle,
-                              size: WidgetSize.sm,
-                              path: Assets.mock.avatarSquared2.keyName),
-                          AppText('Olivia Garcia',
-                              style: TextStyle(
-                                color: context.theme.color.textPrimary,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 6,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        children: [
-                          AppSquareAvatar(
-                              style: WidgetStyle.subtle,
-                              size: WidgetSize.sm,
-                              path: Assets.mock.avatarSquared1.keyName),
-                          AppText('Zhang Wei',
-                              style: TextStyle(
-                                color: context.theme.color.textPrimary,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 6,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        children: [
-                          AppSquareAvatar(
-                              style: WidgetStyle.subtle,
-                              size: WidgetSize.sm,
-                              path: Assets.mock.avatarSquared2.keyName),
-                          AppText('Jason Miller',
-                              style: TextStyle(
-                                color: context.theme.color.textPrimary,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 6,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        children: [
-                          AppSquareAvatar(
-                              style: WidgetStyle.subtle,
-                              size: WidgetSize.sm,
-                              path: Assets.mock.avatarSquared1.keyName),
-                          AppText('Lee Hyori',
-                              style: TextStyle(
-                                color: context.theme.color.textPrimary,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 6,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        children: [
-                          AppSquareAvatar(
-                              style: WidgetStyle.subtle,
-                              size: WidgetSize.sm,
-                              path: Assets.mock.avatarSquared2.keyName),
-                          AppText('Tamika Johnson',
-                              style: TextStyle(
-                                color: context.theme.color.textPrimary,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 6,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        children: [
-                          AppSquareAvatar(
-                              style: WidgetStyle.subtle,
-                              size: WidgetSize.sm,
-                              path: Assets.mock.avatarSquared1.keyName),
-                          AppText('Darius Washington',
-                              style: TextStyle(
-                                color: context.theme.color.textPrimary,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      ),
-                      RowLayout(
-                        gap: 6,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        children: [
-                          AppSquareAvatar(
-                              style: WidgetStyle.subtle,
-                              size: WidgetSize.sm,
-                              path: Assets.mock.avatarSquared2.keyName),
-                          AppText('Anders Lindström',
-                              style: TextStyle(
-                                color: context.theme.color.textPrimary,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ))
-                        ],
-                      )
-                    ]),
-                  )),
-                  AppSidebarSection(
-                    icon: Assets.icon.infoRegular.keyName,
-                    title: 'Voice room',
-                  ),
-                ],
-              ),
-            ),
-          Expanded(
-            child: Column(
-              children: [
-                RowLayout(
-                  height: 56,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: context.theme.color.bgSurface1,
-                    border: Border(
-                      bottom: BorderSide(
-                        color: context.theme.color.border,
-                      ),
-                    ),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    RowLayout(gap: 6, children: [
-                      ContainerLayout(
-                        child: Assets.icon.infoRegular.svgIcon(
-                          size: 20,
-                          colorFilter: ColorFilter.mode(
-                              context.theme.color.iconPrimary, BlendMode.srcIn),
-                        ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 8,
                       ),
-                      AppText('General',
-                          style: TextStyle(
-                            color: context.theme.color.textPrimary,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ))
-                    ]),
-                    if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-                      RowLayout(gap: 12, children: [
-                        ContainerLayout(
-                          width: 224,
-                          child: AppTextField(
-                            style: AppTextFieldStyle.shaded,
-                            startIcon: Assets.icon.infoRegular.keyName,
-                            placeholderText: 'Search',
+                      child: ColumnLayout(
+                        gap: 8,
+                        children: [
+                          RowLayout(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            gap: 8,
+                            children: [
+                              AppCircleAvatar(
+                                style: WidgetStyle.filled,
+                                title: 'Fastlane Team',
+                                color: context.theme.color.bgInverse,
+                              ),
+                              Expanded(
+                                  child: ColumnLayout(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                    AppText(
+                                      'The Fastlane team',
+                                      style: TextStyle(
+                                        color: context.theme.color.textPrimary,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    AppText(
+                                      'Premium plan',
+                                      style: TextStyle(
+                                        color:
+                                            context.theme.color.textSecondary,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    )
+                                  ]))
+                            ],
                           ),
-                        ),
-                        ContainerLayout(
-                          child: Assets.icon.infoRegular.svgIcon(
-                            size: 20,
-                            colorFilter: ColorFilter.mode(
-                                context.theme.color.iconPrimary,
-                                BlendMode.srcIn),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: AppButton(
+                                    style: AppButtonStyle.filled,
+                                    startIcon: Assets.icon.infoRegular.keyName,
+                                    text: 'New message'),
+                              )
+                            ],
                           ),
-                        ),
-                        ContainerLayout(
-                          child: Assets.icon.infoRegular.svgIcon(
-                            size: 20,
-                            colorFilter: ColorFilter.mode(
-                                context.theme.color.iconPrimary,
-                                BlendMode.srcIn),
+                          AppDivider()
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                        child: SingleChildScrollView(
+                      child: ColumnLayout(children: [
+                        AppSidebarSection(
+                            icon: Assets.icon.infoRegular.keyName,
+                            title: 'General',
+                            active: true),
+                        AppSidebarSection(
+                            icon: Assets.icon.infoRegular.keyName,
+                            title: 'Threads'),
+                        AppSidebarSection(
+                            icon: Assets.icon.infoRegular.keyName,
+                            title: 'Mentions'),
+                        RowLayout(
+                          gap: 4,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 12,
                           ),
+                          children: [
+                            Assets.icon.caretRightRegular.svgIcon(
+                                colorFilter: ColorFilter.mode(
+                                  context.theme.color.iconSecondary,
+                                  BlendMode.srcIn,
+                                ),
+                                size: 16),
+                            AppText('CHANNELS',
+                                style: TextStyle(
+                                  color: context.theme.color.textSecondary,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
                         ),
-                        ContainerLayout(
-                          child: Assets.icon.infoRegular.svgIcon(
-                            size: 20,
-                            colorFilter: ColorFilter.mode(
-                                context.theme.color.iconPrimary,
-                                BlendMode.srcIn),
+                        RowLayout(
+                          gap: 4,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 12,
                           ),
+                          children: [
+                            Assets.icon.caretRightRegular.svgIcon(
+                                colorFilter: ColorFilter.mode(
+                                  context.theme.color.iconSecondary,
+                                  BlendMode.srcIn,
+                                ),
+                                size: 16),
+                            AppText('GROUPS',
+                                style: TextStyle(
+                                  color: context.theme.color.textSecondary,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
                         ),
-                        AppCircleAvatar(
-                          style: WidgetStyle.subtle,
-                          size: WidgetSize.sm,
-                          path: Assets.mock.avatarSquared.keyName,
+                        RowLayout(
+                          gap: 4,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 12,
+                          ),
+                          children: [
+                            Assets.icon.caretDownRegular.svgIcon(
+                                colorFilter: ColorFilter.mode(
+                                  context.theme.color.iconPrimary,
+                                  BlendMode.srcIn,
+                                ),
+                                size: 16),
+                            AppText('MESSAGES',
+                                style: TextStyle(
+                                  color: context.theme.color.textSecondary,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
+                        ),
+                        RowLayout(
+                          gap: 6,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          children: [
+                            AppSquareAvatar(
+                                style: WidgetStyle.subtle,
+                                size: WidgetSize.sm,
+                                path: Assets.mock.avatarSquared2.keyName),
+                            AppText('Olivia Garcia',
+                                style: TextStyle(
+                                  color: context.theme.color.textPrimary,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
+                        ),
+                        RowLayout(
+                          gap: 6,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          children: [
+                            AppSquareAvatar(
+                                style: WidgetStyle.subtle,
+                                size: WidgetSize.sm,
+                                path: Assets.mock.avatarSquared1.keyName),
+                            AppText('Zhang Wei',
+                                style: TextStyle(
+                                  color: context.theme.color.textPrimary,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
+                        ),
+                        RowLayout(
+                          gap: 6,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          children: [
+                            AppSquareAvatar(
+                                style: WidgetStyle.subtle,
+                                size: WidgetSize.sm,
+                                path: Assets.mock.avatarSquared2.keyName),
+                            AppText('Jason Miller',
+                                style: TextStyle(
+                                  color: context.theme.color.textPrimary,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
+                        ),
+                        RowLayout(
+                          gap: 6,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          children: [
+                            AppSquareAvatar(
+                                style: WidgetStyle.subtle,
+                                size: WidgetSize.sm,
+                                path: Assets.mock.avatarSquared1.keyName),
+                            AppText('Lee Hyori',
+                                style: TextStyle(
+                                  color: context.theme.color.textPrimary,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
+                        ),
+                        RowLayout(
+                          gap: 6,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          children: [
+                            AppSquareAvatar(
+                                style: WidgetStyle.subtle,
+                                size: WidgetSize.sm,
+                                path: Assets.mock.avatarSquared2.keyName),
+                            AppText('Tamika Johnson',
+                                style: TextStyle(
+                                  color: context.theme.color.textPrimary,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
+                        ),
+                        RowLayout(
+                          gap: 6,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          children: [
+                            AppSquareAvatar(
+                                style: WidgetStyle.subtle,
+                                size: WidgetSize.sm,
+                                path: Assets.mock.avatarSquared1.keyName),
+                            AppText('Darius Washington',
+                                style: TextStyle(
+                                  color: context.theme.color.textPrimary,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
+                        ),
+                        RowLayout(
+                          gap: 6,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          children: [
+                            AppSquareAvatar(
+                                style: WidgetStyle.subtle,
+                                size: WidgetSize.sm,
+                                path: Assets.mock.avatarSquared2.keyName),
+                            AppText('Anders Lindström',
+                                style: TextStyle(
+                                  color: context.theme.color.textPrimary,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ],
                         )
-                      ])
-                    else
-                      RowLayout(gap: 12, children: [
-                        ContainerLayout(
-                          child: Assets.icon.infoRegular.svgIcon(
-                            size: 20,
-                            colorFilter: ColorFilter.mode(
-                                context.theme.color.iconPrimary,
-                                BlendMode.srcIn),
-                          ),
-                        ),
-                        ContainerLayout(
-                          child: Assets.icon.infoRegular.svgIcon(
-                            size: 20,
-                            colorFilter: ColorFilter.mode(
-                                context.theme.color.iconPrimary,
-                                BlendMode.srcIn),
-                          ),
-                        ),
-                      ])
+                      ]),
+                    )),
+                    AppSidebarSection(
+                      icon: Assets.icon.infoRegular.keyName,
+                      title: 'Voice room',
+                    ),
                   ],
                 ),
-                RowLayout(children: [
-                  Expanded(
-                      child: ContainerLayout(
-                    height: MediaQuery.sizeOf(context).height - 56,
-                    child: ColumnLayout(
-                      children: [
-                        Expanded(
-                            child: ListView.separated(
-                          itemCount: messages.length,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 20,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            final item = messages[index];
-                            return _buildMessageItem(
-                                context,
-                                item.avatar,
-                                item.name,
-                                item.time,
-                                item.message,
-                                item.reactions);
-                          },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return Gap(20);
-                          },
-                        )),
-                        RowLayout(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            gap: 12,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 16,
-                            ),
-                            decoration: BoxDecoration(
-                              color: context.theme.color.bgSurface1,
-                              border: Border(
-                                top: BorderSide(
-                                  color: context.theme.color.border,
-                                ),
-                              ),
-                            ),
-                            children: [
-                              RowLayout(gap: 12, children: [
-                                ContainerLayout(
-                                  child: Assets.icon.infoRegular.svgIcon(
-                                    size: 20,
-                                    colorFilter: ColorFilter.mode(
-                                        context.theme.color.iconPrimary,
-                                        BlendMode.srcIn),
-                                  ),
-                                ),
-                                ContainerLayout(
-                                  child: Assets.icon.infoRegular.svgIcon(
-                                    size: 20,
-                                    colorFilter: ColorFilter.mode(
-                                        context.theme.color.iconPrimary,
-                                        BlendMode.srcIn),
-                                  ),
-                                ),
-                              ]),
-                              Expanded(
-                                  child: AppTextField(
-                                style: AppTextFieldStyle.shaded,
-                                placeholderText: 'Message general',
-                              ))
-                            ])
-                      ],
+              ),
+            Expanded(
+              child: Column(
+                children: [
+                  RowLayout(
+                    height: 56,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: context.theme.color.bgSurface1,
+                      border: Border(
+                        bottom: BorderSide(
+                          color: context.theme.color.border,
+                        ),
+                      ),
                     ),
-                  )),
-                  if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-                    ContainerLayout(
-                        width: 280,
-                        height: MediaQuery.sizeOf(context).height - 56,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 16),
-                        decoration: BoxDecoration(
-                          color: context.theme.color.bgSurface1,
-                          border: Border(
-                            left: BorderSide(
-                              color: context.theme.color.border,
-                            ),
+                    children: [
+                      RowLayout(gap: 6, children: [
+                        ContainerLayout(
+                          child: Assets.icon.infoRegular.svgIcon(
+                            size: 20,
+                            colorFilter: ColorFilter.mode(
+                                context.theme.color.iconPrimary,
+                                BlendMode.srcIn),
                           ),
                         ),
-                        child: Expanded(
-                            child: SingleChildScrollView(
-                          child: ColumnLayout(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              gap: 16,
+                        AppText('General',
+                            style: TextStyle(
+                              color: context.theme.color.textPrimary,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ))
+                      ]),
+                      if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+                        RowLayout(gap: 12, children: [
+                          ContainerLayout(
+                            width: 224,
+                            child: AppTextField(
+                              style: AppTextFieldStyle.shaded,
+                              startIcon: Assets.icon.infoRegular.keyName,
+                              placeholderText: 'Search',
+                            ),
+                          ),
+                          ContainerLayout(
+                            child: Assets.icon.infoRegular.svgIcon(
+                              size: 20,
+                              colorFilter: ColorFilter.mode(
+                                  context.theme.color.iconPrimary,
+                                  BlendMode.srcIn),
+                            ),
+                          ),
+                          ContainerLayout(
+                            child: Assets.icon.infoRegular.svgIcon(
+                              size: 20,
+                              colorFilter: ColorFilter.mode(
+                                  context.theme.color.iconPrimary,
+                                  BlendMode.srcIn),
+                            ),
+                          ),
+                          ContainerLayout(
+                            child: Assets.icon.infoRegular.svgIcon(
+                              size: 20,
+                              colorFilter: ColorFilter.mode(
+                                  context.theme.color.iconPrimary,
+                                  BlendMode.srcIn),
+                            ),
+                          ),
+                          AppCircleAvatar(
+                            style: WidgetStyle.subtle,
+                            size: WidgetSize.sm,
+                            path: Assets.mock.avatarSquared.keyName,
+                          )
+                        ])
+                      else
+                        RowLayout(gap: 12, children: [
+                          ContainerLayout(
+                            child: Assets.icon.infoRegular.svgIcon(
+                              size: 20,
+                              colorFilter: ColorFilter.mode(
+                                  context.theme.color.iconPrimary,
+                                  BlendMode.srcIn),
+                            ),
+                          ),
+                          ContainerLayout(
+                            child: Assets.icon.infoRegular.svgIcon(
+                              size: 20,
+                              colorFilter: ColorFilter.mode(
+                                  context.theme.color.iconPrimary,
+                                  BlendMode.srcIn),
+                            ),
+                          ),
+                        ])
+                    ],
+                  ),
+                  RowLayout(children: [
+                    Expanded(
+                        child: ContainerLayout(
+                      height: MediaQuery.sizeOf(context).height - 56,
+                      child: ColumnLayout(
+                        children: [
+                          Expanded(
+                              child: ListView.separated(
+                            itemCount: messages.length,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
+                            itemBuilder: (BuildContext context, int index) {
+                              final item = messages[index];
+                              return _buildMessageItem(
+                                  context,
+                                  item.avatar,
+                                  item.name,
+                                  item.time,
+                                  item.message,
+                                  item.reactions);
+                            },
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return Gap(20);
+                            },
+                          )),
+                          RowLayout(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              gap: 12,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 16,
+                              ),
+                              decoration: BoxDecoration(
+                                color: context.theme.color.bgSurface1,
+                                border: Border(
+                                  top: BorderSide(
+                                    color: context.theme.color.border,
+                                  ),
+                                ),
+                              ),
                               children: [
-                                AppText('Members (6)',
-                                    style: TextStyle(
-                                      color: context.theme.color.textPrimary,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                    )),
-                                WrapLayout(gap: 4, children: [
-                                  AppSquareAvatar(
-                                      style: WidgetStyle.subtle,
-                                      path: Assets.mock.avatarSquared2.keyName),
-                                  AppSquareAvatar(
-                                      style: WidgetStyle.subtle,
-                                      path: Assets.mock.avatarSquared1.keyName),
-                                  AppSquareAvatar(
-                                      style: WidgetStyle.subtle,
-                                      statusDot: StatusDot(
-                                        color: context.theme.color.bgPositive,
-                                      ),
-                                      path: Assets.mock.avatarSquared2.keyName),
-                                  AppSquareAvatar(
-                                      style: WidgetStyle.subtle,
-                                      path: Assets.mock.avatarSquared1.keyName),
-                                  AppSquareAvatar(
-                                      style: WidgetStyle.subtle,
-                                      path: Assets.mock.avatarSquared2.keyName),
-                                  AppSquareAvatar(
-                                    style: WidgetStyle.subtle,
-                                    path: Assets.mock.avatarSquared1.keyName,
-                                    statusDot: StatusDot(
-                                      color: context.theme.color.bgPositive,
+                                RowLayout(gap: 12, children: [
+                                  ContainerLayout(
+                                    child: Assets.icon.infoRegular.svgIcon(
+                                      size: 20,
+                                      colorFilter: ColorFilter.mode(
+                                          context.theme.color.iconPrimary,
+                                          BlendMode.srcIn),
+                                    ),
+                                  ),
+                                  ContainerLayout(
+                                    child: Assets.icon.infoRegular.svgIcon(
+                                      size: 20,
+                                      colorFilter: ColorFilter.mode(
+                                          context.theme.color.iconPrimary,
+                                          BlendMode.srcIn),
                                     ),
                                   ),
                                 ]),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: AppButton(
-                                        text: 'Invite people',
-                                        style: AppButtonStyle.shaded,
+                                Expanded(
+                                    child: AppTextField(
+                                  style: AppTextFieldStyle.shaded,
+                                  placeholderText: 'Message general',
+                                ))
+                              ])
+                        ],
+                      ),
+                    )),
+                    if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+                      ContainerLayout(
+                          width: 280,
+                          height: MediaQuery.sizeOf(context).height - 56,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          decoration: BoxDecoration(
+                            color: context.theme.color.bgSurface1,
+                            border: Border(
+                              left: BorderSide(
+                                color: context.theme.color.border,
+                              ),
+                            ),
+                          ),
+                          child: Expanded(
+                              child: SingleChildScrollView(
+                            child: ColumnLayout(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                gap: 16,
+                                children: [
+                                  AppText('Members (6)',
+                                      style: TextStyle(
+                                        color: context.theme.color.textPrimary,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                      )),
+                                  WrapLayout(gap: 4, children: [
+                                    AppSquareAvatar(
+                                        style: WidgetStyle.subtle,
+                                        path:
+                                            Assets.mock.avatarSquared2.keyName),
+                                    AppSquareAvatar(
+                                        style: WidgetStyle.subtle,
+                                        path:
+                                            Assets.mock.avatarSquared1.keyName),
+                                    AppSquareAvatar(
+                                        style: WidgetStyle.subtle,
+                                        statusDot: StatusDot(
+                                          color: context.theme.color.bgPositive,
+                                        ),
+                                        path:
+                                            Assets.mock.avatarSquared2.keyName),
+                                    AppSquareAvatar(
+                                        style: WidgetStyle.subtle,
+                                        path:
+                                            Assets.mock.avatarSquared1.keyName),
+                                    AppSquareAvatar(
+                                        style: WidgetStyle.subtle,
+                                        path:
+                                            Assets.mock.avatarSquared2.keyName),
+                                    AppSquareAvatar(
+                                      style: WidgetStyle.subtle,
+                                      path: Assets.mock.avatarSquared1.keyName,
+                                      statusDot: StatusDot(
+                                        color: context.theme.color.bgPositive,
                                       ),
-                                    )
-                                  ],
-                                ),
-                                AppText('Description',
-                                    style: TextStyle(
-                                      color: context.theme.color.textPrimary,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                    )),
-                                AppText(
-                                    "This is the primary workspace for all team members to discuss ongoing projects, updates, and announcements. Collaborate, share ideas, and stay in sync. Remember to keep it professional and relevant to our tech-startup's objectives. For topic-specific discussions, please utilize the designated channels. Let's make our startup shine! 🚀",
-                                    style: TextStyle(
-                                      color: context.theme.color.textPrimary,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                    ))
-                              ]),
-                        )))
-                ])
-              ],
-            ),
-          )
-        ],
+                                    ),
+                                  ]),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: AppButton(
+                                          text: 'Invite people',
+                                          style: AppButtonStyle.shaded,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  AppText('Description',
+                                      style: TextStyle(
+                                        color: context.theme.color.textPrimary,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                      )),
+                                  AppText(
+                                      "This is the primary workspace for all team members to discuss ongoing projects, updates, and announcements. Collaborate, share ideas, and stay in sync. Remember to keep it professional and relevant to our tech-startup's objectives. For topic-specific discussions, please utilize the designated channels. Let's make our startup shine! 🚀",
+                                      style: TextStyle(
+                                        color: context.theme.color.textPrimary,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                      ))
+                                ]),
+                          )))
+                  ])
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
