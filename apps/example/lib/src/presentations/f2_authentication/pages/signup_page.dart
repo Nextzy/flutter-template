@@ -25,6 +25,9 @@ class _SignupPageState extends AppPageState<SignupPage> {
   void initState() {
     super.initState();
 
+    _emailController.text = 'patrs@email.com';
+    _passwordController.text = '12345678';
+
     _phoneNumberController.text = '0878082159';
   }
 

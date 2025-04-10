@@ -25,7 +25,7 @@ class AppRepository {
           password: password,
         ),
         saveCallResult: (response) => _localDatasource.saveToken(
-          token: response.token,
+          token: response.accessToken,
           refreshToken: response.refreshToken,
         ),
         processResponse: (response) => true,
