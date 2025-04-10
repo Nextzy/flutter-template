@@ -8,10 +8,10 @@ part of '../echo_response.dart';
 
 _RemoteEchoResponse _$RemoteEchoResponseFromJson(Map<String, dynamic> json) =>
     _RemoteEchoResponse(
-      result: json['result'] as String?,
+      message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$RemoteEchoResponseToJson(_RemoteEchoResponse instance) =>
     <String, dynamic>{
-      'result': instance.result,
+      'message': instance.message,
     };

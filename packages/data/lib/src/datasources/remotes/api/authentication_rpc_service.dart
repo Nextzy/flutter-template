@@ -18,7 +18,8 @@ class AuthenticationRpcService extends RpcService {
   }) =>
           request(
             path,
-            method: 'signInWithEmailPassword',
+            // method: 'signInWithEmailPassword',
+            method: 'requestAuthenEmail',
             id: requestId,
             params: RemoteSignInWithEmailBody(
               email: email,

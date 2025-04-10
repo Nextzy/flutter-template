@@ -56,7 +56,9 @@ abstract class RpcService {
         result: result is Map<String, dynamic>
             ? fromJson!(result)
             : result != null
-                ? result as DATA
+                ? fromJson!({
+                    'result': result,
+                  })
                 : null,
         error: error != null
             ? ErrorResponse.fromJson(error as Map<String, dynamic>)

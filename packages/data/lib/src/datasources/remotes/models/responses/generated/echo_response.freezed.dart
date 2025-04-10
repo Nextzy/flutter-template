@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$RemoteEchoResponse {
-  String? get result;
+  String? get message;
 
   /// Create a copy of RemoteEchoResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -33,16 +33,16 @@ mixin _$RemoteEchoResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is RemoteEchoResponse &&
-            (identical(other.result, result) || other.result == result));
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @override
   String toString() {
-    return 'RemoteEchoResponse(result: $result)';
+    return 'RemoteEchoResponse(message: $message)';
   }
 }
 
@@ -52,7 +52,7 @@ abstract mixin class $RemoteEchoResponseCopyWith<$Res> {
           RemoteEchoResponse value, $Res Function(RemoteEchoResponse) _then) =
       _$RemoteEchoResponseCopyWithImpl;
   @useResult
-  $Res call({String? result});
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -68,12 +68,12 @@ class _$RemoteEchoResponseCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? message = freezed,
   }) {
     return _then(_self.copyWith(
-      result: freezed == result
-          ? _self.result
-          : result // ignore: cast_nullable_to_non_nullable
+      message: freezed == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -82,12 +82,12 @@ class _$RemoteEchoResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _RemoteEchoResponse implements RemoteEchoResponse {
-  const _RemoteEchoResponse({this.result});
+  const _RemoteEchoResponse({this.message});
   factory _RemoteEchoResponse.fromJson(Map<String, dynamic> json) =>
       _$RemoteEchoResponseFromJson(json);
 
   @override
-  final String? result;
+  final String? message;
 
   /// Create a copy of RemoteEchoResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -109,16 +109,16 @@ class _RemoteEchoResponse implements RemoteEchoResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RemoteEchoResponse &&
-            (identical(other.result, result) || other.result == result));
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @override
   String toString() {
-    return 'RemoteEchoResponse(result: $result)';
+    return 'RemoteEchoResponse(message: $message)';
   }
 }
 
@@ -130,7 +130,7 @@ abstract mixin class _$RemoteEchoResponseCopyWith<$Res>
       __$RemoteEchoResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({String? result});
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -146,12 +146,12 @@ class __$RemoteEchoResponseCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? result = freezed,
+    Object? message = freezed,
   }) {
     return _then(_RemoteEchoResponse(
-      result: freezed == result
-          ? _self.result
-          : result // ignore: cast_nullable_to_non_nullable
+      message: freezed == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
