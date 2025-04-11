@@ -13,6 +13,8 @@ class SignupPage extends AppPage {
 }
 
 class _SignupPageState extends AppPageState<SignupPage> {
+  final _service = AuthenticationRpcService(AppHttpClient.instance.dio);
+
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -20,6 +22,8 @@ class _SignupPageState extends AppPageState<SignupPage> {
   final _otpController = TextEditingController();
   String _otpToken = '';
   String _otpRefNo = '';
+
+  String _accessToken = '';
 
   @override
   void initState() {
@@ -134,6 +138,13 @@ class _SignupPageState extends AppPageState<SignupPage> {
                               ),
                               Gap(32),
                               AppDivider(text: 'Or'),
+                              Gap(32),
+                              AppButton(
+                                text: 'Get Profile',
+                                onPress: () {
+                                  _getProfile();
+                                },
+                              ),
                               Gap(32),
                               AppButton(
                                 text: 'Test Subtract',
@@ -251,7 +262,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
       GoogleSignIn googleSignIn = GoogleSignIn(
         scopes: scopes,
         clientId: kIsWeb ? nutClientId : null,
-        // clientId: kIsWeb ? yukesClientId : null,
+        // clientId: kIsWeb ? yookClientId : null,
       );
 
       final res = await googleSignIn.signIn();
@@ -310,36 +321,34 @@ class _SignupPageState extends AppPageState<SignupPage> {
     print('authen email password');
     print('${_usernameController.text} | ${_passwordController.text}');
 
-    var jsonRpcResponse = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).signInWithEmailPassword(
+    var jsonRpcResponse = await _service.signInWithEmailPassword(
       email: _usernameController.text,
       password: _passwordController.text,
     );
 
     _showResult(jsonRpcResponse);
+
+    _accessToken = jsonRpcResponse.result?.accessToken ?? '';
   }
 
   void _authenUsernamePassword() async {
     print('authen username password');
     print('${_usernameController.text} | ${_passwordController.text}');
 
-    var jsonRpcResponse = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).signInWithUsernamePassword(
+    var jsonRpcResponse = await _service.signInWithUsernamePassword(
       username: _usernameController.text,
       password: _passwordController.text,
     );
 
     _showResult(jsonRpcResponse);
+
+    _accessToken = jsonRpcResponse.result?.accessToken ?? '';
   }
 
   void _requestOtp() async {
     print('request otp: ${_phoneNumberController.text}');
 
-    var jsonRpcResponse = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).requestOtp(
+    var jsonRpcResponse = await _service.requestOtp(
       phoneNumber: _phoneNumberController.text,
     );
 
@@ -349,12 +358,20 @@ class _SignupPageState extends AppPageState<SignupPage> {
     _otpRefNo = jsonRpcResponse.result?.refno ?? '';
   }
 
+  void _getProfile() async {
+    print('get profile');
+
+    AppHttpClient.instance.setupCredential(token: _accessToken);
+
+    var jsonRpcResponse = await _service.getProfile();
+
+    _showResult(jsonRpcResponse);
+  }
+
   void _verifyOtp() async {
     print('verify otp: ${_otpController.text}');
 
-    var jsonRpcResponse = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).verifyOtp(
+    var jsonRpcResponse = await _service.verifyOtp(
       token: _otpToken,
       pin: _otpController.text,
     );
@@ -365,9 +382,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
   void _testSubtract() async {
     print('testSubtract');
 
-    var jsonRpcResponse = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).subtract(
+    var jsonRpcResponse = await _service.subtract(
       subtrahend: 55,
       minuend: 40,
     );
@@ -378,9 +393,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
   void _testEcho() async {
     print('testEcho');
 
-    var jsonRpcResponse = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).echo(
+    var jsonRpcResponse = await _service.echo(
       name: 'John Doe',
     );
 

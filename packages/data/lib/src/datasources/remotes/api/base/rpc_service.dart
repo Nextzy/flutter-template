@@ -22,10 +22,10 @@ abstract class RpcService {
     String? mockId,
     DATA Function(Map<String, dynamic> json)? fromJson,
     Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
   }) async {
-    final extra = <String, dynamic>{};
     queryParameters?.removeWhere((k, v) => v == null);
-    final headers = <String, dynamic>{};
     final Map<String, Object?> body = {
       'jsonrpc': jsonrpc ?? this.jsonrpc,
       'mock': mockId,

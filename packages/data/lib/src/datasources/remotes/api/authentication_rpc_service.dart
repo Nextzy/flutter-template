@@ -46,6 +46,17 @@ class AuthenticationRpcService extends RpcService {
             fromJson: RemoteAuthenticationResponse.fromJson,
           );
 
+  Future<JsonRpcResponse<RemoteGetProfileResponse, ErrorResponse>> getProfile({
+    String? requestId,
+  }) =>
+      request(
+        path,
+        method: 'getProfile',
+        id: requestId,
+        fromJson: RemoteGetProfileResponse.fromJson,
+        extra: {'requiredAuth': true},
+      );
+
   Future<JsonRpcResponse<RemoteRequestOtpResponse, ErrorResponse>> requestOtp({
     required String phoneNumber,
     String? requestId,
