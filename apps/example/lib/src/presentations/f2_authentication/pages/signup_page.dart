@@ -13,7 +13,7 @@ class SignupPage extends AppPage {
 }
 
 class _SignupPageState extends AppPageState<SignupPage> {
-  final _emailController = TextEditingController();
+  final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
   final _phoneNumberController = TextEditingController();
@@ -25,7 +25,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
   void initState() {
     super.initState();
 
-    _emailController.text = 'patrs@email.com';
+    _usernameController.text = 'patrs@email.com';
     _passwordController.text = '12345678';
 
     _phoneNumberController.text = '0878082159';
@@ -106,8 +106,8 @@ class _SignupPageState extends AppPageState<SignupPage> {
                               AppDivider(text: 'Or'),
                               Gap(32),
                               AppTextField(
-                                label: 'Email',
-                                controller: _emailController,
+                                label: 'Username/Email',
+                                controller: _usernameController,
                               ),
                               Gap(16),
                               AppTextField(
@@ -123,9 +123,17 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 height: 40,
                                 text: 'Get Started',
                                 onPress: () {
-                                  _authenEmailPassword();
+                                  if (_usernameController.text.isEmpty) return;
+
+                                  if (_usernameController.text.contains('@')) {
+                                    _authenEmailPassword();
+                                  } else {
+                                    _authenUsernamePassword();
+                                  }
                                 },
                               ),
+                              Gap(32),
+                              AppDivider(text: 'Or'),
                               Gap(32),
                               AppButton(
                                 text: 'Test Subtract',
@@ -300,12 +308,26 @@ class _SignupPageState extends AppPageState<SignupPage> {
 
   void _authenEmailPassword() async {
     print('authen email password');
-    print('${_emailController.text} | ${_passwordController.text}');
+    print('${_usernameController.text} | ${_passwordController.text}');
 
     var jsonRpcResponse = await AuthenticationRpcService(
       AppHttpClient.instance.dio,
     ).signInWithEmailPassword(
-      email: _emailController.text,
+      email: _usernameController.text,
+      password: _passwordController.text,
+    );
+
+    _showResult(jsonRpcResponse);
+  }
+
+  void _authenUsernamePassword() async {
+    print('authen username password');
+    print('${_usernameController.text} | ${_passwordController.text}');
+
+    var jsonRpcResponse = await AuthenticationRpcService(
+      AppHttpClient.instance.dio,
+    ).signInWithUsernamePassword(
+      username: _usernameController.text,
       password: _passwordController.text,
     );
 
