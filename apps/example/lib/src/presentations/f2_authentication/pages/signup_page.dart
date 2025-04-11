@@ -253,16 +253,25 @@ class _SignupPageState extends AppPageState<SignupPage> {
       'email',
     ];
 
-    final nutClientId =
+    final nutWebClientId =
         '497686726544-9udl9jfqkr4d6c6vl46k4n35j029a1gs.apps.googleusercontent.com';
-    final yookClientId =
+    final yookWebClientId =
         '445384131052-026dgdgl69kheka36vtgnmmparp95drq.apps.googleusercontent.com';
+
+    final iosClientId =
+        '497686726544-in43b6v94c1ve53i1sqigt2vnf3p2d3g.apps.googleusercontent.com';
+
+    String? clientId;
+    if (kIsWeb) {
+      clientId = nutWebClientId;
+    } else if (Platform.isIOS) {
+      clientId = iosClientId;
+    }
 
     try {
       GoogleSignIn googleSignIn = GoogleSignIn(
         scopes: scopes,
-        clientId: kIsWeb ? nutClientId : null,
-        // clientId: kIsWeb ? yookClientId : null,
+        clientId: clientId,
       );
 
       final res = await googleSignIn.signIn();
