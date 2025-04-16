@@ -53,8 +53,11 @@
             <key>CFBundleURLSchemes</key>
             <array>
                 <string>com.googleusercontent.apps.497686726544-in43b6v94c1ve53i1sqigt2vnf3p2d3g</string>
+                <string>fb1008242141282384</string>
             </array>
         </dict>
     </array>
+    <key>FacebookAppID</key>
+    <string>1008242141282384</string>
 </dict>
 </plist>

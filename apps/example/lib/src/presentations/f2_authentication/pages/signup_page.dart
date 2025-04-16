@@ -236,17 +236,20 @@ class _SignupPageState extends AppPageState<SignupPage> {
       'email',
     ];
 
-    final nutWebClientId =
+    //Nut
+    final webClientId =
         '497686726544-9udl9jfqkr4d6c6vl46k4n35j029a1gs.apps.googleusercontent.com';
-    final yookWebClientId =
-        '445384131052-026dgdgl69kheka36vtgnmmparp95drq.apps.googleusercontent.com';
+
+    //Yook
+    // final webClientId =
+    //     '445384131052-026dgdgl69kheka36vtgnmmparp95drq.apps.googleusercontent.com';
 
     final iosClientId =
         '497686726544-in43b6v94c1ve53i1sqigt2vnf3p2d3g.apps.googleusercontent.com';
 
     String? clientId;
     if (kIsWeb) {
-      clientId = nutWebClientId;
+      clientId = webClientId;
     } else if (Platform.isIOS) {
       clientId = iosClientId;
     }
@@ -277,7 +280,8 @@ class _SignupPageState extends AppPageState<SignupPage> {
 
     if (kIsWeb) {
       await FacebookAuth.i.webAndDesktopInitialize(
-        appId: '611521568708577',
+        appId: '1008242141282384',
+        // appId: '611521568708577',
         cookie: true,
         xfbml: true,
         version: 'v15.0',
@@ -285,10 +289,10 @@ class _SignupPageState extends AppPageState<SignupPage> {
     }
 
     final loginResult = await FacebookAuth.i.login();
-    print('loginResult: $loginResult');
+    print('loginResult: ${loginResult.status}');
 
     if (loginResult.status == LoginStatus.success) {
-      print('accessToken: ${loginResult.accessToken}');
+      print('accessToken: ${loginResult.accessToken?.tokenString}');
 
       _getSocialProfile(
         accessToken: loginResult.accessToken?.tokenString ?? '',
