@@ -2,7 +2,6 @@ import 'package:change_application_name/application.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-// import 'package:flutter_line_sdk/flutter_line_sdk.dart';
 
 @RoutePage()
 class SignupPage extends AppPage {
@@ -23,14 +22,15 @@ class _SignupPageState extends AppPageState<SignupPage> {
   String _otpToken = '';
   String _otpRefNo = '';
 
-  String _accessToken = '';
-
   @override
   void initState() {
     super.initState();
 
     _usernameController.text = 'patrs@email.com';
-    _passwordController.text = '12345678';
+    _passwordController.text = '123456';
+
+    // _usernameController.text = 'yookey';
+    // _passwordController.text = '123456';
 
     _phoneNumberController.text = '0878082159';
   }
@@ -83,7 +83,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 startIcon: Assets.icon.infoRegular.keyName,
                                 text: 'Continue with Google',
                                 onPress: () {
-                                  _authenGoogle();
+                                  _authGoogle();
                                 },
                               ),
                               Gap(16),
@@ -94,17 +94,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                   startIcon: Assets.icon.infoRegular.keyName,
                                   text: 'Continue with Facebook',
                                   onPress: () {
-                                    _authenFacebook();
-                                  }),
-                              Gap(16),
-                              AppButton(
-                                  style: AppButtonStyle.outline,
-                                  width: 380,
-                                  height: 40,
-                                  startIcon: Assets.icon.infoRegular.keyName,
-                                  text: 'Continue with Line',
-                                  onPress: () {
-                                    _authenLine();
+                                    _authFacebook();
                                   }),
                               Gap(32),
                               AppDivider(text: 'Or'),
@@ -130,21 +120,14 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                   if (_usernameController.text.isEmpty) return;
 
                                   if (_usernameController.text.contains('@')) {
-                                    _authenEmailPassword();
+                                    _authEmailPassword();
                                   } else {
-                                    _authenUsernamePassword();
+                                    _authUsernamePassword();
                                   }
                                 },
                               ),
                               Gap(32),
                               AppDivider(text: 'Or'),
-                              Gap(32),
-                              AppButton(
-                                text: 'Get Profile',
-                                onPress: () {
-                                  _getProfile();
-                                },
-                              ),
                               Gap(32),
                               AppButton(
                                 text: 'Test Subtract',
@@ -246,7 +229,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
     ));
   }
 
-  void _authenGoogle() async {
+  void _authGoogle() async {
     print('authen Google');
 
     const List<String> scopes = <String>[
@@ -274,17 +257,22 @@ class _SignupPageState extends AppPageState<SignupPage> {
         clientId: clientId,
       );
 
-      final res = await googleSignIn.signIn();
-      final authen = await res?.authentication;
-      // final res = await _googleSignIn.signInSilently();
-      print('res: ${res?.email}');
-      print('authen: ${authen?.accessToken} | ${authen?.idToken}');
+      final googleSignInAccount = await googleSignIn.signIn();
+      final googleSignInAuthentication =
+          await googleSignInAccount?.authentication;
+      print('email: ${googleSignInAccount?.email}');
+      print('accessToken: ${googleSignInAuthentication?.accessToken}');
+
+      _getSocialProfile(
+        accessToken: googleSignInAuthentication?.accessToken ?? '',
+        social: 'google',
+      );
     } catch (error) {
       print('error: $error');
     }
   }
 
-  void _authenFacebook() async {
+  void _authFacebook() async {
     print('authen Facebook');
 
     if (kIsWeb) {
@@ -296,37 +284,20 @@ class _SignupPageState extends AppPageState<SignupPage> {
       );
     }
 
-    print('login');
     final loginResult = await FacebookAuth.i.login();
     print('loginResult: $loginResult');
 
     if (loginResult.status == LoginStatus.success) {
       print('accessToken: ${loginResult.accessToken}');
+
+      _getSocialProfile(
+        accessToken: loginResult.accessToken?.tokenString ?? '',
+        social: 'facebook',
+      );
     }
   }
 
-  void _authenLine() async {
-    print('authen Line');
-
-    // LineSDK.instance.setup('2007180054').then((_) {
-    //   print("LineSDK Prepared");
-    // });
-
-    // try {
-    //   final result = await LineSDK.instance.login();
-    //   print('result: $result');
-    //   //_userProfile = result.userProfile;
-    //   // user id -> result.userProfile?.userId
-    //   // user name -> result.userProfile?.displayName
-    //   // user avatar -> result.userProfile?.pictureUrl
-    //   // etc...
-    // } on PlatformException catch (e) {
-    //   // Error handling.
-    //   print(e);
-    // }
-  }
-
-  void _authenEmailPassword() async {
+  void _authEmailPassword() async {
     print('authen email password');
     print('${_usernameController.text} | ${_passwordController.text}');
 
@@ -337,10 +308,12 @@ class _SignupPageState extends AppPageState<SignupPage> {
 
     _showResult(jsonRpcResponse);
 
-    _accessToken = jsonRpcResponse.result?.accessToken ?? '';
+    final accessToken = jsonRpcResponse.result?.accessToken ?? '';
+
+    _getProfile(accessToken: accessToken);
   }
 
-  void _authenUsernamePassword() async {
+  void _authUsernamePassword() async {
     print('authen username password');
     print('${_usernameController.text} | ${_passwordController.text}');
 
@@ -351,7 +324,9 @@ class _SignupPageState extends AppPageState<SignupPage> {
 
     _showResult(jsonRpcResponse);
 
-    _accessToken = jsonRpcResponse.result?.accessToken ?? '';
+    final accessToken = jsonRpcResponse.result?.accessToken ?? '';
+
+    _getProfile(accessToken: accessToken);
   }
 
   void _requestOtp() async {
@@ -367,12 +342,30 @@ class _SignupPageState extends AppPageState<SignupPage> {
     _otpRefNo = jsonRpcResponse.result?.refno ?? '';
   }
 
-  void _getProfile() async {
+  void _getProfile({
+    required accessToken,
+  }) async {
     print('get profile');
 
-    AppHttpClient.instance.setupCredential(token: _accessToken);
+    AppHttpClient.instance.setupCredential(
+      token: accessToken,
+    );
 
     var jsonRpcResponse = await _service.getProfile();
+
+    _showResult(jsonRpcResponse);
+  }
+
+  void _getSocialProfile({
+    required String accessToken,
+    required String social,
+  }) async {
+    print('get social profile');
+
+    var jsonRpcResponse = await _service.getSocialProfile(
+      accessToken: accessToken,
+      social: social,
+    );
 
     _showResult(jsonRpcResponse);
   }
