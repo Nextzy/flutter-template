@@ -105,9 +105,9 @@ class _SignupPageState extends AppPageState<SignupPage> {
                               ),
                               Gap(16),
                               AppTextField(
-                                obscure: true,
+                                // obscure: true,
                                 label: 'Password',
-                                helperText: 'At least 8 characters.',
+                                // helperText: 'At least 8 characters.',
                                 controller: _passwordController,
                               ),
                               Gap(32),
@@ -119,7 +119,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 onPress: () {
                                   if (_usernameController.text.isEmpty) return;
 
-                                  if (_usernameController.text.contains('@')) {
+                                  if (_usernameController.text.isValidEmail()) {
                                     _authEmailPassword();
                                   } else {
                                     _authUsernamePassword();
@@ -419,5 +419,13 @@ class _SignupPageState extends AppPageState<SignupPage> {
         duration: Duration(seconds: 5),
       ),
     );
+  }
+}
+
+extension StringExtension on String {
+  bool isValidEmail() {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
   }
 }
