@@ -6,10 +6,16 @@ class AppToggleCard extends AppStatefulWidget {
     this.style = AppTextFieldStyle.outline,
     this.icon,
     required this.label,
+    this.labelColor,
     this.defaultValue = false,
     this.feedbackState,
     this.statusText,
     this.helperText,
+    this.helperTextColor,
+    this.activeColor,
+    this.borderColor,
+    this.borderWidth = 1,
+    this.borderRadius,
     this.disabled = false,
     this.onChanged,
   });
@@ -17,10 +23,16 @@ class AppToggleCard extends AppStatefulWidget {
   final AppTextFieldStyle style;
   final String? icon;
   final String label;
+  final Color? labelColor;
   final bool defaultValue;
   final FeedbackState? feedbackState;
   final String? statusText;
   final String? helperText;
+  final Color? helperTextColor;
+  final Color? activeColor;
+  final Color? borderColor;
+  final double borderWidth;
+  final BorderRadius? borderRadius;
   final bool disabled;
 
   final ValueChanged<bool?>? onChanged;
@@ -41,9 +53,9 @@ class _AppToggleCardState extends AppState<AppToggleCard> {
       decoration: BoxDecoration(
         color: backgroundColor,
         border: Border.all(
-          color: borderColor,
-        ),
-        borderRadius: context.theme.borderRadius.md,
+            color: widget.borderColor ?? borderColor,
+            width: widget.borderWidth),
+        borderRadius: widget.borderRadius ?? context.theme.borderRadius.md,
       ),
       child: RowLayout(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,10 +73,13 @@ class _AppToggleCardState extends AppState<AppToggleCard> {
                   style: widget.style,
                   position: AppTogglePosition.right,
                   label: widget.label,
+                  labelColor: widget.labelColor,
                   defaultValue: widget.defaultValue,
                   feedbackState: widget.feedbackState,
                   statusText: widget.statusText,
                   helperText: widget.helperText,
+                  helperTextColor: widget.helperTextColor,
+                  activeColor: widget.activeColor,
                   disabled: widget.disabled,
                   onChanged: widget.onChanged),
             )
