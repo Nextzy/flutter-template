@@ -35,6 +35,9 @@ class _HomePageState extends AppPageState<HomePage> {
                       rowFit: FlexFit.tight,
                       child: ColumnLayout(gap: 8, children: [
                         GestureContainerLayout(
+                          onPress: () {
+                            navigate(VideoCallRoute());
+                          },
                           child: Image.network(
                             'https://i.imgur.com/20jqZXd.png',
                             fit: BoxFit.cover,

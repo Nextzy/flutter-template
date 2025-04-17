@@ -91,6 +91,22 @@ class SignupRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [VideoCallPage]
+class VideoCallRoute extends PageRouteInfo<void> {
+  const VideoCallRoute({List<PageRouteInfo>? children})
+    : super(VideoCallRoute.name, initialChildren: children);
+
+  static const String name = 'VideoCallRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const VideoCallPage();
+    },
+  );
+}
+
+/// generated route for
 /// [Web3Page]
 class Web3Route extends PageRouteInfo<void> {
   const Web3Route({List<PageRouteInfo>? children})

@@ -75,10 +75,11 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
                 ],
               ),
               Gap(12),
-              AppStepItem(
-                  size: widgetSize,
-                  title: child.title,
-                  description: child.description)
+              Expanded(
+                  child: AppStepItem(
+                      size: widgetSize,
+                      title: child.title,
+                      description: child.description))
             ],
           )
       ],

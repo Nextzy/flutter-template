@@ -23,6 +23,7 @@ class AppIconButton extends AppStatefulWidget {
     this.borderRadius,
     this.disabled = false,
     this.loading = false,
+    this.hasColorFilter = true,
     this.onPress,
     this.onLongPress,
     this.onHover,
@@ -38,6 +39,7 @@ class AppIconButton extends AppStatefulWidget {
   late final String? icon;
   final bool loading;
   final bool disabled;
+  final bool hasColorFilter;
 
   ///============= CALLBACK METHOD =============///
   final VoidCallback? onPress;
@@ -137,7 +139,9 @@ class _AppIconButtonState extends AppState<AppIconButton> {
             opacity: widget.loading ? 0.0 : 1.0,
             child: widget.icon.toSvgIcon(
               size: widget.customIconSize ?? size,
-              colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+              colorFilter: widget.hasColorFilter
+                  ? ColorFilter.mode(iconColor, BlendMode.srcIn)
+                  : null,
             ),
           ),
           if (widget.loading)
