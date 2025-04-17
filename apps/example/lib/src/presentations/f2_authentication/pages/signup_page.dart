@@ -1,4 +1,7 @@
-import 'package:example_app/application.dart';
+import 'package:change_application_name/application.dart';
+
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 @RoutePage()
 class SignupPage extends AppPage {
@@ -9,6 +12,11 @@ class SignupPage extends AppPage {
 }
 
 class _SignupPageState extends AppPageState<SignupPage> {
+  final _service = AuthenticationRpcService(AppHttpClient.instance.dio);
+
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   final _phoneNumberController = TextEditingController();
   final _otpController = TextEditingController();
   String _otpToken = '';
@@ -18,13 +26,24 @@ class _SignupPageState extends AppPageState<SignupPage> {
   void initState() {
     super.initState();
 
+    // AppHttpClient.instance.setupProxyAdapter(
+    //   ip: '192.168.218.86',
+    //   port: '9090',
+    // );
+
+    _usernameController.text = 'patrs@email.com';
+    _passwordController.text = '123456';
+
+    // _usernameController.text = 'yookey';
+    // _passwordController.text = '123456';
+
     _phoneNumberController.text = '0878082159';
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
+    return AppScaffold(
+        body: SingleChildScrollView(
       child: ContainerLayout(
         child: ResponsiveRowColumn(
             rowCrossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +54,9 @@ class _SignupPageState extends AppPageState<SignupPage> {
                   rowFit: FlexFit.tight,
                   child: ContainerLayout(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 16),
+                      horizontal: 16,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       color: context.theme.color.bg,
                     ),
@@ -66,7 +87,9 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 height: 40,
                                 startIcon: Assets.icon.infoRegular.keyName,
                                 text: 'Continue with Google',
-                                onPress: () {},
+                                onPress: () {
+                                  _authGoogle();
+                                },
                               ),
                               Gap(16),
                               AppButton(
@@ -75,38 +98,49 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                   height: 40,
                                   startIcon: Assets.icon.infoRegular.keyName,
                                   text: 'Continue with Facebook',
-                                  onPress: () {}),
-                              Gap(16),
-                              AppButton(
-                                  style: AppButtonStyle.outline,
-                                  width: 380,
-                                  height: 40,
-                                  startIcon: Assets.icon.infoRegular.keyName,
-                                  text: 'Continue with Apple',
-                                  onPress: () {}),
+                                  onPress: () {
+                                    _authFacebook();
+                                  }),
                               Gap(32),
                               AppDivider(text: 'Or'),
-                              // Gap(32),
-                              // AppTextField(
-                              //   label: 'Email',
-                              // ),
-                              // Gap(16),
-                              // AppTextField(
-                              //   obscure: true,
-                              //   label: 'Password',
-                              //   helperText: 'At least 8 characters.',
-                              // ),
-                              // Gap(32),
-                              // AppButton(
-                              //   style: AppButtonStyle.filled,
-                              //   width: 380,
-                              //   height: 40,
-                              //   text: 'Get Started',
-                              //   onPress: () async {
-                              //
-                              //   },
-                              // ),
                               Gap(32),
+                              AppTextField(
+                                label: 'Username/Email',
+                                controller: _usernameController,
+                              ),
+                              Gap(16),
+                              AppTextField(
+                                // obscure: true,
+                                label: 'Password',
+                                // helperText: 'At least 8 characters.',
+                                controller: _passwordController,
+                              ),
+                              Gap(32),
+                              AppButton(
+                                style: AppButtonStyle.filled,
+                                width: 380,
+                                height: 40,
+                                text: 'Get Started',
+                                onPress: () {
+                                  if (_usernameController.text.isEmpty) return;
+
+                                  if (_usernameController.text.isValidEmail()) {
+                                    _authEmailPassword();
+                                  } else {
+                                    _authUsernamePassword();
+                                  }
+                                },
+                              ),
+                              Gap(32),
+                              AppDivider(text: 'Or'),
+                              Gap(32),
+                              AppButton(
+                                text: 'Refresh Access Token',
+                                onPress: () {
+                                  _refreshAccessToken();
+                                },
+                              ),
+                              Gap(10),
                               AppButton(
                                 text: 'Test Subtract',
                                 onPress: () {
@@ -160,6 +194,7 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                   ),
                                 ],
                               ),
+                              Gap(32),
                             ]),
                           ),
                           AppText(
@@ -206,109 +241,211 @@ class _SignupPageState extends AppPageState<SignupPage> {
     ));
   }
 
+  void _authGoogle() async {
+    print('authen Google');
+
+    const List<String> scopes = <String>[
+      'email',
+    ];
+
+    //Nut
+    final webClientId =
+        '497686726544-9udl9jfqkr4d6c6vl46k4n35j029a1gs.apps.googleusercontent.com';
+
+    //Yook
+    // final webClientId =
+    //     '445384131052-026dgdgl69kheka36vtgnmmparp95drq.apps.googleusercontent.com';
+
+    final iosClientId =
+        '497686726544-in43b6v94c1ve53i1sqigt2vnf3p2d3g.apps.googleusercontent.com';
+
+    String? clientId;
+    if (kIsWeb) {
+      clientId = webClientId;
+    } else if (Platform.isIOS) {
+      clientId = iosClientId;
+    }
+
+    try {
+      GoogleSignIn googleSignIn = GoogleSignIn(
+        scopes: scopes,
+        clientId: clientId,
+      );
+
+      final googleSignInAccount = await googleSignIn.signIn();
+      final googleSignInAuthentication =
+          await googleSignInAccount?.authentication;
+      print('email: ${googleSignInAccount?.email}');
+      print('accessToken: ${googleSignInAuthentication?.accessToken}');
+
+      _getSocialProfile(
+        accessToken: googleSignInAuthentication?.accessToken ?? '',
+        social: 'google',
+      );
+    } catch (error) {
+      print('error: $error');
+    }
+  }
+
+  void _authFacebook() async {
+    print('authen Facebook');
+
+    if (kIsWeb) {
+      await FacebookAuth.i.webAndDesktopInitialize(
+        appId: '1008242141282384',
+        // appId: '611521568708577',
+        cookie: true,
+        xfbml: true,
+        version: 'v15.0',
+      );
+    }
+
+    final loginResult = await FacebookAuth.i.login();
+    print('loginResult: ${loginResult.status}');
+
+    if (loginResult.status == LoginStatus.success) {
+      print('accessToken: ${loginResult.accessToken?.tokenString}');
+
+      _getSocialProfile(
+        accessToken: loginResult.accessToken?.tokenString ?? '',
+        social: 'facebook',
+      );
+    }
+  }
+
+  void _authEmailPassword() async {
+    print('authen email password');
+    print('${_usernameController.text} | ${_passwordController.text}');
+
+    var jsonRpcResponse = await _service.signInWithEmailPassword(
+      email: _usernameController.text,
+      password: _passwordController.text,
+    );
+
+    _showResult(jsonRpcResponse);
+
+    final accessToken = jsonRpcResponse.result?.accessToken ?? '';
+
+    _getProfile(accessToken: accessToken);
+  }
+
+  void _authUsernamePassword() async {
+    print('authen username password');
+    print('${_usernameController.text} | ${_passwordController.text}');
+
+    var jsonRpcResponse = await _service.signInWithUsernamePassword(
+      username: _usernameController.text,
+      password: _passwordController.text,
+    );
+
+    _showResult(jsonRpcResponse);
+
+    final accessToken = jsonRpcResponse.result?.accessToken ?? '';
+
+    _getProfile(accessToken: accessToken);
+  }
+
+  void _refreshAccessToken() async {
+    print('refresh access token');
+
+    var jsonRpcResponse = await _service.refreshAccessToken();
+
+    _showResult(jsonRpcResponse);
+  }
+
   void _requestOtp() async {
     print('request otp: ${_phoneNumberController.text}');
 
-    var response = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).requestOtp(
+    var jsonRpcResponse = await _service.requestOtp(
       phoneNumber: _phoneNumberController.text,
     );
 
-    print('response: ${response}');
+    _showResult(jsonRpcResponse);
 
-    _otpToken = response.result?.token ?? '';
-    _otpRefNo = response.result?.refno ?? '';
+    _otpToken = jsonRpcResponse.result?.token ?? '';
+    _otpRefNo = jsonRpcResponse.result?.refno ?? '';
+  }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          response.hasResult
-              ? response.result.toString()
-              : (response.error as Map)['developerMessage'],
-        ),
-        duration: Duration(seconds: 5),
-      ),
+  void _getProfile({
+    required accessToken,
+  }) async {
+    print('get profile');
+
+    AppHttpClient.instance.setupCredential(
+      token: accessToken,
     );
+
+    var jsonRpcResponse = await _service.getProfile();
+
+    _showResult(jsonRpcResponse);
+  }
+
+  void _getSocialProfile({
+    required String accessToken,
+    required String social,
+  }) async {
+    print('get social profile');
+
+    var jsonRpcResponse = await _service.getSocialProfile(
+      accessToken: accessToken,
+      social: social,
+    );
+
+    _showResult(jsonRpcResponse);
   }
 
   void _verifyOtp() async {
     print('verify otp: ${_otpController.text}');
 
-    var response = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).verifyOtp(
+    var jsonRpcResponse = await _service.verifyOtp(
       token: _otpToken,
       pin: _otpController.text,
     );
 
-    print('response: ${response}');
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          response.hasResult
-              ? response.result.toString()
-              : (response.error as Map)['message'],
-        ),
-        duration: Duration(seconds: 5),
-      ),
-    );
+    _showResult(jsonRpcResponse);
   }
 
   void _testSubtract() async {
     print('testSubtract');
 
-    var response = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).subtract(
+    var jsonRpcResponse = await _service.subtract(
       subtrahend: 55,
       minuend: 40,
     );
 
-    print('response: ${response}');
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          response.hasResult
-              ? response.result.toString()
-              : (response.error as Map)['userMessage'],
-        ),
-        duration: Duration(seconds: 5),
-      ),
-    );
+    _showResult(jsonRpcResponse);
   }
 
   void _testEcho() async {
     print('testEcho');
 
-    var response = await AuthenticationRpcService(
-      AppHttpClient.instance.dio,
-    ).echo(
+    var jsonRpcResponse = await _service.echo(
       name: 'John Doe',
     );
 
-    print('response: ${response}');
+    _showResult(jsonRpcResponse);
+  }
 
-    if (response.isError) {
-      final errorResponse = response.error as Map;
-      final code = errorResponse['code'];
-      final message = errorResponse['message'];
-      final userMessage = errorResponse['userMessage'];
-      final developerMessage = errorResponse['developerMessage'];
-      print('$code | $message | $userMessage | $developerMessage');
-    }
+  void _showResult(JsonRpcResponse jsonRpcResponse) {
+    print('jsonRpcResponse: ${jsonRpcResponse}');
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          response.hasResult
-              ? response.result.toString()
-              : (response.error as Map)['userMessage'],
+          jsonRpcResponse.hasResult
+              ? jsonRpcResponse.result.toString()
+              : jsonRpcResponse.error?.userMessage ?? 'error',
         ),
         duration: Duration(seconds: 5),
       ),
     );
+  }
+}
+
+extension StringExtension on String {
+  bool isValidEmail() {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
   }
 }

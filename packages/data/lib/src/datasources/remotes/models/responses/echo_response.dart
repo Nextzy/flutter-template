@@ -7,7 +7,7 @@ part 'generated/echo_response.g.dart';
 @freezed
 abstract class RemoteEchoResponse with _$RemoteEchoResponse {
   const factory RemoteEchoResponse({
-    String? result,
+    String? message,
   }) = _RemoteEchoResponse;
 
   factory RemoteEchoResponse.fromJson(Map<String, dynamic> json) =>

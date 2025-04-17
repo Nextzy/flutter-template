@@ -15,7 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$RemoteAuthenticationResponse {
-  String? get token;
+  @JsonKey(name: 'access_token')
+  String? get accessToken;
   String? get refreshToken;
 
   /// Create a copy of RemoteAuthenticationResponse
@@ -35,18 +36,19 @@ mixin _$RemoteAuthenticationResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is RemoteAuthenticationResponse &&
-            (identical(other.token, token) || other.token == token) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, token, refreshToken);
+  int get hashCode => Object.hash(runtimeType, accessToken, refreshToken);
 
   @override
   String toString() {
-    return 'RemoteAuthenticationResponse(token: $token, refreshToken: $refreshToken)';
+    return 'RemoteAuthenticationResponse(accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 }
 
@@ -57,7 +59,9 @@ abstract mixin class $RemoteAuthenticationResponseCopyWith<$Res> {
           $Res Function(RemoteAuthenticationResponse) _then) =
       _$RemoteAuthenticationResponseCopyWithImpl;
   @useResult
-  $Res call({String? token, String? refreshToken});
+  $Res call(
+      {@JsonKey(name: 'access_token') String? accessToken,
+      String? refreshToken});
 }
 
 /// @nodoc
@@ -73,13 +77,13 @@ class _$RemoteAuthenticationResponseCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = freezed,
+    Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
     return _then(_self.copyWith(
-      token: freezed == token
-          ? _self.token
-          : token // ignore: cast_nullable_to_non_nullable
+      accessToken: freezed == accessToken
+          ? _self.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
       refreshToken: freezed == refreshToken
           ? _self.refreshToken
@@ -92,12 +96,14 @@ class _$RemoteAuthenticationResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _RemoteAuthenticationResponse implements RemoteAuthenticationResponse {
-  const _RemoteAuthenticationResponse({this.token, this.refreshToken});
+  const _RemoteAuthenticationResponse(
+      {@JsonKey(name: 'access_token') this.accessToken, this.refreshToken});
   factory _RemoteAuthenticationResponse.fromJson(Map<String, dynamic> json) =>
       _$RemoteAuthenticationResponseFromJson(json);
 
   @override
-  final String? token;
+  @JsonKey(name: 'access_token')
+  final String? accessToken;
   @override
   final String? refreshToken;
 
@@ -122,18 +128,19 @@ class _RemoteAuthenticationResponse implements RemoteAuthenticationResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RemoteAuthenticationResponse &&
-            (identical(other.token, token) || other.token == token) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, token, refreshToken);
+  int get hashCode => Object.hash(runtimeType, accessToken, refreshToken);
 
   @override
   String toString() {
-    return 'RemoteAuthenticationResponse(token: $token, refreshToken: $refreshToken)';
+    return 'RemoteAuthenticationResponse(accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 }
 
@@ -146,7 +153,9 @@ abstract mixin class _$RemoteAuthenticationResponseCopyWith<$Res>
       __$RemoteAuthenticationResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({String? token, String? refreshToken});
+  $Res call(
+      {@JsonKey(name: 'access_token') String? accessToken,
+      String? refreshToken});
 }
 
 /// @nodoc
@@ -162,13 +171,13 @@ class __$RemoteAuthenticationResponseCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? token = freezed,
+    Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
     return _then(_RemoteAuthenticationResponse(
-      token: freezed == token
-          ? _self.token
-          : token // ignore: cast_nullable_to_non_nullable
+      accessToken: freezed == accessToken
+          ? _self.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
       refreshToken: freezed == refreshToken
           ? _self.refreshToken

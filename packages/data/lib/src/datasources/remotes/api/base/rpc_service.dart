@@ -22,10 +22,10 @@ abstract class RpcService {
     String? mockId,
     DATA Function(Map<String, dynamic> json)? fromJson,
     Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
   }) async {
-    final extra = <String, dynamic>{};
     queryParameters?.removeWhere((k, v) => v == null);
-    final headers = <String, dynamic>{};
     final Map<String, Object?> body = {
       'jsonrpc': jsonrpc ?? this.jsonrpc,
       'mock': mockId,
@@ -56,7 +56,9 @@ abstract class RpcService {
         result: result is Map<String, dynamic>
             ? fromJson!(result)
             : result != null
-                ? result as DATA
+                ? fromJson!({
+                    'result': result,
+                  })
                 : null,
         error: error != null
             ? ErrorResponse.fromJson(error as Map<String, dynamic>)

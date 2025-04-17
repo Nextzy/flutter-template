@@ -31,6 +31,23 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <!-- Nut -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="1008242141282384" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="f9d82f1b5cdfb7c26c02b4eeb1d1b1b6"/>
+
+            <!-- Yook -->
+<!--        <meta-data-->
+<!--            android:name="com.facebook.sdk.ApplicationId"-->
+<!--            android:value="611521568708577" />-->
+<!--        <meta-data-->
+<!--            android:name="com.facebook.sdk.ClientToken"-->
+<!--            android:value="bd76834f70326b0f5e4e3de54095f994"/>-->
+
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

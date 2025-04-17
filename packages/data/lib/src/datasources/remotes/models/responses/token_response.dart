@@ -5,9 +5,10 @@ part 'generated/token_response.freezed.dart';
 part 'generated/token_response.g.dart';
 
 @freezed
-abstract class RemoteAuthenticationResponse with _$RemoteAuthenticationResponse {
+abstract class RemoteAuthenticationResponse
+    with _$RemoteAuthenticationResponse {
   const factory RemoteAuthenticationResponse({
-    String? token,
+    @JsonKey(name: 'access_token') String? accessToken,
     String? refreshToken,
   }) = _RemoteAuthenticationResponse;
 

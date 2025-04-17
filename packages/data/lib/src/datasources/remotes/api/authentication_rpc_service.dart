@@ -4,7 +4,8 @@ class AuthenticationRpcService extends RpcService {
   const AuthenticationRpcService(
     super.dio, {
     this.path = '/auth',
-    super.baseUrl = 'https://api-brick.nextzy.com/v1',
+    // super.baseUrl = 'https://api-brick.nextzy.com/v1',
+    super.baseUrl = 'https://api-brick-dev.nextzy.com/v1',
     // super.baseUrl = 'http://127.0.0.1:3658/m1/830561-810297-default/v1',
   });
 
@@ -18,13 +19,72 @@ class AuthenticationRpcService extends RpcService {
   }) =>
           request(
             path,
-            method: 'signInWithEmailPassword',
+            // method: 'signInWithEmailPassword',
+            method: 'requestAuthenEmail',
             id: requestId,
             params: RemoteSignInWithEmailBody(
               email: email,
               password: password,
             ).toJson(),
             fromJson: RemoteAuthenticationResponse.fromJson,
+          );
+
+  Future<JsonRpcResponse<RemoteAuthenticationResponse, ErrorResponse>>
+      signInWithUsernamePassword({
+    required String username,
+    required String password,
+    String? requestId,
+  }) =>
+          request(
+            path,
+            method: 'requestAuthenBasic',
+            id: requestId,
+            params: RemoteSignInWithUsernameBody(
+              username: username,
+              password: password,
+            ).toJson(),
+            fromJson: RemoteAuthenticationResponse.fromJson,
+          );
+
+  Future<JsonRpcResponse<RemoteAuthenticationResponse, ErrorResponse>>
+      refreshAccessToken({
+    String? requestId,
+  }) =>
+          request(
+            path,
+            method: 'refreshAccessToken',
+            id: requestId,
+            fromJson: RemoteAuthenticationResponse.fromJson,
+            extra: {'requiredAuth': true},
+          );
+
+  Future<JsonRpcResponse<RemoteGetProfileResponse, ErrorResponse>> getProfile({
+    String? requestId,
+  }) =>
+      request(
+        path,
+        method: 'getProfile',
+        id: requestId,
+        fromJson: RemoteGetProfileResponse.fromJson,
+        extra: {'requiredAuth': true},
+      );
+
+  Future<JsonRpcResponse<RemoteGetProfileResponse, ErrorResponse>>
+      getSocialProfile({
+    required String accessToken,
+    required String social,
+    String? requestId,
+  }) =>
+          request(
+            path,
+            method: 'requestAuthenSocial',
+            id: requestId,
+            params: RemoteGetSocialProfileBody(
+              accessToken: accessToken,
+              social: social,
+            ).toJson(),
+            fromJson: RemoteGetProfileResponse.fromJson,
+            extra: {'requiredAuth': true},
           );
 
   Future<JsonRpcResponse<RemoteRequestOtpResponse, ErrorResponse>> requestOtp({
