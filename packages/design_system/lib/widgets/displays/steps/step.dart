@@ -9,12 +9,14 @@ class AppHorizontalSteps extends AppStatefulWidget {
     this.style = AppStepStyle.number,
     required this.children,
     this.defaultValue = 1,
+    this.background = false,
     this.onChanged,
   });
 
   final AppStepStyle style;
   final List<AppStepItem> children;
   final int defaultValue;
+  final bool background;
 
   final ValueChanged<int>? onChanged;
 
@@ -53,8 +55,9 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RowLayout(gap: 2, children: [
-                InkWell(
-                  onTap: () => _onTap(widget.children.indexOf(child) + 1),
+                GestureContainerLayout(
+                  onPress: () => _onTap(widget.children.indexOf(child) + 1),
+                  borderRadius: BorderRadius.circular(999),
                   child: _buildIndicator(
                       context, widget.children.indexOf(child) + 1, child.icon),
                 ),
@@ -130,13 +133,26 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
           ),
         );
       case AppStepStyle.icon:
-        return icon.toSvgIcon(
-          size: widgetSize == WidgetSize.sm ? 16 : 24,
-          colorFilter: ColorFilter.mode(
-            _currentStep >= step
-                ? context.theme.color.brandPrimary
-                : context.theme.color.iconTertiary,
-            BlendMode.srcIn,
+        return ContainerLayout(
+          padding: widget.background
+              ? const EdgeInsets.symmetric(horizontal: 8, vertical: 8)
+              : null,
+          decoration: BoxDecoration(
+              color: widget.background
+                  ? _currentStep >= step
+                      ? context.theme.color.bgSubtleBlue
+                      : context.theme.color.bgSurface2
+                  : null,
+              borderRadius:
+                  widget.background ? BorderRadius.circular(999) : null),
+          child: icon.toSvgIcon(
+            size: widgetSize == WidgetSize.sm ? 16 : 24,
+            colorFilter: ColorFilter.mode(
+              _currentStep >= step
+                  ? context.theme.color.brandPrimary
+                  : context.theme.color.iconTertiary,
+              BlendMode.srcIn,
+            ),
           ),
         );
     }

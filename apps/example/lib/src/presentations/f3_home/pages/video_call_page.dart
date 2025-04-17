@@ -95,6 +95,7 @@ class _VideoCallPageState extends AppPageState<VideoCallPage> {
                                 color: context.theme.color.textPrimaryInverse,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                         if (!ResponsiveBreakpoints.of(context)
@@ -176,6 +177,7 @@ class _VideoCallPageState extends AppPageState<VideoCallPage> {
                         ColumnLayout(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             gap: 8,
+                            margin: const EdgeInsets.symmetric(horizontal: 16),
                             children: [
                               AppText('Spanish with Maria R.',
                                   style: TextStyle(
@@ -191,6 +193,7 @@ class _VideoCallPageState extends AppPageState<VideoCallPage> {
                               Gap(24),
                               AppVerticalSteps(
                                 style: AppStepStyle.icon,
+                                background: true,
                                 children: [
                                   AppStepItem(
                                     icon: Assets.icon.handPalmFilled.keyName,

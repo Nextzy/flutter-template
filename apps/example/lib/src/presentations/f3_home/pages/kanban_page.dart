@@ -8,20 +8,6 @@ class KanbanPage extends AppPage {
   State<KanbanPage> createState() => _KanbanPageState();
 }
 
-class Task {
-  Task({required this.id, required this.title});
-
-  final String id;
-  final String title;
-}
-
-class DragData {
-  DragData({required this.task, required this.column});
-
-  final Task task;
-  final String column;
-}
-
 class _KanbanPageState extends AppPageState<KanbanPage> {
   final List<Task> todoTasks = [
     Task(
@@ -310,7 +296,7 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                             ],
                           ),
                         if (ResponsiveBreakpoints.of(context)
-                            .largerThan(TABLET))
+                            .largerThan(MOBILE))
                           RowLayout(gap: 16, children: [
                             ContainerLayout(
                               width: 280,
@@ -395,6 +381,20 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
       ),
     );
   }
+}
+
+class Task {
+  Task({required this.id, required this.title});
+
+  final String id;
+  final String title;
+}
+
+class DragData {
+  DragData({required this.task, required this.column});
+
+  final Task task;
+  final String column;
 }
 
 class KanbanColumn extends AppStatelessWidget {
