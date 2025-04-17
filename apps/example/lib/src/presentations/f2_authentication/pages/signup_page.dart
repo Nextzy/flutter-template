@@ -26,6 +26,11 @@ class _SignupPageState extends AppPageState<SignupPage> {
   void initState() {
     super.initState();
 
+    // AppHttpClient.instance.setupProxyAdapter(
+    //   ip: '192.168.218.86',
+    //   port: '9090',
+    // );
+
     _usernameController.text = 'patrs@email.com';
     _passwordController.text = '123456';
 
@@ -129,6 +134,13 @@ class _SignupPageState extends AppPageState<SignupPage> {
                               Gap(32),
                               AppDivider(text: 'Or'),
                               Gap(32),
+                              AppButton(
+                                text: 'Refresh Access Token',
+                                onPress: () {
+                                  _refreshAccessToken();
+                                },
+                              ),
+                              Gap(10),
                               AppButton(
                                 text: 'Test Subtract',
                                 onPress: () {
@@ -331,6 +343,14 @@ class _SignupPageState extends AppPageState<SignupPage> {
     final accessToken = jsonRpcResponse.result?.accessToken ?? '';
 
     _getProfile(accessToken: accessToken);
+  }
+
+  void _refreshAccessToken() async {
+    print('refresh access token');
+
+    var jsonRpcResponse = await _service.refreshAccessToken();
+
+    _showResult(jsonRpcResponse);
   }
 
   void _requestOtp() async {

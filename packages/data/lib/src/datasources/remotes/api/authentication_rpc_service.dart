@@ -46,6 +46,18 @@ class AuthenticationRpcService extends RpcService {
             fromJson: RemoteAuthenticationResponse.fromJson,
           );
 
+  Future<JsonRpcResponse<RemoteAuthenticationResponse, ErrorResponse>>
+      refreshAccessToken({
+    String? requestId,
+  }) =>
+          request(
+            path,
+            method: 'refreshAccessToken',
+            id: requestId,
+            fromJson: RemoteAuthenticationResponse.fromJson,
+            extra: {'requiredAuth': true},
+          );
+
   Future<JsonRpcResponse<RemoteGetProfileResponse, ErrorResponse>> getProfile({
     String? requestId,
   }) =>
