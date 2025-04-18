@@ -9,6 +9,6 @@ abstract class HomeEntity with _$HomeEntity {
   }) = _HomeEntity;
 
   factory HomeEntity.fromResponse(Response response) => HomeEntity(
-    yourData: '',
-  );
+        yourData: '',
+      );
 }

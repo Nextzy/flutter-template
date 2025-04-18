@@ -841,7 +841,7 @@ packages:
     source: hosted
     version: "5.2.1"
   flutter_facebook_auth:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_facebook_auth
       sha256: d542743aee9571fad59aa4cfb645640dbb49f23b039d07c34b5e21bc3d5857e9
@@ -1151,6 +1151,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  freezed:
+    dependency: "direct dev"
+    description:
+      name: freezed
+      sha256: "6022db4c7bfa626841b2a10f34dd1e1b68e8f8f9650db6112dcdeeca45ca793c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.6"
   freezed_annotation:
     dependency: transitive
     description:
@@ -1200,7 +1208,7 @@ packages:
     source: hosted
     version: "0.3.3"
   google_sign_in:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_sign_in
       sha256: d0a2c3bcb06e607bb11e4daca48bd4b6120f0bbc4015ccebbe757d24ea60ed2a

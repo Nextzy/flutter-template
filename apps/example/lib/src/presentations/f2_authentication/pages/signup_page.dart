@@ -1,7 +1,4 @@
-import 'package:change_application_name/application.dart';
-
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:example_app/application.dart';
 
 @RoutePage()
 class SignupPage extends AppPage {
