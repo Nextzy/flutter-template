@@ -4,3 +4,4 @@ export 'ecommerce_page.dart';
 export 'web3_page.dart';
 export 'kanban_page.dart';
 export 'video_call_page.dart';
+export 'billing_page.dart';

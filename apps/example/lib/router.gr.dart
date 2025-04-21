@@ -11,6 +11,22 @@
 part of 'router.dart';
 
 /// generated route for
+/// [BillingPage]
+class BillingRoute extends PageRouteInfo<void> {
+  const BillingRoute({List<PageRouteInfo>? children})
+    : super(BillingRoute.name, initialChildren: children);
+
+  static const String name = 'BillingRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const BillingPage();
+    },
+  );
+}
+
+/// generated route for
 /// [EcommercePage]
 class EcommerceRoute extends PageRouteInfo<void> {
   const EcommerceRoute({List<PageRouteInfo>? children})

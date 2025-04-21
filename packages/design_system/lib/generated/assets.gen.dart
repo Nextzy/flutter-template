@@ -36,6 +36,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/arrow-square-out-regular.svg
   SvgGenImage get arrowSquareOutRegular => const SvgGenImage('assets/icon/arrow-square-out-regular.svg');
 
+  /// File path: assets/icon/arrow-up-filled.svg
+  SvgGenImage get arrowUpFilled => const SvgGenImage('assets/icon/arrow-up-filled.svg');
+
+  /// File path: assets/icon/arrow-up-light.svg
+  SvgGenImage get arrowUpLight => const SvgGenImage('assets/icon/arrow-up-light.svg');
+
+  /// File path: assets/icon/arrow-up-regular.svg
+  SvgGenImage get arrowUpRegular => const SvgGenImage('assets/icon/arrow-up-regular.svg');
+
   /// File path: assets/icon/arrows-clockwise-filled.svg
   SvgGenImage get arrowsClockwiseFilled => const SvgGenImage('assets/icon/arrows-clockwise-filled.svg');
 
@@ -44,6 +53,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/arrows-clockwise-regular.svg
   SvgGenImage get arrowsClockwiseRegular => const SvgGenImage('assets/icon/arrows-clockwise-regular.svg');
+
+  /// File path: assets/icon/arrows-down-up-filled.svg
+  SvgGenImage get arrowsDownUpFilled => const SvgGenImage('assets/icon/arrows-down-up-filled.svg');
+
+  /// File path: assets/icon/arrows-down-up-light.svg
+  SvgGenImage get arrowsDownUpLight => const SvgGenImage('assets/icon/arrows-down-up-light.svg');
+
+  /// File path: assets/icon/arrows-down-up-regular.svg
+  SvgGenImage get arrowsDownUpRegular => const SvgGenImage('assets/icon/arrows-down-up-regular.svg');
 
   /// File path: assets/icon/at-filled.svg
   SvgGenImage get atFilled => const SvgGenImage('assets/icon/at-filled.svg');
@@ -147,6 +165,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/caret-up-regular.svg
   SvgGenImage get caretUpRegular => const SvgGenImage('assets/icon/caret-up-regular.svg');
 
+  /// File path: assets/icon/chart-bar-filled.svg
+  SvgGenImage get chartBarFilled => const SvgGenImage('assets/icon/chart-bar-filled.svg');
+
+  /// File path: assets/icon/chart-bar-light.svg
+  SvgGenImage get chartBarLight => const SvgGenImage('assets/icon/chart-bar-light.svg');
+
+  /// File path: assets/icon/chart-bar-regular.svg
+  SvgGenImage get chartBarRegular => const SvgGenImage('assets/icon/chart-bar-regular.svg');
+
   /// File path: assets/icon/chat-circle-filled.svg
   SvgGenImage get chatCircleFilled => const SvgGenImage('assets/icon/chat-circle-filled.svg');
 
@@ -164,6 +191,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/chat-text-regular.svg
   SvgGenImage get chatTextRegular => const SvgGenImage('assets/icon/chat-text-regular.svg');
+
+  /// File path: assets/icon/chats-teardrop-filled.svg
+  SvgGenImage get chatsTeardropFilled => const SvgGenImage('assets/icon/chats-teardrop-filled.svg');
+
+  /// File path: assets/icon/chats-teardrop-light.svg
+  SvgGenImage get chatsTeardropLight => const SvgGenImage('assets/icon/chats-teardrop-light.svg');
+
+  /// File path: assets/icon/chats-teardrop-regular.svg
+  SvgGenImage get chatsTeardropRegular => const SvgGenImage('assets/icon/chats-teardrop-regular.svg');
 
   /// File path: assets/icon/check-circle-filled.svg
   SvgGenImage get checkCircleFilled => const SvgGenImage('assets/icon/check-circle-filled.svg');
@@ -213,6 +249,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/copy-simple-regular.svg
   SvgGenImage get copySimpleRegular => const SvgGenImage('assets/icon/copy-simple-regular.svg');
 
+  /// File path: assets/icon/credit-card-filled.svg
+  SvgGenImage get creditCardFilled => const SvgGenImage('assets/icon/credit-card-filled.svg');
+
+  /// File path: assets/icon/credit-card-light.svg
+  SvgGenImage get creditCardLight => const SvgGenImage('assets/icon/credit-card-light.svg');
+
+  /// File path: assets/icon/credit-card-regular.svg
+  SvgGenImage get creditCardRegular => const SvgGenImage('assets/icon/credit-card-regular.svg');
+
   /// File path: assets/icon/cross-circle-filled.svg
   SvgGenImage get crossCircleFilled => const SvgGenImage('assets/icon/cross-circle-filled.svg');
 
@@ -221,6 +266,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/cross-circle-regular.svg
   SvgGenImage get crossCircleRegular => const SvgGenImage('assets/icon/cross-circle-regular.svg');
+
+  /// File path: assets/icon/cube-filled.svg
+  SvgGenImage get cubeFilled => const SvgGenImage('assets/icon/cube-filled.svg');
+
+  /// File path: assets/icon/cube-light.svg
+  SvgGenImage get cubeLight => const SvgGenImage('assets/icon/cube-light.svg');
+
+  /// File path: assets/icon/cube-regular.svg
+  SvgGenImage get cubeRegular => const SvgGenImage('assets/icon/cube-regular.svg');
 
   /// File path: assets/icon/dots-three-filled.svg
   SvgGenImage get dotsThreeFilled => const SvgGenImage('assets/icon/dots-three-filled.svg');
@@ -231,6 +285,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/dots-three-regular.svg
   SvgGenImage get dotsThreeRegular => const SvgGenImage('assets/icon/dots-three-regular.svg');
 
+  /// File path: assets/icon/eye-filled.svg
+  SvgGenImage get eyeFilled => const SvgGenImage('assets/icon/eye-filled.svg');
+
+  /// File path: assets/icon/eye-light.svg
+  SvgGenImage get eyeLight => const SvgGenImage('assets/icon/eye-light.svg');
+
+  /// File path: assets/icon/eye-regular.svg
+  SvgGenImage get eyeRegular => const SvgGenImage('assets/icon/eye-regular.svg');
+
   /// File path: assets/icon/eyeglasses-filled.svg
   SvgGenImage get eyeglassesFilled => const SvgGenImage('assets/icon/eyeglasses-filled.svg');
 
@@ -239,6 +302,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/eyeglasses-regular.svg
   SvgGenImage get eyeglassesRegular => const SvgGenImage('assets/icon/eyeglasses-regular.svg');
+
+  /// File path: assets/icon/faders-horizontal-filled.svg
+  SvgGenImage get fadersHorizontalFilled => const SvgGenImage('assets/icon/faders-horizontal-filled.svg');
+
+  /// File path: assets/icon/faders-horizontal-light.svg
+  SvgGenImage get fadersHorizontalLight => const SvgGenImage('assets/icon/faders-horizontal-light.svg');
+
+  /// File path: assets/icon/faders-horizontal-regular.svg
+  SvgGenImage get fadersHorizontalRegular => const SvgGenImage('assets/icon/faders-horizontal-regular.svg');
 
   /// File path: assets/icon/file-text-filled.svg
   SvgGenImage get fileTextFilled => const SvgGenImage('assets/icon/file-text-filled.svg');
@@ -276,6 +348,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/footprints-regular.svg
   SvgGenImage get footprintsRegular => const SvgGenImage('assets/icon/footprints-regular.svg');
 
+  /// File path: assets/icon/gear-filled.svg
+  SvgGenImage get gearFilled => const SvgGenImage('assets/icon/gear-filled.svg');
+
+  /// File path: assets/icon/gear-light.svg
+  SvgGenImage get gearLight => const SvgGenImage('assets/icon/gear-light.svg');
+
+  /// File path: assets/icon/gear-regular.svg
+  SvgGenImage get gearRegular => const SvgGenImage('assets/icon/gear-regular.svg');
+
   /// File path: assets/icon/gear-six-filled.svg
   SvgGenImage get gearSixFilled => const SvgGenImage('assets/icon/gear-six-filled.svg');
 
@@ -302,6 +383,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/hand-waving-regular.svg
   SvgGenImage get handWavingRegular => const SvgGenImage('assets/icon/hand-waving-regular.svg');
+
+  /// File path: assets/icon/house-filled.svg
+  SvgGenImage get houseFilled => const SvgGenImage('assets/icon/house-filled.svg');
+
+  /// File path: assets/icon/house-light.svg
+  SvgGenImage get houseLight => const SvgGenImage('assets/icon/house-light.svg');
+
+  /// File path: assets/icon/house-regular.svg
+  SvgGenImage get houseRegular => const SvgGenImage('assets/icon/house-regular.svg');
 
   /// File path: assets/icon/image-filled.svg
   SvgGenImage get imageFilled => const SvgGenImage('assets/icon/image-filled.svg');
@@ -375,6 +465,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/microphone-stage-regular.svg
   SvgGenImage get microphoneStageRegular => const SvgGenImage('assets/icon/microphone-stage-regular.svg');
 
+  /// File path: assets/icon/money-filled.svg
+  SvgGenImage get moneyFilled => const SvgGenImage('assets/icon/money-filled.svg');
+
+  /// File path: assets/icon/money-light.svg
+  SvgGenImage get moneyLight => const SvgGenImage('assets/icon/money-light.svg');
+
+  /// File path: assets/icon/money-regular.svg
+  SvgGenImage get moneyRegular => const SvgGenImage('assets/icon/money-regular.svg');
+
   /// File path: assets/icon/monitor-filled.svg
   SvgGenImage get monitorFilled => const SvgGenImage('assets/icon/monitor-filled.svg');
 
@@ -411,6 +510,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/phone-disconnect-regular.svg
   SvgGenImage get phoneDisconnectRegular => const SvgGenImage('assets/icon/phone-disconnect-regular.svg');
 
+  /// File path: assets/icon/plus-filled.svg
+  SvgGenImage get plusFilled => const SvgGenImage('assets/icon/plus-filled.svg');
+
+  /// File path: assets/icon/plus-light.svg
+  SvgGenImage get plusLight => const SvgGenImage('assets/icon/plus-light.svg');
+
+  /// File path: assets/icon/plus-regular.svg
+  SvgGenImage get plusRegular => const SvgGenImage('assets/icon/plus-regular.svg');
+
   /// File path: assets/icon/puzzle-piece-filled.svg
   SvgGenImage get puzzlePieceFilled => const SvgGenImage('assets/icon/puzzle-piece-filled.svg');
 
@@ -428,6 +536,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/question-regular.svg
   SvgGenImage get questionRegular => const SvgGenImage('assets/icon/question-regular.svg');
+
+  /// File path: assets/icon/seal-check-filled.svg
+  SvgGenImage get sealCheckFilled => const SvgGenImage('assets/icon/seal-check-filled.svg');
+
+  /// File path: assets/icon/seal-check-light.svg
+  SvgGenImage get sealCheckLight => const SvgGenImage('assets/icon/seal-check-light.svg');
+
+  /// File path: assets/icon/seal-check-regular.svg
+  SvgGenImage get sealCheckRegular => const SvgGenImage('assets/icon/seal-check-regular.svg');
 
   /// File path: assets/icon/share-network-filled.svg
   SvgGenImage get shareNetworkFilled => const SvgGenImage('assets/icon/share-network-filled.svg');
@@ -471,6 +588,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/star-regular.svg
   SvgGenImage get starRegular => const SvgGenImage('assets/icon/star-regular.svg');
 
+  /// File path: assets/icon/terminal-window-filled.svg
+  SvgGenImage get terminalWindowFilled => const SvgGenImage('assets/icon/terminal-window-filled.svg');
+
+  /// File path: assets/icon/terminal-window-regular.svg
+  SvgGenImage get terminalWindowRegular => const SvgGenImage('assets/icon/terminal-window-regular.svg');
+
+  /// File path: assets/icon/terminal-window.svg
+  SvgGenImage get terminalWindow => const SvgGenImage('assets/icon/terminal-window.svg');
+
   /// File path: assets/icon/trash-simple-filled.svg
   SvgGenImage get trashSimpleFilled => const SvgGenImage('assets/icon/trash-simple-filled.svg');
 
@@ -488,6 +614,24 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/trend-up-regular.svg
   SvgGenImage get trendUpRegular => const SvgGenImage('assets/icon/trend-up-regular.svg');
+
+  /// File path: assets/icon/user-circle-filled.svg
+  SvgGenImage get userCircleFilled => const SvgGenImage('assets/icon/user-circle-filled.svg');
+
+  /// File path: assets/icon/user-circle-light.svg
+  SvgGenImage get userCircleLight => const SvgGenImage('assets/icon/user-circle-light.svg');
+
+  /// File path: assets/icon/user-circle-regular.svg
+  SvgGenImage get userCircleRegular => const SvgGenImage('assets/icon/user-circle-regular.svg');
+
+  /// File path: assets/icon/user-filled.svg
+  SvgGenImage get userFilled => const SvgGenImage('assets/icon/user-filled.svg');
+
+  /// File path: assets/icon/user-light.svg
+  SvgGenImage get userLight => const SvgGenImage('assets/icon/user-light.svg');
+
+  /// File path: assets/icon/user-regular.svg
+  SvgGenImage get userRegular => const SvgGenImage('assets/icon/user-regular.svg');
 
   /// File path: assets/icon/verified-tick.svg
   SvgGenImage get verifiedTick => const SvgGenImage('assets/icon/verified-tick.svg');
@@ -531,9 +675,15 @@ class $AssetsIconGen {
     arrowSquareOutFilled,
     arrowSquareOutLight,
     arrowSquareOutRegular,
+    arrowUpFilled,
+    arrowUpLight,
+    arrowUpRegular,
     arrowsClockwiseFilled,
     arrowsClockwiseLight,
     arrowsClockwiseRegular,
+    arrowsDownUpFilled,
+    arrowsDownUpLight,
+    arrowsDownUpRegular,
     atFilled,
     atLight,
     atRegular,
@@ -567,12 +717,18 @@ class $AssetsIconGen {
     caretUpFilled,
     caretUpLight,
     caretUpRegular,
+    chartBarFilled,
+    chartBarLight,
+    chartBarRegular,
     chatCircleFilled,
     chatCircleLight,
     chatCircleRegular,
     chatTextFilled,
     chatTextLight,
     chatTextRegular,
+    chatsTeardropFilled,
+    chatsTeardropLight,
+    chatsTeardropRegular,
     checkCircleFilled,
     checkCircleLight,
     checkCircleRegular,
@@ -589,15 +745,27 @@ class $AssetsIconGen {
     copySimpleFilled,
     copySimpleLight,
     copySimpleRegular,
+    creditCardFilled,
+    creditCardLight,
+    creditCardRegular,
     crossCircleFilled,
     crossCircleLight,
     crossCircleRegular,
+    cubeFilled,
+    cubeLight,
+    cubeRegular,
     dotsThreeFilled,
     dotsThreeLight,
     dotsThreeRegular,
+    eyeFilled,
+    eyeLight,
+    eyeRegular,
     eyeglassesFilled,
     eyeglassesLight,
     eyeglassesRegular,
+    fadersHorizontalFilled,
+    fadersHorizontalLight,
+    fadersHorizontalRegular,
     fileTextFilled,
     fileTextLight,
     fileTextRegular,
@@ -610,6 +778,9 @@ class $AssetsIconGen {
     footprintsFilled,
     footprintsLight,
     footprintsRegular,
+    gearFilled,
+    gearLight,
+    gearRegular,
     gearSixFilled,
     gearSixLight,
     gearSixRegular,
@@ -619,6 +790,9 @@ class $AssetsIconGen {
     handWavingFilled,
     handWavingLight,
     handWavingRegular,
+    houseFilled,
+    houseLight,
+    houseRegular,
     imageFilled,
     imageLight,
     imageRegular,
@@ -643,6 +817,9 @@ class $AssetsIconGen {
     microphoneStageFilled,
     microphoneStageLight,
     microphoneStageRegular,
+    moneyFilled,
+    moneyLight,
+    moneyRegular,
     monitorFilled,
     monitorLight,
     monitorRegular,
@@ -655,12 +832,18 @@ class $AssetsIconGen {
     phoneDisconnectFilled,
     phoneDisconnectLight,
     phoneDisconnectRegular,
+    plusFilled,
+    plusLight,
+    plusRegular,
     puzzlePieceFilled,
     puzzlePieceLight,
     puzzlePieceRegular,
     questionFilled,
     questionLight,
     questionRegular,
+    sealCheckFilled,
+    sealCheckLight,
+    sealCheckRegular,
     shareNetworkFilled,
     shareNetworkLight,
     shareNetworkRegular,
@@ -674,12 +857,21 @@ class $AssetsIconGen {
     starFilled,
     starLight,
     starRegular,
+    terminalWindowFilled,
+    terminalWindowRegular,
+    terminalWindow,
     trashSimpleFilled,
     trashSimpleLight,
     trashSimpleRegular,
     trendUpFilled,
     trendUpLight,
     trendUpRegular,
+    userCircleFilled,
+    userCircleLight,
+    userCircleRegular,
+    userFilled,
+    userLight,
+    userRegular,
     verifiedTick,
     videoCameraFilled,
     videoCameraLight,

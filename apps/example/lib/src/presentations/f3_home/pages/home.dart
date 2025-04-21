@@ -158,6 +158,9 @@ class _HomePageState extends AppPageState<HomePage> {
                       child: ColumnLayout(
                         children: [
                           GestureContainerLayout(
+                            onPress: () {
+                              navigate(BillingRoute());
+                            },
                             child: Image.network(
                               'https://i.imgur.com/B3M72zN.png',
                               fit: BoxFit.cover,
