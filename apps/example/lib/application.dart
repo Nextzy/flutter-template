@@ -7,6 +7,9 @@ export 'package:utils/utils.dart';
 export 'package:example_app/src/src.dart';
 export 'package:example_app/router.dart';
 
+export 'package:google_sign_in/google_sign_in.dart';
+export 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+
 import 'package:example_app/application.dart';
 
 class MyApplication extends AppStatefulWidget {

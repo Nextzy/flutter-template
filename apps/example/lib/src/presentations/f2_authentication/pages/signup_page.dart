@@ -1,49 +1,59 @@
-import 'package:change_application_name/application.dart';
+import 'package:example_app/application.dart';
 
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+enum SignupPageEvent { showResult }
 
 @RoutePage()
-class SignupPage extends AppPage {
+class SignupPage extends AppPage implements AutoRouteWrapper {
   const SignupPage({super.key});
 
   @override
   State<SignupPage> createState() => _SignupPageState();
-}
-
-class _SignupPageState extends AppPageState<SignupPage> {
-  final _service = AuthenticationRpcService(AppHttpClient.instance.dio);
-
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  final _phoneNumberController = TextEditingController();
-  final _otpController = TextEditingController();
-  String _otpToken = '';
-  String _otpRefNo = '';
 
   @override
-  void initState() {
-    super.initState();
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(
+      create: (context) =>
+          AuthenticationPageBloc()..addEvent(AuthenticationBlocEvent.initial),
+      child: this,
+    );
+  }
+}
 
-    // AppHttpClient.instance.setupProxyAdapter(
-    //   ip: '192.168.218.86',
-    //   port: '9090',
-    // );
+class _SignupPageState extends AppPageBlocWidgetState<SignupPage,
+    AuthenticationPageBloc, AuthenticationEntity?> {
+  void onListenerEvent(
+    BuildContext context,
+    Object event,
+    Object? data,
+  ) {
+    final resultMessage = data as String;
 
-    _usernameController.text = 'patrs@email.com';
-    _passwordController.text = '123456';
-
-    // _usernameController.text = 'yookey';
-    // _passwordController.text = '123456';
-
-    _phoneNumberController.text = '0878082159';
+    switch (event) {
+      case SignupPageEvent.showResult:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(resultMessage),
+            duration: Duration(seconds: 5),
+          ),
+        );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-        body: SingleChildScrollView(
+    return buildScaffoldWithBloc(
+      listenEvent: onListenerEvent,
+      body: (context, state) {
+        if (state.isLoading) return Center(child: AppCircularLoading());
+        if (state.isFail) return AppEmpty();
+
+        return _buildBody(context);
+      },
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return SingleChildScrollView(
       child: ContainerLayout(
         child: ResponsiveRowColumn(
             rowCrossAxisAlignment: CrossAxisAlignment.start,
@@ -87,33 +97,30 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 height: 40,
                                 startIcon: Assets.icon.infoRegular.keyName,
                                 text: 'Continue with Google',
-                                onPress: () {
-                                  _authGoogle();
-                                },
+                                onPress: _onTapAuthGoogle,
                               ),
                               Gap(16),
                               AppButton(
-                                  style: AppButtonStyle.outline,
-                                  width: 380,
-                                  height: 40,
-                                  startIcon: Assets.icon.infoRegular.keyName,
-                                  text: 'Continue with Facebook',
-                                  onPress: () {
-                                    _authFacebook();
-                                  }),
+                                style: AppButtonStyle.outline,
+                                width: 380,
+                                height: 40,
+                                startIcon: Assets.icon.infoRegular.keyName,
+                                text: 'Continue with Facebook',
+                                onPress: _onTapAuthFacebook,
+                              ),
                               Gap(32),
                               AppDivider(text: 'Or'),
                               Gap(32),
                               AppTextField(
                                 label: 'Username/Email',
-                                controller: _usernameController,
+                                controller: bloc.usernameController,
                               ),
                               Gap(16),
                               AppTextField(
                                 // obscure: true,
                                 label: 'Password',
                                 // helperText: 'At least 8 characters.',
-                                controller: _passwordController,
+                                controller: bloc.passwordController,
                               ),
                               Gap(32),
                               AppButton(
@@ -121,38 +128,24 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 width: 380,
                                 height: 40,
                                 text: 'Get Started',
-                                onPress: () {
-                                  if (_usernameController.text.isEmpty) return;
-
-                                  if (_usernameController.text.isValidEmail()) {
-                                    _authEmailPassword();
-                                  } else {
-                                    _authUsernamePassword();
-                                  }
-                                },
+                                onPress: _onTapSignIn,
                               ),
                               Gap(32),
                               AppDivider(text: 'Or'),
                               Gap(32),
                               AppButton(
                                 text: 'Refresh Access Token',
-                                onPress: () {
-                                  _refreshAccessToken();
-                                },
+                                onPress: _onTapRefreshAccessToken,
                               ),
                               Gap(10),
                               AppButton(
                                 text: 'Test Subtract',
-                                onPress: () {
-                                  _testSubtract();
-                                },
+                                onPress: _onTapTestSubtract,
                               ),
                               Gap(10),
                               AppButton(
                                 text: 'Test Echo',
-                                onPress: () {
-                                  _testEcho();
-                                },
+                                onPress: _onTapTestEcho,
                               ),
                               Gap(32),
                               Row(
@@ -161,17 +154,13 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                   Expanded(
                                     child: AppTextField(
                                       label: 'Phone Number',
-                                      controller: _phoneNumberController,
+                                      controller: bloc.phoneNumberController,
                                     ),
                                   ),
                                   Space.gap32,
                                   AppButton(
                                     text: 'Send',
-                                    onPress: () {
-                                      setState(() {
-                                        _requestOtp();
-                                      });
-                                    },
+                                    onPress: _onTapRequestOtp,
                                   ),
                                 ],
                               ),
@@ -181,16 +170,15 @@ class _SignupPageState extends AppPageState<SignupPage> {
                                 children: [
                                   Expanded(
                                     child: AppTextField(
-                                      label: 'OTP $_otpRefNo',
-                                      controller: _otpController,
+                                      label:
+                                          'OTP Ref: ${bloc.state.data?.otpRefNo ?? ''}',
+                                      controller: bloc.otpPinController,
                                     ),
                                   ),
                                   Space.gap32,
                                   AppButton(
                                     text: 'Verify',
-                                    onPress: () {
-                                      _verifyOtp();
-                                    },
+                                    onPress: _onTapVerifyOtp,
                                   ),
                                 ],
                               ),
@@ -238,206 +226,81 @@ class _SignupPageState extends AppPageState<SignupPage> {
                 ),
             ]),
       ),
-    ));
+    );
   }
 
-  void _authGoogle() async {
-    print('authen Google');
-
-    const List<String> scopes = <String>[
-      'email',
-    ];
-
-    //Nut
-    final webClientId =
-        '497686726544-9udl9jfqkr4d6c6vl46k4n35j029a1gs.apps.googleusercontent.com';
-
-    //Yook
-    // final webClientId =
-    //     '445384131052-026dgdgl69kheka36vtgnmmparp95drq.apps.googleusercontent.com';
-
-    final iosClientId =
-        '497686726544-in43b6v94c1ve53i1sqigt2vnf3p2d3g.apps.googleusercontent.com';
-
-    String? clientId;
-    if (kIsWeb) {
-      clientId = webClientId;
-    } else if (Platform.isIOS) {
-      clientId = iosClientId;
-    }
-
-    try {
-      GoogleSignIn googleSignIn = GoogleSignIn(
-        scopes: scopes,
-        clientId: clientId,
-      );
-
-      final googleSignInAccount = await googleSignIn.signIn();
-      final googleSignInAuthentication =
-          await googleSignInAccount?.authentication;
-      print('email: ${googleSignInAccount?.email}');
-      print('accessToken: ${googleSignInAuthentication?.accessToken}');
-
-      _getSocialProfile(
-        accessToken: googleSignInAuthentication?.accessToken ?? '',
-        social: 'google',
-      );
-    } catch (error) {
-      print('error: $error');
-    }
+  void _onTapAuthGoogle() {
+    bloc.addEvent(AuthenticationBlocEvent.authGoogle);
   }
 
-  void _authFacebook() async {
-    print('authen Facebook');
+  void _onTapAuthFacebook() {
+    bloc.addEvent(AuthenticationBlocEvent.authFacebook);
+  }
 
-    if (kIsWeb) {
-      await FacebookAuth.i.webAndDesktopInitialize(
-        appId: '1008242141282384',
-        // appId: '611521568708577',
-        cookie: true,
-        xfbml: true,
-        version: 'v15.0',
-      );
+  void _onTapSignIn() {
+    if (bloc.usernameController.text.isEmpty) {
+      return;
     }
 
-    final loginResult = await FacebookAuth.i.login();
-    print('loginResult: ${loginResult.status}');
+    if (bloc.usernameController.text.isValidEmail()) {
+      final data = (
+        email: bloc.usernameController.text,
+        password: bloc.passwordController.text,
+      );
 
-    if (loginResult.status == LoginStatus.success) {
-      print('accessToken: ${loginResult.accessToken?.tokenString}');
+      bloc.addEvent(
+        AuthenticationBlocEvent.authEmailPassword,
+        data: data,
+      );
+    } else {
+      final data = (
+        username: bloc.usernameController.text,
+        password: bloc.passwordController.text,
+      );
 
-      _getSocialProfile(
-        accessToken: loginResult.accessToken?.tokenString ?? '',
-        social: 'facebook',
+      bloc.addEvent(
+        AuthenticationBlocEvent.authUsernamePassword,
+        data: data,
       );
     }
   }
 
-  void _authEmailPassword() async {
-    print('authen email password');
-    print('${_usernameController.text} | ${_passwordController.text}');
+  void _onTapRequestOtp() {
+    final data = (phoneNumber: bloc.phoneNumberController.text,);
 
-    var jsonRpcResponse = await _service.signInWithEmailPassword(
-      email: _usernameController.text,
-      password: _passwordController.text,
+    bloc.addEvent(
+      AuthenticationBlocEvent.requestOtp,
+      data: data,
+    );
+  }
+
+  void _onTapVerifyOtp() {
+    final data = (
+      otpToken: bloc.data?.otpToken,
+      otpPin: bloc.otpPinController.text,
     );
 
-    _showResult(jsonRpcResponse);
-
-    final accessToken = jsonRpcResponse.result?.accessToken ?? '';
-
-    _getProfile(accessToken: accessToken);
-  }
-
-  void _authUsernamePassword() async {
-    print('authen username password');
-    print('${_usernameController.text} | ${_passwordController.text}');
-
-    var jsonRpcResponse = await _service.signInWithUsernamePassword(
-      username: _usernameController.text,
-      password: _passwordController.text,
+    bloc.addEvent(
+      AuthenticationBlocEvent.verifyOtp,
+      data: data,
     );
-
-    _showResult(jsonRpcResponse);
-
-    final accessToken = jsonRpcResponse.result?.accessToken ?? '';
-
-    _getProfile(accessToken: accessToken);
   }
 
-  void _refreshAccessToken() async {
-    print('refresh access token');
-
-    var jsonRpcResponse = await _service.refreshAccessToken();
-
-    _showResult(jsonRpcResponse);
-  }
-
-  void _requestOtp() async {
-    print('request otp: ${_phoneNumberController.text}');
-
-    var jsonRpcResponse = await _service.requestOtp(
-      phoneNumber: _phoneNumberController.text,
+  void _onTapRefreshAccessToken() {
+    bloc.addEvent(
+      AuthenticationBlocEvent.refreshAccessToken,
     );
-
-    _showResult(jsonRpcResponse);
-
-    _otpToken = jsonRpcResponse.result?.token ?? '';
-    _otpRefNo = jsonRpcResponse.result?.refno ?? '';
   }
 
-  void _getProfile({
-    required accessToken,
-  }) async {
-    print('get profile');
-
-    AppHttpClient.instance.setupCredential(
-      token: accessToken,
+  void _onTapTestSubtract() {
+    bloc.addEvent(
+      AuthenticationBlocEvent.testSubtract,
     );
-
-    var jsonRpcResponse = await _service.getProfile();
-
-    _showResult(jsonRpcResponse);
   }
 
-  void _getSocialProfile({
-    required String accessToken,
-    required String social,
-  }) async {
-    print('get social profile');
-
-    var jsonRpcResponse = await _service.getSocialProfile(
-      accessToken: accessToken,
-      social: social,
-    );
-
-    _showResult(jsonRpcResponse);
-  }
-
-  void _verifyOtp() async {
-    print('verify otp: ${_otpController.text}');
-
-    var jsonRpcResponse = await _service.verifyOtp(
-      token: _otpToken,
-      pin: _otpController.text,
-    );
-
-    _showResult(jsonRpcResponse);
-  }
-
-  void _testSubtract() async {
-    print('testSubtract');
-
-    var jsonRpcResponse = await _service.subtract(
-      subtrahend: 55,
-      minuend: 40,
-    );
-
-    _showResult(jsonRpcResponse);
-  }
-
-  void _testEcho() async {
-    print('testEcho');
-
-    var jsonRpcResponse = await _service.echo(
-      name: 'John Doe',
-    );
-
-    _showResult(jsonRpcResponse);
-  }
-
-  void _showResult(JsonRpcResponse jsonRpcResponse) {
-    print('jsonRpcResponse: ${jsonRpcResponse}');
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          jsonRpcResponse.hasResult
-              ? jsonRpcResponse.result.toString()
-              : jsonRpcResponse.error?.userMessage ?? 'error',
-        ),
-        duration: Duration(seconds: 5),
-      ),
+  void _onTapTestEcho() {
+    bloc.addEvent(
+      AuthenticationBlocEvent.testEcho,
     );
   }
 }
