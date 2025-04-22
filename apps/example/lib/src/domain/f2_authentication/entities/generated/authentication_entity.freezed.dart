@@ -15,7 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AuthenticationEntity {
-  String get yourData;
+  String get otpRefNo;
+  String get otpToken;
 
   /// Create a copy of AuthenticationEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -30,16 +31,18 @@ mixin _$AuthenticationEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AuthenticationEntity &&
-            (identical(other.yourData, yourData) ||
-                other.yourData == yourData));
+            (identical(other.otpRefNo, otpRefNo) ||
+                other.otpRefNo == otpRefNo) &&
+            (identical(other.otpToken, otpToken) ||
+                other.otpToken == otpToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, yourData);
+  int get hashCode => Object.hash(runtimeType, otpRefNo, otpToken);
 
   @override
   String toString() {
-    return 'AuthenticationEntity(yourData: $yourData)';
+    return 'AuthenticationEntity(otpRefNo: $otpRefNo, otpToken: $otpToken)';
   }
 }
 
@@ -49,7 +52,7 @@ abstract mixin class $AuthenticationEntityCopyWith<$Res> {
           $Res Function(AuthenticationEntity) _then) =
       _$AuthenticationEntityCopyWithImpl;
   @useResult
-  $Res call({String yourData});
+  $Res call({String otpRefNo, String otpToken});
 }
 
 /// @nodoc
@@ -65,12 +68,17 @@ class _$AuthenticationEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? yourData = null,
+    Object? otpRefNo = null,
+    Object? otpToken = null,
   }) {
     return _then(_self.copyWith(
-      yourData: null == yourData
-          ? _self.yourData
-          : yourData // ignore: cast_nullable_to_non_nullable
+      otpRefNo: null == otpRefNo
+          ? _self.otpRefNo
+          : otpRefNo // ignore: cast_nullable_to_non_nullable
+              as String,
+      otpToken: null == otpToken
+          ? _self.otpToken
+          : otpToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -79,10 +87,12 @@ class _$AuthenticationEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _AuthenticationEntity implements AuthenticationEntity {
-  const _AuthenticationEntity({required this.yourData});
+  const _AuthenticationEntity({required this.otpRefNo, required this.otpToken});
 
   @override
-  final String yourData;
+  final String otpRefNo;
+  @override
+  final String otpToken;
 
   /// Create a copy of AuthenticationEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -98,16 +108,18 @@ class _AuthenticationEntity implements AuthenticationEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AuthenticationEntity &&
-            (identical(other.yourData, yourData) ||
-                other.yourData == yourData));
+            (identical(other.otpRefNo, otpRefNo) ||
+                other.otpRefNo == otpRefNo) &&
+            (identical(other.otpToken, otpToken) ||
+                other.otpToken == otpToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, yourData);
+  int get hashCode => Object.hash(runtimeType, otpRefNo, otpToken);
 
   @override
   String toString() {
-    return 'AuthenticationEntity(yourData: $yourData)';
+    return 'AuthenticationEntity(otpRefNo: $otpRefNo, otpToken: $otpToken)';
   }
 }
 
@@ -119,7 +131,7 @@ abstract mixin class _$AuthenticationEntityCopyWith<$Res>
       __$AuthenticationEntityCopyWithImpl;
   @override
   @useResult
-  $Res call({String yourData});
+  $Res call({String otpRefNo, String otpToken});
 }
 
 /// @nodoc
@@ -135,12 +147,17 @@ class __$AuthenticationEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? yourData = null,
+    Object? otpRefNo = null,
+    Object? otpToken = null,
   }) {
     return _then(_AuthenticationEntity(
-      yourData: null == yourData
-          ? _self.yourData
-          : yourData // ignore: cast_nullable_to_non_nullable
+      otpRefNo: null == otpRefNo
+          ? _self.otpRefNo
+          : otpRefNo // ignore: cast_nullable_to_non_nullable
+              as String,
+      otpToken: null == otpToken
+          ? _self.otpToken
+          : otpToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }

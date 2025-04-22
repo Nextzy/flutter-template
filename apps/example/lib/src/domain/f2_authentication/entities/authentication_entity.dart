@@ -5,11 +5,14 @@ part 'generated/authentication_entity.freezed.dart';
 @freezed
 abstract class AuthenticationEntity with _$AuthenticationEntity {
   const factory AuthenticationEntity({
-    required String yourData,
+    required String otpRefNo,
+    required String otpToken,
   }) = _AuthenticationEntity;
 
-  factory AuthenticationEntity.fromResponse(Response response) =>
+  factory AuthenticationEntity.fromResponse(
+          RemoteRequestOtpResponse response) =>
       AuthenticationEntity(
-        yourData: '',
+        otpRefNo: response.refno ?? '',
+        otpToken: response.token ?? '',
       );
 }
