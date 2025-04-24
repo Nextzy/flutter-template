@@ -123,6 +123,22 @@ class SignupRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [StreamingPage]
+class StreamingRoute extends PageRouteInfo<void> {
+  const StreamingRoute({List<PageRouteInfo>? children})
+    : super(StreamingRoute.name, initialChildren: children);
+
+  static const String name = 'StreamingRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const StreamingPage();
+    },
+  );
+}
+
+/// generated route for
 /// [VideoCallPage]
 class VideoCallRoute extends PageRouteInfo<void> {
   const VideoCallRoute({List<PageRouteInfo>? children})

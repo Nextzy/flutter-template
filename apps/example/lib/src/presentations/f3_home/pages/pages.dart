@@ -6,3 +6,4 @@ export 'kanban_page.dart';
 export 'video_call_page.dart';
 export 'billing_page.dart';
 export 'notes_page.dart';
+export 'streaming_page.dart';

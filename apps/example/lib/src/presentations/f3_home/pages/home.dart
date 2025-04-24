@@ -58,6 +58,9 @@ class _HomePageState extends AppPageState<HomePage> {
                         gap: 8,
                         children: [
                           GestureContainerLayout(
+                            onPress: () {
+                              navigate(StreamingRoute());
+                            },
                             child: Image.network(
                               'https://i.imgur.com/HTEJ1Kx.png',
                               fit: BoxFit.cover,
