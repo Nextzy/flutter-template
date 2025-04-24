@@ -39,8 +39,9 @@ class AppBadge extends AppStatelessWidget {
         mainAxisSize: MainAxisSize.min,
         padding: padding,
         border: context.theme.border.md.copy(
-            color:
-                (color ?? context.theme.color.brandPrimary).withValues(alpha: 0.2)),
+            color: (color ?? context.theme.color.brandPrimary)
+                .withValues(alpha: 0.2)),
+        borderRadius: borderRadius,
         backgroundColor: switch (style) {
           WidgetStyle.filled => color ?? context.theme.color.brandPrimary,
           WidgetStyle.subtle =>

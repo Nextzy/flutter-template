@@ -91,6 +91,22 @@ class MessengerRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NotesPage]
+class NotesRoute extends PageRouteInfo<void> {
+  const NotesRoute({List<PageRouteInfo>? children})
+    : super(NotesRoute.name, initialChildren: children);
+
+  static const String name = 'NotesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const NotesPage();
+    },
+  );
+}
+
+/// generated route for
 /// [SignupPage]
 class SignupRoute extends PageRouteInfo<void> {
   const SignupRoute({List<PageRouteInfo>? children})

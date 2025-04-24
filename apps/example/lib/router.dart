@@ -17,6 +17,7 @@ class ExampleRouter extends RootStackRouter {
         AppRoute(path: '/kanban', page: KanbanRoute.page),
         AppRoute(path: '/video_call', page: VideoCallRoute.page),
         AppRoute(path: '/billing', page: BillingRoute.page),
+        AppRoute(path: '/notes', page: NotesRoute.page),
         AppRoute(path: '/signup', page: SignupRoute.page),
         RedirectRoute(path: '*', redirectTo: '/'),
       ];
