@@ -15,6 +15,15 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconGen {
   const $AssetsIconGen();
 
+  /// File path: assets/icon/arrow-left-filled.svg
+  SvgGenImage get arrowLeftFilled => const SvgGenImage('assets/icon/arrow-left-filled.svg');
+
+  /// File path: assets/icon/arrow-left-light.svg
+  SvgGenImage get arrowLeftLight => const SvgGenImage('assets/icon/arrow-left-light.svg');
+
+  /// File path: assets/icon/arrow-left-regular.svg
+  SvgGenImage get arrowLeftRegular => const SvgGenImage('assets/icon/arrow-left-regular.svg');
+
   /// File path: assets/icon/arrow-narrow-left.svg
   SvgGenImage get arrowNarrowLeft => const SvgGenImage('assets/icon/arrow-narrow-left.svg');
 
@@ -222,6 +231,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/close-regular.svg
   SvgGenImage get closeRegular => const SvgGenImage('assets/icon/close-regular.svg');
 
+  /// File path: assets/icon/closed-captioning-filled.svg
+  SvgGenImage get closedCaptioningFilled => const SvgGenImage('assets/icon/closed-captioning-filled.svg');
+
+  /// File path: assets/icon/closed-captioning-light.svg
+  SvgGenImage get closedCaptioningLight => const SvgGenImage('assets/icon/closed-captioning-light.svg');
+
+  /// File path: assets/icon/closed-captioning-regular.svg
+  SvgGenImage get closedCaptioningRegular => const SvgGenImage('assets/icon/closed-captioning-regular.svg');
+
   /// File path: assets/icon/code-filled.svg
   SvgGenImage get codeFilled => const SvgGenImage('assets/icon/code-filled.svg');
 
@@ -347,6 +365,15 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/footprints-regular.svg
   SvgGenImage get footprintsRegular => const SvgGenImage('assets/icon/footprints-regular.svg');
+
+  /// File path: assets/icon/gauge-filled.svg
+  SvgGenImage get gaugeFilled => const SvgGenImage('assets/icon/gauge-filled.svg');
+
+  /// File path: assets/icon/gauge-light.svg
+  SvgGenImage get gaugeLight => const SvgGenImage('assets/icon/gauge-light.svg');
+
+  /// File path: assets/icon/gauge-regular.svg
+  SvgGenImage get gaugeRegular => const SvgGenImage('assets/icon/gauge-regular.svg');
 
   /// File path: assets/icon/gear-filled.svg
   SvgGenImage get gearFilled => const SvgGenImage('assets/icon/gear-filled.svg');
@@ -645,6 +672,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/video-camera-regular.svg
   SvgGenImage get videoCameraRegular => const SvgGenImage('assets/icon/video-camera-regular.svg');
 
+  /// File path: assets/icon/video-filled.svg
+  SvgGenImage get videoFilled => const SvgGenImage('assets/icon/video-filled.svg');
+
+  /// File path: assets/icon/video-light.svg
+  SvgGenImage get videoLight => const SvgGenImage('assets/icon/video-light.svg');
+
+  /// File path: assets/icon/video-regular.svg
+  SvgGenImage get videoRegular => const SvgGenImage('assets/icon/video-regular.svg');
+
   /// File path: assets/icon/warning-filled.svg
   SvgGenImage get warningFilled => const SvgGenImage('assets/icon/warning-filled.svg');
 
@@ -668,6 +704,9 @@ class $AssetsIconGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+    arrowLeftFilled,
+    arrowLeftLight,
+    arrowLeftRegular,
     arrowNarrowLeft,
     arrowRightFilled,
     arrowRightLight,
@@ -736,6 +775,9 @@ class $AssetsIconGen {
     closeFilled,
     closeLight,
     closeRegular,
+    closedCaptioningFilled,
+    closedCaptioningLight,
+    closedCaptioningRegular,
     codeFilled,
     codeLight,
     codeRegular,
@@ -778,6 +820,9 @@ class $AssetsIconGen {
     footprintsFilled,
     footprintsLight,
     footprintsRegular,
+    gaugeFilled,
+    gaugeLight,
+    gaugeRegular,
     gearFilled,
     gearLight,
     gearRegular,
@@ -876,6 +921,9 @@ class $AssetsIconGen {
     videoCameraFilled,
     videoCameraLight,
     videoCameraRegular,
+    videoFilled,
+    videoLight,
+    videoRegular,
     warningFilled,
     warningLight,
     warningRegular,
