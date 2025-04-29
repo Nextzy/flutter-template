@@ -8,39 +8,39 @@ class OverviewRatingWidgetCase extends WidgetbookScrollableUseCase {
             children: [
               AppRating(
                 size: WidgetSize.sm,
-                defaultValue: 5,
+                value: 5,
                 showText: true,
               ),
               AppRating(
                 style: AppRatingStyle.heart,
-                defaultValue: 4,
+                value: 4,
                 showText: true,
               ),
               AppRating(
                 size: WidgetSize.lg,
                 style: AppRatingStyle.dot,
-                defaultValue: 3,
+                value: 3,
                 showText: true,
               ),
               AppRating(
                 size: WidgetSize.sm,
-                defaultValue: 2,
+                value: 2,
                 showText: true,
               ),
               AppRating(
                 style: AppRatingStyle.heart,
-                defaultValue: 1,
+                value: 1,
                 showText: true,
               ),
               AppRating(
                 size: WidgetSize.lg,
                 style: AppRatingStyle.dot,
-                defaultValue: 0,
+                value: 0,
                 showText: true,
               ),
               AppRating(
                 style: AppRatingStyle.emoji,
-                defaultValue: 4.1,
+                value: 4.1,
               ),
             ],
           ),

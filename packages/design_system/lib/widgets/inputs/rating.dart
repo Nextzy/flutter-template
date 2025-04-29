@@ -7,14 +7,20 @@ class AppRating extends AppStatefulWidget {
     super.key,
     super.size = WidgetSize.md,
     this.style = AppRatingStyle.star,
-    this.defaultValue = 0,
+    this.value = 0,
+    this.max = 5,
+    this.color,
     this.showText = false,
+    this.textColor,
     this.onChanged,
   });
 
   final AppRatingStyle style;
-  final double defaultValue;
+  final double value;
+  final int max;
+  final Color? color;
   final bool showText;
+  final Color? textColor;
 
   final ValueChanged<double>? onChanged;
 
@@ -29,7 +35,7 @@ class _AppRatingState extends AppState<AppRating> {
   void initState() {
     super.initState();
     setState(() {
-      _value = widget.defaultValue;
+      _value = widget.value;
     });
   }
 
@@ -47,11 +53,12 @@ class _AppRatingState extends AppState<AppRating> {
   Widget build(BuildContext context) {
     List<Widget> rating = [];
 
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < widget.max; i++) {
       double ratingValue = i + 1;
 
-      Color color =
-          ratingValue <= _value ? iconColor : context.theme.color.bgSurface2;
+      Color color = ratingValue <= _value
+          ? widget.color ?? iconColor
+          : context.theme.color.bgSurface3;
 
       String emoji = switch (i) {
         0 => '😠',
@@ -77,16 +84,17 @@ class _AppRatingState extends AppState<AppRating> {
     return Row(
       children: [
         ...rating,
-        if (widget.showText) Gap(16),
-        if (widget.showText)
+        if (widget.showText) ...[
+          Gap(16),
           AppText(
             _value.toString(),
             style: TextStyle(
-              color: context.theme.color.textPrimary,
+              color: widget.textColor ?? context.theme.color.textPrimary,
               fontSize: fontSize,
               fontWeight: FontWeight.w600,
             ),
           )
+        ]
       ],
     );
   }
