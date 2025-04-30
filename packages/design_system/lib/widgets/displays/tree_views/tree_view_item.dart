@@ -4,11 +4,15 @@ class AppTreeViewItem extends AppStatefulWidget {
   const AppTreeViewItem(
       {super.key,
       this.icon,
+      this.iconColor,
+      this.iconSize = 14,
       required this.text,
       this.children,
       this.expanded = false});
 
   final String? icon;
+  final Color? iconColor;
+  final double iconSize;
   final String text;
   final List<AppTreeViewItem>? children;
   final bool expanded;
@@ -58,8 +62,9 @@ class _AppTreeViewItemState extends AppState<AppTreeViewItem> {
             if (widget.icon.isNotNullOrBlank)
               widget.icon.toSvgIcon(
                 colorFilter: ColorFilter.mode(
-                    context.theme.color.iconPrimary, BlendMode.srcIn),
-                size: 14,
+                    widget.iconColor ?? context.theme.color.iconPrimary,
+                    BlendMode.srcIn),
+                size: widget.iconSize,
               ),
             AppText(widget.text,
                 style: TextStyle(
