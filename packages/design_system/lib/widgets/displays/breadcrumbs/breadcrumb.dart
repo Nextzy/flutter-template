@@ -25,6 +25,7 @@ class AppBreadcrumbs extends AppStatelessWidget {
                   size: size,
                   label: child.label,
                   icon: child.icon,
+                  hasColorFilter: child.hasColorFilter,
                   disabled: child.disabled,
                   onPress: child.onPress),
               if (children.last != child)

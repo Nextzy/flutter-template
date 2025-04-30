@@ -131,7 +131,8 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                               Expanded(
                                 child: AppButton(
                                     style: AppButtonStyle.filled,
-                                    startIcon: Assets.icon.infoRegular.keyName,
+                                    startIcon:
+                                        Assets.icon.notePencilRegular.keyName,
                                     text: 'New message'),
                               )
                             ],
@@ -144,14 +145,14 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                         child: SingleChildScrollView(
                       child: ColumnLayout(children: [
                         AppSidebarSection(
-                            icon: Assets.icon.infoRegular.keyName,
+                            icon: Assets.icon.trayRegular.keyName,
                             title: 'General',
                             active: true),
                         AppSidebarSection(
-                            icon: Assets.icon.infoRegular.keyName,
+                            icon: Assets.icon.chatsRegular.keyName,
                             title: 'Threads'),
                         AppSidebarSection(
-                            icon: Assets.icon.infoRegular.keyName,
+                            icon: Assets.icon.atRegular.keyName,
                             title: 'Mentions'),
                         RowLayout(
                           gap: 4,
@@ -352,7 +353,7 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                       ]),
                     )),
                     AppSidebarSection(
-                      icon: Assets.icon.infoRegular.keyName,
+                      icon: Assets.icon.headsetRegular.keyName,
                       title: 'Voice room',
                     ),
                   ],
@@ -377,11 +378,8 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                     children: [
                       RowLayout(gap: 6, children: [
                         ContainerLayout(
-                          child: Assets.icon.infoRegular.svgIcon(
-                            size: 20,
-                            colorFilter: ColorFilter.mode(
-                                context.theme.color.iconPrimary,
-                                BlendMode.srcIn),
+                          child: Assets.logo.icon.svgIcon(
+                            size: 24,
                           ),
                         ),
                         AppText('General',
@@ -397,12 +395,13 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                             width: 224,
                             child: AppTextField(
                               style: AppTextFieldStyle.shaded,
-                              startIcon: Assets.icon.infoRegular.keyName,
+                              startIcon:
+                                  Assets.icon.magnifyingGlassRegular.keyName,
                               placeholderText: 'Search',
                             ),
                           ),
                           ContainerLayout(
-                            child: Assets.icon.infoRegular.svgIcon(
+                            child: Assets.icon.hashRegular.svgIcon(
                               size: 20,
                               colorFilter: ColorFilter.mode(
                                   context.theme.color.iconPrimary,
@@ -410,7 +409,7 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                             ),
                           ),
                           ContainerLayout(
-                            child: Assets.icon.infoRegular.svgIcon(
+                            child: Assets.icon.bellRegular.svgIcon(
                               size: 20,
                               colorFilter: ColorFilter.mode(
                                   context.theme.color.iconPrimary,
@@ -418,7 +417,7 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                             ),
                           ),
                           ContainerLayout(
-                            child: Assets.icon.infoRegular.svgIcon(
+                            child: Assets.icon.questionRegular.svgIcon(
                               size: 20,
                               colorFilter: ColorFilter.mode(
                                   context.theme.color.iconPrimary,
@@ -428,7 +427,7 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                           AppCircleAvatar(
                             style: WidgetStyle.subtle,
                             size: WidgetSize.sm,
-                            path: Assets.mock.avatarSquared.keyName,
+                            path: Assets.mock.avatarSquared1.keyName,
                           )
                         ])
                       else
@@ -498,7 +497,7 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                               children: [
                                 RowLayout(gap: 12, children: [
                                   ContainerLayout(
-                                    child: Assets.icon.infoRegular.svgIcon(
+                                    child: Assets.icon.plusRegular.svgIcon(
                                       size: 20,
                                       colorFilter: ColorFilter.mode(
                                           context.theme.color.iconPrimary,
@@ -506,7 +505,7 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                                     ),
                                   ),
                                   ContainerLayout(
-                                    child: Assets.icon.infoRegular.svgIcon(
+                                    child: Assets.icon.smileyRegular.svgIcon(
                                       size: 20,
                                       colorFilter: ColorFilter.mode(
                                           context.theme.color.iconPrimary,

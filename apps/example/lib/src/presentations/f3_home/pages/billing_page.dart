@@ -111,14 +111,15 @@ class _BillingPageState extends AppPageState<BillingPage> {
                     bottom: BorderSide(color: context.theme.color.border)),
               ),
               child: RowLayout(gap: 22, children: [
-                ContainerLayout(
-                  width: 276,
-                  child: AppTextField(
-                    style: AppTextFieldStyle.outline,
-                    startIcon: Assets.icon.magnifyingGlassRegular.keyName,
-                    placeholderText: 'Search',
+                if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
+                  ContainerLayout(
+                    width: 276,
+                    child: AppTextField(
+                      style: AppTextFieldStyle.outline,
+                      startIcon: Assets.icon.magnifyingGlassRegular.keyName,
+                      placeholderText: 'Search',
+                    ),
                   ),
-                ),
                 RowLayout(gap: 4, children: [
                   AppButton(
                       text: 'Feedback',
@@ -154,23 +155,25 @@ class _BillingPageState extends AppPageState<BillingPage> {
                                   fontSize: 36,
                                   fontWeight: FontWeight.w600),
                             ),
-                            RowLayout(gap: 12, children: [
-                              AppButton(
-                                text: 'Filter',
-                                startIcon:
-                                    Assets.icon.fadersHorizontalRegular.keyName,
-                                style: AppButtonStyle.outline,
-                              ),
-                              AppButton(
-                                text: 'Export',
-                                startIcon: Assets.icon.arrowUpRegular.keyName,
-                                style: AppButtonStyle.outline,
-                              ),
-                              AppButton(
-                                text: 'Create payment',
-                                startIcon: Assets.icon.plusRegular.keyName,
-                              ),
-                            ])
+                            if (ResponsiveBreakpoints.of(context)
+                                .largerThan(TABLET))
+                              RowLayout(gap: 12, children: [
+                                AppButton(
+                                  text: 'Filter',
+                                  startIcon: Assets
+                                      .icon.fadersHorizontalRegular.keyName,
+                                  style: AppButtonStyle.outline,
+                                ),
+                                AppButton(
+                                  text: 'Export',
+                                  startIcon: Assets.icon.arrowUpRegular.keyName,
+                                  style: AppButtonStyle.outline,
+                                ),
+                                AppButton(
+                                  text: 'Create payment',
+                                  startIcon: Assets.icon.plusRegular.keyName,
+                                ),
+                              ])
                           ],
                         ),
                         AppHorizontalTab(
@@ -182,7 +185,7 @@ class _BillingPageState extends AppPageState<BillingPage> {
                               AppTab(text: 'All'),
                             ]),
                         AppTable(
-                          width: MediaQuery.of(context).size.width,
+                          width: 1400,
                           height: 783,
                           headerNames: [
                             'Amount',
@@ -215,7 +218,6 @@ class PaymentTableSource implements AppTableSource {
   @override
   AppTableCellContainer getCellContainer(int index) {
     final item = items[index];
-    // Log.i(context);
     return AppTableCellContainer(
       cells: [
         AppTableCell(

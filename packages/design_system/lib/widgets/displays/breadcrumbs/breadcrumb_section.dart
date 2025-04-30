@@ -6,11 +6,13 @@ class AppBreadcrumbSection extends AppStatelessWidget {
       super.size = WidgetSize.md,
       this.label,
       this.icon,
+      this.hasColorFilter = true,
       this.disabled = false,
       this.onPress});
 
   final String? label;
   final String? icon;
+  final bool hasColorFilter;
   final bool disabled;
 
   final VoidCallback? onPress;
@@ -26,12 +28,14 @@ class AppBreadcrumbSection extends AppStatelessWidget {
               padding: const EdgeInsets.all(4),
               child: icon.toSvgIcon(
                   size: size == WidgetSize.sm ? 14 : 16,
-                  colorFilter: ColorFilter.mode(
-                      disabled
-                          ? context.theme.color.iconPrimary.withValues(
-                              alpha: 0.08, red: 0, green: 0, blue: 0)
-                          : context.theme.color.iconPrimary,
-                      BlendMode.srcIn)),
+                  colorFilter: hasColorFilter
+                      ? ColorFilter.mode(
+                          disabled
+                              ? context.theme.color.iconPrimary.withValues(
+                                  alpha: 0.08, red: 0, green: 0, blue: 0)
+                              : context.theme.color.iconPrimary,
+                          BlendMode.srcIn)
+                      : null),
             ),
           if (label.isNotNullOrBlank)
             ContainerLayout(

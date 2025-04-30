@@ -296,7 +296,7 @@ class _KanbanPageState extends AppPageState<KanbanPage> {
                             ],
                           ),
                         if (ResponsiveBreakpoints.of(context)
-                            .largerThan(MOBILE))
+                            .largerThan(TABLET))
                           RowLayout(gap: 16, children: [
                             ContainerLayout(
                               width: 280,

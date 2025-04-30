@@ -209,27 +209,42 @@ class _Web3PageState extends AppPageState<Web3Page> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             children: [
-                              AppText('Create with Stratum',
-                                  style: TextStyle(
-                                    color: context
-                                        .theme.color.textSecondaryInverse,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                              RowLayout(gap: 12, children: [
-                                AppButton(
-                                  text: 'Share',
-                                  startIcon: Assets.icon.infoRegular.keyName,
-                                  style: AppButtonStyle.shaded,
-                                  color: context.theme.color.textPrimaryInverse,
-                                ),
+                              RowLayout(gap: 8, children: [
+                                AppText('Create with',
+                                    style: TextStyle(
+                                      color: context
+                                          .theme.color.textSecondaryInverse,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                    )),
                                 ContainerLayout(
-                                  child: Assets.icon.infoRegular.svgIcon(
-                                    size: 20,
+                                  child: Assets.icon.planetRegular.svgIcon(
+                                    size: 24,
                                     colorFilter: ColorFilter.mode(
                                         context.theme.color.iconPrimaryInverse,
                                         BlendMode.srcIn),
                                   ),
+                                ),
+                                AppText('Stratum',
+                                    style: TextStyle(
+                                      color: context
+                                          .theme.color.textPrimaryInverse,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                    )),
+                              ]),
+                              RowLayout(gap: 12, children: [
+                                AppButton(
+                                  text: 'Share',
+                                  startIcon:
+                                      Assets.icon.uploadSimpleRegular.keyName,
+                                  style: AppButtonStyle.shaded,
+                                  themeMode: ThemeMode.dark,
+                                ),
+                                AppIconButton(
+                                  icon: Assets.icon.dotsThreeRegular.keyName,
+                                  style: AppButtonStyle.shaded,
+                                  themeMode: ThemeMode.dark,
                                 ),
                               ])
                             ])
@@ -242,8 +257,8 @@ class _Web3PageState extends AppPageState<Web3Page> {
                       children: [
                         RowLayout(gap: 12, children: [
                           ContainerLayout(
-                            child: Assets.icon.infoRegular.svgIcon(
-                              size: 20,
+                            child: Assets.icon.snowflakeFilled.svgIcon(
+                              size: 24,
                               colorFilter: ColorFilter.mode(
                                   context.theme.color.iconPrimaryInverse,
                                   BlendMode.srcIn),
@@ -253,15 +268,14 @@ class _Web3PageState extends AppPageState<Web3Page> {
                               .largerThan(TABLET))
                             AppButton(
                                 text: 'Feed',
-                                size: WidgetSize.lg,
                                 style: AppButtonStyle.text,
                                 themeMode: ThemeMode.dark),
                           if (ResponsiveBreakpoints.of(context)
                               .largerThan(TABLET))
                             AppButton(
                                 text: 'Trending',
-                                size: WidgetSize.lg,
                                 style: AppButtonStyle.text,
+                                endIcon: Assets.icon.caretDownRegular.keyName,
                                 themeMode: ThemeMode.dark),
                         ]),
                         if (ResponsiveBreakpoints.of(context)
@@ -270,34 +284,28 @@ class _Web3PageState extends AppPageState<Web3Page> {
                             width: 360,
                             child: AppTextField(
                               style: AppTextFieldStyle.shaded,
-                              startIcon: Assets.icon.infoRegular.keyName,
+                              startIcon:
+                                  Assets.icon.magnifyingGlassRegular.keyName,
                               placeholderText: 'Search web3',
                               themeMode: ThemeMode.dark,
                             ),
                           ),
                         RowLayout(gap: 12, children: [
-                          ContainerLayout(
-                            child: Assets.icon.infoRegular.svgIcon(
-                              size: 20,
-                              colorFilter: ColorFilter.mode(
-                                  context.theme.color.iconPrimaryInverse,
-                                  BlendMode.srcIn),
-                            ),
+                          AppIconButton(
+                            icon: Assets.icon.waveformRegular.keyName,
+                            style: AppButtonStyle.shaded,
+                            themeMode: ThemeMode.dark,
                           ),
                           if (ResponsiveBreakpoints.of(context)
                               .largerThan(TABLET))
                             AppButton(
                                 text: 'Create',
-                                size: WidgetSize.lg,
-                                style: AppButtonStyle.text,
+                                style: AppButtonStyle.filled,
                                 themeMode: ThemeMode.dark),
-                          ContainerLayout(
-                            child: Assets.icon.infoRegular.svgIcon(
-                              size: 20,
-                              colorFilter: ColorFilter.mode(
-                                  context.theme.color.iconPrimaryInverse,
-                                  BlendMode.srcIn),
-                            ),
+                          AppIconButton(
+                            icon: Assets.icon.userCircleRegular.keyName,
+                            style: AppButtonStyle.shaded,
+                            themeMode: ThemeMode.dark,
                           ),
                         ]),
                       ],
@@ -606,8 +614,8 @@ class _Web3PageState extends AppPageState<Web3Page> {
                   children: [
                     RowLayout(gap: 12, children: [
                       ContainerLayout(
-                        child: Assets.icon.infoRegular.svgIcon(
-                          size: 20,
+                        child: Assets.icon.snowflakeFilled.svgIcon(
+                          size: 24,
                           colorFilter: ColorFilter.mode(
                               context.theme.color.iconPrimary, BlendMode.srcIn),
                         ),

@@ -24,50 +24,41 @@ class _EcommercePageState extends AppPageState<EcommercePage> {
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                   children: [
                     if (ResponsiveBreakpoints.of(context).largerThan(TABLET))
-                      ContainerLayout(
-                        child: Assets.icon.infoRegular.svgIcon(
-                          size: 20,
-                          colorFilter: ColorFilter.mode(
-                              context.theme.color.iconPrimary, BlendMode.srcIn),
-                        ),
+                      AppIconButton(
+                        icon: Assets.icon.listRegular.keyName,
+                        style: AppButtonStyle.text,
                       ),
-                    AppText('Foculty',
-                        style: TextStyle(
-                          color: context.theme.color.textPrimary,
-                          fontSize: ResponsiveBreakpoints.of(context)
-                                  .largerThan(TABLET)
-                              ? 24
-                              : 18,
-                          fontWeight: FontWeight.w600,
-                        )),
+                    RowLayout(gap: 8, children: [
+                      ContainerLayout(
+                          child: Assets.logo.icon.svgIcon(
+                        size: 24,
+                      )),
+                      AppText('Foculty',
+                          style: TextStyle(
+                            color: context.theme.color.textPrimary,
+                            fontSize: ResponsiveBreakpoints.of(context)
+                                    .largerThan(TABLET)
+                                ? 24
+                                : 18,
+                            fontWeight: FontWeight.w600,
+                          )),
+                    ]),
                     RowLayout(gap: 12, children: [
-                      ContainerLayout(
-                        child: Assets.icon.infoRegular.svgIcon(
-                          size: 20,
-                          colorFilter: ColorFilter.mode(
-                              context.theme.color.iconPrimary, BlendMode.srcIn),
-                        ),
+                      AppIconButton(
+                        icon: Assets.icon.magnifyingGlassRegular.keyName,
+                        style: AppButtonStyle.text,
                       ),
-                      ContainerLayout(
-                        child: Assets.icon.infoRegular.svgIcon(
-                          size: 20,
-                          colorFilter: ColorFilter.mode(
-                              context.theme.color.iconPrimary, BlendMode.srcIn),
-                        ),
+                      AppIconButton(
+                        icon: Assets.icon.heartRegular.keyName,
+                        style: AppButtonStyle.text,
                       ),
-                      ContainerLayout(
-                        child: Assets.icon.infoRegular.svgIcon(
-                          size: 20,
-                          colorFilter: ColorFilter.mode(
-                              context.theme.color.iconPrimary, BlendMode.srcIn),
-                        ),
+                      AppIconButton(
+                        icon: Assets.icon.userRegular.keyName,
+                        style: AppButtonStyle.text,
                       ),
-                      ContainerLayout(
-                        child: Assets.icon.infoRegular.svgIcon(
-                          size: 20,
-                          colorFilter: ColorFilter.mode(
-                              context.theme.color.iconPrimary, BlendMode.srcIn),
-                        ),
+                      AppIconButton(
+                        icon: Assets.icon.handbagRegular.keyName,
+                        style: AppButtonStyle.text,
                       ),
                     ])
                   ],
@@ -246,6 +237,8 @@ class _EcommercePageState extends AppPageState<EcommercePage> {
                                             style: AppButtonStyle.text,
                                             size: WidgetSize.lg,
                                             text: 'Add to Wishlist',
+                                            startIcon: Assets
+                                                .icon.heartRegular.keyName,
                                           ),
                                         ),
                                       ],
