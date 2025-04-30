@@ -10,6 +10,9 @@ class AppTable extends StatefulWidget {
     this.rowsPerPage = 0,
     this.filteredColumn = 0,
     this.hasCheckbox = false,
+    this.showSearch = false,
+    this.hasBorder = true,
+    this.sortColumn = false,
   });
 
   final double width;
@@ -19,6 +22,9 @@ class AppTable extends StatefulWidget {
   final int rowsPerPage;
   final int filteredColumn;
   final bool hasCheckbox;
+  final bool showSearch;
+  final bool hasBorder;
+  final bool sortColumn;
 
   @override
   State<AppTable> createState() => _AppTableState();
@@ -36,10 +42,11 @@ class _AppTableState extends State<AppTable> {
   bool _isSelectAllActive = false;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-    _cellContainers = widget.source.getCellContainers();
+    // TODO: Refactor context for a better way.
+    _cellContainers = widget.source.getCellContainers(context);
     _filteredContainers = _cellContainers.toList();
 
     _updatePaging();
@@ -55,7 +62,7 @@ class _AppTableState extends State<AppTable> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            _buildSearchTextField(),
+            if (widget.showSearch) _buildSearchTextField(),
             _buildHeaderRow(),
             Divider(),
             _buildBodyRows(),
@@ -99,7 +106,12 @@ class _AppTableState extends State<AppTable> {
   }
 
   Widget _buildHeaderRow() {
-    return Row(
+    return RowLayout(
+      padding: widget.hasBorder ? const EdgeInsets.only(bottom: 8) : null,
+      decoration: BoxDecoration(
+          border: widget.hasBorder
+              ? Border(bottom: BorderSide(color: context.theme.color.border))
+              : null),
       children: [
         if (widget.hasCheckbox)
           Checkbox(
@@ -117,15 +129,28 @@ class _AppTableState extends State<AppTable> {
         for (var i = 0; i < widget.headerNames.length; i++)
           Expanded(
             child: InkWell(
+              onTap: widget.sortColumn
+                  ? () {
+                      setState(() {
+                        _isSortAscending =
+                            _sortColumn != i ? true : !_isSortAscending;
+                        _sortColumn = i;
+
+                        _filteredAndSortedCellContainers();
+                        _updatePaging();
+                      });
+                    }
+                  : null,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
-                    child: Text(
+                    child: AppText(
                       widget.headerNames[i],
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
+                      style: TextStyle(color: context.theme.color.textPrimary),
                     ),
                   ),
                   if (i == _sortColumn)
@@ -134,19 +159,10 @@ class _AppTableState extends State<AppTable> {
                           ? Icons.arrow_downward
                           : Icons.arrow_upward,
                       size: 12.0,
+                      color: context.theme.color.iconPrimary,
                     ),
                 ],
               ),
-              onTap: () {
-                setState(() {
-                  _isSortAscending =
-                      _sortColumn != i ? true : !_isSortAscending;
-                  _sortColumn = i;
-
-                  _filteredAndSortedCellContainers();
-                  _updatePaging();
-                });
-              },
             ),
           ),
       ],
@@ -180,7 +196,10 @@ class _AppTableState extends State<AppTable> {
           );
         },
         separatorBuilder: (context, index) {
-          return Divider(); // Horizontal line separator
+          return AppDivider(
+              color: widget.hasBorder
+                  ? context.theme.color.border
+                  : Colors.transparent); // Horizontal line separator
         },
       ),
     );
@@ -223,18 +242,18 @@ class _AppTableState extends State<AppTable> {
 }
 
 abstract interface class AppTableSource {
-  List<AppTableCellContainer> getCellContainers() {
+  List<AppTableCellContainer> getCellContainers(BuildContext context) {
     final List<AppTableCellContainer> cellContainers = [];
 
     for (int i = 0; i < rowCount; i++) {
-      final cellContainer = getCellContainer(i);
+      final cellContainer = getCellContainer(context, i);
       cellContainers.add(cellContainer);
     }
 
     return cellContainers;
   }
 
-  AppTableCellContainer getCellContainer(int index);
+  AppTableCellContainer getCellContainer(BuildContext context, int index);
 
   int get rowCount;
 }

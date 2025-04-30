@@ -45,7 +45,7 @@ class PersonTableSource implements AppTableSource {
   final List<MyPerson> items;
 
   @override
-  AppTableCellContainer getCellContainer(int index) {
+  AppTableCellContainer getCellContainer(BuildContext context, int index) {
     final item = items[index];
 
     return AppTableCellContainer(
@@ -99,11 +99,11 @@ class PersonTableSource implements AppTableSource {
   int get rowCount => items.length;
 
   @override
-  List<AppTableCellContainer> getCellContainers() {
+  List<AppTableCellContainer> getCellContainers(BuildContext context) {
     final List<AppTableCellContainer> cellContainers = [];
 
     for (int i = 0; i < rowCount; i++) {
-      final cellContainer = getCellContainer(i);
+      final cellContainer = getCellContainer(context, i);
       cellContainers.add(cellContainer);
     }
 
