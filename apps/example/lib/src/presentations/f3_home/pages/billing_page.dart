@@ -184,6 +184,7 @@ class _BillingPageState extends AppPageState<BillingPage> {
                               AppTab(text: 'Uncaptured'),
                               AppTab(text: 'All'),
                             ]),
+                        Gap(16),
                         AppTable(
                           width: 1400,
                           height: 783,
@@ -216,7 +217,7 @@ class PaymentTableSource implements AppTableSource {
   final List<Payment> items;
 
   @override
-  AppTableCellContainer getCellContainer(int index) {
+  AppTableCellContainer getCellContainer(BuildContext context, int index) {
     final item = items[index];
     return AppTableCellContainer(
       cells: [
@@ -229,14 +230,14 @@ class PaymentTableSource implements AppTableSource {
                   AppText(
                     '\$${item.amount.toStringAsFixed(2)}',
                     style: TextStyle(
-                        color: Colors.black,
+                        color: context.theme.color.textPrimary,
                         fontSize: 14,
                         fontWeight: FontWeight.w400),
                   ),
                   AppBadge(
                     label: '✓ Succeeded',
                     style: WidgetStyle.subtle,
-                    color: Colors.green,
+                    color: context.theme.color.bgPositive,
                     borderRadius: BorderRadius.circular(6),
                   )
                 ])),
@@ -289,11 +290,11 @@ class PaymentTableSource implements AppTableSource {
   int get rowCount => items.length;
 
   @override
-  List<AppTableCellContainer> getCellContainers() {
+  List<AppTableCellContainer> getCellContainers(BuildContext context) {
     final List<AppTableCellContainer> cellContainers = [];
 
     for (int i = 0; i < rowCount; i++) {
-      final cellContainer = getCellContainer(i);
+      final cellContainer = getCellContainer(context, i);
       cellContainers.add(cellContainer);
     }
 

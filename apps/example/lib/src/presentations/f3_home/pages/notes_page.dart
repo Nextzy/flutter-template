@@ -117,13 +117,14 @@ class _NotesPageState extends AppPageState<NotesPage> {
                   else
                     RowLayout(children: [
                       AppIconButton(
-                        icon: Assets.icon.arrowNarrowLeft.keyName,
+                        icon: Assets.icon.caretLeftRegular.keyName,
                         style: AppButtonStyle.text,
                       ),
                       AppBreadcrumbs(children: [
                         AppBreadcrumbSection(
-                          icon: Assets.icon.stackRegular.keyName,
+                          icon: Assets.logo.productHunt.keyName,
                           label: 'Top ProductHunt 2020',
+                          hasColorFilter: false,
                         ),
                       ])
                     ]),
@@ -218,6 +219,7 @@ class _NotesPageState extends AppPageState<NotesPage> {
                                 ])
                               ],
                             ),
+                            AppDivider(),
                             Gap(8),
                             AppTable(
                               width: 1300,
@@ -231,6 +233,7 @@ class _NotesPageState extends AppPageState<NotesPage> {
                                 'Day',
                               ],
                               source: NoteTableSource(items: notes),
+                              sortColumn: true,
                             )
                           ]))),
             )
@@ -251,7 +254,7 @@ class NoteTableSource implements AppTableSource {
   final List<Note> items;
 
   @override
-  AppTableCellContainer getCellContainer(int index) {
+  AppTableCellContainer getCellContainer(BuildContext context, int index) {
     final item = items[index];
     return AppTableCellContainer(cells: [
       AppTableCell(
@@ -315,11 +318,11 @@ class NoteTableSource implements AppTableSource {
   int get rowCount => items.length;
 
   @override
-  List<AppTableCellContainer> getCellContainers() {
+  List<AppTableCellContainer> getCellContainers(BuildContext context) {
     final List<AppTableCellContainer> cellContainers = [];
 
     for (int i = 0; i < rowCount; i++) {
-      final cellContainer = getCellContainer(i);
+      final cellContainer = getCellContainer(context, i);
       cellContainers.add(cellContainer);
     }
 

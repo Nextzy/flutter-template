@@ -433,16 +433,16 @@ class _MessengerPageState extends AppPageState<MessengerPage> {
                       else
                         RowLayout(gap: 12, children: [
                           ContainerLayout(
-                            child: Assets.icon.infoRegular.svgIcon(
-                              size: 20,
+                            child: Assets.icon.magnifyingGlassRegular.svgIcon(
+                              size: 24,
                               colorFilter: ColorFilter.mode(
                                   context.theme.color.iconPrimary,
                                   BlendMode.srcIn),
                             ),
                           ),
                           ContainerLayout(
-                            child: Assets.icon.infoRegular.svgIcon(
-                              size: 20,
+                            child: Assets.icon.bellRegular.svgIcon(
+                              size: 24,
                               colorFilter: ColorFilter.mode(
                                   context.theme.color.iconPrimary,
                                   BlendMode.srcIn),
