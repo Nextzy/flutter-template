@@ -26,7 +26,9 @@ class AuthenticationRpcService extends RpcService {
               email: email,
               password: password,
             ).toJson(),
-            fromJson: RemoteAuthenticationResponse.fromJson,
+            fromResponseJson: RemoteAuthenticationResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
+
           );
 
   Future<JsonRpcResponse<RemoteAuthenticationResponse, ErrorResponse>>
@@ -43,7 +45,8 @@ class AuthenticationRpcService extends RpcService {
               username: username,
               password: password,
             ).toJson(),
-            fromJson: RemoteAuthenticationResponse.fromJson,
+            fromResponseJson: RemoteAuthenticationResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
           );
 
   Future<JsonRpcResponse<RemoteAuthenticationResponse, ErrorResponse>>
@@ -54,7 +57,8 @@ class AuthenticationRpcService extends RpcService {
             path,
             method: 'refreshAccessToken',
             id: requestId,
-            fromJson: RemoteAuthenticationResponse.fromJson,
+            fromResponseJson: RemoteAuthenticationResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
             extra: {'requiredAuth': true},
           );
 
@@ -65,7 +69,8 @@ class AuthenticationRpcService extends RpcService {
         path,
         method: 'getProfile',
         id: requestId,
-        fromJson: RemoteGetProfileResponse.fromJson,
+        fromResponseJson: RemoteGetProfileResponse.fromJson,
+        fromErrorJson: ErrorResponse.fromJson,
         extra: {'requiredAuth': true},
       );
 
@@ -83,7 +88,8 @@ class AuthenticationRpcService extends RpcService {
               accessToken: accessToken,
               social: social,
             ).toJson(),
-            fromJson: RemoteGetProfileResponse.fromJson,
+            fromResponseJson: RemoteGetProfileResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
             extra: {'requiredAuth': true},
           );
 
@@ -106,7 +112,8 @@ class AuthenticationRpcService extends RpcService {
       params: RemoteRequestOtpBody(
         phoneNumber: phoneNumber,
       ).toJson(),
-      fromJson: RemoteRequestOtpResponse.fromJson,
+      fromResponseJson: RemoteRequestOtpResponse.fromJson,
+      fromErrorJson: ErrorResponse.fromJson,
       queryParameters: failMockQueryParams,
     );
   }
@@ -132,7 +139,8 @@ class AuthenticationRpcService extends RpcService {
         token: token,
         pin: pin,
       ).toJson(),
-      fromJson: RemoteVerifyOtpResponse.fromJson,
+      fromResponseJson: RemoteVerifyOtpResponse.fromJson,
+      fromErrorJson: ErrorResponse.fromJson,
       queryParameters: successMockQueryParams,
     );
   }
@@ -150,7 +158,8 @@ class AuthenticationRpcService extends RpcService {
           subtrahend: subtrahend,
           minuend: minuend,
         ).toJson(),
-        fromJson: RemoteSubtractResponse.fromJson,
+        fromResponseJson: RemoteSubtractResponse.fromJson,
+        fromErrorJson: ErrorResponse.fromJson,
       );
 
   Future<JsonRpcResponse<RemoteEchoResponse, ErrorResponse>> echo({
@@ -164,6 +173,7 @@ class AuthenticationRpcService extends RpcService {
         params: RemoteEchoBody(
           name: name,
         ).toJson(),
-        fromJson: RemoteEchoResponse.fromJson,
+        fromResponseJson: RemoteEchoResponse.fromJson,
+        fromErrorJson: ErrorResponse.fromJson,
       );
 }

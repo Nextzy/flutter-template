@@ -26,7 +26,8 @@ class ExampleAuthenticationRpcService extends RpcService {
               email: email,
               password: password,
             ).toJson(),
-            fromJson: RemoteAuthenticationResponse.fromJson,
+            fromResponseJson: RemoteAuthenticationResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
           );
 }
 
@@ -47,7 +48,8 @@ class ExampleMovieRpcService extends RpcService {
             path,
             method: 'getHighLightMovieList',
             id: requestId,
-            fromJson: RemoteMovieListResponse.fromJson,
+            fromResponseJson: RemoteMovieListResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
           );
 
   Future<JsonRpcResponse<RemoteMovieListResponse, ErrorResponse>>
@@ -58,7 +60,8 @@ class ExampleMovieRpcService extends RpcService {
             path,
             method: 'getTrendMovieList',
             id: requestId,
-            fromJson: RemoteMovieListResponse.fromJson,
+            fromResponseJson: RemoteMovieListResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
           );
 
   Future<JsonRpcResponse<RemoteMovieListResponse, ErrorResponse>>
@@ -69,6 +72,7 @@ class ExampleMovieRpcService extends RpcService {
             path,
             method: 'getMustWatchMovieList',
             id: requestId,
-            fromJson: RemoteMovieListResponse.fromJson,
+            fromResponseJson: RemoteMovieListResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
           );
 }
