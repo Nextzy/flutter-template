@@ -43,7 +43,6 @@ class GestureWrapLayout extends StatefulWidget {
     this.animateCurve,
     this.onEndAnimate,
     //=== InkWell ===//
-    this.showFocus = true,
     this.disabledPressAnimation = false,
     this.disabled = false,
     this.onPress,
@@ -55,11 +54,11 @@ class GestureWrapLayout extends StatefulWidget {
     this.mouseCursor,
     this.enableFeedback = true,
     this.excludeFromSemantics = false,
+    this.focused = FocusType.focusedVisible,
     this.focusNode,
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,
-    this.tapFocus = false,
     this.statesController,
     //===============//
     required this.children,
@@ -103,7 +102,6 @@ class GestureWrapLayout extends StatefulWidget {
   final ImageFilter? backgroundBlur;
 
   ///===== InkWell ======///
-  final bool showFocus;
   final bool disabledPressAnimation;
   final bool disabled;
   final GestureTapCallback? onPress;
@@ -116,8 +114,8 @@ class GestureWrapLayout extends StatefulWidget {
   final bool enableFeedback;
   final bool excludeFromSemantics;
   final ValueChanged<bool>? onFocusChange;
+  final FocusType focused;
   final bool autofocus;
-  final bool tapFocus;
   final FocusNode? focusNode;
   final bool canRequestFocus;
   final WidgetStatesController? statesController;
@@ -173,7 +171,7 @@ class _GestureWrapLayoutState extends State<GestureWrapLayout> {
           dropShadow: widget.dropShadow,
           backgroundBlur: widget.backgroundBlur,
           transform: widget.transform,
-          showFocus: widget.showFocus,
+          focused: widget.focused,
           disabled: widget.disabled,
           disabledPressAnimation: widget.disabledPressAnimation,
           onPress: widget.onPress,
@@ -189,7 +187,6 @@ class _GestureWrapLayoutState extends State<GestureWrapLayout> {
           canRequestFocus: widget.canRequestFocus,
           onFocusChange: widget.onFocusChange,
           autofocus: widget.autofocus,
-          tapFocus: widget.tapFocus,
           statesController: widget.statesController,
           animate: widget.animate,
           animateDuration: widget.animateDuration,

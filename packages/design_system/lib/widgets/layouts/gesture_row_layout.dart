@@ -42,7 +42,6 @@ class GestureRowLayout extends StatefulWidget {
     this.animateCurve,
     this.onEndAnimate,
     //=== InkWell ===//
-    this.showFocus = true,
     this.disabledPressAnimation = false,
     this.disabled = false,
     this.disableFocused = false,
@@ -55,11 +54,11 @@ class GestureRowLayout extends StatefulWidget {
     this.mouseCursor,
     this.enableFeedback = true,
     this.excludeFromSemantics = false,
+    this.focused = FocusType.focusedVisible,
     this.focusNode,
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,
-    this.tapFocus = false,
     this.statesController,
     //===============//
     required this.children,
@@ -104,7 +103,6 @@ class GestureRowLayout extends StatefulWidget {
   final ImageFilter? backgroundBlur;
 
   ///===== InkWell ======///
-  final bool showFocus;
   final bool disabledPressAnimation;
   final bool disabled;
   final bool disableFocused;
@@ -118,8 +116,8 @@ class GestureRowLayout extends StatefulWidget {
   final bool enableFeedback;
   final bool excludeFromSemantics;
   final ValueChanged<bool>? onFocusChange;
+  final FocusType focused;
   final bool autofocus;
-  final bool tapFocus;
   final FocusNode? focusNode;
   final bool canRequestFocus;
   final WidgetStatesController? statesController;
@@ -173,10 +171,9 @@ class _GestureRowLayoutState extends State<GestureRowLayout> {
           dropShadow: widget.dropShadow,
           backgroundBlur: widget.backgroundBlur,
           transform: widget.transform,
-          showFocus: widget.showFocus,
+          focused: widget.focused,
           disabledPressAnimation: widget.disabledPressAnimation,
           disabled: widget.disabled,
-          disableFocused: widget.disableFocused,
           onPress: widget.onPress,
           onSecondaryPress: widget.onSecondaryPress,
           onDoubleTap: widget.onDoubleTap,
@@ -190,7 +187,6 @@ class _GestureRowLayoutState extends State<GestureRowLayout> {
           canRequestFocus: widget.canRequestFocus,
           onFocusChange: widget.onFocusChange,
           autofocus: widget.autofocus,
-          tapFocus: widget.tapFocus,
           statesController: widget.statesController,
           animate: widget.animate,
           animateDuration: widget.animateDuration,

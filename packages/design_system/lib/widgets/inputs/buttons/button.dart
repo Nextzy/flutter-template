@@ -231,7 +231,7 @@ class _AppButtonState extends AppState<AppButton> {
       onLongPress: widget.onLongPress,
       onHover: widget.onHover,
       onFocusChange: widget.onFocusChange,
-      tapFocus: false,
+      focused: FocusType.focusedVisible,
       children: [
         if (widget.startChild != null) widget.startChild!,
         if (widget.startChild != null)

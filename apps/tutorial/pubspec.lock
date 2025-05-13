@@ -657,8 +657,8 @@ packages:
     dependency: transitive
     description:
       path: falconnect
-      ref: "3.8.9"
-      resolved-ref: b7547afc057317da22e4f67c0bfb47071781fc4c
+      ref: "3.8.10"
+      resolved-ref: "95c66ac6759f1e3a6fab9101878256f9a5084283"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.3.6"
@@ -666,17 +666,17 @@ packages:
     dependency: transitive
     description:
       path: falconx
-      ref: "3.8.9"
-      resolved-ref: b7547afc057317da22e4f67c0bfb47071781fc4c
+      ref: "3.8.10"
+      resolved-ref: "95c66ac6759f1e3a6fab9101878256f9a5084283"
       url: "https://github.com/nextzy/falconx.git"
     source: git
-    version: "3.8.9"
+    version: "3.8.10"
   falkit:
     dependency: transitive
     description:
       path: falkit
-      ref: "3.8.9"
-      resolved-ref: b7547afc057317da22e4f67c0bfb47071781fc4c
+      ref: "3.8.10"
+      resolved-ref: "95c66ac6759f1e3a6fab9101878256f9a5084283"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.1.7"
@@ -684,8 +684,8 @@ packages:
     dependency: transitive
     description:
       path: falmodel
-      ref: "3.8.9"
-      resolved-ref: b7547afc057317da22e4f67c0bfb47071781fc4c
+      ref: "3.8.10"
+      resolved-ref: "95c66ac6759f1e3a6fab9101878256f9a5084283"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.3.2"
@@ -693,8 +693,8 @@ packages:
     dependency: transitive
     description:
       path: falstore
-      ref: "3.8.9"
-      resolved-ref: b7547afc057317da22e4f67c0bfb47071781fc4c
+      ref: "3.8.10"
+      resolved-ref: "95c66ac6759f1e3a6fab9101878256f9a5084283"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.1.10"
@@ -702,8 +702,8 @@ packages:
     dependency: transitive
     description:
       path: faltool
-      ref: "3.8.9"
-      resolved-ref: b7547afc057317da22e4f67c0bfb47071781fc4c
+      ref: "3.8.10"
+      resolved-ref: "95c66ac6759f1e3a6fab9101878256f9a5084283"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.0.13"
@@ -1466,10 +1466,10 @@ packages:
     dependency: transitive
     description:
       name: numeral
-      sha256: "18f359623a1c8ca5ef51194af86655fd6f9ae2fd83d4a130464d1853ec101b4e"
+      sha256: "860deb8465f3a778822b6cc2c0513be2831fb3083a8c06b611d9a5fef6ea3b67"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "3.1.1"
   open_file:
     dependency: transitive
     description:
@@ -1802,10 +1802,10 @@ packages:
     dependency: transitive
     description:
       name: protobuf
-      sha256: "68645b24e0716782e58948f8467fd42a880f255096a821f9e7d0ec625b00c84d"
+      sha256: fbb0c37d435641d0b84813c1dad41e6fa61ddc880a320bce16b3063ecec35aa6
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "4.0.0"
   provider:
     dependency: transitive
     description:
@@ -1890,10 +1890,10 @@ packages:
     dependency: "direct dev"
     description:
       name: retrofit_generator
-      sha256: "218c04c96b45c545a5de95bc91b05efdaa2d6ebe7894fe1f96b805536168afdf"
+      sha256: "65d28d3a7b4db485f1c73fee8ee32f552ef23ee4ecb68ba491f39d80b73bdcbf"
       url: "https://pub.dev"
     source: hosted
-    version: "9.1.9"
+    version: "9.2.0"
   retry:
     dependency: transitive
     description:
@@ -2247,10 +2247,10 @@ packages:
     dependency: transitive
     description:
       name: timeago
-      sha256: "054cedf68706bb142839ba0ae6b135f6b68039f0b8301cbe8784ae653d5ff8de"
+      sha256: b05159406a97e1cbb2b9ee4faa9fb096fe0e2dfcd8b08fcd2a00553450d3422e
       url: "https://pub.dev"
     source: hosted
-    version: "3.7.0"
+    version: "3.7.1"
   timer_count_down:
     dependency: transitive
     description:
