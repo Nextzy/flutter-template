@@ -343,7 +343,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   backgroundColor: backgroundColor,
                   focused: widget.style == AppTextFieldStyle.shaded
-                      ? FocusType.none
+                      ? FocusType.invisible
                       : FocusType.focused,
                   decoration: _createBorderStyle(
                     style: widget.style,

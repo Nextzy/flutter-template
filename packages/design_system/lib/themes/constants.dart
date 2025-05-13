@@ -8,17 +8,17 @@ enum FocusType {
   focused,
   focusedVisible,
   disabled,
-  none;
+  invisible;
 
   bool get isFocused => this == focused; //
   bool get isFocusedVisible => this == focusedVisible; //
   bool get isDisabled => this == disabled; //
-  bool get isNone => this == none; //
+  bool get isInvisible => this == invisible; //
 
   bool get isNotFocused => !isFocused; //
   bool get isNotFocusedVisible => !isFocusedVisible; //
   bool get isNotDisabled => !isDisabled; //
-  bool get isNotNone => !isNone; //
+  bool get isNotInvisible => !isInvisible; //
 }
 
 enum InputMethod {
