@@ -1,20 +1,20 @@
 import 'package:core/lib.dart';
 
 typedef WidgetStateContextCallback<DATA> = Widget Function(
-    BuildContext context, WidgetStateEvent<DATA> state);
+    BuildContext context, WidgetDataState<DATA> state);
 
 typedef ListWidgetStateContextCallback<DATA> = List<Widget> Function(
-    BuildContext context, WidgetStateEvent<DATA> state);
+    BuildContext context, WidgetDataState<DATA> state);
 
 typedef PreferredWidgetStateContextCallback<DATA> = PreferredSizeWidget
-    Function(BuildContext context, WidgetStateEvent<DATA> state);
+    Function(BuildContext context, WidgetDataState<DATA> state);
 
-typedef PopStateCallback<DATA> = bool Function(WidgetStateEvent<DATA> state);
+typedef PopStateCallback<DATA> = bool Function(WidgetDataState<DATA> state);
 
-abstract class AppBlocWidgetState<
+abstract class AppNullableWidgetBlocState<
     WIDGET extends StatefulWidget,
-    BLOC extends BlocBase<WidgetStateEvent<DATA>>,
-    DATA> extends FalconWidgetEventBlocState<WIDGET, BLOC, DATA> {
+    BLOC extends BlocBase<WidgetDataState<DATA>>,
+    DATA> extends FalconNullableWidgetBlocState<WIDGET, BLOC, DATA> {
   AppThemeData get theme => ThemeApplication.of(context);
 
   InternetConnectionBloc get connectivity =>
@@ -27,9 +27,9 @@ abstract class AppBlocWidgetState<
   }
 
   Widget buildPopScope({
-    required WidgetStateEvent<DATA?> state,
+    required WidgetDataState<DATA?> state,
     required PopStateCallback<DATA?>? canPop,
-    required PopListener<WidgetStateEvent<DATA?>>? onPop,
+    required PopListener<WidgetDataState<DATA?>>? onPop,
     required Widget child,
   }) =>
       onPop != null || canPop != null

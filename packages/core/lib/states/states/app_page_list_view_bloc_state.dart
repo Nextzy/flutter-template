@@ -2,21 +2,21 @@ import 'package:core/lib.dart';
 
 abstract class AppPageListViewBlocState<
     WIDGET extends StatefulWidget,
-    BLOC extends BlocBase<WidgetStateEvent<DATA>>,
+    BLOC extends BlocBase<WidgetDataState<DATA>>,
     DATA> extends AppPageBlocWidgetState<WIDGET, BLOC, DATA> {
   int get itemCount;
 
   Widget buildScaffoldItemListWithBloc({
     BlocWidgetListenerEvent<Object>? listenEvent,
-    BlocWidgetListenerState<WidgetStateEvent<DATA?>>? listenState,
+    BlocWidgetListenerState<WidgetDataState<DATA?>>? listenState,
     PopStateCallback<DATA?>? canPop,
-    PopListener<WidgetStateEvent<DATA?>>? onPop,
-    BlocListenerCondition<WidgetStateEvent<DATA?>>? buildWhen,
+    PopListener<WidgetDataState<DATA?>>? onPop,
+    BlocListenerCondition<WidgetDataState<DATA?>>? buildWhen,
     WidgetStateContextCallback<DATA?>? drawer,
     WidgetStateContextCallback<DATA?>? buildBottomNavigationBar,
     PreferredWidgetStateContextCallback<DATA?>? appBar,
     required Widget? Function(
-            BuildContext context, int index, WidgetStateEvent<DATA?> state)
+            BuildContext context, int index, WidgetDataState<DATA?> state)
         itemBuilder,
     WidgetBuilder? failNoData,
     WidgetBuilder? warningNoData,

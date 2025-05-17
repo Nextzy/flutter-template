@@ -14,7 +14,7 @@ enum AuthenticationBlocEvent {
 }
 
 class AuthenticationPageBloc
-    extends AppBloc<AuthenticationBlocEvent, AuthenticationEntity> {
+    extends AppNullableWidgetStateBloc<AuthenticationBlocEvent, AuthenticationEntity> {
   AuthenticationPageBloc();
 
   final _service = AuthenticationRpcService(AppHttpClient.instance.dio);

@@ -2,8 +2,8 @@ import 'package:core/lib.dart';
 
 abstract class AppPageBlocWidgetState<
     WIDGET extends StatefulWidget,
-    BLOC extends BlocBase<WidgetStateEvent<DATA>>,
-    DATA> extends AppBlocWidgetState<WIDGET, BLOC, DATA> with AutoRouteAware {
+    BLOC extends BlocBase<WidgetDataState<DATA>>,
+    DATA> extends AppNullableWidgetBlocState<WIDGET, BLOC, DATA> with AutoRouteAware {
   AutoRouteObserver? _observer;
 
   @override
@@ -26,17 +26,18 @@ abstract class AppPageBlocWidgetState<
 
   Widget buildScaffoldWithBloc({
     BlocWidgetListenerEvent<Object>? listenEvent,
-    BlocWidgetListenerState<WidgetStateEvent<DATA?>>? listenState,
+    BlocWidgetListenerState<WidgetDataState<DATA?>>? listenState,
     PopStateCallback<DATA?>? canPop,
-    PopListener<WidgetStateEvent<DATA?>>? onPop,
-    BlocListenerCondition<WidgetStateEvent<DATA?>>? buildWhen,
+    PopListener<WidgetDataState<DATA?>>? onPop,
+    BlocListenerCondition<WidgetDataState<DATA?>>? buildWhen,
     WidgetStateContextCallback<DATA?>? drawer,
     WidgetStateContextCallback<DATA?>? bottomNavigationBar,
     PreferredWidgetStateContextCallback<DATA?>? appBar,
     required WidgetStateContextCallback<DATA?> body,
-    WidgetBuilder? failNoData,
-    WidgetBuilder? warningNoData,
-    WidgetBuilder? loadingNoData,
+    WidgetBuilder? bodyEmpty,
+    WidgetBuilder? bodyWarning,
+    WidgetBuilder? bodyLoading,
+    WidgetBuilder? bodyFail,
     WidgetStateContextCallback<DATA?>? floatingButton,
   }) {
     return WidgetStateBlocConsumer<BLOC, DATA>(
@@ -67,13 +68,15 @@ abstract class AppPageBlocWidgetState<
             drawer: drawer?.call(context, state),
             bottomNavigationBar: bottomNavigationBar?.call(context, state),
             appBar: appBar?.call(context, state),
-            body: (state.isFail && !state.hasData)
-                ? failNoData?.call(context) ?? body(context, state)
-                : (state.isWarning && !state.hasData)
-                    ? warningNoData?.call(context) ?? body(context, state)
-                    : (state.isLoading && !state.hasData)
-                        ? loadingNoData?.call(context) ?? body(context, state)
-                        : body(context, state),
+            body: (state.isFail && bodyFail != null)
+                ? bodyFail(context)
+                : (state.isWarning && bodyWarning != null)
+                    ? bodyWarning(context)
+                    : (state.isLoading && bodyLoading != null)
+                        ? bodyLoading(context)
+                        : (state.noData && bodyEmpty != null)
+                            ? bodyEmpty(context)
+                            : body(context, state),
             floatingActionButton: floatingButton?.call(context, state),
           ),
         ),

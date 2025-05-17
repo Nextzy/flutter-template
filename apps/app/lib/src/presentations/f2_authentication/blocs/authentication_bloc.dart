@@ -3,7 +3,7 @@ import 'package:change_application_name/application.dart';
 enum AuthenticationEvent { signInWithEmail }
 
 class AuthenticationBloc
-    extends AppBloc<AuthenticationEvent, WidgetStateEvent> {
+    extends AppNullableWidgetStateBloc<AuthenticationEvent, WidgetDataState> {
   AuthenticationBloc({
     SignInWithEmailAndPasswordUsecase? signInWithEmailUsecase,
   }) : _signInWithEmailUsecase =

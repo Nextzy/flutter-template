@@ -23,7 +23,7 @@ dependencies:
     git:
       url: https://github.com/nextzy/falconx.git
       path: falconx
-      ref: 3.8.10
+      ref: 3.9.2
 
   #======= Firebase ========#
   firebase_core: ^3.13.0

@@ -6,7 +6,7 @@ enum ExampleMovie2PageBlocEvent {
 }
 
 class ExampleMovie2PageBlocSafe
-    extends AppSafeBloc<ExampleMovie2PageBlocEvent, dynamic> {
+    extends AppWidgetStateBloc<ExampleMovie2PageBlocEvent, dynamic> {
   ExampleMovie2PageBlocSafe(
     super.initialState, {
     ExampleGetMovieListUsecase? movieListUsecase,
@@ -15,12 +15,12 @@ class ExampleMovie2PageBlocSafe
   final ExampleGetMovieListUsecase _movieListUsecase;
 
   /// ⭐️ You can use ContentState when bloc have more than 1 source
-  final ContentState<Iterable<MovieEntity>> highLightMovieList =
-      ContentState.initial();
-  final ContentState<Iterable<MovieEntity>> trendMovieList =
-      ContentState.initial();
-  final ContentState<Iterable<MovieEntity>> mustWatchMovieList =
-      ContentState.initial();
+  final NullableContentState<Iterable<MovieEntity>> highLightMovieList =
+      NullableContentState.initial();
+  final NullableContentState<Iterable<MovieEntity>> trendMovieList =
+      NullableContentState.initial();
+  final NullableContentState<Iterable<MovieEntity>> mustWatchMovieList =
+      NullableContentState.initial();
 
   @override
   Future<void> onBlocEvent(
