@@ -6,7 +6,7 @@ enum ExampleAuthenticationPageBlocEvent {
 }
 
 class ExampleAuthenticationPageBloc
-    extends AppBloc<ExampleAuthenticationPageBlocEvent, bool> {
+    extends AppNullableWidgetStateBloc<ExampleAuthenticationPageBlocEvent, bool> {
   ExampleAuthenticationPageBloc({
     ExampleSignInWithEmailAndPasswordUsecase? signInUsecase,
   }) : _signInUsecase =
@@ -54,9 +54,9 @@ enum ExampleMoviePageBlocEvent {
   fetchMovieList,
 }
 
-class ExampleMoviePageBlocSafe
-    extends AppSafeBloc<ExampleMoviePageBlocEvent, MovieListEntity> {
-  ExampleMoviePageBlocSafe(
+class ExampleMoviePageBloc
+    extends AppWidgetStateBloc<ExampleMoviePageBlocEvent, MovieListEntity> {
+  ExampleMoviePageBloc(
     /// ⭐️ Safe it's mean, you have to initial the data first
     /// Case 1: Pass the non-null object to this bloc from previous page.
     /// Benefit: Page will not handle null case.

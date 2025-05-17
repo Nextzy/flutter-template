@@ -36,9 +36,7 @@ class GestureContainerLayout extends StatefulWidget {
     this.onEndAnimate,
     //=== InkWell ===//
     this.disabledPressAnimation = false,
-    this.showFocus = true,
     this.disabled = false,
-    this.disableFocused = false,
     this.onPress,
     this.onSecondaryPress,
     this.onDoubleTap,
@@ -49,7 +47,7 @@ class GestureContainerLayout extends StatefulWidget {
     this.enableFeedback = true,
     this.excludeFromSemantics = false,
     this.focusNode,
-    this.tapFocus = false,
+    this.focused = FocusType.focusedVisible,
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,
@@ -100,9 +98,7 @@ class GestureContainerLayout extends StatefulWidget {
 
   ///===== InkWell ======///
   final bool disabledPressAnimation;
-  final bool showFocus;
   final bool disabled;
-  final bool disableFocused;
   final GestureTapCallback? onPress;
   final GestureTapCallback? onSecondaryPress;
   final GestureTapCallback? onDoubleTap;
@@ -112,10 +108,10 @@ class GestureContainerLayout extends StatefulWidget {
   final MouseCursor? mouseCursor;
   final bool enableFeedback;
   final bool excludeFromSemantics;
-  final ValueChanged<bool>? onFocusChange;
-  final bool autofocus;
   final FocusNode? focusNode;
-  final bool tapFocus;
+  final ValueChanged<bool>? onFocusChange;
+  final FocusType focused;
+  final bool autofocus;
   final bool canRequestFocus;
   final WidgetStatesController? statesController;
 
@@ -127,98 +123,97 @@ class GestureContainerLayout extends StatefulWidget {
 }
 
 class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
-  final FocusNode defaultFocusNode = FocusNode();
-
-  FocusNode get focusNode => widget.focusNode ?? defaultFocusNode;
+  late FocusNode _focusNode;
+  InputMethod _lastInputMethod = InputMethod.none;
+  bool _isFocused = false;
 
   @override
-  Widget buildState(BuildContext context, FullWidgetState state) => FocusSpread(
+  void initState() {
+    super.initState();
+    _focusNode = widget.focusNode ?? FocusNode();
+    _focusNode.addListener(_handleFocusChange);
+
+    ServicesBinding.instance.keyboard.addHandler(_handleKeyEvent);
+  }
+
+  @override
+  Widget buildState(BuildContext context, FullWidgetState state) {
+    return FocusSpread(
+      key: widget.key,
+      focus: widget.disabled
+          ? false
+          : widget.focused.isFocused || widget.focused.isFocusedVisible
+              ? _isFocused
+              : false,
+      borderRadius: widget.decoration?.borderRadius ?? widget.borderRadius,
+      child: ContainerLayout(
         key: widget.key,
-        focus: widget.disabled
-            ? false
-            : widget.showFocus
-                ? state.isFocused
-                : false,
-        borderRadius: widget.decoration?.borderRadius ?? widget.borderRadius,
-        child: ContainerLayout(
-          key: widget.key,
-          ratio: widget.ratio,
-          rotate: widget.rotate,
-          decoration: widget.decoration,
-          margin: widget.margin,
-          border: widget.border,
+        ratio: widget.ratio,
+        rotate: widget.rotate,
+        decoration: widget.decoration,
+        margin: widget.margin,
+        border: widget.border,
+        borderRadius: widget.borderRadius,
+        backgroundColor: widget.backgroundColor,
+        backgroundGradient: widget.backgroundGradient,
+        backgroundImage: widget.backgroundImage,
+        foregroundColor: widget.foregroundColor,
+        foregroundGradient: widget.foregroundGradient,
+        foregroundImage: widget.foregroundImage,
+        opacity: widget.opacity,
+        clipBehavior: widget.clipBehavior,
+        innerShadow: widget.innerShadow,
+        dropShadow: widget.dropShadow,
+        backgroundBlur: widget.backgroundBlur,
+        transform: widget.transform,
+        animate: widget.animate,
+        animateDuration: widget.animateDuration,
+        animateCurve: widget.animateCurve,
+        onEndAnimate: widget.onEndAnimate,
+        child: buildInkWell(
+          context,
+          disabledPressAnimation: widget.disabledPressAnimation,
           borderRadius: widget.borderRadius,
-          backgroundColor: widget.backgroundColor,
-          backgroundGradient: widget.backgroundGradient,
-          backgroundImage: widget.backgroundImage,
-          foregroundColor: widget.foregroundColor,
-          foregroundGradient: widget.foregroundGradient,
-          foregroundImage: widget.foregroundImage,
-          opacity: widget.opacity,
-          clipBehavior: widget.clipBehavior,
-          innerShadow: widget.innerShadow,
-          dropShadow: widget.dropShadow,
-          backgroundBlur: widget.backgroundBlur,
-          transform: widget.transform,
-          animate: widget.animate,
-          animateDuration: widget.animateDuration,
-          animateCurve: widget.animateCurve,
-          onEndAnimate: widget.onEndAnimate,
-          child: buildInkWell(
-            context,
-            disabledPressAnimation: widget.disabledPressAnimation,
-            borderRadius: widget.borderRadius,
-            disabled: widget.disabled,
-            onPress: widget.onPress,
-            onSecondaryPress: widget.onSecondaryPress,
-            onDoubleTap: widget.onDoubleTap,
-            onLongPress: widget.onLongPress,
-            onHighlightChanged: widget.onHighlightChanged,
-            onHover: (value) {
-              if (widget.tapFocus == false) {
-                if (value) {
-                  setFullWidgetState(FullWidgetState.hovered);
-                  focusNode.requestFocus();
-                } else {
-                  setFullWidgetState(FullWidgetState.normal);
-                }
-              }
-              widget.onHover?.call(value);
-            },
-            mouseCursor: widget.mouseCursor,
-            enableFeedback: widget.enableFeedback,
-            excludeFromSemantics: widget.excludeFromSemantics,
-            focusNode: !widget.disableFocused ? focusNode : null,
-            canRequestFocus: !widget.disableFocused,
-            onFocusChange: !widget.disableFocused
-                ? (value) {
-                    if (value == false) {
-                      setFullWidgetState(FullWidgetState.normal);
-                    } else if (this.state.isNotHovered) {
-                      setFullWidgetState(value
-                          ? FullWidgetState.focused
-                          : FullWidgetState.normal);
-                    }
-                    widget.onFocusChange?.call(value);
-                  }
-                : null,
-            autofocus: !widget.disableFocused ? widget.autofocus : false,
-            statesController: widget.statesController,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: widget.width ?? widget.minWidth ?? 0.0,
-                maxWidth: widget.width ?? widget.maxWidth ?? double.infinity,
-                minHeight: widget.height ?? widget.minHeight ?? 0.0,
-                maxHeight: widget.height ?? widget.maxHeight ?? double.infinity,
-              ),
-              child: Padding(
-                padding: widget.padding ?? const EdgeInsets.all(0.0),
-                child: widget.child,
-              ),
+          disabled: widget.disabled,
+          onPress: widget.onPress,
+          onTapDown: (details) {
+            _focusNode.requestFocus();
+          },
+          onSecondaryPress: widget.onSecondaryPress,
+          onDoubleTap: widget.onDoubleTap,
+          onLongPress: widget.onLongPress,
+          onHighlightChanged: widget.onHighlightChanged,
+          onHover: (value) {
+            if (value) {
+              setFullWidgetState(FullWidgetState.hovered);
+            } else {
+              setFullWidgetState(FullWidgetState.normal);
+            }
+            widget.onHover?.call(value);
+          },
+          mouseCursor: widget.mouseCursor,
+          enableFeedback: widget.enableFeedback,
+          excludeFromSemantics: widget.excludeFromSemantics,
+          focusNode: widget.focused.isNotDisabled ? _focusNode : null,
+          canRequestFocus: widget.focused.isNotDisabled,
+          autofocus: widget.focused.isNotDisabled ? widget.autofocus : false,
+          statesController: widget.statesController,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: widget.width ?? widget.minWidth ?? 0.0,
+              maxWidth: widget.width ?? widget.maxWidth ?? double.infinity,
+              minHeight: widget.height ?? widget.minHeight ?? 0.0,
+              maxHeight: widget.height ?? widget.maxHeight ?? double.infinity,
+            ),
+            child: Padding(
+              padding: widget.padding ?? const EdgeInsets.all(0.0),
+              child: widget.child,
             ),
           ),
         ),
-      );
+      ),
+    );
+  }
 
   Widget? buildInkWell(
     BuildContext context, {
@@ -236,7 +231,6 @@ class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
     required MouseCursor? mouseCursor,
     required bool enableFeedback,
     required bool excludeFromSemantics,
-    required ValueChanged<bool>? onFocusChange,
     required bool autofocus,
     required FocusNode? focusNode,
     required bool canRequestFocus,
@@ -265,32 +259,74 @@ class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
     final highlightColor = disabledPressAnimation
         ? Colors.transparent
         : context.theme.color.overlayActive;
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: borderRadius,
-        hoverColor: hoverColor,
-        focusColor: focusColor,
-        splashColor: splashColor,
-        highlightColor: highlightColor,
-        onTap: onPress,
-        onTapDown: onTapDown,
-        onTapUp: onTapUp,
-        onSecondaryTap: onSecondaryPress,
-        onDoubleTap: onDoubleTap,
-        onLongPress: onLongPress,
-        onHighlightChanged: onHighlightChanged,
-        onHover: onHover,
-        mouseCursor: mouseCursor,
-        enableFeedback: enableFeedback,
-        excludeFromSemantics: excludeFromSemantics,
-        focusNode: focusNode,
-        canRequestFocus: canRequestFocus,
-        onFocusChange: onFocusChange,
-        autofocus: autofocus,
-        statesController: statesController,
-        child: child,
+    return Listener(
+      onPointerDown: _handlePointerDown,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: borderRadius,
+          hoverColor: hoverColor,
+          focusColor: focusColor,
+          splashColor: splashColor,
+          highlightColor: highlightColor,
+          onTap: onPress,
+          onTapDown: onTapDown,
+          onTapUp: onTapUp,
+          onSecondaryTap: onSecondaryPress,
+          onDoubleTap: onDoubleTap,
+          onLongPress: onLongPress,
+          onHighlightChanged: onHighlightChanged,
+          onHover: onHover,
+          mouseCursor: mouseCursor,
+          enableFeedback: enableFeedback,
+          excludeFromSemantics: excludeFromSemantics,
+          focusNode: focusNode,
+          canRequestFocus: canRequestFocus,
+          autofocus: autofocus,
+          statesController: statesController,
+          child: child,
+        ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _focusNode.removeListener(_handleFocusChange);
+    ServicesBinding.instance.keyboard.removeHandler(_handleKeyEvent);
+    super.dispose();
+  }
+
+  ///========================= PRIVATE METHOD =========================///
+  bool _handleKeyEvent(KeyEvent event) {
+    // When a keyboard event is detected, set keyboard mode to true
+    if (event is KeyDownEvent || event is KeyRepeatEvent) {
+      _lastInputMethod = InputMethod.keyboard;
+    }
+    return false; // Return false to allow the event to continue propagating
+  }
+
+  void _handlePointerDown(PointerDownEvent event) {
+    // When pointer is used, we're not in keyboard mode
+    if (_lastInputMethod != InputMethod.pointer) {
+      _lastInputMethod = InputMethod.pointer;
+    }
+  }
+
+  void _handleFocusChange() {
+    if (widget.focused.isFocusedVisible &&
+        _focusNode.hasFocus &&
+        _lastInputMethod.isKeyboard) {
+      setState(() => _isFocused = true);
+      setFullWidgetState(FullWidgetState.focusedVisible);
+    } else if (widget.focused.isFocused && _focusNode.hasFocus) {
+      setState(() => _isFocused = true);
+      setFullWidgetState(FullWidgetState.focused);
+    } else {
+      setState(() => _isFocused = false);
+      setFullWidgetState(FullWidgetState.normal);
+    }
+    widget.onFocusChange?.call(_focusNode.hasFocus);
   }
 }

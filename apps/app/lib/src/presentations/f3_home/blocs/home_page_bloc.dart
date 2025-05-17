@@ -2,10 +2,10 @@ import 'package:change_application_name/application.dart';
 
 enum HomeBlocEvent { tapAddNumber }
 
-class HomePageBloc extends AppBloc<HomeBlocEvent, HomeEntity> {
+class HomePageBloc extends AppNullableWidgetStateBloc<HomeBlocEvent, HomeEntity> {
   HomePageBloc();
 
-  final ContentSafeState<int> number = ContentSafeState.initial(0);
+  final ContentState<int> number = ContentState.initial(0);
 
   @override
   Future<void> onBlocEvent(BlocEvent<HomeBlocEvent> event) async {

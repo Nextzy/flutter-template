@@ -294,6 +294,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     _showClearButtonNotifier.dispose();
     _controller.dispose();
     _focus.dispose();
+    _focus.removeListener(_onFocusChange);
     super.dispose();
   }
 
@@ -326,7 +327,6 @@ class _AppTextFieldState extends AppState<AppTextField> {
                   animateDuration: 50.milliseconds,
                   disabledPressAnimation: true,
                   crossAxisIntrinsic: true,
-                  tapFocus: true,
                   disabled: widget.disabled,
                   onHover: _onHover,
                   onPress: () {
@@ -336,12 +336,15 @@ class _AppTextFieldState extends AppState<AppTextField> {
                     if (value) {
                       FocusScope.of(context).requestFocus(_focus);
                     }
+                    _showClearButtonNotifier.value =
+                        _focus.hasFocus && _controller.text.isNotNullOrBlank;
                   },
                   mouseCursor: SystemMouseCursors.text,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   backgroundColor: backgroundColor,
-                  showFocus:
-                      widget.style == AppTextFieldStyle.shaded ? false : true,
+                  focused: widget.style == AppTextFieldStyle.shaded
+                      ? FocusType.invisible
+                      : FocusType.focused,
                   decoration: _createBorderStyle(
                     style: widget.style,
                     state: widgetState,
@@ -752,6 +755,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
   void _onHover(bool value) {
     setFullWidgetState(
         value ? FullWidgetState.hovered : FullWidgetState.normal);
+    _showClearButtonNotifier.value = value && _controller.text.isNotNullOrBlank;
   }
 
   void _onFocusChange() {
@@ -761,11 +765,13 @@ class _AppTextFieldState extends AppState<AppTextField> {
   }
 
   void _onTextChanged() {
-    _showClearButtonNotifier.value = _controller.text.isNotNullOrBlank;
+    _showClearButtonNotifier.value =
+        _focus.hasFocus && _controller.text.isNotNullOrBlank;
     widget.onTextChange?.call(_controller.text);
   }
 
   void _onPressClearText() {
-    (widget.controller ?? _controller).text = '';
+    Log.i('test');
+    _controller.text = '';
   }
 }

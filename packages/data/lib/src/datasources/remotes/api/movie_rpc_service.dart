@@ -17,7 +17,8 @@ class MovieRpcService extends RpcService {
             path,
             method: 'getHighLightMovieList',
             id: requestId,
-            fromJson: RemoteMovieListResponse.fromJson,
+            fromResponseJson: RemoteMovieListResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
           );
 
   Future<JsonRpcResponse<RemoteMovieListResponse, ErrorResponse>>
@@ -28,7 +29,8 @@ class MovieRpcService extends RpcService {
             path,
             method: 'getTrendMovieList',
             id: requestId,
-            fromJson: RemoteMovieListResponse.fromJson,
+            fromResponseJson: RemoteMovieListResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
           );
 
   Future<JsonRpcResponse<RemoteMovieListResponse, ErrorResponse>>
@@ -39,6 +41,7 @@ class MovieRpcService extends RpcService {
             path,
             method: 'getMustWatchMovieList',
             id: requestId,
-            fromJson: RemoteMovieListResponse.fromJson,
+            fromResponseJson: RemoteMovieListResponse.fromJson,
+            fromErrorJson: ErrorResponse.fromJson,
           );
 }

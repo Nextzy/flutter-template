@@ -162,7 +162,7 @@ class _HomePageState
                         style: AppTextStyleBuilder.ui.s14.colorPrimary
                             .build(context),
                       ),
-                      ContentSafeBuilder(
+                      ContentBuilder(
                           content: bloc.number,
                           builder: (context, state) {
                             return AppText(
@@ -197,7 +197,7 @@ class _HomePageState
                         style: AppTextStyleBuilder.ui.s14.colorPrimary
                             .build(context),
                       ),
-                      ContentSafeBuilder(
+                      ContentBuilder(
                           content: bloc.number,
                           builder: (context, state) {
                             return AppText(

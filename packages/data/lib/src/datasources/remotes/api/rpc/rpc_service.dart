@@ -13,14 +13,15 @@ abstract class RpcService {
   final String jsonrpc;
   final ParseErrorLogger? errorLogger;
 
-  Future<JsonRpcResponse<DATA, ErrorResponse>> request<DATA>(
+  Future<JsonRpcResponse<DATA, ERROR>> request<DATA, ERROR>(
     String path, {
     String? jsonrpc,
     required String method,
     Map<String, dynamic>? params,
     String? id,
     String? mockId,
-    DATA Function(Map<String, dynamic> json)? fromJson,
+    DATA Function(Map<String, dynamic> json)? fromResponseJson,
+    ERROR Function(Map<String, dynamic> json)? fromErrorJson,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -45,7 +46,7 @@ abstract class RpcService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final fetchResult = await _dio.fetch<Map<String, dynamic>>(options);
-    late JsonRpcResponse<DATA, ErrorResponse> value;
+    late JsonRpcResponse<DATA, ERROR> value;
     final Map<String, dynamic>? data = fetchResult.data;
     final result = data?['result'];
     final error = data?['error'];
@@ -54,14 +55,16 @@ abstract class RpcService {
         jsonrpc: data?['jsonrpc'] as String?,
         id: data?['id'] as String?,
         result: result is Map<String, dynamic>
-            ? fromJson!(result)
+            ? fromResponseJson!(result)
             : result != null
-                ? fromJson!({
+                ? fromResponseJson!({
                     'result': result,
                   })
                 : null,
         error: error != null
-            ? ErrorResponse.fromJson(error as Map<String, dynamic>)
+            ? fromErrorJson != null
+                ? fromErrorJson(error as Map<String, dynamic>)
+                : error
             : null,
       );
     } on Object catch (e, s) {
@@ -126,8 +129,7 @@ abstract class RpcService {
     final queryParameters = <String, dynamic>{};
     final headers = <String, dynamic>{};
     final data = bodyList.map((e) => e.toJson()).toList();
-    final options =
-        _setStreamType<List<JsonRpcResponse<dynamic, ErrorResponse>>>(
+    final options = _setStreamType<List<JsonRpcResponse<dynamic, dynamic>>>(
       Options(method: 'POST', headers: headers, extra: extra)
           .compose(
             _dio.options,
@@ -138,7 +140,7 @@ abstract class RpcService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final result = await _dio.fetch<List<dynamic>>(options);
-    late List<JsonRpcResponse<dynamic, ErrorResponse>> value;
+    late List<JsonRpcResponse<dynamic, dynamic>> value;
     try {
       result.data!.removeWhere((m) => m['id'] == null);
       value = result.data!.map(
@@ -147,17 +149,25 @@ abstract class RpcService {
           final id = iMap['id'];
           final result = iMap['result'];
           final error = iMap['error'];
-          final Function(Map<String, dynamic>? json)? fromJson =
-              bodyList.firstWhereOrNull((b) => b.id == id)?.fromJsonResponse;
+          final Function(Map<String, dynamic>? json)? fromResponseJson =
+              bodyList.firstOrNullWhere((b) => b.id == id)?.fromResponseJson;
+          final Function(Map<String, dynamic>? json)? fromErrorJson =
+              bodyList.firstOrNullWhere((b) => b.id == id)?.fromErrorJson;
 
           return JsonRpcResponse(
             jsonrpc: iMap['jsonrpc'] as String?,
             id: id as String?,
-            result: result != null
-                ? fromJson!(result as Map<String, dynamic>)
-                : null,
+            result: result is Map<String, dynamic>
+                ? fromResponseJson!(result)
+                : result != null
+                    ? fromResponseJson!({
+                        'result': result,
+                      })
+                    : null,
             error: error != null
-                ? ErrorResponse.fromJson(error as Map<String, dynamic>)
+                ? fromErrorJson != null
+                    ? fromErrorJson(error as Map<String, dynamic>)
+                    : error
                 : null,
           );
         },

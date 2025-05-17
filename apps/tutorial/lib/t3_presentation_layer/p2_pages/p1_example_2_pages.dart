@@ -17,7 +17,7 @@ class ExampleMoviePage extends AppPage implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) => BlocProvider(
         /// ⭐️ Safe it's mean, you have to initial the data first
-        create: (context) => ExampleMoviePageBlocSafe(movieList)
+        create: (context) => ExampleMoviePageBloc(movieList)
 
           /// ⭐️ Send fetch event to bloc for load movie list
           ..addEvent(ExampleMoviePageBlocEvent.fetchMovieList),
@@ -30,7 +30,7 @@ class ExampleMoviePage extends AppPage implements AutoRouteWrapper {
 
 class _ExampleMoviePageState extends AppPageBlocWidgetState<
     ExampleMoviePage,
-    ExampleMoviePageBlocSafe,
+    ExampleMoviePageBloc,
 
     /// ⭐️ Safe it's mean, the data is non-null
     MovieListEntity> {
