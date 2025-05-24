@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -36,7 +36,7 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   flutter_inappwebview: ^6.1.5
   #PLATFORM: Android, iOS, MacOS
-  wechat_assets_picker: ^9.5.0
+  wechat_assets_picker: ^9.5.1
   #PLATFORM: Android, iOS
   qr_code_scanner_plus: ^2.0.10+1
   popover: ^0.3.1
@@ -58,8 +58,8 @@ dependencies:
   #home_widget: ^0.7.0 # HomeWidget is a plugin to make it easier to create HomeScreen Widgets on Android and iOS
 
 dependency_overrides:
-  # Resolve for wechat_assets_picker
-  extended_image: ^9.1.0
+  
+  
 
 
 dev_dependencies:

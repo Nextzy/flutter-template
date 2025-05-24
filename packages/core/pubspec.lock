@@ -13,10 +13,10 @@ packages:
     dependency: transitive
     description:
       name: _flutterfire_internals
-      sha256: de9ecbb3ddafd446095f7e833c853aff2fa1682b017921fe63a833f9d6f0e422
+      sha256: "214e6f07e2a44f45972e0365c7b537eaeaddb4598db0778dd4ac64b4acd3f5b1"
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.54"
+    version: "1.3.55"
   analyzer:
     dependency: transitive
     description:
@@ -93,10 +93,10 @@ packages:
     dependency: transitive
     description:
       name: async
-      sha256: d2872f9c19731c2e5f10444b14686eb7cc85c76274bd6c16e1816bff9a3bab63
+      sha256: "758e6d74e971c3e5aceb4110bfd6698efc7f501675bcfe0c775459a8140750eb"
       url: "https://pub.dev"
     source: hosted
-    version: "2.12.0"
+    version: "2.13.0"
   audioplayers:
     dependency: transitive
     description:
@@ -476,10 +476,10 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "27eb0ae77836989a3bc541ce55595e8ceee0992807f14511552a898ddd0d88ac"
+      sha256: "5b236382b47ee411741447c1f1e111459c941ea1b3f2b540dde54c210a3662af"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.0"
   dartx:
     dependency: transitive
     description:
@@ -623,21 +623,21 @@ packages:
     source: hosted
     version: "2.0.7"
   extended_image:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: extended_image
-      sha256: "85199f9233e03abc2ce2e68cbb2991648666af4a527ae4e6250935be8edfddae"
+      sha256: f6cbb1d798f51262ed1a3d93b4f1f2aa0d76128df39af18ecb77fa740f88b2e0
       url: "https://pub.dev"
     source: hosted
-    version: "9.1.0"
+    version: "10.0.1"
   extended_image_library:
     dependency: transitive
     description:
       name: extended_image_library
-      sha256: e61dafd94400fff6ef7ed1523d445ff3af137f198f3228e4a3107bc5b4bec5d1
+      sha256: ae468c31c375064964de11cbb31310a58c4462df6e3bae1a0bc0066f586795d5
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.6"
+    version: "5.0.0"
   extended_list:
     dependency: transitive
     description:
@@ -658,16 +658,16 @@ packages:
     dependency: transitive
     description:
       name: fake_async
-      sha256: "6a95e56b2449df2273fd8c45a662d6947ce1ebb7aafe80e550a3f68297f3cacc"
+      sha256: "5368f224a74523e8d2e7399ea1638b37aecfca824a3cc4dfdf77bf1fa905ac44"
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.2"
+    version: "1.3.3"
   falconnect:
     dependency: transitive
     description:
       path: falconnect
-      ref: "3.9.2"
-      resolved-ref: "0d58805e9799e7b4fd44919d4d6c466f49fa8568"
+      ref: "3.9.3"
+      resolved-ref: "40e0b3099b1df089a418a8902e786c393aadea75"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.3.6"
@@ -675,17 +675,17 @@ packages:
     dependency: "direct main"
     description:
       path: falconx
-      ref: "3.9.2"
-      resolved-ref: "0d58805e9799e7b4fd44919d4d6c466f49fa8568"
+      ref: "3.9.3"
+      resolved-ref: "40e0b3099b1df089a418a8902e786c393aadea75"
       url: "https://github.com/nextzy/falconx.git"
     source: git
-    version: "3.9.2"
+    version: "3.9.3"
   falkit:
     dependency: transitive
     description:
       path: falkit
-      ref: "3.9.2"
-      resolved-ref: "0d58805e9799e7b4fd44919d4d6c466f49fa8568"
+      ref: "3.9.3"
+      resolved-ref: "40e0b3099b1df089a418a8902e786c393aadea75"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.1.7"
@@ -693,8 +693,8 @@ packages:
     dependency: transitive
     description:
       path: falmodel
-      ref: "3.9.2"
-      resolved-ref: "0d58805e9799e7b4fd44919d4d6c466f49fa8568"
+      ref: "3.9.3"
+      resolved-ref: "40e0b3099b1df089a418a8902e786c393aadea75"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.3.2"
@@ -702,8 +702,8 @@ packages:
     dependency: transitive
     description:
       path: falstore
-      ref: "3.9.2"
-      resolved-ref: "0d58805e9799e7b4fd44919d4d6c466f49fa8568"
+      ref: "3.9.3"
+      resolved-ref: "40e0b3099b1df089a418a8902e786c393aadea75"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.1.10"
@@ -711,8 +711,8 @@ packages:
     dependency: transitive
     description:
       path: faltool
-      ref: "3.9.2"
-      resolved-ref: "0d58805e9799e7b4fd44919d4d6c466f49fa8568"
+      ref: "3.9.3"
+      resolved-ref: "40e0b3099b1df089a418a8902e786c393aadea75"
       url: "https://github.com/nextzy/falconx.git"
     source: git
     version: "1.0.13"
@@ -744,10 +744,10 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_core
-      sha256: "017d17d9915670e6117497e640b2859e0b868026ea36bf3a57feb28c3b97debe"
+      sha256: "8cfe3c900512399ce8d50fcc817e5758ff8615eeb6fa5c846a4cc47bbf6353b6"
       url: "https://pub.dev"
     source: hosted
-    version: "3.13.0"
+    version: "3.13.1"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -760,34 +760,34 @@ packages:
     dependency: transitive
     description:
       name: firebase_core_web
-      sha256: "129a34d1e0fb62e2b488d988a1fc26cc15636357e50944ffee2862efe8929b23"
+      sha256: ddd72baa6f727e5b23f32d9af23d7d453d67946f380bd9c21daf474ee0f7326e
       url: "https://pub.dev"
     source: hosted
-    version: "2.22.0"
+    version: "2.23.0"
   firebase_remote_config:
     dependency: "direct main"
     description:
       name: firebase_remote_config
-      sha256: "0178bc8f44a8a30e720ec837fc2a0bac3d99837091d53c2a84d2d5d11da55854"
+      sha256: e65062f7435c8be13826d38c75218b30251a096ca742e7da55342b33ff8b4749
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.3"
+    version: "5.4.4"
   firebase_remote_config_platform_interface:
     dependency: transitive
     description:
       name: firebase_remote_config_platform_interface
-      sha256: df77610b1d0b542729e66358c9a1fd3633b35eb58634269686d36058e57e3c84
+      sha256: "6d2f94570edbea0b1fb47e623af576f1896d14f839b1e3ba9b393a5e7c93c84d"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.3"
+    version: "1.5.4"
   firebase_remote_config_web:
     dependency: transitive
     description:
       name: firebase_remote_config_web
-      sha256: "0cbfbe358f396f1663e53bdae626748efed4cf17bf316f29c680c975aa7601e8"
+      sha256: "5cf6eff2748193b64e9eb9965d5d727585f562d2946a53239385ad667e1c22e4"
       url: "https://pub.dev"
     source: hosted
-    version: "1.8.3"
+    version: "1.8.4"
   fixnum:
     dependency: transitive
     description:
@@ -989,10 +989,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_local_notifications
-      sha256: ebc86e2ff6a9ca5bc1943e675fef02b5ddaa1a99b4ef980cac576fcfc65959aa
+      sha256: b94a50aabbe56ef254f95f3be75640f99120429f0a153b2dc30143cffc9bfdf3
       url: "https://pub.dev"
     source: hosted
-    version: "19.2.0"
+    version: "19.2.1"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
@@ -1308,10 +1308,10 @@ packages:
     dependency: transitive
     description:
       name: intl
-      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      sha256: "3df61194eb431efc39c4ceba583b95633a403f46c9fd341e550ce0bfa50e9aa5"
       url: "https://pub.dev"
     source: hosted
-    version: "0.19.0"
+    version: "0.20.2"
   io:
     dependency: transitive
     description:
@@ -1348,10 +1348,10 @@ packages:
     dependency: transitive
     description:
       name: leak_tracker
-      sha256: c35baad643ba394b40aac41080300150a4f08fd0fd6a10378f8f7c6bc161acec
+      sha256: "6bb818ecbdffe216e81182c2f0714a2e62b593f4a4f13098713ff1685dfb6ab0"
       url: "https://pub.dev"
     source: hosted
-    version: "10.0.8"
+    version: "10.0.9"
   leak_tracker_flutter_testing:
     dependency: transitive
     description:
@@ -1479,14 +1479,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
-  money_formatter:
-    dependency: transitive
-    description:
-      name: money_formatter
-      sha256: "8e1cb4cd9c766ff9ec5caf7d1275bd738f48a3cc43c661f0790baead292989fb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.6"
   nested:
     dependency: transitive
     description:
@@ -1771,10 +1763,10 @@ packages:
     dependency: transitive
     description:
       name: photo_manager
-      sha256: "0bc7548fd3111eb93a3b0abf1c57364e40aeda32512c100085a48dade60e574f"
+      sha256: a0d9a7a9bc35eda02d33766412bde6d883a8b0acb86bbe37dac5f691a0894e8a
       url: "https://pub.dev"
     source: hosted
-    version: "3.6.4"
+    version: "3.7.1"
   photo_manager_image_provider:
     dependency: transitive
     description:
@@ -1855,6 +1847,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
+  pretty_dio_logger:
+    dependency: transitive
+    description:
+      name: pretty_dio_logger
+      sha256: "36f2101299786d567869493e2f5731de61ce130faa14679473b26905a92b6407"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   provider:
     dependency: transitive
     description:
@@ -2200,18 +2200,18 @@ packages:
     dependency: transitive
     description:
       name: sqlite3
-      sha256: "310af39c40dd0bb2058538333c9d9840a2725ae0b9f77e4fd09ad6696aa8f66e"
+      sha256: c0503c69b44d5714e6abbf4c1f51a3c3cc42b75ce785f44404765e4635481d38
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.5"
+    version: "2.7.6"
   sqlite3_flutter_libs:
     dependency: transitive
     description:
       name: sqlite3_flutter_libs
-      sha256: "1a96b59227828d9eb1463191d684b37a27d66ee5ed7597fcf42eee6452c88a14"
+      sha256: "7986c26234c0a5cf4fd83ff4ee39d4195b1f47cdb50a949ec7987ede4dcbdc2a"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.32"
+    version: "0.5.33"
   stack_trace:
     dependency: transitive
     description:
@@ -2256,26 +2256,26 @@ packages:
     dependency: transitive
     description:
       name: talker
-      sha256: "3d8b17976b9fe89436f23ac2b24642d62e170bc45e81943f2bdc309427ff9d0b"
+      sha256: "13e4c7c77b2ebd24ca0394b42858e7d42f28b5758255129369842eb71ceac80d"
       url: "https://pub.dev"
     source: hosted
-    version: "4.7.6"
+    version: "4.7.9"
   talker_bloc_logger:
     dependency: transitive
     description:
       name: talker_bloc_logger
-      sha256: "0f5db185059b6f1f98d795194fe3f04d693c180864e871ea81e4ac12f1ce1df5"
+      sha256: "5857b9bc03d5ef41188a0e1f9e5733526ed8878dd826c80c5148969ae468b51b"
       url: "https://pub.dev"
     source: hosted
-    version: "4.7.6"
+    version: "4.7.9"
   talker_logger:
     dependency: transitive
     description:
       name: talker_logger
-      sha256: a77ce73f79e7cbd01c408683f3377090c0a0f1fa7c9716c06727dcd0713cfa24
+      sha256: d8d2afd912c4a185bc125d8ae84d5960c3505f7ec52856e732a4b8a0db510b5d
       url: "https://pub.dev"
     source: hosted
-    version: "4.7.6"
+    version: "4.7.9"
   term_glyph:
     dependency: transitive
     description:
@@ -2392,10 +2392,10 @@ packages:
     dependency: "direct main"
     description:
       name: upgrader
-      sha256: "48b03378c605e84879328e5ed1ac44cfbdaf25607840c81e65e3a67973146735"
+      sha256: "60293b391f4146ce1e381ed6198b6374559a4aadf885d313e94e6c7d454d03ca"
       url: "https://pub.dev"
     source: hosted
-    version: "11.3.2"
+    version: "11.4.0"
   url_launcher:
     dependency: transitive
     description:
@@ -2503,10 +2503,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics_compiler
-      sha256: "1b4b9e706a10294258727674a340ae0d6e64a7231980f9f9a3d12e4b42407aad"
+      sha256: "557a315b7d2a6dbb0aaaff84d857967ce6bdc96a63dc6ee2a57ce5a6ee5d3331"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.16"
+    version: "1.1.17"
   vector_math:
     dependency: transitive
     description:
@@ -2535,10 +2535,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_android
-      sha256: "1f4e8e0e02403452d699ef7cf73fe9936fac8f6f0605303d111d71acb375d1bc"
+      sha256: f5b5ae7a41233adeb6cb4778b4c357522c906e45d590819f5b68d17cdc7a74b4
       url: "https://pub.dev"
     source: hosted
-    version: "2.8.3"
+    version: "2.8.6"
   video_player_avfoundation:
     dependency: transitive
     description:
@@ -2575,10 +2575,10 @@ packages:
     dependency: transitive
     description:
       name: vm_service
-      sha256: "0968250880a6c5fe7edc067ed0a13d4bae1577fe2771dcf3010d52c4a9d3ca14"
+      sha256: ddfa8d30d89985b96407efce8acbdd124701f96741f2d981ca860662f1c0dc02
       url: "https://pub.dev"
     source: hosted
-    version: "14.3.1"
+    version: "15.0.0"
   wakelock_plus:
     dependency: "direct main"
     description:
@@ -2647,10 +2647,10 @@ packages:
     dependency: transitive
     description:
       name: wechat_assets_picker
-      sha256: "65104fff598394fcf1c9a75a8a65a7aa9687485534b44d6e85275774d015df45"
+      sha256: cafe3d32564ed3cacf9822f251941f7b44fe9885c17c8de4fca7e939a459e1ef
       url: "https://pub.dev"
     source: hosted
-    version: "9.5.0"
+    version: "9.5.1"
   wechat_picker_library:
     dependency: transitive
     description:
@@ -2701,4 +2701,4 @@ packages:
     version: "3.1.3"
 sdks:
   dart: ">=3.7.0 <4.0.0"
-  flutter: ">=3.27.0"
+  flutter: ">=3.29.0"

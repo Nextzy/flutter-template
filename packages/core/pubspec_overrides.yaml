@@ -10,4 +10,4 @@ dependency_overrides:
     path: ../localization
   utils:
     path: ../utils
-  extended_image: ^9.1.0
+  
