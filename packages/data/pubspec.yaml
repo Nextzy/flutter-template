@@ -21,6 +21,7 @@ dependencies:
   #PLATFORM: All
   drift: ^2.26.1
   drift_flutter: ^0.2.4
+  pretty_dio_logger: ^1.4.0
 
 
 dependency_overrides:

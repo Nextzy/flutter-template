@@ -4,17 +4,18 @@ import 'package:change_application_name/application.dart';
 class ExampleHttpClient extends BaseHttpClient {
   ExampleHttpClient._singleton({required super.dio});
 
-  static final ExampleHttpClient instance = ExampleHttpClient._singleton(dio: Dio());
+  static final ExampleHttpClient instance =
+      ExampleHttpClient._singleton(dio: Dio());
 
   AppAccessTokenInterceptor? get tokenInterceptor =>
       dio.interceptors.firstOrNullWhere(
               (interceptor) => interceptor is AppAccessTokenInterceptor)
-      as AppAccessTokenInterceptor?;
+          as AppAccessTokenInterceptor?;
 
   AppHeaderInterceptor? get headerInterceptor =>
       dio.interceptors.firstOrNullWhere(
               (interceptor) => interceptor is AppHeaderInterceptor)
-      as AppHeaderInterceptor?;
+          as AppHeaderInterceptor?;
 
   bool get hasAccessToken => tokenInterceptor?.hasAccessToken == true;
 
@@ -45,6 +46,7 @@ class ExampleHttpClient extends BaseHttpClient {
   @override
   void setupOptions(Dio dio, BaseOptions options) {
     super.setupOptions(dio, options);
+    options.contentType = Headers.jsonContentType;
     options.connectTimeout = 20.seconds;
     options.receiveTimeout = 20.seconds;
   }
@@ -55,13 +57,12 @@ class ExampleHttpClient extends BaseHttpClient {
     interceptors.addAll([
       AppNetworkErrorHandlerInterceptor(),
       ConnectivityInterceptor(),
-      AppAccessTokenInterceptor(
-        dio,
-        refreshTokenPath: '/refreshToken',
-      ),
+      // AppAccessTokenInterceptor(
+      //   dio,
+      //   refreshTokenPath: '/refreshToken',
+      // ),
       AppHeaderInterceptor(),
-      MockHeaderInterceptor(),
-      HttpLogInterceptor(), // Add to last
+      // MockHeaderInterceptor(),
     ]);
   }
 

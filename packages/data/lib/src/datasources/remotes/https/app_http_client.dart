@@ -9,12 +9,12 @@ class AppHttpClient extends BaseHttpClient {
   AppAccessTokenInterceptor? get tokenInterceptor =>
       dio.interceptors.firstOrNullWhere(
               (interceptor) => interceptor is AppAccessTokenInterceptor)
-          as AppAccessTokenInterceptor?;
+      as AppAccessTokenInterceptor?;
 
   AppHeaderInterceptor? get headerInterceptor =>
       dio.interceptors.firstOrNullWhere(
               (interceptor) => interceptor is AppHeaderInterceptor)
-          as AppHeaderInterceptor?;
+      as AppHeaderInterceptor?;
 
   bool get hasAccessToken => tokenInterceptor?.hasAccessToken == true;
 
@@ -45,6 +45,7 @@ class AppHttpClient extends BaseHttpClient {
   @override
   void setupOptions(Dio dio, BaseOptions options) {
     super.setupOptions(dio, options);
+    options.contentType = Headers.jsonContentType;
     options.connectTimeout = 20.seconds;
     options.receiveTimeout = 20.seconds;
   }
@@ -61,7 +62,20 @@ class AppHttpClient extends BaseHttpClient {
       ),
       AppNetworkErrorHandlerInterceptor(),
       MockHeaderInterceptor(),
-      HttpLogInterceptor(), // Add to last
+      PrettyDioLogger(
+        request: true,
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: true,
+        responseBody: true,
+        error: true,
+        maxWidth: 120,
+        compact: true,
+        logPrint: (object) {
+          debugPrint(object.toString());
+        },
+        enabled: true,
+      ),
     ]);
   }
 

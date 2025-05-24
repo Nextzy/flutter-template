@@ -17,8 +17,9 @@ class AppHeaderInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers.addAll({
-      HttpHeader.ACCEPT_LANGUAGE: _language ?? 'EN',
-      HttpHeader.X_API_KEY: _apiKey,
+      HttpHeader.CONTENT_TYPE: 'application/json',
+      // HttpHeader.ACCEPT_LANGUAGE: _language ?? 'EN',
+      // HttpHeader.X_API_KEY: _apiKey,
     });
     super.onRequest(options, handler);
   }
