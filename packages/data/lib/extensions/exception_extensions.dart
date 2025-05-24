@@ -7,22 +7,43 @@ extension AppExceptionFutureExtensions<T> on Future<T> {
       ).onError(
         (exception, stackTrace) {
           if (exception is AppException) {
+            Log.e(
+              'Application error',
+              error: exception,
+              stackTrace: exception.stacktrace ?? stackTrace,
+            );
             return Left(exception);
           } else if (exception is Error) {
-            Log.e(exception, stackTrace: exception.stackTrace);
+            Log.e(
+              'Error is error type',
+              error: exception,
+              stackTrace: exception.stackTrace,
+            );
             return Left(AppException.fromError(exception));
           } else if (exception is DioException) {
             final tmpError = exception.error;
             if (tmpError case NetworkException networkException) {
-              Log.e(networkException, stackTrace: networkException.stackTrace);
+              Log.e(
+                'Network error',
+                error: networkException,
+                stackTrace: networkException.stackTrace,
+              );
             } else if (tmpError != null) {
-              Log.e(tmpError, stackTrace: exception.stackTrace);
+              Log.e(
+                'Network error',
+                error: tmpError,
+                stackTrace: exception.stackTrace,
+              );
             } else {
-              Log.e(exception, stackTrace: exception.stackTrace);
+              Log.e(
+                'Network error',
+                error: exception,
+                stackTrace: exception.stackTrace,
+              );
             }
             return Left(AppException.fromDioException(exception));
           } else {
-            Log.e(exception, stackTrace: stackTrace);
+            Log.e('Common error', error: exception, stackTrace: stackTrace);
             return Left(AppException(developerMessage: exception.toString()));
           }
         },
@@ -36,20 +57,31 @@ extension AppExceptionStreamExtensions<E extends Exception, DATA>
           (data) => Right(data),
           (exception) {
             if (exception is AppException) {
+              Log.e(
+                'Application error',
+                error: exception,
+                stackTrace: exception.stacktrace,
+              );
               return Left(exception);
             } else if (exception is DioException) {
               final tmpError = exception.error;
               if (tmpError case NetworkException networkException) {
-                Log.e(networkException,
+                Log.e('Network error',
+                    error: networkException,
                     stackTrace: networkException.stackTrace);
               } else if (tmpError != null) {
-                Log.e(tmpError, stackTrace: exception.stackTrace);
+                Log.e('Network error',
+                    error: tmpError, stackTrace: exception.stackTrace);
               } else {
-                Log.e(exception, stackTrace: exception.stackTrace);
+                Log.e('Network error',
+                    error: exception, stackTrace: exception.stackTrace);
               }
               return Left(AppException.fromDioException(exception));
             } else {
-              Log.e(exception);
+              Log.e(
+                'Common error',
+                error: exception,
+              );
               return Left(AppException(developerMessage: exception.toString()));
             }
           },
