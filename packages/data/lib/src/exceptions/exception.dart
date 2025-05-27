@@ -65,13 +65,18 @@ class AppException implements Exception {
 
   bool get isServerException => (code ?? 0) >= 500 && (code ?? 0) < 600;
 
-  Failure toFailure({String? code}) => Failure(
-    code: code ?? this.code.toString(),
-    message: message,
-    developerMessage: developerMessage,
-    exception: this,
-    stacktrace: stacktrace,
-  );
+  Failure toFailure({
+    String? code,
+    String? message,
+    String? developerMessage,
+  }) =>
+      Failure(
+        code: code ?? this.code.toString(),
+        message: message ?? this.message,
+        developerMessage: developerMessage ?? this.developerMessage,
+        exception: this,
+        stacktrace: stacktrace,
+      );
 
   @override
   String toString() {

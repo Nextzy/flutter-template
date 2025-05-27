@@ -40,12 +40,12 @@ dependencies:
   #PLATFORM: Android, iOS
   qr_code_scanner_plus: ^2.0.10+1
   popover: ^0.3.1
-  calendar_date_picker2: ^2.0.0
+  calendar_date_picker2: ^2.0.1
   flutter_colorpicker: ^1.1.0
   audioplayers: ^6.4.0
   flick_video_player: ^0.9.0
   video_player: ^2.9.5
-  fleather: ^1.22.0
+  fleather: ^1.23.0
 
 
   # Maybe you can use
@@ -58,8 +58,6 @@ dependencies:
   #home_widget: ^0.7.0 # HomeWidget is a plugin to make it easier to create HomeScreen Widgets on Android and iOS
 
 dependency_overrides:
-  
-  
 
 
 dev_dependencies:
@@ -68,7 +66,7 @@ dev_dependencies:
   bloc_test: ^10.0.0
   build_runner: ^2.4.15
   flutter_gen_runner: ^5.10.0
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   json_serializable: ^6.9.5
   freezed: ^3.0.6
 

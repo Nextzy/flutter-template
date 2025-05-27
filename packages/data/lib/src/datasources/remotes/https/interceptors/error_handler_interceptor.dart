@@ -7,8 +7,8 @@ class AppNetworkErrorHandlerInterceptor extends NetworkErrorHandlerInterceptor {
   void onClientError(DioException err, ErrorInterceptorHandler handler) {
     if (err.error case NetworkException exception) {
       //TODO:
-      // handler.reject(err);
-      handler.resolve(err.response!);
+      handler.reject(err);
+      // handler.resolve(err.response!);
     } else {
       handler.next(err);
     }
