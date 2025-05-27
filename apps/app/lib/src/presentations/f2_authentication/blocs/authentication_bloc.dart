@@ -36,10 +36,10 @@ class AuthenticationBloc
         onData: (state) async {
           if (state.isLoading) {
             // Prevent null data when loading state.
-            // emitter.emitLoading(data);
+            // emitter.emitLoading(data: data);
             // emitter.emit(this.state.toLoading());
           } else if (state.isSuccess) {
-            // emitter.emitSuccess(state.data);
+            // emitter.emitSuccess(data: state.data);
             // emitter.emit(this.state.toSuccess(data: state.data));
           }
         },

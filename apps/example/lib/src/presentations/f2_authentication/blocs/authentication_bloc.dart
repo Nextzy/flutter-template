@@ -13,8 +13,8 @@ enum AuthenticationBlocEvent {
   testEcho,
 }
 
-class AuthenticationPageBloc
-    extends AppNullableWidgetStateBloc<AuthenticationBlocEvent, AuthenticationEntity> {
+class AuthenticationPageBloc extends AppNullableWidgetStateBloc<
+    AuthenticationBlocEvent, AuthenticationEntity> {
   AuthenticationPageBloc();
 
   final _service = AuthenticationRpcService(AppHttpClient.instance.dio);
@@ -253,7 +253,7 @@ class AuthenticationPageBloc
 
     if (jsonRpcResponse.hasResult) {
       emitSuccess(
-        AuthenticationEntity.fromResponse(jsonRpcResponse.result!),
+        data: AuthenticationEntity.fromResponse(jsonRpcResponse.result!),
       );
     }
   }
@@ -262,8 +262,6 @@ class AuthenticationPageBloc
     required String otpToken,
     required String otp,
   }) async {
-    print('verify otp: $otp');
-
     var jsonRpcResponse = await _service.verifyOtp(
       token: otpToken,
       pin: otp,

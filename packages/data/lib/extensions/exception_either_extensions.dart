@@ -11,7 +11,7 @@ extension AppExceptionEitherStreamExtensions<T>
         Either<AppException, T>, Either<Failure, B>>.fromHandlers(
       handleData:
           (Either<AppException, T> value, EventSink<Either<Failure, B>> sink) {
-        if (value.hasException) {
+        if (value.isException) {
           sink.add(Left(
               exception?.call(value.exception) ?? value.exception.toFailure()));
           sink.close();
@@ -28,7 +28,7 @@ extension AppExceptionEitherStreamExtensions<T>
         Either<AppException, T>, Either<Failure, T>>.fromHandlers(
       handleData:
           (Either<AppException, T> value, EventSink<Either<Failure, T>> sink) {
-        if (value.hasException) {
+        if (value.isException) {
           sink.add(Left(
               exception?.call(value.exception) ?? value.exception.toFailure()));
           sink.close();
@@ -46,7 +46,7 @@ extension AppExceptionEitherFutureExtensions<T>
     Failure Function(AppException exception)? exception,
   }) async* {
     final value = await this;
-    if (value.hasException) {
+    if (value.isException) {
       yield Left(
           exception?.call(value.exception) ?? value.exception.toFailure());
       return;
@@ -59,7 +59,7 @@ extension AppExceptionEitherFutureExtensions<T>
     Failure Function(AppException exception)? exception,
   ]) async* {
     final value = await this;
-    if (value.hasException) {
+    if (value.isException) {
       yield Left(
           exception?.call(value.exception) ?? value.exception.toFailure());
       return;
@@ -74,7 +74,7 @@ extension AppExceptionEitherFutureExtensions<T>
   }) async {
     return then(
       (value) {
-        if (value.hasException) {
+        if (value.isException) {
           return Left(
               exception?.call(value.exception) ?? value.exception.toFailure());
         }
@@ -88,7 +88,7 @@ extension AppExceptionEitherFutureExtensions<T>
   ]) async {
     return then(
       (value) {
-        if (value.hasException) {
+        if (value.isException) {
           return Left(
               exception?.call(value.exception) ?? value.exception.toFailure());
         }

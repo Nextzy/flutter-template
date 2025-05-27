@@ -40,12 +40,12 @@ class ExampleAuthenticationPageBloc
             emitEvent(AppDialogEvent.showFullLoadingLocked);
             emitLoading();
           } else if (state.isSuccess) {
-            emitSuccess(true);
+            emitSuccess(data: true);
           }
         },
         onFailure: (failure) {
           emitEvent(AppDialogEvent.dismissAll);
-          emitFail(false);
+          emitFail(data: false);
         },
       );
 }
@@ -85,9 +85,9 @@ class ExampleMoviePageBloc
         onData: (state) {
           if (state.isLoading) {
             emitEvent(AppDialogEvent.showFullLoadingLocked);
-            emitLoading(state.data);
+            emitLoading(data: state.data);
           } else if (state.isSuccess) {
-            emitSuccess(state.data);
+            emitSuccess(data: state.data);
           }
         },
         onFailure: (failure) {
