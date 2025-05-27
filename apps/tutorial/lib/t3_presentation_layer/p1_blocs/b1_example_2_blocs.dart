@@ -41,13 +41,13 @@ class ExampleMovie2PageBlocSafe
             trendMovieList.loading();
             mustWatchMovieList.loading();
           } else if (state.isSuccess) {
-            highLightMovieList.success(state.data?.movieList.where(
+            highLightMovieList.success(data: state.data?.movieList.where(
               (movie) => movie.name == 'High light',
             ));
-            trendMovieList.success(state.data?.movieList.where(
+            trendMovieList.success(data: state.data?.movieList.where(
               (movie) => movie.name == 'Trend',
             ));
-            mustWatchMovieList.success(state.data?.movieList.where(
+            mustWatchMovieList.success(data: state.data?.movieList.where(
               (movie) => movie.name == 'Must watch',
             ));
           }
