@@ -62,7 +62,7 @@ class AppSocketClient<T extends SocketResponse> extends SocketClient {
 
   @override
   void setupConfig(SocketOptions configs) {
-    configs.retryLimit = 3;
+    // configs.retryLimit = 3;
   }
 
   @override

@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: change_application_name,core,data,design_system,localization,tutorial,utils,extended_image
+# melos_managed_dependency_overrides: change_application_name,core,data,design_system,localization,tutorial,utils,extended_image,package_info_plus
 dependency_overrides:
   change_application_name:
     path: ../app
@@ -10,6 +10,7 @@ dependency_overrides:
     path: ../../packages/design_system
   localization:
     path: ../../packages/localization
+  package_info_plus: 8.2.1
   tutorial:
     path: ../tutorial
   utils:

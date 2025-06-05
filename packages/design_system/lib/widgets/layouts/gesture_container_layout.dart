@@ -129,6 +129,7 @@ class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
   late FocusNode _focusNode;
   InputMethod _lastInputMethod = InputMethod.none;
   bool _isFocused = false;
+  bool _isMouseHover = false;
 
   @override
   void initState() {
@@ -262,32 +263,43 @@ class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
     final highlightColor = disabledPressAnimation
         ? Colors.transparent
         : context.theme.color.overlayActive;
-    return Listener(
-      onPointerDown: _handlePointerDown,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: borderRadius,
-          hoverColor: hoverColor,
-          focusColor: focusColor,
-          splashColor: splashColor,
-          highlightColor: highlightColor,
-          onTap: onPress,
-          onTapDown: onTapDown,
-          onTapUp: onTapUp,
-          onSecondaryTap: onSecondaryPress,
-          onDoubleTap: onDoubleTap,
-          onLongPress: onLongPress,
-          onHighlightChanged: onHighlightChanged,
-          onHover: onHover,
-          mouseCursor: mouseCursor,
-          enableFeedback: enableFeedback,
-          excludeFromSemantics: excludeFromSemantics,
-          focusNode: focusNode,
-          canRequestFocus: canRequestFocus,
-          autofocus: autofocus,
-          statesController: statesController,
-          child: child,
+    return MouseRegion(
+      onEnter: (event) {
+        _isMouseHover = true;
+      },
+      onExit: (event) {
+        _isMouseHover = false;
+      },
+      child: Listener(
+        onPointerDown: _handlePointerDown,
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: borderRadius,
+            hoverColor: hoverColor,
+            focusColor: focusColor,
+            splashColor: splashColor,
+            highlightColor: highlightColor,
+            onTap: () {
+              _handlePointerTap();
+              onPress?.call();
+            },
+            onTapDown: onTapDown,
+            onTapUp: onTapUp,
+            onSecondaryTap: onSecondaryPress,
+            onDoubleTap: onDoubleTap,
+            onLongPress: onLongPress,
+            onHighlightChanged: onHighlightChanged,
+            onHover: onHover,
+            mouseCursor: mouseCursor,
+            enableFeedback: enableFeedback,
+            excludeFromSemantics: excludeFromSemantics,
+            focusNode: focusNode,
+            canRequestFocus: canRequestFocus,
+            autofocus: autofocus,
+            statesController: statesController,
+            child: child,
+          ),
         ),
       ),
     );
@@ -314,6 +326,12 @@ class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
   void _handlePointerDown(PointerDownEvent event) {
     // When pointer is used, we're not in keyboard mode
     if (_lastInputMethod != InputMethod.pointer) {
+      _lastInputMethod = InputMethod.pointer;
+    }
+  }
+
+  void _handlePointerTap() {
+    if (_isMouseHover && _lastInputMethod != InputMethod.pointer) {
       _lastInputMethod = InputMethod.pointer;
     }
   }
