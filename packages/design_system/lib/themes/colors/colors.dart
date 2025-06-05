@@ -1,16 +1,16 @@
 import 'package:design_system/lib.dart';
 
-export 'raws/raws.dart';
 export 'color_dark.dart';
 export 'color_light.dart';
+export 'raws/raws.dart';
 
 class AppColor {
-  static final PaletteColor brand = const BrandColor();
-  static final PaletteColor gray = const StratumGrayColor();
-  static final PaletteColor blue = const StratumBlueColor();
-  static final PaletteColor red = const StratumBlueColor();
-  static final PaletteColor amber = const StratumAmberColor();
-  static final PaletteColor green = const StratumGreenColor();
-  static final PaletteColor violet = const StratumVioletColor();
-  static final PaletteColor teal = const StratumTealColor();
+  static const PaletteColor brand = BrandColor();
+  static const PaletteColor gray = StratumGrayColor();
+  static const PaletteColor blue = StratumBlueColor();
+  static const PaletteColor red = StratumBlueColor();
+  static const PaletteColor amber = StratumAmberColor();
+  static const PaletteColor green = StratumGreenColor();
+  static const PaletteColor violet = StratumVioletColor();
+  static const PaletteColor teal = StratumTealColor();
 }

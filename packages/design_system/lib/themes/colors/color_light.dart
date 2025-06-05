@@ -1,3 +1,6 @@
+// Ignore because unnecessary
+// ignore_for_file: avoid_field_initializers_in_const_classes
+
 import 'package:design_system/lib.dart';
 
 class AppLightThemeColor extends AppThemeColor {

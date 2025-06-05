@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:design_system/lib.dart';
 
 abstract class AppThemeColor {

@@ -34,7 +34,7 @@ abstract class AppPageTabScaffoldBlocWidgetState<
       appBar: appBar,
       floatingButton: floatingButton,
       body: (context, state) {
-        List<Widget> tabScreenList = buildTab(context, state);
+        final tabScreenList = buildTab(context, state);
         return GestureDetector(
           onTap: clearFocus,
           child: buildPopScope(
@@ -54,15 +54,16 @@ abstract class AppPageTabScaffoldBlocWidgetState<
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     TabBarView(children: tabScreenList),
-                    (state.isFail && bodyFail != null)
-                        ? bodyFail(context)
-                        : (state.isWarning && bodyWarning != null)
-                            ? bodyWarning(context)
-                            : (state.isLoading && bodyLoading != null)
-                                ? bodyLoading(context)
-                                : (state.noData && bodyEmpty != null)
-                                    ? bodyEmpty(context)
-                                    : body(context, state),
+                    if (state.isFail && bodyFail != null)
+                      bodyFail(context)
+                    else if (state.isWarning && bodyWarning != null)
+                      bodyWarning(context)
+                    else if (state.isLoading && bodyLoading != null)
+                      bodyLoading(context)
+                    else if (state.noData && bodyEmpty != null)
+                      bodyEmpty(context)
+                    else
+                      body(context, state),
                   ],
                 ),
                 floatingActionButton: floatingButton?.call(context, state),

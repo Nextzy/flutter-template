@@ -1,7 +1,7 @@
 import 'package:design_system/lib.dart';
 
 class AppCheckbox extends AppStatefulWidget {
-  AppCheckbox({
+  const AppCheckbox({
     super.key,
     this.tristate = false,
     this.text,

@@ -40,9 +40,7 @@ class _AppCheckboxTileState extends AppState<AppCheckboxTile> {
         _value = value;
       });
 
-      if (widget.onChanged != null) {
-        widget.onChanged!(value);
-      }
+      widget.onChanged?.call(value);
     }
   }
 
@@ -73,7 +71,8 @@ class _AppCheckboxTileState extends AppState<AppCheckboxTile> {
                     value: _value,
                     onChanged: widget.disabled ? null : _onChanged,
                     activeColor: activeColor,
-                    overlayColor: WidgetStatePropertyAll(Colors.transparent),
+                    overlayColor:
+                        const WidgetStatePropertyAll(Colors.transparent),
                     fillColor: backgroundColor,
                     side: BorderSide(
                       color: borderColor,
@@ -84,7 +83,7 @@ class _AppCheckboxTileState extends AppState<AppCheckboxTile> {
               ],
             )
           else
-            Gap(32),
+            const Gap(32),
           ColumnLayout(
               mainAxisAlignment: MainAxisAlignment.center,
               gap: 4,

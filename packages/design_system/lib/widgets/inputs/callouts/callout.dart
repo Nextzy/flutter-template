@@ -122,7 +122,8 @@ class AppCallout extends AppStatelessWidget {
   }) =>
       icon.toSvgIcon(
         size: _getIconSize(size),
-        color: _getContentColor(context, accent: accent),
+        colorFilter: ColorFilter.mode(
+            _getContentColor(context, accent: accent), BlendMode.srcIn),
       );
 
   Widget buildDefaultAction(

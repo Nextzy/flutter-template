@@ -13,10 +13,10 @@ class MockHeaderInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final int mockId = options.extra.getOrElse(
+    final mockId = options.extra.getOrElse(
       'mockId',
       () => -1,
-    );
+    ) as int;
     if (kDebugMode && mockId != -1) {
       options.headers['Mock-Id'] = mockId;
     }

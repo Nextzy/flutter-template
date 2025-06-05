@@ -5,7 +5,7 @@ abstract class ApplicationState<T extends StatefulWidget>
   AppThemeData get theme => ThemeApplication.of(context);
 
   Widget buildResponsive({required ResponsiveBuilder child}) {
-    final Breakpoint breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
+    final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
 
     return child(PlatformChecker.platform, breakpoint);
   }

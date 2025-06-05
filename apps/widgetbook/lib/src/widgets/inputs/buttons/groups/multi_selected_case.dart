@@ -1,10 +1,10 @@
 import 'package:widgetbook_app/widgetbook.dart';
 
 class ButtonGroupMultiSelectedCases extends WidgetbookUseCase {
-  final isRadio;
-  final selectedIndex;
-  final enabledDeselect;
-  final maxSelected;
+  final bool isRadio;
+  final int selectedIndex;
+  final bool enabledDeselect;
+  final int maxSelected;
 
   ButtonGroupMultiSelectedCases({
     super.name = 'Multi Selected',

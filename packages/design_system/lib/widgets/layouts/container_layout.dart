@@ -339,8 +339,24 @@ class ContainerLayout extends StatelessWidget {
     VoidCallback? onEndAnimate,
     Widget? child,
   }) =>
-      animate == true
-          ? AnimatedContainer(
+      animate != true
+          ? Container(
+              key: key,
+              alignment: alignment,
+              padding: padding,
+              decoration: decoration,
+              foregroundDecoration: foregroundDecoration,
+              width: width,
+              height: height,
+              constraints: constraints,
+              margin: margin,
+              color: color,
+              transform:transform,
+              transformAlignment: transformAlignment,
+              clipBehavior: clipBehavior ?? Clip.none,
+              child: child,
+            )
+          : AnimatedContainer(
               key: key,
               duration: animateDuration ?? const Duration(milliseconds: 80),
               alignment: alignment,
@@ -357,22 +373,6 @@ class ContainerLayout extends StatelessWidget {
               clipBehavior: clipBehavior ?? Clip.none,
               curve: animateCurve ?? Curves.linear,
               onEnd: onEndAnimate,
-              child: child,
-            )
-          : Container(
-              key: key,
-              alignment: alignment,
-              padding: padding,
-              decoration: decoration,
-              foregroundDecoration: foregroundDecoration,
-              width: width,
-              height: height,
-              constraints: constraints,
-              margin: margin,
-              color: color,
-              transform:transform,
-              transformAlignment: transformAlignment,
-              clipBehavior: clipBehavior ?? Clip.none,
               child: child,
             );
 }

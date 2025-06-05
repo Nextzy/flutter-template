@@ -1,4 +1,4 @@
-import 'package:core/core.dart' hide Logger, Level;
+import 'package:core/core.dart' hide Level, Logger;
 
 class DefaultCatcherLogger extends Catcher2Logger {
   @override

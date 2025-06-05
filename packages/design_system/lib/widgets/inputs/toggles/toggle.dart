@@ -52,9 +52,7 @@ class _AppToggleState extends AppState<AppToggle> {
       _value = value;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(value);
-    }
+    widget.onChanged?.call(value);
   }
 
   @override
@@ -129,7 +127,7 @@ class _AppToggleState extends AppState<AppToggle> {
               widget.disabled ? null : widget.activeColor ?? activeColor,
           inactiveThumbColor:
               widget.disabled ? null : context.theme.color.iconPrimary,
-          overlayColor: WidgetStatePropertyAll(Colors.transparent)),
+          overlayColor: const WidgetStatePropertyAll(Colors.transparent)),
     );
   }
 

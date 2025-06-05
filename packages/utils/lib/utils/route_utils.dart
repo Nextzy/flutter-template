@@ -1,5 +1,5 @@
-import 'package:utils/lib.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:utils/lib.dart';
 
 final encrypter = RouteEncryptUtils();
 

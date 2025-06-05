@@ -1,5 +1,5 @@
-import 'package:drift/drift.dart';
 import 'package:change_application_name/application.dart';
+import 'package:drift/drift.dart';
 
 class SettingBloc extends BlocBase<SettingTableData> {
   SettingBloc({
@@ -20,7 +20,7 @@ class SettingBloc extends BlocBase<SettingTableData> {
         $$SettingTableTableUpdateCompanionBuilder o,
       ) update) async {
     await _database.managers.settingTable.update(update);
-    final settingList = (await _database.managers.settingTable.get());
+    final settingList = await _database.managers.settingTable.get();
     emit(settingList[0]);
   }
 }

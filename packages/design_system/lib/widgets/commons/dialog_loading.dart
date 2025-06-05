@@ -28,7 +28,7 @@ class AppLoadingDialog {
     bool lock = false,
   }) async {
     if (isLoading) return;
-    return await showDialog(
+    return showDialog(
       context: context,
       useSafeArea: false,
       barrierDismissible: !lock,

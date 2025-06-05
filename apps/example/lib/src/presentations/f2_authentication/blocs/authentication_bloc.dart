@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:example_app/application.dart';
 
 enum AuthenticationBlocEvent {
@@ -99,7 +101,7 @@ class AuthenticationPageBloc extends AppNullableWidgetStateBloc<
     required String password,
   }) async {
     print('authen email password');
-    print('${email} | ${password}');
+    print('$email | $password');
 
     var jsonRpcResponse = await _service.signInWithEmailPassword(
       email: email,
@@ -118,7 +120,7 @@ class AuthenticationPageBloc extends AppNullableWidgetStateBloc<
     required String password,
   }) async {
     print('authen username password');
-    print('${username} | ${password}');
+    print('$username | $password');
 
     var jsonRpcResponse = await _service.signInWithUsernamePassword(
       username: username,
@@ -205,7 +207,7 @@ class AuthenticationPageBloc extends AppNullableWidgetStateBloc<
   }
 
   Future<void> _getProfile({
-    required accessToken,
+    required String accessToken,
   }) async {
     print('get profile');
 
@@ -292,7 +294,7 @@ class AuthenticationPageBloc extends AppNullableWidgetStateBloc<
   }
 
   void _showResult(JsonRpcResponse jsonRpcResponse) {
-    print('jsonRpcResponse: ${jsonRpcResponse}');
+    print('jsonRpcResponse: $jsonRpcResponse');
 
     final resultMessage = jsonRpcResponse.hasResult
         ? jsonRpcResponse.result.toString()

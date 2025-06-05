@@ -217,7 +217,7 @@ class _GestureRowLayoutState extends State<GestureRowLayout> {
     required bool scrollable,
     required Widget child,
   }) =>
-      (scrollable)
+      scrollable
           ? SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: child,

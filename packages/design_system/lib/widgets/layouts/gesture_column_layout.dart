@@ -216,7 +216,7 @@ class _GestureColumnLayoutState extends State<GestureColumnLayout> {
     required bool scrollable,
     required Widget child,
   }) =>
-      (scrollable)
+      scrollable
           ? SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: child,

@@ -71,7 +71,7 @@ class _AppSocialButtonState extends AppState<AppSocialButton> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           icon,
-          Gap(6),
+          const Gap(6),
           AppText(
             text,
             style: TextStyle(
@@ -113,12 +113,12 @@ class _AppSocialButtonState extends AppState<AppSocialButton> {
         AppSocialButtonStyle.outline => context.theme.color.bg,
         AppSocialButtonStyle.shaded => context.theme.color.buttonShade,
         AppSocialButtonStyle.filled => switch (widget.type) {
-            AppSocialButtonType.google => Color(0xFFEA4335),
-            AppSocialButtonType.twitter => Color(0xFF1DA1F2),
-            AppSocialButtonType.facebook => Color(0xFF1877F2),
+            AppSocialButtonType.google => const Color(0xFFEA4335),
+            AppSocialButtonType.twitter => const Color(0xFF1DA1F2),
+            AppSocialButtonType.facebook => const Color(0xFF1877F2),
             AppSocialButtonType.apple => context.theme.color.buttonFilled,
             AppSocialButtonType.github => context.theme.color.buttonFilled,
-            AppSocialButtonType.microsoft => Color(0xFF0067B8),
+            AppSocialButtonType.microsoft => const Color(0xFF0067B8),
           },
       };
 
@@ -173,7 +173,7 @@ class _AppSocialButtonState extends AppState<AppSocialButton> {
           ),
         AppSocialButtonType.microsoft => Assets.logo.microsoft.svgIcon(
             colorFilter: widget.style == AppSocialButtonStyle.filled
-                ? ColorFilter.mode(
+                ? const ColorFilter.mode(
                     Color(0xFFFFFFFF),
                     BlendMode.srcIn,
                   )

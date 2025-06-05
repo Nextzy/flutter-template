@@ -39,8 +39,8 @@ class AppRepository {
             RemoteMovieListResponse mustWatchMovieList
           }),
           List<MovieTableData>>(
-        loadFromDbFuture: () => _localDatasource.loadMovieList(),
-        createCallFuture: () => _movieRemoteDatasource.getMovieList(),
+        loadFromDbFuture: _localDatasource.loadMovieList,
+        createCallFuture: _movieRemoteDatasource.getMovieList,
         saveCallResult: (response) => _localDatasource.saveMovieList([
           ...?response.hightLightMovieList.data,
           ...?response.trendMovieList.data,

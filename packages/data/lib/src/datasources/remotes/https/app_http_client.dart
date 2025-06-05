@@ -1,3 +1,6 @@
+// Ignore because is not necessary
+// ignore_for_file: cascade_invocations
+
 import 'package:data/lib.dart';
 
 /// Singleton
@@ -9,16 +12,16 @@ class AppHttpClient extends BaseHttpClient {
   AppAccessTokenInterceptor? get tokenInterceptor =>
       dio.interceptors.firstOrNullWhere(
               (interceptor) => interceptor is AppAccessTokenInterceptor)
-      as AppAccessTokenInterceptor?;
+          as AppAccessTokenInterceptor?;
 
   AppHeaderInterceptor? get headerInterceptor =>
       dio.interceptors.firstOrNullWhere(
               (interceptor) => interceptor is AppHeaderInterceptor)
-      as AppHeaderInterceptor?;
+          as AppHeaderInterceptor?;
 
-  bool get hasAccessToken => tokenInterceptor?.hasAccessToken == true;
+  bool get hasAccessToken => tokenInterceptor?.hasAccessToken ?? false;
 
-  bool get hasRefreshAccessToken => tokenInterceptor?.hasRefreshToken == true;
+  bool get hasRefreshAccessToken => tokenInterceptor?.hasRefreshToken ?? false;
 
   void setupCredential({
     String? apiKey,
@@ -45,9 +48,10 @@ class AppHttpClient extends BaseHttpClient {
   @override
   void setupOptions(Dio dio, BaseOptions options) {
     super.setupOptions(dio, options);
-    options.contentType = Headers.jsonContentType;
-    options.connectTimeout = 20.seconds;
-    options.receiveTimeout = 20.seconds;
+    options
+      ..contentType = Headers.jsonContentType
+      ..connectTimeout = 20.seconds
+      ..receiveTimeout = 20.seconds;
   }
 
   @override
@@ -83,7 +87,6 @@ class AppHttpClient extends BaseHttpClient {
     if (BuildConfig.debug && ip != null && port != null) {
       dio.httpClientAdapter = IOHttpClientAdapter(createHttpClient: () {
         final client = HttpClient();
-
         client.findProxy = (uri) => 'PROXY $ip:$port';
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) => true;

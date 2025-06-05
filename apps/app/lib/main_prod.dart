@@ -5,7 +5,7 @@ import 'package:change_application_name/firebase_options_prod.dart';
 void main() async {
   await setupMainProd();
   await setupFirebaseProd();
-  runApplication();
+  await runApplication();
 }
 
 Future<void> setupMainProd() async {
@@ -51,7 +51,7 @@ Future<void> runApplication() async {
     ),
     runAppFunction: () async {
       runApp(
-        MyApplication(),
+        const MyApplication(),
       );
     },
   );

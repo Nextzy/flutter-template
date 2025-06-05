@@ -41,9 +41,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
       _value = value;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(value);
-    }
+    widget.onChanged?.call(value);
   }
 
   @override
@@ -63,7 +61,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
                 activeTrackColor: context.theme.color.buttonPrimary,
                 inactiveTrackColor: context.theme.color.bgSurface3,
                 thumbColor: context.theme.color.buttonPrimary,
-                overlayShape: RoundSliderOverlayShape(overlayRadius: 16),
+                overlayShape: const RoundSliderOverlayShape(overlayRadius: 16),
                 overlayColor: context.theme.color.bg,
                 tickMarkShape:
                     RoundSliderTickMarkShape(tickMarkRadius: tickMarkRadius),

@@ -63,9 +63,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
   void _onChange() {
     _controller.text = _value.toString();
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(_value);
-    }
+    widget.onChanged?.call(_value);
   }
 
   void _increment() {
@@ -85,7 +83,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
   }
 
   void _onTextChanged(String value) {
-    final int newValue = int.tryParse(value) ?? widget.minValue;
+    final newValue = int.tryParse(value) ?? widget.minValue;
 
     setState(() {
       if (newValue < widget.minValue) {
@@ -162,7 +160,7 @@ class _AppNumberInputState extends AppState<AppNumberInput> {
                     readOnly: widget.readOnly,
                   ),
                 ),
-                Gap(8),
+                const Gap(8),
                 ColumnLayout(
                   padding: widget.style == AppTextFieldStyle.shaded
                       ? const EdgeInsets.symmetric(horizontal: 1, vertical: 1)

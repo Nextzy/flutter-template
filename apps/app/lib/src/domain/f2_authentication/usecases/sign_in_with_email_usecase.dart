@@ -13,9 +13,5 @@ class SignInWithEmailAndPasswordUsecase extends BaseUsecase {
   }) =>
       _repo
           .signInWithEmailPassword(email: email, password: password)
-          .mapEitherFailure(
-        (exception) {
-          return getFailure(exception);
-        },
-      );
+          .mapEitherFailure(getFailure);
 }

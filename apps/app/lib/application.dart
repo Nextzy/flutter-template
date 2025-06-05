@@ -1,22 +1,23 @@
-export 'package:core/core.dart';
-export 'package:localization/localization.dart';
-export 'package:data/data.dart';
-export 'package:design_system/design_system.dart';
-export 'package:utils/utils.dart';
+import 'package:change_application_name/application.dart';
+
+export 'package:change_application_name/environments/environments.dart';
+export 'package:change_application_name/extensions/extensions.dart';
+export 'package:change_application_name/router.dart';
+export 'package:change_application_name/routers/routers.dart';
 
 //
 export 'package:change_application_name/src/src.dart';
-export 'package:change_application_name/router.dart';
-export 'package:change_application_name/extensions/extensions.dart';
-export 'package:change_application_name/environments/environments.dart';
-export 'package:change_application_name/routers/routers.dart';
-export 'package:sms_autofill/sms_autofill.dart' hide Orientation, ColorBuilder;
-export 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+export 'package:core/core.dart';
 export 'package:country_code_picker/country_code_picker.dart';
+export 'package:data/data.dart';
+export 'package:design_system/design_system.dart';
 export 'package:flutter/semantics.dart';
-export '../examples/examples.dart';
+export 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+export 'package:localization/localization.dart';
+export 'package:sms_autofill/sms_autofill.dart' hide ColorBuilder, Orientation;
+export 'package:utils/utils.dart';
 
-import 'package:change_application_name/application.dart';
+export '../examples/examples.dart';
 
 const platformChannel = MethodChannel('com.example/channel');
 
@@ -34,11 +35,12 @@ class SetupApplication {
 
 class MyApplication extends AppStatefulWidget {
   const MyApplication({
+    super.key,
     this.locale,
     this.builder,
   });
 
-  static const defaultThemeMode = ThemeMode.light;
+  static const ThemeMode defaultThemeMode = ThemeMode.light;
 
   final Locale? locale;
   final TransitionBuilder? builder;

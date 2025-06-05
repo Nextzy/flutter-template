@@ -12,7 +12,7 @@ class ExitApp extends AppStatefulWidget {
   final bool doubleTapExit;
   final Duration duration;
   final Widget child;
-  final Function() onExit;
+  final Future<void> Function() onExit;
 
   @override
   State<ExitApp> createState() => _ExitAppState();
@@ -28,12 +28,12 @@ class _ExitAppState extends AppState<ExitApp> {
       onPopInvokedWithResult: (didPop, result) async {
         if (kIsWeb) {
           await widget.onExit();
-          SystemNavigator.pop();
+          await SystemNavigator.pop();
           return;
         }
         if (didPop) {
           await widget.onExit();
-          SystemNavigator.pop();
+          await SystemNavigator.pop();
           return;
         } else {
           final now = DateTime.now();
@@ -41,14 +41,14 @@ class _ExitAppState extends AppState<ExitApp> {
             if (_lastPressedAt == null ||
                 now.difference(_lastPressedAt!) > widget.duration) {
               _lastPressedAt = now;
-              //TODO:
+              // TODO(username): Implement
               Log.i(Strings.common.alert.info.doubleTapExit);
               // AppToast.show(Strings.common.alert.info.doubleTapExit);
               return;
             }
           }
           await widget.onExit();
-          SystemNavigator.pop();
+          await SystemNavigator.pop();
         }
       },
       child: widget.child,

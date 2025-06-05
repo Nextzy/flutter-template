@@ -74,7 +74,8 @@ class _AppMenuItemState extends AppState<AppMenuItem> {
         if (widget.icon != null)
           widget.icon.toSvgIcon(
             size: iconSize,
-            color: theme.color.iconPrimary,
+            colorFilter:
+                ColorFilter.mode(theme.color.iconPrimary, BlendMode.srcIn),
           ),
         if (widget.avatar != null) widget.avatar!,
         Expanded(
@@ -96,7 +97,8 @@ class _AppMenuItemState extends AppState<AppMenuItem> {
                   if (widget.badge != null) widget.badge!,
                   if (widget.hasSubMenu)
                     Assets.icon.caretRightLight.svgIcon(
-                      color: theme.color.iconPrimary,
+                      colorFilter: ColorFilter.mode(
+                          theme.color.iconPrimary, BlendMode.srcIn),
                       size: 16.0,
                     ),
                 ],

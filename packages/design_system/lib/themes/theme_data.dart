@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:design_system/lib.dart';
 
 class AppThemeData {
@@ -57,11 +56,10 @@ class AppThemeData {
       splashColor: color.overlayActive,
       highlightColor: color.brandPrimary,
       canvasColor: color.bg,
-      dialogBackgroundColor: color.bgPopover,
       cardColor: color.bgPopover,
       scaffoldBackgroundColor: color.bg,
       fontFamily: FontFamily.primaryEnglish,
-      fontFamilyFallback: [
+      fontFamilyFallback: const [
         FontFamily.primaryEnglish,
         FontFamily.primaryThai,
       ],

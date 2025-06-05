@@ -125,7 +125,7 @@ class _AppAvatarState extends AppState<AppAvatar> {
   }) {
     if (hasImageUri) {
       return AppImage(
-        path: path!,
+        path: path,
         borderRadius: BorderRadius.zero,
       );
     }
@@ -193,8 +193,8 @@ class _AppAvatarState extends AppState<AppAvatar> {
     required WidgetSize size,
     required String title,
   }) {
-    List<String> names = title.split(' ');
-    String initials = '';
+    final names = title.split(' ');
+    var initials = '';
 
     if (names.isNotEmpty) {
       initials += names[0][0];

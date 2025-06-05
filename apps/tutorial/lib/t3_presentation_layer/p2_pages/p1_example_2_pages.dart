@@ -41,7 +41,7 @@ class _ExampleMoviePageState extends AppPageBlocWidgetState<
   ) {
     switch (event) {
       case ExampleMoviePageEvent.showFail:
-        // TODO: Handle this case.
+        // TODO(username): Handle this case.
         throw UnimplementedError();
     }
   }

@@ -8,7 +8,7 @@ class AppRichTextEditor extends AppStatefulWidget {
 }
 
 class _AppRichTextEditorState extends AppState<AppRichTextEditor> {
-  FleatherController? _controller;
+  late FleatherController? _controller;
 
   @override
   void initState() {
@@ -17,7 +17,7 @@ class _AppRichTextEditorState extends AppState<AppRichTextEditor> {
     _controller = FleatherController();
   }
 
-  void _onLaunchUrl(String? url) async {
+  Future<void> _onLaunchUrl(String? url) async {
     if (url == null) return;
     final uri = Uri.parse(url);
     final canLaunch = await canLaunchUrl(uri);
@@ -62,8 +62,9 @@ class _AppRichTextEditorState extends AppState<AppRichTextEditor> {
     if (node.value.type == 'icon') {
       final data = node.value.data;
       return Icon(
-        IconData(int.parse(data['codePoint']), fontFamily: data['fontFamily']),
-        color: Color(int.parse(data['color'])),
+        IconData(int.parse(data['codePoint'] as String),
+            fontFamily: data['fontFamily'] as String),
+        color: Color(int.parse(data['color'] as String)),
         size: 18,
       );
     }
@@ -71,11 +72,11 @@ class _AppRichTextEditorState extends AppState<AppRichTextEditor> {
       final sourceType = node.value.data['source_type'];
       ImageProvider? image;
       if (sourceType == 'assets') {
-        image = AssetImage(node.value.data['source']);
+        image = AssetImage(node.value.data['source'] as String);
       } else if (sourceType == 'file') {
-        image = FileImage(File(node.value.data['source']));
+        image = FileImage(File(node.value.data['source'] as String));
       } else if (sourceType == 'url') {
-        image = NetworkImage(node.value.data['source']);
+        image = NetworkImage(node.value.data['source'] as String);
       }
       if (image != null) {
         return Padding(

@@ -11,7 +11,7 @@ class AutoInputHelper<T> extends AppStatelessWidget {
 
   final String? label;
   final List<HelperItem>? helperItems;
-  final Function(T data)? onTapItem;
+  final void Function(T data)? onTapItem;
   final Widget child;
 
   @override
@@ -42,7 +42,7 @@ class AutoInputHelper<T> extends AppStatelessWidget {
     decoration: BoxDecoration(color: Colors.orange.withValues(alpha: 0.7)),
     child: Text(
       label ?? 'Helper',
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
         fontSize: 14,
         fontFamily: 'Inter',
@@ -58,7 +58,7 @@ class AutoInputHelper<T> extends AppStatelessWidget {
     return showMenu<T>(
       context: context,
       color: Colors.white,
-      menuPadding: EdgeInsets.all(0),
+      menuPadding: EdgeInsets.zero,
       position: RelativeRect.fromLTRB(
         details.globalPosition.dx,
         details.globalPosition.dy,
@@ -67,7 +67,7 @@ class AutoInputHelper<T> extends AppStatelessWidget {
       ),
       items: helperItems?.map((item) {
         return PopupMenuItem<T>(
-          value: item.data,
+          value: item.data as T,
           child: Text(item.title),
         );
       }).toList() ??

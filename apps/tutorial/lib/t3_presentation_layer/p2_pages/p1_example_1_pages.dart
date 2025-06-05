@@ -29,7 +29,7 @@ class _ExampleAuthenticationPageState extends AppPageBlocWidgetState<
   ) {
     switch (event) {
       case ExampleAuthenticationPageEvent.showFail:
-        // TODO: Handle this case.
+        // TODO(username): Handle this case.
         throw UnimplementedError();
     }
   }

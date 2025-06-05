@@ -1,3 +1,9 @@
+// Ignore because is not necessary
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: inference_failure_on_function_return_type
+// ignore_for_file: cascade_invocations
+// ignore_for_file:  avoid_dynamic_calls
+
 import 'package:data/lib.dart';
 
 abstract class RpcService {
@@ -61,11 +67,11 @@ abstract class RpcService {
                     'result': result,
                   })
                 : null,
-        error: error != null
+        error: (error != null
             ? fromErrorJson != null
                 ? fromErrorJson(error as Map<String, dynamic>)
                 : error
-            : null,
+            : null) as ERROR?,
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, options);
@@ -120,7 +126,7 @@ abstract class RpcService {
     await _dio.fetch<Map<String, dynamic>>(options);
   }
 
-  //TODO: Need research
+  // TODO(username): Need research
   Future<List<JsonRpcResponse>> batch(
     String path, {
     required List<BatchJsonRpcBody> bodyList,

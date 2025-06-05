@@ -1,6 +1,9 @@
-import 'package:design_system/lib.dart';
+// Ignore because not necessary
+// ignore_for_file: dangling_library_doc_comments
+// import 'package:design_system/lib.dart';
 
-/// TODO:
+
+// TODO(username): Implement
 /// ⏳ Implement onGesture to Avatar
 /// ⏳ Implement click icon and change state
 /// ⏳ Remove hardcode NavItem => pass param instead

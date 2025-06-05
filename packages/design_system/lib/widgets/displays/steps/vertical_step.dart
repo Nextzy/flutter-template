@@ -38,9 +38,7 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
       _currentStep = step;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(step);
-    }
+    widget.onChanged?.call(step);
   }
 
   @override
@@ -57,7 +55,7 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
                 children: [
                   if (widget.style == AppStepStyle.dot &&
                       widget.children.indexOf(child) == 0)
-                    Gap(4),
+                    const Gap(4),
                   GestureContainerLayout(
                     onPress: () => _onTap(widget.children.indexOf(child) + 1),
                     borderRadius: BorderRadius.circular(999),
@@ -77,7 +75,7 @@ class _AppVerticalStepsState extends AppState<AppVerticalSteps> {
                     ),
                 ],
               ),
-              Gap(12),
+              const Gap(12),
               Expanded(
                   child: AppStepItem(
                       size: widgetSize,

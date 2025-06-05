@@ -146,219 +146,168 @@ class AppTextStyleBuilder {
           case FontType.header:
             height = 14.0;
             letterSpace = (1.8 / 100) * size;
-            break;
           case FontType.running:
             height = 14.0;
             letterSpace = 0;
-            break;
           case FontType.code:
             height = 14.0;
             letterSpace = 0;
-            break;
           case FontType.ui:
             height = 14.0;
             letterSpace = 0;
-            break;
           case FontType.table:
             height = 14.0;
             letterSpace = 0;
-            break;
         }
-        break;
       case FontSize.s12:
         size = 12.0;
         switch (_type) {
           case FontType.header:
             height = 16.0;
             letterSpace = (1.8 / 100) * size;
-            break;
           case FontType.running:
             height = 16.0;
             letterSpace = 0;
-            break;
           case FontType.code:
             height = 16.0;
             letterSpace = 0;
-            break;
           case FontType.ui:
             height = 16.0;
             letterSpace = 0;
-            break;
           case FontType.table:
             height = 16.0;
             letterSpace = 0;
-            break;
         }
-        break;
       case FontSize.s14:
         size = 14.0;
         switch (_type) {
           case FontType.header:
             height = 24.0;
             letterSpace = (0.6 / 100) * size;
-            break;
           case FontType.running:
             height = 20.0;
             letterSpace = 0;
-            break;
           case FontType.code:
             height = 24.0;
             letterSpace = 0;
-            break;
           case FontType.ui:
             height = 24;
             letterSpace = 0;
-            break;
           case FontType.table:
             height = 24;
             letterSpace = 0;
-            break;
         }
-        break;
+
       case FontSize.s16:
         size = 16.0;
         switch (_type) {
           case FontType.header:
             height = 24.0;
             letterSpace = (0.6 / 100) * size;
-            break;
           case FontType.running:
             height = 24.0;
             letterSpace = 0;
-            break;
           case FontType.code:
             height = 24.0;
             letterSpace = 0;
-            break;
           case FontType.ui:
             height = 24;
             letterSpace = 0;
-            break;
           case FontType.table:
             height = 24;
             letterSpace = 0;
-            break;
         }
-        break;
+
       case FontSize.s18:
         size = 18.0;
         switch (_type) {
           case FontType.header:
             height = 24.0;
             letterSpace = -(1.4 / 100) * size;
-            break;
           case FontType.running:
             height = 28.0;
             letterSpace = 0;
-            break;
           case FontType.code:
             height = 24.0;
             letterSpace = 0;
-            break;
           case FontType.ui:
             height = 24;
             letterSpace = 0;
-            break;
           case FontType.table:
             height = 24;
             letterSpace = 0;
-            break;
         }
-        break;
+
       case FontSize.s24:
         size = 24.0;
         switch (_type) {
           case FontType.header:
             height = 32.0;
             letterSpace = -(1.9 / 100) * size;
-            break;
           case FontType.running:
             height = 32.0;
             letterSpace = 0;
-            break;
           case FontType.code:
             height = 32.0;
             letterSpace = 0;
-            break;
           case FontType.ui:
             height = 32;
             letterSpace = 0;
-            break;
           case FontType.table:
             height = 32.0;
             letterSpace = 0;
-            break;
         }
-        break;
       case FontSize.s36:
         size = 36.0;
         switch (_type) {
           case FontType.header:
             height = 48.0;
             letterSpace = -(2.2 / 100) * size;
-            break;
           case FontType.running:
             height = 48.0;
             letterSpace = 0;
-            break;
           case FontType.code:
             height = 48.0;
             letterSpace = 0;
-            break;
           case FontType.ui:
             height = 48;
             letterSpace = 0;
-            break;
           case FontType.table:
             height = 48.0;
             letterSpace = 0;
-            break;
         }
-        break;
+
       case FontSize.custom:
         size = _customSize ?? 16.0;
         height = size * 1.25;
         letterSpace = 0;
-        break;
     }
 
     switch (_color) {
       case FontColor.brandPrimary:
         color = context.theme.color.brandPrimaryText;
-        break;
       case FontColor.brandSecondary:
         color = context.theme.color.brandSecondaryText;
-        break;
       case FontColor.brandTertiary:
         color = context.theme.color.brandTertiaryText;
-        break;
       case FontColor.primary:
         color = context.theme.color.textPrimary;
-        break;
       case FontColor.primaryOnColor:
         color = context.theme.color.textPrimaryOnColor;
-        break;
       case FontColor.primaryInverse:
         color = context.theme.color.textPrimaryInverse;
-        break;
       case FontColor.secondary:
         color = context.theme.color.textSecondary;
-        break;
       case FontColor.secondaryInverse:
         color = context.theme.color.textSecondaryInverse;
-        break;
       case FontColor.secondaryOnColor:
         color = context.theme.color.textSecondaryOnColor;
-        break;
       case FontColor.tertiary:
         color = context.theme.color.textTertiary;
-        break;
       case FontColor.tertiaryInverse:
         color = context.theme.color.textTertiaryInverse;
-        break;
       case FontColor.tertiaryOnColor:
         color = context.theme.color.textTertiaryOnColor;
-        break;
     }
 
     return TextStyle(

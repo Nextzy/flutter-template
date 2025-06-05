@@ -1,3 +1,6 @@
+// Ignore because not necessary
+// ignore_for_file: unawaited_futures
+
 import 'package:utils/lib.dart';
 
 class AppUrlScheme {
@@ -40,7 +43,7 @@ class AppUrlScheme {
   static Future<void> launchExternalApp(Uri uri) async {
     if (await canLaunchUrl(uri)) {
       try {
-        bool launched = await launchUrl(
+        final launched = await launchUrl(
           uri,
           mode: LaunchMode.externalApplication,
         ); // Launch the app if installed!

@@ -1,16 +1,15 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
-export 'close_button.dart';
-export 'back_button.dart';
-export 'filled_icon_button.dart';
-export 'only_icon_button.dart';
-export 'shaded_icon_button.dart';
-export 'outline_icon_button.dart';
-export 'destructive_icon_button.dart';
-
 import 'package:design_system/lib.dart';
 
+export 'back_button.dart';
+export 'close_button.dart';
+export 'destructive_icon_button.dart';
+export 'filled_icon_button.dart';
+export 'only_icon_button.dart';
+export 'outline_icon_button.dart';
+export 'shaded_icon_button.dart';
+
 class AppIconButton extends AppStatefulWidget {
-  AppIconButton({
+  const AppIconButton({
     super.key,
     super.size,
     super.themeMode,
@@ -36,7 +35,7 @@ class AppIconButton extends AppStatefulWidget {
   final Color? color;
   final Border? border;
   final BorderRadius? borderRadius;
-  late final String? icon;
+  final String? icon;
   final bool loading;
   final bool disabled;
   final bool hasColorFilter;

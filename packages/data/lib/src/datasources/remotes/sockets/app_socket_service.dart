@@ -1,13 +1,12 @@
 import 'package:data/lib.dart';
 
 abstract class AppSocketService implements RequestSocketService {
-  final AppSocketClient _client;
-
-  Timer? _timerCheckConnection;
-
   AppSocketService({
     required AppSocketClient client,
   }) : _client = client;
+
+  final AppSocketClient _client;
+  Timer? _timerCheckConnection;
 
   void startCheckConnectionInterval() {
     _timerCheckConnection?.cancel();

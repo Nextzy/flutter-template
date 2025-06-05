@@ -15,9 +15,9 @@ extension StringFormatExtension on String? {
   Future<String> parseToPhoneNumberIfCan() async {
     if (this == null) return '';
     try {
-      Map<String, dynamic> map = await parse(this!);
+      final map = await parse(this!);
 
-      return map['e164'];
+      return map['e164'] as String;
     } catch (e, stacktrace) {
       Log.w(e, stackTrace: stacktrace);
 
@@ -27,8 +27,8 @@ extension StringFormatExtension on String? {
 
   Future<String> getCountryCode() async {
     if (this == null) return '';
-    Map<String, dynamic> map = await parse(this!);
+    final map = await parse(this!);
 
-    return map['country_code'];
+    return map['country_code'] as String;
   }
 }

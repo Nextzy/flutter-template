@@ -293,8 +293,9 @@ class _AppTextFieldState extends AppState<AppTextField> {
   void dispose() {
     _showClearButtonNotifier.dispose();
     _controller.dispose();
-    _focus.dispose();
-    _focus.removeListener(_onFocusChange);
+    _focus
+      ..dispose()
+      ..removeListener(_onFocusChange);
     super.dispose();
   }
 
@@ -372,7 +373,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
                       child: Center(
                         child: TextFormField(
                           style: textStyle,
-                          initialValue: widget.text?.isNotEmpty == true
+                          initialValue: widget.text?.isNotEmpty ?? false
                               ? widget.text
                               : null,
                           textAlignVertical: TextAlignVertical.top,
@@ -649,7 +650,7 @@ class _AppTextFieldState extends AppState<AppTextField> {
     required BorderRadius? borderRadius,
   }) {
     final defaultBorderRadius = borderRadius ?? theme.borderRadius.md;
-    Color defaultColorBorder = switch (style) {
+    var defaultColorBorder = switch (style) {
       AppTextFieldStyle.outline => theme.color.border,
       AppTextFieldStyle.shaded => Colors.transparent,
     };
@@ -657,10 +658,8 @@ class _AppTextFieldState extends AppState<AppTextField> {
     switch (state) {
       case FullWidgetState.hovered:
         defaultColorBorder = theme.color.borderHover;
-        break;
       case FullWidgetState.focused:
         defaultColorBorder = theme.color.borderActive;
-        break;
       case FullWidgetState.pressed:
         break;
       case FullWidgetState.dragged:
@@ -674,10 +673,8 @@ class _AppTextFieldState extends AppState<AppTextField> {
           AppTextFieldStyle.outline => theme.color.border,
           AppTextFieldStyle.shaded => Colors.transparent,
         };
-        break;
       case FullWidgetState.fail:
         defaultColorBorder = theme.color.borderNegative;
-        break;
       case _:
         break;
     }
@@ -685,13 +682,10 @@ class _AppTextFieldState extends AppState<AppTextField> {
     switch (feedbackState) {
       case FeedbackState.negative:
         defaultColorBorder = theme.color.borderNegative;
-        break;
       case FeedbackState.warning:
         defaultColorBorder = theme.color.borderWarning;
-        break;
       case FeedbackState.positive:
         defaultColorBorder = theme.color.borderPositive;
-        break;
       case FeedbackState.info:
         break;
       case null:

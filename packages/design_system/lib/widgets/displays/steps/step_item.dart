@@ -24,7 +24,7 @@ class AppStepItem extends AppStatelessWidget {
               fontSize: fontSize,
               fontWeight: FontWeight.w600),
         ),
-        if (description.isNotNullOrBlank) Gap(6),
+        if (description.isNotNullOrBlank) const Gap(6),
         AppText(
           description,
           style: TextStyle(

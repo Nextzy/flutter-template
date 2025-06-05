@@ -110,17 +110,17 @@ class _AppTabState extends AppState<AppTab> {
         AppTabStyle.shade => context.theme.borderRadius.md,
         AppTabStyle.outlined => widget.vertical
             ? widget.first
-                ? BorderRadius.vertical(top: Radius.circular(6))
+                ? const BorderRadius.vertical(top: Radius.circular(6))
                 : widget.last
-                    ? BorderRadius.vertical(bottom: Radius.circular(6))
+                    ? const BorderRadius.vertical(bottom: Radius.circular(6))
                     : context.theme.borderRadius.zero
             : widget.first
-                ? BorderRadius.only(
+                ? const BorderRadius.only(
                     topLeft: Radius.circular(6),
                     bottomLeft: Radius.circular(6),
                   )
                 : widget.last
-                    ? BorderRadius.only(
+                    ? const BorderRadius.only(
                         topRight: Radius.circular(6),
                         bottomRight: Radius.circular(6),
                       )

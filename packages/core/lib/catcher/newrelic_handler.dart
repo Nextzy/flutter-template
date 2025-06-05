@@ -1,4 +1,3 @@
-  
 import 'package:catcher_2/model/platform_type.dart';
 import 'package:core/lib.dart';
 import 'package:newrelic_mobile/config.dart' as NewRelic;
@@ -34,7 +33,8 @@ class NewRelicHandler extends ReportHandler {
   Future<bool> handle(Report report, BuildContext? context) async {
     try {
       _printLog('⏳ Logging to NewRelic...');
-      _newrelic.recordError(report.error, report.stackTrace);
+      _newrelic.recordError(
+          report.error as Object, report.stackTrace as StackTrace?);
       _printLog('✅ Logged to NewRelic!');
       return true;
     } catch (exception, stackTrace) {
@@ -73,37 +73,42 @@ class NewRelicHandler extends ReportHandler {
     bool distributedTracingEnabled = true,
     bool newEventSystemEnabled = false,
   }) {
-    String appToken = '';
+    var appToken = '';
     if (PlatformChecker.isAndroidNative) {
       appToken = androidToken;
     } else if (PlatformChecker.isIosNative) {
       appToken = iosToken;
     }
-    NewRelic.Config config = NewRelic.Config(
+    final config = NewRelic.Config(
       accessToken: appToken,
-      //Android Specific
+      // Android Specific
       // Optional:Enable or disable collection of event data.
       analyticsEventEnabled: analyticsEventEnabled,
 
-      // Optional:Enable or disable reporting network and HTTP request errors to the MobileRequestError event type.
+      // Optional:Enable or disable reporting network and HTTP request errors
+      // to the MobileRequestError event type.
       networkErrorRequestEnabled: networkErrorRequestEnabled,
 
-      // Optional:Enable or disable reporting successful HTTP requests to the MobileRequest event type.
+      // Optional:Enable or disable reporting successful HTTP requests to
+      // the MobileRequest event type.
       networkRequestEnabled: networkRequestEnabled,
 
       // Optional:Enable or disable crash reporting.
       crashReportingEnabled: crashReportingEnabled,
 
-      // Optional:Enable or disable interaction tracing. Trace instrumentation still occurs, but no traces are harvested. This will disable default and custom interactions.
+      // Optional:Enable or disable interaction tracing. Trace instrumentation
+      // still occurs, but no traces are harvested. This will disable default
+      // and custom interactions.
       interactionTracingEnabled: interactionTracingEnabled,
 
-      // Optional:Enable or disable capture of HTTP response bodies for HTTP error traces, and MobileRequestError events.
+      // Optional:Enable or disable capture of HTTP response bodies for
+      // HTTP error traces, and MobileRequestError events.
       httpResponseBodyCaptureEnabled: httpResponseBodyCaptureEnabled,
 
       // Optional: Enable or disable agent logging.
       loggingEnabled: loggingEnabled,
 
-      //iOS Specific
+      // iOS Specific
       // Optional:Enable/Disable automatic instrumentation of WebViews
       webViewInstrumentation: webViewInstrumentation,
 
@@ -113,10 +118,12 @@ class NewRelicHandler extends ReportHandler {
       // Optional:Enable/Disable automatic instrumentation of Http Request
       httpInstrumentationEnabled: httpInstrumentationEnabled,
 
-      // Optional : Enable or disable reporting data using different endpoints for US government clients
+      // Optional : Enable or disable reporting data using different endpoints
+      // for US government clients
       fedRampEnabled: fedRampEnabled,
 
-      // Optional: Enable or disable offline data storage when no internet connection is available.
+      // Optional: Enable or disable offline data storage when no internet
+      // connection is available.
       offlineStorageEnabled: offlineStorageEnabled,
 
       // iOS Specific
@@ -124,7 +131,8 @@ class NewRelicHandler extends ReportHandler {
       backgroundReportingEnabled: backgroundReportingEnabled,
 
       // iOS Specific
-      // Optional: Enable or disable to use our new, more stable, event system for iOS agent.
+      // Optional: Enable or disable to use our new, more stable, event system
+      // for iOS agent.
       newEventSystemEnabled: newEventSystemEnabled,
 
       // Optional: Enable or disable distributed tracing.

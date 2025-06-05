@@ -42,9 +42,7 @@ class _AppRadioTileState<T> extends AppState<AppRadioTile<T>> {
         _value = value;
       });
 
-      if (widget.onChanged != null) {
-        widget.onChanged!(value);
-      }
+      widget.onChanged?.call(value);
     }
   }
 
@@ -76,12 +74,13 @@ class _AppRadioTileState<T> extends AppState<AppRadioTile<T>> {
                   groupValue: _value,
                   onChanged: widget.disabled ? null : _onChanged,
                   activeColor: activeColor,
-                  overlayColor: WidgetStatePropertyAll(Colors.transparent),
+                  overlayColor:
+                      const WidgetStatePropertyAll(Colors.transparent),
                 ),
               ],
             )
           else
-            Gap(32),
+            const Gap(32),
           ColumnLayout(
               mainAxisAlignment: MainAxisAlignment.center,
               gap: 4,

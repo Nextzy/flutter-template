@@ -46,9 +46,9 @@ class AppPermission {
     if (context == null) {
       return _requestCamera().isGranted;
     } else {
-      final PermissionStatus status = await all[tag]!.status;
+      final status = await all[tag]!.status;
       if (status.isDenied) {
-        //TODO: Show modal with context
+        // TODO(username): Show modal with context
         throw UnimplementedError();
       } else {
         return Future.value(true);

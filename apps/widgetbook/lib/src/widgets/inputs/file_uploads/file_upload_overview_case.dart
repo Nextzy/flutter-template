@@ -3,7 +3,7 @@ import 'package:widgetbook_app/widgetbook.dart';
 class OverviewFileUploadWidgetCase extends WidgetbookScrollableUseCase {
   OverviewFileUploadWidgetCase({super.name = 'Overview'})
       : super(
-          builder: (context) => SectionH1Widgetbook(
+          builder: (context) => const SectionH1Widgetbook(
             title: 'File Upload',
             children: [
               AppFileUpload(

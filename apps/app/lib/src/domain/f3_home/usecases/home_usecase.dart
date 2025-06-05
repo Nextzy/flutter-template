@@ -8,6 +8,6 @@ class HomeUsecase {
   final AppRepository _repo;
 
   Stream<Either<Failure, String>> call() {
-    return Stream.empty();
+    return const Stream.empty();
   }
 }

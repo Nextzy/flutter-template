@@ -121,8 +121,10 @@ class _AppDropdownMenuItemState extends AppState<AppDropdownMenu> {
                             if (dropdownState.startIcon != null)
                               dropdownState.startIcon.toSvgIcon(
                                 size: 20,
-                                color: dropdownState.startIconColor ??
-                                    theme.color.textSecondary,
+                                colorFilter: ColorFilter.mode(
+                                    dropdownState.startIconColor ??
+                                        theme.color.textSecondary,
+                                    BlendMode.srcIn),
                               ),
                             AppText(
                               dropdownState.textTitle,
@@ -143,8 +145,10 @@ class _AppDropdownMenuItemState extends AppState<AppDropdownMenu> {
                       if (dropdownState.endIcon != null)
                         dropdownState.endIcon.toSvgIcon(
                           size: 20,
-                          color: dropdownState.endIconColor ??
-                              theme.color.textSecondary,
+                          colorFilter: ColorFilter.mode(
+                              dropdownState.endIconColor ??
+                                  theme.color.textSecondary,
+                              BlendMode.srcIn),
                         ),
                     ],
                   ),

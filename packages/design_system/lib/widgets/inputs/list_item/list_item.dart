@@ -1,6 +1,6 @@
 import 'package:design_system/lib.dart';
 
-/// TODO:
+// TODO(username): Implement
 /// ⏳ Implement label
 /// ⏳ Implement edit state
 class AppListItem extends AppStatelessWidget {

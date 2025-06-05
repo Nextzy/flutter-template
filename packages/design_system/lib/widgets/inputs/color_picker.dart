@@ -23,7 +23,7 @@ class _AppColorPickerState extends AppState<AppColorPicker> {
   @override
   void initState() {
     super.initState();
-    _value = widget.initialColor ?? Color(0xff000000);
+    _value = widget.initialColor ?? const Color(0xff000000);
   }
 
   void _onChange(Color color) {
@@ -33,9 +33,7 @@ class _AppColorPickerState extends AppState<AppColorPicker> {
   }
 
   void _onSelect() {
-    if (widget.onChanged != null) {
-      widget.onChanged!(_value);
-    }
+    widget.onChanged?.call(_value);
   }
 
   @override
@@ -50,8 +48,8 @@ class _AppColorPickerState extends AppState<AppColorPicker> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              titlePadding: const EdgeInsets.all(0),
-              contentPadding: const EdgeInsets.all(0),
+              titlePadding: EdgeInsets.zero,
+              contentPadding: EdgeInsets.zero,
               content: SingleChildScrollView(
                 child: ColorPicker(
                   pickerColor: _value,

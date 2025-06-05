@@ -10,7 +10,7 @@ class EmbedYoutube extends AppStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String iframeHTML = '''
+    final iframeHTML = '''
     <!DOCTYPE html>
     <html>
     <head>

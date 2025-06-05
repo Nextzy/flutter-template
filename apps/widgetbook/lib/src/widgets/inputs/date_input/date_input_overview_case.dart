@@ -3,7 +3,7 @@ import 'package:widgetbook_app/widgetbook.dart';
 class OverviewDateInputWidgetCase extends WidgetbookScrollableUseCase {
   OverviewDateInputWidgetCase({super.name = 'Overview'})
       : super(
-          builder: (context) => SectionH1Widgetbook(
+          builder: (context) => const SectionH1Widgetbook(
             title: 'Date Input',
             children: [
               AppDateInput(

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_declarations
-
 import 'package:change_application_name/application.dart';
 import 'package:change_application_name/environments/env_uat.dart';
 import 'package:change_application_name/firebase_options_uat.dart';
@@ -7,7 +5,7 @@ import 'package:change_application_name/firebase_options_uat.dart';
 void main() async {
   await setupMainUat();
   await setupFirebaseUat();
-  runApplication();
+  await runApplication();
 }
 
 Future<void> setupMainUat() async {
@@ -53,7 +51,7 @@ Future<void> runApplication() async {
     ),
     runAppFunction: () async {
       runApp(
-        MyApplication(),
+        const MyApplication(),
       );
     },
   );

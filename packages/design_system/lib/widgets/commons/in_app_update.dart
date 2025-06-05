@@ -29,7 +29,7 @@ class _AppUpgradeAlertState extends State<InApplicationUpdate> {
   @override
   Widget build(BuildContext context) {
     /// Check force update
-    final bool forceUpdate = widget.checker.forceUpdate;
+    final forceUpdate = widget.checker.forceUpdate;
     if (forceUpdate) {
       return ForceUpdatePage(
         packageInfo: widget.packageInfo,
@@ -37,7 +37,7 @@ class _AppUpgradeAlertState extends State<InApplicationUpdate> {
     }
 
     /// Check maintenance
-    final bool isMaintenance = widget.checker.isMaintenance;
+    final isMaintenance = widget.checker.isMaintenance;
     if (isMaintenance) {
       return const MaintenancePage();
     }
@@ -62,13 +62,13 @@ class _AppUpgradeAlertState extends State<InApplicationUpdate> {
 
   Future<void> _requestSoftUpdateAndroid() async {
     if (Platform.isAndroid) {
-      InAppUpdateManager manager = InAppUpdateManager();
-      AppUpdateInfo? appUpdateInfo = await manager.checkForUpdate();
+      final manager = InAppUpdateManager();
+      final appUpdateInfo = await manager.checkForUpdate();
       if (appUpdateInfo == null) return; //Exception
       if (appUpdateInfo.updateAvailability ==
           UpdateAvailability.developerTriggeredUpdateInProgress) {
         ///If an in-app update is already running, resume the update.
-        String? message =
+        final message =
             await manager.startAnUpdate(type: AppUpdateType.immediate);
         Log.d(message);
       } else if (appUpdateInfo.updateAvailability ==
@@ -76,12 +76,12 @@ class _AppUpgradeAlertState extends State<InApplicationUpdate> {
         ///Update available
         if (appUpdateInfo.immediateAllowed) {
           Log.d('Start an immediate update');
-          String? message =
+          final message =
               await manager.startAnUpdate(type: AppUpdateType.immediate);
           Log.d(message);
         } else if (appUpdateInfo.flexibleAllowed) {
           debugPrint('Start an flexible update');
-          String? message =
+          final message =
               await manager.startAnUpdate(type: AppUpdateType.flexible);
           Log.d(message);
         } else {
@@ -93,7 +93,7 @@ class _AppUpgradeAlertState extends State<InApplicationUpdate> {
 
   Future<void> _requestSoftUpdateIos() async {
     if (Platform.isIOS) {
-      VersionInfo versionInfo = await UpgradeVersion.getiOSStoreVersion(
+      final versionInfo = await UpgradeVersion.getiOSStoreVersion(
         packageInfo: await PackageManager.getPackageInfo(),
       );
       Log.d(versionInfo.toJson().toString());

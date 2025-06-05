@@ -1,4 +1,4 @@
-import 'app_env_fields.dart';
+import 'package:change_application_name/environments/app_env_fields.dart';
 
 const String? appEnvironment = String.fromEnvironment('ENVIRONMENT') != ''
     ? String.fromEnvironment('ENVIRONMENT')

@@ -2,8 +2,8 @@ import 'package:change_application_name/application.dart';
 
 enum AuthenticationEvent { signInWithEmail }
 
-class AuthenticationBloc
-    extends AppNullableWidgetStateBloc<AuthenticationEvent, WidgetDataState> {
+class AuthenticationBloc extends AppNullableWidgetStateBloc<AuthenticationEvent,
+    WidgetDataState<dynamic>> {
   AuthenticationBloc({
     SignInWithEmailAndPasswordUsecase? signInWithEmailUsecase,
   }) : _signInWithEmailUsecase =
@@ -15,7 +15,7 @@ class AuthenticationBloc
   Future<void> onBlocEvent(BlocEvent<AuthenticationEvent> event) async {
     switch (event.name) {
       case AuthenticationEvent.signInWithEmail:
-        final data = event.data as ({String email, String password});
+        final data = event.data! as ({String email, String password});
         return _signInWithEmailAndPassword(
           email: data.email,
           password: data.password,

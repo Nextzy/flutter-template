@@ -2,8 +2,8 @@ import 'package:core/core.dart' as core;
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 
-export 'key_value_database.dart';
 export 'firestore_database_service.dart';
+export 'key_value_database.dart';
 
 part 'generated/databases.g.dart';
 
@@ -66,7 +66,7 @@ class AppLocalDatabase extends _$AppLocalDatabase {
   }
 
   Future<SettingTableData> loadSetting() async {
-    List<SettingTableData> settingList = await managers.settingTable.get();
+    var settingList = await managers.settingTable.get();
     if (settingList.isEmpty) {
       await managers.settingTable.create(
         (o) => o(

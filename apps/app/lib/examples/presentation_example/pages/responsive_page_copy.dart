@@ -17,13 +17,13 @@ class _SplashScreenState extends AppPageState<ExampleResponsivePage> {
       child: (platform, breakpoint) {
         if (breakpoint == AppBreakpoint.mobilePortrait ||
             breakpoint == AppBreakpoint.mobileLandscape) {
-          return ExampleResponsiveMobilePage();
+          return const ExampleResponsiveMobilePage();
         } else if (breakpoint == AppBreakpoint.tablet) {
-          return ExampleResponsiveTabletPage();
+          return const ExampleResponsiveTabletPage();
         } else if (breakpoint == AppBreakpoint.desktop) {
-          return ExampleResponsiveDesktopPage();
+          return const ExampleResponsiveDesktopPage();
         }
-        return ExampleResponsiveDesktopPage();
+        return const ExampleResponsiveDesktopPage();
       },
     );
   }

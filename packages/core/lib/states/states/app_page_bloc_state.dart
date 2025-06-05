@@ -1,9 +1,8 @@
 import 'package:core/lib.dart';
 
-abstract class AppPageBlocWidgetState<
-    WIDGET extends StatefulWidget,
-    BLOC extends BlocBase<WidgetDataState<DATA>>,
-    DATA> extends AppNullableWidgetBlocState<WIDGET, BLOC, DATA> with AutoRouteAware {
+abstract class AppPageBlocWidgetState<WIDGET extends StatefulWidget,
+        BLOC extends BlocBase<WidgetDataState<DATA>>, DATA>
+    extends AppNullableWidgetBlocState<WIDGET, BLOC, DATA> with AutoRouteAware {
   AutoRouteObserver? _observer;
 
   @override
@@ -46,13 +45,10 @@ abstract class AppPageBlocWidgetState<
         switch (event) {
           case AppDialogEvent.showFullLoadingLocked:
             AppLoadingDialog.showFullLoadingLocked(context);
-            break;
           case AppDialogEvent.dismissAll:
             AppLoadingDialog.dismissAll(context);
-            break;
           case _:
             listenEvent?.call(context, event, data);
-            break;
         }
       },
       listenState: listenState,

@@ -40,9 +40,7 @@ class _AppStepperState extends AppState<AppStepper> {
   void _onChanged() {
     _controller.text = _value.toString();
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(_value);
-    }
+    widget.onChanged?.call(_value);
   }
 
   void _increment() {
@@ -66,7 +64,7 @@ class _AppStepperState extends AppState<AppStepper> {
   }
 
   void _onTextChange(String value) {
-    final int newValue = int.tryParse(value) ?? widget.minValue;
+    final newValue = int.tryParse(value) ?? widget.minValue;
 
     if (newValue >= widget.minValue && newValue <= widget.maxValue) {
       setState(() {
@@ -125,7 +123,7 @@ class _AppStepperState extends AppState<AppStepper> {
                 ? BorderRadius.circular(6)
                 : context.theme.borderRadius.zero,
             inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              FilteringTextInputFormatter.allow(RegExp('[0-9]')),
             ],
           ),
         ),
@@ -173,13 +171,13 @@ class _AppStepperState extends AppState<AppStepper> {
 
   BorderRadius get borderRadiusLeft => widget.style == AppTextFieldStyle.shaded
       ? BorderRadius.circular(6)
-      : BorderRadius.only(
+      : const BorderRadius.only(
           topLeft: Radius.circular(6),
           bottomLeft: Radius.circular(6),
         );
 
   BorderRadius get borderRadiusRight => widget.style == AppTextFieldStyle.shaded
       ? BorderRadius.circular(6)
-      : BorderRadius.only(
+      : const BorderRadius.only(
           topRight: Radius.circular(6), bottomRight: Radius.circular(6));
 }

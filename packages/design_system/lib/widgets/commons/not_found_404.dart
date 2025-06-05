@@ -8,9 +8,9 @@ class NotFoundPage extends AppPage {
   static const String name = 'NotFoundPage';
 
   static Widget create({Key? key}) => //
-  NotFoundPage._(
-    key: const Key(name),
-  );
+      const NotFoundPage._(
+        key: Key(name),
+      );
 
   @override
   State<NotFoundPage> createState() => _NotFoundPageState();
@@ -29,4 +29,3 @@ class _NotFoundPageState extends AppState<NotFoundPage> {
     );
   }
 }
-

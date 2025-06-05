@@ -34,7 +34,7 @@ class FileUtil {
     String? directoryPath,
   }) async {
     if (PlatformChecker.isNotWeb) {
-      final String appDirPath =
+      final appDirPath =
           directoryPath ?? (await getApplicationDocumentsDirectory()).path;
       final folderPath = '$appDirPath/vCard/exports/';
       final filePath = '$folderPath/$fileName';
@@ -45,7 +45,7 @@ class FileUtil {
         Log.d('created directory');
       }
 
-      File file = File(filePath);
+      final file = File(filePath);
       try {
         Log.i('Content: $content');
 

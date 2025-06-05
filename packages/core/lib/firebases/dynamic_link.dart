@@ -1,4 +1,3 @@
-
 // class AppDynamicLink {
 //   AppDynamicLink._({required FirebaseDynamicLinks firebaseLink})
 //       : _firebaseLink = firebaseLink;
@@ -56,20 +55,20 @@
 //     Log.success(webLink.toString());
 //
 //     return DynamicLinkParameters(
-//       uriPrefix: prefix,
-//       link: webLink,
-//       longDynamicLink: longDynamicLink,
-//       androidParameters: await _getAndroidParam(fallbackUrl: webLink),
-//       iosParameters: await _getIOSParam(fallbackUrl: webLink),
-//       socialMetaTagParameters: const SocialMetaTagParameters(
-//         title: 'Template',
-//         description: 'Click to see profile detail.'
-//         // imageUrl: Uri.parse("https://example.com/image.png"),
-//       )
-//     );
+//         uriPrefix: prefix,
+//         link: webLink,
+//         longDynamicLink: longDynamicLink,
+//         androidParameters: await _getAndroidParam(fallbackUrl: webLink),
+//         iosParameters: await _getIOSParam(fallbackUrl: webLink),
+//         socialMetaTagParameters: const SocialMetaTagParameters(
+//             title: 'Template', description: 'Click to see profile detail.'
+//             // imageUrl: Uri.parse("https://example.com/image.png"),
+//             ));
 //   }
 //
-//   Future<AndroidParameters> _getAndroidParam({required Uri fallbackUrl}) async {
+//   Future<AndroidParameters> _getAndroidParam({
+//     required Uri fallbackUrl,
+//   }) async {
 //     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 //     String packageId = packageInfo.packageName;
 //     Log.i('Android Package Id: $packageId');

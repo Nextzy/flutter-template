@@ -18,11 +18,11 @@ class AppSidebar extends AppStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _height = MediaQuery.sizeOf(context).height;
+    final heightTmp = MediaQuery.sizeOf(context).height;
 
     return ContainerLayout(
       width: width ?? 240,
-      height: height ?? _height,
+      height: height ?? heightTmp,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
         color: context.theme.color.bgSurface1,

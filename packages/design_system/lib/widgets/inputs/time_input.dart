@@ -68,7 +68,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
 
   void _onHoursChange(String value) {
     if (value.isNotEmpty) {
-      final int hours = int.parse(value);
+      final hours = int.parse(value);
       if (hours <= 12) {
         setState(() {
           _hours = value;
@@ -91,7 +91,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
 
   void _onMinutesChange(String value) {
     if (value.isNotEmpty) {
-      final int minutes = int.parse(value);
+      final minutes = int.parse(value);
       if (minutes <= 59) {
         setState(() {
           _minutes = value;
@@ -125,14 +125,12 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
   }
 
   void _onChange() {
-    if (widget.onChanged != null) {
-      widget.onChanged!({
-        'hours': _hours,
-        'minutes': _minutes,
-        'unit': _unit,
-        'timeZone': _timeZone,
-      });
-    }
+    widget.onChanged?.call({
+      'hours': _hours,
+      'minutes': _minutes,
+      'unit': _unit,
+      'timeZone': _timeZone,
+    });
   }
 
   @override
@@ -309,7 +307,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
                               fontWeight: FontWeight.w400)),
                     );
                   }).toList(),
-                  underline: ContainerLayout(),
+                  underline: const ContainerLayout(),
                   isDense: true,
                 ),
               )

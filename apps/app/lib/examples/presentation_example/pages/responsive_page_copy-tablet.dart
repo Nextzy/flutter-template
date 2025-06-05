@@ -4,10 +4,12 @@ class ExampleResponsiveTabletPage extends AppPage {
   const ExampleResponsiveTabletPage({super.key});
 
   @override
-  State<ExampleResponsiveTabletPage> createState() => _SplashTabletScreenState();
+  State<ExampleResponsiveTabletPage> createState() =>
+      _SplashTabletScreenState();
 }
 
-class _SplashTabletScreenState extends AppPageState<ExampleResponsiveTabletPage> {
+class _SplashTabletScreenState
+    extends AppPageState<ExampleResponsiveTabletPage> {
   @override
   Widget build(BuildContext context) {
     return Container();

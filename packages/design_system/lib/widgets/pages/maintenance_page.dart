@@ -12,7 +12,7 @@ class MaintenancePage extends AppPage {
 class _MaintenancePageState extends AppState<MaintenancePage> {
   @override
   Widget build(BuildContext context) {
-    //TODO: Implement maintenance page
-    return ContainerLayout();
+    // TODO(username): Implement maintenance page
+    return const ContainerLayout();
   }
 }

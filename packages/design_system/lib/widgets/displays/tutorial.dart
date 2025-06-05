@@ -10,6 +10,6 @@ class AppTutorial extends AppStatefulWidget {
 class _AppTutorialState extends AppState<AppTutorial> {
   @override
   Widget build(BuildContext context) {
-    return ContainerLayout();
+    return const ContainerLayout();
   }
 }

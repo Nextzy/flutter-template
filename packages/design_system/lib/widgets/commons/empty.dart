@@ -56,13 +56,14 @@ class AppEmpty extends AppStatelessWidget {
             ),
           if (icon != null && accent != AppEmptyAccent.medium)
             icon.toSvgIcon(
-              color: _getContentColor(context, accent: accent),
+              colorFilter: ColorFilter.mode(
+                  _getContentColor(context, accent: accent), BlendMode.srcIn),
               size: 24.0,
             ),
           if (image != null)
             ContainerLayout(
               maxWidth: 256,
-              child: image!,
+              child: image,
             ),
           ColumnLayout(
             gap: _getGap(size),
@@ -262,7 +263,8 @@ class AppEmpty extends AppStatelessWidget {
           ),
           child: Center(
             child: icon.toSvgIcon(
-              color: _getContentColor(context, accent: accent),
+              colorFilter: ColorFilter.mode(
+                  _getContentColor(context, accent: accent), BlendMode.srcIn),
               size: 24,
             ),
           ),
@@ -341,8 +343,10 @@ class AppEmpty extends AppStatelessWidget {
               .build(context),
       };
 
-  Color _getContentColor(BuildContext context,
-          {required AppEmptyAccent accent}) =>
+  Color _getContentColor(
+    BuildContext context, {
+    required AppEmptyAccent accent,
+  }) =>
       switch (accent) {
         AppEmptyAccent.light => context.theme.color.textSecondary,
         AppEmptyAccent.medium => context.theme.color.textPrimary,

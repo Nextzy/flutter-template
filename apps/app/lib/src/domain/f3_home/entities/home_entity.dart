@@ -8,7 +8,8 @@ abstract class HomeEntity with _$HomeEntity {
     required String yourData,
   }) = _HomeEntity;
 
-  factory HomeEntity.fromResponse(Response response) => HomeEntity(
+  factory HomeEntity.fromResponse(Response response) =>
+      const HomeEntity(
         yourData: '',
       );
 }

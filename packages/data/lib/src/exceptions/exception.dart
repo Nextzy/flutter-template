@@ -10,13 +10,6 @@ class AppException implements Exception {
     this.errors,
   });
 
-  final int? code;
-  final String? message;
-  final String? userMessage;
-  final String? developerMessage;
-  final List<AppException>? errors;
-  final StackTrace? stacktrace;
-
   factory AppException.fromError(Error? error) {
     return AppException(
       developerMessage: error?.toString(),
@@ -28,7 +21,8 @@ class AppException implements Exception {
     final response = exception?.response;
 
     if (response != null) {
-      final errorResponse = ErrorResponse.fromJson(exception?.response?.data);
+      final errorResponse = ErrorResponse.fromJson(
+          exception?.response?.data as Map<String, dynamic>);
 
       return AppException(
         code: errorResponse.code,
@@ -61,6 +55,13 @@ class AppException implements Exception {
     );
   }
 
+  final int? code;
+  final String? message;
+  final String? userMessage;
+  final String? developerMessage;
+  final List<AppException>? errors;
+  final StackTrace? stacktrace;
+
   bool get isClientException => (code ?? 0) >= 400 && (code ?? 0) < 500;
 
   bool get isServerException => (code ?? 0) >= 500 && (code ?? 0) < 600;
@@ -80,7 +81,7 @@ class AppException implements Exception {
 
   @override
   String toString() {
-    String msg = '';
+    var msg = '';
     if (code != null) msg += '>>Code: $code\n';
     if (message != null && message!.isNotEmpty) {
       msg += '>>Message: $message\n';
@@ -89,7 +90,7 @@ class AppException implements Exception {
       msg += '>>Description: $developerMessage\n';
     }
     errors?.forEach(
-      (error) => msg += '   ${error.toString()}]\n',
+      (error) => msg += '   $error]\n',
     );
     return msg;
   }

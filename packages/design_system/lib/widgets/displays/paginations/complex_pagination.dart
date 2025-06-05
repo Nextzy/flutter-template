@@ -55,9 +55,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
         _currentPage = page;
       });
 
-      if (widget.onChanged != null) {
-        widget.onChanged!(page);
-      }
+      widget.onChanged?.call(page);
     }
   }
 
@@ -65,9 +63,9 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
   Widget build(BuildContext context) {
     final t = Translations.of(context);
 
-    int totalPage = (widget.totalItems / _itemsPerPage).ceil();
-    int startItem = ((_currentPage - 1) * _itemsPerPage) + 1;
-    int endItem = (startItem + _itemsPerPage - 1).clamp(1, widget.totalItems);
+    final totalPage = (widget.totalItems / _itemsPerPage).ceil();
+    final startItem = ((_currentPage - 1) * _itemsPerPage) + 1;
+    final endItem = (startItem + _itemsPerPage - 1).clamp(1, widget.totalItems);
 
     return WrapLayout(
       alignment: WrapAlignment.spaceBetween,
@@ -102,7 +100,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                             fontWeight: FontWeight.w400)),
                   );
                 }).toList(),
-                underline: ContainerLayout(),
+                underline: const ContainerLayout(),
                 isDense: true,
               ),
             ),
@@ -153,7 +151,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                                 fontWeight: FontWeight.w400)),
                       );
                     }).toList(),
-                    underline: ContainerLayout(),
+                    underline: const ContainerLayout(),
                     isDense: true,
                   ),
                 ),
@@ -222,7 +220,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
       : context.theme.color.textPrimary;
 
   Widget _buildNavigationButton(
-      BuildContext context, String text, onPress, bool disabled) {
+      BuildContext context, String text, VoidCallback? onPress, bool disabled) {
     return ContainerLayout(
       height: height,
       decoration: BoxDecoration(

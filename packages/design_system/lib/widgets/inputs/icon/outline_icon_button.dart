@@ -1,15 +1,14 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
-export 'close_button.dart';
+import 'package:design_system/lib.dart';
+
 export 'back_button.dart';
+export 'close_button.dart';
+export 'destructive_icon_button.dart';
 export 'filled_icon_button.dart';
 export 'only_icon_button.dart';
 export 'shaded_icon_button.dart';
-export 'destructive_icon_button.dart';
-
-import 'package:design_system/lib.dart';
 
 class AppOutlineIconButton extends AppIconButton {
-  AppOutlineIconButton({
+  const AppOutlineIconButton({
     super.key,
     super.size,
     super.themeMode,

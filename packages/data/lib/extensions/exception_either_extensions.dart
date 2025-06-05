@@ -12,9 +12,10 @@ extension AppExceptionEitherStreamExtensions<T>
       handleData:
           (Either<AppException, T> value, EventSink<Either<Failure, B>> sink) {
         if (value.isException) {
-          sink.add(Left(
-              exception?.call(value.exception) ?? value.exception.toFailure()));
-          sink.close();
+          sink
+            ..add(Left(exception?.call(value.exception) ??
+                value.exception.toFailure()))
+            ..close();
         }
         sink.add(Right(data.call(value.data)));
       },
@@ -29,9 +30,10 @@ extension AppExceptionEitherStreamExtensions<T>
       handleData:
           (Either<AppException, T> value, EventSink<Either<Failure, T>> sink) {
         if (value.isException) {
-          sink.add(Left(
-              exception?.call(value.exception) ?? value.exception.toFailure()));
-          sink.close();
+          sink
+            ..add(Left(exception?.call(value.exception) ??
+                value.exception.toFailure()))
+            ..close();
         }
         sink.add(Right(value.data));
       },

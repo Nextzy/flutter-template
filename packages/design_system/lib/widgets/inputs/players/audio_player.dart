@@ -51,13 +51,13 @@ class _AppAudioPlayerState extends AppState<AppAudioPlayer> {
 
       _playerState = player.state;
 
-      player.getCurrentPosition().then((value) => {
+      await player.getCurrentPosition().then((value) => {
             setState(() {
               _position = value;
             })
           });
 
-      player.getDuration().then((value) => {
+      await player.getDuration().then((value) => {
             setState(() {
               _duration = value;
             })
@@ -180,9 +180,9 @@ class _AppAudioPlayerState extends AppState<AppAudioPlayer> {
 
   EdgeInsets get padding => switch (widgetSize) {
         WidgetSize.xxs =>
-          const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-        WidgetSize.xs => const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-        WidgetSize.sm => const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+          EdgeInsets.zero,
+        WidgetSize.xs => EdgeInsets.zero,
+        WidgetSize.sm => EdgeInsets.zero,
         WidgetSize.md => const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
         WidgetSize.lg => const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
         WidgetSize.xl => const EdgeInsets.symmetric(horizontal: 4, vertical: 4),

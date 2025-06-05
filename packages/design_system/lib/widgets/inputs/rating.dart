@@ -38,22 +38,20 @@ class _AppRatingState extends AppState<AppRating> {
       _value = index + 1 == _value ? 0 : index + 1;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(_value);
-    }
+    widget.onChanged?.call(_value);
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> rating = [];
+    final rating = <Widget>[];
 
     for (var i = 0; i < 5; i++) {
-      double ratingValue = i + 1;
+      final ratingValue = i + 1;
 
-      Color color =
+      final color =
           ratingValue <= _value ? iconColor : context.theme.color.bgSurface2;
 
-      String emoji = switch (i) {
+      final emoji = switch (i) {
         0 => '😠',
         1 => '😕',
         2 => '😐',
@@ -77,7 +75,7 @@ class _AppRatingState extends AppState<AppRating> {
     return Row(
       children: [
         ...rating,
-        if (widget.showText) Gap(16),
+        if (widget.showText) const Gap(16),
         if (widget.showText)
           AppText(
             _value.toString(),

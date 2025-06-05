@@ -1,3 +1,6 @@
+// Ignores because is not necessary
+// ignore_for_file: one_member_abstracts
+
 import 'package:data/lib.dart';
 
 part 'generated/authentication_api_service.g.dart';

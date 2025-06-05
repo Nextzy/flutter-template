@@ -39,7 +39,7 @@ class AppLink extends AppStatelessWidget {
                       ? context.theme.color.textTertiary
                       : context.theme.color.brandPrimary,
                 )),
-            Gap(4),
+            const Gap(4),
             Assets.icon.arrowSquareOutRegular.svgIcon(
                 colorFilter: ColorFilter.mode(
                     disabled

@@ -3,7 +3,7 @@ import 'package:data/lib.dart';
 extension AppExceptionFutureExtensions<T> on Future<T> {
   Future<Either<AppException, T>> mapAppException() =>
       then<Either<AppException, T>>(
-        (T value) => Right(value),
+        Right.new,
       ).onError(
         (exception, stackTrace) {
           if (exception is AppException) {
@@ -22,7 +22,7 @@ extension AppExceptionFutureExtensions<T> on Future<T> {
             return Left(AppException.fromError(exception));
           } else if (exception is DioException) {
             final tmpError = exception.error;
-            if (tmpError case NetworkException networkException) {
+            if (tmpError case final NetworkException networkException) {
               Log.e(
                 '[Network error] NetworkException',
                 error: networkException,
@@ -54,7 +54,7 @@ extension AppExceptionStreamExtensions<E extends Exception, DATA>
     on Stream<Either<E, DATA>> {
   Stream<Either<AppException, DATA>> mapAppException() => map(
         (event) => event.resolve(
-          (data) => Right(data),
+          Right.new,
           (exception) {
             if (exception is AppException) {
               Log.e(
@@ -65,7 +65,7 @@ extension AppExceptionStreamExtensions<E extends Exception, DATA>
               return Left(exception);
             } else if (exception is DioException) {
               final tmpError = exception.error;
-              if (tmpError case NetworkException networkException) {
+              if (tmpError case final NetworkException networkException) {
                 Log.e('[Network error] NetworkException',
                     error: networkException,
                     stackTrace: networkException.stackTrace);

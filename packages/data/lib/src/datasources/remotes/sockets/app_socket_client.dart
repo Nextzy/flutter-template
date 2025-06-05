@@ -1,6 +1,5 @@
 import 'package:data/lib.dart';
 
-// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 class SocketOp {
   static const CREATE_CHANNEL = 0;
   static const CLOSE_CHANNEL = 1;
@@ -18,19 +17,26 @@ class SocketOp {
   static const NEW_CHAT = 13;
   static const INFO_CHAT = 14;
 
-  static bool isJoinChannelStr(String response) => _checkOpStr(SocketOp.JOIN_CHANNEL, response);
+  static bool isJoinChannelStr(String response) =>
+      _checkOpStr(SocketOp.JOIN_CHANNEL, response);
 
-  static bool isInfoChannelStr(String response) => _checkOpStr(SocketOp.INFO_CHANNEL, response);
+  static bool isInfoChannelStr(String response) =>
+      _checkOpStr(SocketOp.INFO_CHANNEL, response);
 
-  static bool isMsgChannelStr(String response) => _checkOpStr(SocketOp.MSG_CHANNEL, response);
+  static bool isMsgChannelStr(String response) =>
+      _checkOpStr(SocketOp.MSG_CHANNEL, response);
 
-  static bool isProductChannelStr(String response) => _checkOpStr(SocketOp.PROD_CHANNEL, response);
+  static bool isProductChannelStr(String response) =>
+      _checkOpStr(SocketOp.PROD_CHANNEL, response);
 
-  static bool isMessageChat(String response) => _checkOpStr(SocketOp.MSG_CHAT, response);
+  static bool isMessageChat(String response) =>
+      _checkOpStr(SocketOp.MSG_CHAT, response);
 
-  static bool isNewChat(String response) => _checkOpStr(SocketOp.NEW_CHAT, response);
+  static bool isNewChat(String response) =>
+      _checkOpStr(SocketOp.NEW_CHAT, response);
 
-  static bool isInfoChat(String response) => _checkOpStr(SocketOp.INFO_CHAT, response);
+  static bool isInfoChat(String response) =>
+      _checkOpStr(SocketOp.INFO_CHAT, response);
 
   static bool _checkOpStr(int op, String response) {
     try {
@@ -39,7 +45,7 @@ class SocketOp {
       if (opTmp is int) {
         return opTmp == op;
       } else {
-        return int.parse(opTmp) == op;
+        return int.parse(opTmp as String) == op;
       }
     } on FormatException catch (e) {
       Log.e(e);

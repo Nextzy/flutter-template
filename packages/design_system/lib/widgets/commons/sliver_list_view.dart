@@ -70,7 +70,7 @@ class AppSliverListView extends AppStatelessWidget {
           slivers: [
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                (context, index) => itemBuilder.call(context, index),
+                itemBuilder.call,
                 childCount: itemCount,
                 findChildIndexCallback: findChildIndexCallback,
                 addAutomaticKeepAlives: addAutomaticKeepAlives,
@@ -84,7 +84,7 @@ class AppSliverListView extends AppStatelessWidget {
     );
   }
 
-  bool _onNotification(notification) {
+  bool _onNotification(OverscrollIndicatorNotification notification) {
     // Consumes the overscroll notification and disables the glow effect
     notification.disallowIndicator();
 

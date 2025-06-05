@@ -14,4 +14,3 @@ abstract class RemoteSignInWithEmailBody with _$RemoteSignInWithEmailBody {
   factory RemoteSignInWithEmailBody.fromJson(Map<String, dynamic> json) =>
       _$RemoteSignInWithEmailBodyFromJson(json);
 }
-

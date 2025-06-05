@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_declarations
-
 import 'package:change_application_name/application.dart';
 import 'package:change_application_name/environments/env_dev.dart';
 import 'package:change_application_name/firebase_options_dev.dart';
@@ -8,7 +6,7 @@ import 'package:talker_bloc_logger/talker_bloc_logger.dart';
 void main() async {
   await setupMainDev();
   await setupFirebaseDev();
-  runApplication();
+  await runApplication();
 }
 
 Future<void> setupMainDev() async {
@@ -19,7 +17,7 @@ Future<void> setupMainDev() async {
   }
 
   Bloc.observer = TalkerBlocObserver(
-    settings: TalkerBlocLoggerSettings(
+    settings: const TalkerBlocLoggerSettings(
       enabled: true,
       printEventFullData: true,
       printStateFullData: true,
@@ -79,7 +77,7 @@ Future<void> runApplication() async {
     ),
     runAppFunction: () async {
       runApp(
-        MyApplication(),
+        const MyApplication(),
       );
     },
   );

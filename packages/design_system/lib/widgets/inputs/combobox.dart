@@ -56,9 +56,7 @@ class _AppComboBoxState extends AppState<AppComboBox> {
       _showDropdown = false;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(value);
-    }
+    widget.onChanged?.call(value);
   }
 
   void _toggleDropdown() {
@@ -93,7 +91,7 @@ class _AppComboBoxState extends AppState<AppComboBox> {
                       border: Border.all(
                         color: borderColor,
                       ),
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(6),
                         bottomLeft: Radius.circular(6),
                       ),
@@ -142,7 +140,7 @@ class _AppComboBoxState extends AppState<AppComboBox> {
                         : context.theme.color.border,
                   ),
                 ),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(6),
                   bottomRight: Radius.circular(6),
                 ),

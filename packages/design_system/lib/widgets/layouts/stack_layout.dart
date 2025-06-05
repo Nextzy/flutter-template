@@ -134,7 +134,7 @@ class StackLayout extends StatelessWidget {
     required bool scrollable,
     required Widget child,
   }) =>
-      (scrollable)
+      scrollable
           ? SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: child,

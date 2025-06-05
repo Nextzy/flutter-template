@@ -153,7 +153,8 @@ class ThemeApplication extends InheritedWidget {
         context.dependOnInheritedWidgetOfExactType<ThemeApplication>();
     if (theme == null) {
       throw FlutterError(
-          'ThemeApplication.of() called with a context that does not contain a ThemeApplication.');
+          'ThemeApplication.of() called with a context that does not contain a '
+          'ThemeApplication.');
     }
     if (theme.darkTheme == null) return theme.lightTheme!;
 

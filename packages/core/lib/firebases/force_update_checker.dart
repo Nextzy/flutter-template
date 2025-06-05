@@ -15,8 +15,8 @@ class ForceUpdateChecker {
   bool get forceUpdate {
     if (kIsWeb) return false;
 
-    final int buildNumber = packageInfo.buildNumber.toIntOrZero();
-    final int buildNumberForceUpdate = _remoteConfig.getInt(FORCE_UPDATE_KEY);
+    final buildNumber = packageInfo.buildNumber.toIntOrZero();
+    final buildNumberForceUpdate = _remoteConfig.getInt(FORCE_UPDATE_KEY);
 
     // Log.t('Local build number: $buildNumber\n'
     //     'Force build number: $buildNumberForceUpdate');
@@ -30,7 +30,7 @@ class ForceUpdateChecker {
   }
 
   bool get isMaintenance {
-    final bool isMaintenance = _remoteConfig.getBool(MAINTENANCE_KEY);
+    final isMaintenance = _remoteConfig.getBool(MAINTENANCE_KEY);
     // Log.t('Maintenance: $isMaintenance');
     return isMaintenance;
   }

@@ -1,4 +1,4 @@
-import 'package:falconx/lib.dart';
+import 'package:design_system/lib.dart';
 
 class DeviceInfoDialog extends StatelessWidget {
   const DeviceInfoDialog({super.key});
@@ -14,7 +14,7 @@ class DeviceInfoDialog extends StatelessWidget {
           // style: TextStyle(color: Colors.white),
         ),
       ),
-      titlePadding: const EdgeInsets.all(0),
+      titlePadding: EdgeInsets.zero,
       content: _getContent(),
     );
   }
@@ -30,7 +30,7 @@ class DeviceInfoDialog extends StatelessWidget {
   }
 
   Widget _iOSContent() {
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final deviceInfo = DeviceInfoPlugin();
     return FutureBuilder<IosDeviceInfo>(
       future: deviceInfo.iosInfo,
       builder: (context, snapshot) {
@@ -56,7 +56,7 @@ class DeviceInfoDialog extends StatelessWidget {
   }
 
   Widget _androidContent() {
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final deviceInfo = DeviceInfoPlugin();
     return FutureBuilder<AndroidDeviceInfo>(
       future: deviceInfo.androidInfo,
       builder: (context, snapshot) {

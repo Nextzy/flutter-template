@@ -16,10 +16,6 @@ extension SvgExtension on SvgGenImage {
     SvgTheme theme = const SvgTheme(),
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
-    @Deprecated('Use colorFilter instead.') Color? color,
-    @Deprecated('Use colorFilter instead.')
-    BlendMode colorBlendMode = BlendMode.srcIn,
-    @Deprecated('This no longer does anything.') bool cacheColorFilter = false,
   }) =>
       SvgPicture.asset(
         path,
@@ -37,10 +33,7 @@ extension SvgExtension on SvgGenImage {
         excludeFromSemantics: excludeFromSemantics,
         theme: theme,
         colorFilter: colorFilter,
-        color: color,
-        colorBlendMode: colorBlendMode,
         clipBehavior: clipBehavior,
-        cacheColorFilter: cacheColorFilter,
       );
 
   AppIcon icon({
@@ -61,9 +54,6 @@ extension SvgExtension on SvgGenImage {
     SvgTheme theme = const SvgTheme(),
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
-    @Deprecated('Use colorFilter instead.') Color? color,
-    @Deprecated('Use colorFilter instead.')
-    BlendMode colorBlendMode = BlendMode.srcIn,
   }) =>
       AppIcon(
         key: key,
@@ -83,8 +73,6 @@ extension SvgExtension on SvgGenImage {
         excludeFromSemantics: excludeFromSemantics,
         svgTheme: theme,
         colorFilter: colorFilter,
-        color: color,
-        colorBlendMode: colorBlendMode,
         clipBehavior: clipBehavior,
       );
 }

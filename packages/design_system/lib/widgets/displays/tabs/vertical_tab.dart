@@ -34,9 +34,7 @@ class _AppVerticalTabState extends AppState<AppVerticalTab> {
         _currentIndex = index;
       });
 
-      if (widget.onChanged != null) {
-        widget.onChanged!(index);
-      }
+      widget.onChanged?.call(index);
     }
   }
 

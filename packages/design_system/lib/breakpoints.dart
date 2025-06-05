@@ -59,10 +59,10 @@ extension BreakpointExtension on Breakpoint {
           (name == LayoutBreakpoint.mobileLandscape);
 
   bool get isMobilePortrait =>
-      (name == LayoutBreakpoint.mobilePortrait);
+      name == LayoutBreakpoint.mobilePortrait;
 
   bool get isMobileLandscape =>
-      (name == LayoutBreakpoint.mobileLandscape);
+      name == LayoutBreakpoint.mobileLandscape;
 
   bool get isTablet => name == LayoutBreakpoint.tablet;
 

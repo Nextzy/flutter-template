@@ -1,3 +1,6 @@
+// Ignore because not necessary
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+
 import 'package:design_system/lib.dart';
 
 class AppTable extends StatefulWidget {
@@ -57,7 +60,7 @@ class _AppTableState extends State<AppTable> {
           children: [
             _buildSearchTextField(),
             _buildHeaderRow(),
-            Divider(),
+            const Divider(),
             _buildBodyRows(),
             if (widget.rowsPerPage > 0)
               AppSimplePagination(
@@ -180,7 +183,7 @@ class _AppTableState extends State<AppTable> {
           );
         },
         separatorBuilder: (context, index) {
-          return Divider(); // Horizontal line separator
+          return const Divider(); // Horizontal line separator
         },
       ),
     );
@@ -199,11 +202,11 @@ class _AppTableState extends State<AppTable> {
     // Sort
     if (_sortColumn != null) {
       if (_isSortAscending) {
-        _filteredContainers.sort((a, b) =>
-            a.cells[_sortColumn!].value.compareTo(b.cells[_sortColumn!].value));
+        _filteredContainers.sort((a, b) => (a.cells[_sortColumn!].value as int)
+            .compareTo(b.cells[_sortColumn!].value as int));
       } else {
-        _filteredContainers.sort((a, b) =>
-            b.cells[_sortColumn!].value.compareTo(a.cells[_sortColumn!].value));
+        _filteredContainers.sort((a, b) => (b.cells[_sortColumn!].value as int)
+            .compareTo(a.cells[_sortColumn!].value as int));
       }
     }
   }
@@ -224,9 +227,9 @@ class _AppTableState extends State<AppTable> {
 
 abstract interface class AppTableSource {
   List<AppTableCellContainer> getCellContainers() {
-    final List<AppTableCellContainer> cellContainers = [];
+    final cellContainers = <AppTableCellContainer>[];
 
-    for (int i = 0; i < rowCount; i++) {
+    for (var i = 0; i < rowCount; i++) {
       final cellContainer = getCellContainer(i);
       cellContainers.add(cellContainer);
     }

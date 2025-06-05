@@ -27,7 +27,7 @@ class _HomePageState
   ) {
     switch (event) {
       case HomePageEvent.yourEvent:
-        // TODO: Handle this case.
+        // TODO(username): Handle this case.
         throw UnimplementedError();
     }
   }
@@ -66,10 +66,10 @@ class _HomePageState
                         onPress: () {
                           AppLoadingDialog.showFullLoadingLocked(
                             context,
-                            title: 'We\'re creating your account...',
+                            title: "We're creating your account...",
                           );
                           Future.delayed(
-                            Duration(seconds: 3),
+                            const Duration(seconds: 3),
                             () => AppLoadingDialog.dismissAll(context),
                           );
                         },
@@ -77,14 +77,14 @@ class _HomePageState
                       AppButton(
                         text: 'Show Modal',
                         onPress: () {
-                          for (int i = 1; i <= 5; i++) {
+                          for (var i = 1; i <= 5; i++) {
                             AppLoadingDialog.showFullLoadingCancellable(
                               context,
-                              title: 'We\'re creating your account...',
+                              title: "We're creating your account...",
                             );
                           }
                           Future.delayed(
-                            Duration(seconds: 3),
+                            const Duration(seconds: 3),
                             () => AppLoadingDialog.dismissAll(context),
                           );
                         },
@@ -100,7 +100,9 @@ class _HomePageState
                         builder: (builderContext) => AppModal(
                           title: 'Short descriptive message',
                           description:
-                              'In a perfect world, content stays brief. Yet, when more words are essential, it unfolds like this.',
+                              'In a perfect world, content stays brief. Yet, '
+                              'when more words are essential, '
+                              'it unfolds like this.',
                           feedbackState: FeedbackState.info,
                           contentAlign: AppModalContentAlign.start,
                           actionAlign: AppModalActionAlign.start,
@@ -153,7 +155,7 @@ class _HomePageState
                       Container(
                         height: 40,
                         width: 40,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.red,
                         ),
                       ),
@@ -188,12 +190,13 @@ class _HomePageState
                       Container(
                         height: 40,
                         width: 40,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.red,
                         ),
                       ),
                       AppText(
-                        '✅ ♥️ ⭐️ 🌍 You have pushed the button this many times:',
+                        '✅ ♥️ ⭐️ 🌍 '
+                        'You have pushed the button this many times:',
                         style: AppTextStyleBuilder.ui.s14.colorPrimary
                             .build(context),
                       ),

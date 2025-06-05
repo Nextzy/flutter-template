@@ -151,7 +151,7 @@ class WrapLayout extends StatelessWidget {
     required bool scrollable,
     required Widget child,
   }) =>
-      (scrollable)
+      scrollable
           ? SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: child,

@@ -1,7 +1,5 @@
 import 'package:change_application_name/application.dart';
 
-
-
 class SplashScreenPage extends AppPage {
   const SplashScreenPage({
     super.key = const Key('SplashScreenPage'),
@@ -33,8 +31,8 @@ class _SplashScreenState extends AppState<SplashScreenPage>
   AppThemeData get _theme {
     final brightness = MediaQuery.of(context).platformBrightness;
     return brightness == Brightness.dark
-        ? AppTheme().darkTheme
-        : AppTheme().lightTheme;
+        ? const AppTheme().darkTheme
+        : const AppTheme().lightTheme;
   }
 
   bool get skipLoadingForWeb =>
@@ -46,7 +44,7 @@ class _SplashScreenState extends AppState<SplashScreenPage>
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: AppLocalDatabase.instance.loadSetting(),
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot<SettingTableData> snapshot) {
           if (snapshot.data == null) return Container(color: _theme.color.bg);
 
           final setting = snapshot.data!;
@@ -59,13 +57,14 @@ class _SplashScreenState extends AppState<SplashScreenPage>
               widget.setupApplication,
               //Clear exited field
               AppLocalDatabase.instance.updateTapExitApp(false),
-              skipLoadingForWeb
-                  ? Future.delayed(Duration.zero)
-                  : isFirstComing
-                      ? Future.delayed(widget.minimumFirstComingDuration)
-                      : Future.delayed(widget.minimumSecondComingDuration),
+              if (skipLoadingForWeb)
+                Future.delayed(Duration.zero)
+              else
+                isFirstComing
+                    ? Future.delayed(widget.minimumFirstComingDuration)
+                    : Future.delayed(widget.minimumSecondComingDuration),
             ]),
-            builder: (context, snapshot) => Container(
+            builder: (context, snapshot) => ColoredBox(
               color: _theme.color.bg,
               child: AnimatedSwitcher(
                 duration: skipLoadingForWeb
@@ -75,7 +74,8 @@ class _SplashScreenState extends AppState<SplashScreenPage>
                         : widget.secondAnimateDuration,
                 child: snapshot.data == null
                     ? buildSplashScreen(context)
-                    : widget.builder(context, snapshot.data![0]),
+                    : widget.builder(
+                        context, snapshot.data![0] as SetupApplication),
               ),
             ),
           );
@@ -92,7 +92,6 @@ class _SplashScreenState extends AppState<SplashScreenPage>
               child: StackLayout(
                 children: [
                   Align(
-                    alignment: Alignment.center,
                     child: Assets.logo.splash.svgIcon(size: 100),
                   ),
                   Align(

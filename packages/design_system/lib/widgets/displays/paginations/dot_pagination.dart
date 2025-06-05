@@ -23,9 +23,7 @@ class _AppDotPaginationState extends AppState<AppDotPagination> {
       _currentPage = page;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(_currentPage);
-    }
+    widget.onChanged?.call(_currentPage);
   }
 
   @override

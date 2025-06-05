@@ -38,7 +38,7 @@ class DebugBannerView extends StatelessWidget {
           height: 50,
           child: CustomPaint(
             painter: BannerPainter(
-              //TODO: Research how to get flavor name
+              // TODO(username): Research how to get flavor name
               message: 'DEBUG',
               textDirection: Directionality.of(context),
               layoutDirection: Directionality.of(context),

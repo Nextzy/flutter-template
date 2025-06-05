@@ -60,7 +60,7 @@ class AppModal extends AppStatelessWidget {
     final theme = getTheme(context);
     return Dialog(
       backgroundColor: Colors.transparent,
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       child: Stack(
         children: [
           ColumnLayout(
@@ -134,7 +134,7 @@ class AppModal extends AppStatelessWidget {
             ],
           ),
         if (icon.isNotNullOrBlank) icon.toSvgIcon(size: 40.0),
-        if (image.isNotNullOrBlank) AppImage(width: 256.0, path: image!),
+        if (image.isNotNullOrBlank) AppImage(width: 256.0, path: image),
         content ??
             ColumnLayout(
               crossAxisAlignment: CrossAxisAlignment.stretch,

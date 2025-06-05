@@ -23,7 +23,7 @@ class AppFileUpload extends AppStatefulWidget {
 
 class _AppFileUploadState extends AppState<AppFileUpload> {
   void _chooseFile() {
-    // TODO: Implement file picker
+    // TODO(username): Implement file picker
   }
 
   @override
@@ -69,14 +69,14 @@ class _AppFileUploadState extends AppState<AppFileUpload> {
                     fillColor: backgroundColor,
                     hoverColor: Colors.transparent,
                     border: InputBorder.none,
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(6),
                         bottomLeft: Radius.circular(6),
                       ),
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(6),
@@ -109,14 +109,14 @@ class _AppFileUploadState extends AppState<AppFileUpload> {
                         backgroundColor:
                             WidgetStatePropertyAll(backgroundColor),
                         overlayColor:
-                            WidgetStatePropertyAll(Colors.transparent),
-                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                            const WidgetStatePropertyAll(Colors.transparent),
+                        shape: const WidgetStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(6),
                             bottomRight: Radius.circular(6),
                           ),
                         )),
-                        minimumSize: WidgetStatePropertyAll(Size(0, 56)),
+                        minimumSize: const WidgetStatePropertyAll(Size(0, 56)),
                       ),
                       child: Text(
                         'Choose file',

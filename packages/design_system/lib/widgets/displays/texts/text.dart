@@ -42,13 +42,6 @@ class AppText extends AppStatelessWidget {
     this.selectionColor,
   }) : textSpan = null;
 
-  final StrutStyle? strutStyle;
-  final Locale? locale;
-  final String? semanticsLabel;
-  final TextWidthBasis? textWidthBasis;
-  final TextHeightBehavior? textHeightBehavior;
-  final Color? selectionColor;
-
   const AppText.rich(
     this.textSpan, {
     super.key,
@@ -68,6 +61,13 @@ class AppText extends AppStatelessWidget {
     this.textHeightBehavior,
     this.selectionColor,
   }) : data = null;
+
+  final StrutStyle? strutStyle;
+  final Locale? locale;
+  final String? semanticsLabel;
+  final TextWidthBasis? textWidthBasis;
+  final TextHeightBehavior? textHeightBehavior;
+  final Color? selectionColor;
 
   final TextSpan? textSpan;
   final String? data;

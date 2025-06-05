@@ -46,21 +46,21 @@ class AppComments extends AppStatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   )),
-              Gap(6),
+              const Gap(6),
               AppText(time,
                   style: TextStyle(
                     color: context.theme.color.textSecondary,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                   )),
-              Gap(8),
+              const Gap(8),
               AppText(text,
                   style: TextStyle(
                     color: context.theme.color.textPrimary,
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   )),
-              Gap(8),
+              const Gap(8),
               Row(
                 children: [
                   AppButton(
@@ -70,7 +70,7 @@ class AppComments extends AppStatelessWidget {
                     startIcon: Assets.icon.infoRegular.keyName,
                     text: reaction.toString(),
                   ),
-                  AppButton(
+                  const AppButton(
                     style: AppButtonStyle.text,
                     size: WidgetSize.sm,
                     width: 54,
@@ -78,7 +78,7 @@ class AppComments extends AppStatelessWidget {
                   ),
                 ],
               ),
-              if (children.isNotEmptyOrNull) Gap(16),
+              if (children.isNotEmptyOrNull) const Gap(16),
               if (children.isNotEmptyOrNull)
                 ColumnLayout(gap: 16, children: [
                   for (final child in children!)

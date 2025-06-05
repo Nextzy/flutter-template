@@ -40,9 +40,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
       _currentStep = step;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(step);
-    }
+    widget.onChanged?.call(step);
   }
 
   @override
@@ -73,7 +71,7 @@ class _AppStepsState extends AppState<AppHorizontalSteps> {
                     ),
                   ),
               ]),
-              Gap(12),
+              const Gap(12),
               AppStepItem(
                   size: widgetSize,
                   title: child.title,

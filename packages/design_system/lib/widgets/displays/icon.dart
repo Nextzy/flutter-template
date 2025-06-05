@@ -1,3 +1,8 @@
+// Ignore because unnecessary
+// ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: deprecated_consistency
+// ignore_for_file: deprecated_member_use
+
 import 'package:design_system/lib.dart';
 
 part 'generated/icon.freezed.dart';
@@ -214,7 +219,7 @@ class AppIcon extends AppStatelessWidget {
         placeholderBuilder: _placeholderBuilder != null
             ? (context) => _placeholderBuilder!
                 .call(context, _customSize ?? _getSize(_size))
-            : (context) => buildPlaceholderDefault(context),
+            : buildPlaceholderDefault,
         semanticsLabel: _semanticLabel,
         theme: _svgTheme,
         colorFilter: _colorFilter,
@@ -243,7 +248,7 @@ class AppIcon extends AppStatelessWidget {
         placeholderBuilder: _placeholderBuilder != null
             ? (context) => _placeholderBuilder!
                 .call(context, _customSize ?? _getSize(_size))
-            : (context) => buildPlaceholderDefault(context),
+            : buildPlaceholderDefault,
         semanticsLabel: _semanticLabel,
         theme: _svgTheme,
         colorFilter: _colorFilter,

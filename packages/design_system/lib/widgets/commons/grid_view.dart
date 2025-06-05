@@ -45,33 +45,34 @@ class AppGridView extends AppStatelessWidget {
   final Clip clipBehavior;
 
   @override
-  Widget build(BuildContext context) => NotificationListener<OverscrollIndicatorNotification>(
-      onNotification: _onNotification,
-      child: GridView.builder(
-        gridDelegate: gridDelegate,
-        scrollDirection: scrollDirection,
-        reverse: reverse,
-        controller: controller,
-        primary: primary,
-        physics: const ClampingScrollPhysics(),
-        shrinkWrap: shrinkWrap,
-        padding: padding,
-        itemBuilder: itemBuilder,
-        findChildIndexCallback: findChildIndexCallback,
-        itemCount: itemCount,
-        addAutomaticKeepAlives: addAutomaticKeepAlives,
-        addRepaintBoundaries: addRepaintBoundaries,
-        addSemanticIndexes: addSemanticIndexes,
-        cacheExtent: cacheExtent,
-        semanticChildCount: semanticChildCount,
-        dragStartBehavior: dragStartBehavior,
-        keyboardDismissBehavior: keyboardDismissBehavior,
-        restorationId: restorationId,
-        clipBehavior: clipBehavior,
-      ),
-    );
+  Widget build(BuildContext context) =>
+      NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: _onNotification,
+        child: GridView.builder(
+          gridDelegate: gridDelegate,
+          scrollDirection: scrollDirection,
+          reverse: reverse,
+          controller: controller,
+          primary: primary,
+          physics: const ClampingScrollPhysics(),
+          shrinkWrap: shrinkWrap,
+          padding: padding,
+          itemBuilder: itemBuilder,
+          findChildIndexCallback: findChildIndexCallback,
+          itemCount: itemCount,
+          addAutomaticKeepAlives: addAutomaticKeepAlives,
+          addRepaintBoundaries: addRepaintBoundaries,
+          addSemanticIndexes: addSemanticIndexes,
+          cacheExtent: cacheExtent,
+          semanticChildCount: semanticChildCount,
+          dragStartBehavior: dragStartBehavior,
+          keyboardDismissBehavior: keyboardDismissBehavior,
+          restorationId: restorationId,
+          clipBehavior: clipBehavior,
+        ),
+      );
 
-  bool _onNotification(notification) {
+  bool _onNotification(OverscrollIndicatorNotification notification) {
     // Consumes the overscroll notification and disables the glow effect
     notification.disallowIndicator();
 

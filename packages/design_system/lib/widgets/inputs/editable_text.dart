@@ -42,9 +42,7 @@ class InlineEditableTextState extends AppState<InlineEditableText> {
       _controller.text = text;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(text);
-    }
+    widget.onChanged?.call(text);
   }
 
   @override

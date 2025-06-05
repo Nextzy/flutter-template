@@ -157,7 +157,7 @@ class RowLayout extends StatelessWidget {
     required bool scrollable,
     required Widget child,
   }) =>
-      (scrollable)
+      scrollable
           ? SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               clipBehavior: Clip.none,

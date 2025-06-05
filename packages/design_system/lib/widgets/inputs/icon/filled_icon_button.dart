@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
-export 'close_button.dart';
-export 'back_button.dart';
-
 import 'package:design_system/lib.dart';
 
+export 'back_button.dart';
+export 'close_button.dart';
+
 class AppFilledIconButton extends AppIconButton {
-  AppFilledIconButton({
+  const AppFilledIconButton({
     super.key,
     super.size,
     super.themeMode,

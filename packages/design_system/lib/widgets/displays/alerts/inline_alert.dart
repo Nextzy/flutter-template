@@ -141,23 +141,31 @@ class AppInlineAlert extends AppStatelessWidget {
       switch (feedbackState) {
         FeedbackState.info => Assets.icon.infoFilled.svgIcon(
             size: _getIconSize(size),
-            color: _getIconColor(context,
-                feedbackState: feedbackState, accent: accent),
+            colorFilter: ColorFilter.mode(
+                _getIconColor(context,
+                    feedbackState: feedbackState, accent: accent),
+                BlendMode.srcIn),
           ),
         FeedbackState.negative => Assets.icon.warningFilled.svgIcon(
             size: _getIconSize(size),
-            color: _getIconColor(context,
-                feedbackState: feedbackState, accent: accent),
+            colorFilter: ColorFilter.mode(
+                _getIconColor(context,
+                    feedbackState: feedbackState, accent: accent),
+                BlendMode.srcIn),
           ),
         FeedbackState.warning => Assets.icon.warningFilled.svgIcon(
             size: _getIconSize(size),
-            color: _getIconColor(context,
-                feedbackState: feedbackState, accent: accent),
+            colorFilter: ColorFilter.mode(
+                _getIconColor(context,
+                    feedbackState: feedbackState, accent: accent),
+                BlendMode.srcIn),
           ),
         FeedbackState.positive => Assets.icon.checkCircleFilled.svgIcon(
             size: _getIconSize(size),
-            color: _getIconColor(context,
-                feedbackState: feedbackState, accent: accent),
+            colorFilter: ColorFilter.mode(
+                _getIconColor(context,
+                    feedbackState: feedbackState, accent: accent),
+                BlendMode.srcIn),
           ),
       };
 

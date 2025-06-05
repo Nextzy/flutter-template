@@ -76,7 +76,7 @@ class AppListView extends AppStatelessWidget {
     );
   }
 
-  bool _onNotification(notification) {
+  bool _onNotification(OverscrollIndicatorNotification notification) {
     // Consumes the overscroll notification and disables the glow effect
     notification.disallowIndicator();
 

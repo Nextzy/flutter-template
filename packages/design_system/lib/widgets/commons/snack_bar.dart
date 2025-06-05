@@ -7,7 +7,7 @@ class AppSnackbar extends SnackBar {
     super.backgroundColor = Colors.transparent,
     super.elevation = 0.0,
     super.margin,
-    super.padding = const EdgeInsets.all(0.0),
+    super.padding = EdgeInsets.zero,
     super.width,
     super.shape,
     super.hitTestBehavior,

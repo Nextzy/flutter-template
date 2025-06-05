@@ -3,7 +3,11 @@
 // import 'package:mobile_chat_ui/utils/author_details_location.dart';
 //
 // class AppChat extends AppStatefulWidget {
-//   const AppChat({super.key, required this.currentUser, required this.messages});
+//   const AppChat({
+//     super.key,
+//     required this.currentUser,
+//     required this.messages,
+//   });
 //
 //   final AppChatUser currentUser;
 //   final List<AppChatMessage> messages;

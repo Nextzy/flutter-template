@@ -1,4 +1,4 @@
-  
+
 import 'package:change_application_name/application.dart';
 
 class ShellRoutePage extends AppStatelessWidget {
@@ -11,7 +11,7 @@ class ShellRoutePage extends AppStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: AutoRouter(),
     );
   }

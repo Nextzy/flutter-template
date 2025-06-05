@@ -65,19 +65,13 @@ class _ScanPageBlocState extends AppPageState<ScanPage> {
     }
   }
 
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
-
   void onQRViewCreated(QRViewController controller) {
     setState(() {
       this.controller = controller;
     });
     controller.scannedDataStream.listen(
       (scanData) {
-        //TODO: Implement scan data
+        // TODO(username): Implement scan data
         result = scanData;
       },
     );

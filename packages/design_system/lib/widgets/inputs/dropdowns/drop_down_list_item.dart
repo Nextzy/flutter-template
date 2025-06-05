@@ -109,8 +109,7 @@ class _AppDropdownListItem extends AppStatefulWidget {
   State<_AppDropdownListItem> createState() => _AppDropdownListItemState();
 }
 
-class _AppDropdownListItemState
-    extends AppState<_AppDropdownListItem> {
+class _AppDropdownListItemState extends AppState<_AppDropdownListItem> {
   bool focused = false;
 
   DropdownListItemState get dropdownState => widget.state;
@@ -141,19 +140,20 @@ class _AppDropdownListItemState
                       if (dropdownState.startIcon != null)
                         dropdownState.startIcon.toSvgIcon(
                           size: 16,
-                          color: dropdownState.startIconColor ?? theme.color.textSecondary,
+                          colorFilter: ColorFilter.mode(
+                              dropdownState.startIconColor ??
+                                  theme.color.textSecondary,
+                              BlendMode.srcIn),
                         ),
                       AppText(
                         dropdownState.textTitle,
-                        style: AppTextStyleBuilder
-                            .ui.s12.medium.colorSecondary
+                        style: AppTextStyleBuilder.ui.s12.medium.colorSecondary
                             .build(context),
                       ),
                       if (dropdownState.textSupport.isNotNullOrEmpty)
                         AppText(
                           dropdownState.textSupport,
-                          style: AppTextStyleBuilder
-                              .ui.s12.colorSecondary
+                          style: AppTextStyleBuilder.ui.s12.colorSecondary
                               .build(context),
                         ),
                     ],
@@ -161,7 +161,10 @@ class _AppDropdownListItemState
                   if (dropdownState.endIcon != null)
                     dropdownState.endIcon.toSvgIcon(
                       size: 16,
-                      color: dropdownState.endIconColor ?? theme.color.textSecondary,
+                      colorFilter: ColorFilter.mode(
+                          dropdownState.endIconColor ??
+                              theme.color.textSecondary,
+                          BlendMode.srcIn),
                     ),
                 ],
               ),

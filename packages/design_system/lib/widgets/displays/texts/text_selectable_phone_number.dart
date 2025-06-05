@@ -44,9 +44,9 @@ class AppPhoneNumberSelectableText extends AppStatelessWidget {
     if (phoneNumber.isNullOrBlank) return '';
 
     try {
-      Map<String, dynamic> map = await parse(phoneNumber!);
+      final map = await parse(phoneNumber!);
 
-      return map['international'];
+      return map['international'] as String;
     } catch (e, stacktrace) {
       Log.w(e, stackTrace: stacktrace);
 

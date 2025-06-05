@@ -7,7 +7,7 @@ class AppDateInput extends AppStatefulWidget {
       this.style = AppTextFieldStyle.outline,
       this.type = CalendarDatePicker2Type.single,
       this.label,
-      this.placeholderText = "DD/MM/YY",
+      this.placeholderText = 'DD/MM/YY',
       this.feedbackState,
       this.statusText,
       this.helperText,
@@ -35,7 +35,7 @@ class _AppDateInputState extends AppState<AppDateInput> {
   final _controller = TextEditingController();
   List<DateTime?> _values = [];
 
-  void _onPress() async {
+  Future<void> _onPress() async {
     final values = await showCalendarDatePicker2Dialog(
       context: context,
       value: _values,
@@ -121,13 +121,11 @@ class _AppDateInputState extends AppState<AppDateInput> {
         _values = values;
       });
 
-      var firstValue = (values.isNotEmpty ? values[0] : null);
-      var value = DateFormat('dd/MM/yy').format(firstValue!);
+      final firstValue = (values.isNotEmpty ? values[0] : null);
+      final value = DateFormat('dd/MM/yy').format(firstValue!);
       _controller.text = value;
 
-      if (widget.onChanged != null) {
-        widget.onChanged!(value);
-      }
+      widget.onChanged?.call(value);
     }
   }
 
@@ -139,9 +137,7 @@ class _AppDateInputState extends AppState<AppDateInput> {
         _values = [date];
       });
 
-      if (widget.onChanged != null) {
-        widget.onChanged!(value);
-      }
+      widget.onChanged?.call(value);
     } catch (e) {
       setState(() {
         _values = [];
@@ -205,7 +201,7 @@ class _AppDateInputState extends AppState<AppDateInput> {
                     readOnly: widget.readOnly,
                   ),
                 ),
-                Gap(8),
+                const Gap(8),
                 InkWell(
                   onTap: widget.disabled ? null : _onPress,
                   child: Assets.icon.calendarBlankRegular.svgIcon(

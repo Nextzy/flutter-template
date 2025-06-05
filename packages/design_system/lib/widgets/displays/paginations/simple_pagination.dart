@@ -39,9 +39,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
       _page = page;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(page);
-    }
+    widget.onChanged?.call(page);
   }
 
   @override
@@ -171,31 +169,34 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
       };
 
   List<Widget> _buildPageNumber() {
-    List<Widget> list = [];
+    final list = <Widget>[];
 
     if (widget.totalPage <= 5) {
-      for (int i = 1; i <= widget.totalPage; i++) {
+      for (var i = 1; i <= widget.totalPage; i++) {
         list.add(_pageButton(i));
       }
     } else {
       if (_page <= 3) {
-        for (int i = 1; i <= 3; i++) {
+        for (var i = 1; i <= 3; i++) {
           list.add(_pageButton(i));
         }
-        list.add(_ellipsis());
-        list.add(_pageButton(widget.totalPage));
+        list
+          ..add(_ellipsis())
+          ..add(_pageButton(widget.totalPage));
       } else if (_page >= widget.totalPage - 2) {
-        list.add(_pageButton(1));
-        list.add(_ellipsis());
-        for (int i = widget.totalPage - 2; i <= widget.totalPage; i++) {
+        list
+          ..add(_pageButton(1))
+          ..add(_ellipsis());
+        for (var i = widget.totalPage - 2; i <= widget.totalPage; i++) {
           list.add(_pageButton(i));
         }
       } else {
-        list.add(_pageButton(1));
-        list.add(_ellipsis());
-        list.add(_pageButton(_page));
-        list.add(_ellipsis());
-        list.add(_pageButton(widget.totalPage));
+        list
+          ..add(_pageButton(1))
+          ..add(_ellipsis())
+          ..add(_pageButton(_page))
+          ..add(_ellipsis())
+          ..add(_pageButton(widget.totalPage));
       }
     }
 
@@ -232,7 +233,7 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
   }
 
   Widget _buildNavigationButton(
-      BuildContext context, String text, onPress, bool disabled) {
+      BuildContext context, String text, VoidCallback? onPress, bool disabled) {
     return ContainerLayout(
       height: height,
       decoration: BoxDecoration(

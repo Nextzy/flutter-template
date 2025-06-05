@@ -3,7 +3,7 @@ import 'package:widgetbook_app/widgetbook.dart';
 class OverviewInlineEditableTextWidgetCase extends WidgetbookScrollableUseCase {
   OverviewInlineEditableTextWidgetCase({super.name = 'Overview'})
       : super(
-          builder: (context) => SectionH1Widgetbook(
+          builder: (context) => const SectionH1Widgetbook(
             title: 'Inline Editable Text',
             children: [
               SectionH2Widgetbook(

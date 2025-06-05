@@ -21,7 +21,7 @@ abstract class AppNullableWidgetBlocState<
       context.read<InternetConnectionBloc>();
 
   Widget buildResponsive({required ResponsiveBuilder child}) {
-    final Breakpoint breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
+    final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
 
     return child(PlatformChecker.platform, breakpoint);
   }
@@ -55,13 +55,13 @@ abstract class AppNullableWidgetBlocState<
     return Future.value(null);
   }
 
-  Future<R?> pushNamed<R extends Object?>(
+  Future<R?> pushPath<R extends Object?>(
     String path, {
     bool includePrefixMatches = false,
     OnNavigationFailure? onFailure,
   }) {
     if (mounted) {
-      return context.router.pushNamed<R>(
+      return context.router.pushPath<R>(
         path,
         includePrefixMatches: includePrefixMatches,
         onFailure: onFailure,
@@ -80,13 +80,13 @@ abstract class AppNullableWidgetBlocState<
     return Future.value(null);
   }
 
-  Future<T?> replaceNamed<T extends Object?>(
+  Future<T?> replacePath<T extends Object?>(
     String path, {
     bool includePrefixMatches = false,
     OnNavigationFailure? onFailure,
   }) {
     if (mounted) {
-      context.router.replaceNamed(
+      context.router.replacePath(
         path,
         includePrefixMatches: includePrefixMatches,
         onFailure: onFailure,
@@ -105,13 +105,13 @@ abstract class AppNullableWidgetBlocState<
     return Future.value(null);
   }
 
-  Future<void> navigateNamed(
+  Future<void> navigatePath(
     String path, {
     bool includePrefixMatches = false,
     OnNavigationFailure? onFailure,
   }) {
     if (mounted) {
-      return context.router.navigateNamed(
+      return context.router.navigatePath(
         path,
         includePrefixMatches: includePrefixMatches,
         onFailure: onFailure,
@@ -170,7 +170,7 @@ abstract class AppNullableWidgetBlocState<
 
   void pop<R extends Object?>([R? result]) {
     if (mounted) {
-      return context.router.popForced<R>(result);
+      return context.router.pop<R>(result);
     }
   }
 
@@ -235,7 +235,7 @@ abstract class AppNullableWidgetBlocState<
     bool includePrefixMatches = false,
     OnNavigationFailure? onFailure,
   }) =>
-      pushNamed<PopResult<D>>(
+      pushPath<PopResult<D>>(
         path,
         includePrefixMatches: includePrefixMatches,
         onFailure: onFailure,

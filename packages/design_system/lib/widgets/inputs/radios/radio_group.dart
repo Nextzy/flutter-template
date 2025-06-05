@@ -32,7 +32,7 @@ class _AppRadioGroupState extends AppState<AppRadioGroup> {
               )),
         ],
       ),
-      SizedBox(height: 4),
+      const SizedBox(height: 4),
       Row(
         children: [
           AppText(widget.hintText ?? '',

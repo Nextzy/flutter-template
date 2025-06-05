@@ -1,16 +1,15 @@
-// ignore_for_file: prefer_const_constructors
-export 'colors/transparent.dart';
-export 'styles/styles.dart';
+import 'package:design_system/lib.dart';
+
 export 'colors/colors.dart';
 export 'colors/raws/color_stratum_palette.dart';
 export 'colors/raws/color_untitled_palette.dart';
-export 'texts.dart';
-export 'themes.dart';
-export 'theme_data.dart';
+export 'colors/transparent.dart';
 export 'constants.dart';
+export 'styles/styles.dart';
+export 'texts.dart';
 export 'theme_color.dart';
-
-import 'package:design_system/lib.dart';
+export 'theme_data.dart';
+export 'themes.dart';
 
 class AppTheme {
   const AppTheme({

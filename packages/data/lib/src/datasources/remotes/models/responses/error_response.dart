@@ -16,4 +16,3 @@ abstract class ErrorResponse with _$ErrorResponse {
   factory ErrorResponse.fromJson(Map<String, dynamic> json) =>
       _$ErrorResponseFromJson(json);
 }
-

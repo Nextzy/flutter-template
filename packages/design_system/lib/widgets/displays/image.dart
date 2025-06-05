@@ -1,3 +1,6 @@
+// Ignore because unnecessary
+// ignore_for_file: deprecated_member_use, deprecated_consistency
+
 import 'package:design_system/lib.dart';
 
 typedef AppImageWidgetBuilder = Widget Function(
@@ -70,14 +73,14 @@ class AppImage extends AppStatelessWidget {
 
     if (path.isUrl) {
       // Fetch from network
-      if (path?.toLowerCase().endsWith('.svg') == true) {
+      if (path!.toLowerCase().endsWith('.svg') == true) {
         image = buildSvgNetwork(context, path: path!);
       } else {
         image = buildImageNetwork(context, path: path!);
       }
     } else {
       // Fetch from local
-      if (path?.toLowerCase().endsWith('.svg') == true) {
+      if (path!.toLowerCase().endsWith('.svg') == true) {
         image = buildSvgLocal(context, path: path!);
       } else {
         image = buildImageLocal(context, path: path!);
@@ -122,7 +125,7 @@ class AppImage extends AppStatelessWidget {
         allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
         placeholderBuilder: placeholderBuilder != null
             ? (context) => placeholderBuilder!.call(context, width, height)
-            : (context) => buildPlaceholderDefault(context),
+            : buildPlaceholderDefault,
         semanticsLabel: semanticLabel,
         theme: theme,
         colorFilter: colorFilter,
@@ -184,7 +187,7 @@ class AppImage extends AppStatelessWidget {
         allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
         placeholderBuilder: placeholderBuilder != null
             ? (context) => placeholderBuilder!.call(context, width, height)
-            : (context) => buildPlaceholderDefault(context),
+            : buildPlaceholderDefault,
         semanticsLabel: semanticLabel,
         theme: theme,
         colorFilter: colorFilter,

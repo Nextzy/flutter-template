@@ -29,7 +29,7 @@ class AppEmailSelectableText extends AppStatelessWidget {
   }
 
   List<TextSpan> buildTextSpans(String? email) {
-    List<TextSpan> textSpans = [];
+    final textSpans = <TextSpan>[];
     if (email.isNullOrBlank) {
       return textSpans..add(TextSpan(text: '', style: style));
     }

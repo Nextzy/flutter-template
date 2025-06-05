@@ -1,3 +1,6 @@
+// Ignore because is not necessary
+// ignore_for_file: unused_local_variable
+
 import 'package:data/lib.dart';
 
 class AppNetworkErrorHandlerInterceptor extends NetworkErrorHandlerInterceptor {
@@ -5,8 +8,8 @@ class AppNetworkErrorHandlerInterceptor extends NetworkErrorHandlerInterceptor {
 
   @override
   void onClientError(DioException err, ErrorInterceptorHandler handler) {
-    if (err.error case NetworkException exception) {
-      //TODO:
+    if (err.error case final NetworkException exception) {
+      // TODO(username): Implement
       handler.reject(err);
       // handler.resolve(err.response!);
     } else {
@@ -16,8 +19,8 @@ class AppNetworkErrorHandlerInterceptor extends NetworkErrorHandlerInterceptor {
 
   @override
   void onServerError(DioException err, ErrorInterceptorHandler handler) {
-    if (err.error case NetworkException exception) {
-      //TODO:
+    if (err.error case final NetworkException exception) {
+      // TODO(username): Implement
       handler.reject(err);
     } else {
       handler.next(err);

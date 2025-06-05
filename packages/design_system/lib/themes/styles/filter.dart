@@ -4,13 +4,13 @@ part 'generated/filter.freezed.dart';
 
 @freezed
 abstract class AppImageFilter with _$AppImageFilter {
-  const AppImageFilter._();
-
   const factory AppImageFilter({
     @Default(0.0) double sigmaX,
     @Default(0.0) double sigmaY,
     @Default(TileMode.clamp) TileMode tileMode,
   }) = _AppImageFilter;
+
+  const AppImageFilter._();
 
   ImageFilter get blur => ImageFilter.blur(
         sigmaX: sigmaX,

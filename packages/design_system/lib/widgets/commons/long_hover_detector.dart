@@ -14,9 +14,9 @@ class LongHoverDetector extends StatefulWidget {
 
   final Widget child;
   final Duration hoverDuration;
-  final Function(PointerEvent event)? onLongHover;
-  final Function(PointerEvent event)? onHoverStart;
-  final Function(PointerEvent event)? onHoverEnd;
+  final void Function(PointerEvent event)? onLongHover;
+  final void Function(PointerEvent event)? onHoverStart;
+  final void Function(PointerEvent event)? onHoverEnd;
   final bool showFeedback;
 
   @override

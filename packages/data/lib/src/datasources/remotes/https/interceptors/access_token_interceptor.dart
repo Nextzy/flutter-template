@@ -25,22 +25,22 @@ class AppAccessTokenInterceptor extends QueuedInterceptor {
   int _retryCounter;
 
   bool get hasAccessToken =>
-      accessToken != null && accessToken?.isNotEmpty == true;
+      accessToken != null && (accessToken?.isNotEmpty ?? false);
 
   bool get hasRefreshToken =>
-      refreshToken != null && refreshToken?.isNotEmpty == true;
+      refreshToken != null && (refreshToken?.isNotEmpty ?? false);
 
-  bool isCatchError(Response<dynamic>? response) {
+  bool isCatchError(Response? response) {
     return response?.statusCode == 401;
   }
 
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    final bool isUseToken = options.extra.getOrElse(
+    final isUseToken = options.extra.getOrElse(
       'requiredAuth',
       () => false,
-    );
+    ) as bool;
     if (hasAccessToken && isUseToken) {
       options.headers[HttpHeader.AUTHORIZE] = 'Bearer $accessToken';
     } else {
@@ -75,9 +75,9 @@ class AppAccessTokenInterceptor extends QueuedInterceptor {
   ) async {
     if (_retryCounter <= retryLimit) {
       try {
-        final Map<String, dynamic>? data = (await _fetchRefreshToken()).data;
-        accessToken = data?['token'];
-        refreshToken = data?['refreshToken'];
+        final data = (await _fetchRefreshToken()).data;
+        accessToken = data?['token'] as String?;
+        refreshToken = data?['refreshToken'] as String?;
         final newResponse = await _reFetchOldService(response.requestOptions);
         handler.resolve(newResponse);
       } catch (error) {
@@ -99,15 +99,15 @@ class AppAccessTokenInterceptor extends QueuedInterceptor {
     }
   }
 
-  Future<void> onTokenError(
+  void onTokenError(
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
     if (_retryCounter <= retryLimit) {
       try {
-        final Map<String, dynamic>? data = (await _fetchRefreshToken()).data;
-        accessToken = data?['token'];
-        refreshToken = data?['refreshToken'];
+        final data = (await _fetchRefreshToken()).data;
+        accessToken = data?['token'] as String?;
+        refreshToken = data?['refreshToken'] as String?;
         final newResponse =
             await _reFetchOldService(err.response?.requestOptions);
         handler.resolve(newResponse);

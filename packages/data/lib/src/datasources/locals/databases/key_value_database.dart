@@ -1,16 +1,16 @@
 import 'package:data/lib.dart';
 
 class AppSecureLocalDatabase {
+  const AppSecureLocalDatabase._singleton(
+      {SecureStorage secureStorage = SecureStorage.instance})
+      : _secureStorage = secureStorage;
+
   static const tokenKey = 'tokenKey';
   static const refreshTokenKey = 'refreshTokenKey';
   final SecureStorage _secureStorage;
 
   static const AppSecureLocalDatabase instance =
       AppSecureLocalDatabase._singleton();
-
-  const AppSecureLocalDatabase._singleton(
-      {SecureStorage secureStorage = SecureStorage.instance})
-      : _secureStorage = secureStorage;
 
   Future<void> saveToken(String token) =>
       _secureStorage.save(tokenKey, data: token);

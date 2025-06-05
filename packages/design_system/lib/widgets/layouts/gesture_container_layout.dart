@@ -1,3 +1,6 @@
+// Ignore because unnecessary
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+
 import 'package:design_system/lib.dart';
 
 class GestureContainerLayout extends StatefulWidget {
@@ -206,7 +209,7 @@ class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
               maxHeight: widget.height ?? widget.maxHeight ?? double.infinity,
             ),
             child: Padding(
-              padding: widget.padding ?? const EdgeInsets.all(0.0),
+              padding: widget.padding ?? EdgeInsets.zero,
               child: widget.child,
             ),
           ),
@@ -292,8 +295,9 @@ class _GestureContainerLayoutState extends FalconState<GestureContainerLayout> {
 
   @override
   void dispose() {
-    _focusNode.dispose();
-    _focusNode.removeListener(_handleFocusChange);
+    _focusNode
+      ..dispose()
+      ..removeListener(_handleFocusChange);
     ServicesBinding.instance.keyboard.removeHandler(_handleKeyEvent);
     super.dispose();
   }

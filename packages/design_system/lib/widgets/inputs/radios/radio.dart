@@ -48,9 +48,7 @@ class _AppRadioState<T> extends AppState<AppRadio<T>> {
         _value = value;
       });
 
-      if (widget.onChanged != null) {
-        widget.onChanged!(value);
-      }
+      widget.onChanged?.call(value);
     }
   }
 
@@ -123,7 +121,7 @@ class _AppRadioState<T> extends AppState<AppRadio<T>> {
       groupValue: _value,
       onChanged: widget.disabled ? null : _onChanged,
       activeColor: activeColor,
-      overlayColor: WidgetStatePropertyAll(Colors.transparent),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
     );
   }
 
