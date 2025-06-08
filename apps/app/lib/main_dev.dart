@@ -38,6 +38,7 @@ Future<void> setupMainDev() async {
 
 Future<void> setupFirebaseDev() async {
   await Firebase.initializeApp(
+    name: 'change_application_name-dev',
     options: DevFirebaseOptions.currentPlatform,
   );
   await FirebaseRemoteConfig.instance.setConfigSettings(

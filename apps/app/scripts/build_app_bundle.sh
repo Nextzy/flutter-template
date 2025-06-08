@@ -12,7 +12,7 @@ usage() {
     echo
     echo "Parameters:"
     echo "  --flavor     Required. Build flavor (uat, dev, or prod)"
-    echo "  --build Required. Build type (release or debug)"
+    echo "  --build      Required. Build type (release or debug)"
     echo "  --output     Required. Output directory path"
     echo
     echo "Example:"
@@ -58,10 +58,16 @@ mkdir -p "$OUTPUT_DIR"
 CUSTOM_APK_NAME="[${DATE}|${TIME}]-${PROJECT_NAME}-${FLAVOR}-${BUILD_TYPE}-${VERSION}.aab"
 
 # Build APK
+echo "🏗️  Building App Bundle..."
+echo "   Flavor: ${FLAVOR}"
+echo "   Build Type: ${BUILD_TYPE}"
+echo "   Version: ${VERSION}"
+echo
+
 flutter build appbundle \
-    --${BUILD_TYPE} \
-    --flavor ${FLAVOR} \
-    --target lib/main_${FLAVOR}.dart
+    --"${BUILD_TYPE}" \
+    --flavor "${FLAVOR}" \
+    --target lib/main_"${FLAVOR}".dart
 
 # Set default App Bundle path
 if [ "$BUILD_TYPE" = "release" ]; then
@@ -71,9 +77,32 @@ else
 fi
 
 if [ -f "$DEFAULT_PATH" ]; then
+    # Move the file to the output directory
     mv "$DEFAULT_PATH" "${OUTPUT_DIR}/${CUSTOM_APK_NAME}"
-    echo "🤖 App Bundle successfully and moved to: ${OUTPUT_DIR}/${CUSTOM_APK_NAME}"
+    echo "✅ App Bundle built successfully and moved to: ${OUTPUT_DIR}/${CUSTOM_APK_NAME}"
+
+    # Get the absolute path of the output directory
+    ABSOLUTE_OUTPUT_DIR=$(cd "$OUTPUT_DIR" && pwd)
+
+    # Open Finder at the output directory (macOS)
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "📂 Opening Finder..."
+        open "$ABSOLUTE_OUTPUT_DIR"
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        # For Linux, try to open the file manager
+        if command -v xdg-open &> /dev/null; then
+            echo "📂 Opening file manager..."
+            xdg-open "$ABSOLUTE_OUTPUT_DIR"
+        elif command -v nautilus &> /dev/null; then
+            echo "📂 Opening Nautilus..."
+            nautilus "$ABSOLUTE_OUTPUT_DIR"
+        else
+            echo "📂 Output directory: $ABSOLUTE_OUTPUT_DIR"
+        fi
+    else
+        echo "📂 Output directory: $ABSOLUTE_OUTPUT_DIR"
+    fi
 else
-    echo "Error: App Bundle not found at ${DEFAULT_PATH}"
+    echo "❌ Error: App Bundle not found at ${DEFAULT_PATH}"
     exit 1
 fi

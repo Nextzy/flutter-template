@@ -30,6 +30,7 @@ Future<void> setupMainUat() async {
 
 Future<void> setupFirebaseUat() async {
   await Firebase.initializeApp(
+    name: 'change_application_name-uat',
     options: UatFirebaseOptions.currentPlatform,
   );
   await FirebaseRemoteConfig.instance.setConfigSettings(

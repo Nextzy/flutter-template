@@ -21,6 +21,7 @@ Future<void> setupMainProd() async {
 
 Future<void> setupFirebaseProd() async {
   await Firebase.initializeApp(
+    name: 'change_application_name-prod',
     options: ProdFirebaseOptions.currentPlatform,
   );
   await FirebaseRemoteConfig.instance.setConfigSettings(
