@@ -11,11 +11,10 @@ _flutter.loader.load({
     serviceWorkerVersion: {{flutter_service_worker_version}},
   },
   onEntrypointLoaded: async function(engineInitializer) {
-    (await engineInitializer.initializeEngine(
-    {
+    const appRunner = await engineInitializer.initializeEngine({
         useColorEmoji: true,
-    }
-    )).runApp();
+    });
     removeProgressBar();
+    await appRunner.runApp();
   }
 });

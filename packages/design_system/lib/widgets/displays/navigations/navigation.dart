@@ -40,33 +40,31 @@ class AppTopNavigationBar extends AppStatelessWidget
     final paddingValue = getTheme(context).space.md;
     final logoUri = Uri.parse(Assets.logo.iconText.keyName);
 
-    return SafeArea(
-      child: ContainerLayout(
-        border: _getBorder(context, type: type, border: border),
-        child: AppBar(
-          surfaceTintColor: Colors.transparent,
-          systemOverlayStyle:
-              systemOverlayStyle ?? context.theme.systemOverlayStyle,
-          titleSpacing: 0,
-          backgroundColor:
-              _getBackgroundColor(context, type: type, color: backgroundColor),
-          leadingWidth: paddingValue + 40 + paddingValue,
-          leading: buildLeading(
-            context,
-            type: type,
-            leadWidgets: _leadWidgets,
-            disabled: disabled,
-          ),
-          centerTitle: true,
-          title: buildContent(
-            context,
-            type: type,
-            logoUri: logoUri,
-            title: title,
-          ),
-          elevation: 0,
-          actions: _actionWidgets,
+    return ContainerLayout(
+      border: _getBorder(context, type: type, border: border),
+      child: AppBar(
+        surfaceTintColor: Colors.transparent,
+        systemOverlayStyle:
+            systemOverlayStyle ?? context.theme.systemOverlayStyle,
+        titleSpacing: 0,
+        backgroundColor:
+            _getBackgroundColor(context, type: type, color: backgroundColor),
+        leadingWidth: paddingValue + 40 + paddingValue,
+        leading: buildLeading(
+          context,
+          type: type,
+          leadWidgets: _leadWidgets,
+          disabled: disabled,
         ),
+        centerTitle: true,
+        title: buildContent(
+          context,
+          type: type,
+          logoUri: logoUri,
+          title: title,
+        ),
+        elevation: 0,
+        actions: _actionWidgets,
       ),
     );
   }
