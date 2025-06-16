@@ -138,8 +138,8 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
         AppPaginationType.text => AppText(
             Translations.of(context)
                 .common
-                .pagination
-                .pageOfTotal(page: _page, total: widget.totalPage),
+                .message
+                .paginationPageOfTotal(page: _page, total: widget.totalPage),
             style: TextStyle(
                 color: context.theme.color.textPrimary,
                 fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
@@ -158,8 +158,8 @@ class _AppSimplePaginationState extends AppState<AppSimplePagination> {
               AppText(
                   Translations.of(context)
                       .common
-                      .pagination
-                      .ofTotal(total: widget.totalPage),
+                      .message
+                      .paginationOfTotal(total: widget.totalPage),
                   style: TextStyle(
                       color: context.theme.color.textPrimary,
                       fontSize: widgetSize == WidgetSize.sm ? 12 : 14,

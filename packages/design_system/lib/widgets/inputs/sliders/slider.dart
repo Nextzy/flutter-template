@@ -75,14 +75,17 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildLabel(widget.minValueText ?? t.common.slider.minValue),
-              _buildLabel(widget.maxValueText ?? t.common.slider.maxValue),
+              _buildLabel(
+                  widget.minValueText ?? t.common.message.sliderMinValue),
+              _buildLabel(
+                  widget.maxValueText ?? t.common.message.sliderMaxValue),
             ],
           ),
         RowLayout(
           children: [
             if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.side)
-              _buildLabel(widget.minValueText ?? t.common.slider.minValue),
+              _buildLabel(
+                  widget.minValueText ?? t.common.message.sliderMinValue),
             Expanded(
               child: SliderTheme(
                 data: SliderTheme.of(context).copyWith(
@@ -109,15 +112,18 @@ class _AppHorizontalSliderState extends AppState<AppHorizontalSlider> {
               ),
             ),
             if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.side)
-              _buildLabel(widget.maxValueText ?? t.common.slider.maxValue),
+              _buildLabel(
+                  widget.maxValueText ?? t.common.message.sliderMaxValue),
           ],
         ),
         if (widget.minMaxPosition == HorizontalSliderMinMaxPosition.bottom)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildLabel(widget.minValueText ?? t.common.slider.minValue),
-              _buildLabel(widget.maxValueText ?? t.common.slider.maxValue),
+              _buildLabel(
+                  widget.minValueText ?? t.common.message.sliderMinValue),
+              _buildLabel(
+                  widget.maxValueText ?? t.common.message.sliderMaxValue),
             ],
           ),
         if (widget.helperText.isNotNullOrBlank)

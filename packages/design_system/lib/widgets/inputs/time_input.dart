@@ -256,7 +256,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
                         padding: widgetSize == WidgetSize.sm
                             ? const EdgeInsets.all(2)
                             : const EdgeInsets.all(4),
-                        child: AppText(t.common.time.am,
+                        child: AppText(t.common.message.timeAm,
                             style: TextStyle(
                                 color: textPrimaryColor,
                                 fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
@@ -268,7 +268,7 @@ class _AppTimeInputState extends AppState<AppTimeInput> {
                         padding: widgetSize == WidgetSize.sm
                             ? const EdgeInsets.all(2)
                             : const EdgeInsets.all(4),
-                        child: AppText(t.common.time.pm,
+                        child: AppText(t.common.message.timePm,
                             style: TextStyle(
                                 color: textPrimaryColor,
                                 fontSize: widgetSize == WidgetSize.sm ? 12 : 14,

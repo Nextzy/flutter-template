@@ -52,7 +52,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
       mainAxisSize: MainAxisSize.min,
       children: [
         ColumnLayout(mainAxisAlignment: MainAxisAlignment.start, children: [
-          _buildLabel(widget.minValueText ?? t.common.slider.maxValue),
+          _buildLabel(widget.minValueText ?? t.common.message.sliderMaxValue),
           RotatedBox(
             quarterTurns: -1,
             child: SliderTheme(
@@ -79,7 +79,7 @@ class _AppVerticalSliderState extends AppState<AppVerticalSlider> {
               ),
             ),
           ),
-          _buildLabel(widget.maxValueText ?? t.common.slider.minValue),
+          _buildLabel(widget.maxValueText ?? t.common.message.sliderMinValue),
         ])
       ],
     );

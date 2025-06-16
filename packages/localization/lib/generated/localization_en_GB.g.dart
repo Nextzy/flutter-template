@@ -17,9 +17,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.enGb,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -36,6 +36,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	late final Translations _root = this; // ignore: unused_field
 
+	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
+
 	// Translations
 	late final TranslationsCommonEnGb common = TranslationsCommonEnGb.internal(_root);
 	late final TranslationsAuthEnGb auth = TranslationsAuthEnGb.internal(_root);
@@ -50,10 +52,8 @@ class TranslationsCommonEnGb {
 	// Translations
 	late final TranslationsCommonTitleEnGb title = TranslationsCommonTitleEnGb.internal(_root);
 	late final TranslationsCommonMessageEnGb message = TranslationsCommonMessageEnGb.internal(_root);
+	late final TranslationsCommonBadgeEnGb badge = TranslationsCommonBadgeEnGb.internal(_root);
 	late final TranslationsCommonButtonEnGb button = TranslationsCommonButtonEnGb.internal(_root);
-	late final TranslationsCommonPaginationEnGb pagination = TranslationsCommonPaginationEnGb.internal(_root);
-	late final TranslationsCommonSliderEnGb slider = TranslationsCommonSliderEnGb.internal(_root);
-	late final TranslationsCommonTimeEnGb time = TranslationsCommonTimeEnGb.internal(_root);
 	late final TranslationsCommonSuccessEnGb success = TranslationsCommonSuccessEnGb.internal(_root);
 	late final TranslationsCommonFailEnGb fail = TranslationsCommonFailEnGb.internal(_root);
 	late final TranslationsCommonAlertEnGb alert = TranslationsCommonAlertEnGb.internal(_root);
@@ -66,7 +66,9 @@ class TranslationsAuthEnGb {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	late final TranslationsAuthTitleEnGb title = TranslationsAuthTitleEnGb.internal(_root);
 	late final TranslationsAuthButtonEnGb button = TranslationsAuthButtonEnGb.internal(_root);
+	late final TranslationsAuthFailEnGb fail = TranslationsAuthFailEnGb.internal(_root);
 }
 
 // Path: common.title
@@ -79,6 +81,8 @@ class TranslationsCommonTitleEnGb {
 	String get confirmation => 'Confirmation';
 	String get forceUpdate => 'Force Update';
 	String get softUpdate => 'Update Available';
+	String get today => 'Today';
+	String get yesterday => 'Yesterday';
 }
 
 // Path: common.message
@@ -94,6 +98,27 @@ class TranslationsCommonMessageEnGb {
 	String get noData => 'No data available';
 	String get processing => 'Processing...';
 	String get loading => 'Loading...';
+	String prefixRef({required Object ref}) => 'Ref: ${ref}';
+	String estimateMinuteTime({required Object minute}) => 'Estimate ~${minute} minutes';
+	String paginationOfTotal({required Object total}) => 'of ${total}';
+	String paginationOfTotalPages({required Object total}) => 'of ${total} pages';
+	String paginationOfTotalItems({required Object start, required Object end, required Object total}) => '${start}-${end} of ${total} items';
+	String paginationPageOfTotal({required Object page, required Object total}) => 'Page ${page} of ${total}';
+	String get paginationItemsPerPage => 'items per page';
+	String get timeAm => 'AM';
+	String get timePm => 'PM';
+	String get sliderMinValue => 'Min value';
+	String get sliderMaxValue => 'Max value';
+}
+
+// Path: common.badge
+class TranslationsCommonBadgeEnGb {
+	TranslationsCommonBadgeEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get kNew => 'New';
 }
 
 // Path: common.button
@@ -115,44 +140,14 @@ class TranslationsCommonButtonEnGb {
 	String get confirm => 'Confirm';
 	String get submit => 'Submit';
 	String get search => 'Search';
-	String get previous => 'Previous';
+	String get detail => 'Detail';
+	String get close => 'Close';
 	String get next => 'Next';
-}
-
-// Path: common.pagination
-class TranslationsCommonPaginationEnGb {
-	TranslationsCommonPaginationEnGb.internal(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String ofTotal({required Object total}) => 'of ${total}';
-	String ofTotalPages({required Object total}) => 'of ${total} pages';
-	String ofTotalItems({required Object start, required Object end, required Object total}) => '${start}-${end} of ${total} items';
-	String pageOfTotal({required Object page, required Object total}) => 'Page ${page} of ${total}';
-	String get itemsPerPage => 'items per page';
-}
-
-// Path: common.slider
-class TranslationsCommonSliderEnGb {
-	TranslationsCommonSliderEnGb.internal(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get minValue => 'Min value';
-	String get maxValue => 'Max value';
-}
-
-// Path: common.time
-class TranslationsCommonTimeEnGb {
-	TranslationsCommonTimeEnGb.internal(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get am => 'AM';
-	String get pm => 'PM';
+	String get copy => 'Copy';
+	String get scan => 'Scan';
+	String get skip => 'Skip';
+	String get signOut => 'Sign out';
+	String get previous => 'Previous';
 }
 
 // Path: common.success
@@ -191,6 +186,16 @@ class TranslationsCommonAlertEnGb {
 	late final TranslationsCommonAlertInfoEnGb info = TranslationsCommonAlertInfoEnGb.internal(_root);
 }
 
+// Path: auth.title
+class TranslationsAuthTitleEnGb {
+	TranslationsAuthTitleEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get enterPin => 'Enter PIN';
+}
+
 // Path: auth.button
 class TranslationsAuthButtonEnGb {
 	TranslationsAuthButtonEnGb.internal(this._root);
@@ -199,11 +204,25 @@ class TranslationsAuthButtonEnGb {
 
 	// Translations
 	String get signInWithGoogle => 'Sign in with Google';
+	String get signInWithTwitter => 'Sign in with Twitter';
 	String get signInWithFacebook => 'Sign in with Facebook';
 	String get signInWithApple => 'Sign in with Apple';
-	String get signInWithTwitter => 'Sign in with Twitter';
-	String get signInWithGitHub => 'Sign in with GitHub';
+	String get signInWithGithub => 'Sign in with GitHub';
 	String get signInWithMicrosoft => 'Sign in with Microsoft';
+	String get termsOfService => 'Terms of Service';
+	String get privacyPolicy => 'Privacy Policy';
+	String get requestOtp => 'Request OTP code';
+	String requestAgain({required Object counter}) => 'Send code again (${counter})';
+}
+
+// Path: auth.fail
+class TranslationsAuthFailEnGb {
+	TranslationsAuthFailEnGb.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get wrongOtp => 'Incorrect code. Please enter the code again';
 }
 
 // Path: common.alert.info
@@ -224,12 +243,26 @@ extension on Translations {
 			case 'common.title.confirmation': return 'Confirmation';
 			case 'common.title.forceUpdate': return 'Force Update';
 			case 'common.title.softUpdate': return 'Update Available';
+			case 'common.title.today': return 'Today';
+			case 'common.title.yesterday': return 'Yesterday';
 			case 'common.message.confirmationDelete': return 'Are you sure you want to delete?';
 			case 'common.message.forceUpdate': return 'A new version is available. Please update to continue.';
 			case 'common.message.softUpdate': return 'A new version is available. Would you like to update now?';
 			case 'common.message.noData': return 'No data available';
 			case 'common.message.processing': return 'Processing...';
 			case 'common.message.loading': return 'Loading...';
+			case 'common.message.prefixRef': return ({required Object ref}) => 'Ref: ${ref}';
+			case 'common.message.estimateMinuteTime': return ({required Object minute}) => 'Estimate ~${minute} minutes';
+			case 'common.message.paginationOfTotal': return ({required Object total}) => 'of ${total}';
+			case 'common.message.paginationOfTotalPages': return ({required Object total}) => 'of ${total} pages';
+			case 'common.message.paginationOfTotalItems': return ({required Object start, required Object end, required Object total}) => '${start}-${end} of ${total} items';
+			case 'common.message.paginationPageOfTotal': return ({required Object page, required Object total}) => 'Page ${page} of ${total}';
+			case 'common.message.paginationItemsPerPage': return 'items per page';
+			case 'common.message.timeAm': return 'AM';
+			case 'common.message.timePm': return 'PM';
+			case 'common.message.sliderMinValue': return 'Min value';
+			case 'common.message.sliderMaxValue': return 'Max value';
+			case 'common.badge.kNew': return 'New';
 			case 'common.button.ok': return 'OK';
 			case 'common.button.cancel': return 'Cancel';
 			case 'common.button.back': return 'Back';
@@ -242,17 +275,14 @@ extension on Translations {
 			case 'common.button.confirm': return 'Confirm';
 			case 'common.button.submit': return 'Submit';
 			case 'common.button.search': return 'Search';
-			case 'common.button.previous': return 'Previous';
+			case 'common.button.detail': return 'Detail';
+			case 'common.button.close': return 'Close';
 			case 'common.button.next': return 'Next';
-			case 'common.pagination.ofTotal': return ({required Object total}) => 'of ${total}';
-			case 'common.pagination.ofTotalPages': return ({required Object total}) => 'of ${total} pages';
-			case 'common.pagination.ofTotalItems': return ({required Object start, required Object end, required Object total}) => '${start}-${end} of ${total} items';
-			case 'common.pagination.pageOfTotal': return ({required Object page, required Object total}) => 'Page ${page} of ${total}';
-			case 'common.pagination.itemsPerPage': return 'items per page';
-			case 'common.slider.minValue': return 'Min value';
-			case 'common.slider.maxValue': return 'Max value';
-			case 'common.time.am': return 'AM';
-			case 'common.time.pm': return 'PM';
+			case 'common.button.copy': return 'Copy';
+			case 'common.button.scan': return 'Scan';
+			case 'common.button.skip': return 'Skip';
+			case 'common.button.signOut': return 'Sign out';
+			case 'common.button.previous': return 'Previous';
 			case 'common.success.general': return 'Successfully';
 			case 'common.success.saved': return 'Saved successfully';
 			case 'common.success.updated': return 'Updated successfully';
@@ -262,12 +292,18 @@ extension on Translations {
 			case 'common.fail.updated': return 'Update failed. Please try again later';
 			case 'common.fail.network': return 'Network error. Please check your connection';
 			case 'common.alert.info.doubleTapExit': return 'Press back again to exit';
+			case 'auth.title.enterPin': return 'Enter PIN';
 			case 'auth.button.signInWithGoogle': return 'Sign in with Google';
+			case 'auth.button.signInWithTwitter': return 'Sign in with Twitter';
 			case 'auth.button.signInWithFacebook': return 'Sign in with Facebook';
 			case 'auth.button.signInWithApple': return 'Sign in with Apple';
-			case 'auth.button.signInWithTwitter': return 'Sign in with Twitter';
-			case 'auth.button.signInWithGitHub': return 'Sign in with GitHub';
+			case 'auth.button.signInWithGithub': return 'Sign in with GitHub';
 			case 'auth.button.signInWithMicrosoft': return 'Sign in with Microsoft';
+			case 'auth.button.termsOfService': return 'Terms of Service';
+			case 'auth.button.privacyPolicy': return 'Privacy Policy';
+			case 'auth.button.requestOtp': return 'Request OTP code';
+			case 'auth.button.requestAgain': return ({required Object counter}) => 'Send code again (${counter})';
+			case 'auth.fail.wrongOtp': return 'Incorrect code. Please enter the code again';
 			default: return null;
 		}
 	}

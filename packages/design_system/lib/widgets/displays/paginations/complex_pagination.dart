@@ -104,7 +104,7 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                 isDense: true,
               ),
             ),
-            AppText(t.common.pagination.itemsPerPage,
+            AppText(t.common.message.paginationItemsPerPage,
                 style: TextStyle(
                     color: context.theme.color.textPrimary,
                     fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
@@ -112,8 +112,8 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
           ],
         ),
         AppText(
-            t.common.pagination
-                .ofTotalItems(start: startItem, end: endItem, total: totalPage),
+            t.common.message.paginationOfTotalItems(
+                start: startItem, end: endItem, total: totalPage),
             style: TextStyle(
                 color: context.theme.color.textPrimary,
                 fontSize: widgetSize == WidgetSize.sm ? 12 : 14,
@@ -155,7 +155,8 @@ class _AppComplexPaginationState extends AppState<AppComplexPagination> {
                     isDense: true,
                   ),
                 ),
-                AppText(t.common.pagination.ofTotalPages(total: totalPage),
+                AppText(
+                    t.common.message.paginationOfTotalPages(total: totalPage),
                     style: TextStyle(
                         color: context.theme.color.textPrimary,
                         fontSize: widgetSize == WidgetSize.sm ? 12 : 14,

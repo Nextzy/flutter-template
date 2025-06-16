@@ -132,7 +132,7 @@ class _AppSocialButtonState extends AppState<AppSocialButton> {
         AppSocialButtonType.apple =>
           Translations.of(context).auth.button.signInWithApple,
         AppSocialButtonType.github =>
-          Translations.of(context).auth.button.signInWithGitHub,
+          Translations.of(context).auth.button.signInWithGithub,
         AppSocialButtonType.microsoft =>
           Translations.of(context).auth.button.signInWithMicrosoft,
       };

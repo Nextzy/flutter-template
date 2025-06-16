@@ -2,12 +2,26 @@
 common.title.confirmation,ยืนยัน,Confirmation
 common.title.forceUpdate,อัพเดทเวอร์ชันใหม่,Force Update
 common.title.softUpdate,มีอัพเดทใหม่,Update Available
+common.title.today,วันนี้,Today
+common.title.yesterday,เมื่อวาน,Yesterday
 common.message.confirmationDelete,คุณแน่ใจหรือไม่ที่จะลบ?,Are you sure you want to delete?
 common.message.forceUpdate,มีเวอร์ชันใหม่ กรุณาอัพเดทเพื่อดำเนินการต่อ,A new version is available. Please update to continue.
 common.message.softUpdate,มีเวอร์ชันใหม่ คุณต้องการอัพเดทเดี๋ยวนี้หรือไม่?,A new version is available. Would you like to update now?
 common.message.noData,ไม่มีข้อมูล,No data available
 common.message.processing,กำลังดำเนินการ...,Processing...
 common.message.loading,กำลังโหลด...,Loading...
+common.message.prefixRef,อ้างอิง: ${ref},Ref: ${ref}
+common.message.estimateMinuteTime,ประมาณ ~${minute} นาที,Estimate ~${minute} minutes
+common.message.paginationOfTotal,จาก ${total},of ${total}
+common.message.paginationOfTotalPages,จาก ${total} หน้า,of ${total} pages
+common.message.paginationOfTotalItems,${start}-${end} จาก $total รายการ,${start}-${end} of $total items
+common.message.paginationPageOfTotal,หน้าที่ ${page} จาก ${total},Page ${page} of ${total}
+common.message.paginationItemsPerPage,รายการต่อหน้า,items per page
+common.message.timeAm,AM,AM
+common.message.timePm,PM,PM
+common.message.sliderMinValue,ค่าต่ำสุด,Min value
+common.message.sliderMaxValue,ค่าสูงสุด,Max value
+common.badge.new,ใหม่,New
 common.button.ok,ตกลง,OK
 common.button.cancel,ยกเลิก,Cancel
 common.button.back,กลับ,Back
@@ -20,17 +34,14 @@ common.button.delete,ลบ,Delete
 common.button.confirm,ยืนยัน,Confirm
 common.button.submit,ยืนยัน,Submit
 common.button.search,ค้นหา,Search
+common.button.detail,รายละเอียด,Detail
+common.button.close,ปิด,Close
+common.button.next,ต่อไป,Next
+common.button.copy,คัดลอก,Copy
+common.button.scan,สแกน,Scan
+common.button.skip,ข้าม,Skip
+common.button.signOut,ออกจากระบบ,Sign out
 common.button.previous,ก่อนหน้า,Previous
-common.button.next,ถัดไป,Next
-common.pagination.ofTotal,จาก $total,of $total
-common.pagination.ofTotalPages,จาก $total หน้า,of $total pages
-common.pagination.ofTotalItems,$start-$end จาก $total รายการ,$start-$end of $total items
-common.pagination.pageOfTotal,หน้าที่ $page จาก $total,Page $page of $total
-common.pagination.itemsPerPage,รายการต่อหน้า,items per page
-common.slider.minValue,ค่าต่ำสุด,Min value
-common.slider.maxValue,ค่าสูงสุด,Max value
-common.time.am,AM,AM
-common.time.pm,PM,PM
 common.success.general,สำเร็จ,Successfully
 common.success.saved,บันทึกสำเร็จ,Saved successfully
 common.success.updated,อัพเดทสำเร็จ,Updated successfully
@@ -40,9 +51,15 @@ common.fail.general,เกิดข้อผิดพลาด โปรดล�
 common.fail.updated,อัพเดทไม่สำเร็จ โปรดลองใหม่อีกครั้ง,Update failed. Please try again later
 common.fail.network,ข้อผิดพลาดเครือข่าย โปรดตรวจสอบการเชื่อมต่อ,Network error. Please check your connection
 common.alert.info.doubleTapExit,กดอีกครั้งเพื่อออกจากแอป,Press back again to exit
+auth.title.enterPin,กรุณาใส่ PIN,Enter PIN
 auth.button.signInWithGoogle,Sign in with Google,Sign in with Google
+auth.button.signInWithTwitter,Sign in with Twitter,Sign in with Twitter
 auth.button.signInWithFacebook,Sign in with Facebook,Sign in with Facebook
 auth.button.signInWithApple,Sign in with Apple,Sign in with Apple
-auth.button.signInWithTwitter,Sign in with Twitter,Sign in with Twitter
-auth.button.signInWithGitHub,Sign in with GitHub,Sign in with GitHub
+auth.button.signInWithGithub,Sign in with GitHub,Sign in with GitHub
 auth.button.signInWithMicrosoft,Sign in with Microsoft,Sign in with Microsoft
+auth.button.termsOfService,Terms of Service,Terms of Service
+auth.button.privacyPolicy,Privacy Policy,Privacy Policy
+auth.button.requestOtp,ขอรหัส OTP,Request OTP code
+auth.button.requestAgain,ส่งรหัสอีกครั้ง (${counter}),Send code again (${counter})
+auth.fail.wrongOtp,รหัสไม่ถูกต้อง กรุณาใส่รหัสอีกครั้ง,Incorrect code. Please enter the code again
